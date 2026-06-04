@@ -1,0 +1,22 @@
+node_modules/
+.next/
+out/
+.DS_Store
+
+# Env
+.env
+.env.local
+.env*.local
+
+# Data (dev fallback)
+data/leads.json
+data/photos/
+
+# Build cache
+*.tsbuildinfo
+next-env.d.ts
+
+# Misc
+.imgcheck/
+
+.vercel

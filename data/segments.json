@@ -1,0 +1,11 @@
+[
+  {
+    "id": "seg-dd80629ba7",
+    "name": "Hot leads en attente",
+    "description": "efe",
+    "query": "status:nouveau level:hot",
+    "isShared": true,
+    "createdAt": "2026-05-29T08:45:36.335Z",
+    "updatedAt": "2026-05-29T08:45:36.335Z"
+  }
+]

@@ -1,0 +1,20 @@
+[
+  {
+    "leadReference": "DEV-SEED-2026-1008",
+    "number": "2026-2177",
+    "status": "draft",
+    "lines": [
+      {
+        "id": "ln-1780047032404-y6ur",
+        "description": "Fourniture et pose chaudière condensation Viessmann Vitodens 32 kW",
+        "quantity": 1,
+        "unitPrice": 8500,
+        "unit": "forfait"
+      }
+    ],
+    "tvaRate": 17,
+    "notes": "",
+    "updatedAt": "2026-05-29T09:32:58.516Z",
+    "createdAt": "2026-05-29T09:32:58.516Z"
+  }
+]

@@ -1,0 +1,266 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --cream: #f6f0e4;
+  --linen: #ede5d3;
+  --stone: #ddd3be;
+  --ink: #2a251e;
+  --graphite: #4a4338;
+  --muted: #8b847a;
+  --charcoal: #1e1a15;
+  --copper: #b86a36;
+  --ember: #dc5a28;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+html,
+body {
+  background: var(--cream);
+  color: var(--ink);
+  font-feature-settings: "ss01", "cv11", "tnum";
+}
+
+::selection {
+  background: var(--copper);
+  color: var(--cream);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--linen);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--stone);
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--copper);
+}
+
+/* Paper grain on light surfaces */
+.grain::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.16 0 0 0 0 0.14 0 0 0 0 0.11 0 0 0 0.06 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 100;
+  mix-blend-mode: multiply;
+  opacity: 0.55;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.hero-mask {
+  -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+}
+
+/* Architect divider */
+.divider-arch {
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(42, 37, 30, 0.18) 20%,
+    rgba(42, 37, 30, 0.18) 80%,
+    transparent
+  );
+  height: 1px;
+}
+.divider-arch-dark {
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(246, 240, 228, 0.2) 20%,
+    rgba(246, 240, 228, 0.2) 80%,
+    transparent
+  );
+  height: 1px;
+}
+
+/* Heat shimmer text effect (dark sections) */
+.heat-shimmer {
+  background: linear-gradient(
+    110deg,
+    #f6f0e4 0%,
+    #f6f0e4 40%,
+    #f1dcbe 50%,
+    #f6f0e4 60%,
+    #f6f0e4 100%
+  );
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 6s linear infinite;
+}
+@keyframes shine {
+  to {
+    background-position: -200% center;
+  }
+}
+
+/* Partners marquee */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.marquee {
+  animation: marquee 40s linear infinite;
+}
+
+/* Subtle button ring (kept for dark sections) */
+.btn-ring {
+  position: relative;
+  overflow: hidden;
+}
+.btn-ring::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(184, 106, 54, 0.55), rgba(220, 90, 40, 0.18));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* ─────────── Admin typographic shell ───────────
+   Scope « .admin-shell » : remplace les fonts du site public par Geist.
+   Aucun effet hors /admin/*.
+   --------------------------------------------- */
+.admin-shell {
+  --font-display: var(--font-admin-sans), "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-admin-sans), "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-admin-mono), ui-monospace, monospace;
+  --admin-ink: #0e0b07; /* quasi-noir chaud — admin uniquement */
+  --admin-graphite: #2c2620;
+  font-family: var(--font-sans);
+  font-feature-settings: "ss01", "cv11", "tnum", "cv05";
+  letter-spacing: -0.005em;
+  color: var(--admin-ink);
+}
+
+/* Force le quasi-noir partout où le site public utilisait l'ink chaud */
+.admin-shell .text-ink {
+  color: var(--admin-ink);
+}
+.admin-shell .text-graphite {
+  color: var(--admin-graphite);
+}
+.admin-shell .font-display {
+  color: var(--admin-ink);
+}
+.admin-shell h1,
+.admin-shell h2,
+.admin-shell h3 {
+  color: var(--admin-ink);
+}
+/* Compteurs KPI et grandes valeurs : poids plus marqué */
+.admin-shell .font-display.tabular-nums {
+  font-weight: 700;
+  color: var(--admin-ink);
+}
+
+/* Titres display dans l'admin : retirer le tracking serré éditorial */
+.admin-shell .font-display {
+  letter-spacing: -0.02em;
+  font-weight: 600;
+}
+
+/* Eyebrows mono : adoucir le tracking pour rester moderne */
+.admin-shell .font-mono.uppercase {
+  letter-spacing: 0.15em;
+  font-weight: 500;
+}
+
+/* Titres hero admin (text-display-md) */
+.admin-shell h1.font-display {
+  font-weight: 600;
+  letter-spacing: -0.025em;
+}
+
+/* Legal pages prose */
+.prose-legal h2 {
+  font-family: var(--font-display), Georgia, serif;
+  font-size: 1.75rem;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+}
+.prose-legal h3 {
+  font-family: var(--font-display), Georgia, serif;
+  font-size: 1.25rem;
+  color: var(--ink);
+  margin-top: 1.75rem;
+  margin-bottom: 0.5rem;
+}
+.prose-legal p {
+  color: var(--graphite);
+  line-height: 1.75;
+  margin-bottom: 1rem;
+}
+.prose-legal ul {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+.prose-legal ul li {
+  color: var(--graphite);
+  line-height: 1.7;
+  padding-left: 1.25rem;
+  position: relative;
+  margin-bottom: 0.5rem;
+}
+.prose-legal ul li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: var(--copper);
+}
+.prose-legal strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+.prose-legal a {
+  color: var(--copper);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* Surface helpers */
+.surface-card {
+  background: #ffffff;
+  border: 1px solid rgba(42, 37, 30, 0.08);
+  box-shadow: 0 1px 2px rgba(42, 37, 30, 0.04), 0 8px 28px -8px rgba(42, 37, 30, 0.08);
+}
+
+.surface-tint {
+  background: linear-gradient(180deg, #ffffff 0%, #f6f0e4 100%);
+}

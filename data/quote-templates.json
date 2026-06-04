@@ -1,0 +1,19 @@
+[
+  {
+    "id": "qt-e56a6be5f2",
+    "name": "Nouveau template",
+    "category": "Général",
+    "lines": [
+      {
+        "description": "Description ligne 1",
+        "quantity": 1,
+        "unitPrice": 1250,
+        "unit": "forfait"
+      }
+    ],
+    "tvaRate": 17,
+    "createdAt": "2026-05-30T01:29:38.270Z",
+    "updatedAt": "2026-05-30T01:30:06.630Z",
+    "usageCount": 0
+  }
+]

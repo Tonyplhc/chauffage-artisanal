@@ -1,0 +1,252 @@
+{
+  "items": [
+    {
+      "ref": "PAC-AE-ENTREE",
+      "service": "pac",
+      "name": "PAC air/eau monobloc · entrée de gamme",
+      "description": "Solution résidentielle d'entrée. Marque européenne accessible, COP ~3,8.",
+      "priceMin": 8000,
+      "priceMax": 12000,
+      "unit": "installation complète",
+      "advantages": [
+        "Tarif accessible",
+        "Installation rapide",
+        "Éligible Klimabonus"
+      ],
+      "inconvenients": [
+        "Performance baisse par grand froid",
+        "Acoustique correcte sans plus"
+      ],
+      "brand": "",
+      "power": "8-10 kW",
+      "surfaceMin": 80,
+      "surfaceMax": 150
+    },
+    {
+      "ref": "PAC-AE-STANDARD",
+      "service": "pac",
+      "name": "PAC air/eau · cœur de gamme",
+      "description": "Solution résidentielle équilibrée. Marque allemande, COP ~4,5, régulation connectée.",
+      "priceMin": 13000,
+      "priceMax": 20000,
+      "unit": "installation complète",
+      "advantages": [
+        "Performance constante",
+        "Connectée",
+        "Garantie étendue",
+        "Klimabonus"
+      ],
+      "inconvenients": [
+        "Investissement initial moyen",
+        "Maintenance annuelle requise"
+      ],
+      "brand": "",
+      "power": "10-14 kW",
+      "surfaceMin": 120,
+      "surfaceMax": 220
+    },
+    {
+      "ref": "PAC-AE-PREMIUM",
+      "service": "pac",
+      "name": "PAC air/eau · haut de gamme",
+      "description": "Marque premium allemande, modulation fine, ECS intégrée, télémaintenance.",
+      "priceMin": 22000,
+      "priceMax": 32000,
+      "unit": "installation complète",
+      "advantages": [
+        "Modulation fine",
+        "Bruit minimal",
+        "Télémaintenance",
+        "ECS intégrée"
+      ],
+      "inconvenients": [
+        "Investissement élevé",
+        "Délai approvisionnement"
+      ],
+      "brand": "",
+      "power": "12-16 kW",
+      "surfaceMin": 150,
+      "surfaceMax": 300
+    },
+    {
+      "ref": "CHAUFF-COND-ENTREE",
+      "service": "chauffage",
+      "name": "Chaudière gaz à condensation · accessible",
+      "description": "Solution standard de remplacement, modèle européen éprouvé.",
+      "priceMin": 4500,
+      "priceMax": 7000,
+      "unit": "installation complète",
+      "advantages": [
+        "Tarif compétitif",
+        "Énergie maîtrisée",
+        "Compatible existant"
+      ],
+      "inconvenients": [
+        "Énergie fossile",
+        "Modulation limitée"
+      ],
+      "brand": "",
+      "power": "24 kW",
+      "surfaceMin": 80,
+      "surfaceMax": 180
+    },
+    {
+      "ref": "CHAUFF-HYBRIDE",
+      "service": "chauffage",
+      "name": "Système hybride gaz + PAC",
+      "description": "Couple chaudière condensation + PAC air/eau, pilotage intelligent selon prix énergie.",
+      "priceMin": 15000,
+      "priceMax": 22000,
+      "unit": "installation complète",
+      "advantages": [
+        "Optimisation prix énergie",
+        "Klimabonus partiel",
+        "Confort hiver garanti"
+      ],
+      "inconvenients": [
+        "Investissement double",
+        "Maintenance plus complexe"
+      ],
+      "brand": "",
+      "power": "",
+      "surfaceMin": 100,
+      "surfaceMax": 250
+    },
+    {
+      "ref": "CLIM-MONOSPLIT",
+      "service": "clim",
+      "name": "Climatisation mono-split",
+      "description": "Une unité intérieure + une extérieure. Idéal pièce à vivre ou chambre.",
+      "priceMin": 1800,
+      "priceMax": 3500,
+      "unit": "par unité installée",
+      "advantages": [
+        "Installation simple",
+        "F-Gas inclus",
+        "Réversible chauffage"
+      ],
+      "inconvenients": [
+        "Une seule pièce",
+        "Esthétique unité intérieure"
+      ],
+      "brand": "",
+      "power": "2,5-5 kW",
+      "surfaceMin": null,
+      "surfaceMax": null
+    },
+    {
+      "ref": "CLIM-MULTISPLIT",
+      "service": "clim",
+      "name": "Climatisation multi-split (3 pièces)",
+      "description": "Une unité extérieure + 3 unités intérieures. Discrétion architecturale.",
+      "priceMin": 5500,
+      "priceMax": 9000,
+      "unit": "installation complète",
+      "advantages": [
+        "Pilotage par zone",
+        "Une seule unité extérieure",
+        "Réversible"
+      ],
+      "inconvenients": [
+        "Plus complexe à installer",
+        "Maintenance annuelle"
+      ],
+      "brand": "",
+      "power": "5-8 kW total",
+      "surfaceMin": null,
+      "surfaceMax": null
+    },
+    {
+      "ref": "SAN-SDB-STANDARD",
+      "service": "sanitaire",
+      "name": "Salle de bain rénovation standard",
+      "description": "Démontage + sanitaires marques européennes + faïence + plomberie.",
+      "priceMin": 8000,
+      "priceMax": 14000,
+      "unit": "salle de bain complète",
+      "advantages": [
+        "Travail clés en main",
+        "Délai maîtrisé",
+        "Garanties standard"
+      ],
+      "inconvenients": [
+        "Indisponibilité 2 semaines",
+        "Choix limité aux gammes accessibles"
+      ],
+      "brand": "",
+      "power": "",
+      "surfaceMin": null,
+      "surfaceMax": null
+    },
+    {
+      "ref": "SAN-SDB-ARCHI",
+      "service": "sanitaire",
+      "name": "Salle de bain haut de gamme avec architecte",
+      "description": "Robinetterie premium, douche italienne, baignoire îlot, plancher chauffant.",
+      "priceMin": 18000,
+      "priceMax": 35000,
+      "unit": "salle de bain complète",
+      "advantages": [
+        "Robinetterie premium",
+        "Plancher chauffant",
+        "Coordination architecte",
+        "Finitions soignées"
+      ],
+      "inconvenients": [
+        "Délai 4-6 semaines",
+        "Budget élevé",
+        "Indisponibilité longue"
+      ],
+      "brand": "",
+      "power": "",
+      "surfaceMin": null,
+      "surfaceMax": null
+    },
+    {
+      "ref": "ENR-PV-RESID",
+      "service": "enr",
+      "name": "Photovoltaïque résidentiel 5 kWc",
+      "description": "12-14 panneaux haut rendement + micro-onduleurs + monitoring.",
+      "priceMin": 9000,
+      "priceMax": 14000,
+      "unit": "installation complète",
+      "advantages": [
+        "Autoconsommation",
+        "Klimabonus",
+        "Garantie 25 ans modules"
+      ],
+      "inconvenients": [
+        "Dépend ensoleillement",
+        "Investissement initial"
+      ],
+      "brand": "",
+      "power": "5 kWc",
+      "surfaceMin": null,
+      "surfaceMax": null
+    },
+    {
+      "ref": "ENR-PV-BATT",
+      "service": "enr",
+      "name": "Photovoltaïque 8 kWc + batterie 10 kWh",
+      "description": "Installation PV étendue + stockage lithium pour autoconsommation maximale.",
+      "priceMin": 20000,
+      "priceMax": 30000,
+      "unit": "installation complète",
+      "advantages": [
+        "Autoconsommation 70-80%",
+        "Indépendance partielle",
+        "Klimabonus étendu"
+      ],
+      "inconvenients": [
+        "Investissement élevé",
+        "Durée batterie 10-15 ans"
+      ],
+      "brand": "",
+      "power": "8 kWc + 10 kWh",
+      "surfaceMin": null,
+      "surfaceMax": null
+    }
+  ],
+  "uploadedAt": "2026-05-28T10:22:13.115Z",
+  "source": "template.csv"
+}

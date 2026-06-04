@@ -1,0 +1,29 @@
+[
+  {
+    "id": "conv-mpqo3pnh-58c328",
+    "visitorName": "anthony",
+    "visitorPath": "/",
+    "status": "open",
+    "createdAt": "2026-05-29T08:36:13.085Z",
+    "updatedAt": "2026-05-29T10:10:44.896Z",
+    "unreadAgent": 0,
+    "unreadVisitor": 1,
+    "messages": [
+      {
+        "sender": "visitor",
+        "text": "j'aimerais savoir le prix d'une nouvelle chaudière svp",
+        "id": "msg-mpqo42fe-f28b",
+        "conversationId": "conv-mpqo3pnh-58c328",
+        "at": "2026-05-29T08:36:29.642Z",
+        "readByAgent": true
+      },
+      {
+        "sender": "agent",
+        "text": "tout depends il me faut plus de donné pour pouvoir vous donner le meilleurs prix ",
+        "id": "msg-mpqrha1s-a072",
+        "conversationId": "conv-mpqo3pnh-58c328",
+        "at": "2026-05-29T10:10:44.896Z"
+      }
+    ]
+  }
+]

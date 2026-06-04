@@ -1,0 +1,175 @@
+[
+  {
+    "id": "1780104255269-ipj38z",
+    "at": "2026-05-30T01:24:15.269Z",
+    "type": "auth.login",
+    "summary": "Connexion admin"
+  },
+  {
+    "id": "1780068164118-s8zreh",
+    "at": "2026-05-29T15:22:44.118Z",
+    "type": "auth.login",
+    "summary": "Connexion admin"
+  },
+  {
+    "id": "1780067115012-bexys7",
+    "at": "2026-05-29T15:05:15.012Z",
+    "type": "auth.login",
+    "summary": "Connexion admin"
+  },
+  {
+    "id": "1780054274231-lk0g2g",
+    "at": "2026-05-29T11:31:14.231Z",
+    "type": "auth.login",
+    "summary": "Connexion admin"
+  },
+  {
+    "id": "1780052682644-rw289s",
+    "at": "2026-05-29T11:04:42.644Z",
+    "type": "auth.login",
+    "summary": "Connexion admin"
+  },
+  {
+    "id": "1780049344766-hhuutn",
+    "at": "2026-05-29T10:09:04.766Z",
+    "type": "auth.login",
+    "summary": "Connexion admin"
+  },
+  {
+    "id": "1780047263336-ro6j4x",
+    "at": "2026-05-29T09:34:23.336Z",
+    "type": "lead.status_changed",
+    "reference": "DEV-SEED-2026-1008",
+    "summary": "Statut · nouveau → contacte",
+    "meta": {
+      "from": "nouveau",
+      "to": "contacte"
+    }
+  },
+  {
+    "id": "1780047178545-2wdjfj",
+    "at": "2026-05-29T09:32:58.545Z",
+    "type": "lead.quote_saved",
+    "reference": "DEV-SEED-2026-1008",
+    "summary": "Devis enregistré · n° 2026-2177",
+    "meta": {
+      "number": "2026-2177",
+      "lines": 1
+    }
+  },
+  {
+    "id": "1780046985433-99wnc6",
+    "at": "2026-05-29T09:29:45.433Z",
+    "type": "auth.login",
+    "summary": "Connexion admin"
+  },
+  {
+    "id": "1780046130159-pg53u8",
+    "at": "2026-05-29T09:15:30.159Z",
+    "type": "lead.status_changed",
+    "reference": "DEV-SEED-2026-1012",
+    "summary": "Statut · devis_envoye → contacte",
+    "meta": {
+      "from": "devis_envoye",
+      "to": "contacte"
+    }
+  },
+  {
+    "id": "1780046125612-k70vo1",
+    "at": "2026-05-29T09:15:25.612Z",
+    "type": "lead.status_changed",
+    "reference": "DEV-SEED-2026-1012",
+    "summary": "Statut · contacte → devis_envoye",
+    "meta": {
+      "from": "contacte",
+      "to": "devis_envoye"
+    }
+  },
+  {
+    "id": "1780046124427-adz13c",
+    "at": "2026-05-29T09:15:24.427Z",
+    "type": "lead.status_changed",
+    "reference": "DEV-SEED-2026-1012",
+    "summary": "Statut · nouveau → contacte",
+    "meta": {
+      "from": "nouveau",
+      "to": "contacte"
+    }
+  },
+  {
+    "id": "1780046057253-5bcs6k",
+    "at": "2026-05-29T09:14:17.253Z",
+    "type": "admin.demo_seed_created",
+    "summary": "Seed démo : 80 leads générés",
+    "meta": {
+      "totalAfter": 80,
+      "force": false
+    }
+  },
+  {
+    "id": "1780045700471-qjbass",
+    "at": "2026-05-29T09:08:20.471Z",
+    "type": "lead.status_changed",
+    "reference": "DEV-SEED-2026-1031",
+    "summary": "Statut · contacte → converti",
+    "meta": {
+      "from": "contacte",
+      "to": "converti"
+    }
+  },
+  {
+    "id": "1780045700415-r321l2",
+    "at": "2026-05-29T09:08:20.415Z",
+    "type": "lead.status_changed",
+    "reference": "DEV-SEED-2026-1031",
+    "summary": "Statut · contacte → converti",
+    "meta": {
+      "from": "contacte",
+      "to": "converti"
+    }
+  },
+  {
+    "id": "1780045700339-k4jc0o",
+    "at": "2026-05-29T09:08:20.339Z",
+    "type": "lead.status_changed",
+    "reference": "DEV-SEED-2026-1031",
+    "summary": "Statut · contacte → devis_envoye",
+    "meta": {
+      "from": "contacte",
+      "to": "devis_envoye"
+    }
+  },
+  {
+    "id": "1780045622122-wrrpex",
+    "at": "2026-05-29T09:07:02.122Z",
+    "type": "admin.demo_seed_created",
+    "summary": "Seed démo : 80 leads générés",
+    "meta": {
+      "totalAfter": 83,
+      "force": false
+    }
+  },
+  {
+    "id": "1780045426734-rm2f06",
+    "at": "2026-05-29T09:03:46.734Z",
+    "type": "auth.login",
+    "summary": "Connexion admin"
+  },
+  {
+    "id": "1780044336342-nbfot8",
+    "at": "2026-05-29T08:45:36.342Z",
+    "type": "admin.view_saved",
+    "summary": "Segment créé : Hot leads en attente",
+    "meta": {
+      "id": "seg-dd80629ba7",
+      "query": "status:nouveau level:hot",
+      "isShared": true
+    }
+  },
+  {
+    "id": "1780044232703-svqvwo",
+    "at": "2026-05-29T08:43:52.703Z",
+    "type": "auth.login",
+    "summary": "Connexion admin"
+  }
+]
