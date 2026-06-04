@@ -62,7 +62,7 @@ const LABELS = {
   construction: { neuf: "Neuf", renovation: "Rénovation" },
   energy: { fioul: "Fioul", gaz: "Gaz", electrique: "Électrique", bois: "Bois", pac: "PAC", autre: "Autre", inconnu: "Inconnu" },
   timeline: { urgent: "Urgent", court: "Sous 3 mois", annee: "Cette année", exploration: "Exploration" },
-  budget: { less10: "< 10 k€", "10-20": "10-20 k€", "20-40": "20-40 k€", "40plus": "> 40 k€", inconnu: "Inconnu" },
+  budget: { less10: "< 10 k€", "10-20": "10-20 k€", "20-40": "20-40 k€", "40plus": "> 40 k€", "10-25": "10-25 k€", "25-50": "25-50 k€", "50-100": "50-100 k€", "100plus": "> 100 k€", inconnu: "Inconnu" },
   channel: { phone: "Téléphone", email: "Email", sms: "SMS", whatsapp: "WhatsApp" },
 } as const;
 

@@ -42,6 +42,10 @@ export const BUDGET_DEFAULTS: Record<LeadBudget, number> = {
   "10-20": 14_000,
   "20-40": 28_000,
   "40plus": 50_000,
+  "10-25": 17_500,
+  "25-50": 37_500,
+  "50-100": 75_000,
+  "100plus": 120_000,
 };
 
 function extractValue(metadata: unknown): number | null {

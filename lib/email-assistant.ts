@@ -103,7 +103,7 @@ export async function suggestEmailReplies(
     "lead.fullName": lead.fullName,
     "lead.reference": lead.reference,
     "lead.commune": lead.commune,
-    "lead.serviceHint": SERVICE_HINTS[lead.service] ?? "votre projet",
+    "lead.serviceHint": SERVICE_HINTS[lead.services[0]] ?? "votre projet",
     "brand.name": brand.name,
     "brand.phone": brand.contactPhone ?? "",
     "brand.email": brand.contactEmail ?? "",
@@ -379,7 +379,7 @@ Bien à vous,
   }
 
   // ── Branche 9 : source dépannage → ton plus urgent
-  if (lead.service === "depannage" && lead.status === "nouveau") {
+  if (lead.services.includes("depannage") && lead.status === "nouveau") {
     // Remplace l'accusé-réception générique par une variante urgence
     const idx = out.findIndex((s) => s.id === "accuse-reception");
     if (idx !== -1) out.splice(idx, 1);

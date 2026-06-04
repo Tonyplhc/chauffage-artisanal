@@ -163,7 +163,7 @@ export default function DashboardPage() {
       .slice(0, 6);
 
     const dormants = leads.filter((l) => {
-      if (l.status !== "contact" && l.status !== "devis_envoye") return false;
+      if (l.status !== "contacte" && l.status !== "devis_envoye") return false;
       const last = l.statusHistory?.[l.statusHistory.length - 1]?.at;
       const ref = last ?? l.submittedAt;
       return ref && now - new Date(ref).getTime() > 7 * 24 * 3600 * 1000;

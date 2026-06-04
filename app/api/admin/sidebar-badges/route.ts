@@ -37,8 +37,8 @@ export async function GET(req: Request) {
 
     // Doublons détectés
     try {
-      const { findDuplicates } = await import("@/lib/duplicate-detection");
-      const dupes = findDuplicates(leads);
+      const { findAllDuplicateGroups } = await import("@/lib/duplicate-detection");
+      const dupes = await findAllDuplicateGroups(leads);
       if (dupes.length > 0) counts["duplicates.detected"] = dupes.length;
     } catch {}
 
