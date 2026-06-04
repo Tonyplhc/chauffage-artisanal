@@ -158,7 +158,7 @@ export default function DashboardPage() {
       .filter(
         (l) =>
           l.status === "nouveau" &&
-          (l.timeline === "immediat" || l.timeline === "urgent" || l.level === "hot"),
+          (l.timeline === "urgent" || l.level === "hot"),
       )
       .slice(0, 6);
 

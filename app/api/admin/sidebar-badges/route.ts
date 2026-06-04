@@ -66,8 +66,7 @@ export async function GET(req: Request) {
       const reminders = await listReminders();
       const now = Date.now();
       const due = reminders.filter(
-        (r: { fireAt: string; status: string }) =>
-          r.status === "pending" && new Date(r.fireAt).getTime() <= now,
+        (r) => !r.dismissedAt && new Date(r.dueAt).getTime() <= now,
       ).length;
       if (due > 0) counts["reminders.due"] = due;
     } catch {}
