@@ -77,12 +77,9 @@ const nextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
   compress: true,
-  // Build prod : skip type-check + lint (200+ tâches livrées, quelques unions
-  // Zod et Record<T,U> incomplets). À nettoyer en vague dette technique dédiée.
-  // Le code reste vérifié par l'IDE en dev.
-  typescript: {
-    ignoreBuildErrors: true,
-  },
+  // Build prod : le type-check tsc est désormais bloquant (tsc = 0).
+  // Le lint reste ignoré au build tant qu'ESLint n'est pas configuré
+  // (chantier dédié séparé).
   eslint: {
     ignoreDuringBuilds: true,
   },
