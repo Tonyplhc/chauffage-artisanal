@@ -237,14 +237,42 @@ function makeReference() {
   return `DEV-${new Date().getFullYear()}-${code}`;
 }
 
-export function Configurator() {
-  const [step, setStep] = useState(0);
-  const [direction, setDirection] = useState<1 | -1>(1);
-  const [sent, setSent] = useState(false);
-  const [submitting, setSubmitting] = useState(false);
-  const [submitError, setSubmitError] = useState<string | null>(null);
-  const [honeypot, setHoneypot] = useState("");
-  const [lead, setLead] = useState<LeadDevis>(() => ({
+/* ─────────── BROUILLON LOCAL (localStorage, sans PII) ─────────── */
+
+const DRAFT_KEY = "devis-draft-v1";
+const DRAFT_TTL_MS = 30 * 24 * 60 * 60 * 1000; // 30 jours
+
+// Champs persistés : contexte projet uniquement + nombre de photos.
+// Jamais : fullName, email, phone, message, trap, rgpdConsent, fichiers/noms photos.
+type DraftData = Partial<{
+  services: ServiceId[];
+  buildingType: BuildingId;
+  construction: ConstructionId;
+  surface: number;
+  currentEnergy: EnergyId;
+  commune: string;
+  timeline: TimelineId;
+  budget: BudgetId;
+  preferredBrand: BrandPreferenceId;
+  preferredChannel: ChannelId;
+  photosCount: number;
+}>;
+type DraftEnvelope = { v: 1; savedAt: number; data: DraftData };
+
+const _service = new Set<string>(SERVICES.map((s) => s.id));
+const _building = new Set<string>(BUILDINGS.map((b) => b.id));
+const _construction = new Set<string>(CONSTRUCTIONS.map((c) => c.id));
+const _energy = new Set<string>(ENERGIES.map((e) => e.id));
+const _timeline = new Set<string>(TIMELINES.map((t) => t.id));
+const _budget = new Set<string>(BUDGETS.map((b) => b.id));
+const _channel = new Set<string>(CHANNELS.map((c) => c.id));
+const _brand = new Set<string>([
+  "aucune", "vaillant", "viessmann", "daikin", "mitsubishi",
+  "buderus", "atlantic", "bosch", "de-dietrich", "hoval",
+]);
+
+function createInitialLead(): LeadDevis {
+  return {
     reference: makeReference(),
     submittedAt: "",
     services: [],
@@ -258,30 +286,180 @@ export function Configurator() {
     message: "",
     rgpdConsent: false,
     metadata: {},
-  }));
+  };
+}
 
-  // Pré-sélection marque via ?marque=xxx (provenance fiches /marques/[slug]).
-  // Lu une seule fois au mount — l'utilisateur peut ensuite changer.
+// Vrai si au moins un champ persisté est renseigné → évite un brouillon vide.
+function hasContent(l: LeadDevis): boolean {
+  return (
+    l.services.length > 0 ||
+    !!l.commune ||
+    !!l.buildingType ||
+    !!l.construction ||
+    !!l.currentEnergy ||
+    !!l.timeline ||
+    !!l.budget ||
+    l.preferredBrand !== "aucune" ||
+    !!l.preferredChannel ||
+    l.photos.length > 0
+  );
+}
+
+function saveDraft(l: LeadDevis): void {
+  if (typeof window === "undefined" || !hasContent(l)) return;
+  try {
+    const data: DraftData = {
+      services: l.services,
+      buildingType: l.buildingType,
+      construction: l.construction,
+      surface: l.surface,
+      currentEnergy: l.currentEnergy,
+      commune: l.commune,
+      timeline: l.timeline,
+      budget: l.budget,
+      preferredBrand: l.preferredBrand,
+      preferredChannel: l.preferredChannel,
+      photosCount: l.photos.length,
+    };
+    window.localStorage.setItem(
+      DRAFT_KEY,
+      JSON.stringify({ v: 1, savedAt: Date.now(), data }),
+    );
+  } catch {
+    // localStorage indispo (mode privé, quota) — échec silencieux
+  }
+}
+
+function clearDraft(): void {
+  if (typeof window === "undefined") return;
+  try {
+    window.localStorage.removeItem(DRAFT_KEY);
+  } catch {}
+}
+
+// Charge + valide strictement. Purge si invalide ou expiré. Renvoie un patch sûr.
+function loadDraft(): { patch: Partial<LeadDevis>; photoCount: number } | null {
+  if (typeof window === "undefined") return null;
+  let env: DraftEnvelope | null = null;
+  try {
+    const raw = window.localStorage.getItem(DRAFT_KEY);
+    if (!raw) return null;
+    env = JSON.parse(raw) as DraftEnvelope;
+  } catch {
+    return null;
+  }
+  if (
+    !env ||
+    env.v !== 1 ||
+    typeof env.savedAt !== "number" ||
+    Date.now() - env.savedAt > DRAFT_TTL_MS
+  ) {
+    clearDraft();
+    return null;
+  }
+  const d = env.data ?? {};
+  const o: Partial<LeadDevis> = {};
+
+  if (Array.isArray(d.services)) {
+    const v = d.services.filter(
+      (s): s is ServiceId => typeof s === "string" && _service.has(s),
+    );
+    if (v.length) o.services = Array.from(new Set(v));
+  }
+  if (typeof d.buildingType === "string" && _building.has(d.buildingType)) o.buildingType = d.buildingType as BuildingId;
+  if (typeof d.construction === "string" && _construction.has(d.construction)) o.construction = d.construction as ConstructionId;
+  if (typeof d.surface === "number" && Number.isFinite(d.surface)) o.surface = Math.min(1000, Math.max(30, Math.round(d.surface)));
+  if (typeof d.currentEnergy === "string" && _energy.has(d.currentEnergy)) o.currentEnergy = d.currentEnergy as EnergyId;
+  if (typeof d.commune === "string" && d.commune.trim()) o.commune = d.commune.slice(0, 120);
+  if (typeof d.timeline === "string" && _timeline.has(d.timeline)) o.timeline = d.timeline as TimelineId;
+  if (typeof d.budget === "string" && _budget.has(d.budget)) o.budget = d.budget as BudgetId;
+  if (typeof d.preferredBrand === "string" && _brand.has(d.preferredBrand)) o.preferredBrand = d.preferredBrand as BrandPreferenceId;
+  if (typeof d.preferredChannel === "string" && _channel.has(d.preferredChannel)) o.preferredChannel = d.preferredChannel as ChannelId;
+
+  const photoCount = typeof d.photosCount === "number" && d.photosCount > 0 ? Math.min(5, Math.floor(d.photosCount)) : 0;
+  return Object.keys(o).length ? { patch: o, photoCount } : null;
+}
+
+export function Configurator() {
+  const [step, setStep] = useState(0);
+  const [direction, setDirection] = useState<1 | -1>(1);
+  const [sent, setSent] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
+  const [honeypot, setHoneypot] = useState("");
+  const [lead, setLead] = useState<LeadDevis>(createInitialLead);
+  const [draftRestored, setDraftRestored] = useState(false);
+  const [restoredPhotoCount, setRestoredPhotoCount] = useState(0);
+
+  // Pré-remplissage via paramètres d'URL (provenance fiches /marques/[slug] et
+  // outils /outils/*). Lu une seule fois au mount, valeurs strictement validées
+  // contre les enums ; toute valeur invalide est ignorée. L'utilisateur reste
+  // libre de tout modifier ensuite. Aucun budget pré-rempli, aucun auto-skip.
   const searchParams = useSearchParams();
   useEffect(() => {
-    const marqueParam = searchParams?.get("marque");
-    if (!marqueParam) return;
-    const validBrands: BrandPreferenceId[] = [
-      "aucune",
-      "vaillant",
-      "viessmann",
-      "daikin",
-      "mitsubishi",
-      "buderus",
-      "atlantic",
-      "bosch",
-      "de-dietrich",
-      "hoval",
-    ];
-    if (validBrands.includes(marqueParam as BrandPreferenceId)) {
-      setLead((s) => ({ ...s, preferredBrand: marqueParam as BrandPreferenceId }));
+    if (!searchParams) return;
+    const patch: Partial<LeadDevis> = {};
+
+    const validBrands = new Set<string>([
+      "aucune", "vaillant", "viessmann", "daikin", "mitsubishi",
+      "buderus", "atlantic", "bosch", "de-dietrich", "hoval",
+    ]);
+    const marque = searchParams.get("marque")?.trim();
+    if (marque && validBrands.has(marque)) patch.preferredBrand = marque as BrandPreferenceId;
+
+    const serviceIds = new Set<string>(SERVICES.map((s) => s.id));
+    const services = [
+      ...(searchParams.get("service")?.split(",") ?? []),
+      ...(searchParams.get("services")?.split(",") ?? []),
+    ]
+      .map((s) => s.trim())
+      .filter((s) => serviceIds.has(s)) as ServiceId[];
+    if (services.length) patch.services = Array.from(new Set(services));
+
+    const surf = Number(searchParams.get("surface"));
+    if (Number.isFinite(surf) && surf > 0) {
+      patch.surface = Math.min(1000, Math.max(30, Math.round(surf)));
     }
+
+    const commune = searchParams.get("commune")?.trim();
+    if (commune && commune.length > 1) patch.commune = commune.slice(0, 120);
+
+    const timelineIds = new Set<string>(TIMELINES.map((t) => t.id));
+    const delai = (searchParams.get("delai") ?? searchParams.get("timeline"))?.trim();
+    if (delai && timelineIds.has(delai)) patch.timeline = delai as TimelineId;
+
+    const energyIds = new Set<string>(ENERGIES.map((e) => e.id));
+    const energie = (searchParams.get("energie") ?? searchParams.get("currentEnergy"))?.trim();
+    if (energie && energyIds.has(energie)) patch.currentEnergy = energie as EnergyId;
+
+    const buildingIds = new Set<string>(BUILDINGS.map((b) => b.id));
+    const batiment = (searchParams.get("batiment") ?? searchParams.get("buildingType"))?.trim();
+    if (batiment && buildingIds.has(batiment)) patch.buildingType = batiment as BuildingId;
+
+    // Brouillon local fusionné sous les params URL (URL outils > brouillon).
+    const draft = loadDraft();
+    const merged = { ...(draft?.patch ?? {}), ...patch };
+    if (draft) {
+      setDraftRestored(true);
+      setRestoredPhotoCount(draft.photoCount);
+    }
+    if (Object.keys(merged).length) setLead((s) => ({ ...s, ...merged }));
     // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // Sauvegarde auto du brouillon (debounce 600 ms ; jamais après envoi).
+  useEffect(() => {
+    if (sent) return;
+    const t = setTimeout(() => saveDraft(lead), 600);
+    return () => clearTimeout(t);
+  }, [lead, sent]);
+
+  const resetDraft = useCallback(() => {
+    clearDraft();
+    setDraftRestored(false);
+    setRestoredPhotoCount(0);
+    setStep(0);
+    setLead(createInitialLead());
   }, []);
 
   const update = useCallback(<K extends keyof LeadDevis>(k: K, v: LeadDevis[K]) => {
@@ -399,6 +577,7 @@ export function Configurator() {
         submittedAt: data.submittedAt,
       }));
       setSent(true);
+      clearDraft();
     } catch (e) {
       setSubmitError("Connexion impossible. Vérifiez votre réseau puis réessayez.");
     } finally {
@@ -440,6 +619,23 @@ export function Configurator() {
             />
           </label>
         </div>
+
+        {draftRestored && !sent && (
+          <div className="mb-6 flex items-center justify-between gap-4 rounded-2xl border border-copper/30 bg-copper/5 px-4 py-3 text-sm">
+            <span className="text-graphite">
+              Brouillon restauré — vos réponses ont été pré-remplies.
+              {restoredPhotoCount > 0 &&
+                ` (${restoredPhotoCount} photo${restoredPhotoCount > 1 ? "s" : ""} à réajouter.)`}
+            </span>
+            <button
+              type="button"
+              onClick={resetDraft}
+              className="shrink-0 font-medium text-copper underline underline-offset-2 transition-colors hover:text-ember"
+            >
+              Recommencer à zéro
+            </button>
+          </div>
+        )}
 
         <Progress current={step} />
 
