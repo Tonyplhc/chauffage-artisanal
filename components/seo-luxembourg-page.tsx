@@ -20,6 +20,7 @@ import { Faq } from "@/components/faq";
 import { Eyebrow, SectionTitle } from "@/components/ui";
 import type { SeoPage } from "@/lib/seo-luxembourg-content";
 import { buildAlternates } from "@/lib/seo-alternates";
+import { COMPANY } from "@/lib/company-info";
 
 export function SeoLuxembourgPage({ page }: { page: SeoPage }) {
   // JSON-LD LocalBusiness + Service — boost SEO local Luxembourg.
@@ -93,13 +94,13 @@ export function SeoLuxembourgPage({ page }: { page: SeoPage }) {
                 Demander un devis
                 <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </Link>
-              <Link
-                href="/contact"
+              <a
+                href={`tel:${COMPANY.phone.tel}`}
                 className="inline-flex items-center gap-2 rounded-full bg-white border border-ink/15 text-ink px-6 py-3.5 text-sm font-medium hover:border-copper/40 transition-colors"
               >
                 <Phone className="h-4 w-4" />
                 Nous appeler
-              </Link>
+              </a>
               <span className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-eyebrow text-graphite">
                 <MapPin className="h-3 w-3 text-copper" />
                 Luxembourg-Ville · Grande Région

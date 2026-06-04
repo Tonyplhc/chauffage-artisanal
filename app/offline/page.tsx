@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { WifiOff, RefreshCw, Phone } from "lucide-react";
+import { COMPANY } from "@/lib/company-info";
 
 export const metadata = {
   title: "Hors ligne · Chauffage Artisanal",
@@ -38,7 +39,7 @@ export default function OfflinePage() {
               Réessayer
             </button>
             <a
-              href="tel:"
+              href={`tel:${COMPANY.phone.tel}`}
               className="inline-flex items-center gap-2 rounded-full bg-white border border-ember/40 px-5 py-3 text-sm font-medium text-ember hover:bg-ember/10 transition-colors"
             >
               <Phone className="h-4 w-4" />

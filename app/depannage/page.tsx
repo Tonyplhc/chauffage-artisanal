@@ -5,6 +5,7 @@ import { Phone, Clock, Wrench, Truck, AlertCircle } from "lucide-react";
 import { Eyebrow, Reveal, SectionTitle, Button } from "@/components/ui";
 import { HeroAside } from "@/components/hero-aside";
 import { FinalCTA } from "@/components/home/cta";
+import { COMPANY } from "@/lib/company-info";
 
 export default function DepannagePage() {
   return (
@@ -40,7 +41,7 @@ export default function DepannagePage() {
 
               <div className="mt-8 flex flex-col sm:flex-row items-stretch gap-3">
                 <a
-                  href="/contact"
+                  href={`tel:${COMPANY.phone.tel}`}
                   className="group inline-flex items-center justify-center gap-3 rounded-full bg-ember text-cream px-8 py-5 text-base font-semibold hover:bg-ember/90 transition-all hover:-translate-y-0.5 shadow-card"
                 >
                   <Phone className="h-5 w-5" />

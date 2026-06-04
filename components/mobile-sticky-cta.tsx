@@ -20,6 +20,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ArrowUpRight, Phone } from "lucide-react";
+import { COMPANY } from "@/lib/company-info";
 
 export function MobileStickyCta() {
   const pathname = usePathname();
@@ -65,13 +66,13 @@ export function MobileStickyCta() {
             Devis
             <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </Link>
-          <Link
-            href="/depannage"
+          <a
+            href={`tel:${COMPANY.phone.tel}`}
             className="flex-1 inline-flex items-center justify-center gap-2 rounded-xl bg-ember/15 border border-ember/50 text-ember px-4 py-3.5 text-sm font-medium hover:bg-ember/25 transition-colors"
           >
             <Phone className="h-4 w-4" />
             Appel
-          </Link>
+          </a>
         </div>
       </div>
     </div>
