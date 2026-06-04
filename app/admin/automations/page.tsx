@@ -448,7 +448,7 @@ function ConditionRow({
         <>
           <select
             value={cond.op}
-            onChange={(e) => onChange({ ...cond, op: e.target.value as typeof cond.op })}
+            onChange={(e) => onChange({ ...cond, op: e.target.value } as typeof cond)}
             className="bg-white border border-ink/12 rounded-lg px-3 py-2 text-sm focus:border-copper focus:outline-none"
           >
             <option value={cond.field === "service" ? "contains" : "in"}>

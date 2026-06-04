@@ -17,7 +17,7 @@ export async function GET(
   if (!found) {
     return NextResponse.json({ error: "Document introuvable" }, { status: 404 });
   }
-  return new NextResponse(found.buffer, {
+  return new NextResponse(found.buffer as unknown as BodyInit, {
     status: 200,
     headers: {
       "Content-Type": found.doc.mime,

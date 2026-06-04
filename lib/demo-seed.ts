@@ -62,7 +62,7 @@ const COMMUNES = [
   "Mersch", "Diekirch", "Wiltz", "Echternach",
 ];
 
-const SERVICES: LeadRecord["services"] = [
+const SERVICES: LeadRecord["services"][] = [
   ["chauffage"],
   ["pac"],
   ["clim"],
@@ -73,7 +73,7 @@ const SERVICES: LeadRecord["services"] = [
   ["pac", "enr"],
   ["chauffage", "pac"],
   ["clim", "enr"],
-] as unknown as LeadRecord["services"];
+];
 
 const BUILDINGS: LeadRecord["buildingType"][] = [
   "maison",
@@ -281,6 +281,10 @@ function estimatedValueFor(
     "10-20": [11000, 18000],
     "20-40": [22000, 38000],
     "40plus": [42000, 65000],
+    "10-25": [11000, 24000],
+    "25-50": [26000, 48000],
+    "50-100": [52000, 95000],
+    "100plus": [100000, 160000],
     inconnu: [6000, 14000],
   };
   const [min, max] = map[budget];
@@ -420,6 +424,7 @@ export async function seedDemoLeads(
       email: `${slug}.${i}@demo.local`,
       phone: `+352 00 ${(100 + i).toString().padStart(4, "0")}`,
       preferredChannel: channel,
+      preferredBrand: "aucune",
       message,
       rgpdConsent: true,
       metadata: {

@@ -31,6 +31,10 @@ const BUDGET_LABELS_FR: Record<LeadRecord["budget"], string> = {
   "10-20": "10-20 k€",
   "20-40": "20-40 k€",
   "40plus": "> 40 k€",
+  "10-25": "10-25 k€",
+  "25-50": "25-50 k€",
+  "50-100": "50-100 k€",
+  "100plus": "> 100 k€",
   inconnu: "Budget ?",
 };
 

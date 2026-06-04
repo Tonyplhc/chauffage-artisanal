@@ -38,7 +38,7 @@ export async function POST(req: Request) {
     (raw as { action: string }).action === "test"
   ) {
     const parsed = CustomWebhookSchema.safeParse(
-      (raw as { webhook: unknown }).webhook,
+      (raw as Record<string, unknown>).webhook,
     );
     if (!parsed.success) {
       return NextResponse.json({ error: "Webhook invalide" }, { status: 400 });

@@ -44,7 +44,7 @@ async function buildPipelineContext(): Promise<string> {
       .map((l) => {
         const services = Array.isArray(l.services) ? l.services.join("+") : "?";
         const urgentMark =
-          l.timeline === "immediat" || l.timeline === "urgent"
+          l.timeline === "urgent"
             ? " · ⚠️ URGENT"
             : "";
         return `- ${l.reference} · ${services} · ${l.status} · ${l.commune ?? "?"}${urgentMark}`;

@@ -243,19 +243,23 @@ export default function QuoteBuilderPage() {
           <QuoteRecommendations
             reference={params.reference as string}
             onApply={(line) =>
-              setQuote((prev) => ({
-                ...prev,
-                lines: [
-                  ...prev.lines,
-                  {
-                    id: newLineId(),
-                    description: line.description,
-                    quantity: line.quantity,
-                    unitPrice: line.unitPrice,
-                    unit: line.unit,
-                  },
-                ],
-              }))
+              setQuote((prev) =>
+                prev
+                  ? {
+                      ...prev,
+                      lines: [
+                        ...prev.lines,
+                        {
+                          id: newLineId(),
+                          description: line.description,
+                          quantity: line.quantity,
+                          unitPrice: line.unitPrice,
+                          unit: line.unit,
+                        },
+                      ],
+                    }
+                  : prev,
+              )
             }
           />
 
@@ -273,12 +277,18 @@ export default function QuoteBuilderPage() {
                   unitPrice: l.unitPrice,
                   unit: l.unit ?? "forfait",
                 }));
-                setQuote((prev) => ({
-                  ...prev,
-                  tvaRate,
-                  lines:
-                    mode === "merge" ? [...prev.lines, ...newLines] : newLines,
-                }));
+                setQuote((prev) =>
+                  prev
+                    ? {
+                        ...prev,
+                        tvaRate,
+                        lines:
+                          mode === "merge"
+                            ? [...prev.lines, ...newLines]
+                            : newLines,
+                      }
+                    : prev,
+                );
               }}
             />
           </div>

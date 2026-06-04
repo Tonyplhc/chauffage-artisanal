@@ -64,6 +64,7 @@ export async function POST(req: Request) {
   // l'admin (changement de service au moment de la confirmation RDV).
   const reference = makeReference();
   const payload = {
+    trap: "",
     services: ["autre" as const],
     buildingType: "autre" as const,
     construction: "renovation" as const,
@@ -76,12 +77,13 @@ export async function POST(req: Request) {
     email: d.email,
     phone: d.phone,
     preferredChannel: "phone" as const,
+    preferredBrand: "aucune" as const,
     message: `Demande de visite technique\nCréneau souhaité : ${slotDate.toLocaleString("fr-FR")}\nAdresse : ${d.address}\n\n${d.note}`.trim(),
     rgpdConsent: true as const,
     photos: [],
     metadata: {
       bookingSlot: slotDate.toISOString(),
-      source: "inline-booking",
+      bookingSource: "inline-booking",
     },
   };
 

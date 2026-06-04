@@ -23,7 +23,7 @@ const EventSchema = z.object({
   path: z.string().min(1).max(500),
   name: z.string().max(120).optional(),
   duration: z.number().int().min(0).max(3_600_000).optional(),
-  meta: z.record(z.union([z.string(), z.number(), z.boolean()])).optional(),
+  meta: z.record(z.string(), z.union([z.string(), z.number(), z.boolean()])).optional(),
 });
 
 export async function POST(req: Request) {

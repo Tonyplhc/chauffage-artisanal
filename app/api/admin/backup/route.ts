@@ -35,7 +35,7 @@ const BACKUP_FILES = [
 const BackupSchema = z.object({
   version: z.number(),
   exportedAt: z.string(),
-  files: z.record(z.string()),
+  files: z.record(z.string(), z.string()),
 });
 
 export async function GET(req: Request) {
@@ -102,7 +102,7 @@ export async function POST(req: Request) {
   for (const [name, content] of Object.entries(parsed.data.files)) {
     if (!(BACKUP_FILES as readonly string[]).includes(name)) continue; // sécurité : whitelist
     try {
-      await fs.writeFile(path.join(DATA_DIR, name), content, "utf8");
+      await fs.writeFile(path.join(DATA_DIR, name), content as string, "utf8");
       restored++;
     } catch (e) {
       logger.warn("admin.backup_restore_file_failed", { file: name, error: String(e) });

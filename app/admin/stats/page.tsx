@@ -400,7 +400,7 @@ function Funnel({
   data: Record<LeadRecord["status"], number>;
   total: number;
 }) {
-  const STAGES: LeadRecord["status"][] = [
+  const STAGES: Exclude<LeadRecord["status"], "perdu">[] = [
     "nouveau",
     "contacte",
     "devis_envoye",

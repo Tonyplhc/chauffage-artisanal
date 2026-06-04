@@ -25,7 +25,7 @@ export const VariantSchema = z.object({
   label: z.string().min(1).max(120),
   weight: z.number().int().min(1).max(100).default(50),
   // Données propagées au front pour personnaliser le rendu
-  config: z.record(z.union([z.string(), z.number(), z.boolean()])).default({}),
+  config: z.record(z.string(), z.union([z.string(), z.number(), z.boolean()])).default({}),
 });
 
 export const ExperimentSchema = z.object({
@@ -39,8 +39,8 @@ export const ExperimentSchema = z.object({
   conversionEvent: z.string().min(1).max(80).default("devis_submitted"),
   variants: z.array(VariantSchema).min(2).max(6),
   // Stats agrégées
-  exposures: z.record(z.number().int().min(0)).default({}),
-  conversions: z.record(z.number().int().min(0)).default({}),
+  exposures: z.record(z.string(), z.number().int().min(0)).default({}),
+  conversions: z.record(z.string(), z.number().int().min(0)).default({}),
   createdAt: z.string().optional(),
   updatedAt: z.string().optional(),
 });

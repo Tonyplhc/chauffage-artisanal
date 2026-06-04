@@ -174,7 +174,7 @@ function evaluateCondition(cond: Condition, lead: LeadRecord): boolean {
       return cond.op === "in" ? inSet : !inSet;
     }
     case "budget": {
-      const inSet = cond.values.includes(lead.budget);
+      const inSet = (cond.values as readonly string[]).includes(lead.budget);
       return cond.op === "in" ? inSet : !inSet;
     }
     case "service": {
