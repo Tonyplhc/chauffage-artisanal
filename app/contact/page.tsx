@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Phone, Mail, MapPin, Clock, Send } from "lucide-react";
-import { useState } from "react";
+import { useState, type FormEvent } from "react";
 import { PageHeader, Eyebrow, Reveal } from "@/components/ui";
 import { HeroAside } from "@/components/hero-aside";
 import { InlineBooking } from "@/components/inline-booking";
@@ -22,8 +22,78 @@ const SUBJECTS = [
   "Autre",
 ];
 
+// Mappe l'objet du formulaire vers un service du schéma /devis (sinon ["autre"]).
+const SUBJECT_SERVICE: Record<string, string[]> = {
+  "Devis chauffage": ["chauffage"],
+  "Devis pompe à chaleur": ["pac"],
+  "Devis climatisation": ["clim"],
+  "Devis sanitaire": ["sanitaire"],
+  "Énergies renouvelables": ["enr"],
+};
+
 export default function ContactPage() {
   const [sent, setSent] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    if (submitting) return;
+    setError(null);
+    setSubmitting(true);
+
+    const fd = new FormData(e.currentTarget);
+    const get = (k: string) => String(fd.get(k) ?? "").trim();
+    const nom = get("nom");
+    const prenom = get("prenom");
+    const objet = get("objet");
+    const rawMessage = get("message");
+    const zone = get("zone");
+    const fullName = `${nom} ${prenom}`.trim() || nom || prenom;
+    const message = objet ? `[${objet}] ${rawMessage}`.trim() : rawMessage;
+
+    const payload = {
+      services: SUBJECT_SERVICE[objet] ?? ["autre"],
+      buildingType: "autre",
+      construction: "renovation",
+      surface: 100,
+      currentEnergy: "inconnu",
+      commune: zone || "À préciser",
+      timeline: "exploration",
+      budget: "inconnu",
+      preferredBrand: "aucune",
+      fullName,
+      email: get("email"),
+      phone: get("tel"),
+      preferredChannel: "phone",
+      message,
+      rgpdConsent: true,
+      trap: "",
+      photos: [],
+      metadata: { contactForm: true, subject: objet },
+    };
+
+    try {
+      const res = await fetch("/api/devis", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      if (res.status === 429) {
+        setError("Trop de demandes. Merci de réessayer dans une minute.");
+        return;
+      }
+      if (!res.ok) {
+        setError("Envoi impossible pour le moment. Réessayez ou appelez-nous.");
+        return;
+      }
+      setSent(true);
+    } catch {
+      setError("Connexion impossible. Vérifiez votre réseau ou appelez-nous.");
+    } finally {
+      setSubmitting(false);
+    }
+  }
 
   return (
     <>
@@ -66,13 +136,7 @@ export default function ContactPage() {
               </h2>
             </Reveal>
 
-            <form
-              onSubmit={(e) => {
-                e.preventDefault();
-                setSent(true);
-              }}
-              className="mt-10 grid gap-5"
-            >
+            <form onSubmit={handleSubmit} className="mt-10 grid gap-5">
               <div className="grid md:grid-cols-2 gap-5">
                 <Field label="Nom" name="nom" required />
                 <Field label="Prénom" name="prenom" required />
@@ -102,6 +166,7 @@ export default function ContactPage() {
                   Décrivez votre projet
                 </label>
                 <textarea
+                  name="message"
                   rows={6}
                   className="w-full bg-white border border-ink/12 rounded-xl px-4 py-3.5 text-ink focus:border-copper focus:outline-none transition-colors resize-none"
                   placeholder="Type de bâtiment, surface, équipement actuel, contraintes, délais souhaités…"
@@ -115,12 +180,22 @@ export default function ContactPage() {
                 </span>
               </label>
 
+              {error && (
+                <p className="text-sm text-ember" role="alert">
+                  {error}
+                </p>
+              )}
               <motion.button
                 whileTap={{ scale: 0.98 }}
                 type="submit"
-                className="group mt-4 inline-flex items-center justify-center gap-2 rounded-full bg-ink text-cream px-7 py-4 text-sm font-medium hover:bg-copper transition-all hover:-translate-y-0.5 self-start"
+                disabled={submitting || sent}
+                className="group mt-4 inline-flex items-center justify-center gap-2 rounded-full bg-ink text-cream px-7 py-4 text-sm font-medium hover:bg-copper transition-all hover:-translate-y-0.5 self-start disabled:opacity-60 disabled:pointer-events-none"
               >
-                {sent ? "Reçu — nous vous recontactons" : "Envoyer la demande"}
+                {sent
+                  ? "Reçu — nous vous recontactons"
+                  : submitting
+                    ? "Envoi…"
+                    : "Envoyer la demande"}
                 <Send className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
               </motion.button>
             </form>
