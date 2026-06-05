@@ -19,6 +19,8 @@ import {
   Clock,
   Database,
   RefreshCw,
+  Phone,
+  Mail,
 } from "lucide-react";
 import type { AnalyticsAggregates } from "@/lib/analytics-store";
 import { cn } from "@/lib/utils";
@@ -108,6 +110,35 @@ export default function AdminAnalyticsPage() {
           </div>
         ) : (
           <>
+            {data.storageMode === "memory" && (
+              <div className="mb-6 rounded-2xl border border-ember/30 bg-ember/5 px-4 py-3 text-sm text-graphite">
+                Données analytics en mémoire : les statistiques peuvent être réinitialisées au redémarrage.
+              </div>
+            )}
+
+            {/* KPIs conversion (lecture 30 s) */}
+            <div className="grid grid-cols-2 lg:grid-cols-5 gap-3 mb-6">
+              <KpiTile label="Devis envoyés (30j)" value={data.conversion.counts.submitted} icon={FileText} accent="green" />
+              <KpiTile label="Appels (clics tél.)" value={data.conversion.counts.phoneClicks} icon={Phone} accent="copper" />
+              <KpiTile label="Contacts envoyés" value={data.conversion.counts.contactSubmitted} icon={Mail} accent="copper" />
+              <KpiTile
+                label="Conversion tunnel"
+                value={data.conversion.rates.tunnel === null ? "—" : `${data.conversion.rates.tunnel}%`}
+                icon={TrendingUp}
+                accent="green"
+              />
+              <KpiTile
+                label="Top outil (devis)"
+                value={(() => {
+                  const t = data.conversion.byTool.find((x) => x.from !== "direct" && x.submitted > 0);
+                  return t ? `${t.from} (${t.submitted})` : "—";
+                })()}
+                icon={Calculator}
+                accent="copper"
+                small
+              />
+            </div>
+
             {/* KPIs */}
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-6">
               <KpiTile label="Pageviews" value={data.pageviews} icon={Eye} accent="copper" />
@@ -184,13 +215,44 @@ export default function AdminAnalyticsPage() {
               </Panel>
             </div>
 
-            {/* Funnel commercial — sessions touchant les pages clés */}
+            {/* Tunnel devis — événements réels */}
             <Panel
-              title="Funnel commercial"
-              subtitle="Sessions touchant les pages clés du tunnel devis"
+              title="Tunnel devis (30 jours)"
+              subtitle={
+                data.conversion.biggestLeak
+                  ? `Plus grosse fuite : ${data.conversion.biggestLeak.from} → ${data.conversion.biggestLeak.to} (−${Math.round(data.conversion.biggestLeak.dropRate * 100)}%)`
+                  : "Sessions par étape du configurateur"
+              }
             >
-              <FunnelChart funnel={data.funnelDevis} />
+              <DevisFunnel conversion={data.conversion} />
             </Panel>
+
+            <div className="mt-6 grid lg:grid-cols-2 gap-6">
+              <Panel title="Attribution par outil" subtitle="Devis générés par source (from)">
+                <ToolAttribution rows={data.conversion.byTool} />
+              </Panel>
+              <Panel title="Comparatif canaux" subtitle="Devis · Contact · Téléphone (clics)">
+                <BarList
+                  items={[
+                    { label: "Devis envoyés", value: data.conversion.channels.devis },
+                    { label: "Contacts envoyés", value: data.conversion.channels.contact },
+                    { label: "Téléphone (clics)", value: data.conversion.channels.phone },
+                  ]}
+                />
+              </Panel>
+            </div>
+
+            <div className="mt-6">
+              <Panel title="Téléphone par surface" subtitle="Clics tel: par emplacement de CTA">
+                {data.conversion.phoneBySurface.length === 0 ? (
+                  <div className="text-sm text-muted">Aucun clic téléphone pour l&apos;instant.</div>
+                ) : (
+                  <BarList
+                    items={data.conversion.phoneBySurface.map((p) => ({ label: p.surface, value: p.count }))}
+                  />
+                )}
+              </Panel>
+            </div>
 
             {/* Activity by hour + live feed */}
             <div className="mt-6 grid lg:grid-cols-2 gap-6">
@@ -404,92 +466,67 @@ function DeviceDistribution({
 }
 
 
-/* ─────────────── Funnel devis ─────────────── */
+/* ─────────────── Tunnel devis (events) ─────────────── */
 
-function FunnelChart({
-  funnel,
-}: {
-  funnel: {
-    visitedHome: number;
-    visitedDevis: number;
-    visitedTools: number;
-    visitedKlimabonus: number;
-  };
-}) {
-  const max = Math.max(
-    funnel.visitedHome,
-    funnel.visitedDevis,
-    funnel.visitedTools,
-    funnel.visitedKlimabonus,
-    1,
-  );
-  const steps = [
-    {
-      label: "Page d'accueil",
-      value: funnel.visitedHome,
-      icon: Eye,
-      color: "#b86a36",
-    },
-    {
-      label: "Outils calculateurs",
-      value: funnel.visitedTools,
-      icon: Calculator,
-      color: "#b86a36",
-    },
-    {
-      label: "Page Klimabonus 2026",
-      value: funnel.visitedKlimabonus,
-      icon: Sparkles,
-      color: "#b86a36",
-    },
-    {
-      label: "Configurateur devis",
-      value: funnel.visitedDevis,
-      icon: FileText,
-      color: "#b86a36",
-    },
-  ];
-
+function DevisFunnel({ conversion }: { conversion: AnalyticsAggregates["conversion"] }) {
+  const stages = conversion.funnel;
+  const max = Math.max(...stages.map((s) => s.sessions), 1);
   return (
     <div className="space-y-2.5">
-      {steps.map((s) => {
-        const pct = (s.value / max) * 100;
-        const conversionFromHome =
-          funnel.visitedHome > 0
-            ? Math.round((s.value / funnel.visitedHome) * 100)
-            : 0;
+      {stages.map((s, i) => {
+        const isLeak = !!conversion.biggestLeak && conversion.biggestLeak.to === s.label;
         return (
-          <div key={s.label} className="relative">
-            <div className="flex items-center gap-3 mb-1">
-              <span
-                className="grid place-items-center h-7 w-7 rounded-full shrink-0"
-                style={{ background: `${s.color}18`, color: s.color }}
-              >
-                <s.icon className="h-3.5 w-3.5" />
-              </span>
-              <span className="text-sm font-medium text-ink flex-1">{s.label}</span>
-              <span className="font-mono text-sm text-ink tabular-nums">
-                {s.value}{" "}
-                <span className="text-muted text-xs">
-                  ({conversionFromHome}% du home)
-                </span>
+          <div key={s.key}>
+            <div className="flex items-center justify-between text-sm mb-1">
+              <span className="text-ink truncate mr-2">{s.label}</span>
+              <span className="font-mono text-xs text-muted tabular-nums shrink-0">
+                {s.sessions} · {s.pctOfArrived}%
+                {i > 0 && s.dropFromPrev > 0 && (
+                  <span className={isLeak ? "text-ember ml-1.5" : "text-muted ml-1.5"}>
+                    −{s.dropFromPrev}%
+                  </span>
+                )}
               </span>
             </div>
-            <div
-              className="h-2 rounded-full bg-ink/5 overflow-hidden ml-10"
-              role="meter"
-              aria-valuemin={0}
-              aria-valuemax={max}
-              aria-valuenow={s.value}
-            >
+            <div className="h-1.5 rounded-full overflow-hidden bg-ink/5">
               <div
-                className="h-full rounded-full transition-all"
-                style={{ width: `${pct}%`, background: s.color }}
+                className="h-full rounded-full"
+                style={{
+                  width: `${(s.sessions / max) * 100}%`,
+                  background: isLeak ? "#dc5a28" : "#b86a36",
+                }}
               />
             </div>
           </div>
         );
       })}
+    </div>
+  );
+}
+
+function ToolAttribution({ rows }: { rows: AnalyticsAggregates["conversion"]["byTool"] }) {
+  if (rows.length === 0) return <div className="text-sm text-muted">Aucune donnée.</div>;
+  return (
+    <div className="space-y-1">
+      <div className="grid grid-cols-[1fr_auto_auto_auto] gap-3 text-[10px] font-mono uppercase tracking-eyebrow text-muted px-1">
+        <span>Outil (from)</span>
+        <span className="text-right">Arrivées</span>
+        <span className="text-right">Devis</span>
+        <span className="text-right">Taux</span>
+      </div>
+      {rows.map((r) => (
+        <div
+          key={r.from}
+          className="grid grid-cols-[1fr_auto_auto_auto] gap-3 items-center text-sm px-1 py-1.5 rounded-lg odd:bg-cream"
+        >
+          <span className="text-ink truncate">{r.from}</span>
+          <span className="font-mono text-muted tabular-nums text-right">{r.arrived}</span>
+          <span className="font-mono text-ink tabular-nums text-right">{r.submitted}</span>
+          <span className="font-mono text-muted tabular-nums text-right">
+            {r.convRate === null ? "—" : `${r.convRate}%`}
+          </span>
+        </div>
+      ))}
     </div>
   );
 }

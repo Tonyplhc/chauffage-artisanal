@@ -163,6 +163,17 @@ export type AnalyticsAggregates = {
   };
   byHour: number[]; // distribution 24h (heures locales LU)
   storageMode: "fs" | "memory"; // pour transparence
+  // Conversion — agrégée depuis les events nommés (collecte inchangée)
+  conversion: {
+    windowDays: number;
+    counts: { arrived: number; started: number; submitted: number; contactSubmitted: number; phoneClicks: number };
+    funnel: { key: string; label: string; sessions: number; pctOfArrived: number; dropFromPrev: number }[];
+    biggestLeak: { from: string; to: string; dropRate: number } | null;
+    rates: { engagement: number | null; completion: number | null; tunnel: number | null };
+    byTool: { from: string; arrived: number; submitted: number; convRate: number | null }[];
+    channels: { devis: number; contact: number; phone: number };
+    phoneBySurface: { surface: string; count: number }[];
+  };
 };
 
 export async function computeAggregates(): Promise<AnalyticsAggregates> {
@@ -252,6 +263,115 @@ export async function computeAggregates(): Promise<AnalyticsAggregates> {
     byHour[hourLU]++;
   }
 
+  // ─── Conversion — events nommés, 30 derniers jours ───
+  const WINDOW_DAYS = 30;
+  const windowStart = now - WINDOW_DAYS * day;
+  const named = events.filter(
+    (e) => e.type === "event" && !!e.name && new Date(e.at).getTime() >= windowStart,
+  );
+  const byName = (n: string) => named.filter((e) => e.name === n);
+  const uniq = (list: AnalyticsEvent[]) => {
+    const s = new Set<string>();
+    for (const e of list) if (e.sessionHash) s.add(e.sessionHash);
+    return s;
+  };
+  const metaStr = (e: AnalyticsEvent, k: string, d: string) =>
+    e.meta && typeof e.meta[k] === "string" ? (e.meta[k] as string) : d;
+
+  const evArrived = byName("devis_arrived");
+  const evStarted = byName("devis_started");
+  const evStep = byName("devis_step");
+  const evSubmitted = byName("devis_submitted");
+  const evContact = byName("contact_submitted");
+  const evPhone = byName("phone_click");
+
+  const sArrived = uniq(evArrived).size;
+  const sStarted = uniq(evStarted).size;
+  const sSubmitted = uniq(evSubmitted).size;
+
+  const reachedStep = (n: number): number => {
+    const s = new Set<string>();
+    for (const e of evStep) {
+      const st = e.meta && typeof e.meta.step === "number" ? e.meta.step : -1;
+      if (st >= n && e.sessionHash) s.add(e.sessionHash);
+    }
+    return s.size;
+  };
+
+  const STEP_LABELS = ["Bâtiment", "Contexte", "Délai & budget", "Marque", "Photos", "Coordonnées"];
+  const stages = [
+    { key: "arrived", label: "Arrivée /devis", sessions: sArrived },
+    { key: "started", label: "Devis commencé", sessions: sStarted },
+    ...STEP_LABELS.map((l, i) => ({ key: `step${i + 1}`, label: `Étape ${i + 1} · ${l}`, sessions: reachedStep(i + 1) })),
+    { key: "submitted", label: "Devis envoyé", sessions: sSubmitted },
+  ];
+  const base = sArrived || 1;
+  let biggestLeak: { from: string; to: string; dropRate: number } | null = null;
+  const funnel = stages.map((st, i) => {
+    const prev = i > 0 ? stages[i - 1].sessions : st.sessions;
+    const drop = prev > 0 ? (prev - st.sessions) / prev : 0;
+    if (i > 0 && prev > 0 && (!biggestLeak || drop > biggestLeak.dropRate)) {
+      biggestLeak = { from: stages[i - 1].label, to: st.label, dropRate: drop };
+    }
+    return {
+      key: st.key,
+      label: st.label,
+      sessions: st.sessions,
+      pctOfArrived: Math.round((st.sessions / base) * 100),
+      dropFromPrev: Math.round(drop * 100),
+    };
+  });
+
+  const pct = (num: number, den: number): number | null => (den > 0 ? Math.round((num / den) * 100) : null);
+
+  const toolMap = new Map<string, { arrived: number; submitted: number }>();
+  for (const e of evArrived) {
+    const f = metaStr(e, "from", "direct");
+    const t = toolMap.get(f) ?? { arrived: 0, submitted: 0 };
+    t.arrived++;
+    toolMap.set(f, t);
+  }
+  for (const e of evSubmitted) {
+    const f = metaStr(e, "from", "direct");
+    const t = toolMap.get(f) ?? { arrived: 0, submitted: 0 };
+    t.submitted++;
+    toolMap.set(f, t);
+  }
+  const byTool = Array.from(toolMap.entries())
+    .map(([from, v]) => ({ from, arrived: v.arrived, submitted: v.submitted, convRate: pct(v.submitted, v.arrived) }))
+    .sort((a, b) => b.submitted - a.submitted || b.arrived - a.arrived)
+    .slice(0, 12);
+
+  const phoneMap = new Map<string, number>();
+  for (const e of evPhone) {
+    const s = metaStr(e, "ctaSurface", "autre");
+    phoneMap.set(s, (phoneMap.get(s) ?? 0) + 1);
+  }
+  const phoneBySurface = Array.from(phoneMap.entries())
+    .map(([surface, count]) => ({ surface, count }))
+    .sort((a, b) => b.count - a.count);
+
+  const conversion = {
+    windowDays: WINDOW_DAYS,
+    counts: {
+      arrived: evArrived.length,
+      started: evStarted.length,
+      submitted: evSubmitted.length,
+      contactSubmitted: evContact.length,
+      phoneClicks: evPhone.length,
+    },
+    funnel,
+    biggestLeak,
+    rates: {
+      engagement: pct(sStarted, sArrived),
+      completion: pct(sSubmitted, sStarted),
+      tunnel: pct(sSubmitted, sArrived),
+    },
+    byTool,
+    channels: { devis: evSubmitted.length, contact: evContact.length, phone: evPhone.length },
+    phoneBySurface,
+  };
+
   return {
     totalEvents: events.length,
     pageviews: pageviews.length,
@@ -270,5 +390,6 @@ export async function computeAggregates(): Promise<AnalyticsAggregates> {
     },
     byHour,
     storageMode: VERCEL_READONLY ? "memory" : "fs",
+    conversion,
   };
 }
