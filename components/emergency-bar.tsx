@@ -2,6 +2,7 @@
 
 import { Phone, Clock } from "lucide-react";
 import { COMPANY } from "@/lib/company-info";
+import { trackEvent } from "@/lib/track-event";
 
 export function EmergencyBar() {
   return (
@@ -22,6 +23,7 @@ export function EmergencyBar() {
         </div>
         <a
           href={`tel:${COMPANY.phone.tel}`}
+          onClick={() => trackEvent("phone_click", { ctaSurface: "emergency-bar" })}
           className="flex items-center gap-2 text-ink hover:text-copper transition-colors"
         >
           <Phone className="h-3 w-3" />

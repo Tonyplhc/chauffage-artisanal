@@ -21,6 +21,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ArrowUpRight, Phone } from "lucide-react";
 import { COMPANY } from "@/lib/company-info";
+import { trackEvent } from "@/lib/track-event";
 
 export function MobileStickyCta() {
   const pathname = usePathname();
@@ -68,6 +69,7 @@ export function MobileStickyCta() {
           </Link>
           <a
             href={`tel:${COMPANY.phone.tel}`}
+            onClick={() => trackEvent("phone_click", { ctaSurface: "mobile-sticky" })}
             className="flex-1 inline-flex items-center justify-center gap-2 rounded-xl bg-ember/15 border border-ember/50 text-ember px-4 py-3.5 text-sm font-medium hover:bg-ember/25 transition-colors"
           >
             <Phone className="h-4 w-4" />

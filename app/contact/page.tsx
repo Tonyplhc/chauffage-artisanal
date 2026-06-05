@@ -7,6 +7,7 @@ import { PageHeader, Eyebrow, Reveal } from "@/components/ui";
 import { HeroAside } from "@/components/hero-aside";
 import { InlineBooking } from "@/components/inline-booking";
 import { COMPANY } from "@/lib/company-info";
+import { trackEvent } from "@/lib/track-event";
 import { OsmMap } from "@/components/osm-map";
 import { PublicTransport } from "@/components/public-transport";
 import { OpeningHoursTable } from "@/components/opening-hours";
@@ -88,6 +89,7 @@ export default function ContactPage() {
         return;
       }
       setSent(true);
+      trackEvent("contact_submitted", { subject: objet });
     } catch {
       setError("Connexion impossible. Vérifiez votre réseau ou appelez-nous.");
     } finally {

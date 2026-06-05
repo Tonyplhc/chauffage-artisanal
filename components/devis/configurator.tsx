@@ -2,6 +2,7 @@
 
 import { useState, useMemo, useRef, useCallback, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
+import { trackEvent } from "@/lib/track-event";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Flame,
@@ -390,6 +391,9 @@ export function Configurator() {
   const [lead, setLead] = useState<LeadDevis>(createInitialLead);
   const [draftRestored, setDraftRestored] = useState(false);
   const [restoredPhotoCount, setRestoredPhotoCount] = useState(0);
+  const fromRef = useRef("direct");
+  const startedRef = useRef(false);
+  const firstStepRef = useRef(true);
 
   // Pré-remplissage via paramètres d'URL (provenance fiches /marques/[slug] et
   // outils /outils/*). Lu une seule fois au mount, valeurs strictement validées
@@ -444,8 +448,21 @@ export function Configurator() {
       setRestoredPhotoCount(draft.photoCount);
     }
     if (Object.keys(merged).length) setLead((s) => ({ ...s, ...merged }));
+
+    const rawFrom = searchParams.get("from")?.trim() ?? "";
+    fromRef.current = /^[a-z0-9-]{1,40}$/.test(rawFrom) ? rawFrom : "direct";
+    trackEvent("devis_arrived", { from: fromRef.current });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  // Étape atteinte (skip le rendu initial à l'étape 0 = déjà couvert par arrived).
+  useEffect(() => {
+    if (firstStepRef.current) {
+      firstStepRef.current = false;
+      return;
+    }
+    trackEvent("devis_step", { step, from: fromRef.current });
+  }, [step]);
 
   // Sauvegarde auto du brouillon (debounce 600 ms ; jamais après envoi).
   useEffect(() => {
@@ -467,6 +484,10 @@ export function Configurator() {
   }, []);
 
   const toggleService = useCallback((id: ServiceId) => {
+    if (!startedRef.current) {
+      startedRef.current = true;
+      trackEvent("devis_started", { from: fromRef.current });
+    }
     setLead((s) => ({
       ...s,
       services: s.services.includes(id) ? s.services.filter((x) => x !== id) : [...s.services, id],
@@ -578,6 +599,7 @@ export function Configurator() {
       }));
       setSent(true);
       clearDraft();
+      trackEvent("devis_submitted", { from: fromRef.current });
     } catch (e) {
       setSubmitError("Connexion impossible. Vérifiez votre réseau puis réessayez.");
     } finally {
