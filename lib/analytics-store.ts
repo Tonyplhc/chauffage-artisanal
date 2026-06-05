@@ -298,7 +298,7 @@ export async function computeAggregates(): Promise<AnalyticsAggregates> {
     return s.size;
   };
 
-  const STEP_LABELS = ["Bâtiment", "Contexte", "Délai & budget", "Marque", "Photos", "Coordonnées"];
+  const STEP_LABELS = ["Bâtiment", "Contexte", "Délai & budget", "Coordonnées"];
   const stages = [
     { key: "arrived", label: "Arrivée /devis", sessions: sArrived },
     { key: "started", label: "Devis commencé", sessions: sStarted },

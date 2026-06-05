@@ -43,7 +43,7 @@ const ConditionSchema = z.discriminatedUnion("field", [
   z.object({
     field: z.literal("budget"),
     op: z.enum(["in", "not_in"]),
-    values: z.array(z.enum(["less10", "10-20", "20-40", "40plus", "inconnu"])).min(1),
+    values: z.array(z.enum(["less10", "10-25", "25-50", "50-100", "100plus", "10-20", "20-40", "40plus", "inconnu"])).min(1),
   }),
   z.object({
     field: z.literal("service"),

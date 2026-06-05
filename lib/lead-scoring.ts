@@ -47,8 +47,12 @@ function buildSignals(
   else if (lead.timeline === "court") out.push({ label: "Délai court (< 3 mois)", points: 20 });
   else if (lead.timeline === "annee") out.push({ label: "Projet sur l'année", points: 10 });
 
-  // --- Budget ---
-  if (lead.budget === "40plus") out.push({ label: "Budget > 40 k€", points: 25 });
+  // --- Budget (V2 affichées par le configurateur + V1 legacy) ---
+  if (lead.budget === "100plus") out.push({ label: "Budget > 100 k€", points: 25 });
+  else if (lead.budget === "50-100") out.push({ label: "Budget 50-100 k€", points: 25 });
+  else if (lead.budget === "25-50") out.push({ label: "Budget 25-50 k€", points: 20 });
+  else if (lead.budget === "10-25") out.push({ label: "Budget 10-25 k€", points: 12 });
+  else if (lead.budget === "40plus") out.push({ label: "Budget > 40 k€", points: 25 });
   else if (lead.budget === "20-40") out.push({ label: "Budget 20-40 k€", points: 20 });
   else if (lead.budget === "10-20") out.push({ label: "Budget 10-20 k€", points: 12 });
   else if (lead.budget === "less10") out.push({ label: "Budget < 10 k€", points: 4 });

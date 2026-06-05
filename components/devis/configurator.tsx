@@ -32,6 +32,7 @@ import {
   Lock,
   Info,
   Award,
+  Clock,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { BRANDS, BRAND_SLUGS } from "@/lib/brands-content";
@@ -204,8 +205,6 @@ const STEPS = [
   "Bâtiment",
   "Contexte",
   "Délai & budget",
-  "Marque",
-  "Photos",
   "Vous",
 ] as const;
 
@@ -505,10 +504,6 @@ export function Configurator() {
       case 3:
         return !!lead.timeline && !!lead.budget;
       case 4:
-        return !!lead.preferredBrand; // toujours rempli ("aucune" par défaut)
-      case 5:
-        return true; // photos optional
-      case 6:
         return (
           lead.fullName.trim().length > 1 &&
           /.+@.+\..+/.test(lead.email) &&
@@ -675,9 +670,7 @@ export function Configurator() {
               {step === 1 && <StepBuilding lead={lead} update={update} />}
               {step === 2 && <StepContext lead={lead} update={update} />}
               {step === 3 && <StepTimingBudget lead={lead} update={update} />}
-              {step === 4 && <StepBrand lead={lead} update={update} />}
-              {step === 5 && <StepPhotos lead={lead} update={update} />}
-              {step === 6 && <StepContact lead={lead} update={update} />}
+              {step === 4 && <StepContact lead={lead} update={update} />}
             </motion.div>
           </AnimatePresence>
         </div>
@@ -745,6 +738,14 @@ function Progress({ current }: { current: number }) {
           );
         })}
       </div>
+      <div className="md:hidden mt-3 text-center font-mono text-[10px] uppercase tracking-eyebrow text-muted">
+        Étape {current + 1} / {STEPS.length}
+        {current === STEPS.length - 1
+          ? " · dernière étape"
+          : current === STEPS.length - 2
+          ? " · presque fini"
+          : ""}
+      </div>
     </div>
   );
 }
@@ -810,6 +811,10 @@ function Reassurance() {
       <span className="inline-flex items-center gap-1.5">
         <Info className="h-3 w-3 text-copper" />
         Aucun engagement
+      </span>
+      <span className="inline-flex items-center gap-1.5">
+        <Clock className="h-3 w-3 text-copper" />
+        Réponse sous 24h
       </span>
       <span className="inline-flex items-center gap-1.5">
         <Sparkles className="h-3 w-3 text-copper" />
@@ -991,6 +996,31 @@ function StepContext({
             <span>30 m²</span>
             <span>1000 m²+</span>
           </div>
+          <div className="mt-3 flex items-center gap-2">
+            <label
+              htmlFor="surface-input"
+              className="font-mono text-[10px] uppercase tracking-eyebrow text-muted"
+            >
+              Valeur précise
+            </label>
+            <input
+              id="surface-input"
+              type="number"
+              inputMode="numeric"
+              min={30}
+              max={1000}
+              value={lead.surface}
+              onChange={(e) => {
+                const v = Number(e.target.value);
+                if (!Number.isNaN(v)) update("surface", v);
+              }}
+              onBlur={() =>
+                update("surface", Math.min(1000, Math.max(30, Math.round(lead.surface || 150))))
+              }
+              className="w-24 rounded-lg border border-ink/15 bg-white px-3 py-2 text-sm text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-copper/40"
+            />
+            <span className="text-sm text-muted">m²</span>
+          </div>
         </div>
 
         {/* Energy */}
@@ -1086,7 +1116,7 @@ function StepTimingBudget({
           <Label>Budget indicatif</Label>
           <p className="mt-2 text-sm text-graphite">
             Un ordre de grandeur — pas un engagement. Aide notre bureau d&apos;études à proposer
-            la solution la plus pertinente.
+            la solution la plus pertinente. Vous hésitez ? Choisissez « Je ne sais pas encore ».
           </p>
           <div className="mt-4 grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
             {BUDGETS.map((b) => (
@@ -1227,7 +1257,7 @@ function StepBrand({
 
 /* ──────────────────────── STEP 6 ─ PHOTOS ──────────────────────── */
 
-function StepPhotos({
+function PhotoUploader({
   lead,
   update,
 }: {
@@ -1284,98 +1314,74 @@ function StepPhotos({
   );
 
   return (
-    <div>
-      <Header
-        number="05"
-        title={
-          <>
-            Quelques photos —{" "}
-            <em className="not-italic text-copper">elles accélèrent l&apos;étude</em>
-          </>
-        }
-        intro="Optionnel mais très utile : chaufferie actuelle, emplacement extérieur, salle de bain à rénover, ou n'importe quel détail technique."
-      />
-
-      <div className="mt-10">
-        <div
-          onDragOver={(e) => {
-            e.preventDefault();
-            setDragging(true);
-          }}
-          onDragLeave={() => setDragging(false)}
-          onDrop={(e) => {
-            e.preventDefault();
-            setDragging(false);
-            handleFiles(e.dataTransfer.files);
-          }}
-          onClick={() => fileInput.current?.click()}
-          className={cn(
-            "relative cursor-pointer p-10 lg:p-14 rounded-3xl border-2 border-dashed text-center transition-all",
-            isDragging
-              ? "border-copper bg-copper/8"
-              : "border-ink/15 bg-white hover:border-copper/50 hover:bg-cream",
-          )}
-        >
-          <div className="mx-auto h-14 w-14 rounded-full bg-copper/10 border border-copper/30 grid place-items-center mb-4">
-            <Upload className="h-6 w-6 text-copper" />
-          </div>
-          <div className="font-display text-2xl text-ink">
-            Glissez vos photos ici
-          </div>
-          <div className="mt-2 text-sm text-graphite">
-            ou cliquez pour parcourir · jusqu&apos;à {MAX_PHOTOS} photos · 8 Mo max chacune
-          </div>
-          <input
-            ref={fileInput}
-            type="file"
-            accept="image/*"
-            multiple
-            className="hidden"
-            onChange={(e) => handleFiles(e.target.files)}
-          />
-        </div>
-
-        {error && (
-          <div className="mt-3 text-xs text-ember bg-ember/8 border border-ember/30 px-3 py-2 rounded-lg">
-            {error}
-          </div>
+    <div className="mt-3">
+      <div
+        onDragOver={(e) => {
+          e.preventDefault();
+          setDragging(true);
+        }}
+        onDragLeave={() => setDragging(false)}
+        onDrop={(e) => {
+          e.preventDefault();
+          setDragging(false);
+          handleFiles(e.dataTransfer.files);
+        }}
+        onClick={() => fileInput.current?.click()}
+        className={cn(
+          "relative cursor-pointer p-6 rounded-2xl border-2 border-dashed text-center transition-all",
+          isDragging
+            ? "border-copper bg-copper/8"
+            : "border-ink/15 bg-white hover:border-copper/50 hover:bg-cream",
         )}
-
-        {lead.photos.length > 0 && (
-          <div className="mt-6 grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 gap-3">
-            {lead.photos.map((p, i) => (
-              <div
-                key={i}
-                className="group relative aspect-square rounded-xl overflow-hidden border border-ink/10 bg-stone"
-              >
-                <img src={p.dataUrl} alt={p.name} className="w-full h-full object-cover" />
-                <button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    removePhoto(i);
-                  }}
-                  className="absolute top-1.5 right-1.5 h-7 w-7 rounded-full bg-charcoal/80 backdrop-blur-md text-cream grid place-items-center hover:bg-ember transition-colors"
-                  aria-label="Supprimer"
-                >
-                  <X className="h-3.5 w-3.5" />
-                </button>
-                <div className="absolute bottom-0 left-0 right-0 px-2 py-1 bg-charcoal/70 text-cream text-[10px] truncate">
-                  {(p.size / 1024).toFixed(0)} Ko
-                </div>
-              </div>
-            ))}
-          </div>
-        )}
-
-        <div className="mt-6 flex items-start gap-3 p-4 rounded-xl bg-copper/5 border border-copper/20">
-          <Camera className="h-5 w-5 text-copper shrink-0 mt-0.5" />
-          <p className="text-sm text-graphite leading-relaxed">
-            <strong className="text-ink">Astuce :</strong> photographiez votre chaudière, votre
-            tableau électrique, l&apos;espace extérieur où installer une PAC, ou la pièce concernée.
-            Plus c&apos;est concret, plus le devis est précis.
-          </p>
+      >
+        <div className="mx-auto h-10 w-10 rounded-full bg-copper/10 border border-copper/30 grid place-items-center mb-2">
+          <Upload className="h-5 w-5 text-copper" />
         </div>
+        <div className="text-sm font-medium text-ink">Glissez vos photos ici</div>
+        <div className="mt-1 text-xs text-graphite">
+          ou cliquez · jusqu&apos;à {MAX_PHOTOS} photos · 8 Mo max
+        </div>
+        <input
+          ref={fileInput}
+          type="file"
+          accept="image/*"
+          multiple
+          className="hidden"
+          onChange={(e) => handleFiles(e.target.files)}
+        />
       </div>
+
+      {error && (
+        <div className="mt-3 text-xs text-ember bg-ember/8 border border-ember/30 px-3 py-2 rounded-lg">
+          {error}
+        </div>
+      )}
+
+      {lead.photos.length > 0 && (
+        <div className="mt-4 grid grid-cols-4 sm:grid-cols-5 gap-2">
+          {lead.photos.map((p, i) => (
+            <div
+              key={i}
+              className="group relative aspect-square rounded-xl overflow-hidden border border-ink/10 bg-stone"
+            >
+              <img src={p.dataUrl} alt={p.name} className="w-full h-full object-cover" />
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  removePhoto(i);
+                }}
+                className="absolute top-1.5 right-1.5 h-7 w-7 rounded-full bg-charcoal/80 backdrop-blur-md text-cream grid place-items-center hover:bg-ember transition-colors"
+                aria-label="Supprimer"
+              >
+                <X className="h-3.5 w-3.5" />
+              </button>
+              <div className="absolute bottom-0 left-0 right-0 px-2 py-1 bg-charcoal/70 text-cream text-[10px] truncate">
+                {(p.size / 1024).toFixed(0)} Ko
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
@@ -1392,7 +1398,7 @@ function StepContact({
   return (
     <div>
       <Header
-        number="06"
+        number="05"
         title={
           <>
             Et enfin —{" "}
@@ -1455,6 +1461,14 @@ function StepContact({
               onChange={(e) => update("message", e.target.value)}
               className="mt-3 w-full bg-white border border-ink/12 rounded-xl px-4 py-3.5 text-ink focus:border-copper focus:outline-none focus:ring-2 focus:ring-copper/20 transition-all resize-none"
             />
+          </div>
+
+          <div>
+            <Label>Photos (optionnel)</Label>
+            <p className="mt-1 text-xs text-muted">
+              Chaufferie, emplacement extérieur, pièce à rénover… ça précise l&apos;étude.
+            </p>
+            <PhotoUploader lead={lead} update={update} />
           </div>
 
           <label className="flex items-start gap-3 text-xs text-graphite">
