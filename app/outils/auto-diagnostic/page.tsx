@@ -217,7 +217,7 @@ function FinalCard({
           </a>
         ) : r.action === "call-urgent" || r.action === "call-soon" ? (
           <Link
-            href="/devis"
+            href="/devis?from=auto-diagnostic&service=depannage"
             className="inline-flex items-center gap-2 rounded-full bg-ink text-cream px-5 py-2.5 text-sm hover:bg-copper transition-colors"
             style={isUrgent ? { background: severity.color } : undefined}
           >

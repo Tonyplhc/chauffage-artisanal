@@ -44,9 +44,18 @@ export default function EstimateurPrixPage() {
   const update = <K extends keyof EstimateInput>(k: K, v: EstimateInput[K]) =>
     setInput((s) => ({ ...s, [k]: v }));
 
-  // Lien direct vers le devis configurateur avec quelques champs pré-remplis
-  // (on perd les champs spécifiques mais on pré-oriente sur le bon service).
-  const devisHref = `/devis?from=estimateur&projet=${input.projectType}`;
+  // Lien direct vers /devis avec pré-remplissage (service mappé + surface +
+  // bâtiment). ?from= sert uniquement à l'attribution analytics.
+  const ESTIMATEUR_SERVICE_MAP: Record<string, string> = {
+    "chaudiere-gaz": "chauffage",
+    "pac-air-eau": "pac",
+    "pac-geothermie": "pac",
+    "chauffe-eau-thermo": "sanitaire",
+    "salle-de-bain": "sanitaire",
+    "climatisation-mono": "clim",
+    "ventilation-double-flux": "autre",
+  };
+  const devisHref = `/devis?from=estimateur&service=${ESTIMATEUR_SERVICE_MAP[input.projectType] ?? "autre"}&surface=${input.surfaceM2}&batiment=${input.buildingType}`;
 
   return (
     <div className="min-h-screen bg-cream">

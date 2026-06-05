@@ -47,6 +47,16 @@ const PROJECT_LABELS: Record<NonNullable<Answer["projectType"]>, string> = {
   autre: "Autre projet",
 };
 
+// Mappe le projet déclaré vers un service du configurateur /devis.
+const KLIMA_SERVICE_MAP: Record<string, string> = {
+  pac: "pac",
+  chaudiere: "chauffage",
+  solaire: "enr",
+  renovation: "autre",
+  borne: "autre",
+  autre: "autre",
+};
+
 const BUILDING_LABELS: Record<NonNullable<Answer["buildingAge"]>, string> = {
   before_1995: "Avant 1995",
   "1995_2007": "Entre 1995 et 2007",
@@ -520,7 +530,7 @@ function Result({ a }: { a: Answer }) {
         </p>
         <div className="flex flex-col sm:flex-row gap-3">
           <Link
-            href="/devis"
+            href={`/devis?from=klimabonus-simulator&service=${KLIMA_SERVICE_MAP[a.projectType ?? "autre"] ?? "autre"}`}
             className="group inline-flex items-center justify-center gap-2 rounded-full bg-ink text-cream px-6 py-3.5 text-sm font-medium hover:bg-copper transition-colors"
           >
             Demander un devis personnalisé

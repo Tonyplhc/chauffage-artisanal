@@ -28,6 +28,20 @@ import {
 } from "@/lib/klimabonus-checker";
 import { formatEur } from "@/lib/formatters";
 
+// Mappe le type de projet Klimabonus vers un service du configurateur /devis.
+const ELIG_SERVICE_MAP: Record<string, string> = {
+  "pac-air-eau": "pac",
+  "pac-geothermique": "pac",
+  "chaudiere-biomasse": "chauffage",
+  "solaire-thermique": "enr",
+  photovoltaique: "enr",
+  "vmc-double-flux": "autre",
+  "isolation-toiture": "autre",
+  "isolation-murs": "autre",
+  "isolation-sol": "autre",
+  fenetres: "autre",
+};
+
 export default function KlimabonusCheckerPage() {
   const [projectType, setProjectType] = useState<ProjectType>("pac-air-eau");
   const [buildingAge, setBuildingAge] = useState<BuildingAge>("plus-30ans");
@@ -289,7 +303,7 @@ export default function KlimabonusCheckerPage() {
                 </p>
               </div>
               <Link
-                href="/devis"
+                href={`/devis?from=eligibilite&service=${ELIG_SERVICE_MAP[projectType] ?? "autre"}`}
                 className="inline-flex items-center gap-2 rounded-full bg-ink text-cream px-4 py-2 text-sm hover:bg-copper transition-colors"
               >
                 Demander un devis

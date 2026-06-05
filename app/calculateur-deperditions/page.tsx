@@ -332,7 +332,7 @@ export default function CalculateurPage() {
               </div>
 
               <Link
-                href={`/devis?surface=${surface}&power=${result.totalKW}`}
+                href={`/devis?from=deperditions&service=${targetEnergy === "pac" ? "pac" : "chauffage"}&surface=${surface}&energie=${currentEnergy}`}
                 className="rounded-3xl bg-copper text-cream p-6 shadow-soft text-center hover:bg-ember transition-colors group"
               >
                 <Thermometer className="h-7 w-7 mx-auto mb-2" />

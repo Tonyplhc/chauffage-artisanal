@@ -243,7 +243,7 @@ export function PVAutoconsumptionCalculator() {
                   </p>
                 </div>
                 <Link
-                  href="/devis"
+                  href="/devis?from=pv-autoconso&service=enr"
                   className="inline-flex items-center gap-2 rounded-full bg-cream text-charcoal px-5 py-3 text-sm font-medium hover:bg-copper hover:text-cream transition-colors shrink-0"
                 >
                   Demander une étude

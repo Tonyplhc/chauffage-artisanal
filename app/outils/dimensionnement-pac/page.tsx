@@ -230,7 +230,7 @@ export default function PacSizingPage() {
                 </p>
               </div>
               <Link
-                href="/devis"
+                href={`/devis?from=dimensionnement-pac&service=pac&surface=${surface}`}
                 className="inline-flex items-center gap-2 rounded-full bg-ink text-cream px-4 py-2 text-sm hover:bg-copper transition-colors"
               >
                 Demander un devis

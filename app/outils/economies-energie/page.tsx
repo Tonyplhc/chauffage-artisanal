@@ -37,7 +37,7 @@ const SCENARIO_ICONS = {
 } as const;
 
 const SCENARIO_HREF = {
-  pac: "/devis?marque=aucune",
+  pac: "/devis?from=economies-energie&service=pac",
   "ecs-thermo": "/chauffe-eau-luxembourg",
   pv: "/energies-renouvelables",
 } as const;
@@ -268,7 +268,7 @@ export default function EconomiesEnergiePage() {
                 </div>
                 <div className="lg:col-span-4 flex flex-col gap-2">
                   <Link
-                    href="/devis"
+                    href={`/devis?from=economies-energie&surface=${input.surfaceM2}&energie=${input.currentEnergy}&batiment=${input.buildingType}`}
                     className="inline-flex items-center justify-between gap-2 rounded-full bg-cream text-charcoal px-6 py-3.5 text-sm font-medium hover:bg-copper hover:text-cream transition-colors group"
                   >
                     Demander un devis
