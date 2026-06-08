@@ -814,7 +814,7 @@ function Reassurance() {
       </span>
       <span className="inline-flex items-center gap-1.5">
         <Clock className="h-3 w-3 text-copper" />
-        Réponse sous 24h
+        Réponse sous 24h ouvrées
       </span>
       <span className="inline-flex items-center gap-1.5">
         <Sparkles className="h-3 w-3 text-copper" />
@@ -1484,6 +1484,15 @@ function StepContact({
               communication à un tiers. Je peux demander la suppression à tout moment.
             </span>
           </label>
+
+          <div className="flex flex-wrap gap-x-4 gap-y-1.5 pt-1 text-xs text-graphite">
+            {["Devis gratuit", "Réponse sous 24h ouvrées", "Données confidentielles", "Sans engagement"].map((t) => (
+              <span key={t} className="inline-flex items-center gap-1.5">
+                <Check className="h-3 w-3 text-copper" />
+                {t}
+              </span>
+            ))}
+          </div>
         </div>
 
         <div className="hidden lg:block">
