@@ -32,6 +32,32 @@ export type ServiceBlock = {
   serviceUrlPath?: string;
 };
 
+// TrustStrip — signaux de confiance VÉRIFIÉS dans le code uniquement :
+// company-info.ts (1994, RCS B46877, affiliations verified), brands-content.ts
+// (verifiedPartner: Viessmann/Buderus/De Dietrich), cgv (garantie 1 an).
+function TrustStrip() {
+  const items = [
+    "Depuis 1994",
+    "Société établie au Luxembourg",
+    "Partenaire Viessmann",
+    "Partenaire Buderus",
+    "Partenaire De Dietrich",
+    "Garantie installation 1 an",
+    "Affilié Fédération des Artisans",
+    "Affilié Fédération du Génie Technique",
+  ];
+  return (
+    <ul className="flex flex-wrap gap-x-4 gap-y-2 text-xs text-graphite">
+      {items.map((t) => (
+        <li key={t} className="inline-flex items-center gap-1.5">
+          <Check className="h-3 w-3 text-copper" />
+          {t}
+        </li>
+      ))}
+    </ul>
+  );
+}
+
 export function ServicePage(props: ServiceBlock) {
   return (
     <>
@@ -70,6 +96,13 @@ export function ServicePage(props: ServiceBlock) {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-charcoal/30 to-transparent" />
           </div>
+        </div>
+      </section>
+
+      {/* Bandeau confiance — signaux vérifiés */}
+      <section className="pt-8">
+        <div className="container">
+          <TrustStrip />
         </div>
       </section>
 

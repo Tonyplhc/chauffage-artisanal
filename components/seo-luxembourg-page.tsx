@@ -22,6 +22,32 @@ import type { SeoPage } from "@/lib/seo-luxembourg-content";
 import { buildAlternates } from "@/lib/seo-alternates";
 import { COMPANY } from "@/lib/company-info";
 
+// TrustStrip — signaux de confiance VÉRIFIÉS dans le code uniquement :
+// company-info.ts (1994, RCS B46877, affiliations verified), brands-content.ts
+// (verifiedPartner: Viessmann/Buderus/De Dietrich), cgv (garantie 1 an).
+function TrustStrip() {
+  const items = [
+    "Depuis 1994",
+    "Société établie au Luxembourg",
+    "Partenaire Viessmann",
+    "Partenaire Buderus",
+    "Partenaire De Dietrich",
+    "Garantie installation 1 an",
+    "Affilié Fédération des Artisans",
+    "Affilié Fédération du Génie Technique",
+  ];
+  return (
+    <ul className="flex flex-wrap gap-x-4 gap-y-2 text-xs text-graphite">
+      {items.map((t) => (
+        <li key={t} className="inline-flex items-center gap-1.5">
+          <Check className="h-3 w-3 text-copper" />
+          {t}
+        </li>
+      ))}
+    </ul>
+  );
+}
+
 export function SeoLuxembourgPage({ page }: { page: SeoPage }) {
   // JSON-LD LocalBusiness + Service — boost SEO local Luxembourg.
   // Le FAQ JSON-LD est déjà injecté par <Faq /> plus bas.
@@ -105,6 +131,9 @@ export function SeoLuxembourgPage({ page }: { page: SeoPage }) {
                 <MapPin className="h-3 w-3 text-copper" />
                 Luxembourg-Ville · Grande Région
               </span>
+            </div>
+            <div className="mt-6">
+              <TrustStrip />
             </div>
           </div>
         </div>

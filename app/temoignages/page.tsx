@@ -20,8 +20,13 @@ export default async function TemoignagesPage() {
   // JSON-LD AggregateRating + Review array — déclenche les étoiles dans la SERP Google.
   // Les scores en base sont sur 10 ; schema.org attend une échelle bestRating/worstRating.
   // On expose bestRating: 10 (compatible avec nos données natives).
+  // Garde anti-fausse-preuve : tant que seuls des témoignages "seed" (démo)
+  // existent, on n'émet AUCUNE AggregateRating/Review (pas de fausses étoiles
+  // dans Google). Réactivé automatiquement dès qu'un vrai avis est approuvé.
+  const hasRealTestimonials =
+    testimonials.length > 0 && !testimonials.every((t) => t.id.startsWith("seed-"));
   const reviewsLd =
-    testimonials.length > 0 && averageScore !== null
+    hasRealTestimonials && averageScore !== null
       ? {
           "@context": "https://schema.org",
           "@type": "LocalBusiness",
