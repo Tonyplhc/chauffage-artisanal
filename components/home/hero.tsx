@@ -17,7 +17,7 @@ export function Hero() {
     <section className="relative overflow-hidden bg-cream">
       <div className="container relative pt-12 lg:pt-16 pb-10 lg:pb-16">
         {/* Wordmark + intro */}
-        <div className="grid lg:grid-cols-12 gap-10 lg:gap-12 items-end pb-10 lg:pb-14">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-end pb-10 lg:pb-14">
           <div className="lg:col-span-7">
             <motion.div
               initial={{ opacity: 0, y: 12 }}

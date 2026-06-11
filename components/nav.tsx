@@ -63,6 +63,7 @@ export function Nav() {
   }, [open]);
 
   return (
+    <>
     <header
       className={cn(
         "sticky top-0 z-40 transition-all duration-500",
@@ -148,6 +149,7 @@ export function Nav() {
           </button>
         </div>
       </div>
+    </header>
 
       <AnimatePresence>
         {open && (
@@ -285,7 +287,7 @@ export function Nav() {
           </>
         )}
       </AnimatePresence>
-    </header>
+    </>
   );
 }
 
