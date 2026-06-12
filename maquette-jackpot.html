@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Jackpot fort — vert bénéfice / rouge perte</title>
+<meta name="robots" content="noindex,nofollow" />
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..600&family=Montserrat:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<script>
+  tailwind.config = { theme: { extend: {
+    colors:{ creme:"#FBF8F2", sable:"#EFE7D8", pierre:"#E0D5C2", ink:"#2A2724", anthra:"#2A2724",
+      taupe:"#6E675C", muted:"#9A9184", bleu:"#0A4E8C", navy:"#0A3360",
+      brique:"#A2131A", terracotta:"#C24A2C", brun:"#5A4636",
+      perte:"#C0392B", perteBg:"#FBEBE8",
+      vert:"#2E7D5A", vertBg:"#E7F2EC" },
+    fontFamily:{ display:['Fraunces','serif'], sans:['Montserrat','sans-serif'], mono:['JetBrains Mono','monospace'] },
+    letterSpacing:{ eyebrow:'0.22em', tightest:'-0.04em' },
+  }}};
+</script>
+<style>body{font-family:Montserrat,sans-serif;background:#FBF8F2;color:#2A2724}</style>
+</head>
+<body class="antialiased">
+<div class="bg-ink text-creme text-center text-[11px] font-mono uppercase tracking-eyebrow py-2 px-4">
+  Jackpot fort — <span class="text-[#E08B82]">rouge = ce que vous payez</span> · <span class="text-[#7FBF9E]">vert = ce que vous gagnez</span> · couleurs de donnée (simulateur)
+</div>
+
+<section class="bg-creme">
+  <div class="max-w-7xl mx-auto px-5 py-20 grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
+    <div>
+      <div class="font-mono text-[10px] uppercase tracking-eyebrow text-taupe">01 — Simulateur</div>
+      <h2 class="mt-3 font-display text-4xl lg:text-5xl tracking-tightest text-anthra">Combien pouvez-vous économiser ?</h2>
+      <p class="mt-5 text-lg text-taupe max-w-md">Votre coût de chauffage aujourd'hui vs une pompe à chaleur — sur votre consommation réelle, aides déduites.</p>
+      <a href="#" class="mt-7 inline-flex items-center gap-2 rounded-full bg-bleu text-creme px-6 py-3.5 text-sm font-semibold hover:bg-navy transition">Estimer mon projet →</a>
+    </div>
+
+    <!-- CARTE COMPARATIVE : rouge (coût actuel) → vert (gain) -->
+    <div class="rounded-3xl bg-white border border-pierre shadow-[0_24px_60px_-28px_rgba(36,33,30,.4)] overflow-hidden">
+      <div class="px-8 pt-7">
+        <span class="font-mono text-[10px] uppercase tracking-eyebrow text-muted">Votre gain estimé</span>
+
+        <!-- Aujourd'hui : ROUGE = perte -->
+        <div class="mt-5">
+          <div class="flex items-baseline justify-between">
+            <span class="text-sm text-taupe">Aujourd'hui · <strong class="text-anthra font-semibold">Mazout</strong></span>
+            <span class="font-display text-2xl text-perte">3 200 €<span class="text-base text-perte/70">/an</span></span>
+          </div>
+          <div class="mt-2 h-2.5 rounded-full bg-perteBg overflow-hidden"><div class="h-full rounded-full bg-perte" style="width:100%"></div></div>
+        </div>
+
+        <!-- Demain : neutre -->
+        <div class="mt-4">
+          <div class="flex items-baseline justify-between">
+            <span class="text-sm text-taupe">Demain · <strong class="text-anthra font-semibold">PAC air/eau</strong></span>
+            <span class="font-display text-2xl text-anthra">2 080 €<span class="text-base text-muted">/an</span></span>
+          </div>
+          <div class="mt-2 h-2.5 rounded-full bg-sable overflow-hidden"><div class="h-full rounded-full bg-anthra/35" style="width:65%"></div></div>
+        </div>
+      </div>
+
+      <!-- JACKPOT : VERT = bénéfice, énorme -->
+      <div class="mt-7 bg-vertBg border-t border-vert/20 px-8 py-7">
+        <div class="flex items-center gap-2 text-vert">
+          <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M16 17l5-5-5-5"/><path d="M21 12H4"/><path d="M4 5v14" opacity="0"/></svg>
+          <span class="font-mono text-[10px] uppercase tracking-eyebrow">Vous économisez</span>
+        </div>
+        <div class="mt-1 flex items-baseline gap-2">
+          <span class="font-display text-7xl lg:text-8xl tracking-tightest text-vert leading-none">1 450</span>
+          <span class="font-display text-3xl text-vert/70">€/an</span>
+        </div>
+        <div class="mt-4 flex flex-wrap gap-2">
+          <span class="px-3 py-1.5 rounded-full bg-vert text-white text-xs font-semibold">−45 % sur votre facture</span>
+          <span class="px-3 py-1.5 rounded-full bg-white border border-vert/30 text-vert text-xs font-semibold">+ jusqu'à 10 000 € d'aides</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AIDES — emphase anthracite (plus de gras bleu), bleu = CTA seul -->
+<section class="bg-white border-y border-pierre">
+  <div class="max-w-7xl mx-auto px-5 py-20">
+    <div class="max-w-2xl">
+      <div class="font-mono text-[10px] uppercase tracking-eyebrow text-taupe">02 — Aides Luxembourg</div>
+      <h2 class="mt-3 font-display text-4xl lg:text-5xl tracking-tightest text-anthra">Jusqu'à 12 000 € d'aides. On s'occupe de tout.</h2>
+      <p class="mt-6 text-lg text-taupe leading-relaxed">
+        <strong class="text-anthra font-semibold">Klimabonus</strong>, <strong class="text-anthra font-semibold">aides communales</strong> et <strong class="text-anthra font-semibold">TVA à 3 %</strong> cumulables. Nous montons le volet technique du dossier ; l'administratif <strong class="text-anthra font-semibold">reste à votre nom</strong>.
+      </p>
+    </div>
+    <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
+      <!-- montants d'aides = un GAIN → vert -->
+      <div class="p-6 rounded-2xl bg-vertBg border border-vert/20"><div class="font-display text-3xl text-vert">10 000 €</div><div class="mt-1 text-sm text-taupe">PAC air/eau</div></div>
+      <div class="p-6 rounded-2xl bg-vertBg border border-vert/20"><div class="font-display text-3xl text-vert">12 000 €</div><div class="mt-1 text-sm text-taupe">Géothermie</div></div>
+      <div class="p-6 rounded-2xl bg-creme border border-pierre"><div class="font-display text-3xl text-anthra">+ Enoprimes</div><div class="mt-1 text-sm text-taupe">Cumulables</div></div>
+      <div class="p-6 rounded-2xl bg-creme border border-pierre"><div class="font-display text-3xl text-anthra">TVA 3 %</div><div class="mt-1 text-sm text-taupe">Logement</div></div>
+    </div>
+    <a href="#" class="mt-8 inline-flex items-center gap-2 rounded-full bg-bleu text-creme px-6 py-3.5 text-sm font-semibold hover:bg-navy transition">Estimer mes aides →</a>
+  </div>
+</section>
+
+</body>
+</html>

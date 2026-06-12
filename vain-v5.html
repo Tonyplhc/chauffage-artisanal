@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>DevisPilot — De la demande au chantier signé · VΛIN STUDIO</title>
+<meta name="description" content="DevisPilot : le système qui transforme chaque demande de devis en chantier. Qualification, suivi, relance et devis automatisés pour les entreprises techniques — HVAC, chauffage, climatisation, électricité, maintenance industrielle, photovoltaïque." />
+<meta name="theme-color" content="#050505" />
+<link rel="canonical" href="https://vainstudio.lu/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="VΛIN STUDIO" />
+<meta property="og:title" content="DevisPilot — De la demande au chantier signé" />
+<meta property="og:description" content="Le système de croissance des entreprises techniques. Une demande entre, un chantier sort." />
+<meta property="og:url" content="https://vainstudio.lu/" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23050505'/%3E%3Ctext x='50' y='69' font-family='Space Grotesk,Arial' font-size='60' font-weight='700' fill='%23D4AF37' text-anchor='middle'%3E%CE%9B%3C/text%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+/* ============================================================
+   VΛIN · DEVISPILOT — V5 "Black Ops"
+   Design system : Industrial Executive Software
+   Palette : 95% noir · 4% blanc · 1% or (rare, motivé)
+   ============================================================ */
+:root{
+  /* surfaces (le noir, en strates) */
+  --c-0:#050506;          /* fond absolu */
+  --c-1:#0a0a0c;          /* fond section alt */
+  --c-2:#0e0e11;          /* panneau */
+  --c-3:#121216;          /* panneau surélevé */
+  --c-4:#17171c;          /* carte dans panneau */
+  /* lignes */
+  --line:rgba(255,255,255,.06);
+  --line-2:rgba(255,255,255,.10);
+  --line-3:rgba(255,255,255,.16);
+  /* encre (le blanc, en opacités) */
+  --ink:#FCFCFD;
+  --ink-2:rgba(255,255,255,.64);
+  --ink-3:rgba(255,255,255,.42);
+  --ink-4:rgba(255,255,255,.26);
+  /* or — à n'utiliser que pour : action primaire, état actif, signature */
+  --gold:#D4AF37;
+  --gold-2:#EBD9A2;
+  --gold-glow:rgba(212,175,55,.18);
+  /* système */
+  --r:14px; --r-sm:9px; --r-xs:6px;
+  --ease:cubic-bezier(.2,.7,.2,1);
+  --display:'Space Grotesk','Inter',sans-serif;
+  --body:'Inter',sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,monospace;
+  --maxw:1200px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--c-0);color:var(--ink);font-family:var(--body);line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::selection{background:var(--gold);color:#050505}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;border:none;background:none;color:inherit}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+.mono{font-family:var(--mono);letter-spacing:.02em}
+
+/* fine technical grid backdrop, barely visible */
+.bg-grid{position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:linear-gradient(var(--line) 1px,transparent 1px) 0 0/100% 64px,
+            linear-gradient(90deg,var(--line) 1px,transparent 1px) 0 0/64px 100%;
+  -webkit-mask-image:radial-gradient(ellipse 100% 60% at 50% 0%,#000 0%,transparent 70%);
+          mask-image:radial-gradient(ellipse 100% 60% at 50% 0%,#000 0%,transparent 70%);opacity:.5}
+
+/* ---------- type scale ---------- */
+.kicker{font-family:var(--mono);font-size:11.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--ink-3)}
+.kicker .gold{color:var(--gold)}
+h1,h2,h3,h4{font-family:var(--display);font-weight:600;letter-spacing:-.025em;line-height:1.02}
+.h-display{font-size:clamp(40px,6vw,84px);line-height:.98;letter-spacing:-.035em}
+.h-section{font-size:clamp(30px,4.4vw,56px);line-height:1.04}
+.lead{font-size:clamp(16px,1.5vw,19px);color:var(--ink-2);line-height:1.6}
+
+/* ---------- buttons ---------- */
+.btn{display:inline-flex;align-items:center;gap:10px;font-weight:600;font-size:14.5px;padding:13px 20px;border-radius:var(--r-sm);transition:.3s var(--ease);white-space:nowrap}
+.btn .ic{transition:.3s var(--ease)}
+.btn-primary{background:var(--gold);color:#0a0a0a}
+.btn-primary:hover{transform:translateY(-1px);box-shadow:0 12px 40px -14px var(--gold-glow),0 0 0 1px rgba(212,175,55,.4)}
+.btn-primary:hover .ic{transform:translateX(3px)}
+.btn-ghost{border:1px solid var(--line-3);color:var(--ink);background:rgba(255,255,255,.02)}
+.btn-ghost:hover{border-color:var(--ink-3);background:rgba(255,255,255,.05)}
+.btn-sm{padding:9px 14px;font-size:13px}
+
+/* ---------- nav ---------- */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;transition:.4s var(--ease)}
+nav .inner{max-width:var(--maxw);margin:0 auto;padding:16px 28px;display:flex;align-items:center;justify-content:space-between}
+nav.scrolled{background:rgba(6,6,7,.72);backdrop-filter:blur(18px) saturate(1.2);border-bottom:1px solid var(--line)}
+nav.scrolled .inner{padding:11px 28px}
+.brand{display:flex;align-items:center;gap:11px;font-family:var(--display);font-weight:600;font-size:17px;letter-spacing:.02em}
+.brand .lg{width:26px;height:26px;border-radius:7px;border:1px solid var(--line-3);display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:15px;background:var(--c-2)}
+.brand .sep{color:var(--ink-4);font-weight:400}
+.brand .pp{color:var(--ink-2);font-weight:500;font-size:15px}
+.nav-mid{display:flex;gap:30px;font-size:14px;color:var(--ink-2);font-weight:500}
+.nav-mid a{transition:.25s;position:relative}
+.nav-mid a:hover{color:var(--ink)}
+.nav-right{display:flex;align-items:center;gap:14px}
+.nav-login{font-size:14px;color:var(--ink-2);font-weight:500;transition:.25s}
+.nav-login:hover{color:var(--ink)}
+@media(max-width:900px){.nav-mid{display:none}.nav-login{display:none}}
+@media(max-width:560px){nav .inner{padding:14px 18px}nav.scrolled .inner{padding:10px 18px}.brand .sep,.brand .pp{display:none}}
+
+/* ---------- reveal ---------- */
+.rv{opacity:0;transform:translateY(20px);transition:.7s var(--ease)}
+.rv.in{opacity:1;transform:none}
+.rv-d1{transition-delay:.06s}.rv-d2{transition-delay:.12s}.rv-d3{transition-delay:.18s}
+
+/* ============================================================
+   APP — interface DevisPilot (le même langage partout)
+   ============================================================ */
+.app{border:1px solid var(--line-2);border-radius:var(--r);background:var(--c-2);overflow:hidden;
+  box-shadow:0 1px 0 rgba(255,255,255,.04) inset,0 40px 80px -50px rgba(0,0,0,.9)}
+.app-bar{display:flex;align-items:center;gap:12px;padding:11px 14px;border-bottom:1px solid var(--line);background:var(--c-1)}
+.app-bar .b{display:flex;align-items:center;gap:8px;font-family:var(--display);font-weight:600;font-size:13.5px}
+.app-bar .b .d{width:18px;height:18px;border-radius:5px;background:var(--gold);color:#0a0a0a;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700}
+.app-bar .search{flex:1;max-width:230px;display:flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:var(--r-xs);padding:6px 10px;color:var(--ink-4);font-size:12px;background:var(--c-0)}
+.app-bar .search .kbd{margin-left:auto;font-family:var(--mono);font-size:10px;border:1px solid var(--line-2);border-radius:4px;padding:1px 5px;color:var(--ink-3)}
+.app-bar .right{margin-left:auto;display:flex;align-items:center;gap:10px}
+.app-bar .pill{font-family:var(--mono);font-size:10px;color:var(--ink-3);border:1px solid var(--line);border-radius:20px;padding:3px 9px;display:flex;align-items:center;gap:6px}
+.app-bar .pill .dot{width:6px;height:6px;border-radius:50%;background:var(--gold);box-shadow:0 0 7px var(--gold-glow)}
+.app-bar .av{width:24px;height:24px;border-radius:50%;background:linear-gradient(135deg,#26262c,#161619);border:1px solid var(--line-2)}
+.app-body{display:grid;grid-template-columns:188px 1fr;min-height:330px}
+.app-side{border-right:1px solid var(--line);padding:12px 10px;background:var(--c-1)}
+.app-side .grp{font-family:var(--mono);font-size:9px;letter-spacing:.16em;color:var(--ink-4);padding:12px 9px 7px}
+.app-side a{display:flex;align-items:center;gap:10px;padding:8px 9px;border-radius:var(--r-xs);font-size:13px;color:var(--ink-2);transition:.2s}
+.app-side a svg{stroke:var(--ink-3);flex:none}
+.app-side a:hover{background:rgba(255,255,255,.03)}
+.app-side a.on{background:rgba(255,255,255,.05);color:var(--ink)}
+.app-side a.on svg{stroke:var(--gold)}
+.app-side a .ct{margin-left:auto;font-family:var(--mono);font-size:10px;color:var(--ink-4)}
+.app-main{padding:18px}
+.app-h{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;gap:12px}
+.app-h .t{font-family:var(--display);font-weight:600;font-size:15px}
+.app-h .s{font-family:var(--mono);font-size:11px;color:var(--ink-4);margin-top:2px}
+.app-h .meta{font-family:var(--mono);font-size:10.5px;color:var(--ink-3);border:1px solid var(--line);border-radius:var(--r-xs);padding:5px 9px}
+@media(max-width:680px){.app-body{grid-template-columns:1fr}.app-side{display:none}.app-bar .search{display:none}}
+
+/* inbox item */
+.inbox{display:flex;flex-direction:column;gap:8px}
+.req{border:1px solid var(--line);border-radius:var(--r-sm);padding:13px 14px;background:var(--c-3);transition:.25s}
+.req.live{border-color:rgba(212,175,55,.45);box-shadow:0 0 0 1px rgba(212,175,55,.12),0 14px 30px -22px var(--gold-glow)}
+.req .top{display:flex;align-items:center;gap:10px;margin-bottom:7px}
+.req .id{font-family:var(--mono);font-size:10px;color:var(--ink-4)}
+.req .time{font-family:var(--mono);font-size:10px;color:var(--gold);margin-left:auto}
+.req .new{font-family:var(--mono);font-size:9px;color:#0a0a0a;background:var(--gold);border-radius:4px;padding:2px 6px;font-weight:600}
+.req .subject{font-size:13.5px;font-weight:500;margin-bottom:4px}
+.req .excerpt{font-size:12px;color:var(--ink-3);line-height:1.45}
+.req .tags{display:flex;gap:6px;margin-top:9px;flex-wrap:wrap}
+.tag{font-family:var(--mono);font-size:9.5px;color:var(--ink-2);border:1px solid var(--line-2);border-radius:5px;padding:3px 7px}
+.tag.g{color:var(--gold);border-color:rgba(212,175,55,.3)}
+
+/* qualification scorecard */
+.qa{display:flex;flex-direction:column;gap:0}
+.qa .row{display:flex;align-items:center;gap:12px;padding:11px 0;border-bottom:1px solid var(--line);font-size:13px}
+.qa .row:last-child{border-bottom:none}
+.qa .row .k{color:var(--ink-3);width:96px;flex:none;font-size:12px}
+.qa .row .v{font-weight:500}
+.qa .row .chk{margin-left:auto;color:var(--gold)}
+.qa-score{margin-top:14px;display:flex;align-items:center;gap:14px;padding:14px;border:1px solid var(--line-2);border-radius:var(--r-sm);background:var(--c-3)}
+.qa-score .ring{width:50px;height:50px;border-radius:50%;flex:none;display:grid;place-items:center;
+  background:conic-gradient(var(--gold) calc(var(--p,82)*1%),rgba(255,255,255,.07) 0)}
+.qa-score .ring i{width:40px;height:40px;border-radius:50%;background:var(--c-3);display:grid;place-items:center;font-family:var(--display);font-weight:600;font-size:13px;font-style:normal}
+.qa-score .tx b{display:block;font-size:13.5px}
+.qa-score .tx span{font-size:12px;color:var(--ink-3)}
+
+/* generic list rows / automations / reminders */
+.rows{display:flex;flex-direction:column;gap:8px}
+.lrow{display:flex;align-items:center;gap:12px;padding:11px 13px;border:1px solid var(--line);border-radius:var(--r-sm);background:var(--c-3);font-size:13px;color:var(--ink-2)}
+.lrow .ic{width:28px;height:28px;border-radius:var(--r-xs);background:rgba(255,255,255,.04);display:grid;place-items:center;color:var(--ink-2);flex:none}
+.lrow .ic.gold{background:var(--gold-glow);color:var(--gold)}
+.lrow b{color:var(--ink);font-weight:500}
+.lrow .when{margin-left:auto;font-family:var(--mono);font-size:10px;color:var(--ink-4);flex:none}
+.lrow .state{margin-left:auto;font-family:var(--mono);font-size:9.5px;color:var(--ink-3);border:1px solid var(--line-2);border-radius:5px;padding:3px 7px;flex:none}
+.lrow .state.on{color:var(--gold);border-color:rgba(212,175,55,.3)}
+
+/* sequence */
+.seq{display:flex;gap:7px;margin-top:12px}
+.seq .s{flex:1;text-align:center;font-family:var(--mono);font-size:9px;padding:8px 4px;border:1px solid var(--line);border-radius:var(--r-xs);color:var(--ink-4)}
+.seq .s.done{color:var(--ink-2);border-color:var(--line-2)}
+.seq .s.now{color:var(--gold);border-color:rgba(212,175,55,.4);background:rgba(212,175,55,.05)}
+
+/* quote */
+.quote .ql{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--line);font-size:13px}
+.quote .ql .k{color:var(--ink-3)}
+.quote .ql.tot{border-bottom:none;border-top:1px solid var(--line-2);margin-top:5px;padding-top:13px;font-weight:600;font-size:15px}
+.quote .ql .prime{color:var(--gold)}
+.quote .sent{margin-top:13px;display:flex;align-items:center;gap:9px;font-family:var(--mono);font-size:10.5px;color:var(--gold)}
+
+/* signed state */
+.signed{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:26px 18px;gap:12px;min-height:230px}
+.signed .seal{width:62px;height:62px;border-radius:50%;border:1px solid rgba(212,175,55,.4);display:grid;place-items:center;color:var(--gold);background:radial-gradient(circle,var(--gold-glow),transparent 70%)}
+.signed h4{font-size:19px}
+.signed p{font-size:13px;color:var(--ink-3);max-width:260px}
+.signed .amt{font-family:var(--mono);font-size:12px;color:var(--gold);border:1px solid rgba(212,175,55,.3);border-radius:20px;padding:5px 13px}
+
+/* kanban */
+.kanban{display:grid;grid-template-columns:repeat(6,minmax(140px,1fr));gap:10px;overflow-x:auto;padding-bottom:4px}
+.kcol{background:var(--c-1);border:1px solid var(--line);border-radius:var(--r-sm);padding:10px}
+.kcol .h{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;font-size:11px;color:var(--ink-2);font-weight:500}
+.kcol .h .n{font-family:var(--mono);font-size:10px;color:var(--ink-4)}
+.kcard{background:var(--c-3);border:1px solid var(--line);border-radius:var(--r-xs);padding:9px;margin-bottom:7px}
+.kcard:last-child{margin-bottom:0}
+.kcard .nm{font-size:11.5px;font-weight:500}
+.kcard .mt{font-family:var(--mono);font-size:9px;color:var(--ink-4);margin-top:5px;display:flex;justify-content:space-between}
+.kcard .mt .v{color:var(--gold-2)}
+.kcard.hot{border-color:rgba(212,175,55,.35)}
+.kanban::-webkit-scrollbar,.tabs::-webkit-scrollbar{height:6px}
+.kanban::-webkit-scrollbar-thumb,.tabs::-webkit-scrollbar-thumb{background:var(--line-2);border-radius:6px}
+.kanban::-webkit-scrollbar-track,.tabs::-webkit-scrollbar-track{background:transparent}
+.kanban,.tabs{scrollbar-width:thin;scrollbar-color:var(--line-2) transparent}
+
+/* calendar */
+.cal{border:1px solid var(--line);border-radius:var(--r-sm);overflow:hidden}
+.cal .ch{display:grid;grid-template-columns:repeat(5,1fr);background:var(--c-1);border-bottom:1px solid var(--line)}
+.cal .ch span{padding:9px 0;text-align:center;font-family:var(--mono);font-size:10px;color:var(--ink-4)}
+.cal .grid{display:grid;grid-template-columns:repeat(5,1fr);grid-auto-rows:60px}
+.cal .cell{border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:6px;position:relative}
+.cal .cell .d{font-family:var(--mono);font-size:9px;color:var(--ink-4)}
+.cal .ev{margin-top:4px;font-size:9.5px;border-radius:4px;padding:3px 5px;background:rgba(255,255,255,.05);color:var(--ink-2);line-height:1.2}
+.cal .ev.g{background:var(--gold-glow);color:var(--gold-2)}
+
+/* fiche */
+.fiche{display:grid;grid-template-columns:1fr;gap:12px}
+.fiche .head{display:flex;align-items:center;gap:12px}
+.fiche .ava{width:42px;height:42px;border-radius:11px;background:linear-gradient(135deg,#26262c,#141417);border:1px solid var(--line-2);display:grid;place-items:center;font-family:var(--display);font-weight:600;color:var(--ink-2)}
+.fiche .head .nm{font-size:15px;font-weight:600}
+.fiche .head .su{font-family:var(--mono);font-size:11px;color:var(--ink-4)}
+.fiche .kv{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}
+.fiche .kv .c{border:1px solid var(--line);border-radius:var(--r-xs);padding:10px 11px;background:var(--c-3)}
+.fiche .kv .c .k{font-family:var(--mono);font-size:9px;color:var(--ink-4);letter-spacing:.08em}
+.fiche .kv .c .v{font-size:13px;font-weight:500;margin-top:4px}
+
+/* ============================================================
+   SECTIONS
+   ============================================================ */
+section{position:relative;z-index:1}
+.sec{padding:130px 0}
+.sec-line{border-top:1px solid var(--line)}
+
+/* HERO */
+#hero{padding:148px 0 90px;position:relative}
+.hero-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:54px;align-items:center}
+@media(max-width:980px){.hero-grid{grid-template-columns:1fr;gap:44px}}
+.hero-l .badge{display:inline-flex;align-items:center;gap:9px;border:1px solid var(--line-2);border-radius:30px;padding:6px 13px;font-family:var(--mono);font-size:11px;color:var(--ink-2);margin-bottom:26px}
+.hero-l .badge .dot{width:6px;height:6px;border-radius:50%;background:var(--gold);box-shadow:0 0 8px var(--gold-glow)}
+.hero-l h1 .gold{color:var(--gold)}
+.hero-l .lead{margin-top:24px;max-width:480px}
+.hero-l .cta{display:flex;gap:13px;margin-top:34px;flex-wrap:wrap}
+.hero-l .under{margin-top:22px;font-family:var(--mono);font-size:11.5px;color:var(--ink-4);display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+.hero-l .under .s{width:4px;height:4px;border-radius:50%;background:var(--ink-4)}
+.hero-r{position:relative}
+.hero-r .glow{position:absolute;inset:-40px -20px;background:radial-gradient(ellipse at 60% 30%,var(--gold-glow),transparent 60%);filter:blur(20px);pointer-events:none;opacity:.6}
+.hero-r .app{position:relative}
+
+/* PHILOSOPHY strip */
+.philo{padding:60px 0;text-align:center;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--c-1)}
+.philo .line{font-family:var(--display);font-weight:600;font-size:clamp(22px,3vw,38px);letter-spacing:-.02em;line-height:1.2}
+.philo .line .dim{color:var(--ink-4)}
+.philo .line .gold{color:var(--gold)}
+.philo .sub{margin-top:14px;font-family:var(--mono);font-size:12px;color:var(--ink-3);letter-spacing:.08em}
+
+/* TIMELINE storytelling */
+#parcours{background:var(--c-0)}
+.tl-head{max-width:680px;margin:0 auto 70px;text-align:center}
+.tl-head h2{margin-top:18px}
+.tl-head p{margin-top:18px}
+.tl{position:relative;max-width:1080px;margin:0 auto}
+.tl::before{content:"";position:absolute;left:140px;top:10px;bottom:10px;width:1px;background:var(--line-2)}
+@media(max-width:860px){.tl::before{left:18px}}
+.step{display:grid;grid-template-columns:280px 1fr;gap:40px;padding:34px 0;position:relative}
+@media(max-width:860px){.step{grid-template-columns:1fr;gap:22px;padding:26px 0 26px 44px}}
+.step .when{position:relative}
+.step .when .clock{font-family:var(--mono);font-size:26px;font-weight:500;letter-spacing:.02em;color:var(--ink)}
+.step .when .lbl{margin-top:8px;font-size:15px;color:var(--ink-2);font-weight:500;max-width:210px}
+.step .when::after{content:"";position:absolute;left:140px;top:8px;width:11px;height:11px;border-radius:50%;background:var(--c-0);border:1px solid var(--line-3);transform:translateX(-50%);transition:.4s var(--ease)}
+@media(max-width:860px){.step .when::after{left:-26px}}
+.step.in .when::after{background:var(--gold);border-color:var(--gold);box-shadow:0 0 0 4px var(--gold-glow)}
+.step .media{min-width:0}
+
+/* PRODUCT tabs */
+#produit{background:var(--c-1);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.prod-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:34px}
+.prod-head p{max-width:420px;margin-top:16px}
+.tabs{display:flex;gap:6px;border:1px solid var(--line-2);border-radius:30px;padding:5px;background:var(--c-0);width:max-content;max-width:100%;overflow-x:auto}
+.tabs button{font-size:13px;font-weight:500;color:var(--ink-3);padding:9px 16px;border-radius:24px;transition:.25s;white-space:nowrap}
+.tabs button.on{background:rgba(255,255,255,.06);color:var(--ink)}
+.tab-panel{display:none;margin-top:26px}
+.tab-panel.on{display:block;animation:fade .4s var(--ease)}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+/* METIERS */
+.metiers{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:860px){.metiers{grid-template-columns:1fr 1fr}}
+@media(max-width:540px){.metiers{grid-template-columns:1fr}}
+.metier{border:1px solid var(--line);border-radius:var(--r);padding:24px;background:var(--c-2);transition:.3s var(--ease);position:relative;overflow:hidden;display:flex;flex-direction:column;min-height:170px}
+.metier:hover{border-color:var(--line-3);transform:translateY(-2px)}
+.metier .ic{color:var(--ink-2);margin-bottom:16px}
+.metier h4{font-size:17px;font-weight:600;margin-bottom:7px}
+.metier p{font-size:13px;color:var(--ink-3);line-height:1.5;flex:1}
+.metier .go{margin-top:14px;font-family:var(--mono);font-size:11px;color:var(--gold);display:flex;align-items:center;gap:7px}
+.metier .soon{margin-top:14px;font-family:var(--mono);font-size:10px;color:var(--ink-4)}
+
+/* PROOF */
+#preuves{background:var(--c-1);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.proof-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:54px;align-items:center}
+@media(max-width:900px){.proof-grid{grid-template-columns:1fr;gap:40px}}
+.proof-14{font-family:var(--display);font-weight:600;font-size:clamp(90px,13vw,170px);line-height:.85;letter-spacing:-.04em;
+  background:linear-gradient(180deg,#fff 18%,rgba(212,175,55,.85) 70%,rgba(212,175,55,.2));
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.proof-14 .u{display:block;font-size:14px;font-family:var(--mono);letter-spacing:.22em;color:var(--gold);-webkit-text-fill-color:var(--gold);margin-top:14px}
+.proof-list{margin-top:8px}
+.proof-row{display:flex;gap:16px;padding:20px 0;border-top:1px solid var(--line)}
+.proof-row .ic{flex:none;width:40px;height:40px;border-radius:10px;border:1px solid var(--line-2);background:var(--c-3);display:grid;place-items:center;color:var(--gold)}
+.proof-row h4{font-size:15.5px;font-weight:600;margin-bottom:5px}
+.proof-row p{font-size:13.5px;color:var(--ink-3);line-height:1.55}
+.demos{display:flex;gap:12px;margin-top:24px;flex-wrap:wrap}
+.demo-link{display:flex;align-items:center;gap:10px;border:1px solid var(--line-2);border-radius:var(--r-sm);padding:12px 15px;font-size:13px;transition:.3s;background:var(--c-2)}
+.demo-link:hover{border-color:var(--line-3);background:var(--c-3)}
+.demo-link .t{font-family:var(--mono);font-size:10px;color:var(--gold)}
+.demo-link .n{font-weight:500}
+.demo-link svg{stroke:var(--ink-3)}
+
+/* CTA / DEMO */
+#demo{background:var(--c-0)}
+.demo-shell{border:1px solid var(--line-2);border-radius:20px;background:var(--c-2);overflow:hidden;position:relative}
+.demo-glow{position:absolute;top:-50%;right:-10%;width:560px;height:560px;border-radius:50%;background:radial-gradient(circle,var(--gold-glow),transparent 62%);pointer-events:none;opacity:.5}
+.demo-grid{display:grid;grid-template-columns:1.1fr .9fr;position:relative;z-index:2}
+@media(max-width:880px){.demo-grid{grid-template-columns:1fr}}
+.demo-l{padding:52px 46px;border-right:1px solid var(--line)}
+@media(max-width:880px){.demo-l{border-right:none;border-bottom:1px solid var(--line);padding:40px 28px}}
+.demo-l h2{font-size:clamp(28px,3.6vw,44px);line-height:1.06}
+.demo-l h2 .gold{color:var(--gold)}
+.demo-l p{margin-top:18px;max-width:420px}
+.demo-l .pts{margin-top:26px;display:flex;flex-direction:column;gap:12px}
+.demo-l .pts .p{display:flex;align-items:flex-start;gap:11px;font-size:14px;color:var(--ink-2)}
+.demo-l .pts .p svg{flex:none;margin-top:3px;stroke:var(--gold)}
+.demo-r{padding:46px 40px;display:flex;flex-direction:column}
+@media(max-width:880px){.demo-r{padding:36px 28px}}
+.demo-r .meta{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin-bottom:22px}
+.demo-r .meta .row{display:flex;justify-content:space-between;padding:13px 16px;border-bottom:1px solid var(--line);font-size:13.5px}
+.demo-r .meta .row:last-child{border-bottom:none}
+.demo-r .meta .row .k{color:var(--ink-3)}
+.demo-r .meta .row .v{font-weight:500;font-family:var(--mono);font-size:12.5px}
+.demo-r .meta .row.hl{background:rgba(212,175,55,.05)}
+.demo-r .meta .row.hl .v{color:var(--gold)}
+.form .field{width:100%;background:var(--c-0);border:1px solid var(--line-2);border-radius:var(--r-sm);padding:13px 14px;font-size:14px;color:var(--ink);font-family:var(--body);margin-bottom:9px;outline:none;transition:.25s}
+.form .field::placeholder{color:var(--ink-4)}
+.form .field:focus{border-color:var(--gold)}
+.form button{width:100%;justify-content:center;margin-top:4px}
+.form .micro{margin-top:11px;text-align:center;font-size:11.5px;color:var(--ink-4)}
+.form .micro b{color:var(--gold-2);font-weight:500}
+.alt{display:flex;gap:9px;margin-top:16px}
+.alt a{flex:1;display:flex;align-items:center;justify-content:center;gap:8px;border:1px solid var(--line-2);border-radius:var(--r-sm);padding:11px;font-size:13px;font-weight:500;transition:.25s}
+.alt a:hover{border-color:var(--line-3);background:var(--c-3)}
+.alt a.wa svg{stroke:#25D366}
+.tel{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:12px;font-family:var(--mono);font-size:13px;color:var(--ink-2)}
+.tel svg{stroke:var(--gold)}
+.is-disabled{opacity:.4;pointer-events:none}
+.is-ph{cursor:default!important;opacity:.6}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+
+/* footer */
+footer{background:var(--c-0);border-top:1px solid var(--line);padding:56px 0 36px}
+.foot{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap}
+.foot .brand-c{max-width:300px}
+.foot .brand-c p{font-size:13px;color:var(--ink-4);line-height:1.6;margin-top:14px}
+.foot-cols{display:flex;gap:56px;flex-wrap:wrap}
+.foot-col h5{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-4);margin-bottom:15px}
+.foot-col a,.foot-col span{display:block;font-size:13.5px;color:var(--ink-2);margin-bottom:11px;transition:.25s}
+.foot-col a:hover{color:var(--gold)}
+.foot-col span{color:var(--ink-4)}
+.foot-bottom{margin-top:46px;padding-top:22px;border-top:1px solid var(--line);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-family:var(--mono);font-size:11px;color:var(--ink-4)}
+
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div class="bg-grid"></div>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="inner">
+    <div class="brand"><span class="lg">Λ</span>VΛIN <span class="sep">/</span> <span class="pp">DevisPilot</span></div>
+    <div class="nav-mid">
+      <a href="#parcours">Le parcours</a>
+      <a href="#produit">Produit</a>
+      <a href="#metiers">Métiers</a>
+      <a href="#preuves">Preuves</a>
+    </div>
+    <div class="nav-right">
+      <a href="#demo" class="nav-login">Se connecter</a>
+      <a href="#demo" class="btn btn-primary btn-sm">Demander une démo <svg class="ic" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-l">
+      <div class="badge rv in"><span class="dot"></span> DEVISPILOT · SYSTÈME DE CROISSANCE</div>
+      <h1 class="h-display rv in rv-d1">Transformez chaque demande<br/>en <span class="gold">chantier signé.</span></h1>
+      <p class="lead rv in rv-d2">DevisPilot aide les entreprises techniques à qualifier, suivre et convertir leurs opportunités commerciales — automatiquement, du premier message au devis signé.</p>
+      <div class="cta rv in rv-d2">
+        <a href="#demo" class="btn btn-primary">Demander une démo <svg class="ic" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a href="#parcours" class="btn btn-ghost">Voir le parcours</a>
+      </div>
+      <div class="under rv in rv-d3">
+        <span>14 ans d'expérience industrielle</span><span class="s"></span>
+        <span>HVAC · Élec · Industrie</span><span class="s"></span>
+        <span>Luxembourg & Grande Région</span>
+      </div>
+    </div>
+    <div class="hero-r rv in rv-d2">
+      <div class="glow"></div>
+      <!-- INTERFACE RÉELLE — boîte de réception, une demande arrive -->
+      <div class="app">
+        <div class="app-bar">
+          <div class="b"><span class="d">Λ</span> DevisPilot</div>
+          <div class="search"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg> Rechercher <span class="kbd">⌘K</span></div>
+          <div class="right"><span class="pill"><span class="dot"></span>En direct</span><span class="av"></span></div>
+        </div>
+        <div class="app-body">
+          <div class="app-side">
+            <div class="grp">PILOTAGE</div>
+            <a class="on"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke-width="1.7"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/></svg> Boîte <span class="ct">3</span></a>
+            <a><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke-width="1.7"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg> Pipeline</a>
+            <a><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke-width="1.7"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg> Clients</a>
+            <div class="grp">AUTOMATISATION</div>
+            <a><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke-width="1.7"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg> Relances</a>
+            <a><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke-width="1.7"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg> Calendrier</a>
+          </div>
+          <div class="app-main">
+            <div class="app-h"><div><div class="t">Boîte de réception</div><div class="s">Nouvelle demande à l'instant</div></div><div class="meta">08:12</div></div>
+            <div class="inbox">
+              <div class="req live">
+                <div class="top"><span class="new">NOUVEAU</span><span class="id">#REQ-4192</span><span class="time">08:12</span></div>
+                <div class="subject">Demande de devis — pompe à chaleur air/eau</div>
+                <div class="excerpt">« Bonjour, maison de 140 m² à Esch-sur-Alzette, je souhaite remplacer ma chaudière mazout… »</div>
+                <div class="tags"><span class="tag g">PAC</span><span class="tag">Résidentiel</span><span class="tag">Esch-sur-Alzette</span></div>
+              </div>
+              <div class="req">
+                <div class="top"><span class="id">#REQ-4191</span><span class="time" style="color:var(--ink-4)">07:48</span></div>
+                <div class="subject">Entretien climatisation — local commercial</div>
+                <div class="tags"><span class="tag">Clim</span><span class="tag">Contrat</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PHILOSOPHY -->
+<section class="philo">
+  <div class="wrap">
+    <div class="line rv">Une demande <span class="dim">entre.</span> &nbsp;Un <span class="gold">chantier</span> sort.</div>
+    <div class="sub rv rv-d1">CE QUE FAIT DEVISPILOT, EN UNE PHRASE.</div>
+  </div>
+</section>
+
+<!-- PARCOURS — chronologie -->
+<section id="parcours" class="sec">
+  <div class="wrap">
+    <div class="tl-head rv">
+      <span class="kicker">LE PARCOURS · <span class="gold">UNE MATINÉE TYPE</span></span>
+      <h2 class="h-section">Dix minutes. Zéro action manuelle.</h2>
+      <p class="lead">Suivez une vraie demande de devis, minute par minute, à travers le système. C'est exactement ce que vos clients ne voient pas — et ce qui fait la différence.</p>
+    </div>
+
+    <div class="tl">
+      <!-- 08:12 -->
+      <div class="step rv">
+        <div class="when"><div class="clock">08:12</div><div class="lbl">Une demande arrive.</div></div>
+        <div class="media">
+          <div class="app">
+            <div class="app-bar"><div class="b"><span class="d">Λ</span> DevisPilot</div><div class="right"><span class="pill"><span class="dot"></span>Boîte</span></div></div>
+            <div class="app-main" style="border:none">
+              <div class="app-h"><div class="t">Nouvelle demande</div><div class="meta">#REQ-4192</div></div>
+              <div class="req live">
+                <div class="top"><span class="new">NOUVEAU</span><span class="id">depuis le formulaire</span><span class="time">08:12</span></div>
+                <div class="subject">Pompe à chaleur air/eau — remplacement chaudière</div>
+                <div class="excerpt">Maison 140 m² · Esch-sur-Alzette · « le plus tôt possible »</div>
+              </div>
+              <div class="lrow" style="margin-top:8px"><span class="ic gold"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg></span> Accusé de réception envoyé au client <span class="when">+38 s</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 08:13 -->
+      <div class="step rv">
+        <div class="when"><div class="clock">08:13</div><div class="lbl">Qualification automatique.</div></div>
+        <div class="media">
+          <div class="app">
+            <div class="app-bar"><div class="b"><span class="d">Λ</span> DevisPilot</div><div class="right"><span class="pill">Qualification</span></div></div>
+            <div class="app-main" style="border:none">
+              <div class="app-h"><div class="t">Analyse de la demande</div><div class="meta">auto</div></div>
+              <div class="qa">
+                <div class="row"><span class="k">Besoin</span><span class="v">Pompe à chaleur air/eau</span><span class="chk"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg></span></div>
+                <div class="row"><span class="k">Budget estimé</span><span class="v">15 000 – 20 000 €</span><span class="chk"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg></span></div>
+                <div class="row"><span class="k">Zone</span><span class="v">Esch-sur-Alzette · couverte</span><span class="chk"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg></span></div>
+                <div class="row"><span class="k">Urgence</span><span class="v">Élevée</span></div>
+              </div>
+              <div class="qa-score" style="--p:84">
+                <div class="ring"><i>84</i></div>
+                <div class="tx"><b>Prospect prioritaire</b><span>à traiter en premier ce matin</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 08:15 -->
+      <div class="step rv">
+        <div class="when"><div class="clock">08:15</div><div class="lbl">Le projet est créé.</div></div>
+        <div class="media">
+          <div class="app">
+            <div class="app-bar"><div class="b"><span class="d">Λ</span> DevisPilot</div><div class="right"><span class="pill">Clients</span></div></div>
+            <div class="app-main" style="border:none">
+              <div class="app-h"><div class="t">Fiche client</div><div class="meta">#CLI-0287</div></div>
+              <div class="fiche">
+                <div class="head"><div class="ava">MW</div><div><div class="nm">M. Weber</div><div class="su">Particulier · Esch-sur-Alzette</div></div></div>
+                <div class="kv">
+                  <div class="c"><div class="k">PROJET</div><div class="v">PAC air/eau · remplacement</div></div>
+                  <div class="c"><div class="k">SOURCE</div><div class="v">Site web · formulaire</div></div>
+                  <div class="c"><div class="k">ÉTAPE</div><div class="v">Qualifié → Visite</div></div>
+                  <div class="c"><div class="k">PRIME ÉLIGIBLE</div><div class="v" style="color:var(--gold)">Klimabonus</div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 08:16 -->
+      <div class="step rv">
+        <div class="when"><div class="clock">08:16</div><div class="lbl">Le suivi est programmé.</div></div>
+        <div class="media">
+          <div class="app">
+            <div class="app-bar"><div class="b"><span class="d">Λ</span> DevisPilot</div><div class="right"><span class="pill">Relances</span></div></div>
+            <div class="app-main" style="border:none">
+              <div class="app-h"><div class="t">Séquence de suivi</div><div class="meta">active</div></div>
+              <div class="rows">
+                <div class="lrow"><span class="ic gold"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span> Visite proposée — 3 créneaux envoyés <span class="state on">FAIT</span></div>
+                <div class="lrow"><span class="ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span> Relance si pas de réponse <span class="when">dans 48 h</span></div>
+              </div>
+              <div class="seq">
+                <div class="s done">J+0 · Visite</div>
+                <div class="s now">J+2 · Relance 1</div>
+                <div class="s">J+5 · Relance 2</div>
+                <div class="s">J+9 · Rappel</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 08:18 -->
+      <div class="step rv">
+        <div class="when"><div class="clock">08:18</div><div class="lbl">Le devis part, prime déduite.</div></div>
+        <div class="media">
+          <div class="app">
+            <div class="app-bar"><div class="b"><span class="d">Λ</span> DevisPilot</div><div class="right"><span class="pill">Devis</span></div></div>
+            <div class="app-main" style="border:none">
+              <div class="app-h"><div class="t">Devis #DV-1183</div><div class="meta">prêt</div></div>
+              <div class="quote">
+                <div class="ql"><span class="k">PAC air/eau + pose</span><span>18 400 €</span></div>
+                <div class="ql"><span class="k">Mise en service</span><span>1 200 €</span></div>
+                <div class="ql"><span class="k prime">Klimabonus déduit</span><span class="prime">− 6 300 €</span></div>
+                <div class="ql tot"><span>Reste à charge</span><span>13 300 €</span></div>
+                <div class="sent"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg> Envoyé à M. Weber · notifié à l'ouverture</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 08:22 -->
+      <div class="step rv">
+        <div class="when"><div class="clock">08:22</div><div class="lbl">Le client signe.</div></div>
+        <div class="media">
+          <div class="app">
+            <div class="app-bar"><div class="b"><span class="d">Λ</span> DevisPilot</div><div class="right"><span class="pill"><span class="dot"></span>Signé</span></div></div>
+            <div class="signed">
+              <div class="seal"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg></div>
+              <h4>Chantier confirmé</h4>
+              <p>M. Weber a accepté le devis. Le projet passe en planification — dix minutes après sa première demande.</p>
+              <div class="amt">#DV-1183 · 13 300 € · signé</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUIT -->
+<section id="produit" class="sec">
+  <div class="wrap">
+    <div class="prod-head">
+      <div class="rv">
+        <span class="kicker">LE PRODUIT</span>
+        <h2 class="h-section" style="margin-top:16px">Un seul système.<br/>Toute votre activité commerciale.</h2>
+      </div>
+      <p class="lead rv rv-d1">Pas des cartes décoratives : les vues réelles que vos équipes utilisent au quotidien. Tout est relié — la demande, le client, la relance, le devis, le planning.</p>
+    </div>
+
+    <div class="tabs rv rv-d1" id="tabs">
+      <button class="on" data-tab="pipeline">Pipeline</button>
+      <button data-tab="auto">Automatisations</button>
+      <button data-tab="fiche">Fiches clients</button>
+      <button data-tab="cal">Calendrier</button>
+    </div>
+
+    <!-- Pipeline -->
+    <div class="tab-panel on" data-panel="pipeline">
+      <div class="app">
+        <div class="app-bar"><div class="b"><span class="d">Λ</span> DevisPilot</div><div class="search"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg> Filtrer</div><div class="right"><span class="pill">Pipeline</span><span class="av"></span></div></div>
+        <div class="app-main">
+          <div class="app-h"><div><div class="t">Pipeline commercial</div><div class="s">Aperçu produit · données illustratives</div></div><div class="meta">24 opportunités</div></div>
+          <div class="kanban">
+            <div class="kcol"><div class="h">Demande <span class="n">3</span></div>
+              <div class="kcard"><div class="nm">PAC · M. Weber</div><div class="mt"><span>Esch</span><span class="v">08:12</span></div></div>
+              <div class="kcard"><div class="nm">Clim · local commercial</div><div class="mt"><span>Contrat</span><span class="v">07:48</span></div></div></div>
+            <div class="kcol"><div class="h">Qualifié <span class="n">2</span></div>
+              <div class="kcard hot"><div class="nm">PAC · M. Weber</div><div class="mt"><span>Score 84</span><span class="v">chaud</span></div></div></div>
+            <div class="kcol"><div class="h">Visite <span class="n">4</span></div>
+              <div class="kcard"><div class="nm">SCI Krier</div><div class="mt"><span>Industrie</span><span class="v">J+2</span></div></div></div>
+            <div class="kcol"><div class="h">Devis <span class="n">5</span></div>
+              <div class="kcard hot"><div class="nm">Boulangerie Hoffmann</div><div class="mt"><span>+ prime</span><span class="v">ouvert</span></div></div></div>
+            <div class="kcol"><div class="h">Relance <span class="n">6</span></div>
+              <div class="kcard"><div class="nm">Mme Thill · PV</div><div class="mt"><span>auto J+2</span><span class="v">envoyée</span></div></div></div>
+            <div class="kcol"><div class="h">Signé <span class="n">4</span></div>
+              <div class="kcard"><div class="nm">Garage Reuter</div><div class="mt"><span>13 300 €</span><span class="v">✓</span></div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Automatisations -->
+    <div class="tab-panel" data-panel="auto">
+      <div class="app">
+        <div class="app-bar"><div class="b"><span class="d">Λ</span> DevisPilot</div><div class="right"><span class="pill"><span class="dot"></span>4 règles actives</span><span class="av"></span></div></div>
+        <div class="app-main">
+          <div class="app-h"><div><div class="t">Automatisations</div><div class="s">Ce que le système fait sans vous</div></div><div class="meta">aperçu produit</div></div>
+          <div class="rows">
+            <div class="lrow"><span class="ic gold"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg></span> <b>Accusé de réception</b> — à chaque nouvelle demande <span class="state on">ACTIF</span></div>
+            <div class="lrow"><span class="ic gold"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></span> <b>Qualification & score</b> — analyse besoin / budget / zone <span class="state on">ACTIF</span></div>
+            <div class="lrow"><span class="ic gold"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span> <b>Relance J+2</b> — si le devis reste sans réponse <span class="state on">ACTIF</span></div>
+            <div class="lrow"><span class="ic gold"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span> <b>Calcul des primes</b> — Klimabonus & aides locales <span class="state on">ACTIF</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Fiche -->
+    <div class="tab-panel" data-panel="fiche">
+      <div class="app">
+        <div class="app-bar"><div class="b"><span class="d">Λ</span> DevisPilot</div><div class="right"><span class="pill">Clients</span><span class="av"></span></div></div>
+        <div class="app-main">
+          <div class="app-h"><div><div class="t">Fiche client</div><div class="s">Tout l'historique au même endroit</div></div><div class="meta">#CLI-0287</div></div>
+          <div class="fiche">
+            <div class="head"><div class="ava">MW</div><div><div class="nm">M. Weber</div><div class="su">Particulier · Esch-sur-Alzette · depuis le 08:12</div></div></div>
+            <div class="kv">
+              <div class="c"><div class="k">PROJET</div><div class="v">PAC air/eau · remplacement chaudière</div></div>
+              <div class="c"><div class="k">BUDGET</div><div class="v">15 000 – 20 000 €</div></div>
+              <div class="c"><div class="k">DERNIER CONTACT</div><div class="v">Devis envoyé · 08:18</div></div>
+              <div class="c"><div class="k">PROCHAINE ACTION</div><div class="v" style="color:var(--gold)">Relance auto · J+2</div></div>
+            </div>
+            <div class="rows">
+              <div class="lrow"><span class="ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M4 4h16v16H4z"/><path d="M4 8h16"/></svg></span> Demande reçue <span class="when">08:12</span></div>
+              <div class="lrow"><span class="ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg></span> Devis #DV-1183 envoyé <span class="when">08:18</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Calendrier -->
+    <div class="tab-panel" data-panel="cal">
+      <div class="app">
+        <div class="app-bar"><div class="b"><span class="d">Λ</span> DevisPilot</div><div class="right"><span class="pill">Calendrier</span><span class="av"></span></div></div>
+        <div class="app-main">
+          <div class="app-h"><div><div class="t">Semaine du 9 juin</div><div class="s">Visites & interventions planifiées</div></div><div class="meta">aperçu produit</div></div>
+          <div class="cal">
+            <div class="ch"><span>LUN</span><span>MAR</span><span>MER</span><span>JEU</span><span>VEN</span></div>
+            <div class="grid">
+              <div class="cell"><div class="d">9</div><div class="ev g">09:00 Visite Weber</div></div>
+              <div class="cell"><div class="d">10</div></div>
+              <div class="cell"><div class="d">11</div><div class="ev">14:00 SCI Krier</div></div>
+              <div class="cell"><div class="d">12</div></div>
+              <div class="cell"><div class="d">13</div><div class="ev g">10:30 Pose PAC</div></div>
+              <div class="cell"><div class="d">16</div></div>
+              <div class="cell"><div class="d">17</div><div class="ev">08:00 Entretien clim</div></div>
+              <div class="cell"><div class="d">18</div></div>
+              <div class="cell"><div class="d">19</div><div class="ev">Relances auto</div></div>
+              <div class="cell"><div class="d">20</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- METIERS -->
+<section id="metiers" class="sec sec-line">
+  <div class="wrap">
+    <div class="tl-head rv" style="text-align:left;margin:0 0 50px">
+      <span class="kicker">CONÇU POUR VOTRE MÉTIER</span>
+      <h2 class="h-section" style="margin-top:16px">Le même système.<br/>Adapté à chaque terrain.</h2>
+    </div>
+    <div class="metiers">
+      <div class="metier rv"><div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-6h6v6"/></svg></div><h4>HVAC & Chauffage</h4><p>PAC, chaudières, primes Klimabonus intégrées au devis.</p><a href="https://chauffage-artisanal.vercel.app" target="_blank" rel="noopener" class="go">Voir un cas réel <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg></a></div>
+      <div class="metier rv rv-d1"><div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 2L3 14h7l-1 8 10-12h-7z"/></svg></div><h4>Électricité & IRVE</h4><p>Dépannage, mise aux normes, bornes de recharge, aides déduites.</p><a href="demonstrateur-electricien.html" class="go">Ouvrir le démonstrateur <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+      <div class="metier rv rv-d2"><div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg></div><h4>Maintenance industrielle</h4><p>Criticité, astreinte, contrats suivis et reporting.</p><a href="demonstrateur-industriel.html" class="go">Ouvrir le démonstrateur <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+      <div class="metier rv"><div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg></div><h4>Climatisation</h4><p>Installation, entretien, contrats récurrents et rappels automatiques.</p><div class="soon">Démonstrateur sur demande</div></div>
+      <div class="metier rv rv-d1"><div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="14" rx="1"/><path d="M3 9h18M8 4v14M13 4v14"/></svg></div><h4>Photovoltaïque</h4><p>Études, devis chiffrés, aides au solaire intégrées au parcours.</p><div class="soon">Démonstrateur sur demande</div></div>
+      <div class="metier rv rv-d2"><div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 0 0 5.4-5.4l-2.1 2.1-2-.5-.5-2z"/></svg></div><h4>Services techniques</h4><p>Plomberie, multiservices, dépannage : tout métier où une demande devient un devis.</p><div class="soon">Démonstrateur sur demande</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PREUVES -->
+<section id="preuves" class="sec">
+  <div class="wrap proof-grid">
+    <div class="rv">
+      <div class="proof-14">14<span class="u">ANS D'EXPÉRIENCE INDUSTRIELLE</span></div>
+    </div>
+    <div>
+      <span class="kicker rv">LA CRÉDIBILITÉ VIENT DU CONCRET</span>
+      <h2 class="h-section rv rv-d1" style="margin-top:16px;font-size:clamp(26px,3.4vw,40px)">Pas de chiffres inventés.<br/>Du terrain, un produit, un process.</h2>
+      <div class="proof-list">
+        <div class="proof-row rv rv-d1"><div class="ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 21h18M5 21V8l7-5 7 5v13"/></svg></div><div><h4>Né dans l'industrie</h4><p>14 ans à l'intérieur des métiers techniques. DevisPilot est conçu par des gens qui connaissent vos marges, vos urgences et vos clients.</p></div></div>
+        <div class="proof-row rv rv-d2"><div class="ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg></div><div><h4>Un produit, pas un slogan</h4><p>Le système que vous venez de voir n'est pas une illustration : c'est la logique réelle du parcours demande → chantier.</p></div></div>
+        <div class="proof-row rv rv-d2"><div class="ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg></div><div><h4>Des démonstrateurs réels</h4><p>Explorez le système appliqué à des métiers concrets — pas des promesses, des pages que vous pouvez ouvrir maintenant.</p></div></div>
+      </div>
+      <div class="demos rv rv-d2">
+        <a href="https://chauffage-artisanal.vercel.app" target="_blank" rel="noopener" class="demo-link"><div><div class="t">CAS RÉEL</div><div class="n">Chauffage Artisanal</div></div><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg></a>
+        <a href="demonstrateur-electricien.html" class="demo-link"><div><div class="t">DÉMO</div><div class="n">Électricien</div></div><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a href="demonstrateur-industriel.html" class="demo-link"><div><div class="t">DÉMO</div><div class="n">Industrie</div></div><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEMO / CTA -->
+<section id="demo" class="sec sec-line">
+  <div class="wrap">
+    <div class="demo-shell rv">
+      <div class="demo-glow"></div>
+      <div class="demo-grid">
+        <div class="demo-l">
+          <span class="kicker">DEMANDER UNE DÉMO</span>
+          <h2 style="margin-top:16px">Voyez DevisPilot tourner sur <span class="gold">votre activité.</span></h2>
+          <p class="lead">15 minutes. On branche le parcours sur votre métier et on vous montre, concrètement, où vous récupérez les demandes que vous perdez aujourd'hui.</p>
+          <div class="pts">
+            <div class="p"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M20 6L9 17l-5-5"/></svg> Démonstration en direct, adaptée à votre métier</div>
+            <div class="p"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M20 6L9 17l-5-5"/></svg> Diagnostic de vos fuites de demandes actuelles</div>
+            <div class="p"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M20 6L9 17l-5-5"/></svg> Feuille de route prioritaire, sans engagement</div>
+          </div>
+        </div>
+        <div class="demo-r">
+          <div class="meta">
+            <div class="row"><span class="k">Durée</span><span class="v">15 minutes</span></div>
+            <div class="row"><span class="k">Format</span><span class="v">Démo en direct</span></div>
+            <div class="row"><span class="k">Engagement</span><span class="v">Aucun</span></div>
+            <div class="row hl"><span class="k">Disponibilité</span><span class="v">3 créneaux / semaine</span></div>
+          </div>
+          <form class="form" id="demoForm" action="#" method="POST">
+            <input type="hidden" name="_subject" value="Demande de démo DevisPilot — VΛIN STUDIO" />
+            <label class="sr-only" for="f-n">Nom & entreprise</label>
+            <input id="f-n" class="field" type="text" name="nom" placeholder="Nom & entreprise" required />
+            <label class="sr-only" for="f-m">Email professionnel</label>
+            <input id="f-m" class="field" type="email" name="email" placeholder="Email professionnel" required />
+            <label class="sr-only" for="f-metier">Métier</label>
+            <input id="f-metier" class="field" type="text" name="metier" placeholder="Votre métier (HVAC, élec, industrie…)" />
+            <button class="btn btn-primary" id="demoSubmit" type="submit">Demander ma démo <svg class="ic" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+            <div class="micro" id="demoMicro"><b>Sans engagement · 0 spam.</b> Réponse sous 24 h.</div>
+          </form>
+          <div class="alt">
+            <a id="bookBtn" target="_blank" rel="noopener" hidden><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg> Réserver</a>
+            <a id="waBtn" class="wa" target="_blank" rel="noopener" hidden><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 11.5a8.38 8.38 0 0 1-8.5 8.5 8.5 8.5 0 0 1-3.8-.9L3 21l1.9-5.7a8.5 8.5 0 1 1 16.1-3.8z"/></svg> WhatsApp</a>
+          </div>
+          <a class="tel is-ph" id="telLine" title="Téléphone à configurer"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg> <span class="tel-display">+352 XX XX XX XX</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div class="brand-c">
+        <div class="brand"><span class="lg">Λ</span>VΛIN <span class="sep">/</span> <span class="pp">DevisPilot</span></div>
+        <p>Le système qui transforme chaque demande de devis en chantier. Conçu pour les entreprises techniques du Luxembourg & de la Grande Région.</p>
+      </div>
+      <div class="foot-cols">
+        <div class="foot-col"><h5>Produit</h5><a href="#parcours">Le parcours</a><a href="#produit">Fonctions</a><a href="#metiers">Métiers</a></div>
+        <div class="foot-col"><h5>Preuves</h5><a href="https://chauffage-artisanal.vercel.app" target="_blank" rel="noopener">Cas réel</a><a href="demonstrateur-electricien.html">Démo électricien</a><a href="demonstrateur-industriel.html">Démo industrie</a></div>
+        <div class="foot-col"><h5>Contact</h5><a href="#demo">Demander une démo</a><a id="footTel" class="is-ph"><span class="tel-display">+352 XX XX XX XX</span></a><a href="mailto:hello@vainstudio.lu">hello@vainstudio.lu</a></div>
+      </div>
+    </div>
+    <div class="foot-bottom"><span>© 2026 VΛIN STUDIO — DEVISPILOT</span><span>UNE DEMANDE ENTRE. UN CHANTIER SORT.</span></div>
+  </div>
+</footer>
+
+<script>
+/* ⚙️ CONFIG — identique à index.html. Vide = canal désactivé proprement. */
+var VAIN_CONFIG={formspreeId:"",calendly:"",whatsapp:"",phoneDial:"",phoneDisplay:""};
+(function(){
+  var C=VAIN_CONFIG;
+  var form=document.getElementById('demoForm'),btn=document.getElementById('demoSubmit'),micro=document.getElementById('demoMicro');
+  if(form){
+    if(C.formspreeId){form.action='https://formspree.io/f/'+C.formspreeId;}
+    else{btn.classList.add('is-disabled');btn.setAttribute('aria-disabled','true');form.addEventListener('submit',function(e){e.preventDefault();});
+      if(micro)micro.innerHTML='<b>Démo en cours d’activation.</b> Le formulaire sera opérationnel dès la configuration.';}
+  }
+  var book=document.getElementById('bookBtn');if(book){if(C.calendly){book.href=C.calendly;book.hidden=false;}else{book.hidden=true;}}
+  var waUrl=C.whatsapp?'https://wa.me/'+C.whatsapp+'?text='+encodeURIComponent('Bonjour VΛIN, je souhaite une démo DevisPilot.'):'';
+  var wa=document.getElementById('waBtn');if(wa){if(waUrl){wa.href=waUrl;wa.hidden=false;}else{wa.hidden=true;}}
+  ['telLine','footTel'].forEach(function(id){var el=document.getElementById(id);if(!el)return;var d=el.querySelector('.tel-display');
+    if(C.phoneDial){el.href='tel:'+C.phoneDial;el.classList.remove('is-ph');el.removeAttribute('title');if(d&&C.phoneDisplay)d.textContent=C.phoneDisplay;}
+    else{el.removeAttribute('href');el.classList.add('is-ph');}});
+})();
+
+/* nav scrolled */
+addEventListener('scroll',function(){document.getElementById('nav').classList.toggle('scrolled',scrollY>30);});
+
+/* reveal + timeline active */
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');if(!e.target.classList.contains('step'))io.unobserve(e.target);}else if(e.target.classList.contains('step')){e.target.classList.remove('in');}});},{threshold:.18,rootMargin:"-8% 0px -8% 0px"});
+document.querySelectorAll('.rv,.step').forEach(function(el){io.observe(el);});
+
+/* tabs */
+var tabs=document.getElementById('tabs');
+if(tabs){tabs.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;
+  tabs.querySelectorAll('button').forEach(function(x){x.classList.toggle('on',x===b);});
+  var t=b.getAttribute('data-tab');
+  document.querySelectorAll('.tab-panel').forEach(function(p){p.classList.toggle('on',p.getAttribute('data-panel')===t);});
+});}
+</script>
+</body>
+</html>

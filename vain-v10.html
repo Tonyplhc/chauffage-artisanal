@@ -1,0 +1,1168 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>DEVISPILOT OS — Operating System for Revenue</title>
+<meta name="description" content="DevisPilot OS : l'operating system des entreprises techniques. Chaque demande est captée, chiffrée, suivie, relancée, signée, planifiée, mesurée. Votre entreprise tourne déjà dedans." />
+<meta name="theme-color" content="#020203" />
+<link rel="canonical" href="https://vainstudio.lu/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="VΛIN STUDIO" />
+<meta property="og:title" content="DEVISPILOT OS — Operating System for Revenue" />
+<meta property="og:description" content="Une demande entre. Le système la capte, la chiffre, la signe, la planifie, la mesure." />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23020203'/%3E%3Ctext x='50' y='69' font-family='Space Grotesk,Arial' font-size='60' font-weight='700' fill='%23D4AF37' text-anchor='middle'%3E%CE%9B%3C/text%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+/* ════════════════════════════════════════════════════════════
+   DEVISPILOT OS — V10 · OPERATING SYSTEM FOR REVENUE
+   Le logiciel est le site. Le site est le logiciel.
+   ────────────────────────────────────────────────────────────
+   Noir absolu. Or ultra contrôlé (argent/action).
+   Rouge = pertes, uniquement. Vert = signé, uniquement.
+   Chaque écran gagne de l'argent ou économise du temps. Sinon il
+   n'existe pas. (Planning vit dans Visites & Chantiers ;
+   Automatisations vit dans Communications — pas d'écrans creux.)
+   ════════════════════════════════════════════════════════════ */
+:root{
+  --s0:#020203;--s1:#070709;--s2:#0b0b0e;--s3:#0f0f13;--s4:#141419;
+  --hi:linear-gradient(180deg,rgba(255,255,255,.045),transparent 36%);
+  --l1:rgba(255,255,255,.05);--l2:rgba(255,255,255,.095);--l3:rgba(255,255,255,.16);
+  --ink:#FBFBFC;--ink2:rgba(255,255,255,.6);--ink3:rgba(255,255,255,.38);--ink4:rgba(255,255,255,.22);
+  --au:#D4AF37;--au2:#EDDCA6;--auD:rgba(212,175,55,.12);--auL:rgba(212,175,55,.36);
+  --rd:#E5484D;--rd2:#F2A0A3;--rdD:rgba(229,72,77,.11);--rdL:rgba(229,72,77,.38);
+  --gn:#30C463;--gn2:#9BE8B6;--gnD:rgba(48,196,99,.12);--gnL:rgba(48,196,99,.4);
+  --r1:6px;--r2:10px;--r3:14px;--r4:20px;
+  --tf:.15s cubic-bezier(.2,.7,.2,1);--tm:.3s cubic-bezier(.2,.7,.2,1);--ts:.5s cubic-bezier(.16,1,.3,1);
+  --fd:'Space Grotesk','Inter',sans-serif;--fb:'Inter',sans-serif;--fm:'JetBrains Mono',ui-monospace,monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:auto}
+body{background:var(--s0);color:var(--ink);font-family:var(--fb);line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::selection{background:var(--au);color:#0a0a0a}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:none;cursor:pointer;text-align:left}
+:focus-visible{outline:1px solid var(--au);outline-offset:2px;border-radius:4px}
+.fm{font-family:var(--fm);letter-spacing:.02em}
+h1,h2,h3,h4{font-family:var(--fd);font-weight:600;letter-spacing:-.02em;line-height:1.05}
+.money{font-family:var(--fd);font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+
+#rail{position:relative;z-index:0}
+#rail .seg{height:96vh}
+#rail .seg.first{height:112vh}
+
+#shell{position:fixed;inset:11px;z-index:10;display:flex;flex-direction:column;
+  border:1px solid var(--l2);border-radius:var(--r4);overflow:hidden;
+  background:
+    radial-gradient(1100px 460px at 88% -8%,rgba(212,175,55,.045),transparent 60%),
+    radial-gradient(800px 400px at -8% 112%,rgba(255,255,255,.02),transparent 60%),
+    var(--s1);
+  box-shadow:0 1px 0 rgba(255,255,255,.05) inset,0 80px 160px -80px rgba(0,0,0,.98)}
+@media(max-width:680px){#shell{inset:6px;border-radius:14px}}
+
+#top{display:flex;align-items:center;gap:11px;padding:9px 13px;border-bottom:1px solid var(--l1);background:rgba(2,2,3,.65);backdrop-filter:blur(16px);flex:none}
+#top .b{display:flex;align-items:center;gap:9px;font-family:var(--fd);font-weight:600;font-size:13.5px;white-space:nowrap}
+#top .b .d{width:20px;height:20px;border-radius:6px;background:var(--au);color:#0a0a0a;display:grid;place-items:center;font-size:12px;font-weight:700}
+#top .b .os{color:var(--ink3);font-weight:500;font-size:11px;letter-spacing:.1em}
+#top .q{display:flex;align-items:center;gap:8px;border:1px solid var(--l2);border-radius:var(--r1);padding:6px 11px;color:var(--ink4);font-size:12px;background:var(--s1);min-width:190px;cursor:pointer;transition:border-color var(--tf)}
+#top .q:hover{border-color:var(--l3)}
+#top .q .k{margin-left:auto;font-family:var(--fm);font-size:9px;border:1px solid var(--l2);border-radius:4px;padding:1px 5px;color:var(--ink3)}
+#top .sp{flex:1}
+#top .stake{font-family:var(--fm);font-size:9.5px;color:var(--au2);border:1px solid var(--auL);border-radius:20px;padding:4px 10px;white-space:nowrap;display:flex;gap:7px;align-items:center}
+#top .stake i{width:6px;height:6px;border-radius:50%;background:var(--au);animation:beat 2.4s infinite}
+@keyframes beat{0%,100%{box-shadow:0 0 0 0 rgba(212,175,55,.5)}55%{box-shadow:0 0 0 5px rgba(212,175,55,0)}}
+#clock{font-family:var(--fm);font-size:11px;color:var(--ink2);font-variant-numeric:tabular-nums;white-space:nowrap}
+#bellBtn{position:relative;width:29px;height:29px;border-radius:var(--r1);border:1px solid var(--l2);display:grid;place-items:center;color:var(--ink3)}
+#bellBtn:hover{border-color:var(--l3)}
+#bellBtn .n{position:absolute;top:-5px;right:-5px;min-width:15px;height:15px;border-radius:8px;background:var(--au);color:#0a0a0a;font-family:var(--fm);font-size:9px;font-weight:600;display:grid;place-items:center;padding:0 4px}
+#top .cta{background:var(--au);color:#0a0a0a;font-weight:600;font-size:12.5px;padding:8px 14px;border-radius:var(--r2);display:flex;align-items:center;gap:8px;white-space:nowrap;transition:transform var(--tf),box-shadow var(--tm)}
+#top .cta:hover{transform:translateY(-1px);box-shadow:0 12px 32px -12px rgba(212,175,55,.55)}
+@media(max-width:960px){#top .q{display:none}}
+@media(max-width:680px){#top .stake,#clock{display:none}#top .cta{font-size:11.5px;padding:7px 10px}#top .b .os{display:none}}
+
+#body{display:flex;flex:1;min-height:0}
+#side{width:192px;flex:none;border-right:1px solid var(--l1);background:rgba(2,2,3,.5);padding:8px;display:flex;flex-direction:column;overflow-y:auto;scrollbar-width:none}
+#side::-webkit-scrollbar{display:none}
+#side .g{font-family:var(--fm);font-size:8.5px;letter-spacing:.16em;color:var(--ink4);padding:9px 9px 5px}
+#side button{display:flex;align-items:center;gap:8px;width:100%;padding:6.5px 9px;border-radius:var(--r1);font-size:12px;color:var(--ink2);transition:background var(--tf),color var(--tf)}
+#side button svg{stroke:var(--ink3);flex:none;transition:stroke var(--tf)}
+#side button:hover{background:rgba(255,255,255,.035)}
+#side button.on{background:rgba(255,255,255,.06);color:var(--ink)}
+#side button.on svg{stroke:var(--au)}
+#side button .c{margin-left:auto;font-family:var(--fm);font-size:8.5px;color:var(--ink4)}
+#side button .c.rd{color:var(--rd2)}
+#side button .c.gd{color:var(--au2)}
+#side button .c.gn{color:var(--gn2)}
+#side .push{flex:1}
+#side .hint{font-family:var(--fm);font-size:8.5px;color:var(--ink4);padding:9px;border-top:1px solid var(--l1);line-height:1.8}
+#side .hint b{color:var(--ink3);font-weight:500;border:1px solid var(--l2);border-radius:3px;padding:0 4px}
+@media(max-width:920px){#side{display:none}}
+
+#ws{flex:1;position:relative;min-width:0}
+.view{position:absolute;inset:0;padding:16px 18px;opacity:0;transform:translateY(12px) scale(.996);transition:opacity var(--ts),transform var(--ts);pointer-events:none;overflow-y:auto;overflow-x:hidden;scrollbar-width:thin;scrollbar-color:var(--l2) transparent}
+.view::-webkit-scrollbar{width:6px}.view::-webkit-scrollbar-thumb{background:var(--l2);border-radius:6px}
+.view.on{opacity:1;transform:none;pointer-events:auto}
+@media(max-width:680px){.view{padding:12px}}
+
+#status{display:flex;align-items:center;gap:12px;padding:6px 13px;border-top:1px solid var(--l1);background:rgba(2,2,3,.65);font-family:var(--fm);font-size:9px;color:var(--ink4);flex:none;white-space:nowrap;overflow:hidden}
+#status .au{color:var(--au2)}#status .rd{color:var(--rd2)}#status .gn{color:var(--gn2)}
+#status .sep{width:3px;height:3px;border-radius:50%;background:var(--ink4);flex:none}
+#status .mid{flex:1;text-align:center;overflow:hidden;text-overflow:ellipsis}
+@media(max-width:680px){#status .hidemb{display:none}}
+
+/* ── briques ── */
+.note{position:relative;border:1px solid var(--auL);border-radius:var(--r3);background:linear-gradient(180deg,var(--auD),transparent 130%);padding:16px 18px;margin-bottom:14px;overflow:hidden}
+.note::before{content:"";position:absolute;inset:0;background:var(--hi);pointer-events:none;border-radius:inherit}
+.note .k{font-family:var(--fm);font-size:9px;letter-spacing:.2em;color:var(--au);margin-bottom:8px}
+.note h1,.note h2{font-size:clamp(19px,2.4vw,29px);letter-spacing:-.025em}
+.note .au{color:var(--au)}.note .rd{color:var(--rd)}.note .gn{color:var(--gn)}
+.note p{font-size:13px;color:var(--ink2);margin-top:8px;line-height:1.6;max-width:660px}
+.note .cta-row{display:flex;align-items:center;gap:12px;margin-top:12px;flex-wrap:wrap}
+.note .btn{background:var(--au);color:#0a0a0a;font-weight:600;font-size:13px;padding:10px 17px;border-radius:var(--r2);display:inline-flex;align-items:center;gap:9px;transition:transform var(--tf),box-shadow var(--tm)}
+.note .btn:hover{transform:translateY(-1px);box-shadow:0 12px 32px -14px rgba(212,175,55,.55)}
+.note .gh{font-size:12px;color:var(--ink3)}
+.note .gh b{color:var(--ink2);font-weight:500}
+.note.danger{border-color:var(--rdL);background:linear-gradient(180deg,var(--rdD),transparent 130%)}
+.note.danger .k{color:var(--rd2)}
+
+.pane{position:relative;border:1px solid var(--l1);border-radius:var(--r3);background:var(--s2);overflow:hidden;display:flex;flex-direction:column}
+.pane::before{content:"";position:absolute;inset:0;background:var(--hi);pointer-events:none;border-radius:inherit;z-index:1}
+.pane>*{position:relative;z-index:2}
+.pane .ph{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:9px 12px;border-bottom:1px solid var(--l1);background:rgba(2,2,3,.55)}
+.pane .ph .t{font-size:12px;font-weight:600;font-family:var(--fd)}
+.pane .ph .m{font-family:var(--fm);font-size:8.5px;color:var(--ink4)}
+.pane .pb{padding:10px 11px;display:flex;flex-direction:column;gap:6px;flex:1}
+.grid2{display:grid;grid-template-columns:1.05fr .95fr;gap:12px}
+@media(max-width:880px){.grid2{grid-template-columns:1fr}}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+@media(max-width:880px){.grid3{grid-template-columns:1fr}}
+
+.stat{position:relative;border:1px solid var(--l1);border-radius:var(--r2);background:var(--s2);padding:11px 13px;overflow:hidden}
+.stat::before{content:"";position:absolute;inset:0;background:var(--hi);pointer-events:none}
+.stat .k{font-family:var(--fm);font-size:8.5px;letter-spacing:.1em;color:var(--ink4);text-transform:uppercase}
+.stat .v{font-family:var(--fd);font-weight:600;font-size:clamp(17px,1.9vw,24px);margin-top:5px;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.stat .v small{font-size:.6em;color:var(--ink3);font-weight:500}
+.stat .sub{font-family:var(--fm);font-size:8px;color:var(--ink4);margin-top:3px}
+.stat.gd{border-color:var(--auL)}.stat.gd .v{color:var(--au2)}
+.stat.rd{border-color:var(--rdL)}.stat.rd .v{color:var(--rd2)}
+.stat.gn{border-color:var(--gnL)}.stat.gn .v{color:var(--gn2)}
+.stat.big .v{font-size:clamp(22px,2.6vw,31px)}
+.statrow{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin-bottom:12px}
+@media(max-width:880px){.statrow{grid-template-columns:repeat(2,1fr)}}
+
+.lr{display:flex;align-items:center;gap:9px;padding:7.5px 10px;border:1px solid var(--l1);border-radius:var(--r2);background:var(--s3);font-size:11px;color:var(--ink2)}
+.lr .ic{width:21px;height:21px;border-radius:5px;background:rgba(255,255,255,.04);display:grid;place-items:center;flex:none}
+.lr .ic svg{stroke:currentColor}
+.lr .ic.au{background:var(--auD);color:var(--au)}
+.lr .ic.rd{background:var(--rdD);color:var(--rd)}
+.lr .ic.gn{background:var(--gnD);color:var(--gn)}
+.lr b{color:var(--ink);font-weight:500}
+.lr .w{margin-left:auto;font-family:var(--fm);font-size:8px;color:var(--ink4);flex:none}
+.lr .eur{margin-left:auto;font-family:var(--fd);font-weight:600;font-size:12.5px;font-variant-numeric:tabular-nums;flex:none}
+.lr .eur.gd{color:var(--au2)}.lr .eur.rd{color:var(--rd2)}.lr .eur.gn{color:var(--gn2)}
+.lr .st{margin-left:auto;font-family:var(--fm);font-size:8px;border:1px solid var(--l2);border-radius:4px;padding:2px 6px;flex:none;color:var(--ink3)}
+.lr .st.gn{color:var(--gn2);border-color:var(--gnL)}
+.lr .st.au{color:var(--au2);border-color:var(--auL)}
+
+.kv{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.kv .c{border:1px solid var(--l1);border-radius:var(--r1);padding:7px 9px;background:var(--s3)}
+.kv .c .k{font-family:var(--fm);font-size:7.5px;color:var(--ink4);letter-spacing:.08em}
+.kv .c .v{font-size:11px;font-weight:500;margin-top:2px}
+.fhead{display:flex;align-items:center;gap:9px;margin-bottom:8px}
+.fhead .ava{width:32px;height:32px;border-radius:9px;background:linear-gradient(135deg,#26262d,#131318);border:1px solid var(--l2);display:grid;place-items:center;font-family:var(--fd);font-weight:600;font-size:10.5px;color:var(--ink2)}
+.fhead .nm{font-size:12.5px;font-weight:600}
+.fhead .su{font-family:var(--fm);font-size:8.5px;color:var(--ink4)}
+
+.qt .l{display:flex;justify-content:space-between;padding:6.5px 0;border-bottom:1px solid var(--l1);font-size:11px}
+.qt .l .k{color:var(--ink3)}
+.qt .l.tot{border-bottom:none;border-top:1px solid var(--l2);margin-top:4px;padding-top:9px;font-weight:600;font-size:12.5px}
+.qt .au{color:var(--au)}
+.prob{height:7px;border-radius:5px;background:rgba(255,255,255,.06);overflow:hidden;margin-top:6px}
+.prob i{display:block;height:100%;border-radius:5px;background:linear-gradient(90deg,var(--au2),var(--au));width:0;transition:width 1s var(--ts)}
+.ring{width:46px;height:46px;border-radius:50%;flex:none;display:grid;place-items:center;background:conic-gradient(var(--au) calc(var(--p,74)*1%),rgba(255,255,255,.07) 0)}
+.ring i{width:36px;height:36px;border-radius:50%;background:var(--s2);display:grid;place-items:center;font-family:var(--fd);font-weight:600;font-size:11px;font-style:normal}
+.ring.gn{background:conic-gradient(var(--gn) calc(var(--p,74)*1%),rgba(255,255,255,.07) 0)}
+
+/* timeline entreprise (home) */
+.tl{display:flex;flex-direction:column;gap:5px}
+.te{display:flex;align-items:center;gap:9px;padding:7px 10px;border:1px solid var(--l1);border-radius:var(--r2);background:var(--s3);font-size:11px;color:var(--ink2);opacity:0;transform:translateY(-6px);animation:tein .4s forwards}
+@keyframes tein{to{opacity:1;transform:none}}
+.te .tt{font-family:var(--fm);font-size:9.5px;color:var(--au2);font-variant-numeric:tabular-nums;flex:none;width:42px}
+.te .ic{width:20px;height:20px;border-radius:5px;background:rgba(255,255,255,.04);display:grid;place-items:center;flex:none;color:var(--ink2)}
+.te .ic svg{stroke:currentColor}
+.te.au .ic{background:var(--auD);color:var(--au)}
+.te.gn .ic{background:var(--gnD);color:var(--gn)}
+.te b{color:var(--ink);font-weight:500}
+.te .eur{color:var(--au2);font-weight:600}
+.te .eur.gn{color:var(--gn2)}
+.te .ref{margin-left:auto;font-family:var(--fm);font-size:8px;color:var(--ink4);flex:none}
+
+/* visites — créneaux + tournée */
+.slot{display:flex;align-items:center;gap:10px;padding:9px 11px;border:1px solid var(--l1);border-radius:var(--r2);background:var(--s3);font-size:11.5px;cursor:pointer;transition:border-color var(--tf),transform var(--tf)}
+.slot:hover{border-color:var(--auL);transform:translateX(2px)}
+.slot.best{border-color:var(--auL);background:linear-gradient(180deg,var(--auD),var(--s3))}
+.slot .d{font-family:var(--fm);font-size:10px;color:var(--au2);width:86px;flex:none}
+.slot .why{color:var(--ink3);font-size:10px}
+.slot .pick{margin-left:auto;font-family:var(--fm);font-size:8px;color:var(--au);border:1px solid var(--auL);border-radius:4px;padding:2px 7px;flex:none}
+.route{display:flex;align-items:center;gap:0;margin-top:8px;flex-wrap:wrap}
+.route .stop{display:flex;align-items:center;gap:7px;font-family:var(--fm);font-size:9px;color:var(--ink2);border:1px solid var(--l2);border-radius:20px;padding:5px 10px;background:var(--s3)}
+.route .stop i{width:6px;height:6px;border-radius:50%;background:var(--au)}
+.route .leg{font-family:var(--fm);font-size:8px;color:var(--ink4);padding:0 7px}
+
+/* chantiers */
+.cht{display:flex;flex-direction:column;gap:6px}
+.cstep{display:flex;align-items:center;gap:9px;padding:8px 10px;border:1px solid var(--l1);border-radius:var(--r2);background:var(--s3);font-size:11px}
+.cstep .n{width:18px;height:18px;border-radius:50%;border:1px solid var(--l3);display:grid;place-items:center;font-family:var(--fm);font-size:8px;color:var(--ink3);flex:none}
+.cstep.done{border-color:var(--gnL)}
+.cstep.done .n{background:var(--gn);border-color:var(--gn);color:#06130a}
+.cstep.now{border-color:var(--auL)}
+.cstep.now .n{border-color:var(--au);color:var(--au)}
+.cstep .w{margin-left:auto;font-family:var(--fm);font-size:8px;color:var(--ink4)}
+
+/* SOC communications */
+.soc{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:10px}
+@media(max-width:880px){.soc{grid-template-columns:repeat(2,1fr)}}
+.soc .s{border:1px solid var(--l1);border-radius:var(--r2);background:var(--s2);padding:10px 11px;position:relative;overflow:hidden}
+.soc .s::before{content:"";position:absolute;inset:0;background:var(--hi);pointer-events:none}
+.soc .s .k{font-family:var(--fm);font-size:8px;letter-spacing:.08em;color:var(--ink4);text-transform:uppercase}
+.soc .s .v{font-family:var(--fd);font-weight:600;font-size:22px;margin-top:4px;font-variant-numeric:tabular-nums}
+.soc .s .v.au{color:var(--au2)}
+.soc .s .v.gn{color:var(--gn2)}
+
+/* urgences */
+.alert{border:1px solid var(--rdL);border-radius:var(--r3);background:linear-gradient(180deg,var(--rdD),var(--s2) 60%);padding:13px 14px;display:flex;flex-direction:column;gap:8px;transition:border-color var(--tm),background var(--tm)}
+.alert .ah{display:flex;align-items:center;gap:9px}
+.alert .ah .tag{font-family:var(--fm);font-size:8px;color:var(--rd2);border:1px solid var(--rdL);border-radius:4px;padding:2px 7px;letter-spacing:.1em}
+.alert .ah .id{font-family:var(--fm);font-size:9px;color:var(--ink4)}
+.alert .ah .eur{margin-left:auto;font-family:var(--fd);font-weight:600;font-size:18px;color:var(--rd2);font-variant-numeric:tabular-nums}
+.alert .why{font-size:11.5px;color:var(--ink2)}
+.alert .why b{color:var(--ink)}
+.alert .act{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.alert .act .rec{font-family:var(--fm);font-size:9px;color:var(--ink3)}
+.alert .act .rec b{color:var(--au2);font-weight:500}
+.alert .exec{margin-left:auto;background:var(--au);color:#0a0a0a;font-weight:600;font-size:11.5px;padding:7px 14px;border-radius:var(--r2);transition:transform var(--tf),box-shadow var(--tm)}
+.alert .exec:hover{transform:translateY(-1px);box-shadow:0 10px 26px -12px rgba(212,175,55,.55)}
+.alert.done{border-color:var(--gnL);background:linear-gradient(180deg,var(--gnD),var(--s2) 60%)}
+.alert.done .ah .tag{color:var(--gn2);border-color:var(--gnL)}
+.alert.done .ah .eur{color:var(--gn2)}
+.alert.done .exec{background:var(--gnD);color:var(--gn2);pointer-events:none;border:1px solid var(--gnL)}
+
+/* radar pertes */
+.radar{display:grid;grid-template-columns:repeat(8,1fr);gap:5px}
+@media(max-width:680px){.radar{grid-template-columns:repeat(4,1fr)}}
+.cell{aspect-ratio:1.5;border-radius:var(--r1);background:rgba(255,255,255,.025);border:1px solid var(--l1);position:relative;display:flex;flex-direction:column;justify-content:flex-end;padding:6px;overflow:hidden}
+.cell.h1{background:rgba(229,72,77,.08);border-color:rgba(229,72,77,.2)}
+.cell.h2{background:rgba(229,72,77,.16);border-color:rgba(229,72,77,.32)}
+.cell.h3{background:rgba(229,72,77,.28);border-color:var(--rdL);box-shadow:0 0 22px -6px rgba(229,72,77,.3)}
+.cell .e{font-family:var(--fd);font-weight:600;font-size:11px;color:var(--rd2);font-variant-numeric:tabular-nums}
+.cell .z{font-family:var(--fm);font-size:7px;color:var(--ink4);letter-spacing:.04em;line-height:1.3}
+.radar-legend{display:flex;gap:14px;margin-top:9px;font-family:var(--fm);font-size:8px;color:var(--ink4);align-items:center;flex-wrap:wrap}
+.radar-legend i{width:10px;height:10px;border-radius:3px;display:inline-block;vertical-align:-1px;margin-right:5px}
+
+/* revenue cockpit */
+.area{height:104px}
+.area svg{width:100%;height:100%;overflow:visible}
+.gauge{display:flex;align-items:center;gap:12px}
+.gauge .bar{flex:1;height:8px;border-radius:6px;background:linear-gradient(90deg,rgba(48,196,99,.5),rgba(212,175,55,.5),rgba(229,72,77,.5));position:relative}
+.gauge .bar i{position:absolute;top:-4px;width:2px;height:16px;background:var(--ink);border-radius:2px;left:34%}
+.gauge .lbl{font-family:var(--fm);font-size:8.5px;color:var(--ink4)}
+
+/* IA */
+.ai-line{font-family:var(--fm);font-size:11px;color:var(--ink2);padding:4.5px 0;opacity:0;transform:translateY(4px);transition:opacity .4s,transform .4s}
+.ai-line.show{opacity:1;transform:none}
+.ai-line .k{color:var(--ink4)}
+.ai-line .rd{color:var(--rd2);font-weight:600}
+.ai-line .gd{color:var(--au2);font-weight:600}
+.ai-verdict{margin-top:10px;border:1px solid var(--auL);border-radius:var(--r2);background:var(--auD);padding:12px 14px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;opacity:0;transition:opacity .5s}
+.ai-verdict.show{opacity:1}
+.ai-verdict .t{font-size:12px;color:var(--au2)}
+.ai-verdict .v{font-family:var(--fd);font-weight:600;font-size:21px;color:var(--au);font-variant-numeric:tabular-nums}
+.cursor{display:inline-block;width:7px;height:12px;background:var(--au);vertical-align:-2px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+
+/* deux entreprises */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:880px){.duo{grid-template-columns:1fr}}
+.cons{position:relative;border-radius:var(--r3);overflow:hidden;display:flex;flex-direction:column}
+.cons::before{content:"";position:absolute;inset:0;background:var(--hi);pointer-events:none;z-index:1}
+.cons>*{position:relative;z-index:2}
+.cons.bad{border:1px solid var(--rdL);background:linear-gradient(180deg,var(--rdD),var(--s1) 42%)}
+.cons.good{border:1px solid var(--gnL);background:linear-gradient(180deg,var(--gnD),var(--s1) 42%)}
+.cons .ch{display:flex;align-items:center;justify-content:space-between;padding:10px 13px;border-bottom:1px solid var(--l1)}
+.cons .ch .t{font-family:var(--fm);font-size:9.5px;letter-spacing:.12em}
+.cons.bad .ch .t{color:var(--rd2)}
+.cons.good .ch .t{color:var(--gn2)}
+.cons .ch .m{font-family:var(--fm);font-size:8px;color:var(--ink4)}
+.cons .cb{padding:9px 11px;display:flex;flex-direction:column;gap:5px;min-height:225px}
+.cline{display:flex;align-items:center;gap:8px;font-family:var(--fm);font-size:9.5px;padding:6.5px 9px;border:1px solid var(--l1);border-radius:var(--r1);background:var(--s3);opacity:0;animation:tein .4s forwards}
+.cline .id{color:var(--ink4)}
+.cline .lbl{color:var(--ink2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cline .val{color:var(--ink3);flex:none}
+.cline .stt{margin-left:auto;flex:none;font-size:8px;border-radius:4px;padding:2px 6px;border:1px solid var(--l2);color:var(--ink3)}
+.cline.lost{opacity:.5!important;border-color:var(--rdL)}
+.cline.lost .lbl{text-decoration:line-through;color:var(--ink4)}
+.cline.lost .stt{color:var(--rd2);border-color:var(--rdL);background:var(--rdD)}
+.cline.lost .val{color:var(--rd2);text-decoration:line-through}
+.cline.won{border-color:var(--gnL)}
+.cline.won .stt{color:#06130a;background:var(--gn);border-color:var(--gn);font-weight:600}
+.cline.won .val{color:var(--gn2)}
+.cons .cf{border-top:1px solid var(--l1);padding:10px 13px;display:flex;justify-content:space-between;align-items:baseline}
+.cons .cf .t{font-family:var(--fm);font-size:8.5px;color:var(--ink4)}
+.cons .cf .v{font-family:var(--fd);font-weight:600;font-size:20px;font-variant-numeric:tabular-nums}
+.cons.bad .cf .v{color:var(--rd)}
+.cons.good .cf .v{color:var(--gn)}
+
+/* packs */
+.packs{display:grid;grid-template-columns:repeat(5,1fr);gap:9px}
+@media(max-width:1080px){.packs{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:680px){.packs{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.packs{grid-template-columns:1fr}}
+.pk{position:relative;border:1px solid var(--l1);border-radius:var(--r3);background:var(--s2);padding:14px 13px;display:flex;flex-direction:column;gap:6px;transition:transform var(--tf),border-color var(--tf);overflow:hidden}
+.pk::before{content:"";position:absolute;inset:0;background:var(--hi);pointer-events:none}
+.pk:hover{transform:translateY(-2px);border-color:var(--l3)}
+.pk .nm{font-family:var(--fm);font-size:9px;letter-spacing:.14em;color:var(--ink3)}
+.pk .pr{font-family:var(--fd);font-weight:600;font-size:23px;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.pk .pr small{font-size:10px;color:var(--ink4);font-weight:500}
+.pk .tr{font-size:12px;color:var(--ink);font-weight:600;font-family:var(--fd)}
+.pk p{font-size:10px;color:var(--ink3);line-height:1.5;flex:1}
+.pk .arrow-up{font-family:var(--fm);font-size:8px;color:var(--ink4);padding-top:7px}
+.pk.hl{border-color:var(--auL);background:linear-gradient(180deg,var(--auD),var(--s2) 55%)}
+.pk.hl .nm{color:var(--au)}
+.pk.hl .arrow-up{color:var(--au2)}
+.pk .badge{position:absolute;top:9px;right:9px;font-family:var(--fm);font-size:7.5px;color:#0a0a0a;background:var(--au);border-radius:4px;padding:2px 6px;font-weight:600}
+
+/* preuves */
+.ba{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:880px){.ba{grid-template-columns:1fr}}
+.ba .pane.before{border-color:var(--rdL)}
+.ba .pane.before .ph .t{color:var(--rd2)}
+.ba .pane.after{border-color:var(--gnL)}
+.ba .pane.after .ph .t{color:var(--gn2)}
+.fact{display:flex;justify-content:space-between;gap:10px;padding:7px 0;border-bottom:1px solid var(--l1);font-size:11px}
+.fact:last-child{border-bottom:none}
+.fact .k{color:var(--ink3)}
+.fact .v{font-weight:500;text-align:right}
+.fact .v.rd{color:var(--rd2)}.fact .v.gn{color:var(--gn2)}
+.openlink{display:flex;align-items:center;justify-content:center;gap:9px;border:1px solid var(--l2);border-radius:var(--r2);padding:10px;font-size:12px;font-weight:500;transition:transform var(--tf);margin-top:4px}
+.openlink:hover{transform:translateY(-1px)}
+.openlink.gn{border-color:var(--gnL);color:var(--gn2)}
+.openlink.rd{color:var(--ink3)}
+
+/* activation */
+.act-g{display:grid;grid-template-columns:1.05fr .95fr;gap:12px}
+@media(max-width:880px){.act-g{grid-template-columns:1fr}}
+.meta-t{border:1px solid var(--l1);border-radius:var(--r2);overflow:hidden;margin-top:5px}
+.meta-t .r{display:flex;justify-content:space-between;padding:9px 12px;border-bottom:1px solid var(--l1);font-size:11.5px}
+.meta-t .r:last-child{border-bottom:none}
+.meta-t .r .k{color:var(--ink3)}
+.meta-t .r .v{font-weight:500;font-family:var(--fm);font-size:10.5px}
+.meta-t .r.hl{background:var(--auD)}
+.meta-t .r.hl .v{color:var(--au)}
+.form .f{width:100%;background:var(--s0);border:1px solid var(--l2);border-radius:var(--r2);padding:10px 12px;font-size:12.5px;color:var(--ink);font-family:var(--fb);margin-bottom:7px;outline:none;transition:border-color var(--tf)}
+.form .f::placeholder{color:var(--ink4)}
+.form .f:focus{border-color:var(--au)}
+.form button{width:100%;justify-content:center;background:var(--au);color:#0a0a0a;font-weight:600;font-size:13.5px;padding:11px;border-radius:var(--r2);display:flex;align-items:center;gap:9px;transition:transform var(--tf),box-shadow var(--tm)}
+.form button:hover{transform:translateY(-1px);box-shadow:0 12px 32px -14px rgba(212,175,55,.5)}
+.form .micro{margin-top:8px;text-align:center;font-size:10px;color:var(--ink4)}
+.form .micro b{color:var(--au2);font-weight:500}
+.is-dis{opacity:.4;pointer-events:none}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+
+/* palette / notif / toast */
+#pal{position:fixed;inset:0;z-index:300;display:none;align-items:flex-start;justify-content:center;padding-top:13vh;background:rgba(1,1,2,.62);backdrop-filter:blur(6px)}
+#pal.on{display:flex}
+#pal .box{width:min(540px,92vw);border:1px solid var(--l3);border-radius:var(--r3);background:var(--s2);overflow:hidden;box-shadow:0 60px 120px -40px rgba(0,0,0,.92)}
+#pal input{width:100%;background:var(--s1);border:none;border-bottom:1px solid var(--l1);padding:13px 15px;font-size:13.5px;color:var(--ink);outline:none;font-family:var(--fb)}
+#pal input::placeholder{color:var(--ink4)}
+#pal .ls{max-height:300px;overflow-y:auto;padding:6px}
+#pal .it{display:flex;align-items:center;gap:10px;width:100%;padding:9px 12px;border-radius:var(--r1);font-size:12.5px;color:var(--ink2);transition:background var(--tf)}
+#pal .it:hover,#pal .it.sel{background:rgba(255,255,255,.05);color:var(--ink)}
+#pal .it .k{margin-left:auto;font-family:var(--fm);font-size:8.5px;color:var(--ink4)}
+#pal .it svg{stroke:var(--ink3);flex:none}
+#pal .ft{border-top:1px solid var(--l1);padding:8px 13px;font-family:var(--fm);font-size:8.5px;color:var(--ink4);display:flex;gap:13px}
+#notif{position:fixed;z-index:290;top:60px;right:24px;width:min(330px,90vw);border:1px solid var(--l3);border-radius:var(--r3);background:var(--s2);box-shadow:0 40px 90px -40px rgba(0,0,0,.92);display:none;overflow:hidden}
+#notif.on{display:block}
+#notif .h{padding:10px 13px;border-bottom:1px solid var(--l1);font-size:11.5px;font-weight:600;font-family:var(--fd);display:flex;justify-content:space-between}
+#notif .ls{max-height:280px;overflow-y:auto;padding:6px;display:flex;flex-direction:column;gap:5px}
+#notif .te{animation:none;opacity:1;transform:none}
+#toast{position:fixed;z-index:280;bottom:50px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--s3);border:1px solid var(--auL);color:var(--ink);font-size:12px;padding:9px 15px;border-radius:var(--r2);opacity:0;transition:opacity var(--tm),transform var(--tm);pointer-events:none;box-shadow:0 20px 60px -20px rgba(0,0,0,.85)}
+#toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
+#toast.gn{border-color:var(--gnL)}
+
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:.001s!important;transition-duration:.001s!important}
+  .te,.cline,.ai-line,.ai-verdict{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<div id="rail">
+  <div class="seg first"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div>
+  <div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div>
+  <div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div>
+</div>
+
+<div id="shell" role="application" aria-label="DevisPilot OS — démonstration">
+  <div id="top">
+    <div class="b"><span class="d">Λ</span>DEVISPILOT <span class="os">OS · REVENUE</span></div>
+    <button class="q" id="palOpen"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg> Commander <span class="k">⌘K</span></button>
+    <div class="sp"></div>
+    <span class="stake"><i></i><span class="money" id="stake">84 200 €</span>&nbsp;EN JEU</span>
+    <span id="clock">--:--:--</span>
+    <button id="bellBtn" aria-label="Notifications"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9M10.3 21a2 2 0 0 0 3.4 0"/></svg><span class="n" id="bellN">0</span></button>
+    <a href="#" class="cta" data-go="14">Réserver une démo <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+  </div>
+
+  <div id="body">
+    <div id="side">
+      <button data-go="0" class="on"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke-width="1.7"><path d="M3 12l9-9 9 9M5 10v10h14V10"/></svg> Accueil</button>
+      <div class="g">OPÉRATIONS</div>
+      <button data-go="1"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke-width="1.7"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/></svg> Demandes <span class="c gd">12</span></button>
+      <button data-go="2"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke-width="1.7"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg> Clients <span class="c">58</span></button>
+      <button data-go="3"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke-width="1.7"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg> Visites <span class="c">4</span></button>
+      <button data-go="4"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke-width="1.7"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg> Devis <span class="c gd">5</span></button>
+      <button data-go="5"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke-width="1.7"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 0 0 5.4-5.4l-2.1 2.1-2-.5-.5-2z"/></svg> Chantiers <span class="c gn">3</span></button>
+      <div class="g">SYSTÈME</div>
+      <button data-go="6"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke-width="1.7"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg> Communications</button>
+      <button data-go="7"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke-width="1.7"><path d="M12 9v4M12 17h.01M10.3 3.9L1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg> Urgences <span class="c rd">3</span></button>
+      <button data-go="8"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke-width="1.7"><path d="M12 2a7 7 0 0 1 7 7c0 2.4-1.2 4.5-3 5.7V17a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2v-2.3C6.2 13.5 5 11.4 5 9a7 7 0 0 1 7-7zM9 21h6"/></svg> IA</button>
+      <div class="g">DIRECTION</div>
+      <button data-go="9"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke-width="1.7"><path d="M3 17l6-6 4 4 8-8M21 7v6h-6"/></svg> Revenue <span class="c">1,24 M€</span></button>
+      <button data-go="10"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M12 3v9l6 4"/></svg> Pertes <span class="c rd">59,7 k€</span></button>
+      <button data-go="11"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke-width="1.7"><path d="M8 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h3M16 3h3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-3"/></svg> Deux entreprises</button>
+      <div class="g">OFFRE</div>
+      <button data-go="12"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke-width="1.7"><path d="M12 2L2 7l10 5 10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg> Packs</button>
+      <button data-go="13"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke-width="1.7"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg> Preuves</button>
+      <button data-go="14"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 2"/></svg> Activation</button>
+      <div class="push"></div>
+      <div class="hint">NAVIGUER <b>scroll</b>·<b>J</b>/<b>K</b> &nbsp;⌘<b>K</b></div>
+    </div>
+
+    <div id="ws">
+
+      <!-- 0 · ACCUEIL — timeline entreprise -->
+      <section class="view on" data-v="0">
+        <div class="note">
+          <div class="k">DEVISPILOT OS · OPERATING SYSTEM FOR REVENUE</div>
+          <h1>Votre entreprise tourne déjà <span class="au">dedans.</span></h1>
+          <p>Ceci n'est pas un site. C'est le système : chaque demande est captée, chiffrée, qualifiée, suivie, relancée, signée, planifiée, mesurée. Regardez l'entreprise vivre — minute par minute.</p>
+          <div class="cta-row">
+            <a class="btn" data-go="14" href="#">Réserver une démo <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            <span class="gh">Faites défiler — <b>chaque module gagne de l'argent ou économise du temps</b> · simulation étiquetée</span>
+          </div>
+        </div>
+        <div class="grid2">
+          <div class="pane">
+            <div class="ph"><span class="t">Timeline de l'entreprise</span><span class="m">en continu · démo</span></div>
+            <div class="pb tl" id="homeTl"></div>
+          </div>
+          <div class="pane">
+            <div class="ph"><span class="t">État du système</span><span class="m">maintenant</span></div>
+            <div class="pb">
+              <div class="lr"><span class="ic au"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/></svg></span> <b>12 demandes</b> aujourd'hui — toutes chiffrées <span class="eur gd" id="homeStake">84 200 €</span></div>
+              <div class="lr"><span class="ic au"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg></span> <b>5 devis dehors</b> — suivis à l'ouverture <span class="eur gd">96 300 €</span></div>
+              <div class="lr"><span class="ic gn"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg></span> <b>3 chantiers</b> signés en cours <span class="eur gn">52 100 €</span></div>
+              <div class="lr"><span class="ic rd"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M12 9v4M12 17h.01"/><circle cx="12" cy="12" r="9"/></svg></span> <b>3 urgences</b> — argent qui refroidit <span class="eur rd">59 700 €</span></div>
+              <div class="lr"><span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span> Prochaine action système <b>relance DV-1181</b> <span class="w">DANS 2 H</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 1 · DEMANDES -->
+      <section class="view" data-v="1">
+        <div class="note">
+          <div class="k">DEMANDES · LA SECONDE OÙ ÇA DEVIENT DE L'ARGENT</div>
+          <h2>Une demande n'est pas un email.<br/>C'est <span class="au">18 400 €</span> qui attendent une réponse.</h2>
+          <p>Dès l'entrée, le système chiffre, score et priorise. Vous ne triez plus des messages — vous arbitrez des montants.</p>
+        </div>
+        <div class="grid2">
+          <div class="pane">
+            <div class="ph"><span class="t">Nouvelle demande</span><span class="m">#REQ-4192 · à l'instant</span></div>
+            <div class="pb">
+              <div class="lr" style="border-color:var(--auL)"><span class="ic au"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/></svg></span> <b>PAC air/eau</b> · maison 140 m² · Esch-sur-Alzette <span class="eur gd">18 400 €</span></div>
+              <div class="kv">
+                <div class="c"><div class="k">VALEUR ESTIMÉE</div><div class="v" style="color:var(--au2)">18 400 €</div></div>
+                <div class="c"><div class="k">PROBABILITÉ</div><div class="v">74 %</div></div>
+                <div class="c"><div class="k">SCORE</div><div class="v">84 · prioritaire</div></div>
+                <div class="c"><div class="k">PRIME DÉTECTÉE</div><div class="v" style="color:var(--au2)">Klimabonus</div></div>
+              </div>
+              <div class="prob"><i id="probReq" style="width:0"></i></div>
+              <div class="lr" style="margin-top:2px"><span class="ic au"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg></span> Accusé envoyé en <b>38 s</b> — la valeur ne refroidit pas <span class="w">AUTO</span></div>
+            </div>
+          </div>
+          <div class="pane">
+            <div class="ph"><span class="t">File du jour — triée par valeur</span><span class="m">démo</span></div>
+            <div class="pb">
+              <div class="lr"><span class="ic au"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M3 17l6-6 4 4 8-8"/></svg></span> <b>REQ-4192</b> · PAC · score 84 <span class="eur gd">18 400 €</span></div>
+              <div class="lr"><span class="ic au"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M3 17l6-6 4 4 8-8"/></svg></span> <b>REQ-4189</b> · PV 9 kWc · score 79 <span class="eur gd">21 300 €</span></div>
+              <div class="lr"><span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><circle cx="12" cy="12" r="9"/></svg></span> <b>REQ-4191</b> · clim contrat · score 81 <span class="eur">14 600 €</span></div>
+              <div class="lr"><span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><circle cx="12" cy="12" r="9"/></svg></span> <b>REQ-4188</b> · urgence chaudière · score 88 <span class="eur">3 900 €</span></div>
+              <div class="lr"><span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><circle cx="12" cy="12" r="9"/></svg></span> <b>REQ-4187</b> · borne 11 kW · score 77 <span class="eur">2 100 €</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2 · CLIENTS -->
+      <section class="view" data-v="2">
+        <div class="note">
+          <div class="k">CLIENTS · VISION 360 — RIEN NE SE PERD ENTRE DEUX APPELS</div>
+          <h2>Tout ce que ce client vaut, <span class="au">sur une fiche.</span></h2>
+          <p>Demandes, visites, devis, signatures, factures, chantiers : l'historique complet. Six mois plus tard, vous savez encore tout.</p>
+        </div>
+        <div class="grid2">
+          <div class="pane">
+            <div class="ph"><span class="t">Fiche client</span><span class="m">#CLI-0287</span></div>
+            <div class="pb">
+              <div class="fhead"><div class="ava">MW</div><div><div class="nm">M. Weber</div><div class="su">Particulier · Esch-sur-Alzette · depuis 08:15</div></div></div>
+              <div class="kv">
+                <div class="c"><div class="k">VALEUR TOTALE</div><div class="v" style="color:var(--au2)">18 400 €</div></div>
+                <div class="c"><div class="k">PROBABILITÉ</div><div class="v">74 % → signé</div></div>
+                <div class="c"><div class="k">PRIME</div><div class="v" style="color:var(--au2)">Klimabonus − 6 300 €</div></div>
+                <div class="c"><div class="k">MARGE ESTIMÉE</div><div class="v">38 %</div></div>
+              </div>
+            </div>
+          </div>
+          <div class="pane">
+            <div class="ph"><span class="t">Historique 360</span><span class="m">tout est relié</span></div>
+            <div class="pb">
+              <div class="lr"><span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/></svg></span> Demande <b>REQ-4192</b> · PAC <span class="w">08:12</span></div>
+              <div class="lr"><span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span> Visite <b>VIS-882</b> · jeudi 09:00 <span class="w">08:16</span></div>
+              <div class="lr"><span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg></span> Devis <b>DV-1183</b> · 13 300 € net <span class="w">08:18</span></div>
+              <div class="lr" style="border-color:var(--gnL)"><span class="ic gn"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg></span> <b>Signé</b> · 08:22 <span class="st gn">+ 13 300 €</span></div>
+              <div class="lr"><span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 0 0 5.4-5.4l-2.1 2.1-2-.5-.5-2z"/></svg></span> Chantier <b>CHT-771</b> · pose ven 10:30 <span class="w">08:23</span></div>
+              <div class="lr"><span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span> Facture <b>FAC-2291</b> · à émettre fin de pose <span class="w">PLANIFIÉ</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3 · VISITES -->
+      <section class="view" data-v="3">
+        <div class="note">
+          <div class="k">VISITES · LE PLANNING QUI PENSE EN TOURNÉES</div>
+          <h2>Trois créneaux proposés.<br/>Le meilleur <span class="au">économise 40 minutes de route.</span></h2>
+          <p>Le système propose les créneaux selon vos tournées existantes. Moins de kilomètres, plus de visites — donc plus de devis par semaine.</p>
+        </div>
+        <div class="grid2">
+          <div class="pane">
+            <div class="ph"><span class="t">Créneaux proposés — M. Weber (Esch)</span><span class="m">optimisé géo</span></div>
+            <div class="pb">
+              <div class="slot best"><span class="d">JEU · 09:00</span><span class="why">déjà à Esch à 8 h (chantier Krier) — 0 km ajouté</span><span class="pick">OPTIMAL</span></div>
+              <div class="slot"><span class="d">JEU · 13:00</span><span class="why">retour par Schifflange · +12 min</span><span class="pick">OK</span></div>
+              <div class="slot"><span class="d">VEN · 10:30</span><span class="why">tournée sud · +18 min</span><span class="pick">OK</span></div>
+              <div class="lr" style="margin-top:2px"><span class="ic au"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg></span> 3 créneaux envoyés au client — <b>il choisit, le planning s'écrit</b> <span class="w">AUTO</span></div>
+            </div>
+          </div>
+          <div class="pane">
+            <div class="ph"><span class="t">Tournée de jeudi</span><span class="m">2 techniciens</span></div>
+            <div class="pb">
+              <div class="route">
+                <span class="stop"><i></i>08:00 · Krier (Esch)</span><span class="leg">→ 4 min</span>
+                <span class="stop"><i></i>09:00 · Weber (Esch)</span><span class="leg">→ 9 min</span>
+                <span class="stop"><i></i>11:00 · Thill (Schifflange)</span><span class="leg">→ 14 min</span>
+                <span class="stop"><i></i>14:00 · Hoffmann (Foetz)</span>
+              </div>
+              <div class="lr" style="margin-top:8px"><span class="ic au"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span> Route optimisée : <b>27 min de trajet total</b> au lieu de 67 <span class="eur gd">+ 1 visite/j</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4 · DEVIS -->
+      <section class="view" data-v="4">
+        <div class="note">
+          <div class="k">DEVIS · LE CŒUR — CHAQUE DEVIS SAIT CE QU'IL VAUT</div>
+          <h2>Un devis qui connaît sa valeur,<br/>sa prime, et <span class="au">sa date de relance.</span></h2>
+          <p>Le devis part prime déduite, suit son ouverture, et programme sa propre relance. Il ne peut pas être oublié : il sait quand se rappeler à vous.</p>
+        </div>
+        <div class="grid2">
+          <div class="pane">
+            <div class="ph"><span class="t">Devis #DV-1183 — M. Weber</span><span class="m">envoyé 08:18</span></div>
+            <div class="pb">
+              <div class="qt">
+                <div class="l"><span class="k">PAC air/eau + pose</span><span>18 400 €</span></div>
+                <div class="l"><span class="k">Mise en service</span><span>1 200 €</span></div>
+                <div class="l"><span class="k au">Prime Klimabonus détectée</span><span class="au">− 6 300 €</span></div>
+                <div class="l tot"><span>Reste à charge client</span><span>13 300 €</span></div>
+              </div>
+              <div class="kv" style="margin-top:6px">
+                <div class="c"><div class="k">PROBABILITÉ SIGNATURE</div><div class="v">74 % · devis ouvert 2×</div></div>
+                <div class="c"><div class="k">RELANCE PROGRAMMÉE</div><div class="v" style="color:var(--au2)">J+2 · jeudi 09:00</div></div>
+              </div>
+            </div>
+          </div>
+          <div class="pane">
+            <div class="ph"><span class="t">Devis dehors — 96 300 €</span><span class="m">aucun ne peut s'oublier</span></div>
+            <div class="pb">
+              <div class="lr"><span class="ic gn"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg></span> <b>DV-1183</b> · Weber · signé 08:22 <span class="st gn">+13 300 €</span></div>
+              <div class="lr"><span class="ic au"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M3 17l6-6 4 4 8-8"/></svg></span> <b>DV-1181</b> · Hoffmann · ouvert 2× · relance demain <span class="eur gd">24 100 €</span></div>
+              <div class="lr"><span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span> <b>DV-1178</b> · Thill PV · J+2 armée <span class="eur">31 600 €</span></div>
+              <div class="lr"><span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span> <b>DV-1175</b> · Garage Reuter · J+5 <span class="eur">14 900 €</span></div>
+              <div class="lr" style="border-color:var(--rdL)"><span class="ic rd"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M12 9v4M12 17h.01"/><circle cx="12" cy="12" r="9"/></svg></span> <b>DV-1194</b> · 11 jours sans réponse → <b>Urgences</b> <span class="eur rd">24 800 €</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5 · CHANTIERS -->
+      <section class="view" data-v="5">
+        <div class="note">
+          <div class="k">CHANTIERS · CE QUE PERSONNE D'AUTRE NE MONTRE</div>
+          <h2>Signé n'est pas fini.<br/>Le système suit <span class="gn">jusqu'à la marge.</span></h2>
+          <p>Du devis signé à la pose : matériel, technicien, planning, marge. C'est là que les concurrents s'arrêtent — et que vous continuez.</p>
+        </div>
+        <div class="grid2">
+          <div class="pane">
+            <div class="ph"><span class="t">Chantier #CHT-771 — PAC Weber</span><span class="m">né du devis DV-1183</span></div>
+            <div class="pb cht">
+              <div class="cstep done"><span class="n">✓</span> Devis signé · 13 300 € net <span class="w">MAR 08:22</span></div>
+              <div class="cstep done"><span class="n">✓</span> Matériel commandé · PAC 8 kW + kit <span class="w">MAR 09:40</span></div>
+              <div class="cstep done"><span class="n">✓</span> Technicien affecté · <b style="margin:0 3px">P. Muller + 1</b> <span class="w">MAR 10:05</span></div>
+              <div class="cstep now"><span class="n">4</span> Pose prévue · vendredi 10:30 <span class="w">VEN</span></div>
+              <div class="cstep"><span class="n">5</span> Facture FAC-2291 · à l'achèvement <span class="w">AUTO</span></div>
+            </div>
+          </div>
+          <div class="pane">
+            <div class="ph"><span class="t">Chantiers en cours — 52 100 €</span><span class="m">marge visible avant la pose</span></div>
+            <div class="pb">
+              <div class="lr"><span class="ic gn"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 0 0 5.4-5.4l-2.1 2.1-2-.5-.5-2z"/></svg></span> <b>CHT-771</b> · PAC Weber · marge est. <b>38 %</b> <span class="eur gn">13 300 €</span></div>
+              <div class="lr"><span class="ic gn"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 0 0 5.4-5.4l-2.1 2.1-2-.5-.5-2z"/></svg></span> <b>CHT-768</b> · clim resto · marge est. <b>41 %</b> <span class="eur gn">22 400 €</span></div>
+              <div class="lr"><span class="ic gn"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 0 0 5.4-5.4l-2.1 2.1-2-.5-.5-2z"/></svg></span> <b>CHT-765</b> · tableau élec · marge est. <b>34 %</b> <span class="eur gn">16 400 €</span></div>
+              <div class="lr"><span class="ic au"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span> Matériel en retard détecté → <b>pose décalée, client prévenu</b> <span class="w">AUTO</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 6 · COMMUNICATIONS (SOC) -->
+      <section class="view" data-v="6">
+        <div class="note">
+          <div class="k">CENTRE DE COMMUNICATION · LA SALLE DE CONTRÔLE</div>
+          <h2>Pendant que vous posez,<br/><span class="au">le système parle</span> à vos clients.</h2>
+          <p>Accusés, relances, confirmations, rappels de visite : tout part automatiquement, signé de votre entreprise. En direct.</p>
+        </div>
+        <div class="soc">
+          <div class="s"><div class="k">SMS envoyés</div><div class="v" id="socSms">142</div></div>
+          <div class="s"><div class="k">Emails envoyés</div><div class="v" id="socMail">318</div></div>
+          <div class="s"><div class="k">Accusés &lt; 1 min</div><div class="v au" id="socAck">217</div></div>
+          <div class="s"><div class="k">Relances programmées</div><div class="v au" id="socRel">36</div></div>
+          <div class="s"><div class="k">Réponses reçues</div><div class="v gn" id="socRep">94</div></div>
+        </div>
+        <div class="pane">
+          <div class="ph"><span class="t">Flux sortant — temps réel</span><span class="m">30 derniers jours · démo</span></div>
+          <div class="pb" id="socFeed"></div>
+        </div>
+      </section>
+
+      <!-- 7 · URGENCES -->
+      <section class="view" data-v="7">
+        <div class="note danger">
+          <div class="k">MUR DES URGENCES · LE SYSTÈME HURLE QUAND ÇA RAPPORTE</div>
+          <h2>3 actions. <span class="rd">59 700 €</span> en jeu.<br/>Le système a déjà préparé chacune.</h2>
+          <p>Quand de l'argent refroidit, l'OS ne fait pas un rapport — il monte une alerte avec l'action prête. Vous cliquez, c'est exécuté.</p>
+        </div>
+        <div class="grid3">
+          <div class="alert" data-val="24800">
+            <div class="ah"><span class="tag">ALERTE</span><span class="id">#DV-1194</span><span class="eur money">24 800 €</span></div>
+            <div class="why">Devis <b>ouvert 3×</b>, sans réponse depuis <b>11 jours</b>. Après J+14 : −11 % de conversion.</div>
+            <div class="act"><span class="rec">ACTION PRÊTE : <b>appel + relance personnalisée</b></span><button class="exec">Exécuter</button></div>
+          </div>
+          <div class="alert" data-val="22000">
+            <div class="ah"><span class="tag">ALERTE</span><span class="id">#DV-1188</span><span class="eur money">22 000 €</span></div>
+            <div class="why">Prime <b>non appliquée</b> — le devis est 6 300 € trop cher face au concurrent.</div>
+            <div class="act"><span class="rec">ACTION PRÊTE : <b>devis corrigé prime déduite</b></span><button class="exec">Exécuter</button></div>
+          </div>
+          <div class="alert" data-val="12900">
+            <div class="ah"><span class="tag">ALERTE</span><span class="id">#REQ-4170</span><span class="eur money">12 900 €</span></div>
+            <div class="why">Demande qualifiée, <b>visite jamais planifiée</b>. Le client a rappelé une fois — silence depuis.</div>
+            <div class="act"><span class="rec">ACTION PRÊTE : <b>3 créneaux envoyés au client</b></span><button class="exec">Exécuter</button></div>
+          </div>
+        </div>
+        <div class="lr" style="margin-top:10px"><span class="ic au"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M13 2L3 14h7l-1 8 10-12h-7z"/></svg></span> Chaque alerte exécutée retire son montant de la colonne <b>À RISQUE</b> <span class="eur rd" id="riskLeft">59 700 €</span></div>
+      </section>
+
+      <!-- 8 · IA -->
+      <section class="view" data-v="8">
+        <div class="note">
+          <div class="k">DIRECTEUR COMMERCIAL IA · IL LIT TOUT, IL CHIFFRE TOUT</div>
+          <h2>L'IA vous dit où est l'argent.<br/>Et <span class="au">quoi faire ce matin.</span></h2>
+          <p>Chaque nuit, l'analyse parcourt demandes, devis, délais, conversions — et vous remet l'action la plus rentable de la journée.</p>
+        </div>
+        <div class="pane" style="border-color:var(--auL)">
+          <div class="ph"><span class="t">Λi · Analyse des 90 jours</span><span class="m">scénario type · démo</span></div>
+          <div class="pb" id="aiB">
+            <div class="ai-line"><span class="k">$</span> lecture du système… demandes · devis · délais · conversions <span class="cursor" id="aiCur"></span></div>
+            <div class="ai-line">→ 217 demandes · 96 devis · 31 signés · 14 devis dormants</div>
+            <div class="ai-line">Argent perdu : <span class="rd">≈ 27 000 € / mois</span></div>
+            <div class="ai-line">Cause n°1 : <b>14 devis ouverts depuis plus de 14 jours</b></div>
+            <div class="ai-line">Impact mesuré : <span class="rd">− 11 % de conversion</span> au-delà de J+14</div>
+            <div class="ai-line">Action : <span class="gd">séquence agressive J+2 · J+5 · J+9</span> sur les 14 dormants — prête à lancer</div>
+            <div class="ai-verdict" id="aiV"><span class="t">Gain estimé si lancée aujourd'hui</span><span class="v money">+ 8 900 € / mois</span><button class="exec" id="aiExec" style="background:var(--au);color:#0a0a0a;font-weight:600;font-size:11.5px;padding:7px 14px;border-radius:10px">Lancer la séquence</button></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 9 · REVENUE -->
+      <section class="view" data-v="9">
+        <div class="note">
+          <div class="k">REVENUE COMMAND CENTER · LA VUE PATRON</div>
+          <h2>Pipeline, prévision, marge, risque.<br/><span class="au">Un seul écran.</span> Zéro tableur.</h2>
+        </div>
+        <div class="statrow">
+          <div class="stat big"><div class="k">Pipeline</div><div class="v money" data-count="1240000" data-suffix=" €">0 €</div><div class="sub">42 opportunités vivantes</div></div>
+          <div class="stat gd"><div class="k">Prévision mois</div><div class="v money" data-count="87000" data-suffix=" €">0 €</div><div class="sub">pondérée par probabilité</div></div>
+          <div class="stat gn"><div class="k">CA signé · juin</div><div class="v money" data-count="64300" data-suffix=" €">0 €</div><div class="sub">14 chantiers</div></div>
+          <div class="stat"><div class="k">Marge moyenne</div><div class="v">38 <small>%</small></div><div class="sub">visible avant la pose</div></div>
+        </div>
+        <div class="grid2">
+          <div class="pane">
+            <div class="ph"><span class="t">Prévision 90 jours</span><span class="m">démo</span></div>
+            <div class="pb">
+              <div class="area"><svg viewBox="0 0 300 100" preserveAspectRatio="none">
+                <defs><linearGradient id="g1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#D4AF37" stop-opacity=".3"/><stop offset="1" stop-color="#D4AF37" stop-opacity="0"/></linearGradient></defs>
+                <path d="M0,78 L40,72 L80,66 L120,58 L160,47 L200,40 L240,28 L300,15 L300,100 L0,100 Z" fill="url(#g1)"/>
+                <path d="M0,78 L40,72 L80,66 L120,58 L160,47 L200,40 L240,28 L300,15" fill="none" stroke="#D4AF37" stroke-width="2"/>
+                <circle cx="300" cy="15" r="4" fill="#020203" stroke="#D4AF37" stroke-width="2"/>
+              </svg></div>
+              <div class="obj-meta" style="display:flex;justify-content:space-between;font-family:var(--fm);font-size:8.5px;color:var(--ink4);margin-top:4px"><span>JUIL</span><span>AOÛT</span><span>SEPT · <b style="color:var(--au2)">248 000 €</b></span></div>
+            </div>
+          </div>
+          <div class="pane">
+            <div class="ph"><span class="t">Objectif & risque</span><span class="m">juin</span></div>
+            <div class="pb">
+              <div style="display:flex;align-items:center;gap:12px">
+                <div class="ring" style="--p:72"><i>72%</i></div>
+                <div style="font-size:11.5px;color:var(--ink2)">Objectif <b class="money">120 000 €</b> — il manque <b class="money" style="color:var(--au2)">33 000 €</b>.<br/><span style="color:var(--ink3)">2 devis à relancer aujourd'hui les couvrent.</span></div>
+              </div>
+              <div class="gauge" style="margin-top:10px"><span class="lbl">RISQUE</span><div class="bar"><i></i></div><span class="lbl">34 % — maîtrisé</span></div>
+              <div class="lr" style="margin-top:6px"><span class="ic rd"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M12 9v4M12 17h.01"/><circle cx="12" cy="12" r="9"/></svg></span> À risque : <b>59 700 €</b> → 3 actions prêtes au mur des urgences <span class="w" style="color:var(--au2)">VOIR ↑</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 10 · PERTES -->
+      <section class="view" data-v="10">
+        <div class="note danger">
+          <div class="k">RADAR DES PERTES · LA CARTOGRAPHIE QUE PERSONNE NE VEUT VOIR</div>
+          <h2>Votre argent ne disparaît pas.<br/>Il meurt <span class="rd">à des endroits précis.</span></h2>
+          <p>Le radar cartographie où l'argent s'évapore — par étape du parcours. Les zones rouges sont vos chantiers les plus rentables : ils sont déjà payés, il suffit d'arrêter de les perdre.</p>
+        </div>
+        <div class="pane">
+          <div class="ph"><span class="t">Carte thermique des fuites — 30 jours</span><span class="m">scénario type · démo</span></div>
+          <div class="pb">
+            <div class="radar">
+              <div class="cell"><span class="z">CAPTATION<br/>site</span></div>
+              <div class="cell h1"><span class="e">2 100 €</span><span class="z">hors zone</span></div>
+              <div class="cell h2"><span class="e">12 000 €</span><span class="z">DEMANDES oubliées</span></div>
+              <div class="cell"><span class="z">QUALIF</span></div>
+              <div class="cell h1"><span class="e">3 400 €</span><span class="z">réponse lente</span></div>
+              <div class="cell h2"><span class="e">7 300 €</span><span class="z">VISITES jamais planifiées</span></div>
+              <div class="cell"><span class="z">DEVIS envoyés</span></div>
+              <div class="cell h3"><span class="e">18 400 €</span><span class="z">DEVIS froids J+14</span></div>
+              <div class="cell h3"><span class="e">22 000 €</span><span class="z">PRIMES non détectées</span></div>
+              <div class="cell h1"><span class="e">1 900 €</span><span class="z">relance unique</span></div>
+              <div class="cell"><span class="z">SIGNATURE</span></div>
+              <div class="cell"><span class="z">CHANTIER</span></div>
+              <div class="cell h1"><span class="e">2 600 €</span><span class="z">matériel en retard</span></div>
+              <div class="cell"><span class="z">FACTURE</span></div>
+              <div class="cell"><span class="z">MARGE</span></div>
+              <div class="cell"><span class="z">FIDÉLISATION</span></div>
+            </div>
+            <div class="radar-legend">
+              <span><i style="background:rgba(229,72,77,.28)"></i>zone critique</span>
+              <span><i style="background:rgba(229,72,77,.16)"></i>fuite active</span>
+              <span><i style="background:rgba(229,72,77,.08)"></i>fuite mineure</span>
+              <span style="margin-left:auto;color:var(--rd2)">TOTAL À RISQUE : <b class="money">59 700 € / mois</b></span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 11 · DEUX ENTREPRISES -->
+      <section class="view" data-v="11">
+        <div class="note">
+          <div class="k">DEUX ENTREPRISES · MÊMES DEMANDES · MÊME SEMAINE · MÊME MARCHÉ</div>
+          <h2>La seule variable : <span class="au">le système.</span></h2>
+          <p>Les mêmes demandes tombent des deux côtés, en direct. L'une les regarde mourir. L'autre les signe. Mécanisme illustré — pas une statistique.</p>
+        </div>
+        <div class="duo">
+          <div class="cons bad">
+            <div class="ch"><span class="t">ENTREPRISE A · SANS SYSTÈME</span><span class="m">boîte mail · post-it · « demain »</span></div>
+            <div class="cb" id="consBad"></div>
+            <div class="cf"><span class="t">CA ENVOLÉ</span><span class="v money" id="cntBad">0 €</span></div>
+          </div>
+          <div class="cons good">
+            <div class="ch"><span class="t">ENTREPRISE B · DEVISPILOT OS</span><span class="m">le système</span></div>
+            <div class="cb" id="consGood"></div>
+            <div class="cf"><span class="t">CA SIGNÉ</span><span class="v money" id="cntGood">0 €</span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 12 · PACKS -->
+      <section class="view" data-v="12">
+        <div class="note">
+          <div class="k">PACKS · UNE TRANSFORMATION, PAS UNE LISTE DE FONCTIONS</div>
+          <h2>Chaque palier change <span class="au">ce que vous êtes.</span></h2>
+          <p>On ne vend pas des features. On vend l'étape d'après : chaque palier se finance avec l'argent que le précédent récupère.</p>
+        </div>
+        <div class="packs">
+          <div class="pk"><div class="nm">FOUNDATION</div><div class="pr">49 €<small>/mois</small></div><div class="tr">Recevoir et suivre.</div><p>Plus aucune demande ne se perd. Tout entre, tout est chiffré, tout est visible.</p><div class="arrow-up">↑ puis ne plus rien oublier</div></div>
+          <div class="pk"><div class="nm">GROWTH</div><div class="pr">149 €<small>/mois</small></div><div class="tr">Ne plus rien oublier.</div><p>Visites, fiches 360, planning de tournées. La mémoire de l'entreprise sort de votre tête.</p><div class="arrow-up">↑ puis récupérer l'argent</div></div>
+          <div class="pk hl"><div class="badge">LE DÉCLIC</div><div class="nm">REVENUE</div><div class="pr">349 €<small>/mois</small></div><div class="tr">Récupérer l'argent perdu.</div><p>Relances auto, primes intégrées, suivi d'ouverture, mur des urgences. Le système rapporte plus qu'il ne coûte.</p><div class="arrow-up">↑ puis faire tourner l'entreprise</div></div>
+          <div class="pk"><div class="nm">OPERATIONS</div><div class="pr">799 €<small>/mois</small></div><div class="tr">Faire tourner l'entreprise.</div><p>Chantiers, marges, matériel, techniciens, Revenue Command Center. Du devis à la facture.</p><div class="arrow-up">↑ puis piloter par exception</div></div>
+          <div class="pk"><div class="nm" style="color:var(--au)">EXECUTIVE AI</div><div class="pr">1 499 €<small>/mois</small></div><div class="tr">Piloter par exception.</div><p>Le directeur commercial IA lit tout, chiffre tout, et ne vous dérange que quand ça rapporte.</p><div class="arrow-up" style="color:var(--au2)">le système se pilote seul</div></div>
+        </div>
+      </section>
+
+      <!-- 13 · PREUVES -->
+      <section class="view" data-v="13">
+        <div class="note">
+          <div class="k">PREUVES · PAS UNE IMAGE. DEUX SITES EN LIGNE.</div>
+          <h2>L'avant et l'après existent. <span class="au">Ouvrez-les.</span></h2>
+          <p>Chauffage Artisanal — entreprise réelle, en activité depuis 1994 à Peppange. Son site historique et sa transformation VΛIN sont consultables maintenant. Aucun témoignage inventé : des liens.</p>
+        </div>
+        <div class="ba">
+          <div class="pane before">
+            <div class="ph"><span class="t">AVANT · chauffage-artisanal.lu</span><span class="m">site historique</span></div>
+            <div class="pb">
+              <div class="fact"><span class="k">Devis en ligne</span><span class="v rd">Aucun — téléphone uniquement</span></div>
+              <div class="fact"><span class="k">Réponse hors horaires</span><span class="v rd">Impossible</span></div>
+              <div class="fact"><span class="k">Primes Klimabonus</span><span class="v rd">Non mentionnées</span></div>
+              <div class="fact"><span class="k">Relances</span><span class="v rd">Mémoire humaine</span></div>
+              <a class="openlink rd" href="https://www.chauffage-artisanal.lu/" target="_blank" rel="noopener">Ouvrir l'ancien site <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg></a>
+            </div>
+          </div>
+          <div class="pane after">
+            <div class="ph"><span class="t">APRÈS · transformation VΛIN</span><span class="m">en ligne</span></div>
+            <div class="pb">
+              <div class="fact"><span class="k">Devis en ligne</span><span class="v gn">Parcours en 2 minutes</span></div>
+              <div class="fact"><span class="k">Réponse hors horaires</span><span class="v gn">24/7 · accusé immédiat</span></div>
+              <div class="fact"><span class="k">Primes Klimabonus</span><span class="v gn">Calculées, intégrées au devis</span></div>
+              <div class="fact"><span class="k">Relances</span><span class="v gn">Système — jamais d'oubli</span></div>
+              <a class="openlink gn" href="https://chauffage-artisanal.vercel.app" target="_blank" rel="noopener">Ouvrir la transformation <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg></a>
+            </div>
+          </div>
+        </div>
+        <div class="grid2" style="margin-top:12px">
+          <div class="pane"><div class="ph"><span class="t">Démonstrateurs métier</span><span class="m">ouvrables</span></div>
+            <div class="pb">
+              <a class="lr" href="demonstrateur-electricien.html" style="cursor:pointer"><span class="ic au"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M13 2L3 14h7l-1 8 10-12h-7z"/></svg></span> <b>Électricien</b> — urgences, IRVE, aides <span class="w">OUVRIR ↗</span></a>
+              <a class="lr" href="demonstrateur-industriel.html" style="cursor:pointer"><span class="ic au"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg></span> <b>Maintenance industrielle</b> — criticité, astreinte <span class="w">OUVRIR ↗</span></a>
+            </div>
+          </div>
+          <div class="pane"><div class="ph"><span class="t">Qui construit ça</span><span class="m">VΛIN STUDIO</span></div>
+            <div class="pb">
+              <div class="lr"><span class="ic au"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M3 21h18M5 21V8l7-5 7 5v13"/></svg></span> <b>14 ans d'industrie</b> — vos marges, vos urgences, vos clients <span class="w">TERRAIN</span></div>
+              <div class="lr"><span class="ic au"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M3 21h18M5 21V8l7-5 7 5v13"/></svg></span> Luxembourg · Grande Région <span class="w">FR·DE·EN·LU</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 14 · ACTIVATION -->
+      <section class="view" data-v="14">
+        <div class="note">
+          <div class="k">ACTIVATION · LA SEULE DÉCISION À PRENDRE</div>
+          <h2>15 minutes. Vos chiffres. <span class="au">Votre système.</span></h2>
+          <p>On branche l'OS sur votre métier, en direct : vos fuites chiffrées, vos urgences réelles, et la feuille de route pour les fermer. Vous la gardez — quoi que vous décidiez.</p>
+        </div>
+        <div class="act-g">
+          <div class="pane"><div class="ph"><span class="t">La démo</span><span class="m">sans engagement</span></div>
+            <div class="pb">
+              <div class="lr"><span class="ic au"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M20 6L9 17l-5-5"/></svg></span> Vos <b>fuites chiffrées</b> sur vos vrais flux</div>
+              <div class="lr"><span class="ic au"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M20 6L9 17l-5-5"/></svg></span> L'OS <b>branché sur votre métier</b> en direct</div>
+              <div class="lr"><span class="ic au"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M20 6L9 17l-5-5"/></svg></span> <b>Feuille de route</b> à garder, même sans nous</div>
+              <div class="meta-t">
+                <div class="r"><span class="k">Durée</span><span class="v">15 minutes</span></div>
+                <div class="r"><span class="k">Format</span><span class="v">Démo en direct</span></div>
+                <div class="r"><span class="k">Engagement</span><span class="v">Aucun</span></div>
+                <div class="r hl"><span class="k">Disponibilité</span><span class="v">3 créneaux / semaine</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="pane"><div class="ph"><span class="t">Réserver une démo</span><span class="m">réponse &lt; 24 h</span></div>
+            <div class="pb">
+              <form class="form" id="demoForm" action="#" method="POST">
+                <input type="hidden" name="_subject" value="Demande de démo DevisPilot OS" />
+                <label class="sr" for="fn">Nom & entreprise</label>
+                <input id="fn" class="f" type="text" name="nom" placeholder="Nom & entreprise" required />
+                <label class="sr" for="fe">Email professionnel</label>
+                <input id="fe" class="f" type="email" name="email" placeholder="Email professionnel" required />
+                <label class="sr" for="fmt">Métier</label>
+                <input id="fmt" class="f" type="text" name="metier" placeholder="Votre métier (HVAC, élec, PV, industrie…)" />
+                <button id="demoSubmit" type="submit">Réserver ma démo <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+                <div class="micro" id="demoMicro"><b>Sans engagement · 0 spam.</b> hello@vainstudio.lu</div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <div id="status">
+    <span>DEVISPILOT OS <span class="au">v5.0</span></span><span class="sep"></span>
+    <span>SIMULATION<span class="hidemb"> · DONNÉES DE DÉMONSTRATION</span></span>
+    <span class="mid" id="crumb">ACCUEIL</span>
+    <span class="hidemb">EN JEU <span class="au money" id="stakeFoot">84 200 €</span></span><span class="sep hidemb"></span>
+    <span class="hidemb">À RISQUE <span class="rd money" id="riskFoot">59 700 €</span></span><span class="sep hidemb"></span>
+    <span class="hidemb">SIGNÉ <span class="gn money">64 300 €</span></span><span class="sep hidemb"></span>
+    <span>© 2026 VΛIN</span>
+  </div>
+</div>
+
+<div id="pal" role="dialog" aria-label="Palette de commandes">
+  <div class="box">
+    <input id="palQ" type="text" placeholder="Commander — ex : « urgences », « pertes », « démo »…" autocomplete="off" />
+    <div class="ls" id="palLs"></div>
+    <div class="ft"><span>↑↓ naviguer</span><span>⏎ exécuter</span><span>esc fermer</span></div>
+  </div>
+</div>
+<div id="notif"><div class="h">Notifications <span class="fm" id="notifC" style="font-size:9px;color:var(--ink4)">0</span></div><div class="ls" id="notifLs"></div></div>
+<div id="toast"></div>
+
+<script>
+/* ⚙️ CONFIG — vide = canal désactivé proprement */
+var VAIN_CONFIG={formspreeId:"",calendly:"",whatsapp:"",phoneDial:"",phoneDisplay:""};
+(function(){var C=VAIN_CONFIG,f=document.getElementById('demoForm'),b=document.getElementById('demoSubmit'),m=document.getElementById('demoMicro');
+if(C.formspreeId){f.action='https://formspree.io/f/'+C.formspreeId;}
+else{b.classList.add('is-dis');b.setAttribute('aria-disabled','true');f.addEventListener('submit',function(e){e.preventDefault();});
+m.innerHTML='<b>Formulaire en cours d’activation.</b> Contact : hello@vainstudio.lu';}})();
+
+/* ── nav scroll ── */
+var MODS=15,crumb=document.getElementById('crumb');
+var NAMES=['ACCUEIL','DEMANDES','CLIENTS','VISITES','DEVIS','CHANTIERS','COMMUNICATIONS','URGENCES','DIRECTEUR IA','REVENUE','RADAR DES PERTES','DEUX ENTREPRISES','PACKS','PREUVES','ACTIVATION'];
+var views=document.querySelectorAll('.view'),sideBtns=document.querySelectorAll('#side button[data-go]');
+var segs=document.querySelectorAll('#rail .seg'),cur=-1;
+var started={duo:false,ai:false,soc:false};
+function segTop(i){var t=0;for(var j=0;j<i;j++)t+=segs[j].offsetHeight;return t;}
+function setMod(i){
+  i=Math.max(0,Math.min(MODS-1,i));if(i===cur)return;cur=i;
+  views.forEach(function(v){v.classList.toggle('on',+v.getAttribute('data-v')===i);});
+  sideBtns.forEach(function(b){b.classList.toggle('on',+b.getAttribute('data-go')===i);});
+  crumb.textContent=NAMES[i];
+  views[i].querySelectorAll('[data-count]').forEach(countUp);
+  if(i===1){var p=document.getElementById('probReq');if(p)setTimeout(function(){p.style.width='74%';},150);}
+  if(i===6&&!started.soc){started.soc=true;startSoc();}
+  if(i===8&&!started.ai){started.ai=true;runAI();}
+  if(i===11&&!started.duo){started.duo=true;startDuo();}
+}
+function modFromScroll(){var y=scrollY+innerHeight*0.35,acc=0;for(var i=0;i<segs.length;i++){acc+=segs[i].offsetHeight;if(y<acc)return i;}return MODS-1;}
+addEventListener('scroll',function(){setMod(modFromScroll());},{passive:true});
+function goto(i){scrollTo({top:segTop(i)+10,behavior:'smooth'});}
+document.querySelectorAll('[data-go]').forEach(function(el){el.addEventListener('click',function(e){e.preventDefault();goto(+el.getAttribute('data-go'));});});
+addEventListener('keydown',function(e){
+  if(e.target.tagName==='INPUT'||e.target.tagName==='TEXTAREA')return;
+  if(pal.classList.contains('on'))return;
+  if(e.key==='j'||e.key==='J')goto(Math.min(MODS-1,cur+1));
+  if(e.key==='k'||e.key==='K')goto(Math.max(0,cur-1));
+});
+
+/* count-up € */
+function fmtEUR(n){return n.toLocaleString('fr-FR').replace(/ /g,' ').replace(/,/g,' ');}
+function countUp(el){
+  if(el.dataset.done)return;el.dataset.done=1;
+  var target=+el.getAttribute('data-count'),suf=el.getAttribute('data-suffix')||'',pre=el.getAttribute('data-prefix')||'';
+  var t0=null,dur=1000;
+  function step(ts){if(!t0)t0=ts;var p=Math.min(1,(ts-t0)/dur);p=1-Math.pow(1-p,3);
+    el.textContent=pre+fmtEUR(Math.round(target*p))+suf;if(p<1)requestAnimationFrame(step);}
+  requestAnimationFrame(step);
+}
+setMod(0);
+
+/* horloge */
+(function(){var el=document.getElementById('clock');function t(){var d=new Date();el.textContent=d.toLocaleDateString('fr-FR',{weekday:'short',day:'2-digit',month:'short'})+' · '+d.toLocaleTimeString('fr-FR',{hour12:false});}t();setInterval(t,1000);})();
+
+/* ── timeline entreprise (accueil) + notifications + stake ── */
+var bellN=document.getElementById('bellN'),notifLs=document.getElementById('notifLs'),notifC=document.getElementById('notifC');
+var homeTl=document.getElementById('homeTl');
+var stakeEls=[document.getElementById('stake'),document.getElementById('stakeFoot'),document.getElementById('homeStake')];
+var stake=84200,notifCount=0,notifStore=[];
+function setStake(){var s=fmtEUR(stake)+' €';stakeEls.forEach(function(e){if(e)e.textContent=s;});}
+var I={
+ in:'<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/></svg>',
+ usr:'<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>',
+ cal:'<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>',
+ doc:'<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>',
+ sig:'<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>',
+ wr:'<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 0 0 5.4-5.4l-2.1 2.1-2-.5-.5-2z"/></svg>',
+ box:'<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke="currentColor"><path d="M21 8l-9-5-9 5v8l9 5 9-5zM3 8l9 5 9-5M12 13v8"/></svg>',
+ snd:'<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>'};
+var CASES=[
+ {lbl:'PAC · Esch',val:18400},{lbl:'IRVE · Differdange',val:2100},{lbl:'Clim · Foetz',val:14600},
+ {lbl:'PV · Dudelange',val:21300},{lbl:'Dépannage · Bettembourg',val:3900}];
+function notify(html){notifCount++;bellN.textContent=notifCount>9?'9+':notifCount;notifC.textContent=notifCount;
+ notifStore.unshift(html);if(notifStore.length>8)notifStore.pop();
+ notifLs.innerHTML=notifStore.map(function(h){return '<div class="te au">'+h+'</div>';}).join('');}
+(function(){
+ var n=4193,ci=0,k=0;
+ var base=new Date();base.setSeconds(0);
+ function steps(c,n){return [
+  {ic:'in',cls:'au',t:'demande reçue · '+c.lbl+' — <b class="eur">'+fmtEUR(c.val)+' €</b>',ref:'REQ-'+n,notif:1,stake:c.val},
+  {ic:'usr',cls:'',t:'client créé · fiche 360 ouverte',ref:'CLI-'+(n-3905)},
+  {ic:'cal',cls:'',t:'visite proposée · 3 créneaux optimisés',ref:'VIS-'+(n-3310)},
+  {ic:'doc',cls:'',t:'devis envoyé · prime déduite · suivi ON',ref:'DV-'+(n-3009),notif:1},
+  {ic:'sig',cls:'gn',t:'<b>signé</b> — <b class="eur gn">+ '+fmtEUR(c.val)+' €</b>',ref:'DV-'+(n-3009),notif:1,sign:c.val},
+  {ic:'wr',cls:'',t:'chantier créé · marge estimée 38 %',ref:'CHT-'+(n-3421)},
+  {ic:'box',cls:'',t:'matériel commandé · délai 48 h',ref:'CHT-'+(n-3421)},
+  {ic:'usr',cls:'',t:'technicien affecté · P. Muller',ref:'CHT-'+(n-3421)}];}
+ var st=steps(CASES[0],n);
+ var clockM=8*60+12;
+ function hhmm(){var h=Math.floor(clockM/60)%24,m=clockM%60;return (h<10?'0':'')+h+':'+(m<10?'0':'')+m;}
+ function push(s){
+  var d=document.createElement('div');d.className='te '+s.cls;
+  d.innerHTML='<span class="tt">'+hhmm()+'</span><span class="ic">'+I[s.ic]+'</span><span>'+s.t+'</span><span class="ref">#'+s.ref+'</span>';
+  homeTl.prepend(d);while(homeTl.children.length>8)homeTl.removeChild(homeTl.lastChild);
+  if(s.notif)notify(d.innerHTML);
+  if(s.stake){stake+=s.stake;setStake();}
+  if(s.sign){stake-=s.sign;setStake();}
+  clockM+=1+(k%2);
+ }
+ var reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+ (function loop(){
+  if(k<st.length){push(st[k]);k++;}
+  else{n++;ci=(ci+1)%CASES.length;st=steps(CASES[ci],n);k=0;clockM+=17;}
+  setTimeout(loop,reduced?3800:2150);
+ })();
+})();
+
+/* notifications dropdown */
+var bell=document.getElementById('bellBtn'),notifBox=document.getElementById('notif');
+bell.addEventListener('click',function(e){e.stopPropagation();notifBox.classList.toggle('on');});
+document.addEventListener('click',function(e){if(!notifBox.contains(e.target))notifBox.classList.remove('on');});
+
+/* ── SOC communications ── */
+function startSoc(){
+ var feed=document.getElementById('socFeed');
+ var C={sms:[document.getElementById('socSms'),142],mail:[document.getElementById('socMail'),318],ack:[document.getElementById('socAck'),217],rel:[document.getElementById('socRel'),36],rep:[document.getElementById('socRep'),94]};
+ var MSG=[
+  ['snd','au','SMS → M. Weber : « Votre visite est confirmée jeudi 09:00 »','sms'],
+  ['snd','','Email → Hoffmann : relance douce J+2 · devis 24 100 €','mail','rel'],
+  ['snd','au','Accusé → nouvelle demande PV : « bien reçu, réponse sous 2 h »','ack','mail'],
+  ['in','gn','Réponse reçue ← Mme Thill : « ok pour jeudi »','rep'],
+  ['snd','','Rappel → technicien : pose CHT-771 vendredi 10:30','sms'],
+  ['snd','au','Relance J+5 → Garage Reuter · devis 14 900 €','mail','rel'],
+  ['in','gn','Réponse reçue ← Hoffmann : « pouvez-vous m\'appeler ? »','rep']];
+ var i=0,reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+ (function loop(){
+  var m=MSG[i%MSG.length];i++;
+  var d=document.createElement('div');d.className='te '+m[1];
+  d.innerHTML='<span class="tt">'+new Date().toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'})+'</span><span class="ic">'+I[m[0]]+'</span><span>'+m[2]+'</span>';
+  feed.prepend(d);while(feed.children.length>6)feed.removeChild(feed.lastChild);
+  for(var j=3;j<m.length;j++){var c=C[m[j]];if(c){c[1]++;c[0].textContent=c[1];}}
+  setTimeout(loop,reduced?4200:2100);
+ })();
+}
+
+/* ── urgences : Exécuter ── */
+(function(){
+ var risk=59700,riskEls=[document.getElementById('riskLeft'),document.getElementById('riskFoot')];
+ document.querySelectorAll('.alert .exec').forEach(function(b){
+  b.addEventListener('click',function(){
+   var a=b.closest('.alert');if(a.classList.contains('done'))return;
+   a.classList.add('done');
+   a.querySelector('.tag').textContent='TRAITÉ';
+   b.textContent='Exécuté ✓';
+   risk-=+a.getAttribute('data-val');
+   riskEls.forEach(function(e){if(e)e.textContent=fmtEUR(Math.max(0,risk))+' €';});
+   showToast('Action lancée — '+fmtEUR(+a.getAttribute('data-val'))+' € remis en mouvement','gn');
+  });
+ });
+})();
+
+/* ── IA ── */
+function runAI(){
+ var lines=document.querySelectorAll('#aiB .ai-line'),v=document.getElementById('aiV'),cu=document.getElementById('aiCur');
+ var reduced=matchMedia('(prefers-reduced-motion: reduce)').matches,i=0;
+ (function next(){
+  if(i<lines.length){lines[i].classList.add('show');i++;setTimeout(next,reduced?70:600);}
+  else{if(cu)cu.style.display='none';setTimeout(function(){v.classList.add('show');},280);}
+ })();
+}
+document.addEventListener('click',function(e){
+ if(e.target&&e.target.id==='aiExec'){e.target.textContent='Séquence lancée ✓';e.target.style.background='var(--gnD)';e.target.style.color='var(--gn2)';e.target.style.pointerEvents='none';e.target.style.border='1px solid var(--gnL)';showToast('Séquence J+2 · J+5 · J+9 armée sur 14 devis — gain visé + 8 900 €/mois','gn');}
+});
+
+/* ── deux entreprises ── */
+function startDuo(){
+ var bad=document.getElementById('consBad'),good=document.getElementById('consGood');
+ var cb=document.getElementById('cntBad'),cg=document.getElementById('cntGood');
+ var nb=0,ng=0,n=5021,li=0;
+ var L=[['PAC · Esch',18400],['IRVE · Differdange',2100],['Clim · Foetz',14600],['PV · Dudelange',21300],['Dépannage · Bettembourg',3900],['PAC · Pétange',16800],['Clim resto · Lux',9400],['Élec · Sanem',5200]];
+ var FATES=['PERDU','OUBLIÉ','ANNULÉ','SANS SUITE'];
+ var reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+ function line(el,id,lbl,val,stt){var d=document.createElement('div');d.className='cline';
+  d.innerHTML='<span class="id">#'+id+'</span><span class="lbl">'+lbl+'</span><span class="val">'+fmtEUR(val)+' €</span><span class="stt">'+stt+'</span>';
+  el.prepend(d);while(el.children.length>6)el.removeChild(el.lastChild);return d;}
+ (function cycle(){
+  var it=L[li%L.length];li++;var id='REQ-'+(n++),lbl=it[0],val=it[1];
+  var lb=line(bad,id,lbl,val,'reçue');
+  setTimeout(function(){lb.querySelector('.stt').textContent='« je rappelle demain »';},1500);
+  setTimeout(function(){lb.classList.add('lost');lb.querySelector('.stt').textContent=FATES[li%FATES.length];nb+=val;cb.textContent='− '+fmtEUR(nb)+' €';},3300);
+  var lg=line(good,id,lbl,val,'reçue');
+  setTimeout(function(){lg.querySelector('.stt').textContent='accusé · 38 s';},800);
+  setTimeout(function(){lg.querySelector('.stt').textContent='qualifié · relance armée';},1850);
+  setTimeout(function(){lg.querySelector('.stt').textContent='devis + prime';},2900);
+  setTimeout(function(){lg.classList.add('won');lg.querySelector('.stt').textContent='SIGNÉ';ng+=val;cg.textContent='+ '+fmtEUR(ng)+' €';},4200);
+  setTimeout(cycle,reduced?6200:4800);
+ })();
+}
+
+/* ── palette ⌘K ── */
+var pal=document.getElementById('pal'),palQ=document.getElementById('palQ'),palLs=document.getElementById('palLs');
+var CMDS=[
+ {l:'Accueil — timeline de l\'entreprise',k:'live',go:0},
+ {l:'Demandes — 18 400 € qui attendent',k:'argent',go:1},
+ {l:'Clients — vision 360',k:'CLI-0287',go:2},
+ {l:'Visites — tournées optimisées',k:'+1 visite/j',go:3},
+ {l:'Devis — chacun connaît sa relance',k:'96 300 €',go:4},
+ {l:'Chantiers — jusqu\'à la marge',k:'CHT-771',go:5},
+ {l:'Communications — salle de contrôle',k:'SOC',go:6},
+ {l:'Urgences — 59 700 € à sauver',k:'exécuter',go:7},
+ {l:'Directeur commercial IA',k:'+8 900 €/mois',go:8},
+ {l:'Revenue Command Center',k:'1,24 M€',go:9},
+ {l:'Radar des pertes — la carte',k:'zones rouges',go:10},
+ {l:'Deux entreprises — mêmes demandes',k:'live',go:11},
+ {l:'Packs — la transformation',k:'49→1 499 €',go:12},
+ {l:'Preuves — avant/après réels',k:'ouvrables',go:13},
+ {l:'Réserver une démo',k:'15 min',go:14},
+ {l:'Ouvrir l\'AVANT réel (chauffage-artisanal.lu)',k:'↗',href:'https://www.chauffage-artisanal.lu/'},
+ {l:'Ouvrir l\'APRÈS réel (transformation VΛIN)',k:'↗',href:'https://chauffage-artisanal.vercel.app'}];
+var sel=0;
+function renderPal(){
+ var q=palQ.value.toLowerCase();
+ var list=CMDS.filter(function(c){return c.l.toLowerCase().indexOf(q)>-1||c.k.toLowerCase().indexOf(q)>-1;});
+ if(sel>=list.length)sel=0;
+ palLs.innerHTML=list.map(function(c,i){return '<button class="it'+(i===sel?' sel':'')+'" data-i="'+CMDS.indexOf(c)+'"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.7"><path d="M5 12h14M13 6l6 6-6 6"/></svg> '+c.l+' <span class="k">'+c.k+'</span></button>';}).join('')||'<div style="padding:13px;font-size:12px;color:var(--ink4)">Aucun résultat.</div>';
+ palLs.querySelectorAll('.it').forEach(function(b){b.addEventListener('click',function(){exec(+b.getAttribute('data-i'));});});
+}
+function exec(i){var c=CMDS[i];palClose();if(c.href){open(c.href,'_blank');}else{goto(c.go);}}
+function palOpenF(){pal.classList.add('on');palQ.value='';sel=0;renderPal();setTimeout(function(){palQ.focus();},30);}
+function palClose(){pal.classList.remove('on');}
+document.getElementById('palOpen').addEventListener('click',palOpenF);
+pal.addEventListener('click',function(e){if(e.target===pal)palClose();});
+palQ.addEventListener('input',function(){sel=0;renderPal();});
+addEventListener('keydown',function(e){
+ if((e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==='k'){e.preventDefault();pal.classList.contains('on')?palClose():palOpenF();return;}
+ if(!pal.classList.contains('on'))return;
+ var vis=palLs.querySelectorAll('.it');
+ if(e.key==='Escape')palClose();
+ if(e.key==='ArrowDown'){e.preventDefault();sel=Math.min(vis.length-1,sel+1);renderPal();}
+ if(e.key==='ArrowUp'){e.preventDefault();sel=Math.max(0,sel-1);renderPal();}
+ if(e.key==='Enter'){e.preventDefault();var b=palLs.querySelector('.it.sel')||vis[0];if(b)exec(+b.getAttribute('data-i'));}
+});
+
+/* toast */
+var toast=document.getElementById('toast'),toastT;
+function showToast(m,cls){toast.textContent=m;toast.className=cls?cls:'';toast.classList.add('on');clearTimeout(toastT);toastT=setTimeout(function(){toast.classList.remove('on');},2600);}
+</script>
+</body>
+</html>

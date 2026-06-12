@@ -32,6 +32,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/cgv",
     "/processus",
     "/glossaire",
+    // Produit cœur : l'estimateur immersif + l'assistant devis IA
+    "/estimation",
+    "/assistant",
     // Pages SEO Luxembourg (haute valeur : requêtes volumineuses au LU)
     ...SEO_SLUGS.map((slug) => `/${slug}`),
     // Encyclopédie marques — hub + 9 fiches détail + 36 comparaisons
@@ -65,7 +68,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority:
       r === ""
         ? 1
-        : r === "/devis"
+        : r === "/estimation"
+          ? 0.95
+        : r === "/devis" || r === "/assistant"
           ? 0.9
           : SEO_LU_ROUTES.has(r)
             ? 0.85

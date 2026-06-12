@@ -12,6 +12,22 @@
   --charcoal: #1e1a15;
   --copper: #b86a36;
   --ember: #dc5a28;
+
+  /* ── Design System v2 — identité « logo historique » (cf. lib/brand.ts) ──
+     Additif : ne remplace AUCUNE variable legacy ci-dessus (zéro régression).
+     Migration des composants en Lot B+. */
+  --ca-creme: #f7f2e9;
+  --ca-sable: #efe7d8;
+  --ca-pierre: #e0d5c2;
+  --ca-brun: #5a4636;
+  --ca-anthra: #2a2724;
+  --ca-taupe: #6e675c;
+  --ca-bleu: #0b57a0;
+  --ca-navy: #0a3d6e;
+  --ca-bleuvif: #2c7bd0;
+  --ca-voile: #e8f0f8;
+  --ca-brique: #a2131a;
+  --ca-terracotta: #c24a2c;
 }
 
 html {

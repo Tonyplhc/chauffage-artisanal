@@ -24,7 +24,11 @@
  *
  * Toutes les hypothèses sont visibles dans le résultat pour transparence.
  * AUCUNE garantie ni promesse — c'est un outil de réflexion, pas un contrat.
+ *
+ * Règle N°5 : prix énergie et SCOP lus depuis lib/referentiel (source unique).
  */
+import { PRIX_ENERGIE } from "./referentiel/prix-energie";
+import { SCOP_PAC_AIR_EAU } from "./referentiel/estimation";
 
 export type RoiInput = {
   /** Besoins thermiques annuels du logement (kWh/an). */
@@ -83,10 +87,10 @@ export type RoiResult = {
 };
 
 const DEFAULTS = {
-  gasPricePerKwh: 0.11,
-  electricityPricePerKwh: 0.22,
+  gasPricePerKwh: PRIX_ENERGIE.gaz,
+  electricityPricePerKwh: PRIX_ENERGIE.electricite,
   gasEfficiency: 0.95,
-  pacScop: 3.5,
+  pacScop: SCOP_PAC_AIR_EAU,
   energyInflation: 0.03,
   gasAnnualMaintenance: 200,
   pacAnnualMaintenance: 250,

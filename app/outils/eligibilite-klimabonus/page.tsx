@@ -209,7 +209,7 @@ export default function KlimabonusCheckerPage() {
                     <div
                       className={`inline-flex h-12 w-12 items-center justify-center rounded-full mb-3 ${
                         result.eligibility === "eligible"
-                          ? "bg-[#22a06b]/10 text-[#22a06b]"
+                          ? "bg-gain/10 text-gain"
                           : "bg-copper/10 text-copper"
                       }`}
                     >
@@ -219,7 +219,7 @@ export default function KlimabonusCheckerPage() {
                         <ShieldCheck className="h-5 w-5" />
                       )}
                     </div>
-                    <div className="font-display text-2xl text-ink">
+                    <div className="font-display text-2xl text-gain">
                       {result.estimatedAidEur && (
                         <>
                           {formatEur(result.estimatedAidEur[0], true)} –{" "}
@@ -235,7 +235,7 @@ export default function KlimabonusCheckerPage() {
                     <div
                       className={`mt-3 inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-eyebrow px-3 py-1 rounded-full ${
                         result.eligibility === "eligible"
-                          ? "bg-[#22a06b]/10 text-[#22a06b]"
+                          ? "bg-gain/10 text-gain"
                           : "bg-copper/10 text-copper"
                       }`}
                     >
@@ -258,7 +258,7 @@ export default function KlimabonusCheckerPage() {
                     <span
                       className={`mt-1 inline-block h-1.5 w-1.5 rounded-full shrink-0 ${
                         r.type === "positive"
-                          ? "bg-[#22a06b]"
+                          ? "bg-gain"
                           : r.type === "warning"
                             ? "bg-copper"
                             : "bg-ember"

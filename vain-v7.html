@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>DevisPilot OS — Une demande entre. Un chantier sort.</title>
+<meta name="description" content="DevisPilot : le centre d'opérations commercial des entreprises techniques. Une demande entre, un chantier sort — qualification, suivi, relances, devis et planning pilotés comme un système." />
+<meta name="theme-color" content="#040405" />
+<link rel="canonical" href="https://vainstudio.lu/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="VΛIN STUDIO" />
+<meta property="og:title" content="DevisPilot OS — Une demande entre. Un chantier sort." />
+<meta property="og:description" content="Le centre d'opérations commercial des entreprises techniques. Le logiciel, pas la promesse." />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23040405'/%3E%3Ctext x='50' y='69' font-family='Space Grotesk,Arial' font-size='60' font-weight='700' fill='%23D4AF37' text-anchor='middle'%3E%CE%9B%3C/text%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+/* ════════════════════════════════════════════════════════════
+   DEVISPILOT OS — V7 · L'INTERFACE EST LE SITE
+   Le scroll ne déroule pas une page : il navigue dans le système.
+   ────────────────────────────────────────────────────────────
+   Surfaces 5 noirs · Encre 4 blancs · Or = action/vivant/signé.
+   Précision > effets. Une animation = une information.
+   ════════════════════════════════════════════════════════════ */
+:root{
+  --s0:#040405;--s1:#09090b;--s2:#0d0d10;--s3:#111115;--s4:#16161b;
+  --l1:rgba(255,255,255,.055);--l2:rgba(255,255,255,.10);--l3:rgba(255,255,255,.17);
+  --ink:#FAFAFB;--ink2:rgba(255,255,255,.62);--ink3:rgba(255,255,255,.40);--ink4:rgba(255,255,255,.24);
+  --au:#D4AF37;--au2:#EBD9A2;--auD:rgba(212,175,55,.14);--auL:rgba(212,175,55,.35);
+  --r1:6px;--r2:10px;--r3:14px;--r4:20px;
+  --tf:.16s cubic-bezier(.2,.7,.2,1);--tm:.3s cubic-bezier(.2,.7,.2,1);--ts:.55s cubic-bezier(.16,1,.3,1);
+  --fd:'Space Grotesk','Inter',sans-serif;--fb:'Inter',sans-serif;--fm:'JetBrains Mono',ui-monospace,monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:auto}
+body{background:var(--s0);color:var(--ink);font-family:var(--fb);line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::selection{background:var(--au);color:#0a0a0a}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:none;cursor:pointer;text-align:left}
+:focus-visible{outline:1px solid var(--au);outline-offset:2px;border-radius:4px}
+.fm{font-family:var(--fm);letter-spacing:.02em}
+h1,h2,h3,h4{font-family:var(--fd);font-weight:600;letter-spacing:-.02em;line-height:1.05}
+
+/* rail de scroll : donne la longueur, le shell reste fixe */
+#rail{position:relative;z-index:0}
+#rail .seg{height:108vh}
+#rail .seg.first{height:118vh}
+
+/* ── SHELL OS : la fenêtre logicielle plein écran ── */
+#shell{position:fixed;inset:12px;z-index:10;display:flex;flex-direction:column;
+  border:1px solid var(--l2);border-radius:var(--r4);background:var(--s1);overflow:hidden;
+  box-shadow:0 1px 0 rgba(255,255,255,.04) inset,0 60px 120px -60px rgba(0,0,0,.95)}
+@media(max-width:680px){#shell{inset:7px;border-radius:14px}}
+
+/* topbar */
+#top{display:flex;align-items:center;gap:12px;padding:10px 14px;border-bottom:1px solid var(--l1);background:var(--s0);flex:none}
+#top .b{display:flex;align-items:center;gap:9px;font-family:var(--fd);font-weight:600;font-size:14px;white-space:nowrap}
+#top .b .d{width:20px;height:20px;border-radius:6px;background:var(--au);color:#0a0a0a;display:grid;place-items:center;font-size:12px;font-weight:700}
+#top .b .os{color:var(--ink3);font-weight:500}
+#top .q{display:flex;align-items:center;gap:8px;border:1px solid var(--l2);border-radius:var(--r1);padding:6px 11px;color:var(--ink4);font-size:12px;background:var(--s1);min-width:200px;cursor:pointer;transition:border-color var(--tf)}
+#top .q:hover{border-color:var(--l3);color:var(--ink3)}
+#top .q .k{margin-left:auto;font-family:var(--fm);font-size:9.5px;border:1px solid var(--l2);border-radius:4px;padding:1px 5px;color:var(--ink3)}
+#top .sp{flex:1}
+#top .live{display:flex;align-items:center;gap:7px;font-family:var(--fm);font-size:9.5px;color:var(--au2);border:1px solid var(--auL);border-radius:20px;padding:4px 10px;white-space:nowrap}
+#top .live i{width:6px;height:6px;border-radius:50%;background:var(--au);animation:beat 2.4s infinite}
+@keyframes beat{0%,100%{box-shadow:0 0 0 0 rgba(212,175,55,.5)}55%{box-shadow:0 0 0 5px rgba(212,175,55,0)}}
+#clock{font-family:var(--fm);font-size:12px;color:var(--ink2);font-variant-numeric:tabular-nums;white-space:nowrap}
+#bellBtn{position:relative;width:30px;height:30px;border-radius:var(--r1);border:1px solid var(--l2);display:grid;place-items:center;color:var(--ink3);transition:border-color var(--tf),color var(--tf)}
+#bellBtn:hover{border-color:var(--l3);color:var(--ink2)}
+#bellBtn .n{position:absolute;top:-5px;right:-5px;min-width:15px;height:15px;border-radius:8px;background:var(--au);color:#0a0a0a;font-family:var(--fm);font-size:9px;font-weight:600;display:grid;place-items:center;padding:0 4px}
+#top .cta{background:var(--au);color:#0a0a0a;font-weight:600;font-size:13px;padding:8px 15px;border-radius:var(--r2);display:flex;align-items:center;gap:8px;white-space:nowrap;transition:transform var(--tf),box-shadow var(--tm)}
+#top .cta:hover{transform:translateY(-1px);box-shadow:0 10px 30px -12px rgba(212,175,55,.55)}
+@media(max-width:880px){#top .q{display:none}}
+@media(max-width:640px){#top .live,#clock{display:none}#top{padding:9px 11px}#top .cta{font-size:12px;padding:7px 11px}#top .b .os{display:none}}
+
+/* corps : sidebar + workspace */
+#body{display:flex;flex:1;min-height:0}
+#side{width:198px;flex:none;border-right:1px solid var(--l1);background:var(--s0);padding:10px 9px;display:flex;flex-direction:column;overflow-y:auto;scrollbar-width:none}
+#side::-webkit-scrollbar{display:none}
+#side .g{font-family:var(--fm);font-size:9px;letter-spacing:.16em;color:var(--ink4);padding:11px 9px 6px}
+#side button{display:flex;align-items:center;gap:9px;width:100%;padding:8px 10px;border-radius:var(--r1);font-size:12.5px;color:var(--ink2);transition:background var(--tf),color var(--tf)}
+#side button svg{stroke:var(--ink3);flex:none;transition:stroke var(--tf)}
+#side button:hover{background:rgba(255,255,255,.035)}
+#side button.on{background:rgba(255,255,255,.06);color:var(--ink)}
+#side button.on svg{stroke:var(--au)}
+#side button .c{margin-left:auto;font-family:var(--fm);font-size:9.5px;color:var(--ink4)}
+#side .push{flex:1}
+#side .hint{font-family:var(--fm);font-size:9px;color:var(--ink4);padding:10px;border-top:1px solid var(--l1);line-height:1.8}
+#side .hint b{color:var(--ink3);font-weight:500;border:1px solid var(--l2);border-radius:3px;padding:0 4px}
+@media(max-width:880px){#side{display:none}}
+
+#ws{flex:1;position:relative;min-width:0;background:var(--s1)}
+.view{position:absolute;inset:0;padding:18px 20px;opacity:0;transform:translateY(14px) scale(.995);transition:opacity var(--ts),transform var(--ts);pointer-events:none;overflow-y:auto;overflow-x:hidden;scrollbar-width:thin;scrollbar-color:var(--l2) transparent}
+.view::-webkit-scrollbar{width:6px}.view::-webkit-scrollbar-thumb{background:var(--l2);border-radius:6px}
+.view.on{opacity:1;transform:none;pointer-events:auto}
+@media(max-width:680px){.view{padding:14px}}
+
+/* statusbar */
+#status{display:flex;align-items:center;gap:13px;padding:7px 14px;border-top:1px solid var(--l1);background:var(--s0);font-family:var(--fm);font-size:9.5px;color:var(--ink4);flex:none;flex-wrap:nowrap;overflow:hidden;white-space:nowrap}
+#status .au{color:var(--au2)}
+#status .sep{width:3px;height:3px;border-radius:50%;background:var(--ink4);flex:none}
+#status .mid{flex:1;text-align:center;overflow:hidden;text-overflow:ellipsis}
+@media(max-width:680px){#status .hidemb{display:none}}
+
+/* ── composants internes ── */
+.vh{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:14px;flex-wrap:wrap}
+.vh .t{font-family:var(--fd);font-weight:600;font-size:16px}
+.vh .s{font-family:var(--fm);font-size:10px;color:var(--ink4);margin-top:3px}
+.vh .tag{font-family:var(--fm);font-size:9.5px;color:var(--ink3);border:1px solid var(--l1);border-radius:var(--r1);padding:4px 9px;white-space:nowrap}
+
+/* carte narrative — le marketing DANS le logiciel */
+.note{border:1px solid var(--auL);border-radius:var(--r3);background:linear-gradient(180deg,var(--auD),transparent 130%);padding:18px 20px;margin-bottom:16px}
+.note .k{font-family:var(--fm);font-size:9.5px;letter-spacing:.22em;color:var(--au);margin-bottom:9px}
+.note h1,.note h2{font-size:clamp(21px,2.6vw,32px);letter-spacing:-.025em}
+.note h1 .au,.note h2 .au{color:var(--au)}
+.note p{font-size:13.5px;color:var(--ink2);margin-top:9px;line-height:1.6;max-width:640px}
+.note .cta-row{display:flex;align-items:center;gap:13px;margin-top:14px;flex-wrap:wrap}
+.note .btn{background:var(--au);color:#0a0a0a;font-weight:600;font-size:13.5px;padding:11px 18px;border-radius:var(--r2);display:inline-flex;align-items:center;gap:9px;transition:transform var(--tf),box-shadow var(--tm)}
+.note .btn:hover{transform:translateY(-1px);box-shadow:0 12px 34px -14px rgba(212,175,55,.55)}
+.note .gh{font-size:12.5px;color:var(--ink3)}
+.note .gh b{color:var(--ink2);font-weight:500}
+
+.grid2{display:grid;grid-template-columns:1.05fr .95fr;gap:14px}
+@media(max-width:880px){.grid2{grid-template-columns:1fr}}
+.pane{border:1px solid var(--l1);border-radius:var(--r3);background:var(--s2);overflow:hidden;display:flex;flex-direction:column}
+.pane .ph{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px 13px;border-bottom:1px solid var(--l1);background:var(--s0)}
+.pane .ph .t{font-size:12.5px;font-weight:600;font-family:var(--fd)}
+.pane .ph .m{font-family:var(--fm);font-size:9px;color:var(--ink4)}
+.pane .pb{padding:11px 12px;display:flex;flex-direction:column;gap:7px;flex:1}
+
+/* demande / item */
+.rq{border:1px solid var(--l1);border-radius:var(--r2);padding:10px 11px;background:var(--s3);transition:transform var(--tf),border-color var(--tf)}
+.rq:hover{transform:translateY(-1px);border-color:var(--l2)}
+.rq.hot{border-color:var(--auL);box-shadow:0 0 0 1px rgba(212,175,55,.08)}
+.rq .t1{display:flex;align-items:center;gap:8px;margin-bottom:5px}
+.rq .new{font-family:var(--fm);font-size:8px;font-weight:600;color:#0a0a0a;background:var(--au);border-radius:4px;padding:2px 5px}
+.rq .id{font-family:var(--fm);font-size:9px;color:var(--ink4)}
+.rq .tm{margin-left:auto;font-family:var(--fm);font-size:9px;color:var(--au)}
+.rq .tm.old{color:var(--ink4)}
+.rq .su{font-size:12px;font-weight:500;line-height:1.35}
+.rq .tg{display:flex;gap:5px;margin-top:7px;flex-wrap:wrap}
+.tagc{font-family:var(--fm);font-size:8.5px;color:var(--ink2);border:1px solid var(--l2);border-radius:4px;padding:2px 6px}
+.tagc.au{color:var(--au);border-color:var(--auL)}
+
+/* event feed */
+.ev{display:flex;align-items:flex-start;gap:9px;padding:7px 9px;border:1px solid var(--l1);border-radius:var(--r2);background:var(--s3);font-size:11px;color:var(--ink2);opacity:0;transform:translateY(-6px);animation:evin .4s cubic-bezier(.2,.7,.2,1) forwards}
+@keyframes evin{to{opacity:1;transform:none}}
+.ev .ic{width:20px;height:20px;border-radius:5px;background:rgba(255,255,255,.04);display:grid;place-items:center;color:var(--ink2);flex:none}
+.ev .ic svg{stroke:currentColor}
+.ev.au .ic{background:var(--auD);color:var(--au)}
+.ev b{color:var(--ink);font-weight:500}
+.ev .w{margin-left:auto;font-family:var(--fm);font-size:8.5px;color:var(--ink4);flex:none;padding-top:2px}
+
+/* ligne générique */
+.lr{display:flex;align-items:center;gap:9px;padding:8px 10px;border:1px solid var(--l1);border-radius:var(--r2);background:var(--s3);font-size:11.5px;color:var(--ink2)}
+.lr .ic{width:22px;height:22px;border-radius:5px;background:rgba(255,255,255,.04);display:grid;place-items:center;flex:none}
+.lr .ic svg{stroke:currentColor}
+.lr .ic.au{background:var(--auD);color:var(--au)}
+.lr b{color:var(--ink);font-weight:500}
+.lr .w{margin-left:auto;font-family:var(--fm);font-size:8.5px;color:var(--ink4);flex:none}
+.lr .st{margin-left:auto;font-family:var(--fm);font-size:8.5px;color:var(--au);border:1px solid var(--auL);border-radius:4px;padding:2px 6px;flex:none}
+.lr.click{cursor:pointer;transition:border-color var(--tf),transform var(--tf)}
+.lr.click:hover{border-color:var(--l3);transform:translateX(2px)}
+
+/* dossier timeline */
+.case{display:grid;grid-template-columns:.9fr 1.1fr;gap:14px}
+@media(max-width:880px){.case{grid-template-columns:1fr}}
+.ctl{position:relative;padding-left:20px}
+.ctl::before{content:"";position:absolute;left:5px;top:6px;bottom:6px;width:1px;background:var(--l2)}
+.cstep{position:relative;padding:9px 0 9px 8px}
+.cstep::before{content:"";position:absolute;left:-19px;top:14px;width:9px;height:9px;border-radius:50%;background:var(--s1);border:1px solid var(--l3)}
+.cstep.au::before{background:var(--au);border-color:var(--au);box-shadow:0 0 0 4px var(--auD)}
+.cstep .ck{font-family:var(--fm);font-size:11px;color:var(--au2)}
+.cstep h4{font-size:13.5px;margin-top:3px}
+.cstep p{font-size:11.5px;color:var(--ink3);margin-top:3px;line-height:1.5}
+.cstep .ref{font-family:var(--fm);font-size:9px;color:var(--ink4);border:1px solid var(--l2);border-radius:4px;padding:1px 6px;margin-left:6px}
+.kv{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+.kv .c{border:1px solid var(--l1);border-radius:var(--r1);padding:8px 10px;background:var(--s3)}
+.kv .c .k{font-family:var(--fm);font-size:8px;color:var(--ink4);letter-spacing:.08em}
+.kv .c .v{font-size:11.5px;font-weight:500;margin-top:3px}
+.fhead{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.fhead .ava{width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,#2a2a31,#15151a);border:1px solid var(--l2);display:grid;place-items:center;font-family:var(--fd);font-weight:600;font-size:11px;color:var(--ink2)}
+.fhead .nm{font-size:13px;font-weight:600}
+.fhead .su{font-family:var(--fm);font-size:9.5px;color:var(--ink4)}
+.qt .l{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--l1);font-size:11.5px}
+.qt .l .k{color:var(--ink3)}
+.qt .l.tot{border-bottom:none;border-top:1px solid var(--l2);margin-top:4px;padding-top:10px;font-weight:600;font-size:13px}
+.qt .au{color:var(--au)}
+.ring{width:44px;height:44px;border-radius:50%;flex:none;display:grid;place-items:center;background:conic-gradient(var(--au) calc(var(--p,84)*1%),rgba(255,255,255,.07) 0)}
+.ring i{width:34px;height:34px;border-radius:50%;background:var(--s3);display:grid;place-items:center;font-family:var(--fd);font-weight:600;font-size:11.5px;font-style:normal}
+
+/* kanban */
+.kb{display:grid;grid-template-columns:repeat(6,minmax(128px,1fr));gap:8px;overflow-x:auto;padding-bottom:4px;scrollbar-width:thin;scrollbar-color:var(--l2) transparent}
+.kb::-webkit-scrollbar{height:6px}.kb::-webkit-scrollbar-thumb{background:var(--l2);border-radius:6px}
+.kc{background:var(--s0);border:1px solid var(--l1);border-radius:var(--r2);padding:8px}
+.kc .h{display:flex;justify-content:space-between;margin-bottom:7px;font-size:10px;color:var(--ink2);font-weight:500}
+.kc .h .n{font-family:var(--fm);font-size:9px;color:var(--ink4)}
+.kcd{background:var(--s3);border:1px solid var(--l1);border-radius:var(--r1);padding:7px;margin-bottom:6px;cursor:pointer;transition:transform var(--tf),border-color var(--tf)}
+.kcd:hover{transform:translateY(-1px);border-color:var(--auL)}
+.kcd:last-child{margin-bottom:0}
+.kcd .nm{font-size:10px;font-weight:500}
+.kcd .mt{font-family:var(--fm);font-size:8px;color:var(--ink4);margin-top:3px;display:flex;justify-content:space-between;gap:6px}
+.kcd .mt .v{color:var(--au2)}
+.kcd.hot{border-color:var(--auL)}
+
+/* planning */
+.cl{border:1px solid var(--l1);border-radius:var(--r2);overflow:hidden}
+.cl .hh{display:grid;grid-template-columns:repeat(5,1fr);background:var(--s0);border-bottom:1px solid var(--l1)}
+.cl .hh span{padding:7px 0;text-align:center;font-family:var(--fm);font-size:8.5px;color:var(--ink4)}
+.cl .gr{display:grid;grid-template-columns:repeat(5,1fr);grid-auto-rows:52px}
+.cl .ce{border-right:1px solid var(--l1);border-bottom:1px solid var(--l1);padding:4px}
+.cl .ce .d{font-family:var(--fm);font-size:8px;color:var(--ink4)}
+.cl .ev2{margin-top:3px;font-size:8px;border-radius:3px;padding:2px 4px;background:rgba(255,255,255,.05);color:var(--ink2);line-height:1.25}
+.cl .ev2.au{background:var(--auD);color:var(--au2)}
+
+/* journal */
+.jr{display:flex;gap:10px;padding:6px 9px;border:1px solid var(--l1);border-radius:var(--r1);background:var(--s3);font-family:var(--fm);font-size:10px;color:var(--ink2);align-items:baseline}
+.jr .t{color:var(--ink4);flex:none}
+.jr .who{margin-left:auto;color:var(--ink4);flex:none}
+.jr.au{border-color:var(--auL)}
+.jr.au .x{color:var(--au2)}
+
+/* impact : double console */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:880px){.duo{grid-template-columns:1fr}}
+.cons{border:1px solid var(--l1);border-radius:var(--r3);background:var(--s0);overflow:hidden;display:flex;flex-direction:column}
+.cons .ch{display:flex;align-items:center;justify-content:space-between;padding:10px 13px;border-bottom:1px solid var(--l1)}
+.cons .ch .t{font-family:var(--fm);font-size:10px;letter-spacing:.14em}
+.cons.bad .ch .t{color:var(--ink3)}
+.cons.good .ch{background:linear-gradient(180deg,var(--auD),transparent)}
+.cons.good .ch .t{color:var(--au)}
+.cons .cb{padding:10px 12px;display:flex;flex-direction:column;gap:6px;min-height:230px}
+.cline{display:flex;align-items:center;gap:9px;font-family:var(--fm);font-size:10px;padding:7px 9px;border:1px solid var(--l1);border-radius:var(--r1);background:var(--s3);opacity:0;animation:evin .4s forwards}
+.cline .id{color:var(--ink4)}
+.cline .lbl{color:var(--ink2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cline .stt{margin-left:auto;flex:none;font-size:8.5px;border-radius:4px;padding:2px 7px;border:1px solid var(--l2);color:var(--ink3)}
+.cline.lost{opacity:.45!important}
+.cline.lost .lbl{text-decoration:line-through;color:var(--ink4)}
+.cline.lost .stt{color:var(--ink4);border-color:var(--l1)}
+.cline.won .stt{color:#0a0a0a;background:var(--au);border-color:var(--au);font-weight:600}
+.cons .cf{border-top:1px solid var(--l1);padding:9px 13px;font-family:var(--fm);font-size:9.5px;color:var(--ink4);display:flex;justify-content:space-between}
+.cons .cf b{font-weight:600}
+.cons.bad .cf b{color:var(--ink2)}
+.cons.good .cf b{color:var(--au)}
+
+/* preuves */
+.pvg{display:grid;grid-template-columns:.8fr 1.2fr;gap:16px;align-items:stretch}
+@media(max-width:880px){.pvg{grid-template-columns:1fr}}
+.pv14{border:1px solid var(--l1);border-radius:var(--r3);background:var(--s2);display:flex;flex-direction:column;justify-content:center;align-items:center;padding:26px;text-align:center}
+.pv14 .n{font-family:var(--fd);font-weight:600;font-size:clamp(64px,7vw,104px);line-height:.9;letter-spacing:-.04em;
+  background:linear-gradient(180deg,#fff 16%,rgba(212,175,55,.85) 68%,rgba(212,175,55,.18));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.pv14 .u{font-family:var(--fm);font-size:10px;letter-spacing:.2em;color:var(--au);margin-top:10px}
+.pv14 p{font-size:11.5px;color:var(--ink3);margin-top:12px;max-width:230px;line-height:1.55}
+
+/* activation (conversion) */
+.act{display:grid;grid-template-columns:1.05fr .95fr;gap:14px}
+@media(max-width:880px){.act{grid-template-columns:1fr}}
+.meta-t{border:1px solid var(--l1);border-radius:var(--r2);overflow:hidden;margin-bottom:12px}
+.meta-t .r{display:flex;justify-content:space-between;padding:10px 13px;border-bottom:1px solid var(--l1);font-size:12px}
+.meta-t .r:last-child{border-bottom:none}
+.meta-t .r .k{color:var(--ink3)}
+.meta-t .r .v{font-weight:500;font-family:var(--fm);font-size:11px}
+.meta-t .r.hl{background:var(--auD)}
+.meta-t .r.hl .v{color:var(--au)}
+.form .f{width:100%;background:var(--s0);border:1px solid var(--l2);border-radius:var(--r2);padding:11px 13px;font-size:13px;color:var(--ink);font-family:var(--fb);margin-bottom:8px;outline:none;transition:border-color var(--tf)}
+.form .f::placeholder{color:var(--ink4)}
+.form .f:focus{border-color:var(--au)}
+.form button{width:100%;justify-content:center;background:var(--au);color:#0a0a0a;font-weight:600;font-size:14px;padding:12px;border-radius:var(--r2);display:flex;align-items:center;gap:9px;transition:transform var(--tf),box-shadow var(--tm)}
+.form button:hover{transform:translateY(-1px);box-shadow:0 12px 34px -14px rgba(212,175,55,.5)}
+.form .micro{margin-top:9px;text-align:center;font-size:10.5px;color:var(--ink4)}
+.form .micro b{color:var(--au2);font-weight:500}
+.is-dis{opacity:.4;pointer-events:none}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.pv-link{display:flex;align-items:center;justify-content:space-between;gap:9px;border:1px solid var(--l2);border-radius:var(--r2);padding:11px 13px;font-size:12px;transition:border-color var(--tf),transform var(--tf);background:var(--s3)}
+.pv-link:hover{border-color:var(--auL);transform:translateX(2px)}
+.pv-link .t{font-family:var(--fm);font-size:8.5px;color:var(--au)}
+.pv-link .n{font-weight:500;margin-top:1px}
+.pv-link svg{stroke:var(--ink3);flex:none}
+
+/* ── palette ⌘K ── */
+#pal{position:fixed;inset:0;z-index:300;display:none;align-items:flex-start;justify-content:center;padding-top:14vh;background:rgba(2,2,3,.6);backdrop-filter:blur(6px)}
+#pal.on{display:flex}
+#pal .box{width:min(540px,92vw);border:1px solid var(--l3);border-radius:var(--r3);background:var(--s2);overflow:hidden;box-shadow:0 60px 120px -40px rgba(0,0,0,.9)}
+#pal input{width:100%;background:var(--s1);border:none;border-bottom:1px solid var(--l1);padding:14px 16px;font-size:14px;color:var(--ink);outline:none;font-family:var(--fb)}
+#pal input::placeholder{color:var(--ink4)}
+#pal .ls{max-height:300px;overflow-y:auto;padding:6px}
+#pal .it{display:flex;align-items:center;gap:11px;width:100%;padding:10px 12px;border-radius:var(--r1);font-size:13px;color:var(--ink2);transition:background var(--tf)}
+#pal .it:hover,#pal .it.sel{background:rgba(255,255,255,.05);color:var(--ink)}
+#pal .it .k{margin-left:auto;font-family:var(--fm);font-size:9px;color:var(--ink4)}
+#pal .it svg{stroke:var(--ink3);flex:none}
+#pal .ft{border-top:1px solid var(--l1);padding:8px 14px;font-family:var(--fm);font-size:9px;color:var(--ink4);display:flex;gap:14px}
+
+/* ── notifications dropdown ── */
+#notif{position:fixed;z-index:290;top:64px;right:26px;width:min(330px,90vw);border:1px solid var(--l3);border-radius:var(--r3);background:var(--s2);box-shadow:0 40px 90px -40px rgba(0,0,0,.9);display:none;overflow:hidden}
+#notif.on{display:block}
+#notif .h{padding:11px 14px;border-bottom:1px solid var(--l1);font-size:12px;font-weight:600;font-family:var(--fd);display:flex;justify-content:space-between;align-items:center}
+#notif .h .fm{font-size:9px;color:var(--ink4)}
+#notif .ls{max-height:280px;overflow-y:auto;padding:7px;display:flex;flex-direction:column;gap:5px}
+
+/* toast */
+#toast{position:fixed;z-index:280;bottom:54px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--s3);border:1px solid var(--auL);color:var(--ink);font-size:12.5px;padding:10px 16px;border-radius:var(--r2);opacity:0;transition:opacity var(--tm),transform var(--tm);pointer-events:none;box-shadow:0 20px 60px -20px rgba(0,0,0,.8)}
+#toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
+
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:.001s!important;transition-duration:.001s!important}
+  .ev,.cline{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<!-- longueur de scroll : 1 segment = 1 module -->
+<div id="rail">
+  <div class="seg first"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div>
+  <div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div>
+</div>
+
+<!-- ═══════════════ LE SYSTÈME ═══════════════ -->
+<div id="shell" role="application" aria-label="DevisPilot OS — démonstration">
+  <!-- TOPBAR -->
+  <div id="top">
+    <div class="b"><span class="d">Λ</span>DevisPilot <span class="os">OS</span></div>
+    <button class="q" id="palOpen"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg> Rechercher ou commander <span class="k">⌘K</span></button>
+    <div class="sp"></div>
+    <span class="live"><i></i>SYSTÈME ACTIF</span>
+    <span id="clock">--:--:--</span>
+    <button id="bellBtn" aria-label="Notifications"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9M10.3 21a2 2 0 0 0 3.4 0"/></svg><span class="n" id="bellN">0</span></button>
+    <a href="#" class="cta" data-go="8">Demander une démo <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+  </div>
+
+  <div id="body">
+    <!-- SIDEBAR -->
+    <div id="side">
+      <div class="g">SYSTÈME</div>
+      <button data-go="0" class="on"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="1.7"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/></svg> Opérations</button>
+      <button data-go="1"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="1.7"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg> Dossier <span class="c">REQ-4192</span></button>
+      <button data-go="2"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="1.7"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg> Pipeline <span class="c">24</span></button>
+      <button data-go="3"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="1.7"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg> Planning <span class="c">6</span></button>
+      <button data-go="4"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="1.7"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg> Relances <span class="c">3</span></button>
+      <button data-go="5"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="1.7"><path d="M4 17l6-6-6-6M12 19h8"/></svg> Journal</button>
+      <div class="g">COMPRENDRE</div>
+      <button data-go="6"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="1.7"><path d="M3 17l6-6 4 4 8-8M21 7v6h-6"/></svg> Impact</button>
+      <button data-go="7"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="1.7"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg> Preuves</button>
+      <button data-go="8"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 2"/></svg> Activation</button>
+      <div class="push"></div>
+      <div class="hint">NAVIGUER &nbsp;<b>scroll</b> ou <b>J</b>/<b>K</b><br/>COMMANDER &nbsp;<b>⌘K</b></div>
+    </div>
+
+    <!-- WORKSPACE -->
+    <div id="ws">
+
+      <!-- M0 · OPÉRATIONS (hero) -->
+      <section class="view on" data-v="0">
+        <div class="note">
+          <div class="k">DEVISPILOT · CENTRE D'OPÉRATIONS COMMERCIAL</div>
+          <h1>Une demande entre. <span class="au">Un chantier sort.</span></h1>
+          <p>Vous êtes dans le système — pas sur une plaquette. Ce que vous voyez tourner ici, c'est ce que DevisPilot fait pour les entreprises techniques : capter, qualifier, suivre, relancer, signer.</p>
+          <div class="cta-row">
+            <a class="btn" data-go="8" href="#">Demander une démo <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            <span class="gh">Faites défiler pour <b>visiter le système</b> — 14 ans d'industrie · HVAC · Élec · Maintenance</span>
+          </div>
+        </div>
+        <div class="grid2">
+          <div class="pane">
+            <div class="ph"><span class="t">Boîte de réception</span><span class="m" id="inboxN">2 dossiers</span></div>
+            <div class="pb" id="inbox">
+              <div class="rq"><div class="t1"><span class="id">#REQ-4191</span><span class="tm old">07:48</span></div><div class="su">Entretien climatisation — local commercial</div><div class="tg"><span class="tagc">Clim</span><span class="tagc">Contrat</span></div></div>
+              <div class="rq"><div class="t1"><span class="id">#REQ-4190</span><span class="tm old">hier</span></div><div class="su">Tableau électrique — mise aux normes</div><div class="tg"><span class="tagc">Élec</span></div></div>
+            </div>
+          </div>
+          <div class="pane">
+            <div class="ph"><span class="t">Activité du système</span><span class="m">temps réel</span></div>
+            <div class="pb" id="feed"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- M1 · DOSSIER REQ-4192 -->
+      <section class="view" data-v="1">
+        <div class="note">
+          <div class="k">LE PARCOURS · UN DOSSIER RÉEL DU SYSTÈME</div>
+          <h2>Dix minutes, <span class="au">zéro action manuelle.</span></h2>
+          <p>Le dossier REQ-4192, tel que le système l'a traité : chaque pièce est reliée — la demande, le client, la visite, le devis, le chantier.</p>
+        </div>
+        <div class="case">
+          <div class="pane"><div class="ph"><span class="t">Chronologie</span><span class="m">#REQ-4192</span></div>
+            <div class="pb"><div class="ctl">
+              <div class="cstep au"><span class="ck">08:12</span><h4>Demande reçue <span class="ref">REQ-4192</span></h4><p>PAC air/eau · maison 140 m² · Esch-sur-Alzette. Accusé envoyé en 38 s.</p></div>
+              <div class="cstep au"><span class="ck">08:13</span><h4>Qualifiée — score 84</h4><p>Besoin, budget 15–20 k€, zone couverte, urgence élevée. Prioritaire.</p></div>
+              <div class="cstep au"><span class="ck">08:15</span><h4>Client créé <span class="ref">CLI-0287</span></h4><p>M. Weber · historique centralisé · prime Klimabonus détectée.</p></div>
+              <div class="cstep au"><span class="ck">08:16</span><h4>Visite proposée <span class="ref">VIS-882</span></h4><p>3 créneaux envoyés. Relance auto J+2 / J+5 / J+9 si silence.</p></div>
+              <div class="cstep au"><span class="ck">08:18</span><h4>Devis envoyé <span class="ref">DV-1183</span></h4><p>Prime déduite. Suivi d'ouverture actif.</p></div>
+              <div class="cstep au"><span class="ck">08:22</span><h4>Signé — chantier planifié <span class="ref">PLN-771</span></h4><p>13 300 € net. Pose programmée vendredi 10:30.</p></div>
+            </div></div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:14px">
+            <div class="pane"><div class="ph"><span class="t">Client</span><span class="m">#CLI-0287</span></div>
+              <div class="pb">
+                <div class="fhead"><div class="ava">MW</div><div><div class="nm">M. Weber</div><div class="su">Particulier · Esch-sur-Alzette</div></div></div>
+                <div class="kv">
+                  <div class="c"><div class="k">PROJET</div><div class="v">PAC air/eau</div></div>
+                  <div class="c"><div class="k">SCORE</div><div class="v" style="color:var(--au)">84 · prioritaire</div></div>
+                  <div class="c"><div class="k">VISITE</div><div class="v">VIS-882 · jeu 09:00</div></div>
+                  <div class="c"><div class="k">CHANTIER</div><div class="v">PLN-771 · ven 10:30</div></div>
+                </div>
+              </div>
+            </div>
+            <div class="pane"><div class="ph"><span class="t">Devis</span><span class="m">#DV-1183 · signé 08:22</span></div>
+              <div class="pb"><div class="qt">
+                <div class="l"><span class="k">PAC air/eau + pose</span><span>18 400 €</span></div>
+                <div class="l"><span class="k">Mise en service</span><span>1 200 €</span></div>
+                <div class="l"><span class="k au">Klimabonus déduit</span><span class="au">− 6 300 €</span></div>
+                <div class="l tot"><span>Reste à charge</span><span>13 300 €</span></div>
+              </div></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- M2 · PIPELINE -->
+      <section class="view" data-v="2">
+        <div class="note">
+          <div class="k">PIPELINE · TOUT EST VISIBLE, RIEN NE SE PERD</div>
+          <h2>Chaque opportunité a une place. <span class="au">Et une suite.</span></h2>
+          <p>Cliquez une carte : tout est relié au dossier. Plus de « je le rappelle demain » — le système s'en souvient pour vous.</p>
+        </div>
+        <div class="pane"><div class="ph"><span class="t">Pipeline commercial</span><span class="m">24 opportunités · démonstration</span></div>
+          <div class="pb">
+            <div class="kb">
+              <div class="kc"><div class="h">Demande <span class="n">3</span></div>
+                <div class="kcd" data-go="1"><div class="nm">REQ-4193 · Borne 11 kW</div><div class="mt"><span>Differdange</span><span class="v">09:02</span></div></div>
+                <div class="kcd" data-go="1"><div class="nm">REQ-4191 · Clim local</div><div class="mt"><span>Contrat</span><span class="v">07:48</span></div></div></div>
+              <div class="kc"><div class="h">Qualifié <span class="n">2</span></div>
+                <div class="kcd hot" data-go="1"><div class="nm">REQ-4192 · PAC Weber</div><div class="mt"><span>Score 84</span><span class="v">prioritaire</span></div></div></div>
+              <div class="kc"><div class="h">Visite <span class="n">4</span></div>
+                <div class="kcd" data-go="1"><div class="nm">VIS-880 · SCI Krier</div><div class="mt"><span>Industrie</span><span class="v">J+2</span></div></div></div>
+              <div class="kc"><div class="h">Devis <span class="n">5</span></div>
+                <div class="kcd hot" data-go="1"><div class="nm">DV-1181 · Hoffmann</div><div class="mt"><span>+ prime</span><span class="v">ouvert</span></div></div></div>
+              <div class="kc"><div class="h">Relance <span class="n">6</span></div>
+                <div class="kcd" data-go="1"><div class="nm">DV-1178 · Thill PV</div><div class="mt"><span>auto J+2</span><span class="v">envoyée</span></div></div></div>
+              <div class="kc"><div class="h">Signé <span class="n">4</span></div>
+                <div class="kcd" data-go="1"><div class="nm">DV-1183 · Weber</div><div class="mt"><span>PLN-771</span><span class="v">✓</span></div></div></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- M3 · PLANNING -->
+      <section class="view" data-v="3">
+        <div class="note">
+          <div class="k">PLANNING · DU DEVIS SIGNÉ AU CHANTIER POSÉ</div>
+          <h2>Le commercial et le terrain, <span class="au">enfin synchronisés.</span></h2>
+          <p>VIS-882 (la visite) et PLN-771 (la pose) viennent du même dossier. Signé un mardi à 08:22 — posé le vendredi à 10:30.</p>
+        </div>
+        <div class="grid2">
+          <div class="pane"><div class="ph"><span class="t">Semaine du 9 juin</span><span class="m">visites & chantiers</span></div>
+            <div class="pb"><div class="cl">
+              <div class="hh"><span>LUN</span><span>MAR</span><span>MER</span><span>JEU</span><span>VEN</span></div>
+              <div class="gr">
+                <div class="ce"><div class="d">9</div></div>
+                <div class="ce"><div class="d">10</div><div class="ev2 au">08:22 DV-1183 signé</div></div>
+                <div class="ce"><div class="d">11</div><div class="ev2">14:00 VIS-880 Krier</div></div>
+                <div class="ce"><div class="d">12</div><div class="ev2 au">09:00 VIS-882 Weber</div></div>
+                <div class="ce"><div class="d">13</div><div class="ev2 au">10:30 PLN-771 pose PAC</div></div>
+                <div class="ce"><div class="d">16</div><div class="ev2">08:00 entretien clim</div></div>
+                <div class="ce"><div class="d">17</div></div>
+                <div class="ce"><div class="d">18</div><div class="ev2">relances auto</div></div>
+                <div class="ce"><div class="d">19</div></div>
+                <div class="ce"><div class="d">20</div></div>
+              </div>
+            </div></div>
+          </div>
+          <div class="pane"><div class="ph"><span class="t">À venir</span><span class="m">généré par le système</span></div>
+            <div class="pb">
+              <div class="lr"><span class="ic au"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span> <b>VIS-882</b> · visite M. Weber <span class="w">JEU 09:00</span></div>
+              <div class="lr"><span class="ic au"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 0 0 5.4-5.4l-2.1 2.1-2-.5-.5-2z"/></svg></span> <b>PLN-771</b> · pose PAC · 2 techniciens <span class="w">VEN 10:30</span></div>
+              <div class="lr"><span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span> Relance DV-1181 Hoffmann si silence <span class="w">MER auto</span></div>
+              <div class="lr"><span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/></svg></span> Rappel contrat entretien — Garage Reuter <span class="w">LUN 16</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- M4 · RELANCES -->
+      <section class="view" data-v="4">
+        <div class="note">
+          <div class="k">RELANCES · LA OÙ LES AUTRES PERDENT LEURS DEVIS</div>
+          <h2>La relance que vous n'avez <span class="au">jamais le temps d'envoyer.</span></h2>
+          <p>80 % des devis sans réponse ne sont jamais relancés. Le système, lui, n'oublie pas — et s'arrête dès que le client répond.</p>
+        </div>
+        <div class="grid2">
+          <div class="pane"><div class="ph"><span class="t">File de relances</span><span class="m">3 programmées</span></div>
+            <div class="pb">
+              <div class="lr"><span class="ic au"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg></span> <b>DV-1178</b> · Mme Thill · PV toiture <span class="st">J+2 · DEMAIN 09:00</span></div>
+              <div class="lr"><span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span> <b>DV-1181</b> · Hoffmann · devis ouvert 2× <span class="w">J+2 · MER</span></div>
+              <div class="lr"><span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span> <b>REQ-4185</b> · sans réponse après visite <span class="w">J+5 · VEN</span></div>
+            </div>
+          </div>
+          <div class="pane"><div class="ph"><span class="t">Règles actives</span><span class="m">configurées une fois</span></div>
+            <div class="pb">
+              <div class="lr"><span class="ic au"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg></span> Accusé de réception <b>&lt; 1 min</b> <span class="st">ACTIF</span></div>
+              <div class="lr"><span class="ic au"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M9 11l3 3L22 4"/></svg></span> Qualification & score automatiques <span class="st">ACTIF</span></div>
+              <div class="lr"><span class="ic au"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span> Séquence J+2 / J+5 / J+9 — stop si réponse <span class="st">ACTIF</span></div>
+              <div class="lr"><span class="ic au"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span> Primes calculées, intégrées au devis <span class="st">ACTIF</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- M5 · JOURNAL -->
+      <section class="view" data-v="5">
+        <div class="note">
+          <div class="k">JOURNAL · CHAQUE ACTION EST TRACÉE</div>
+          <h2>Qui a fait quoi, quand. <span class="au">Toujours.</span></h2>
+          <p>Le système journalise tout — vous savez ce qui s'est passé sur chaque dossier, même six mois plus tard.</p>
+        </div>
+        <div class="pane"><div class="ph"><span class="t">Journal système</span><span class="m">dossier REQ-4192 · complet</span></div>
+          <div class="pb" id="journal">
+            <div class="jr"><span class="t">08:12:04</span><span class="x">REQ-4192 créée · source formulaire web</span><span class="who">système</span></div>
+            <div class="jr"><span class="t">08:12:42</span><span class="x">accusé de réception → weber@···.lu</span><span class="who">auto</span></div>
+            <div class="jr"><span class="t">08:13:10</span><span class="x">score 84 · règle "PAC + budget + zone"</span><span class="who">auto</span></div>
+            <div class="jr"><span class="t">08:15:02</span><span class="x">CLI-0287 créé · Klimabonus détecté</span><span class="who">auto</span></div>
+            <div class="jr"><span class="t">08:16:21</span><span class="x">VIS-882 · 3 créneaux proposés · séquence armée</span><span class="who">auto</span></div>
+            <div class="jr"><span class="t">08:18:55</span><span class="x">DV-1183 envoyé · suivi d'ouverture ON</span><span class="who">auto</span></div>
+            <div class="jr"><span class="t">08:21:37</span><span class="x">DV-1183 ouvert par le client (2×)</span><span class="who">client</span></div>
+            <div class="jr au"><span class="t">08:22:31</span><span class="x">DV-1183 SIGNÉ · PLN-771 planifié ven 10:30</span><span class="who">client</span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- M6 · IMPACT -->
+      <section class="view" data-v="6">
+        <div class="note">
+          <div class="k">IMPACT · MÊMES DEMANDES, DEUX DESTINS</div>
+          <h2>Regardez vos demandes <span class="au">vivre — ou mourir.</span></h2>
+          <p>Les mêmes demandes arrivent des deux côtés, en direct. À gauche : le quotidien sans système. À droite : DevisPilot. C'est le mécanisme, pas une statistique.</p>
+        </div>
+        <div class="duo">
+          <div class="cons bad">
+            <div class="ch"><span class="t">SANS DEVISPILOT</span><span class="fm" style="font-size:9px;color:var(--ink4)">boîte mail · post-it</span></div>
+            <div class="cb" id="consBad"></div>
+            <div class="cf"><span>demandes perdues</span><b id="cntBad">0</b></div>
+          </div>
+          <div class="cons good">
+            <div class="ch"><span class="t">AVEC DEVISPILOT</span><span class="fm" style="font-size:9px;color:var(--ink4)">système</span></div>
+            <div class="cb" id="consGood"></div>
+            <div class="cf"><span>chantiers signés</span><b id="cntGood">0</b></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- M7 · PREUVES -->
+      <section class="view" data-v="7">
+        <div class="note">
+          <div class="k">PREUVES · RIEN D'INVENTÉ</div>
+          <h2>Du terrain, un système, <span class="au">des preuves ouvrables.</span></h2>
+          <p>Pas de témoignages fabriqués, pas de chiffres marketing. Ce que nous avons : l'industrie dans les mains, et des démonstrateurs que vous pouvez ouvrir maintenant.</p>
+        </div>
+        <div class="pvg">
+          <div class="pv14">
+            <div class="n">14</div>
+            <div class="u">ANS D'INDUSTRIE</div>
+            <p>DevisPilot est conçu par des gens qui connaissent vos marges, vos urgences et vos clients — de l'intérieur.</p>
+          </div>
+          <div class="pane"><div class="ph"><span class="t">Cas réel — ouvrez l'avant, ouvrez l'après</span><span class="m">jugez vous-même</span></div>
+            <div class="pb">
+              <a href="https://www.chauffage-artisanal.lu/" target="_blank" rel="noopener" class="pv-link" style="opacity:.75"><div><div class="t" style="color:var(--ink3)">AVANT · LE SITE HISTORIQUE</div><div class="n">chauffage-artisanal.lu — en activité depuis 1994, devis par téléphone uniquement</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg></a>
+              <a href="https://chauffage-artisanal.vercel.app" target="_blank" rel="noopener" class="pv-link" style="border-color:var(--auL)"><div><div class="t">APRÈS · LA TRANSFORMATION VΛIN</div><div class="n">chauffage-artisanal.vercel.app — devis en 2 min, Klimabonus intégré</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg></a>
+              <a href="demonstrateur-electricien.html" class="pv-link"><div><div class="t">DÉMONSTRATEUR</div><div class="n">Électricien — urgences, bornes IRVE, aides déduites</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+              <a href="demonstrateur-industriel.html" class="pv-link"><div><div class="t">DÉMONSTRATEUR</div><div class="n">Maintenance industrielle — criticité, astreinte, contrats</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+              <div class="lr" style="margin-top:2px"><span class="ic au"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M3 21h18M5 21V8l7-5 7 5v13"/></svg></span> Conçu et opéré au <b>Luxembourg · Grande Région</b> <span class="w">FR·DE·EN·LU</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- M8 · ACTIVATION -->
+      <section class="view" data-v="8">
+        <div class="note">
+          <div class="k">ACTIVATION · LA SEULE CHOSE À FAIRE</div>
+          <h2>Voyez le système tourner <span class="au">sur votre activité.</span></h2>
+          <p>15 minutes, en direct, sur votre métier. On vous montre où partent vos demandes aujourd'hui — et comment le système les retient. Vous repartez avec une feuille de route, même sans nous.</p>
+        </div>
+        <div class="act">
+          <div class="pane"><div class="ph"><span class="t">Ce qui se passe ensuite</span><span class="m">sans engagement</span></div>
+            <div class="pb">
+              <div class="lr"><span class="ic au"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M20 6L9 17l-5-5"/></svg></span> Démo branchée sur <b>votre métier</b>, pas générique</div>
+              <div class="lr"><span class="ic au"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M20 6L9 17l-5-5"/></svg></span> Diagnostic de vos <b>fuites de demandes</b> actuelles</div>
+              <div class="lr"><span class="ic au"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M20 6L9 17l-5-5"/></svg></span> <b>Feuille de route</b> à garder, quoi que vous décidiez</div>
+              <div class="meta-t" style="margin-top:6px">
+                <div class="r"><span class="k">Durée</span><span class="v">15 minutes</span></div>
+                <div class="r"><span class="k">Format</span><span class="v">Démo en direct</span></div>
+                <div class="r hl"><span class="k">Disponibilité</span><span class="v">3 créneaux / semaine</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="pane"><div class="ph"><span class="t">Demander une démo</span><span class="m">réponse &lt; 24 h</span></div>
+            <div class="pb">
+              <form class="form" id="demoForm" action="#" method="POST">
+                <input type="hidden" name="_subject" value="Demande de démo DevisPilot" />
+                <label class="sr" for="fn">Nom & entreprise</label>
+                <input id="fn" class="f" type="text" name="nom" placeholder="Nom & entreprise" required />
+                <label class="sr" for="fe">Email professionnel</label>
+                <input id="fe" class="f" type="email" name="email" placeholder="Email professionnel" required />
+                <label class="sr" for="fmt">Métier</label>
+                <input id="fmt" class="f" type="text" name="metier" placeholder="Votre métier (HVAC, élec, industrie…)" />
+                <button id="demoSubmit" type="submit">Demander ma démo <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+                <div class="micro" id="demoMicro"><b>Sans engagement · 0 spam.</b> hello@vainstudio.lu</div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- STATUSBAR -->
+  <div id="status">
+    <span>DEVISPILOT OS <span class="au">v3.0</span></span><span class="sep"></span>
+    <span>SIMULATION<span class="hidemb"> · DONNÉES DE DÉMONSTRATION</span></span>
+    <span class="mid" id="crumb">OPÉRATIONS</span>
+    <span class="hidemb">RELANCES <span class="au">3</span></span><span class="sep hidemb"></span>
+    <span class="hidemb">DEVIS OUVERTS <span class="au">2</span></span><span class="sep hidemb"></span>
+    <span>© 2026 VΛIN</span>
+  </div>
+</div>
+
+<!-- PALETTE ⌘K -->
+<div id="pal" role="dialog" aria-label="Palette de commandes">
+  <div class="box">
+    <input id="palQ" type="text" placeholder="Tapez une commande ou cherchez un dossier…" autocomplete="off" />
+    <div class="ls" id="palLs"></div>
+    <div class="ft"><span>↑↓ naviguer</span><span>⏎ exécuter</span><span>esc fermer</span></div>
+  </div>
+</div>
+
+<!-- NOTIFICATIONS -->
+<div id="notif"><div class="h">Notifications <span class="fm" id="notifC">0</span></div><div class="ls" id="notifLs"></div></div>
+
+<!-- TOAST -->
+<div id="toast"></div>
+
+<script>
+/* ⚙️ CONFIG — vide = canal désactivé proprement */
+var VAIN_CONFIG={formspreeId:"",calendly:"",whatsapp:"",phoneDial:"",phoneDisplay:""};
+(function(){var C=VAIN_CONFIG,f=document.getElementById('demoForm'),b=document.getElementById('demoSubmit'),m=document.getElementById('demoMicro');
+if(C.formspreeId){f.action='https://formspree.io/f/'+C.formspreeId;}
+else{b.classList.add('is-dis');b.setAttribute('aria-disabled','true');f.addEventListener('submit',function(e){e.preventDefault();});
+m.innerHTML='<b>Formulaire en cours d’activation.</b> Contact : hello@vainstudio.lu';}})();
+
+/* ════ NAVIGATION PAR SCROLL : le scroll pilote les modules ════ */
+var MODS=9, crumb=document.getElementById('crumb');
+var NAMES=['OPÉRATIONS','DOSSIER REQ-4192','PIPELINE','PLANNING','RELANCES','JOURNAL','IMPACT','PREUVES','ACTIVATION'];
+var views=document.querySelectorAll('.view'),sideBtns=document.querySelectorAll('#side button[data-go]');
+var segs=document.querySelectorAll('#rail .seg'),cur=-1,impactStarted=false;
+function segTop(i){var t=0;for(var j=0;j<i;j++)t+=segs[j].offsetHeight;return t;}
+function setMod(i){
+  i=Math.max(0,Math.min(MODS-1,i));
+  if(i===cur)return;cur=i;
+  views.forEach(function(v){v.classList.toggle('on',+v.getAttribute('data-v')===i);});
+  sideBtns.forEach(function(b){b.classList.toggle('on',+b.getAttribute('data-go')===i);});
+  crumb.textContent=NAMES[i];
+  if(i===6&&!impactStarted){impactStarted=true;startImpact();}
+}
+function modFromScroll(){
+  var y=scrollY+innerHeight*0.35,acc=0;
+  for(var i=0;i<segs.length;i++){acc+=segs[i].offsetHeight;if(y<acc)return i;}
+  return MODS-1;
+}
+addEventListener('scroll',function(){setMod(modFromScroll());},{passive:true});
+function goto(i){scrollTo({top:segTop(i)+10,behavior:'smooth'});}
+document.querySelectorAll('[data-go]').forEach(function(el){
+  el.addEventListener('click',function(e){e.preventDefault();goto(+el.getAttribute('data-go'));});
+});
+setMod(0);
+
+/* J / K : module suivant / précédent */
+addEventListener('keydown',function(e){
+  if(e.target.tagName==='INPUT'||e.target.tagName==='TEXTAREA')return;
+  if(pal.classList.contains('on'))return;
+  if(e.key==='j'||e.key==='J')goto(Math.min(MODS-1,cur+1));
+  if(e.key==='k'||e.key==='K')goto(Math.max(0,cur-1));
+});
+
+/* ════ HORLOGE RÉELLE ════ */
+(function(){var el=document.getElementById('clock');
+function t(){var d=new Date();el.textContent=d.toLocaleDateString('fr-FR',{weekday:'short',day:'2-digit',month:'short'})+' · '+d.toLocaleTimeString('fr-FR',{hour12:false});}
+t();setInterval(t,1000);})();
+
+/* ════ MOTEUR D'ACTIVITÉ (simulation étiquetée) ════ */
+var bellN=document.getElementById('bellN'),notifLs=document.getElementById('notifLs'),notifC=document.getElementById('notifC');
+var feed=document.getElementById('feed'),inbox=document.getElementById('inbox'),inboxN=document.getElementById('inboxN');
+var notifCount=0,notifStore=[];
+var ICONS={
+ in:'<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/></svg>',
+ send:'<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>',
+ ok:'<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 11l3 3L22 4"/></svg>',
+ user:'<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>',
+ cal:'<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>',
+ eur:'<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke="currentColor"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>',
+ doc:'<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>',
+ sign:'<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>'};
+var CASES=[
+ {su:'Pompe à chaleur air/eau — remplacement chaudière',short:'PAC air/eau · Esch',tags:['PAC','Résidentiel'],score:84,prime:'Klimabonus'},
+ {su:'Borne de recharge 11 kW — maison individuelle',short:'borne IRVE · Differdange',tags:['IRVE','Élec'],score:77,prime:'Aide bornes'},
+ {su:'Climatisation bureaux — 240 m²',short:'clim tertiaire · Foetz',tags:['Clim','Pro'],score:81,prime:null},
+ {su:'Photovoltaïque — toiture 9 kWc',short:'PV toiture · Dudelange',tags:['PV','Résidentiel'],score:79,prime:'Aide solaire'},
+ {su:'Panne chaudière — plus d\'eau chaude',short:'dépannage · Bettembourg',tags:['Urgence','Chauffage'],score:88,prime:null}];
+var seq=4193,ci=1,k=0;
+function story(n,c){return [
+ {i:'in',au:1,t:'Nouvelle demande <b>#REQ-'+n+'</b> — '+c.short,notif:1,inbox:1},
+ {i:'send',au:1,t:'Accusé de réception envoyé en <b>38 s</b>'},
+ {i:'ok',au:0,t:'Qualification — <b>score '+c.score+'</b> · prioritaire',notif:1},
+ {i:'user',au:0,t:'Fiche client <b>#CLI-'+(n-3905)+'</b> créée'},
+ {i:'cal',au:0,t:'Visite <b>#VIS-'+(n-3310)+'</b> · 3 créneaux proposés'},
+ {i:'eur',au:1,t:c.prime?'<b>'+c.prime+'</b> calculé — intégré au devis':'Intervention <b>planifiée en priorité</b>'},
+ {i:'doc',au:0,t:'Devis <b>#DV-'+(n-3009)+'</b> envoyé · suivi d\'ouverture',notif:1},
+ {i:'sign',au:1,t:'<b>Devis signé</b> — chantier #PLN-'+(n-3421)+' planifié',notif:1}];}
+var st=story(seq,CASES[ci]);
+function notify(html){
+ notifCount++;bellN.textContent=notifCount>9?'9+':notifCount;notifC.textContent=notifCount;
+ notifStore.unshift(html);if(notifStore.length>8)notifStore.pop();
+ notifLs.innerHTML=notifStore.map(function(h){return '<div class="ev au" style="animation:none;opacity:1;transform:none">'+h+'</div>';}).join('');
+}
+function push(ev){
+ var html='<span class="ic">'+ICONS[ev.i]+'</span><span>'+ev.t+'</span><span class="w">à l\'instant</span>';
+ if(feed){
+   var d=document.createElement('div');d.className='ev'+(ev.au?' au':'');d.innerHTML=html;feed.prepend(d);
+   var ws2=feed.querySelectorAll('.ev .w');for(var j=1;j<ws2.length;j++)ws2[j].textContent='il y a '+(j*2)+' s';
+   while(feed.children.length>6)feed.removeChild(feed.lastChild);
+ }
+ if(ev.notif)notify(html);
+ if(ev.inbox){
+   var c=CASES[ci];
+   var rq=document.createElement('div');rq.className='rq hot';
+   rq.innerHTML='<div class="t1"><span class="new">NOUVEAU</span><span class="id">#REQ-'+seq+'</span><span class="tm">'+new Date().toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'})+'</span></div><div class="su">'+c.su+'</div><div class="tg">'+c.tags.map(function(t2,i3){return '<span class="tagc'+(i3===0?' au':'')+'">'+t2+'</span>';}).join('')+'</div>';
+   inbox.prepend(rq);while(inbox.children.length>3)inbox.removeChild(inbox.lastChild);
+   inboxN.textContent=(Math.min(9,(+inboxN.textContent.split(' ')[0]||2)+1))+' dossiers';
+   inbox.querySelectorAll('.rq').forEach(function(x,i2){if(i2>0){x.classList.remove('hot');var nb=x.querySelector('.new');if(nb)nb.remove();var tmEl=x.querySelector('.tm');if(tmEl)tmEl.classList.add('old');}});
+ }
+ if(ev.i==='sign'){setTimeout(function(){seq++;ci=(ci+1)%CASES.length;st=story(seq,CASES[ci]);k=0;},2600);}
+}
+var reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+(function loop(){if(k<st.length){push(st[k]);k++;}setTimeout(loop,reduced?4200:2400);})();
+
+/* notifications dropdown */
+var bell=document.getElementById('bellBtn'),notifBox=document.getElementById('notif');
+bell.addEventListener('click',function(e){e.stopPropagation();notifBox.classList.toggle('on');});
+document.addEventListener('click',function(e){if(!notifBox.contains(e.target))notifBox.classList.remove('on');});
+
+/* ════ IMPACT : double console vivante ════ */
+function startImpact(){
+ var bad=document.getElementById('consBad'),good=document.getElementById('consGood');
+ var cb=document.getElementById('cntBad'),cg=document.getElementById('cntGood');
+ var nb=0,ng=0,n=5021;
+ var L=['PAC air/eau · Esch','borne IRVE · Differdange','clim bureaux · Foetz','PV 9 kWc · Dudelange','dépannage chaudière','PAC · Pétange','clim resto · Luxembourg','tableau élec · Sanem'];
+ var li=0;
+ function line(el,id,lbl,stt){var d=document.createElement('div');d.className='cline';
+  d.innerHTML='<span class="id">#'+id+'</span><span class="lbl">'+lbl+'</span><span class="stt">'+stt+'</span>';
+  el.prepend(d);while(el.children.length>6)el.removeChild(el.lastChild);return d;}
+ function cycle(){
+  var lbl=L[li%L.length];li++;var id='REQ-'+(n++);
+  /* côté sans : la demande arrive… puis meurt */
+  var lb=line(bad,id,lbl,'reçue');
+  setTimeout(function(){lb.querySelector('.stt').textContent='vue · "je rappelle demain"';},1700);
+  setTimeout(function(){lb.classList.add('lost');lb.querySelector('.stt').textContent='PERDUE';nb++;cb.textContent=nb;},3600);
+  /* côté avec : la même demande va au bout */
+  var lg=line(good,id,lbl,'reçue');
+  setTimeout(function(){lg.querySelector('.stt').textContent='accusé · 38 s';},900);
+  setTimeout(function(){lg.querySelector('.stt').textContent='qualifiée · relance armée';},2000);
+  setTimeout(function(){lg.querySelector('.stt').textContent='devis envoyé';},3100);
+  setTimeout(function(){lg.classList.add('won');lg.querySelector('.stt').textContent='SIGNÉE';ng++;cg.textContent=ng;},4400);
+  setTimeout(cycle,reduced?6000:4800);
+ }
+ cycle();
+}
+
+/* ════ PALETTE ⌘K ════ */
+var pal=document.getElementById('pal'),palQ=document.getElementById('palQ'),palLs=document.getElementById('palLs');
+var CMDS=[
+ {l:'Aller aux Opérations',k:'G 0',go:0},
+ {l:'Ouvrir le dossier REQ-4192',k:'dossier',go:1},
+ {l:'Voir le pipeline',k:'24 opp.',go:2},
+ {l:'Ouvrir le planning — VIS-882 · PLN-771',k:'semaine',go:3},
+ {l:'File de relances',k:'3 actives',go:4},
+ {l:'Journal système',k:'traçabilité',go:5},
+ {l:'Impact — mêmes demandes, deux destins',k:'live',go:6},
+ {l:'Preuves & démonstrateurs',k:'ouvrables',go:7},
+ {l:'Demander une démo',k:'15 min',go:8},
+ {l:'Ouvrir le cas réel Chauffage Artisanal',k:'↗',href:'https://chauffage-artisanal.vercel.app'}];
+var sel=0;
+function renderPal(){
+ var q=palQ.value.toLowerCase();
+ var list=CMDS.filter(function(c){return c.l.toLowerCase().indexOf(q)>-1||c.k.toLowerCase().indexOf(q)>-1;});
+ if(sel>=list.length)sel=0;
+ palLs.innerHTML=list.map(function(c,i){return '<button class="it'+(i===sel?' sel':'')+'" data-i="'+CMDS.indexOf(c)+'"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke-width="1.7"><path d="M5 12h14M13 6l6 6-6 6"/></svg> '+c.l+' <span class="k">'+c.k+'</span></button>';}).join('')||'<div style="padding:14px;font-size:12px;color:var(--ink4)">Aucun résultat.</div>';
+ palLs.querySelectorAll('.it').forEach(function(b){b.addEventListener('click',function(){exec(+b.getAttribute('data-i'));});});
+}
+function exec(i){var c=CMDS[i];palClose();if(c.href){open(c.href,'_blank');}else{goto(c.go);}}
+function palOpenF(){pal.classList.add('on');palQ.value='';sel=0;renderPal();setTimeout(function(){palQ.focus();},30);}
+function palClose(){pal.classList.remove('on');}
+document.getElementById('palOpen').addEventListener('click',palOpenF);
+pal.addEventListener('click',function(e){if(e.target===pal)palClose();});
+palQ.addEventListener('input',function(){sel=0;renderPal();});
+addEventListener('keydown',function(e){
+ if((e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==='k'){e.preventDefault();pal.classList.contains('on')?palClose():palOpenF();return;}
+ if(!pal.classList.contains('on'))return;
+ var vis=palLs.querySelectorAll('.it');
+ if(e.key==='Escape')palClose();
+ if(e.key==='ArrowDown'){e.preventDefault();sel=Math.min(vis.length-1,sel+1);renderPal();}
+ if(e.key==='ArrowUp'){e.preventDefault();sel=Math.max(0,sel-1);renderPal();}
+ if(e.key==='Enter'){e.preventDefault();var b=palLs.querySelector('.it.sel')||vis[0];if(b)exec(+b.getAttribute('data-i'));}
+});
+
+/* toast util (feedback clic kanban) */
+var toast=document.getElementById('toast'),toastT;
+function showToast(msg){toast.textContent=msg;toast.classList.add('on');clearTimeout(toastT);toastT=setTimeout(function(){toast.classList.remove('on');},2200);}
+document.querySelectorAll('.kcd').forEach(function(c){c.addEventListener('click',function(){showToast('Démonstration — ouverture du dossier type REQ-4192');});});
+</script>
+</body>
+</html>

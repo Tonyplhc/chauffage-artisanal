@@ -15,6 +15,8 @@
  * thermique complète avec U-values mur/toit/sol et ponts thermiques. Cette
  * lib sert d'estimateur grand public + outil de pré-qualification commerciale.
  */
+import { PRIX_ENERGIE } from "./referentiel/prix-energie";
+import { SCOP_PAC_AIR_EAU } from "./referentiel/estimation";
 
 export type IsolationLevel =
   | "bbc"
@@ -62,14 +64,18 @@ export const ISOLATION_COEFFICIENTS: Record<
   },
 };
 
-/** Tarifs moyens indicatifs au Luxembourg (à ajuster — source publique). */
+/**
+ * Tarifs au Luxembourg — lus depuis lib/referentiel/prix-energie (Règle N°5 :
+ * source unique, mêmes chiffres que l'estimateur).
+ */
 export const ENERGY_PRICES_EUR_PER_KWH: Record<EnergySource, number> = {
-  fioul: 0.12,
-  gaz: 0.11,
-  electrique: 0.28,
-  bois: 0.06,
-  pac: 0.085, // coût équivalent kWh thermique avec COP 3.5
-  inconnu: 0.12,
+  fioul: PRIX_ENERGIE.fioul,
+  gaz: PRIX_ENERGIE.gaz,
+  electrique: PRIX_ENERGIE.electricite,
+  bois: PRIX_ENERGIE.bois,
+  // Coût équivalent du kWh thermique produit par la PAC (élec / SCOP).
+  pac: Math.round((PRIX_ENERGIE.electricite / SCOP_PAC_AIR_EAU) * 1000) / 1000,
+  inconnu: PRIX_ENERGIE.fioul,
 };
 
 /** Rendement moyen typique par énergie (kWh utile / kWh consommé). */
@@ -78,7 +84,7 @@ export const ENERGY_EFFICIENCY: Record<EnergySource, number> = {
   gaz: 0.92,
   electrique: 1.0, // effet joule
   bois: 0.75,
-  pac: 3.5, // COP moyen air/eau
+  pac: SCOP_PAC_AIR_EAU, // COP moyen air/eau (référentiel)
   inconnu: 0.85,
 };
 

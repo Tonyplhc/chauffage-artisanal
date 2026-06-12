@@ -22,10 +22,13 @@
  * Hypothèses 2026 Luxembourg — prudentes et documentées.
  * AUCUNE garantie — c'est un ordre de grandeur pour orienter la réflexion.
  */
+import { PRIX_ENERGIE } from "./referentiel/prix-energie";
+import { SCOP_PAC_AIR_EAU, RENDEMENT_CHAUFFAGE } from "./referentiel/estimation";
+import { computeAides } from "./referentiel/aides";
 
 export type SavingsInput = {
   buildingType: "maison" | "appartement";
-  currentEnergy: "gaz" | "fioul" | "electrique";
+  currentEnergy: "gaz" | "fioul" | "electrique" | "bois";
   surfaceM2: number;
   occupants: number;
 };
@@ -52,11 +55,12 @@ export type SavingsResult = {
   combinedNetInvestment: number;
 };
 
-/* Hypothèses par défaut — Luxembourg 2026 prudentes */
-const PRICE_KWH_GAS_TTC = 0.11;
-const PRICE_KWH_FUEL_TTC = 0.13; // fioul indicatif au LU
-const PRICE_KWH_ELEC_TTC = 0.22;
-const PRICE_KWH_PV_PRODUCED = 0.07; // coût levelisé production PV ~7 c€/kWh
+/* Hypothèses par défaut — prix lus depuis lib/referentiel (Règle N°5 :
+   mêmes chiffres que l'estimateur et tous les simulateurs). */
+const PRICE_KWH_GAS_TTC = PRIX_ENERGIE.gaz;
+const PRICE_KWH_FUEL_TTC = PRIX_ENERGIE.fioul;
+const PRICE_KWH_ELEC_TTC = PRIX_ENERGIE.electricite;
+const PRICE_KWH_PV_PRODUCED = PRIX_ENERGIE.pvAutoproduit;
 
 /** Besoins thermiques par m² selon typologie — moyennes prudentes LU 2026. */
 const HEAT_NEEDS_KWH_M2 = {
@@ -64,16 +68,18 @@ const HEAT_NEEDS_KWH_M2 = {
   appartement: 80, // mieux isolé en moyenne (collectif)
 };
 
-/** Rendement chaudière / efficacité PAC. */
-const GAS_BOILER_EFFICIENCY = 0.92; // condensation standard
-const FUEL_BOILER_EFFICIENCY = 0.88;
-const ELEC_DIRECT_EFFICIENCY = 1.0; // chauffage électrique direct
-const PAC_SCOP = 3.5; // saisonnier prudent LU
+/** Rendement chaudière / efficacité PAC — alignés sur le référentiel. */
+const GAS_BOILER_EFFICIENCY = RENDEMENT_CHAUFFAGE.Gaz; // condensation standard
+const FUEL_BOILER_EFFICIENCY = RENDEMENT_CHAUFFAGE.Mazout;
+const ELEC_DIRECT_EFFICIENCY = RENDEMENT_CHAUFFAGE["Électrique"]; // chauffage électrique direct
+const WOOD_BOILER_EFFICIENCY = RENDEMENT_CHAUFFAGE.Bois; // bûches/pellets, moyenne parc
+const PAC_SCOP = SCOP_PAC_AIR_EAU; // saisonnier prudent LU (référentiel)
 
 /** Facteurs CO2 par kWh consommé (kg CO2 / kWh). */
 const CO2_GAS = 0.205;
 const CO2_FUEL = 0.27;
 const CO2_ELEC_LU = 0.045; // mix LU bas-carbone (beaucoup d'import hydro/éol)
+const CO2_WOOD = 0.03; // biomasse quasi neutre (cycle court)
 
 /** ECS — production annuelle / occupant (kWh thermique). */
 const ECS_KWH_PER_OCCUPANT_YEAR = 800;
@@ -140,16 +146,22 @@ function pvDefaultKwc(
 const PV_COST_PER_KWC = 1700; // €/kWc posé TTC LU 2026 indicatif
 
 /**
- * Aide Klimabonus indicative — ordres de grandeur.
+ * Aide Klimabonus indicative.
  *
- * Les enveloppes Klimabonus varient avec la puissance / capacité de
- * l'équipement, on les fait évoluer en proportion :
- *   - PAC : ~45 % du coût TTC, plafonné à 12 000 €
+ * PAC : forfaits 2026 VÉRIFIÉS, lus depuis le moteur d'aides du référentiel
+ * (indépendants de la puissance — réforme 2026). Le scénario PAC de cet outil
+ * ne s'applique qu'en maison (unifamilial) ; le forfait dépend de l'énergie
+ * remplacée (fossile ou non).
+ * Chauffe-eau thermo / PV : ordres de grandeur locaux (pas encore au référentiel) :
  *   - Chauffe-eau thermo : ~17 % du coût, plafonné à 1 000 €
  *   - PV : ~500 €/kWc plafonné à 6 000 €
  */
-function pacKlimabonus(investment: number): number {
-  return Math.min(12000, Math.round(investment * 0.45));
+function pacKlimabonus(currentEnergy: SavingsInput["currentEnergy"]): number {
+  return computeAides({
+    equipement: "pac-air-eau",
+    logement: "unifamilial",
+    remplacementFossile: currentEnergy === "gaz" || currentEnergy === "fioul",
+  }).klimabonus;
 }
 function ecsThermoKlimabonus(investment: number): number {
   return Math.min(1000, Math.round(investment * 0.17));
@@ -215,6 +227,11 @@ function computePacScenario(
       currentCo2 = (heatNeedsKwh / ELEC_DIRECT_EFFICIENCY) * CO2_ELEC_LU;
       currentLabel = "chauffage électrique direct";
       break;
+    case "bois":
+      currentAnnualCost = (heatNeedsKwh / WOOD_BOILER_EFFICIENCY) * PRIX_ENERGIE.bois;
+      currentCo2 = (heatNeedsKwh / WOOD_BOILER_EFFICIENCY) * CO2_WOOD;
+      currentLabel = "chaudière bois/pellets";
+      break;
   }
 
   // Coût avec PAC
@@ -226,7 +243,7 @@ function computePacScenario(
 
   // Coût installation indexé sur la surface réelle du logement
   const investment = applicable ? pacCost(surfaceM2) : 0;
-  const klimabonus = applicable ? pacKlimabonus(investment) : 0;
+  const klimabonus = applicable ? pacKlimabonus(currentEnergy) : 0;
   const netInvestment = Math.max(0, investment - klimabonus);
   const paybackYears = annualSavings > 0 ? netInvestment / annualSavings : Infinity;
 
@@ -246,7 +263,7 @@ function computePacScenario(
       `Besoins chauffage estimés : ${Math.round(heatNeedsKwh).toLocaleString("fr-LU")} kWh/an (surface ${surfaceM2} m²)`,
       `Hypothèse SCOP saisonnier : ${PAC_SCOP}`,
       `Coût indicatif : base 8 000 € + 70 €/m² → ${investment.toLocaleString("fr-LU")} €`,
-      `Klimabonus indicatif (~45 % plafonné 12 000 €) : ${klimabonus.toLocaleString("fr-LU")} €`,
+      `Klimabonus 2026 (forfait officiel, maison) : ${klimabonus.toLocaleString("fr-LU")} €`,
       applicable
         ? "Adaptée maison individuelle, sous réserve d'isolation correcte."
         : "En appartement, la PAC dépend de la copropriété — pas d'estimation individuelle.",

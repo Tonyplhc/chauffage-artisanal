@@ -1,26 +1,32 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { MapPin, ExternalLink } from "lucide-react";
 import { Eyebrow, Reveal } from "@/components/ui";
 
-const CITIES = [
-  "Luxembourg-Ville",
-  "Esch-sur-Alzette",
-  "Differdange",
-  "Dudelange",
-  "Pétange",
-  "Strassen",
-  "Bertrange",
-  "Mamer",
-  "Mersch",
-  "Diekirch",
-  "Ettelbruck",
-  "Foetz",
-  "Kirchberg",
-  "Cloche d'Or",
-  "Belval",
-  "Mondorf-les-Bains",
+/**
+ * Chaque ville lance l'estimateur pré-rempli sur sa commune (Règle N°2 : tout
+ * converge vers l'estimation). Les quartiers/zones sont mappés vers leur
+ * commune administrative (référentiel COMMUNES_LU).
+ */
+const CITIES: { label: string; commune: string }[] = [
+  { label: "Luxembourg-Ville", commune: "Luxembourg" },
+  { label: "Esch-sur-Alzette", commune: "Esch-sur-Alzette" },
+  { label: "Differdange", commune: "Differdange" },
+  { label: "Dudelange", commune: "Dudelange" },
+  { label: "Pétange", commune: "Pétange" },
+  { label: "Strassen", commune: "Strassen" },
+  { label: "Bertrange", commune: "Bertrange" },
+  { label: "Mamer", commune: "Mamer" },
+  { label: "Mersch", commune: "Mersch" },
+  { label: "Diekirch", commune: "Diekirch" },
+  { label: "Ettelbruck", commune: "Ettelbruck" },
+  { label: "Foetz", commune: "Mondercange" },
+  { label: "Kirchberg", commune: "Luxembourg" },
+  { label: "Cloche d'Or", commune: "Luxembourg" },
+  { label: "Belval", commune: "Esch-sur-Alzette" },
+  { label: "Mondorf-les-Bains", commune: "Mondorf-les-Bains" },
 ];
 
 // Coordonnées du Grand-Duché (bbox couvrant tout le pays)
@@ -121,14 +127,19 @@ export function Zone() {
 
         <div className="mt-8 flex flex-wrap gap-2.5">
           {CITIES.map((city) => (
-            <span
-              key={city}
-              className="px-4 py-1.5 rounded-full border border-ink/12 bg-white text-sm text-graphite hover:border-copper/40 hover:text-copper transition-colors"
+            <Link
+              key={city.label}
+              href={`/estimation?commune=${encodeURIComponent(city.commune)}`}
+              title={`Estimer mes économies à ${city.label}`}
+              className="px-4 py-1.5 rounded-full border border-ink/12 bg-white text-sm text-graphite hover:border-bleu/50 hover:text-bleu transition-colors"
             >
-              {city}
-            </span>
+              {city.label}
+            </Link>
           ))}
         </div>
+        <p className="mt-3 text-xs text-muted">
+          Cliquez sur votre ville pour estimer vos économies — gratuit, 60 secondes.
+        </p>
       </div>
     </section>
   );

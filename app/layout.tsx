@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Fraunces, Inter_Tight, JetBrains_Mono } from "next/font/google";
+import { Fraunces, Inter_Tight, JetBrains_Mono, Montserrat } from "next/font/google";
 import "./globals.css";
 import { Nav } from "@/components/nav";
 import { Footer } from "@/components/footer";
@@ -48,6 +48,18 @@ const jetbrains = JetBrains_Mono({
   weight: ["400", "500"],
 });
 
+// Montserrat : police d'interface & de corps du design system v2 (identité
+// historique « chart2013 »). Exposée via --font-ui / classe `font-ui`.
+// Non préchargée pour l'instant : disponible pour la migration (Lot B+) sans
+// impacter le LCP de la version actuelle qui utilise encore --font-sans.
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  variable: "--font-ui",
+  display: "swap",
+  preload: false,
+  weight: ["400", "500", "600", "700"],
+});
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.chauffage-artisanal.lu"),
   title: {
@@ -73,7 +85,7 @@ const ORGANIZATION_LD = buildOrganizationJsonLd();
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="fr" className={`${fraunces.variable} ${interTight.variable} ${jetbrains.variable}`}>
+    <html lang="fr" className={`${fraunces.variable} ${interTight.variable} ${jetbrains.variable} ${montserrat.variable}`}>
       <head>
         {/*
           Preconnect aux origines critiques chargées sur la home et les pages

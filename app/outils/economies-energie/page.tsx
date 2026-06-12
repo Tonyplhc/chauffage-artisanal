@@ -118,14 +118,14 @@ export default function EconomiesEnergiePage() {
                 {/* Current energy */}
                 <div>
                   <FieldLabel>Énergie actuelle de chauffage</FieldLabel>
-                  <div className="mt-3 grid grid-cols-3 gap-2">
-                    {(["gaz", "fioul", "electrique"] as const).map((e) => (
+                  <div className="mt-3 grid grid-cols-2 sm:grid-cols-4 gap-2">
+                    {(["gaz", "fioul", "electrique", "bois"] as const).map((e) => (
                       <Toggle
                         key={e}
                         active={input.currentEnergy === e}
                         onClick={() => update("currentEnergy", e)}
                         label={
-                          e === "gaz" ? "Gaz" : e === "fioul" ? "Fioul" : "Électrique"
+                          e === "gaz" ? "Gaz" : e === "fioul" ? "Fioul" : e === "electrique" ? "Électrique" : "Bois"
                         }
                       />
                     ))}
@@ -292,9 +292,9 @@ export default function EconomiesEnergiePage() {
               </div>
               <p className="text-sm text-graphite leading-relaxed">
                 Les chiffres ci-dessus s&apos;appuient sur des hypothèses prudentes 2026 :
-                prix kWh gaz 0,11 €, fioul 0,13 €, électricité 0,22 € · SCOP PAC 3,5 · COP
+                prix kWh gaz 0,11 €, fioul 0,13 €, électricité 0,22 €, bois 0,06 € · SCOP PAC 3,5 · COP
                 chauffe-eau thermo 3,0 · production PV 950 kWh/kWc/an · autoconsommation 40 %
-                · Klimabonus indicatif. La réalité dépend de votre isolation, de votre
+                · forfaits Klimabonus 2026 vérifiés. La réalité dépend de votre isolation, de votre
                 consommation et des évolutions tarifaires — d&apos;où la nécessité d&apos;une
                 visite technique pour un devis ferme.
               </p>
@@ -420,7 +420,7 @@ function ScenarioCard({ scenario }: { scenario: ScenarioResult }) {
           <div className="text-[10px] font-mono uppercase tracking-eyebrow text-muted">
             Économie / an
           </div>
-          <div className="mt-1.5 font-display text-2xl text-copper">
+          <div className="mt-1.5 font-display text-2xl text-gain">
             {scenario.annualSavings.toLocaleString("fr-LU")} €
           </div>
         </div>
@@ -440,14 +440,17 @@ function ScenarioCard({ scenario }: { scenario: ScenarioResult }) {
             {scenario.netInvestment.toLocaleString("fr-LU")} €
           </div>
           <div className="text-[11px] text-muted">
-            Klimabonus : {scenario.klimabonus.toLocaleString("fr-LU")} €
+            Klimabonus :{" "}
+            <span className="text-gain font-semibold">
+              {scenario.klimabonus.toLocaleString("fr-LU")} €
+            </span>
           </div>
         </div>
         <div>
           <div className="text-[10px] font-mono uppercase tracking-eyebrow text-muted">
             ROI
           </div>
-          <div className="mt-1.5 font-display text-2xl text-ink">
+          <div className="mt-1.5 font-display text-2xl text-gain">
             {isFinite(scenario.paybackYears) ? `${scenario.paybackYears} ans` : "—"}
           </div>
         </div>
@@ -470,7 +473,10 @@ function ScenarioCard({ scenario }: { scenario: ScenarioResult }) {
 
       <div className="mt-5 pt-5 border-t border-ink/8 flex flex-wrap items-center justify-between gap-3">
         <div className="text-xs text-muted">
-          Investissement brut : {scenario.investment.toLocaleString("fr-LU")} €
+          Investissement brut :{" "}
+          <span className="text-perte font-semibold">
+            {scenario.investment.toLocaleString("fr-LU")} €
+          </span>
         </div>
         <Link
           href={ctaHref}

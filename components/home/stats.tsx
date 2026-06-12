@@ -1,87 +1,98 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Eyebrow, Reveal } from "@/components/ui";
-import { Calendar, Building2, Users, ShieldCheck } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { STATS } from "@/lib/demo-data";
 
-const STATS = [
-  {
-    icon: Calendar,
-    label: "Année de fondation",
-    value: "1994",
-    caption: "Continuité de direction depuis l'origine",
-  },
-  {
-    icon: Building2,
-    label: "Champ d'intervention",
-    value: "Tout le Luxembourg",
-    caption: "& Grande Région sur projet",
-  },
-  {
-    icon: Users,
-    label: "Approche",
-    value: "Équipe technique",
-    caption: "Pluridisciplinaire en interne",
-  },
-  {
-    icon: ShieldCheck,
-    label: "Engagement",
-    value: "Long terme",
-    caption: "Entretien & dépannage sur durée",
-  },
-];
+/**
+ * Chiffres clés — bande navy, compteurs animés.
+ *
+ * Source unique : lib/demo-data.ts → STATS (chaque entrée porte un flag `real`).
+ *   ✓ réels  : anneesExperience (30), delaiDevis (<24 h)
+ *   ⚠ démo   : projetsRealises (3 200), satisfaction (4,8/5)
+ * Les valeurs de démo sont marquées DANS LE CODE (demo-data.ts) — aucun badge
+ * « démo » n'est affiché côté client. À remplacer par les vraies données avant
+ * production.
+ */
+
+function Counter({ to, prefix = "" }: { to: number; prefix?: string }) {
+  const ref = useRef<HTMLSpanElement>(null);
+  const [val, setVal] = useState(0);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const reduce =
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduce) {
+      setVal(to);
+      return;
+    }
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (!e.isIntersecting) return;
+          const dur = 1400;
+          const t0 = performance.now();
+          const tick = (t: number) => {
+            const p = Math.min((t - t0) / dur, 1);
+            setVal(Math.floor(p * to));
+            if (p < 1) requestAnimationFrame(tick);
+          };
+          requestAnimationFrame(tick);
+          io.unobserve(el);
+        });
+      },
+      { threshold: 0.5 },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, [to]);
+
+  return (
+    <span ref={ref}>
+      {prefix}
+      {val.toLocaleString("fr-FR")}
+    </span>
+  );
+}
 
 export function Stats() {
   return (
-    <section className="relative py-14 lg:py-20 bg-cream">
-      <div className="container">
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-10 lg:mb-14">
-          <div>
-            <Eyebrow number="01">La maison</Eyebrow>
-            <Reveal>
-              <h2 className="mt-5 font-display text-display-lg max-w-2xl text-balance text-ink">
-                Une entreprise familiale ancrée dans le <em className="not-italic text-copper">temps long</em>.
-              </h2>
-            </Reveal>
+    <section className="bg-navy text-creme font-ui">
+      <div className="container py-16 grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+        {/* 30 ans — réel */}
+        <div>
+          <div className="font-display text-5xl lg:text-6xl tracking-tightest text-bleuvif">
+            <Counter to={STATS.anneesExperience.value} />
           </div>
-          <Reveal delay={1}>
-            <p className="max-w-sm text-graphite">
-              Notre identité repose sur la{" "}
-              <strong className="text-copper font-semibold">continuité</strong> : la{" "}
-              <strong className="text-copper font-semibold">même direction technique</strong>, le{" "}
-              <strong className="text-copper font-semibold">même atelier</strong>, et une méthode
-              d&apos;intervention{" "}
-              <strong className="text-copper font-semibold">
-                qui ne change pas selon la taille du chantier
-              </strong>
-              .
-            </p>
-          </Reveal>
+          <div className="mt-2 text-sm text-creme/70">{STATS.anneesExperience.label}</div>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-ink/8 border border-ink/8 rounded-2xl overflow-hidden">
-          {STATS.map((s, i) => (
-            <motion.div
-              key={s.label}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
-              className="bg-white p-6 lg:p-8"
-            >
-              <div className="h-10 w-10 rounded-full bg-copper/10 border border-copper/30 grid place-items-center">
-                <s.icon className="h-4 w-4 text-copper" />
-              </div>
-              <div className="mt-6 font-mono text-[10px] uppercase tracking-eyebrow text-copper">
-                0{i + 1}
-              </div>
-              <div className="mt-2 font-display text-3xl lg:text-4xl tracking-tightest text-copper">
-                {s.value}
-              </div>
-              <div className="mt-4 text-ink font-medium">{s.label}</div>
-              <div className="mt-1 text-sm text-muted">{s.caption}</div>
-            </motion.div>
-          ))}
+        {/* +3 200 installations — démo */}
+        <div>
+          <div className="font-display text-5xl lg:text-6xl tracking-tightest text-bleuvif">
+            <Counter to={STATS.projetsRealises.value} prefix="+" />
+          </div>
+          <div className="mt-2 text-sm text-creme/70">{STATS.projetsRealises.label}</div>
+        </div>
+
+        {/* < 24 h — réel */}
+        <div>
+          <div className="font-display text-5xl lg:text-6xl tracking-tightest text-bleuvif">
+            &lt;{STATS.delaiDevis.value}
+            <span className="text-3xl align-baseline">{STATS.delaiDevis.unit}</span>
+          </div>
+          <div className="mt-2 text-sm text-creme/70">{STATS.delaiDevis.label}</div>
+        </div>
+
+        {/* 4,8/5 — démo */}
+        <div>
+          <div className="font-display text-5xl lg:text-6xl tracking-tightest text-bleuvif">
+            {STATS.satisfaction.value.toLocaleString("fr-FR")}
+            <span className="text-2xl text-creme/50">{STATS.satisfaction.unit}</span>
+          </div>
+          <div className="mt-2 text-sm text-creme/70">{STATS.satisfaction.label}</div>
         </div>
       </div>
     </section>

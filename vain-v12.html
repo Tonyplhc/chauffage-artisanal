@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>DEVISPILOT V12 — Votre entreprise avance même quand vous n'êtes pas là.</title>
+<meta name="description" content="DevisPilot Autonomous OS : l'autopilot des entreprises techniques. Relances, visites, primes, renouvellements — le système exécute sans vous, vous validez l'exception. SAV, règles métier, score entreprise." />
+<meta name="theme-color" content="#020203" />
+<link rel="canonical" href="https://vainstudio.lu/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="VΛIN STUDIO" />
+<meta property="og:title" content="DEVISPILOT — L'entreprise autonome" />
+<meta property="og:description" content="27 actions exécutées automatiquement aujourd'hui. 18 700 € récupérés. Sans intervention humaine." />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23020203'/%3E%3Ctext x='50' y='69' font-family='Space Grotesk,Arial' font-size='60' font-weight='700' fill='%23D4AF37' text-anchor='middle'%3E%CE%9B%3C/text%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+/* ════════════════════════════════════════════════════════════
+   DEVISPILOT — V12 · AUTONOMOUS OS
+   V10 : je vois. V11 : je sais quoi faire.
+   V12 : l'entreprise avance même quand je ne suis pas là.
+   ────────────────────────────────────────────────────────────
+   Or = argent/action · Rouge = pertes · Vert = exécuté/signé.
+   L'autopilot fait. L'humain valide l'exception.
+   ════════════════════════════════════════════════════════════ */
+:root{
+  --s0:#020203;--s1:#070709;--s2:#0b0b0e;--s3:#0f0f13;--s4:#141419;
+  --hi:linear-gradient(180deg,rgba(255,255,255,.045),transparent 36%);
+  --l1:rgba(255,255,255,.05);--l2:rgba(255,255,255,.095);--l3:rgba(255,255,255,.16);
+  --ink:#FBFBFC;--ink2:rgba(255,255,255,.6);--ink3:rgba(255,255,255,.38);--ink4:rgba(255,255,255,.22);
+  --au:#D4AF37;--au2:#EDDCA6;--auD:rgba(212,175,55,.12);--auL:rgba(212,175,55,.36);
+  --rd:#E5484D;--rd2:#F2A0A3;--rdD:rgba(229,72,77,.11);--rdL:rgba(229,72,77,.38);
+  --gn:#30C463;--gn2:#9BE8B6;--gnD:rgba(48,196,99,.12);--gnL:rgba(48,196,99,.4);
+  --r1:6px;--r2:10px;--r3:14px;--r4:20px;
+  --tf:.15s cubic-bezier(.2,.7,.2,1);--tm:.3s cubic-bezier(.2,.7,.2,1);--ts:.5s cubic-bezier(.16,1,.3,1);
+  --fd:'Space Grotesk','Inter',sans-serif;--fb:'Inter',sans-serif;--fm:'JetBrains Mono',ui-monospace,monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:auto}
+body{background:var(--s0);color:var(--ink);font-family:var(--fb);line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::selection{background:var(--au);color:#0a0a0a}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:none;cursor:pointer;text-align:left}
+:focus-visible{outline:1px solid var(--au);outline-offset:2px;border-radius:4px}
+.fm{font-family:var(--fm);letter-spacing:.02em}
+h1,h2,h3,h4{font-family:var(--fd);font-weight:600;letter-spacing:-.02em;line-height:1.05}
+.money{font-family:var(--fd);font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+
+#rail{position:relative;z-index:0}
+#rail .seg{height:92vh}
+#rail .seg.first{height:112vh}
+
+#shell{position:fixed;inset:11px;z-index:10;display:flex;flex-direction:column;
+  border:1px solid var(--l2);border-radius:var(--r4);overflow:hidden;
+  background:
+    radial-gradient(1100px 460px at 88% -8%,rgba(212,175,55,.045),transparent 60%),
+    radial-gradient(800px 400px at -8% 112%,rgba(255,255,255,.02),transparent 60%),
+    var(--s1);
+  box-shadow:0 1px 0 rgba(255,255,255,.05) inset,0 80px 160px -80px rgba(0,0,0,.98)}
+@media(max-width:680px){#shell{inset:6px;border-radius:14px}}
+
+#top{display:flex;align-items:center;gap:10px;padding:9px 13px;border-bottom:1px solid var(--l1);background:rgba(2,2,3,.65);backdrop-filter:blur(16px);flex:none}
+#top .b{display:flex;align-items:center;gap:9px;font-family:var(--fd);font-weight:600;font-size:13.5px;white-space:nowrap}
+#top .b .d{width:20px;height:20px;border-radius:6px;background:var(--au);color:#0a0a0a;display:grid;place-items:center;font-size:12px;font-weight:700}
+#top .b .os{color:var(--ink3);font-weight:500;font-size:11px;letter-spacing:.1em}
+#top .q{display:flex;align-items:center;gap:8px;border:1px solid var(--l2);border-radius:var(--r1);padding:6px 11px;color:var(--ink4);font-size:12px;background:var(--s1);min-width:170px;cursor:pointer;transition:border-color var(--tf)}
+#top .q:hover{border-color:var(--l3)}
+#top .q .k{margin-left:auto;font-family:var(--fm);font-size:9px;border:1px solid var(--l2);border-radius:4px;padding:1px 5px;color:var(--ink3)}
+#top .sp{flex:1}
+.pill{font-family:var(--fm);font-size:9px;border-radius:20px;padding:4px 10px;white-space:nowrap;display:flex;gap:6px;align-items:center}
+.pill.gd{color:var(--au2);border:1px solid var(--auL)}
+.pill.gn{color:var(--gn2);border:1px solid var(--gnL)}
+.pill i{width:6px;height:6px;border-radius:50%;flex:none}
+.pill.gd i{background:var(--au);animation:beat 2.4s infinite}
+.pill.gn i{background:var(--gn)}
+@keyframes beat{0%,100%{box-shadow:0 0 0 0 rgba(212,175,55,.5)}55%{box-shadow:0 0 0 5px rgba(212,175,55,0)}}
+#clock{font-family:var(--fm);font-size:11px;color:var(--ink2);font-variant-numeric:tabular-nums;white-space:nowrap}
+#bellBtn{position:relative;width:29px;height:29px;border-radius:var(--r1);border:1px solid var(--l2);display:grid;place-items:center;color:var(--ink3)}
+#bellBtn .n{position:absolute;top:-5px;right:-5px;min-width:15px;height:15px;border-radius:8px;background:var(--au);color:#0a0a0a;font-family:var(--fm);font-size:9px;font-weight:600;display:grid;place-items:center;padding:0 4px}
+#top .cta{background:var(--au);color:#0a0a0a;font-weight:600;font-size:12.5px;padding:8px 14px;border-radius:var(--r2);display:flex;align-items:center;gap:8px;white-space:nowrap;transition:transform var(--tf),box-shadow var(--tm)}
+#top .cta:hover{transform:translateY(-1px);box-shadow:0 12px 32px -12px rgba(212,175,55,.55)}
+@media(max-width:1020px){#top .q{display:none}}
+@media(max-width:680px){#top{gap:7px;padding:9px 10px}#top .pill.gd,#clock,.pill .plbl{display:none}.pill{padding:4px 8px}#top .cta{font-size:11px;padding:7px 9px}#top .b .os{display:none}}
+
+#body{display:flex;flex:1;min-height:0}
+#side{width:188px;flex:none;border-right:1px solid var(--l1);background:rgba(2,2,3,.5);padding:7px;display:flex;flex-direction:column;overflow-y:auto;scrollbar-width:none}
+#side::-webkit-scrollbar{display:none}
+#side .g{font-family:var(--fm);font-size:8px;letter-spacing:.16em;color:var(--ink4);padding:8px 9px 4px}
+#side button{display:flex;align-items:center;gap:8px;width:100%;padding:5.5px 9px;border-radius:var(--r1);font-size:11.5px;color:var(--ink2);transition:background var(--tf),color var(--tf)}
+#side button svg{stroke:var(--ink3);flex:none;transition:stroke var(--tf)}
+#side button:hover{background:rgba(255,255,255,.035)}
+#side button.on{background:rgba(255,255,255,.06);color:var(--ink)}
+#side button.on svg{stroke:var(--au)}
+#side button .c{margin-left:auto;font-family:var(--fm);font-size:8.5px;color:var(--ink4)}
+#side button .c.rd{color:var(--rd2)}
+#side button .c.gd{color:var(--au2)}
+#side button .c.gn{color:var(--gn2)}
+#side .push{flex:1}
+#side .hint{font-family:var(--fm);font-size:8.5px;color:var(--ink4);padding:8px;border-top:1px solid var(--l1);line-height:1.8}
+#side .hint b{color:var(--ink3);font-weight:500;border:1px solid var(--l2);border-radius:3px;padding:0 4px}
+@media(max-width:920px){#side{display:none}}
+
+#ws{flex:1;position:relative;min-width:0}
+.view{position:absolute;inset:0;padding:16px 18px;opacity:0;transform:translateY(12px) scale(.996);transition:opacity var(--ts),transform var(--ts);pointer-events:none;overflow-y:auto;overflow-x:hidden;scrollbar-width:thin;scrollbar-color:var(--l2) transparent}
+.view::-webkit-scrollbar{width:6px}.view::-webkit-scrollbar-thumb{background:var(--l2);border-radius:6px}
+.view.on{opacity:1;transform:none;pointer-events:auto}
+@media(max-width:680px){.view{padding:12px}}
+
+#status{display:flex;align-items:center;gap:12px;padding:6px 13px;border-top:1px solid var(--l1);background:rgba(2,2,3,.65);font-family:var(--fm);font-size:9px;color:var(--ink4);flex:none;white-space:nowrap;overflow:hidden}
+#status .au{color:var(--au2)}#status .rd{color:var(--rd2)}#status .gn{color:var(--gn2)}
+#status .sep{width:3px;height:3px;border-radius:50%;background:var(--ink4);flex:none}
+#status .mid{flex:1;text-align:center;overflow:hidden;text-overflow:ellipsis}
+@media(max-width:680px){#status .hidemb{display:none}}
+
+/* briques */
+.note{position:relative;border:1px solid var(--auL);border-radius:var(--r3);background:linear-gradient(180deg,var(--auD),transparent 130%);padding:16px 18px;margin-bottom:14px;overflow:hidden}
+.note::before{content:"";position:absolute;inset:0;background:var(--hi);pointer-events:none;border-radius:inherit}
+.note .k{font-family:var(--fm);font-size:9px;letter-spacing:.2em;color:var(--au);margin-bottom:8px}
+.note h1,.note h2{font-size:clamp(19px,2.4vw,29px);letter-spacing:-.025em}
+.note .au{color:var(--au)}.note .rd{color:var(--rd)}.note .gn{color:var(--gn)}
+.note p{font-size:13px;color:var(--ink2);margin-top:8px;line-height:1.6;max-width:680px}
+.note .cta-row{display:flex;align-items:center;gap:12px;margin-top:12px;flex-wrap:wrap}
+.note .btn{background:var(--au);color:#0a0a0a;font-weight:600;font-size:13px;padding:10px 17px;border-radius:var(--r2);display:inline-flex;align-items:center;gap:9px;transition:transform var(--tf),box-shadow var(--tm)}
+.note .btn:hover{transform:translateY(-1px);box-shadow:0 12px 32px -14px rgba(212,175,55,.55)}
+.note .gh{font-size:12px;color:var(--ink3)}
+.note .gh b{color:var(--ink2);font-weight:500}
+.note.danger{border-color:var(--rdL);background:linear-gradient(180deg,var(--rdD),transparent 130%)}
+.note.danger .k{color:var(--rd2)}
+.note.green{border-color:var(--gnL);background:linear-gradient(180deg,var(--gnD),transparent 130%)}
+.note.green .k{color:var(--gn2)}
+
+.pane{position:relative;border:1px solid var(--l1);border-radius:var(--r3);background:var(--s2);overflow:hidden;display:flex;flex-direction:column}
+.pane::before{content:"";position:absolute;inset:0;background:var(--hi);pointer-events:none;border-radius:inherit;z-index:1}
+.pane>*{position:relative;z-index:2}
+.pane .ph{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:9px 12px;border-bottom:1px solid var(--l1);background:rgba(2,2,3,.55)}
+.pane .ph .t{font-size:12px;font-weight:600;font-family:var(--fd)}
+.pane .ph .m{font-family:var(--fm);font-size:8.5px;color:var(--ink4)}
+.pane .pb{padding:10px 11px;display:flex;flex-direction:column;gap:6px;flex:1}
+.grid2{display:grid;grid-template-columns:1.05fr .95fr;gap:12px}
+@media(max-width:880px){.grid2{grid-template-columns:1fr}}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+@media(max-width:880px){.grid3{grid-template-columns:1fr}}
+.statrow{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin-bottom:12px}
+@media(max-width:880px){.statrow{grid-template-columns:repeat(2,1fr)}}
+.stat{position:relative;border:1px solid var(--l1);border-radius:var(--r2);background:var(--s2);padding:11px 13px;overflow:hidden}
+.stat::before{content:"";position:absolute;inset:0;background:var(--hi);pointer-events:none}
+.stat .k{font-family:var(--fm);font-size:8.5px;letter-spacing:.1em;color:var(--ink4);text-transform:uppercase}
+.stat .v{font-family:var(--fd);font-weight:600;font-size:clamp(17px,1.9vw,24px);margin-top:5px;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.stat .v small{font-size:.6em;color:var(--ink3);font-weight:500}
+.stat .sub{font-family:var(--fm);font-size:8px;color:var(--ink4);margin-top:3px}
+.stat.gd{border-color:var(--auL)}.stat.gd .v{color:var(--au2)}
+.stat.rd{border-color:var(--rdL)}.stat.rd .v{color:var(--rd2)}
+.stat.gn{border-color:var(--gnL)}.stat.gn .v{color:var(--gn2)}
+.stat.big .v{font-size:clamp(22px,2.6vw,31px)}
+
+.lr{display:flex;align-items:center;gap:9px;padding:7.5px 10px;border:1px solid var(--l1);border-radius:var(--r2);background:var(--s3);font-size:11px;color:var(--ink2);transition:border-color var(--tm)}
+.lr .ic{width:21px;height:21px;border-radius:5px;background:rgba(255,255,255,.04);display:grid;place-items:center;flex:none}
+.lr .ic svg{stroke:currentColor}
+.lr .ic.au{background:var(--auD);color:var(--au)}
+.lr .ic.rd{background:var(--rdD);color:var(--rd)}
+.lr .ic.gn{background:var(--gnD);color:var(--gn)}
+.lr b{color:var(--ink);font-weight:500}
+.lr .w{margin-left:auto;font-family:var(--fm);font-size:8px;color:var(--ink4);flex:none}
+.lr .eur{font-family:var(--fd);font-weight:600;font-size:12.5px;font-variant-numeric:tabular-nums;flex:none}
+.lr .eur.gd{color:var(--au2)}.lr .eur.rd{color:var(--rd2)}.lr .eur.gn{color:var(--gn2)}
+.lr .grow{flex:1;min-width:0}
+.lr .sub{display:block;font-size:9.5px;color:var(--ink3);margin-top:1px}
+.lr .sub .imp{color:var(--au2);font-weight:500}
+.lr .sub .imp.rd{color:var(--rd2)}
+.lr.ok{border-color:var(--gnL)}
+.lr .ml{margin-left:auto;display:flex;align-items:center;gap:8px;flex:none}
+.lr.auto{border-style:dashed;border-color:var(--gnL);background:linear-gradient(180deg,var(--gnD),var(--s3) 70%)}
+.lr.auto .ic{background:var(--gnD);color:var(--gn)}
+
+.do{background:var(--au);color:#0a0a0a;font-weight:600;font-size:11px;padding:7px 13px;border-radius:var(--r2);white-space:nowrap;transition:transform var(--tf),box-shadow var(--tm);flex:none}
+.do:hover{transform:translateY(-1px);box-shadow:0 10px 26px -12px rgba(212,175,55,.55)}
+.do.ok{background:var(--gnD);color:var(--gn2);border:1px solid var(--gnL);pointer-events:none}
+.do.big{font-size:12.5px;padding:10px 20px}
+
+/* autopilot */
+.ap-split{display:flex;gap:8px;height:9px;border-radius:6px;overflow:hidden;margin-top:8px}
+.ap-split i{height:100%}
+.ap-split .a{background:linear-gradient(90deg,var(--gn),rgba(48,196,99,.5))}
+.ap-split .b{background:rgba(255,255,255,.14)}
+.ap-leg{display:flex;justify-content:space-between;font-family:var(--fm);font-size:8.5px;color:var(--ink4);margin-top:6px}
+.ap-leg .gn{color:var(--gn2)}
+
+/* règles */
+.rule{border:1px solid var(--l1);border-radius:var(--r2);background:var(--s3);padding:11px 12px;display:flex;align-items:center;gap:12px;transition:border-color var(--tm),opacity var(--tm)}
+.rule .logic{flex:1;min-width:0;font-family:var(--fm);font-size:10.5px;line-height:1.7}
+.rule .logic .si{color:var(--ink4);letter-spacing:.1em}
+.rule .logic .cond{color:var(--ink)}
+.rule .logic .alors{color:var(--au);letter-spacing:.1em}
+.rule .logic .act{color:var(--au2)}
+.rule .res{font-family:var(--fm);font-size:8.5px;color:var(--gn2);flex:none;text-align:right}
+.rule .res b{display:block;font-family:var(--fd);font-size:13px;font-variant-numeric:tabular-nums}
+.rule.off{opacity:.45}
+.rule.off .res{color:var(--ink4)}
+.sw{width:32px;height:18px;border-radius:10px;background:rgba(255,255,255,.1);position:relative;flex:none;cursor:pointer;transition:background var(--tm)}
+.sw::after{content:"";position:absolute;top:2px;left:2px;width:14px;height:14px;border-radius:50%;background:var(--ink3);transition:left var(--tm),background var(--tm)}
+.sw.on{background:var(--gnD);box-shadow:0 0 0 1px var(--gnL)}
+.sw.on::after{left:16px;background:var(--gn)}
+
+/* score */
+.score-wrap{display:grid;grid-template-columns:auto 1fr;gap:22px;align-items:center}
+@media(max-width:680px){.score-wrap{grid-template-columns:1fr;justify-items:center}}
+.bigring{width:150px;height:150px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--au) calc(var(--p,82)*1%),rgba(255,255,255,.07) 0);transition:--p 1s;position:relative}
+.bigring i{width:122px;height:122px;border-radius:50%;background:var(--s2);display:grid;place-items:center;flex-direction:column;font-style:normal;text-align:center}
+.bigring .n{font-family:var(--fd);font-weight:600;font-size:38px;letter-spacing:-.03em;font-variant-numeric:tabular-nums;line-height:1}
+.bigring .lab{font-family:var(--fm);font-size:7.5px;color:var(--ink4);letter-spacing:.16em;margin-top:4px}
+.subscores{display:flex;flex-direction:column;gap:7px;width:100%}
+.ss{display:grid;grid-template-columns:90px 1fr 34px;gap:10px;align-items:center;font-size:11px}
+.ss .k{color:var(--ink3)}
+.ss .bar{height:6px;border-radius:5px;background:rgba(255,255,255,.06);overflow:hidden}
+.ss .bar i{display:block;height:100%;border-radius:5px;background:linear-gradient(90deg,var(--au2),var(--au));transition:width .9s var(--ts)}
+.ss .v{font-family:var(--fm);font-size:10px;color:var(--ink2);text-align:right;font-variant-numeric:tabular-nums}
+.ss.weak .bar i{background:linear-gradient(90deg,rgba(229,72,77,.7),rgba(229,72,77,.45))}
+.ss.weak .v{color:var(--rd2)}
+
+/* knowledge */
+.kn{border:1px solid var(--l1);border-radius:var(--r2);background:var(--s3);padding:11px 12px;display:flex;flex-direction:column;gap:7px}
+.kn .nm{font-size:12px;font-weight:600;font-family:var(--fd)}
+.kn .row{display:flex;justify-content:space-between;font-family:var(--fm);font-size:9.5px;color:var(--ink3)}
+.kn .row b{color:var(--ink);font-weight:500}
+.kn .row .gd{color:var(--au2)}
+.kn .bar{height:5px;border-radius:5px;background:rgba(255,255,255,.06);overflow:hidden}
+.kn .bar i{display:block;height:100%;background:linear-gradient(90deg,var(--au2),var(--au))}
+
+/* preuves / activation (réutilisés) */
+.ba{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:880px){.ba{grid-template-columns:1fr}}
+.ba .pane.before{border-color:var(--rdL)}
+.ba .pane.before .ph .t{color:var(--rd2)}
+.ba .pane.after{border-color:var(--gnL)}
+.ba .pane.after .ph .t{color:var(--gn2)}
+.fact{display:flex;justify-content:space-between;gap:10px;padding:7px 0;border-bottom:1px solid var(--l1);font-size:11px}
+.fact:last-child{border-bottom:none}
+.fact .k{color:var(--ink3)}
+.fact .v{font-weight:500;text-align:right}
+.fact .v.rd{color:var(--rd2)}.fact .v.gn{color:var(--gn2)}
+.openlink{display:flex;align-items:center;justify-content:center;gap:9px;border:1px solid var(--l2);border-radius:var(--r2);padding:10px;font-size:12px;font-weight:500;transition:transform var(--tf);margin-top:4px}
+.openlink:hover{transform:translateY(-1px)}
+.openlink.gn{border-color:var(--gnL);color:var(--gn2)}
+.openlink.rd{color:var(--ink3)}
+.act-g{display:grid;grid-template-columns:1.05fr .95fr;gap:12px}
+@media(max-width:880px){.act-g{grid-template-columns:1fr}}
+.meta-t{border:1px solid var(--l1);border-radius:var(--r2);overflow:hidden;margin-top:5px}
+.meta-t .r{display:flex;justify-content:space-between;padding:9px 12px;border-bottom:1px solid var(--l1);font-size:11.5px}
+.meta-t .r:last-child{border-bottom:none}
+.meta-t .r .k{color:var(--ink3)}
+.meta-t .r .v{font-weight:500;font-family:var(--fm);font-size:10.5px}
+.meta-t .r.hl{background:var(--auD)}
+.meta-t .r.hl .v{color:var(--au)}
+.form .f{width:100%;background:var(--s0);border:1px solid var(--l2);border-radius:var(--r2);padding:10px 12px;font-size:12.5px;color:var(--ink);font-family:var(--fb);margin-bottom:7px;outline:none;transition:border-color var(--tf)}
+.form .f::placeholder{color:var(--ink4)}
+.form .f:focus{border-color:var(--au)}
+.form button{width:100%;justify-content:center;background:var(--au);color:#0a0a0a;font-weight:600;font-size:13.5px;padding:11px;border-radius:var(--r2);display:flex;align-items:center;gap:9px;transition:transform var(--tf),box-shadow var(--tm)}
+.form button:hover{transform:translateY(-1px);box-shadow:0 12px 32px -14px rgba(212,175,55,.5)}
+.form .micro{margin-top:8px;text-align:center;font-size:10px;color:var(--ink4)}
+.form .micro b{color:var(--au2);font-weight:500}
+.is-dis{opacity:.4;pointer-events:none}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+
+/* IA */
+.ai-line{font-family:var(--fm);font-size:11px;color:var(--ink2);padding:4.5px 0;opacity:0;transform:translateY(4px);transition:opacity .4s,transform .4s}
+.ai-line.show{opacity:1;transform:none}
+.ai-line .k{color:var(--ink4)}
+.ai-line .rd{color:var(--rd2);font-weight:600}
+.ai-line .gd{color:var(--au2);font-weight:600}
+.ai-verdict{margin-top:10px;border:1px solid var(--auL);border-radius:var(--r2);background:var(--auD);padding:12px 14px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;opacity:0;transition:opacity .5s}
+.ai-verdict.show{opacity:1}
+.ai-verdict .t{font-size:12px;color:var(--au2)}
+.ai-verdict .v{font-family:var(--fd);font-weight:600;font-size:21px;color:var(--au);font-variant-numeric:tabular-nums}
+.cursor{display:inline-block;width:7px;height:12px;background:var(--au);vertical-align:-2px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+
+/* alerts */
+.alert{border:1px solid var(--rdL);border-radius:var(--r3);background:linear-gradient(180deg,var(--rdD),var(--s2) 60%);padding:12px 13px;display:flex;flex-direction:column;gap:8px;transition:border-color var(--tm),background var(--tm)}
+.alert .ah{display:flex;align-items:center;gap:9px}
+.alert .tag{font-family:var(--fm);font-size:8px;color:var(--rd2);border:1px solid var(--rdL);border-radius:4px;padding:2px 7px;letter-spacing:.1em}
+.alert .id{font-family:var(--fm);font-size:9px;color:var(--ink4)}
+.alert .eur{margin-left:auto;font-family:var(--fd);font-weight:600;font-size:17px;color:var(--rd2);font-variant-numeric:tabular-nums}
+.alert .why{font-size:11px;color:var(--ink2)}
+.alert .why b{color:var(--ink)}
+.alert .af{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.alert .rec{font-family:var(--fm);font-size:8.5px;color:var(--ink3);flex:1}
+.alert .rec b{color:var(--au2);font-weight:500}
+.alert.ok{border-color:var(--gnL);background:linear-gradient(180deg,var(--gnD),var(--s2) 60%)}
+.alert.ok .tag{color:var(--gn2);border-color:var(--gnL)}
+.alert.ok .eur{color:var(--gn2)}
+
+.te{display:flex;align-items:center;gap:9px;padding:7px 10px;border:1px solid var(--l1);border-radius:var(--r2);background:var(--s3);font-size:10.5px;color:var(--ink2);opacity:0;transform:translateY(-6px);animation:tein .4s forwards}
+@keyframes tein{to{opacity:1;transform:none}}
+.te .tt{font-family:var(--fm);font-size:9px;color:var(--gn2);font-variant-numeric:tabular-nums;flex:none;width:38px}
+.te .ic{width:19px;height:19px;border-radius:5px;background:var(--gnD);display:grid;place-items:center;flex:none;color:var(--gn)}
+.te .ic svg{stroke:currentColor}
+.te b{color:var(--ink);font-weight:500}
+.te .eur{color:var(--gn2);font-weight:600}
+.te .ref{margin-left:auto;font-family:var(--fm);font-size:8px;color:var(--ink4);flex:none}
+
+/* palette / notif / toast */
+#pal{position:fixed;inset:0;z-index:300;display:none;align-items:flex-start;justify-content:center;padding-top:13vh;background:rgba(1,1,2,.62);backdrop-filter:blur(6px)}
+#pal.on{display:flex}
+#pal .box{width:min(540px,92vw);border:1px solid var(--l3);border-radius:var(--r3);background:var(--s2);overflow:hidden;box-shadow:0 60px 120px -40px rgba(0,0,0,.92)}
+#pal input{width:100%;background:var(--s1);border:none;border-bottom:1px solid var(--l1);padding:13px 15px;font-size:13.5px;color:var(--ink);outline:none;font-family:var(--fb)}
+#pal input::placeholder{color:var(--ink4)}
+#pal .ls{max-height:300px;overflow-y:auto;padding:6px}
+#pal .it{display:flex;align-items:center;gap:10px;width:100%;padding:9px 12px;border-radius:var(--r1);font-size:12.5px;color:var(--ink2);transition:background var(--tf)}
+#pal .it:hover,#pal .it.sel{background:rgba(255,255,255,.05);color:var(--ink)}
+#pal .it .k{margin-left:auto;font-family:var(--fm);font-size:8.5px;color:var(--ink4)}
+#pal .it svg{stroke:var(--ink3);flex:none}
+#pal .ft{border-top:1px solid var(--l1);padding:8px 13px;font-family:var(--fm);font-size:8.5px;color:var(--ink4);display:flex;gap:13px}
+#notif{position:fixed;z-index:290;top:60px;right:24px;width:min(330px,90vw);border:1px solid var(--l3);border-radius:var(--r3);background:var(--s2);box-shadow:0 40px 90px -40px rgba(0,0,0,.92);display:none;overflow:hidden}
+#notif.on{display:block}
+#notif .h{padding:10px 13px;border-bottom:1px solid var(--l1);font-size:11.5px;font-weight:600;font-family:var(--fd);display:flex;justify-content:space-between}
+#notif .ls{max-height:280px;overflow-y:auto;padding:6px;display:flex;flex-direction:column;gap:5px}
+#notif .te{animation:none;opacity:1;transform:none}
+#toast{position:fixed;z-index:280;bottom:50px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--s3);border:1px solid var(--gnL);color:var(--ink);font-size:12px;padding:9px 15px;border-radius:var(--r2);opacity:0;transition:opacity var(--tm),transform var(--tm);pointer-events:none;box-shadow:0 20px 60px -20px rgba(0,0,0,.85)}
+#toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
+
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:.001s!important;transition-duration:.001s!important}
+  .te,.ai-line,.ai-verdict{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<div id="rail">
+  <div class="seg first"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div>
+  <div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div>
+  <div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div>
+  <div class="seg"></div><div class="seg"></div><div class="seg"></div>
+</div>
+
+<div id="shell" role="application" aria-label="DevisPilot V12 — démonstration">
+  <div id="top">
+    <div class="b"><span class="d">Λ</span>DEVISPILOT <span class="os">AUTONOMOUS OS</span></div>
+    <button class="q" id="palOpen"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg> Commander <span class="k">⌘K</span></button>
+    <div class="sp"></div>
+    <span class="pill gn"><i></i><span class="plbl">AUTOPILOT&nbsp;</span><span class="money" id="apCount">27 act.</span></span>
+    <span class="pill gd"><i></i><span class="plbl">RÉCUPÉRÉ AUJ.&nbsp;</span><span class="money" id="gained">+ 18 700 €</span></span>
+    <span id="clock">--:--:--</span>
+    <button id="bellBtn" aria-label="Notifications"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9M10.3 21a2 2 0 0 0 3.4 0"/></svg><span class="n" id="bellN">0</span></button>
+    <a href="#" class="cta" data-go="17">Réserver une démo <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+  </div>
+
+  <div id="body">
+    <div id="side">
+      <button data-go="0" class="on"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke-width="1.7"><path d="M13 2L3 14h7l-1 8 10-12h-7z"/></svg> Commande</button>
+      <button data-go="1"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2M12 3a9 9 0 0 1 9 9"/></svg> Autopilot <span class="c gn">74 %</span></button>
+      <button data-go="2"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke-width="1.7"><path d="M4 6h16M4 12h16M4 18h10"/><circle cx="19" cy="18" r="2"/></svg> Règles <span class="c">6</span></button>
+      <button data-go="3"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke-width="1.7"><path d="M12 9v4M12 17h.01M10.3 3.9L1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg> Urgences <span class="c rd">3</span></button>
+      <div class="g">OPÉRATIONS</div>
+      <button data-go="4"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke-width="1.7"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/></svg> Demandes <span class="c gd">12</span></button>
+      <button data-go="5"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke-width="1.7"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg> Clients <span class="c">58</span></button>
+      <button data-go="6"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke-width="1.7"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg> Visites <span class="c">4</span></button>
+      <button data-go="7"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke-width="1.7"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg> Devis <span class="c gd">5</span></button>
+      <button data-go="8"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke-width="1.7"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 0 0 5.4-5.4l-2.1 2.1-2-.5-.5-2z"/></svg> Chantiers <span class="c gn">3</span></button>
+      <button data-go="9"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke-width="1.7"><circle cx="9" cy="7" r="3"/><circle cx="17" cy="9" r="2.4"/><path d="M3 21c0-3.5 2.7-5 6-5s6 1.5 6 5M14 16.2c2.6.3 4.6 1.6 4.6 4.8"/></svg> Techniciens <span class="c rd">1</span></button>
+      <div class="g">RÉCURRENT</div>
+      <button data-go="10"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke-width="1.7"><path d="M14.7 13.3a4 4 0 1 1-5.4-5.4M12 8v4l2 2"/><path d="M3 12a9 9 0 1 0 9-9"/></svg> SAV <span class="c gn">42</span></button>
+      <button data-go="11"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke-width="1.7"><path d="M21 12a9 9 0 1 1-9-9M21 3v6h-6"/></svg> Renouvellements <span class="c gd">48 k€</span></button>
+      <button data-go="12"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke-width="1.7"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M4 19.5A2.5 2.5 0 0 0 6.5 22H20V2H6.5A2.5 2.5 0 0 0 4 4.5z"/></svg> Connaissance</button>
+      <div class="g">PILOTAGE</div>
+      <button data-go="13"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke-width="1.7"><path d="M12 2a7 7 0 0 1 7 7c0 2.4-1.2 4.5-3 5.7V17a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2v-2.3C6.2 13.5 5 11.4 5 9a7 7 0 0 1 7-7zM9 21h6"/></svg> IA</button>
+      <button data-go="14"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M12 6v6l4 2"/></svg> Direction <span class="c gd">82</span></button>
+      <div class="g">OFFRE</div>
+      <button data-go="15"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke-width="1.7"><path d="M12 2L2 7l10 5 10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg> Packs</button>
+      <button data-go="16"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke-width="1.7"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg> Preuves</button>
+      <button data-go="17"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 2"/></svg> Activation</button>
+      <div class="push"></div>
+      <div class="hint">NAVIGUER <b>scroll</b>·<b>J</b>/<b>K</b> &nbsp;⌘<b>K</b></div>
+    </div>
+
+    <div id="ws">
+
+      <!-- 0 · COMMANDE -->
+      <section class="view on" data-v="0">
+        <div class="note green">
+          <div class="k">AUTONOMOUS OS · L'ENTREPRISE QUI AVANCE SANS VOUS</div>
+          <h1>Pendant que vous étiez sur le toit,<br/><span class="gn">le système a travaillé.</span></h1>
+          <p>La question n'est plus « que dois-je faire ? ». C'est « qu'est-ce que le système a déjà fait — et qu'est-ce qui n'attend que ma validation ? ». Voici votre journée, gérée.</p>
+          <div class="cta-row">
+            <a class="btn" data-go="17" href="#">Réserver une démo <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            <span class="gh"><b>Tout ce qui est vert pointillé a été fait sans vous</b> · simulation étiquetée</span>
+          </div>
+        </div>
+        <div class="statrow">
+          <div class="stat gn big"><div class="k">Actions automatiques · auj.</div><div class="v" id="stAuto">27</div><div class="sub">sans intervention humaine</div></div>
+          <div class="stat gn"><div class="k">Récupéré sans vous</div><div class="v money" id="stGained">18 700 €</div><div class="sub">relances · primes · rappels</div></div>
+          <div class="stat gd"><div class="k">Vous attendent</div><div class="v">3 <small>décisions</small></div><div class="sub">le système a tout préparé</div></div>
+          <div class="stat"><div class="k">Temps humain requis</div><div class="v">11 <small>min</small></div><div class="sub">pour toute la journée</div></div>
+        </div>
+        <div class="grid2">
+          <div class="pane">
+            <div class="ph"><span class="t">Fait automatiquement — aujourd'hui</span><span class="m">démo · en continu</span></div>
+            <div class="pb" id="apFeed"></div>
+          </div>
+          <div class="pane">
+            <div class="ph"><span class="t">Les 3 décisions qui vous attendent</span><span class="m">préparées par le système</span></div>
+            <div class="pb">
+              <div class="lr"><span class="ic au"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M3 17l6-6 4 4 8-8"/></svg></span><span class="grow"><b>Approuver l'appel DV-1194</b> · 24 800 € · script prêt<span class="sub">l'autopilot a relancé 2× — un humain ferme mieux</span></span><span class="ml"><button class="do" data-gain="4400" data-ok="Approuvé ✓">APPROUVER</button></span></div>
+              <div class="lr"><span class="ic au"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span><span class="grow"><b>Valider la remise Hoffmann</b> · −3 % proposés<span class="sub">règle : remise &gt; 2 % = validation patron → <span class="imp">+ 24 100 € sécurisés</span></span></span><span class="ml"><button class="do" data-gain="2300" data-ok="Validé ✓">VALIDER</button></span></div>
+              <div class="lr"><span class="ic au"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><circle cx="9" cy="7" r="3"/><path d="M3 21c0-3.5 2.7-5 6-5"/></svg></span><span class="grow"><b>Confirmer le renfort de Jean</b> · Michel dispo 14 h<span class="sub">l'autopilot a déjà réorganisé la tournée</span></span><span class="ml"><button class="do" data-gain="900" data-ok="Confirmé ✓">CONFIRMER</button></span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 1 · AUTOPILOT -->
+      <section class="view" data-v="1">
+        <div class="note green">
+          <div class="k">AUTOPILOT · PAS « IA ». PILOTE.</div>
+          <h2>Cette semaine : <span class="gn">128 actions automatiques.</span><br/>Vous n'en avez vu que 33.</h2>
+          <p>74 % exécutées sans validation. 26 % préparées pour votre clic. C'est ça, un système d'exploitation métier — pas un logiciel à remplir.</p>
+        </div>
+        <div class="statrow">
+          <div class="stat gn big"><div class="k">Actions auto · 7 jours</div><div class="v" data-count="128">0</div><div class="sub">démo · scénario type</div></div>
+          <div class="stat"><div class="k">Répartition</div><div class="v">74<small>%</small> <small style="color:var(--ink4)">auto</small> · 26<small>%</small> <small style="color:var(--ink4)">validées</small></div>
+            <div class="ap-split"><i class="a" style="width:74%"></i><i class="b" style="width:26%"></i></div>
+            <div class="ap-leg"><span class="gn">SANS VALIDATION</span><span>AVEC VALIDATION</span></div></div>
+          <div class="stat gn"><div class="k">Récupéré · 7 jours</div><div class="v money" data-count="41300" data-suffix=" €">0 €</div><div class="sub">par l'autopilot seul</div></div>
+          <div class="stat"><div class="k">Heures humaines économisées</div><div class="v">9<small> h 40</small></div><div class="sub">admin rendu au terrain</div></div>
+        </div>
+        <div class="grid2">
+          <div class="pane">
+            <div class="ph"><span class="t">Ce que l'autopilot a fait</span><span class="m">7 derniers jours</span></div>
+            <div class="pb">
+              <div class="lr auto"><span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg></span> <b>24 relances</b> envoyées au bon moment <span class="eur gn">+ 18 700 €</span></div>
+              <div class="lr auto"><span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span> <b>8 visites</b> planifiées et confirmées <span class="eur gn">+ 9 200 €</span></div>
+              <div class="lr auto"><span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span> <b>13 primes</b> détectées et intégrées aux devis <span class="eur gn">+ 8 100 €</span></div>
+              <div class="lr auto"><span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></span> <b>7 clients</b> réactivés (inactifs &gt; 21 j) <span class="eur gn">+ 5 300 €</span></div>
+            </div>
+          </div>
+          <div class="pane">
+            <div class="ph"><span class="t">Là où il s'arrête — par design</span><span class="m">l'humain garde la main</span></div>
+            <div class="pb">
+              <div class="lr"><span class="ic au"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M20 6L9 17l-5-5"/></svg></span> Remise &gt; 2 % → <b>validation patron</b></div>
+              <div class="lr"><span class="ic au"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M20 6L9 17l-5-5"/></svg></span> Devis &gt; 20 000 € → <b>appel humain recommandé</b></div>
+              <div class="lr"><span class="ic au"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M20 6L9 17l-5-5"/></svg></span> Client mécontent détecté → <b>jamais d'auto-réponse</b></div>
+              <div class="lr"><span class="ic au"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M4 6h16M4 12h16M4 18h10"/></svg></span> Tout est réglable dans <b>le Centre des règles</b> <span class="ml"><button class="do" data-gain="0" data-ok="Ouvert ✓" data-goafter="2">OUVRIR</button></span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2 · RÈGLES -->
+      <section class="view" data-v="2">
+        <div class="note">
+          <div class="k">CENTRE DES RÈGLES · LE CŒUR DU PRODUIT</div>
+          <h2>Vos réflexes de patron,<br/><span class="au">écrits une fois. Exécutés pour toujours.</span></h2>
+          <p>Chaque règle est un bout de votre expérience qui travaille la nuit. Activez, désactivez — le système obéit. C'est ce qui rend l'OS impossible à remplacer.</p>
+        </div>
+        <div class="pane">
+          <div class="ph"><span class="t">Règles actives</span><span class="m">SI / ALORS · chiffrées au réel</span></div>
+          <div class="pb">
+            <div class="rule"><div class="logic"><span class="si">SI</span> <span class="cond">devis ouvert &gt; 7 jours</span><br/><span class="alors">ALORS</span> <span class="act">envoyer relance 1 (douce)</span></div><div class="res">CE MOIS<b>+ 6 200 €</b></div><div class="sw on" role="switch" aria-checked="true" tabindex="0"></div></div>
+            <div class="rule"><div class="logic"><span class="si">SI</span> <span class="cond">client ouvre le devis 3 fois</span><br/><span class="alors">ALORS</span> <span class="act">créer urgence « client chaud »</span></div><div class="res">CE MOIS<b>+ 4 400 €</b></div><div class="sw on" role="switch" aria-checked="true" tabindex="0"></div></div>
+            <div class="rule"><div class="logic"><span class="si">SI</span> <span class="cond">prime détectée &gt; 5 000 €</span><br/><span class="alors">ALORS</span> <span class="act">mettre le dossier en priorité</span></div><div class="res">CE MOIS<b>+ 8 100 €</b></div><div class="sw on" role="switch" aria-checked="true" tabindex="0"></div></div>
+            <div class="rule"><div class="logic"><span class="si">SI</span> <span class="cond">client inactif &gt; 21 jours</span><br/><span class="alors">ALORS</span> <span class="act">email de réactivation personnalisé</span></div><div class="res">CE MOIS<b>+ 5 300 €</b></div><div class="sw on" role="switch" aria-checked="true" tabindex="0"></div></div>
+            <div class="rule"><div class="logic"><span class="si">SI</span> <span class="cond">contrat SAV expire &lt; 90 jours</span><br/><span class="alors">ALORS</span> <span class="act">proposer le renouvellement</span></div><div class="res">CE MOIS<b>+ 11 900 €</b></div><div class="sw on" role="switch" aria-checked="true" tabindex="0"></div></div>
+            <div class="rule off"><div class="logic"><span class="si">SI</span> <span class="cond">matériel non commandé à J-7 de pose</span><br/><span class="alors">ALORS</span> <span class="act">commander automatiquement (fournisseur préféré)</span></div><div class="res">INACTIVE<b>—</b></div><div class="sw" role="switch" aria-checked="false" tabindex="0"></div></div>
+          </div>
+        </div>
+        <div class="lr" style="margin-top:10px"><span class="ic au"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M12 5v14M5 12h14"/></svg></span> Une règle = votre expérience qui tourne 24/7. <b>En démo : ajoutez la vôtre.</b> <span class="ml"><button class="do" data-gain="0" data-ok="Règle esquissée ✓ (démo)">NOUVELLE RÈGLE</button></span></div>
+      </section>
+
+      <!-- 3 · URGENCES -->
+      <section class="view" data-v="3">
+        <div class="note danger">
+          <div class="k">URGENCES · LES 26 % QUI MÉRITENT UN HUMAIN</div>
+          <h2>L'autopilot a tout préparé.<br/>Il ne manque que <span class="au">votre clic.</span></h2>
+        </div>
+        <div class="grid3">
+          <div class="alert" data-val="24800">
+            <div class="ah"><span class="tag">ALERTE</span><span class="id">#DV-1194</span><span class="eur money">24 800 €</span></div>
+            <div class="why">Ouvert 3× · 14 jours · <b>relancé 2× par l'autopilot</b> — il recommande un appel humain.</div>
+            <div class="af"><span class="rec">PRÊT : <b>script d'appel + relance finale</b></span><button class="do" data-gain="24800" data-risk="24800" data-ok="Exécuté ✓">EXÉCUTER</button></div>
+          </div>
+          <div class="alert" data-val="22000">
+            <div class="ah"><span class="tag">ALERTE</span><span class="id">#DV-1188</span><span class="eur money">22 000 €</span></div>
+            <div class="why">Prime non appliquée — <b>devis corrigé généré</b>, en attente d'envoi.</div>
+            <div class="af"><span class="rec">PRÊT : <b>devis v2 prime déduite</b></span><button class="do" data-gain="22000" data-risk="22000" data-ok="Envoyé ✓">ENVOYER</button></div>
+          </div>
+          <div class="alert" data-val="12900">
+            <div class="ah"><span class="tag">ALERTE</span><span class="id">#REQ-4170</span><span class="eur money">12 900 €</span></div>
+            <div class="why">Visite jamais planifiée — <b>3 créneaux optimisés calculés</b>.</div>
+            <div class="af"><span class="rec">PRÊT : <b>email créneaux + rappel J-1</b></span><button class="do" data-gain="12900" data-risk="12900" data-ok="Envoyé ✓">ENVOYER</button></div>
+          </div>
+        </div>
+        <div class="lr" style="margin-top:10px"><span class="ic rd"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M12 9v4M12 17h.01"/><circle cx="12" cy="12" r="9"/></svg></span> Encore à risque : <span class="eur rd" id="riskLeft" style="margin-left:6px">59 700 €</span><span class="w">CHAQUE CLIC LE FAIT BAISSER</span></div>
+      </section>
+
+      <!-- 4 · DEMANDES -->
+      <section class="view" data-v="4">
+        <div class="note">
+          <div class="k">DEMANDES · L'AUTOPILOT A DÉJÀ TRIÉ</div>
+          <h2>12 demandes aujourd'hui.<br/><span class="gn">9 traitées sans vous.</span> 3 pour vous.</h2>
+        </div>
+        <div class="grid2">
+          <div class="pane">
+            <div class="ph"><span class="t">Fait sans vous</span><span class="m">accusés · scores · valeurs</span></div>
+            <div class="pb">
+              <div class="lr auto"><span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M20 6L9 17l-5-5"/></svg></span> 9 demandes accusées en <b>&lt; 1 min</b>, chiffrées, scorées <span class="w">AUTO</span></div>
+              <div class="lr auto"><span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M20 6L9 17l-5-5"/></svg></span> 2 hors zone — <b>refus poli envoyé</b>, confrère recommandé <span class="w">AUTO</span></div>
+              <div class="lr auto"><span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M20 6L9 17l-5-5"/></svg></span> 4 visites <b>déjà proposées</b> avec créneaux optimisés <span class="w">AUTO</span></div>
+            </div>
+          </div>
+          <div class="pane">
+            <div class="ph"><span class="t">Pour vous — trié par impact</span><span class="m">3 demandes</span></div>
+            <div class="pb">
+              <div class="lr"><span class="ic au"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M3 17l6-6 4 4 8-8"/></svg></span><span class="grow"><b>REQ-4192</b> · PAC 18 400 € · score 84<span class="sub">gros dossier → votre appel vaut <span class="imp">+ 2 900 €</span></span></span><span class="ml"><button class="do" data-gain="2900" data-ok="Appel planifié ✓">APPELER</button></span></div>
+              <div class="lr"><span class="ic au"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M3 17l6-6 4 4 8-8"/></svg></span><span class="grow"><b>REQ-4189</b> · PV 21 300 € · question technique<span class="sub">le client demande un avis d'expert — c'est vous</span></span><span class="ml"><button class="do" data-gain="2100" data-ok="Répondu ✓">RÉPONDRE</button></span></div>
+              <div class="lr"><span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><span class="grow"><b>REQ-4188</b> · urgence chaudière · 3 900 €<span class="sub">client sans chauffage — décision d'intervention</span></span><span class="ml"><button class="do" data-gain="1400" data-ok="Intervention validée ✓">VALIDER</button></span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5 · CLIENTS -->
+      <section class="view" data-v="5">
+        <div class="note">
+          <div class="k">CLIENTS · LE SYSTÈME LES GARDE CHAUDS</div>
+          <h2>7 clients réactivés cette semaine.<br/><span class="gn">Vous n'avez rien fait.</span></h2>
+        </div>
+        <div class="grid2">
+          <div class="pane">
+            <div class="ph"><span class="t">Réactivés par l'autopilot</span><span class="m">règle : inactif &gt; 21 j</span></div>
+            <div class="pb">
+              <div class="lr auto"><span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></span> <b>Garage Reuter</b> — email entretien · <b>a répondu oui</b> <span class="eur gn">+ 1 700 €</span></div>
+              <div class="lr auto"><span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></span> <b>Boulangerie Klein</b> — rappel clim avant l'été <span class="eur gn">+ 2 400 €</span></div>
+              <div class="lr auto"><span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></span> <b>5 autres</b> — séquences en cours <span class="w">AUTO</span></div>
+            </div>
+          </div>
+          <div class="pane">
+            <div class="ph"><span class="t">Un seul vous attend</span><span class="m">jugement humain requis</span></div>
+            <div class="pb">
+              <div class="lr"><span class="ic au"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></span><span class="grow"><b>Mme Thill</b> · devis PV 31 600 € · a répondu « c'est cher »<span class="sub">objection prix = humain. Le système a préparé la simulation prime → <span class="imp">+ 3 100 €</span></span></span><span class="ml"><button class="do" data-gain="3100" data-ok="Rappel programmé ✓">APPELER</button></span></div>
+              <div class="lr auto"><span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M20 6L9 17l-5-5"/></svg></span> Les 57 autres fiches : à jour, suivies, relancées <span class="w">AUTO</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 6 · VISITES -->
+      <section class="view" data-v="6">
+        <div class="note">
+          <div class="k">VISITES · PLANIFIÉES PENDANT QUE VOUS DORMIEZ</div>
+          <h2>8 visites cette semaine.<br/><span class="gn">6 prises par le système.</span></h2>
+        </div>
+        <div class="grid2">
+          <div class="pane">
+            <div class="ph"><span class="t">Fait sans vous</span><span class="m">créneaux · confirmations · rappels</span></div>
+            <div class="pb">
+              <div class="lr auto"><span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span> 6 visites <b>proposées, choisies, confirmées</b> par les clients <span class="w">AUTO</span></div>
+              <div class="lr auto"><span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span> Rappels J-1 envoyés — <b>0 lapin</b> ce mois <span class="w">AUTO</span></div>
+              <div class="lr auto"><span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M3 17l6-6 4 4 8-8"/></svg></span> Tournées optimisées — <b>1 h 50 de route économisée</b> <span class="w">AUTO</span></div>
+            </div>
+          </div>
+          <div class="pane">
+            <div class="ph"><span class="t">Votre arbitrage</span><span class="m">1 conflit détecté</span></div>
+            <div class="pb">
+              <div class="lr"><span class="ic au"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span><span class="grow"><b>Jeudi 09:00</b> : Weber (18 400 €) et un dépannage urgent se chevauchent<span class="sub">proposition : Weber → 08:30, dépannage → Michel · <span class="imp">les deux sont servis</span></span></span><span class="ml"><button class="do" data-gain="1800" data-ok="Arbitré ✓">ARBITRER</button></span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 7 · DEVIS -->
+      <section class="view" data-v="7">
+        <div class="note">
+          <div class="k">DEVIS · ILS SE DÉFENDENT TOUT SEULS</div>
+          <h2>5 devis dehors. <span class="gn">Aucun ne peut mourir</span> en silence.</h2>
+        </div>
+        <div class="pane">
+          <div class="ph"><span class="t">96 300 € sous surveillance</span><span class="m">chaque devis a son plan</span></div>
+          <div class="pb">
+            <div class="lr auto"><span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg></span> <b>DV-1178</b> · Thill · 31 600 € — relance J+2 <b>envoyée ce matin</b> <span class="w">AUTO</span></div>
+            <div class="lr auto"><span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg></span> <b>DV-1175</b> · Reuter · 14 900 € — relance J+5 <b>programmée vendredi</b> <span class="w">AUTO</span></div>
+            <div class="lr"><span class="ic au"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M3 17l6-6 4 4 8-8"/></svg></span><span class="grow"><b>DV-1181</b> · Hoffmann · 24 100 € · ouvert 2× à l'instant<span class="sub">CHAUD — règle « 3 ouvertures » va créer l'urgence. Devancez-la : <span class="imp">+ 4 400 €</span></span></span><span class="ml"><button class="do" data-gain="4400" data-ok="Appel lancé ✓">APPELER</button></span></div>
+            <div class="lr"><span class="ic gn"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg></span> <b>DV-1183</b> · Weber · <b style="color:var(--gn2)">SIGNÉ</b> — chantier créé, matériel commandé <span class="w">AUTO</span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 8 · CHANTIERS -->
+      <section class="view" data-v="8">
+        <div class="note">
+          <div class="k">CHANTIERS · LA MARGE SE PROTÈGE TOUTE SEULE</div>
+          <h2>Le système surveille matériel, équipes, délais.<br/>Il ne vous parle <span class="au">que si la marge bouge.</span></h2>
+        </div>
+        <div class="grid2">
+          <div class="pane">
+            <div class="ph"><span class="t">Géré sans vous</span><span class="m">3 chantiers · 52 100 €</span></div>
+            <div class="pb">
+              <div class="lr auto"><span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M21 8l-9-5-9 5v8l9 5 9-5z"/></svg></span> <b>CHT-771</b> · matériel commandé, technicien affecté, client prévenu <span class="w">AUTO</span></div>
+              <div class="lr auto"><span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span> <b>CHT-765</b> · brief de pose envoyé à l'équipe pour demain <span class="w">AUTO</span></div>
+            </div>
+          </div>
+          <div class="pane">
+            <div class="ph"><span class="t">Alerte marge — votre décision</span><span class="m">1 exception</span></div>
+            <div class="pb">
+              <div class="lr"><span class="ic rd"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M12 9v4M12 17h.01"/><circle cx="12" cy="12" r="9"/></svg></span><span class="grow"><b>CHT-768</b> · fournisseur en rupture — alternative trouvée <b>+240 €</b><span class="sub">accepter l'alternative ou décaler la pose de 5 j (<span class="imp rd">− 1 800 €</span>) ?</span></span><span class="ml"><button class="do" data-gain="1560" data-ok="Alternative validée ✓">VALIDER +240 €</button></span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 9 · TECHNICIENS -->
+      <section class="view" data-v="9">
+        <div class="note">
+          <div class="k">TECHNICIENS · L'AUTOPILOT VEILLE SUR L'ÉQUIPE</div>
+          <h2>Quand Jean prend du retard,<br/>le système <span class="au">réorganise avant que ça coûte.</span></h2>
+        </div>
+        <div class="grid2">
+          <div class="pane">
+            <div class="ph"><span class="t">Géré sans vous</span><span class="m">aujourd'hui</span></div>
+            <div class="pb">
+              <div class="lr auto"><span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M20 6L9 17l-5-5"/></svg></span> Retard de Jean détecté — <b>2 clients prévenus</b> du décalage <span class="w">AUTO</span></div>
+              <div class="lr auto"><span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M20 6L9 17l-5-5"/></svg></span> Tournée de Michel <b>réoptimisée</b> pour absorber 1 visite <span class="w">AUTO</span></div>
+              <div class="lr auto"><span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M20 6L9 17l-5-5"/></svg></span> Kit PAC de vendredi — <b>rappel de chargement armé</b> (jeudi 17:00) <span class="w">AUTO</span></div>
+            </div>
+          </div>
+          <div class="pane">
+            <div class="ph"><span class="t">Votre validation</span><span class="m">1 décision d'équipe</span></div>
+            <div class="pb">
+              <div class="lr"><span class="ic au"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><circle cx="9" cy="7" r="3"/><path d="M3 21c0-3.5 2.7-5 6-5"/></svg></span><span class="grow"><b>Jean</b> · matériel incomplet — Michel peut passer au dépôt (4 min)<span class="sub">l'autopilot propose, vous tranchez : <span class="imp">tournée sauvée</span></span></span><span class="ml"><button class="do" data-gain="900" data-ok="Michel prévenu ✓">CONFIRMER</button></span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 10 · SAV -->
+      <section class="view" data-v="10">
+        <div class="note">
+          <div class="k">SAV · LÀ OÙ VIVENT LES ARTISANS — ET LE MRR</div>
+          <h2>42 contrats d'entretien.<br/><span class="gn">Rappels, visites, factures : automatiques.</span></h2>
+          <p>L'entretien annuel est le revenu le plus rentable et le plus oublié du métier. Ici, il ne peut plus s'oublier.</p>
+        </div>
+        <div class="statrow">
+          <div class="stat gn big"><div class="k">Contrats actifs</div><div class="v">42</div><div class="sub">entretien · maintenance</div></div>
+          <div class="stat gd"><div class="k">Revenu récurrent</div><div class="v money" data-count="16400" data-suffix=" €">0 €</div><div class="sub">par an · démo</div></div>
+          <div class="stat"><div class="k">Rappels envoyés · 30 j</div><div class="v">19</div><div class="sub">par l'autopilot</div></div>
+          <div class="stat"><div class="k">Interventions planifiées</div><div class="v">11</div><div class="sub">sans appel entrant</div></div>
+        </div>
+        <div class="grid2">
+          <div class="pane">
+            <div class="ph"><span class="t">Échéances qui arrivent</span><span class="m">le système a déjà écrit</span></div>
+            <div class="pb">
+              <div class="lr auto"><span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M14.7 13.3a4 4 0 1 1-5.4-5.4"/></svg></span> <b>Weber</b> · entretien PAC an 1 — rappel armé pour mai 2027 <span class="w">AUTO</span></div>
+              <div class="lr auto"><span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M14.7 13.3a4 4 0 1 1-5.4-5.4"/></svg></span> <b>8 chaudières</b> · entretien annuel dû — créneaux proposés <span class="eur gn">+ 1 900 €</span></div>
+              <div class="lr"><span class="ic au"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M14.7 13.3a4 4 0 1 1-5.4-5.4"/></svg></span><span class="grow"><b>Hoffmann</b> · clim sous garantie — panne signalée hier<span class="sub">garantie fournisseur applicable → <span class="imp">0 € de SAV gratuit non facturé</span></span></span><span class="ml"><button class="do" data-gain="0" data-ok="Dossier garantie ouvert ✓">TRAITER</button></span></div>
+            </div>
+          </div>
+          <div class="pane">
+            <div class="ph"><span class="t">Historique qui rapporte</span><span class="m">chaque équipement tracé</span></div>
+            <div class="pb">
+              <div class="lr"><span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/></svg></span> Chaudière Klein · 3 interventions — <b>remplacement à proposer</b> <span class="eur gd">~ 9 800 €</span></div>
+              <div class="lr"><span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/></svg></span> PAC Reuter · 6 ans — <b>candidate au programme de reprise</b> <span class="eur gd">~ 14 200 €</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 11 · RENOUVELLEMENTS -->
+      <section class="view" data-v="11">
+        <div class="note">
+          <div class="k">RENOUVELLEMENTS · LE MODULE LE PLUS RENTABLE</div>
+          <h2><span class="au money">48 000 €</span> expirent dans 90 jours.<br/>Une campagne. Un clic.</h2>
+        </div>
+        <div class="grid2">
+          <div class="pane">
+            <div class="ph"><span class="t">À renouveler — 90 jours</span><span class="m">démo</span></div>
+            <div class="pb">
+              <div class="lr"><span class="ic gd au"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M21 12a9 9 0 1 1-9-9M21 3v6h-6"/></svg></span> <b>127 clients</b> · contrats entretien & maintenance <span class="eur gd">48 000 €</span></div>
+              <div class="lr"><span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span> Taux de renouvellement historique : <b>81 %</b> avec relance · 44 % sans <span class="w">APPRIS</span></div>
+              <div class="lr" style="border-color:var(--auL)"><span class="ic au"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg></span><span class="grow"><b>Campagne prête</b> : 127 emails personnalisés + relance J+7 + offre fidélité<span class="sub">gain estimé vs ne rien faire : <span class="imp">+ 17 800 €</span></span></span><span class="ml"><button class="do big" data-gain="17800" data-ok="Campagne lancée ✓ 127 envois programmés">LANCER CAMPAGNE</button></span></div>
+            </div>
+          </div>
+          <div class="pane">
+            <div class="ph"><span class="t">Pourquoi ça change tout</span><span class="m">le revenu qui dort</span></div>
+            <div class="pb">
+              <div class="lr"><span class="ic au"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M20 6L9 17l-5-5"/></svg></span> Un renouvellement coûte <b>0 € d'acquisition</b></div>
+              <div class="lr"><span class="ic au"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M20 6L9 17l-5-5"/></svg></span> Chaque contrat = <b>visite annuelle</b> = occasions de vendre</div>
+              <div class="lr"><span class="ic au"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M20 6L9 17l-5-5"/></svg></span> Le système relance <b>avant l'expiration</b> — pas après l'oubli</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 12 · CONNAISSANCE -->
+      <section class="view" data-v="12">
+        <div class="note">
+          <div class="k">BASE DE CONNAISSANCE · LE LOGICIEL APPREND VOTRE ENTREPRISE</div>
+          <h2>Il sait ce que chaque type de chantier<br/><span class="au">vous coûte et vous rapporte.</span></h2>
+          <p>Temps réels, marges réelles, apprises de vos chantiers. Vos devis deviennent plus justes à chaque pose. C'est une mémoire qui vaut de l'argent — et qui ne part jamais en congé.</p>
+        </div>
+        <div class="grid3">
+          <div class="kn"><div class="nm">PAC air/eau (type Daikin)</div>
+            <div class="row"><span>Temps moyen</span><b>6 h 20</b></div>
+            <div class="row"><span>Marge moyenne</span><b class="gd">34 %</b></div>
+            <div class="bar"><i style="width:34%"></i></div>
+            <div class="row"><span>Appris sur</span><b>23 chantiers</b></div></div>
+          <div class="kn"><div class="nm">Borne EV 11 kW</div>
+            <div class="row"><span>Temps moyen</span><b>2 h 10</b></div>
+            <div class="row"><span>Marge moyenne</span><b class="gd">42 %</b></div>
+            <div class="bar"><i style="width:42%"></i></div>
+            <div class="row"><span>Appris sur</span><b>31 chantiers</b></div></div>
+          <div class="kn"><div class="nm">Entretien chaudière</div>
+            <div class="row"><span>Temps moyen</span><b>1 h 05</b></div>
+            <div class="row"><span>Marge moyenne</span><b class="gd">51 %</b></div>
+            <div class="bar"><i style="width:51%"></i></div>
+            <div class="row"><span>Appris sur</span><b>112 interventions</b></div></div>
+        </div>
+        <div class="lr" style="margin-top:12px"><span class="ic au"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M12 2a7 7 0 0 1 7 7c0 2.4-1.2 4.5-3 5.7V17a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2v-2.3C6.2 13.5 5 11.4 5 9a7 7 0 0 1 7-7z"/></svg></span><span class="grow">Insight du mois : <b>les bornes EV ont la meilleure marge horaire</b><span class="sub">recommandation : pousser l'offre borne sur les 31 clients PAC existants → <span class="imp">+ ~12 000 €</span></span></span><span class="ml"><button class="do" data-gain="0" data-ok="Campagne esquissée ✓ (démo)">EXPLOITER</button></span></div>
+      </section>
+
+      <!-- 13 · IA -->
+      <section class="view" data-v="13">
+        <div class="note">
+          <div class="k">DIRECTEUR IA · IL PILOTE L'AUTOPILOT</div>
+          <h2>Chaque nuit, il relit tout.<br/>Chaque matin, <span class="au">il a déjà agi.</span></h2>
+        </div>
+        <div class="pane" style="border-color:var(--auL)">
+          <div class="ph"><span class="t">Λi · Rapport de nuit</span><span class="m">scénario type · démo</span></div>
+          <div class="pb" id="aiB">
+            <div class="ai-line"><span class="k">$</span> nuit du 9 au 10 juin — analyse + exécution <span class="cursor" id="aiCur"></span></div>
+            <div class="ai-line">FAIT : <span class="gd">7 relances envoyées</span> (règle J+7) — 2 réponses déjà reçues</div>
+            <div class="ai-line">FAIT : <span class="gd">prime détectée</span> sur REQ-4189 — devis mis à jour</div>
+            <div class="ai-line">FAIT : <span class="gd">3 rappels SAV</span> armés pour la semaine</div>
+            <div class="ai-line">DÉTECTÉ : <span class="rd">14 devis dormants</span> — perte potentielle 27 000 €/mois</div>
+            <div class="ai-line">PROPOSÉ : <span class="gd">séquence agressive J+2 · J+5 · J+9</span> — votre validation requise (montants &gt; 20 k€)</div>
+            <div class="ai-verdict" id="aiV"><span class="t">Gain estimé si validé maintenant</span><span class="v money">+ 8 900 € / mois</span><button class="do" data-gain="8900" data-ok="Séquence validée ✓" style="font-size:12px;padding:9px 18px">VALIDER LA SÉQUENCE</button></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 14 · DIRECTION / SCORE -->
+      <section class="view" data-v="14">
+        <div class="note">
+          <div class="k">DIRECTION · LE SCORE QUI RÉSUME TOUT</div>
+          <h2>Votre entreprise a un score.<br/>Et le chemin vers <span class="au">le score d'après.</span></h2>
+        </div>
+        <div class="grid2">
+          <div class="pane">
+            <div class="ph"><span class="t">Revenue Score</span><span class="m">santé commerciale · démo</span></div>
+            <div class="pb">
+              <div class="score-wrap">
+                <div class="bigring" id="scoreRing" style="--p:82"><i><span class="n" id="scoreN">82</span><span class="lab">/ 100 · REVENUE SCORE</span></i></div>
+                <div class="subscores">
+                  <div class="ss"><span class="k">Suivi</span><div class="bar"><i style="width:91%"></i></div><span class="v">91</span></div>
+                  <div class="ss"><span class="k">Réactivité</span><div class="bar"><i style="width:87%"></i></div><span class="v">87</span></div>
+                  <div class="ss weak" id="ssConv"><span class="k">Conversion</span><div class="bar"><i id="convBar" style="width:74%"></i></div><span class="v" id="convV">74</span></div>
+                  <div class="ss"><span class="k">Rentabilité</span><div class="bar"><i style="width:83%"></i></div><span class="v">83</span></div>
+                  <div class="ss"><span class="k">Planning</span><div class="bar"><i style="width:76%"></i></div><span class="v">76</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="pane">
+            <div class="ph"><span class="t">Pour passer à 90</span><span class="m">le système a déjà le plan</span></div>
+            <div class="pb">
+              <div class="lr"><span class="ic au"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M3 17l6-6 4 4 8-8"/></svg></span><span class="grow"><b>Relancer 4 devis dormants</b> — le point faible est la conversion<span class="sub">gain estimé : <span class="imp">+ 11 400 €</span> · le score passe à ~90</span></span><span class="ml"><button class="do" id="scoreBtn" data-gain="11400" data-ok="4 relances lancées ✓">RELANCER LES 4</button></span></div>
+              <div class="lr"><span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><span class="grow">Pipeline 1,24 M€ · prévision 87 k€ · objectif 72 %<span class="sub">le détail vit dans les modules — ici, on décide</span></span></div>
+              <div class="lr auto"><span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M20 6L9 17l-5-5"/></svg></span> Le score se recalcule chaque nuit — <b>sans rapport à remplir</b> <span class="w">AUTO</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 15 · PACKS -->
+      <section class="view" data-v="15">
+        <div class="note">
+          <div class="k">PACKS · DES RÉSULTATS, PAS DES FONCTIONS</div>
+          <h2>De « recevoir et suivre »<br/>à <span class="au">« piloter par exception ».</span></h2>
+        </div>
+        <div class="grid3" style="grid-template-columns:repeat(5,1fr)" id="packGrid">
+          <div class="kn"><div class="nm" style="font-family:var(--fm);font-size:9px;letter-spacing:.14em;color:var(--ink3)">FOUNDATION</div><div style="font-family:var(--fd);font-weight:600;font-size:21px">49 €<small style="font-size:10px;color:var(--ink4)">/mois</small></div><div style="font-size:11.5px;font-weight:600;font-family:var(--fd)">Recevoir et suivre.</div><div class="row" style="margin-top:2px"><span>Demandes chiffrées, accusés, pipeline</span></div></div>
+          <div class="kn"><div class="nm" style="font-family:var(--fm);font-size:9px;letter-spacing:.14em;color:var(--ink3)">GROWTH</div><div style="font-family:var(--fd);font-weight:600;font-size:21px">149 €<small style="font-size:10px;color:var(--ink4)">/mois</small></div><div style="font-size:11.5px;font-weight:600;font-family:var(--fd)">Ne plus rien oublier.</div><div class="row"><span>Visites, fiches 360, planning</span></div></div>
+          <div class="kn" style="border-color:var(--auL);background:linear-gradient(180deg,var(--auD),var(--s3) 55%)"><div class="nm" style="font-family:var(--fm);font-size:9px;letter-spacing:.14em;color:var(--au)">REVENUE</div><div style="font-family:var(--fd);font-weight:600;font-size:21px">349 €<small style="font-size:10px;color:var(--ink4)">/mois</small></div><div style="font-size:11.5px;font-weight:600;font-family:var(--fd)">Récupérer l'argent perdu.</div><div class="row"><span>Règles, relances auto, urgences, primes</span></div></div>
+          <div class="kn"><div class="nm" style="font-family:var(--fm);font-size:9px;letter-spacing:.14em;color:var(--ink3)">OPERATIONS</div><div style="font-family:var(--fd);font-weight:600;font-size:21px">799 €<small style="font-size:10px;color:var(--ink4)">/mois</small></div><div style="font-size:11.5px;font-weight:600;font-family:var(--fd)">Faire tourner l'entreprise.</div><div class="row"><span>Chantiers, techniciens, SAV, renouvellements</span></div></div>
+          <div class="kn"><div class="nm" style="font-family:var(--fm);font-size:9px;letter-spacing:.14em;color:var(--au)">EXECUTIVE AI</div><div style="font-family:var(--fd);font-weight:600;font-size:21px">1 499 €<small style="font-size:10px;color:var(--ink4)">/mois</small></div><div style="font-size:11.5px;font-weight:600;font-family:var(--fd)">Piloter par exception.</div><div class="row"><span>Autopilot complet, score, directeur IA</span></div></div>
+        </div>
+        <div class="lr" style="margin-top:12px"><span class="ic au"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M12 5v14M5 12h14"/></svg></span> Add-ons : IA vocale 99 € · SMS 49 € · App mobile 99 € · Techniciens 149 € · Multi-sociétés 299 € · IA commerciale 199 € · SAV 99 € <span class="w">COMPOSEZ</span></div>
+      </section>
+
+      <!-- 16 · PREUVES -->
+      <section class="view" data-v="16">
+        <div class="note">
+          <div class="k">PREUVES · DEUX SITES EN LIGNE, PAS UNE IMAGE</div>
+          <h2>L'avant et l'après existent. <span class="au">Ouvrez-les.</span></h2>
+          <p>Chauffage Artisanal — entreprise réelle, depuis 1994 à Peppange. Comparez vous-même, maintenant.</p>
+        </div>
+        <div class="ba">
+          <div class="pane before">
+            <div class="ph"><span class="t">AVANT · chauffage-artisanal.lu</span><span class="m">site historique</span></div>
+            <div class="pb">
+              <div class="fact"><span class="k">Devis en ligne</span><span class="v rd">Aucun — téléphone uniquement</span></div>
+              <div class="fact"><span class="k">Réponse hors horaires</span><span class="v rd">Impossible</span></div>
+              <div class="fact"><span class="k">Relances · rappels SAV</span><span class="v rd">Mémoire humaine</span></div>
+              <a class="openlink rd" href="https://www.chauffage-artisanal.lu/" target="_blank" rel="noopener">Ouvrir l'ancien site <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg></a>
+            </div>
+          </div>
+          <div class="pane after">
+            <div class="ph"><span class="t">APRÈS · transformation VΛIN</span><span class="m">en ligne</span></div>
+            <div class="pb">
+              <div class="fact"><span class="k">Devis en ligne</span><span class="v gn">Parcours en 2 minutes</span></div>
+              <div class="fact"><span class="k">Réponse hors horaires</span><span class="v gn">24/7 · accusé immédiat</span></div>
+              <div class="fact"><span class="k">Relances · rappels</span><span class="v gn">Système — jamais d'oubli</span></div>
+              <a class="openlink gn" href="https://chauffage-artisanal.vercel.app" target="_blank" rel="noopener">Ouvrir la transformation <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg></a>
+            </div>
+          </div>
+        </div>
+        <div class="grid2" style="margin-top:12px">
+          <div class="pane"><div class="ph"><span class="t">Démonstrateurs métier</span><span class="m">ouvrables</span></div>
+            <div class="pb">
+              <a class="lr" href="demonstrateur-electricien.html" style="cursor:pointer"><span class="ic au"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M13 2L3 14h7l-1 8 10-12h-7z"/></svg></span> <b>Électricien</b> — urgences, IRVE, aides <span class="w">OUVRIR ↗</span></a>
+              <a class="lr" href="demonstrateur-industriel.html" style="cursor:pointer"><span class="ic au"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg></span> <b>Maintenance industrielle</b> — criticité, astreinte <span class="w">OUVRIR ↗</span></a>
+            </div>
+          </div>
+          <div class="pane"><div class="ph"><span class="t">Qui construit ça</span><span class="m">VΛIN STUDIO</span></div>
+            <div class="pb">
+              <div class="lr"><span class="ic au"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M3 21h18M5 21V8l7-5 7 5v13"/></svg></span> <b>14 ans d'industrie</b> — vos marges, vos urgences <span class="w">TERRAIN</span></div>
+              <div class="lr"><span class="ic au"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M3 21h18M5 21V8l7-5 7 5v13"/></svg></span> Luxembourg · Grande Région <span class="w">FR·DE·EN·LU</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 17 · ACTIVATION -->
+      <section class="view" data-v="17">
+        <div class="note">
+          <div class="k">ACTIVATION · METTEZ VOTRE ENTREPRISE EN AUTOPILOT</div>
+          <h2>15 minutes. On vous montre ce que<br/>le système ferait <span class="au">cette semaine, sans vous.</span></h2>
+          <p>Démo en direct sur votre métier : vos règles, vos relances, vos renouvellements — déjà configurés. Vous gardez la feuille de route, quoi que vous décidiez.</p>
+        </div>
+        <div class="act-g">
+          <div class="pane"><div class="ph"><span class="t">La démo</span><span class="m">sans engagement</span></div>
+            <div class="pb">
+              <div class="lr"><span class="ic au"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M20 6L9 17l-5-5"/></svg></span> Vos <b>fuites chiffrées</b> sur vos vrais flux</div>
+              <div class="lr"><span class="ic au"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M20 6L9 17l-5-5"/></svg></span> <b>3 règles d'autopilot</b> configurées pour votre métier</div>
+              <div class="lr"><span class="ic au"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M20 6L9 17l-5-5"/></svg></span> <b>Feuille de route</b> à garder, même sans nous</div>
+              <div class="meta-t">
+                <div class="r"><span class="k">Durée</span><span class="v">15 minutes</span></div>
+                <div class="r"><span class="k">Format</span><span class="v">Démo en direct</span></div>
+                <div class="r"><span class="k">Engagement</span><span class="v">Aucun</span></div>
+                <div class="r hl"><span class="k">Disponibilité</span><span class="v">3 créneaux / semaine</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="pane"><div class="ph"><span class="t">Réserver une démo</span><span class="m">réponse &lt; 24 h</span></div>
+            <div class="pb">
+              <form class="form" id="demoForm" action="#" method="POST">
+                <input type="hidden" name="_subject" value="Demande de démo DevisPilot V12" />
+                <label class="sr" for="fn">Nom & entreprise</label>
+                <input id="fn" class="f" type="text" name="nom" placeholder="Nom & entreprise" required />
+                <label class="sr" for="fe">Email professionnel</label>
+                <input id="fe" class="f" type="email" name="email" placeholder="Email professionnel" required />
+                <label class="sr" for="fmt">Métier</label>
+                <input id="fmt" class="f" type="text" name="metier" placeholder="Votre métier (HVAC, élec, PV, garage…)" />
+                <button id="demoSubmit" type="submit">Réserver ma démo <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+                <div class="micro" id="demoMicro"><b>Sans engagement · 0 spam.</b> hello@vainstudio.lu</div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <div id="status">
+    <span>AUTONOMOUS OS <span class="au">v7.0</span></span><span class="sep"></span>
+    <span>SIMULATION<span class="hidemb"> · DONNÉES DE DÉMONSTRATION</span></span>
+    <span class="mid" id="crumb">COMMANDE</span>
+    <span class="hidemb">AUTO AUJ. <span class="gn money" id="apFoot">27</span></span><span class="sep hidemb"></span>
+    <span class="hidemb">RÉCUPÉRÉ <span class="gn money" id="gainedFoot">+ 18 700 €</span></span><span class="sep hidemb"></span>
+    <span class="hidemb">À RISQUE <span class="rd money" id="riskFoot">59 700 €</span></span><span class="sep hidemb"></span>
+    <span>© 2026 VΛIN</span>
+  </div>
+</div>
+
+<div id="pal" role="dialog" aria-label="Palette de commandes">
+  <div class="box">
+    <input id="palQ" type="text" placeholder="Commander — « autopilot », « règles », « score »…" autocomplete="off" />
+    <div class="ls" id="palLs"></div>
+    <div class="ft"><span>↑↓ naviguer</span><span>⏎ exécuter</span><span>esc fermer</span></div>
+  </div>
+</div>
+<div id="notif"><div class="h">Notifications <span class="fm" id="notifC" style="font-size:9px;color:var(--ink4)">0</span></div><div class="ls" id="notifLs"></div></div>
+<div id="toast"></div>
+
+<script>
+/* ⚙️ CONFIG — vide = canal désactivé proprement */
+var VAIN_CONFIG={formspreeId:"",calendly:"",whatsapp:"",phoneDial:"",phoneDisplay:""};
+(function(){var C=VAIN_CONFIG,f=document.getElementById('demoForm'),b=document.getElementById('demoSubmit'),m=document.getElementById('demoMicro');
+if(C.formspreeId){f.action='https://formspree.io/f/'+C.formspreeId;}
+else{b.classList.add('is-dis');b.setAttribute('aria-disabled','true');f.addEventListener('submit',function(e){e.preventDefault();});
+m.innerHTML='<b>Formulaire en cours d’activation.</b> Contact : hello@vainstudio.lu';}})();
+
+function fmtEUR(n){return n.toLocaleString('fr-FR').replace(/ /g,' ').replace(/,/g,' ');}
+
+/* nav scroll */
+var MODS=18,crumb=document.getElementById('crumb');
+var NAMES=['COMMANDE','AUTOPILOT','CENTRE DES RÈGLES','URGENCES','DEMANDES','CLIENTS','VISITES','DEVIS','CHANTIERS','TECHNICIENS','SAV','RENOUVELLEMENTS','CONNAISSANCE','DIRECTEUR IA','DIRECTION · SCORE','PACKS','PREUVES','ACTIVATION'];
+var views=document.querySelectorAll('.view'),sideBtns=document.querySelectorAll('#side button[data-go]');
+var segs=document.querySelectorAll('#rail .seg'),cur=-1;
+var started={ai:false};
+function segTop(i){var t=0;for(var j=0;j<i;j++)t+=segs[j].offsetHeight;return t;}
+function setMod(i){
+  i=Math.max(0,Math.min(MODS-1,i));if(i===cur)return;cur=i;
+  views.forEach(function(v){v.classList.toggle('on',+v.getAttribute('data-v')===i);});
+  sideBtns.forEach(function(b){b.classList.toggle('on',+b.getAttribute('data-go')===i);});
+  crumb.textContent=NAMES[i];
+  views[i].querySelectorAll('[data-count]').forEach(countUp);
+  if(i===13&&!started.ai){started.ai=true;runAI();}
+}
+function modFromScroll(){var y=scrollY+innerHeight*0.35,acc=0;for(var i=0;i<segs.length;i++){acc+=segs[i].offsetHeight;if(y<acc)return i;}return MODS-1;}
+addEventListener('scroll',function(){setMod(modFromScroll());},{passive:true});
+function goto(i){scrollTo({top:segTop(i)+10,behavior:'smooth'});}
+document.querySelectorAll('[data-go]').forEach(function(el){el.addEventListener('click',function(e){e.preventDefault();goto(+el.getAttribute('data-go'));});});
+addEventListener('keydown',function(e){
+  if(e.target.tagName==='INPUT'||e.target.tagName==='TEXTAREA')return;
+  if(pal.classList.contains('on'))return;
+  if(e.key==='j'||e.key==='J')goto(Math.min(MODS-1,cur+1));
+  if(e.key==='k'||e.key==='K')goto(Math.max(0,cur-1));
+});
+
+function countUp(el){
+  if(el.dataset.done)return;el.dataset.done=1;
+  var target=+el.getAttribute('data-count'),suf=el.getAttribute('data-suffix')||'',pre=el.getAttribute('data-prefix')||'';
+  var t0=null,dur=1000;
+  function step(ts){if(!t0)t0=ts;var p=Math.min(1,(ts-t0)/dur);p=1-Math.pow(1-p,3);
+    el.textContent=pre+fmtEUR(Math.round(target*p))+suf;if(p<1)requestAnimationFrame(step);}
+  requestAnimationFrame(step);
+  /* filet : si rAF est gelé (onglet en arrière-plan), forcer la valeur finale */
+  setTimeout(function(){el.textContent=pre+fmtEUR(target)+suf;},dur+150);
+}
+setMod(0);
+
+/* horloge */
+(function(){var el=document.getElementById('clock');function t(){var d=new Date();el.textContent=d.toLocaleDateString('fr-FR',{weekday:'short',day:'2-digit',month:'short'})+' · '+d.toLocaleTimeString('fr-FR',{hour12:false});}t();setInterval(t,1000);})();
+
+/* ════ MOTEUR : gains & risque ════ */
+var gained=18700,risk=59700,autoCount=27;
+var gainedEls=[document.getElementById('gained'),document.getElementById('gainedFoot'),document.getElementById('stGained')];
+var riskEls=[document.getElementById('riskLeft'),document.getElementById('riskFoot')];
+var apEls=[document.getElementById('apCount'),document.getElementById('apFoot'),document.getElementById('stAuto')];
+var bellN=document.getElementById('bellN'),notifLs=document.getElementById('notifLs'),notifC=document.getElementById('notifC');
+var notifCount=0,notifStore=[];
+function notify(t){notifCount++;bellN.textContent=notifCount>9?'9+':notifCount;notifC.textContent=notifCount;
+ notifStore.unshift(t);if(notifStore.length>8)notifStore.pop();
+ notifLs.innerHTML=notifStore.map(function(h){return '<div class="te"><span class="ic"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg></span><span style="font-size:10.5px">'+h+'</span></div>';}).join('');}
+function refreshMoney(){
+ gainedEls.forEach(function(e,i){if(!e)return;e.textContent=(i===2?'':'+ ')+fmtEUR(gained)+' €';});
+ riskEls.forEach(function(e){if(e)e.textContent=fmtEUR(Math.max(0,risk))+' €';});
+ apEls.forEach(function(e,i){if(!e)return;e.textContent=i===0?autoCount+' act.':String(autoCount);});
+}
+function execDo(btn){
+ if(btn.classList.contains('ok'))return;
+ var gain=+(btn.getAttribute('data-gain')||0);
+ var riskCut=+(btn.getAttribute('data-risk')||0);
+ btn.textContent=btn.getAttribute('data-ok')||'Exécuté ✓';btn.classList.add('ok');
+ var card=btn.closest('.alert')||btn.closest('.lr');
+ if(card)card.classList.add('ok');
+ if(gain>0)gained+=gain;
+ if(riskCut>0)risk-=riskCut;
+ refreshMoney();
+ var msg=gain>0?('Validé — '+fmtEUR(gain)+' € en mouvement'):'Validé ✓';
+ showToast(msg);notify(msg);
+ if(btn.id==='scoreBtn')boostScore();
+ var after=btn.getAttribute('data-goafter');
+ if(after)setTimeout(function(){goto(+after);},650);
+}
+document.addEventListener('click',function(e){var b=e.target.closest('.do');if(b)execDo(b);});
+
+/* ════ AUTOPILOT : le système agit seul, en continu ════ */
+(function(){
+ var feed=document.getElementById('apFeed');
+ var I={send:'<path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>',cal:'<rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>',eur:'<path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>',usr:'<circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/>',ok:'<path d="M20 6L9 17l-5-5"/>',sav:'<path d="M14.7 13.3a4 4 0 1 1-5.4-5.4M12 8v4l2 2"/>'};
+ var ACTS=[
+  ['send','relance J+7 envoyée — <b>DV-1175</b> Reuter',1100,'DV-1175'],
+  ['cal','visite proposée — 3 créneaux à <b>REQ-4193</b>',900,'VIS-885'],
+  ['eur','prime détectée et intégrée — <b>REQ-4189</b> PV',1700,'REQ-4189'],
+  ['usr','client réactivé — <b>Boulangerie Klein</b> (inactif 24 j)',800,'CLI-0231'],
+  ['sav','rappel entretien armé — <b>8 chaudières</b> en mai',600,'SAV'],
+  ['ok','devis suivi — <b>DV-1181</b> ouvert 2× → urgence créée',0,'RÈGLE-2'],
+  ['send','accusé envoyé en 38 s — <b>REQ-4194</b> clim',400,'REQ-4194'],
+  ['cal','rappel J-1 envoyé — visite <b>Thill</b> demain 11:00',300,'VIS-880']];
+ var i=0,reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+ function tick(){
+  var a=ACTS[i%ACTS.length];i++;
+  var d=document.createElement('div');d.className='te';
+  d.innerHTML='<span class="tt">'+new Date().toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'})+'</span><span class="ic"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">'+I[a[0]]+'</svg></span><span>'+a[1]+(a[2]>0?' — <span class="eur">+ '+fmtEUR(a[2])+' €</span>':'')+'</span><span class="ref">#'+a[3]+'</span>';
+  feed.prepend(d);while(feed.children.length>7)feed.removeChild(feed.lastChild);
+  autoCount++;if(a[2]>0)gained+=a[2];
+  refreshMoney();
+  /* rythme crédible : une PME ne génère pas une action toutes les 3 s */
+  setTimeout(tick,reduced?14000:9000);
+ }
+ setTimeout(tick,1400);
+})();
+refreshMoney();
+
+/* règles : interrupteurs */
+document.querySelectorAll('.sw').forEach(function(sw){
+ function flip(){var on=sw.classList.toggle('on');sw.setAttribute('aria-checked',on?'true':'false');
+  var rule=sw.closest('.rule');rule.classList.toggle('off',!on);
+  showToast(on?'Règle activée — l\'autopilot l\'applique dès maintenant':'Règle désactivée');}
+ sw.addEventListener('click',flip);
+ sw.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();flip();}});
+});
+
+/* score : monte quand on exécute le plan */
+function boostScore(){
+ var ring=document.getElementById('scoreRing'),n=document.getElementById('scoreN');
+ var bar=document.getElementById('convBar'),cv=document.getElementById('convV'),ss=document.getElementById('ssConv');
+ var from=82,to=90,t0=null,dur=1400;
+ bar.style.width='86%';cv.textContent='86';ss.classList.remove('weak');
+ function step(ts){if(!t0)t0=ts;var p=Math.min(1,(ts-t0)/dur);p=1-Math.pow(1-p,3);
+  var v=Math.round(from+(to-from)*p);n.textContent=v;ring.style.background='conic-gradient(var(--au) '+v+'%, rgba(255,255,255,.07) 0)';
+  if(p<1)requestAnimationFrame(step);}
+ requestAnimationFrame(step);
+ /* filet : valeur finale garantie même si rAF est gelé */
+ setTimeout(function(){n.textContent=to;ring.style.background='conic-gradient(var(--au) '+to+'%, rgba(255,255,255,.07) 0)';},dur+150);
+}
+
+/* notifications */
+var bell=document.getElementById('bellBtn'),notifBox=document.getElementById('notif');
+bell.addEventListener('click',function(e){e.stopPropagation();notifBox.classList.toggle('on');});
+document.addEventListener('click',function(e){if(!notifBox.contains(e.target))notifBox.classList.remove('on');});
+
+/* IA */
+function runAI(){
+ var lines=document.querySelectorAll('#aiB .ai-line'),v=document.getElementById('aiV'),cu=document.getElementById('aiCur');
+ var reduced=matchMedia('(prefers-reduced-motion: reduce)').matches,i=0;
+ (function next(){
+  if(i<lines.length){lines[i].classList.add('show');i++;setTimeout(next,reduced?70:540);}
+  else{if(cu)cu.style.display='none';setTimeout(function(){v.classList.add('show');},260);}
+ })();
+}
+
+/* palette */
+var pal=document.getElementById('pal'),palQ=document.getElementById('palQ'),palLs=document.getElementById('palLs');
+var CMDS=[
+ {l:'Commande — la journée gérée',k:'3 décisions',go:0},
+ {l:'Autopilot — 128 actions/semaine',k:'74 % auto',go:1},
+ {l:'Centre des règles — SI/ALORS',k:'le moat',go:2},
+ {l:'Urgences — les 26 % humains',k:'59 700 €',go:3},
+ {l:'Demandes — 9/12 traitées seules',k:'auto',go:4},
+ {l:'Clients — 7 réactivés sans vous',k:'+21 j',go:5},
+ {l:'Visites — 6/8 prises par le système',k:'0 lapin',go:6},
+ {l:'Devis — ils se défendent seuls',k:'96 300 €',go:7},
+ {l:'Chantiers — marge auto-protégée',k:'exception',go:8},
+ {l:'Techniciens — l\'équipe veillée',k:'Jean',go:9},
+ {l:'SAV — 42 contrats automatiques',k:'MRR',go:10},
+ {l:'Renouvellements — 48 000 € · 90 j',k:'campagne',go:11},
+ {l:'Connaissance — le logiciel apprend',k:'marges',go:12},
+ {l:'Directeur IA — rapport de nuit',k:'+8 900 €/m',go:13},
+ {l:'Direction — Revenue Score 82',k:'→ 90',go:14},
+ {l:'Packs — 49 → 1 499 €',k:'résultats',go:15},
+ {l:'Preuves — avant/après réels',k:'ouvrables',go:16},
+ {l:'Réserver une démo',k:'15 min',go:17},
+ {l:'Ouvrir l\'AVANT réel (chauffage-artisanal.lu)',k:'↗',href:'https://www.chauffage-artisanal.lu/'},
+ {l:'Ouvrir l\'APRÈS réel (transformation VΛIN)',k:'↗',href:'https://chauffage-artisanal.vercel.app'}];
+var sel=0;
+function renderPal(){
+ var q=palQ.value.toLowerCase();
+ var list=CMDS.filter(function(c){return c.l.toLowerCase().indexOf(q)>-1||c.k.toLowerCase().indexOf(q)>-1;});
+ if(sel>=list.length)sel=0;
+ palLs.innerHTML=list.map(function(c,i){return '<button class="it'+(i===sel?' sel':'')+'" data-i="'+CMDS.indexOf(c)+'"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="1.7"><path d="M5 12h14M13 6l6 6-6 6"/></svg> '+c.l+' <span class="k">'+c.k+'</span></button>';}).join('')||'<div style="padding:13px;font-size:12px;color:var(--ink4)">Aucun résultat.</div>';
+ palLs.querySelectorAll('.it').forEach(function(b){b.addEventListener('click',function(){exec(+b.getAttribute('data-i'));});});
+}
+function exec(i){var c=CMDS[i];palClose();if(c.href){open(c.href,'_blank');}else{goto(c.go);}}
+function palOpenF(){pal.classList.add('on');palQ.value='';sel=0;renderPal();setTimeout(function(){palQ.focus();},30);}
+function palClose(){pal.classList.remove('on');}
+document.getElementById('palOpen').addEventListener('click',palOpenF);
+pal.addEventListener('click',function(e){if(e.target===pal)palClose();});
+palQ.addEventListener('input',function(){sel=0;renderPal();});
+addEventListener('keydown',function(e){
+ if((e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==='k'){e.preventDefault();pal.classList.contains('on')?palClose():palOpenF();return;}
+ if(!pal.classList.contains('on'))return;
+ var vis=palLs.querySelectorAll('.it');
+ if(e.key==='Escape')palClose();
+ if(e.key==='ArrowDown'){e.preventDefault();sel=Math.min(vis.length-1,sel+1);renderPal();}
+ if(e.key==='ArrowUp'){e.preventDefault();sel=Math.max(0,sel-1);renderPal();}
+ if(e.key==='Enter'){e.preventDefault();var b=palLs.querySelector('.it.sel')||vis[0];if(b)exec(+b.getAttribute('data-i'));}
+});
+
+/* toast */
+var toast=document.getElementById('toast'),toastT;
+function showToast(m){toast.textContent=m;toast.classList.add('on');clearTimeout(toastT);toastT=setTimeout(function(){toast.classList.remove('on');},2400);}
+</script>
+</body>
+</html>

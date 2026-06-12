@@ -13,6 +13,7 @@
     "smoke": "node --experimental-strip-types scripts/smoke-tests.mjs"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.104.1",
     "clsx": "^2.1.1",
     "framer-motion": "^11.11.17",
     "lenis": "^1.1.16",

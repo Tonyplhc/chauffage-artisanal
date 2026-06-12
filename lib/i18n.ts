@@ -54,23 +54,31 @@ type Dictionary = {
     aPropos: string;
     contact: string;
     devisCta: string;
+    estimationCta: string;
     metiers: string;
     maisonInfos: string;
+    particuliers: string;
+    promoteurs: string;
+    outils: string;
+    outilsAll: string;
+    consultation: string;
   };
   // Home hero
   hero: {
     eyebrowEst: string;
-    eyebrowAtelier: string;
-    titlePart1: string;
+    eyebrowRegion: string;
+    titleBefore: string;
     titleHighlight: string;
-    titlePart2: string;
-    principleEyebrow: string;
-    principleQuote: string;
-    principleAttribution: string;
-    methodLink: string;
-    introBody: string;
+    titleAfter: string;
+    subtitle: string;
     devisCta: string;
     depannage: string;
+    proofFounded: string;
+    proofCompany: string;
+    proofPartners: string;
+    cardLabel: string;
+    cardTitle: string;
+    cardSub: string;
   };
   // Common
   common: {
@@ -118,24 +126,31 @@ const FR: Dictionary = {
     aPropos: "À propos",
     contact: "Contact",
     devisCta: "Demander un devis",
+    estimationCta: "Estimation gratuite",
     metiers: "Métiers",
     maisonInfos: "Maison & infos",
+    particuliers: "Particuliers",
+    promoteurs: "Promoteurs",
+    outils: "Outils",
+    outilsAll: "Tous les outils",
+    consultation: "Consultation projet",
   },
   hero: {
     eyebrowEst: "Est. 1994",
-    eyebrowAtelier: "Atelier thermique luxembourgeois",
-    titlePart1: "Le confort thermique",
-    titleHighlight: "nouvelle génération",
-    titlePart2: "au Luxembourg.",
-    principleEyebrow: "Le principe",
-    principleQuote:
-      "Ce qui distingue une bonne installation d'une mauvaise, ce n'est pas le matériel —",
-    principleAttribution: "Direction technique · Chauffage Artisanal",
-    methodLink: "Méthode",
-    introBody:
-      "nous concevons, installons et entretenons les systèmes thermiques des maisons, immeubles et bâtiments tertiaires du Grand-Duché.",
-    devisCta: "Demander un devis",
-    depannage: "Dépannage",
+    eyebrowRegion: "Luxembourg & Grande Région",
+    titleBefore: "Chauffage, pompes à chaleur et sanitaire au",
+    titleHighlight: "Luxembourg",
+    titleAfter: ", depuis 1994.",
+    subtitle:
+      "Installation, dépannage et entretien de vos systèmes thermiques. Étude personnalisée, devis sous 24 h et accompagnement Klimabonus de A à Z.",
+    devisCta: "Étude gratuite sous 24 h",
+    depannage: "Panne ? Appelez-nous",
+    proofFounded: "Depuis 1994",
+    proofCompany: "Société établie au Luxembourg",
+    proofPartners: "Partenaire Viessmann · Buderus · De Dietrich",
+    cardLabel: "Engagement",
+    cardTitle: "Réponse sous 24 h",
+    cardSub: "Étude personnalisée & chiffrée",
   },
   common: {
     learnMore: "En savoir plus",
@@ -180,24 +195,31 @@ const DE: Dictionary = {
     aPropos: "Über uns",
     contact: "Kontakt",
     devisCta: "Angebot anfordern",
+    estimationCta: "Kostenlose Schätzung",
     metiers: "Fachgebiete",
     maisonInfos: "Haus & Infos",
+    particuliers: "Privatkunden",
+    promoteurs: "Bauträger",
+    outils: "Tools",
+    outilsAll: "Alle Tools",
+    consultation: "Projektberatung",
   },
   hero: {
     eyebrowEst: "Seit 1994",
-    eyebrowAtelier: "Luxemburger Heizungsfachbetrieb",
-    titlePart1: "Thermischer Komfort",
-    titleHighlight: "neue Generation",
-    titlePart2: "in Luxemburg.",
-    principleEyebrow: "Unser Prinzip",
-    principleQuote:
-      "Was eine gute Installation von einer schlechten unterscheidet, ist nicht das Material —",
-    principleAttribution: "Technische Leitung · Chauffage Artisanal",
-    methodLink: "Methode",
-    introBody:
-      "planen, installieren und warten wir die thermischen Systeme von Häusern, Mehrfamilienhäusern und Geschäftsgebäuden im Großherzogtum.",
-    devisCta: "Angebot anfordern",
-    depannage: "Notdienst",
+    eyebrowRegion: "Luxemburg & Großregion",
+    titleBefore: "Heizung, Wärmepumpen und Sanitär in",
+    titleHighlight: "Luxemburg",
+    titleAfter: ", seit 1994.",
+    subtitle:
+      "Installation, Notdienst und Wartung Ihrer Heizsysteme. Persönliche Beratung, Angebot binnen 24 h und Klimabonus-Begleitung von A bis Z.",
+    devisCta: "Kostenlose Analyse < 24 h",
+    depannage: "Panne? Rufen Sie an",
+    proofFounded: "Seit 1994",
+    proofCompany: "In Luxemburg ansässiges Unternehmen",
+    proofPartners: "Partner: Viessmann · Buderus · De Dietrich",
+    cardLabel: "Versprechen",
+    cardTitle: "Antwort binnen 24 h",
+    cardSub: "Persönliche, bezifferte Analyse",
   },
   common: {
     learnMore: "Mehr erfahren",
@@ -242,24 +264,31 @@ const EN: Dictionary = {
     aPropos: "About",
     contact: "Contact",
     devisCta: "Request a quote",
+    estimationCta: "Free estimate",
     metiers: "Trades",
     maisonInfos: "Company",
+    particuliers: "Homeowners",
+    promoteurs: "Developers",
+    outils: "Tools",
+    outilsAll: "All tools",
+    consultation: "Project consultation",
   },
   hero: {
     eyebrowEst: "Est. 1994",
-    eyebrowAtelier: "Luxembourg HVAC craftsmen",
-    titlePart1: "Next-generation",
-    titleHighlight: "thermal comfort",
-    titlePart2: "in Luxembourg.",
-    principleEyebrow: "Our principle",
-    principleQuote:
-      "What sets a good installation apart isn't the hardware —",
-    principleAttribution: "Technical direction · Chauffage Artisanal",
-    methodLink: "Method",
-    introBody:
-      "we design, install and maintain the thermal systems of homes, residential and commercial buildings across the Grand Duchy.",
-    devisCta: "Request a quote",
-    depannage: "Emergency",
+    eyebrowRegion: "Luxembourg & Greater Region",
+    titleBefore: "Heating, heat pumps and plumbing in",
+    titleHighlight: "Luxembourg",
+    titleAfter: ", since 1994.",
+    subtitle:
+      "Installation, emergency repairs and maintenance of your heating systems. Personalised study, a quote within 24 h and full Klimabonus support.",
+    devisCta: "Free study within 24 h",
+    depannage: "Breakdown? Call us",
+    proofFounded: "Since 1994",
+    proofCompany: "Company established in Luxembourg",
+    proofPartners: "Partner: Viessmann · Buderus · De Dietrich",
+    cardLabel: "Commitment",
+    cardTitle: "Reply within 24 h",
+    cardSub: "Personalised, costed study",
   },
   common: {
     learnMore: "Learn more",

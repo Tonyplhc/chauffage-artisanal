@@ -56,10 +56,10 @@ export function FinalCTA() {
 
           <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
             <Link
-              href="/devis"
+              href="/estimation"
               className="group inline-flex items-center justify-center gap-2 rounded-full bg-cream text-charcoal px-7 py-4 text-sm font-medium hover:bg-copper hover:text-cream transition-all hover:-translate-y-0.5"
             >
-              Demander un devis
+              Estimer mes économies · 60 s
               <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </Link>
             <Link

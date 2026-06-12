@@ -21,7 +21,6 @@ import {
 import {
   calculatePacSizing,
   ISOLATION_G,
-  ISOLATION_LABELS,
   PAC_SCOP,
   type IsolationLevel,
   type PacType,
@@ -100,7 +99,10 @@ export default function PacSizingPage() {
                 />
               </Field>
 
-              <Field label="Niveau d'isolation">
+              <Field label="Votre logement, c'est plutôt…">
+                {/* Langage client (époque / travaux faits) — mappé vers les
+                    niveaux d'isolation du moteur ; le coefficient G reste
+                    documenté dans la section méthode plus bas. */}
                 <select
                   value={isolation}
                   onChange={(e) =>
@@ -108,11 +110,11 @@ export default function PacSizingPage() {
                   }
                   className="w-full bg-cream border border-ink/12 rounded-lg px-3 py-2 text-sm focus:border-copper focus:outline-none"
                 >
-                  {Object.entries(ISOLATION_LABELS).map(([k, v]) => (
-                    <option key={k} value={k}>
-                      {v} (G = {ISOLATION_G[k as IsolationLevel]})
-                    </option>
-                  ))}
+                  <option value="neuf-passif">Neuf très performant (passif / classe AAA)</option>
+                  <option value="neuf-standard">Construit après ~2010</option>
+                  <option value="renov-complete">Rénové complètement (toit + murs + fenêtres)</option>
+                  <option value="renov-partielle">Partiellement rénové (fenêtres ou toit refaits)</option>
+                  <option value="ancien-non-isole">Ancien, jamais vraiment isolé</option>
                 </select>
               </Field>
 
@@ -139,8 +141,9 @@ export default function PacSizingPage() {
               <Info className="h-4 w-4 text-copper mb-2" />
               <p>
                 Méthode : <span className="font-mono">P = V × G × ΔT</span>{" "}
-                avec V = surface × hauteur, G coefficient de déperdition, ΔT
-                écart température (30 K Lux). Marge de sécurité 15% appliquée.
+                avec V = surface × hauteur, G coefficient de déperdition
+                (votre profil : G = {ISOLATION_G[isolation]}), ΔT écart
+                température (30 K Lux). Marge de sécurité 15% appliquée.
               </p>
             </div>
           </div>
@@ -163,7 +166,7 @@ export default function PacSizingPage() {
                   value={`${result.recommendedPacKw} kW`}
                   hint="Avec marge sécurité 15%"
                   icon={Snowflake}
-                  color="#22a06b"
+                  color="#0B57A0"
                 />
                 <Kpi
                   label="SCOP attendu"
@@ -230,10 +233,10 @@ export default function PacSizingPage() {
                 </p>
               </div>
               <Link
-                href={`/devis?from=dimensionnement-pac&service=pac&surface=${surface}`}
+                href="/estimation"
                 className="inline-flex items-center gap-2 rounded-full bg-ink text-cream px-4 py-2 text-sm hover:bg-copper transition-colors"
               >
-                Demander un devis
+                Estimer mes économies · 60 s
                 <ArrowRight className="h-3.5 w-3.5" />
               </Link>
             </div>

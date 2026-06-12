@@ -1,5 +1,7 @@
 import { Hero } from "@/components/home/hero";
+import { TrustBand } from "@/components/home/trust-band";
 import { Stats } from "@/components/home/stats";
+import { Economies } from "@/components/home/economies";
 import { Services } from "@/components/home/services";
 import { Timeline } from "@/components/home/timeline";
 import { Realisations } from "@/components/home/realisations";
@@ -16,13 +18,15 @@ export default function HomePage() {
   return (
     <>
       <Hero />
+      <TrustBand />
       <Stats />
-      <Services />
+      <Economies />
       <AidesStrip />
+      <Services />
+      <Process />
       <Timeline />
       <Realisations />
       <RecruitmentStrip />
-      <Process />
       <Partners />
       <Testimonials />
       <Zone />

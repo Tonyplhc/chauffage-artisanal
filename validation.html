@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>VΛIN · Machine de validation — 20 entreprises HVAC</title>
+<meta name="robots" content="noindex" />
+<meta name="theme-color" content="#020203" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23020203'/%3E%3Ctext x='50' y='69' font-family='Space Grotesk,Arial' font-size='60' font-weight='700' fill='%23D4AF37' text-anchor='middle'%3E%CE%9B%3C/text%3E%3C/svg%3E" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+/* Outil interne de validation marché — données 100 % locales (localStorage). */
+:root{--s0:#020203;--s1:#070709;--s2:#0b0b0e;--s3:#0f0f13;
+--l1:rgba(255,255,255,.05);--l2:rgba(255,255,255,.095);--l3:rgba(255,255,255,.16);
+--ink:#FBFBFC;--ink2:rgba(255,255,255,.6);--ink3:rgba(255,255,255,.38);--ink4:rgba(255,255,255,.22);
+--au:#D4AF37;--au2:#EDDCA6;--auD:rgba(212,175,55,.12);--auL:rgba(212,175,55,.36);
+--rd:#E5484D;--rd2:#F2A0A3;--rdL:rgba(229,72,77,.38);
+--gn:#30C463;--gn2:#9BE8B6;--gnD:rgba(48,196,99,.12);--gnL:rgba(48,196,99,.4);
+--fd:'Space Grotesk',sans-serif;--fb:'Inter',sans-serif;--fm:'JetBrains Mono',monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--s0);color:var(--ink);font-family:var(--fb);line-height:1.5;-webkit-font-smoothing:antialiased;padding:18px}
+::selection{background:var(--au);color:#0a0a0a}
+button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
+input,select,textarea{font:inherit;color:var(--ink);background:var(--s0);border:1px solid var(--l2);border-radius:9px;padding:9px 11px;font-size:13px;outline:none;width:100%;transition:border-color .15s}
+input:focus,select:focus,textarea:focus{border-color:var(--au)}
+input::placeholder,textarea::placeholder{color:var(--ink4)}
+textarea{min-height:64px;resize:vertical}
+select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23888' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 11px center}
+.wrap{max-width:1060px;margin:0 auto}
+header{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:14px}
+header .b{display:flex;align-items:center;gap:9px;font-family:var(--fd);font-weight:600;font-size:15px}
+header .b .d{width:22px;height:22px;border-radius:6px;background:var(--au);color:#0a0a0a;display:grid;place-items:center;font-size:13px;font-weight:700}
+header .b small{color:var(--ink3);font-weight:500;font-size:11px}
+header .sp{flex:1}
+.goal{font-family:var(--fm);font-size:10px;color:var(--ink3);border:1px solid var(--l2);border-radius:20px;padding:5px 12px}
+.goal b{color:var(--au2)}
+.tabs{display:flex;gap:4px;border:1px solid var(--l2);border-radius:12px;padding:4px;background:var(--s1);margin-bottom:14px;flex-wrap:wrap}
+.tabs button{font-size:12.5px;font-weight:600;color:var(--ink3);padding:8px 16px;border-radius:9px;transition:.15s}
+.tabs button.on{background:var(--au);color:#0a0a0a}
+.tabs button:not(.on):hover{color:var(--ink2)}
+.tabs .cnt{font-family:var(--fm);font-size:9px;margin-left:5px;opacity:.7}
+.tab{display:none}
+.tab.on{display:block}
+.pane{border:1px solid var(--l1);border-radius:14px;background:var(--s2);overflow:hidden;margin-bottom:12px}
+.pane .ph{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 14px;border-bottom:1px solid var(--l1);background:rgba(2,2,3,.5);flex-wrap:wrap}
+.pane .ph .t{font-size:12.5px;font-weight:600;font-family:var(--fd)}
+.pane .ph .m{font-family:var(--fm);font-size:9px;color:var(--ink4)}
+.pane .pb{padding:13px 14px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+@media(max-width:820px){.grid2,.grid3,.grid4{grid-template-columns:1fr}}
+.f{margin-bottom:10px}
+.f label{display:block;font-family:var(--fm);font-size:9px;letter-spacing:.1em;color:var(--ink3);text-transform:uppercase;margin-bottom:5px}
+.f .hint{font-size:10.5px;color:var(--ink4);margin-top:3px;font-style:italic}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--au);color:#0a0a0a;font-weight:600;font-size:12.5px;padding:9px 16px;border-radius:9px;transition:.15s;white-space:nowrap}
+.btn:hover{transform:translateY(-1px)}
+.btn.ghost{background:none;border:1px solid var(--l3);color:var(--ink2)}
+.btn.ghost:hover{border-color:var(--ink3);color:var(--ink)}
+.btn.sm{font-size:11px;padding:6px 11px}
+.btn.gn{background:var(--gnD);color:var(--gn2);border:1px solid var(--gnL)}
+.btn.rd{background:var(--rdD);color:var(--rd2);border:1px solid var(--rdL)}
+/* prospects */
+.prow{display:flex;align-items:center;gap:10px;padding:10px 12px;border:1px solid var(--l1);border-radius:11px;background:var(--s3);margin-bottom:7px;flex-wrap:wrap;cursor:pointer;transition:border-color .15s}
+.prow:hover{border-color:var(--l3)}
+.prow.sel{border-color:var(--auL);background:linear-gradient(180deg,var(--auD),var(--s3) 70%)}
+.prow .nm{font-weight:600;font-size:13.5px;min-width:140px}
+.prow .meta{font-family:var(--fm);font-size:9.5px;color:var(--ink4)}
+.prow .sp{flex:1}
+.prow select{width:auto;font-size:11px;padding:5px 26px 5px 9px}
+.badge{font-family:var(--fm);font-size:8.5px;border-radius:5px;padding:3px 8px;border:1px solid var(--l2);color:var(--ink3);white-space:nowrap}
+.badge.s1{color:var(--ink3)}
+.badge.s2{color:var(--au2);border-color:var(--auL)}
+.badge.s3{color:var(--au);border-color:var(--auL)}
+.badge.s4{color:var(--gn2);border-color:var(--gnL)}
+.badge.s5{color:var(--gn);border-color:var(--gnL);font-weight:600}
+.badge.s6{color:var(--rd2);border-color:var(--rdL)}
+.empty{text-align:center;color:var(--ink4);font-size:12.5px;padding:26px}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin-bottom:12px}
+@media(max-width:820px){.kpis{grid-template-columns:repeat(2,1fr)}}
+.kpi{border:1px solid var(--l1);border-radius:11px;background:var(--s2);padding:11px 13px}
+.kpi .k{font-family:var(--fm);font-size:8.5px;letter-spacing:.1em;color:var(--ink4);text-transform:uppercase}
+.kpi .v{font-family:var(--fd);font-weight:600;font-size:22px;margin-top:4px;font-variant-numeric:tabular-nums}
+.kpi .v.au{color:var(--au2)}.kpi .v.gn{color:var(--gn2)}.kpi .v.rd{color:var(--rd2)}
+.kpi .sub{font-family:var(--fm);font-size:8px;color:var(--ink4);margin-top:2px}
+/* interview */
+.who{display:flex;align-items:center;gap:10px;padding:10px 14px;border:1px solid var(--auL);border-radius:11px;background:var(--auD);margin-bottom:12px;font-size:13px;flex-wrap:wrap}
+.who b{font-weight:600}
+.who .fm{font-size:10px;color:var(--ink3)}
+.radio-row{display:flex;gap:8px;flex-wrap:wrap}
+.radio-row label{display:flex;align-items:center;gap:6px;border:1px solid var(--l2);border-radius:9px;padding:7px 12px;font-size:12px;color:var(--ink2);cursor:pointer;text-transform:none;letter-spacing:0;font-family:var(--fb)}
+.radio-row label:has(input:checked){border-color:var(--au);color:var(--ink);background:var(--auD)}
+.radio-row input{width:auto;accent-color:var(--au)}
+.check-row{display:flex;gap:8px;flex-wrap:wrap}
+.check-row label{display:flex;align-items:center;gap:6px;border:1px solid var(--l2);border-radius:9px;padding:7px 12px;font-size:12px;color:var(--ink2);cursor:pointer;text-transform:none;letter-spacing:0;font-family:var(--fb)}
+.check-row label:has(input:checked){border-color:var(--gnL);color:var(--ink);background:var(--gnD)}
+.check-row input{width:auto;accent-color:var(--gn)}
+.savebar{position:sticky;bottom:12px;display:flex;justify-content:flex-end;gap:8px;margin-top:10px}
+.saved-flash{font-family:var(--fm);font-size:10px;color:var(--gn2);align-self:center;opacity:0;transition:opacity .3s}
+.saved-flash.on{opacity:1}
+/* roi */
+.roi-out{border:1px solid var(--auL);border-radius:11px;background:var(--auD);padding:13px 15px;margin-top:4px}
+.roi-out .row{display:flex;justify-content:space-between;align-items:baseline;padding:6px 0;border-bottom:1px solid var(--l1);font-size:13px}
+.roi-out .row:last-child{border-bottom:none}
+.roi-out .row .k{color:var(--ink2)}
+.roi-out .row .v{font-family:var(--fd);font-weight:600;font-variant-numeric:tabular-nums}
+.roi-out .row.big .v{font-size:21px;color:var(--au)}
+.roi-out .row .v.rd{color:var(--rd2)}
+.note{font-family:var(--fm);font-size:9px;color:var(--ink4);margin-top:8px;line-height:1.6}
+/* insights */
+.ins-list{display:flex;flex-direction:column;gap:6px}
+.ins-item{display:flex;gap:10px;align-items:baseline;padding:8px 11px;border:1px solid var(--l1);border-radius:9px;background:var(--s3);font-size:12px}
+.ins-item .who2{font-family:var(--fm);font-size:9px;color:var(--au2);flex:none;min-width:110px}
+.ins-item .txt{color:var(--ink2);flex:1}
+.bar-row{display:grid;grid-template-columns:130px 1fr 30px;gap:10px;align-items:center;font-size:12px;margin-bottom:6px}
+.bar-row .k{color:var(--ink3)}
+.bar-row .bar{height:8px;border-radius:6px;background:rgba(255,255,255,.06);overflow:hidden}
+.bar-row .bar i{display:block;height:100%;border-radius:6px;background:linear-gradient(90deg,var(--au2),var(--au))}
+.bar-row .v{font-family:var(--fm);font-size:10px;color:var(--ink2);text-align:right}
+.toolbar{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+#toast{position:fixed;z-index:100;bottom:24px;left:50%;transform:translateX(-50%) translateY(16px);background:var(--s3);border:1px solid var(--gnL);color:var(--ink);font-size:12px;padding:9px 15px;border-radius:10px;opacity:0;transition:.25s;pointer-events:none}
+#toast.on{opacity:1;transform:translateX(-50%)}
+.danger-zone{margin-top:18px;padding-top:12px;border-top:1px dashed var(--rdL);display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.danger-zone span{font-family:var(--fm);font-size:9px;color:var(--ink4)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="b"><span class="d">Λ</span>MACHINE DE VALIDATION <small>· outil interne · données locales (ce navigateur)</small></div>
+    <div class="sp"></div>
+    <span class="goal">OBJECTIF : <b id="goalN">0</b> / 20 ENTREPRISES INTERVIEWÉES</span>
+  </header>
+
+  <div class="tabs" id="tabs">
+    <button class="on" data-t="prospects">Prospects <span class="cnt" id="cntP">0</span></button>
+    <button data-t="interview">Interview</button>
+    <button data-t="roi">Calculateur ROI</button>
+    <button data-t="insights">Insights <span class="cnt" id="cntI">0</span></button>
+  </div>
+
+  <!-- ════ PROSPECTS (CRM) ════ -->
+  <div class="tab on" data-tab="prospects">
+    <div class="kpis">
+      <div class="kpi"><div class="k">À contacter</div><div class="v" id="k1">0</div></div>
+      <div class="kpi"><div class="k">RDV fixés</div><div class="v au" id="k2">0</div></div>
+      <div class="kpi"><div class="k">Interviewés</div><div class="v gn" id="k3">0</div></div>
+      <div class="kpi"><div class="k">Veulent tester</div><div class="v gn" id="k4">0</div><div class="sub">le vrai signal</div></div>
+    </div>
+    <div class="pane">
+      <div class="ph"><span class="t">Ajouter un prospect</span><span class="m">2 champs suffisent — le reste vient en appel</span></div>
+      <div class="pb">
+        <div class="grid4">
+          <div class="f"><label>Entreprise *</label><input id="np-nom" placeholder="Chauffage Müller Sàrl" /></div>
+          <div class="f"><label>Contact</label><input id="np-contact" placeholder="Prénom / rôle" /></div>
+          <div class="f"><label>Téléphone</label><input id="np-tel" placeholder="+352 …" /></div>
+          <div class="f"><label>Source</label><select id="np-src"><option>Connaissance</option><option>Recherche Google</option><option>Recommandation</option><option>Salon / réseau</option><option>Autre</option></select></div>
+        </div>
+        <button class="btn" id="addBtn">+ Ajouter à la liste</button>
+      </div>
+    </div>
+    <div class="pane">
+      <div class="ph"><span class="t">Pipeline de validation</span><span class="m">cliquez un prospect pour l'interviewer</span></div>
+      <div class="pb" id="plist"><div class="empty">Aucun prospect. Ajoutez vos 20 cibles HVAC ci-dessus.</div></div>
+    </div>
+    <div class="danger-zone">
+      <span>DONNÉES :</span>
+      <button class="btn ghost sm" id="expCsv">⬇ Export CSV (Excel)</button>
+      <button class="btn ghost sm" id="expJson">⬇ Sauvegarde JSON</button>
+      <button class="btn ghost sm" id="impJson">⬆ Restaurer JSON</button>
+      <input type="file" id="impFile" accept=".json" style="display:none;width:auto" />
+      <button class="btn rd sm" id="wipe">Tout effacer</button>
+    </div>
+  </div>
+
+  <!-- ════ INTERVIEW (questionnaire découverte) ════ -->
+  <div class="tab" data-tab="interview">
+    <div id="noSel" class="empty" style="border:1px dashed var(--l3);border-radius:12px;padding:30px">Sélectionnez d'abord un prospect dans l'onglet <b>Prospects</b>.</div>
+    <div id="ivWrap" style="display:none">
+      <div class="who"><b id="ivNom">—</b><span class="fm" id="ivMeta"></span><span style="flex:1"></span><span class="fm" style="color:var(--ink4)">Règle d'or : posez les questions, taisez-vous, notez les mots exacts.</span></div>
+
+      <div class="pane">
+        <div class="ph"><span class="t">1 · Qualification</span><span class="m">qui ils sont — 2 min</span></div>
+        <div class="pb">
+          <div class="grid4">
+            <div class="f"><label>Métier principal</label><select data-q="metier"><option value="">—</option><option>Chauffage / PAC</option><option>Climatisation</option><option>Sanitaire + chauffage</option><option>Électricité</option><option>Photovoltaïque</option><option>Multi-technique</option></select></div>
+            <div class="f"><label>Taille équipe</label><select data-q="taille"><option value="">—</option><option>Solo</option><option>2–4</option><option>5–9</option><option>10–19</option><option>20+</option></select></div>
+            <div class="f"><label>Devis / mois (≈)</label><input type="number" data-q="devisMois" placeholder="ex : 15" /></div>
+            <div class="f"><label>Valeur moyenne devis €</label><input type="number" data-q="valMoy" placeholder="ex : 12000" /></div>
+          </div>
+          <div class="f"><label>Qui fait les devis, et quand ?</label><input data-q="quiDevis" placeholder="« le patron, le soir, à la maison »" /><div class="hint">Les mots exacts. C'est de l'or.</div></div>
+          <div class="f"><label>Outils utilisés aujourd'hui</label>
+            <div class="check-row">
+              <label><input type="checkbox" data-qc="outils" value="Excel" />Excel</label>
+              <label><input type="checkbox" data-qc="outils" value="Papier/carnet" />Papier / carnet</label>
+              <label><input type="checkbox" data-qc="outils" value="Email seul" />Email seul</label>
+              <label><input type="checkbox" data-qc="outils" value="WhatsApp" />WhatsApp</label>
+              <label><input type="checkbox" data-qc="outils" value="Logiciel métier" />Logiciel métier</label>
+            </div>
+            <input data-q="outilNom" placeholder="Si logiciel : lequel ? Combien € / mois ?" style="margin-top:7px" />
+          </div>
+        </div>
+      </div>
+
+      <div class="pane">
+        <div class="ph"><span class="t">2 · Process réel</span><span class="m">comment ça se passe vraiment — 4 min</span></div>
+        <div class="pb">
+          <div class="f"><label>« Racontez-moi la dernière demande de devis reçue. Que s'est-il passé, étape par étape ? »</label><textarea data-q="processRecit" placeholder="Canal d'arrivée, délai de réponse, qui a fait quoi…"></textarea></div>
+          <div class="grid3">
+            <div class="f"><label>Délai de réponse habituel</label><select data-q="delai"><option value="">—</option><option>&lt; 1 heure</option><option>Le jour même</option><option>2–3 jours</option><option>&gt; 3 jours</option><option>« Ça dépend »</option></select></div>
+            <div class="f"><label>Qui relance les devis ?</label><input data-q="quiRelance" placeholder="« personne » est une réponse" /></div>
+            <div class="f"><label>% devis jamais relancés (≈)</label><input type="number" data-q="pctSansRelance" placeholder="ex : 60" /></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pane">
+        <div class="ph"><span class="t">3 · Douleurs</span><span class="m">ce qu'ils détestent — 4 min · NE PAS pitcher ici</span></div>
+        <div class="pb">
+          <div class="f"><label>« Racontez-moi le dernier devis perdu. Pourquoi, à votre avis ? »</label><textarea data-q="devisPerdus" placeholder="Histoire concrète, pas une opinion."></textarea></div>
+          <div class="f"><label>« Qu'est-ce qui vous bouffe le plus de temps chaque semaine ? »</label><textarea data-q="bouffeTemps"></textarea></div>
+          <div class="f"><label>« Qu'est-ce que vous DÉTESTEZ dans votre façon de gérer ça aujourd'hui ? »</label><textarea data-q="deteste" placeholder="Mots exacts — c'est la matière première du pitch."></textarea></div>
+          <div class="f"><label>« Avez-vous déjà essayé un logiciel ? Pourquoi avez-vous arrêté ? »</label><input data-q="dejaEssaye" /></div>
+        </div>
+      </div>
+
+      <div class="pane">
+        <div class="ph"><span class="t">4 · Prix</span><span class="m">ce qu'ils paieraient — 2 min · poser APRÈS la démo</span></div>
+        <div class="pb">
+          <div class="grid3">
+            <div class="f"><label>« À quel prix / mois ce serait TROP CHER ? »</label><input type="number" data-q="prixTrop" placeholder="€ / mois" /></div>
+            <div class="f"><label>« À quel prix ce serait une ÉVIDENCE ? »</label><input type="number" data-q="prixEvidence" placeholder="€ / mois" /></div>
+            <div class="f"><label>Budget outils actuel € / mois</label><input type="number" data-q="budgetActuel" placeholder="0 si rien" /></div>
+          </div>
+          <div class="f"><label>Réaction aux packs (49 → 1 499 €) — mots exacts</label><input data-q="reactionPrix" placeholder="« 349 ça va si ça relance vraiment tout seul »" /></div>
+        </div>
+      </div>
+
+      <div class="pane">
+        <div class="ph"><span class="t">5 · Test d'engagement</span><span class="m">le seul vrai signal — 1 min</span></div>
+        <div class="pb">
+          <div class="f"><label>« Si je vous l'installe le mois prochain, vous testez ? »</label>
+            <div class="radio-row">
+              <label><input type="radio" name="engage" data-qr="engagement" value="oui-franc" />OUI franc (date évoquée)</label>
+              <label><input type="radio" name="engage" data-qr="engagement" value="oui-mou" />Oui mou (« pourquoi pas »)</label>
+              <label><input type="radio" name="engage" data-qr="engagement" value="non" />Non</label>
+            </div>
+          </div>
+          <div class="grid2">
+            <div class="f"><label>Verdict interviewer</label>
+              <div class="radio-row">
+                <label><input type="radio" name="verdict" data-qr="verdict" value="chaud" />🔥 Chaud</label>
+                <label><input type="radio" name="verdict" data-qr="verdict" value="tiede" />Tiède</label>
+                <label><input type="radio" name="verdict" data-qr="verdict" value="froid" />Froid</label>
+              </div>
+            </div>
+            <div class="f"><label>Fonctionnalité la plus demandée (leurs mots)</label><input data-q="featureVoulue" placeholder="« que ça relance tout seul »" /></div>
+          </div>
+          <div class="f"><label>Notes libres</label><textarea data-q="notes"></textarea></div>
+        </div>
+      </div>
+
+      <div class="savebar">
+        <span class="saved-flash" id="savedFlash">✓ Enregistré</span>
+        <button class="btn gn" id="markDone">Marquer « Interviewé »</button>
+        <button class="btn" id="toRoi">Calculer son ROI →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ ROI ════ -->
+  <div class="tab" data-tab="roi">
+    <div class="pane">
+      <div class="ph"><span class="t">Calculateur ROI — à remplir EN APPEL avec le prospect</span><span class="m" id="roiWho">prospect : aucun (calcul libre)</span></div>
+      <div class="pb">
+        <div class="grid4">
+          <div class="f"><label>Devis / mois</label><input type="number" id="r-devis" value="15" /></div>
+          <div class="f"><label>Valeur moyenne €</label><input type="number" id="r-val" value="12000" /></div>
+          <div class="f"><label>% jamais relancés</label><input type="number" id="r-pct" value="50" /></div>
+          <div class="f"><label>Taux signature actuel %</label><input type="number" id="r-sign" value="30" /></div>
+        </div>
+        <div class="f"><label>Gain de conversion estimé avec relances (points)</label><input type="number" id="r-uplift" value="10" /><div class="hint">Hypothèse à challenger AVEC le prospect — c'est ça qui crée la conversation.</div></div>
+        <div class="roi-out">
+          <div class="row"><span class="k">Volume devisé / an</span><span class="v" id="o-vol">—</span></div>
+          <div class="row"><span class="k">Devis jamais relancés / an</span><span class="v rd" id="o-nr">—</span></div>
+          <div class="row"><span class="k">Valeur non relancée / an</span><span class="v rd" id="o-nrval">—</span></div>
+          <div class="row big"><span class="k">Gain potentiel estimé / an</span><span class="v" id="o-gain">—</span></div>
+          <div class="row"><span class="k">… soit par mois</span><span class="v" id="o-gainM">—</span></div>
+        </div>
+        <div class="note">MÉCANIQUE : gain = (devis/an × % non relancés) × valeur moyenne × points de conversion regagnés. Estimation à valider avec les chiffres du prospect — pas une promesse.</div>
+        <div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap">
+          <button class="btn gn sm" id="roiSave">Attacher au prospect sélectionné</button>
+          <span class="saved-flash" id="roiFlash">✓ Attaché</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ INSIGHTS (tracking des réponses) ════ -->
+  <div class="tab" data-tab="insights">
+    <div class="kpis">
+      <div class="kpi"><div class="k">Interviews complètes</div><div class="v gn" id="i-n">0</div><div class="sub">objectif : 20</div></div>
+      <div class="kpi"><div class="k">Prix « évidence » médian</div><div class="v au" id="i-evid">—</div><div class="sub">€ / mois</div></div>
+      <div class="kpi"><div class="k">Prix « trop cher » médian</div><div class="v" id="i-trop">—</div><div class="sub">€ / mois</div></div>
+      <div class="kpi"><div class="k">Veulent tester (oui franc)</div><div class="v gn" id="i-test">0</div><div class="sub">le signal d'achat</div></div>
+    </div>
+    <div class="grid2">
+      <div class="pane">
+        <div class="ph"><span class="t">Ce qu'ils utilisent</span><span class="m">outils actuels</span></div>
+        <div class="pb" id="i-outils"><div class="empty">Pas encore de données.</div></div>
+      </div>
+      <div class="pane">
+        <div class="ph"><span class="t">Engagement & verdicts</span><span class="m">test du mois prochain</span></div>
+        <div class="pb" id="i-engage"><div class="empty">Pas encore de données.</div></div>
+      </div>
+    </div>
+    <div class="pane">
+      <div class="ph"><span class="t">Ce qu'ils détestent — verbatims</span><span class="m">la matière première du produit & du pitch</span></div>
+      <div class="pb"><div class="ins-list" id="i-hates"><div class="empty">Les réponses « je déteste… » apparaîtront ici.</div></div></div>
+    </div>
+    <div class="pane">
+      <div class="ph"><span class="t">Ce qu'ils veulent — verbatims</span><span class="m">fonctionnalités demandées avec leurs mots</span></div>
+      <div class="pb"><div class="ins-list" id="i-wants"><div class="empty">Les réponses apparaîtront ici.</div></div></div>
+    </div>
+    <div class="pane">
+      <div class="ph"><span class="t">Décision après 20 interviews</span><span class="m">lecture des seuils</span></div>
+      <div class="pb" style="font-size:12.5px;color:var(--ink2);line-height:1.8">
+        <b style="color:var(--gn2)">≥ 6 « oui franc »</b> → construire le vrai DevisPilot, en commençant par LA fonctionnalité la plus citée.<br/>
+        <b style="color:var(--au2)">3–5 « oui franc »</b> → resserrer la cible sur le sous-métier le plus chaud, refaire 10 interviews.<br/>
+        <b style="color:var(--rd2)">≤ 2 « oui franc »</b> → le problème n'est pas assez douloureux tel quel — repartir des verbatims « je déteste ».
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="toast"></div>
+
+<script>
+/* ════ Mini-CRM local — aucune donnée ne quitte ce navigateur ════ */
+var KEY='vain_validation_v1';
+var ST={prospects:[],sel:null};
+function load(){try{var d=JSON.parse(localStorage.getItem(KEY));if(d&&d.prospects)ST=d;}catch(e){}}
+function save(){localStorage.setItem(KEY,JSON.stringify(ST));}
+function uid(){return 'p'+Math.random().toString(36).slice(2,9);}
+function fmtEUR(n){return Math.round(n).toLocaleString('fr-FR');}
+function toast(m){var t=document.getElementById('toast');t.textContent=m;t.classList.add('on');clearTimeout(t._x);t._x=setTimeout(function(){t.classList.remove('on');},2000);}
+
+var STATUTS=['À contacter','Contacté','RDV fixé','Interviewé','Veut tester','Pas intéressé'];
+function badgeCls(s){return 'badge s'+(STATUTS.indexOf(s)+1);}
+
+/* tabs */
+var tabs=document.getElementById('tabs');
+function showTab(t){
+ tabs.querySelectorAll('button').forEach(function(b){b.classList.toggle('on',b.getAttribute('data-t')===t);});
+ document.querySelectorAll('.tab').forEach(function(p){p.classList.toggle('on',p.getAttribute('data-tab')===t);});
+ if(t==='insights')renderInsights();
+ if(t==='interview')renderInterview();
+ if(t==='roi')syncRoiWho();
+}
+tabs.addEventListener('click',function(e){var b=e.target.closest('button');if(b)showTab(b.getAttribute('data-t'));});
+
+/* prospects */
+function addProspect(){
+ var nom=document.getElementById('np-nom').value.trim();
+ if(!nom){toast('Nom d\'entreprise requis');return;}
+ ST.prospects.push({id:uid(),nom:nom,
+  contact:document.getElementById('np-contact').value.trim(),
+  tel:document.getElementById('np-tel').value.trim(),
+  src:document.getElementById('np-src').value,
+  statut:'À contacter',created:new Date().toISOString().slice(0,10),iv:{},roi:null});
+ ['np-nom','np-contact','np-tel'].forEach(function(i){document.getElementById(i).value='';});
+ save();renderList();toast('Prospect ajouté');
+}
+document.getElementById('addBtn').addEventListener('click',addProspect);
+document.getElementById('np-nom').addEventListener('keydown',function(e){if(e.key==='Enter')addProspect();});
+
+function renderList(){
+ var el=document.getElementById('plist');
+ if(!ST.prospects.length){el.innerHTML='<div class="empty">Aucun prospect. Ajoutez vos 20 cibles HVAC ci-dessus.</div>';}
+ else{
+  el.innerHTML=ST.prospects.map(function(p){
+   return '<div class="prow'+(ST.sel===p.id?' sel':'')+'" data-id="'+p.id+'">'+
+    '<span class="nm">'+esc(p.nom)+'</span>'+
+    '<span class="meta">'+esc(p.contact||'')+(p.tel?' · '+esc(p.tel):'')+' · '+esc(p.src||'')+'</span>'+
+    '<span class="sp"></span>'+
+    '<span class="'+badgeCls(p.statut)+'">'+p.statut.toUpperCase()+'</span>'+
+    '<select data-st="'+p.id+'">'+STATUTS.map(function(s){return '<option'+(s===p.statut?' selected':'')+'>'+s+'</option>';}).join('')+'</select>'+
+    '<button class="btn sm" data-iv="'+p.id+'">Interviewer →</button>'+
+   '</div>';}).join('');
+ }
+ /* compteurs */
+ var c=function(s){return ST.prospects.filter(function(p){return p.statut===s;}).length;};
+ document.getElementById('k1').textContent=c('À contacter')+c('Contacté');
+ document.getElementById('k2').textContent=c('RDV fixé');
+ var done=ST.prospects.filter(function(p){return p.statut==='Interviewé'||p.statut==='Veut tester';}).length;
+ document.getElementById('k3').textContent=done;
+ document.getElementById('k4').textContent=c('Veut tester');
+ document.getElementById('cntP').textContent=ST.prospects.length;
+ document.getElementById('cntI').textContent=done;
+ document.getElementById('goalN').textContent=done;
+}
+function esc(s){return String(s).replace(/[<>&"]/g,function(c){return {'<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;'}[c];});}
+document.getElementById('plist').addEventListener('click',function(e){
+ var st=e.target.closest('select[data-st]');if(st)return;
+ var iv=e.target.closest('button[data-iv]');
+ var row=e.target.closest('.prow');
+ if(!row)return;
+ ST.sel=row.getAttribute('data-id');save();renderList();
+ if(iv){showTab('interview');}
+});
+document.getElementById('plist').addEventListener('change',function(e){
+ var st=e.target.closest('select[data-st]');if(!st)return;
+ var p=ST.prospects.find(function(x){return x.id===st.getAttribute('data-st');});
+ p.statut=st.value;save();renderList();
+});
+
+/* interview : binding auto-save */
+function selP(){return ST.prospects.find(function(x){return x.id===ST.sel;});}
+function renderInterview(){
+ var p=selP();
+ document.getElementById('noSel').style.display=p?'none':'block';
+ document.getElementById('ivWrap').style.display=p?'block':'none';
+ if(!p)return;
+ document.getElementById('ivNom').textContent=p.nom;
+ document.getElementById('ivMeta').textContent=(p.contact||'')+(p.tel?' · '+p.tel:'');
+ /* hydrate champs */
+ document.querySelectorAll('[data-q]').forEach(function(el){el.value=p.iv[el.getAttribute('data-q')]||'';});
+ document.querySelectorAll('[data-qc]').forEach(function(el){
+  var arr=p.iv[el.getAttribute('data-qc')]||[];el.checked=arr.indexOf(el.value)>-1;});
+ document.querySelectorAll('[data-qr]').forEach(function(el){el.checked=(p.iv[el.getAttribute('data-qr')]===el.value);});
+}
+function flashSaved(){var f=document.getElementById('savedFlash');f.classList.add('on');clearTimeout(f._x);f._x=setTimeout(function(){f.classList.remove('on');},1200);}
+document.addEventListener('input',function(e){
+ var p=selP();if(!p)return;
+ var q=e.target.getAttribute&&e.target.getAttribute('data-q');
+ if(q){p.iv[q]=e.target.value;save();flashSaved();}
+});
+document.addEventListener('change',function(e){
+ var p=selP();if(!p)return;
+ var qc=e.target.getAttribute&&e.target.getAttribute('data-qc');
+ if(qc){var arr=p.iv[qc]||[];
+  if(e.target.checked){if(arr.indexOf(e.target.value)<0)arr.push(e.target.value);}
+  else{arr=arr.filter(function(v){return v!==e.target.value;});}
+  p.iv[qc]=arr;save();flashSaved();return;}
+ var qr=e.target.getAttribute&&e.target.getAttribute('data-qr');
+ if(qr){p.iv[qr]=e.target.value;save();flashSaved();}
+});
+document.getElementById('markDone').addEventListener('click',function(){
+ var p=selP();if(!p)return;
+ p.statut=(p.iv.engagement==='oui-franc')?'Veut tester':'Interviewé';
+ save();renderList();toast('Marqué : '+p.statut+' ✓');
+});
+document.getElementById('toRoi').addEventListener('click',function(){
+ var p=selP();if(p){
+  if(p.iv.devisMois)document.getElementById('r-devis').value=p.iv.devisMois;
+  if(p.iv.valMoy)document.getElementById('r-val').value=p.iv.valMoy;
+  if(p.iv.pctSansRelance)document.getElementById('r-pct').value=p.iv.pctSansRelance;
+ }
+ showTab('roi');calcRoi();
+});
+
+/* ROI */
+function calcRoi(){
+ var d=+document.getElementById('r-devis').value||0,
+     v=+document.getElementById('r-val').value||0,
+     pct=(+document.getElementById('r-pct').value||0)/100,
+     up=(+document.getElementById('r-uplift').value||0)/100;
+ var volAn=d*12*v, nr=Math.round(d*12*pct), nrVal=nr*v, gain=nrVal*up;
+ document.getElementById('o-vol').textContent=fmtEUR(volAn)+' €';
+ document.getElementById('o-nr').textContent=nr+' devis';
+ document.getElementById('o-nrval').textContent=fmtEUR(nrVal)+' €';
+ document.getElementById('o-gain').textContent='+ '+fmtEUR(gain)+' €';
+ document.getElementById('o-gainM').textContent='+ '+fmtEUR(gain/12)+' € / mois';
+ return {volAn:volAn,nr:nr,nrVal:nrVal,gain:gain};
+}
+['r-devis','r-val','r-pct','r-sign','r-uplift'].forEach(function(i){document.getElementById(i).addEventListener('input',calcRoi);});
+function syncRoiWho(){var p=selP();document.getElementById('roiWho').textContent='prospect : '+(p?p.nom:'aucun (calcul libre)');}
+document.getElementById('roiSave').addEventListener('click',function(){
+ var p=selP();if(!p){toast('Sélectionnez d\'abord un prospect');return;}
+ p.roi={devis:+document.getElementById('r-devis').value,val:+document.getElementById('r-val').value,
+  pct:+document.getElementById('r-pct').value,uplift:+document.getElementById('r-uplift').value,
+  gain:Math.round(calcRoi().gain)};
+ save();var f=document.getElementById('roiFlash');f.classList.add('on');setTimeout(function(){f.classList.remove('on');},1400);
+ toast('ROI attaché à '+p.nom);
+});
+
+/* INSIGHTS */
+function median(a){if(!a.length)return null;a=a.slice().sort(function(x,y){return x-y;});var m=Math.floor(a.length/2);return a.length%2?a[m]:(a[m-1]+a[m])/2;}
+function ivDone(){return ST.prospects.filter(function(p){return p.statut==='Interviewé'||p.statut==='Veut tester';});}
+function renderInsights(){
+ var done=ivDone();
+ document.getElementById('i-n').textContent=done.length;
+ var evid=done.map(function(p){return +p.iv.prixEvidence||null;}).filter(Boolean);
+ var trop=done.map(function(p){return +p.iv.prixTrop||null;}).filter(Boolean);
+ document.getElementById('i-evid').textContent=evid.length?fmtEUR(median(evid))+' €':'—';
+ document.getElementById('i-trop').textContent=trop.length?fmtEUR(median(trop))+' €':'—';
+ document.getElementById('i-test').textContent=done.filter(function(p){return p.iv.engagement==='oui-franc';}).length;
+ /* outils */
+ var tools={},tot=done.length||1;
+ done.forEach(function(p){(p.iv.outils||[]).forEach(function(o){tools[o]=(tools[o]||0)+1;});});
+ var oEl=document.getElementById('i-outils');
+ var keys=Object.keys(tools);
+ oEl.innerHTML=keys.length?keys.sort(function(a,b){return tools[b]-tools[a];}).map(function(k){
+   var pc=Math.round(tools[k]/tot*100);
+   return '<div class="bar-row"><span class="k">'+esc(k)+'</span><div class="bar"><i style="width:'+pc+'%"></i></div><span class="v">'+tools[k]+'</span></div>';
+  }).join(''):'<div class="empty">Pas encore de données.</div>';
+ /* engagement */
+ var eg={'oui-franc':0,'oui-mou':0,'non':0},vd={'chaud':0,'tiede':0,'froid':0};
+ done.forEach(function(p){if(eg[p.iv.engagement]!==undefined)eg[p.iv.engagement]++;if(vd[p.iv.verdict]!==undefined)vd[p.iv.verdict]++;});
+ document.getElementById('i-engage').innerHTML=done.length?(
+  '<div class="bar-row"><span class="k">OUI franc</span><div class="bar"><i style="width:'+Math.round(eg['oui-franc']/tot*100)+'%"></i></div><span class="v">'+eg['oui-franc']+'</span></div>'+
+  '<div class="bar-row"><span class="k">Oui mou</span><div class="bar"><i style="width:'+Math.round(eg['oui-mou']/tot*100)+'%"></i></div><span class="v">'+eg['oui-mou']+'</span></div>'+
+  '<div class="bar-row"><span class="k">Non</span><div class="bar"><i style="width:'+Math.round(eg['non']/tot*100)+'%"></i></div><span class="v">'+eg['non']+'</span></div>'+
+  '<div style="margin-top:8px;font-family:var(--fm);font-size:9px;color:var(--ink4)">VERDICTS · 🔥 '+vd.chaud+' · tiède '+vd.tiede+' · froid '+vd.froid+'</div>'
+ ):'<div class="empty">Pas encore de données.</div>';
+ /* verbatims */
+ function verb(el,field){
+  var list=done.filter(function(p){return (p.iv[field]||'').trim();});
+  document.getElementById(el).innerHTML=list.length?list.map(function(p){
+   return '<div class="ins-item"><span class="who2">'+esc(p.nom)+'</span><span class="txt">« '+esc(p.iv[field])+' »</span></div>';
+  }).join(''):'<div class="empty">Les réponses apparaîtront ici.</div>';
+ }
+ verb('i-hates','deteste');
+ verb('i-wants','featureVoulue');
+}
+
+/* EXPORTS */
+var CSVCOLS=[['nom','Entreprise'],['contact','Contact'],['tel','Téléphone'],['src','Source'],['statut','Statut'],['created','Ajouté le']];
+var IVCOLS=['metier','taille','devisMois','valMoy','quiDevis','outilNom','delai','quiRelance','pctSansRelance','processRecit','devisPerdus','bouffeTemps','deteste','dejaEssaye','prixTrop','prixEvidence','budgetActuel','reactionPrix','engagement','verdict','featureVoulue','notes'];
+document.getElementById('expCsv').addEventListener('click',function(){
+ var head=CSVCOLS.map(function(c){return c[1];}).concat(IVCOLS).concat(['outils','roi_gain_an']);
+ var rows=ST.prospects.map(function(p){
+  var base=CSVCOLS.map(function(c){return p[c[0]]||'';});
+  var iv=IVCOLS.map(function(k){return p.iv[k]||'';});
+  return base.concat(iv).concat([(p.iv.outils||[]).join(' + '),p.roi?p.roi.gain:'']);
+ });
+ var csv='﻿'+[head].concat(rows).map(function(r){
+  return r.map(function(c){c=String(c).replace(/"/g,'""');return /[;"\n]/.test(c)?'"'+c+'"':c;}).join(';');
+ }).join('\r\n');
+ dl(csv,'validation-hvac.csv','text/csv');toast('CSV exporté');
+});
+document.getElementById('expJson').addEventListener('click',function(){
+ dl(JSON.stringify(ST,null,1),'validation-hvac.json','application/json');toast('Sauvegarde JSON exportée');
+});
+document.getElementById('impJson').addEventListener('click',function(){document.getElementById('impFile').click();});
+document.getElementById('impFile').addEventListener('change',function(e){
+ var f=e.target.files[0];if(!f)return;
+ var r=new FileReader();
+ r.onload=function(){try{var d=JSON.parse(r.result);if(d&&d.prospects){ST=d;save();renderList();renderInterview();toast('Restauré : '+ST.prospects.length+' prospects');}else toast('Fichier invalide');}catch(err){toast('Fichier invalide');}};
+ r.readAsText(f);
+});
+function dl(content,name,type){
+ var b=new Blob([content],{type:type+';charset=utf-8'});
+ var a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=name;a.click();
+ setTimeout(function(){URL.revokeObjectURL(a.href);},2000);
+}
+document.getElementById('wipe').addEventListener('click',function(){
+ if(confirm('Effacer TOUTES les données de validation ? (exportez un JSON avant)')){ST={prospects:[],sel:null};save();renderList();renderInterview();renderInsights();toast('Données effacées');}
+});
+
+/* init */
+load();renderList();calcRoi();
+</script>
+</body>
+</html>

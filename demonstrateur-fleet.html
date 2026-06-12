@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Démonstrateur VΛIN — Flotte & Achats</title>
+<meta name="description" content="Démonstrateur VΛIN STUDIO : à quoi ressemblerait la gestion de flotte et des achats d'une société de services énergétiques, propulsée par FleetPilot. Marque fictive à des fins de démonstration." />
+<meta name="robots" content="noindex, follow" />
+<meta name="theme-color" content="#050505" />
+<link rel="canonical" href="https://vainstudio.lu/demonstrateur-fleet.html" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Démonstrateur VΛIN — Flotte & Achats" />
+<meta property="og:description" content="Échéances contrôles techniques, alertes leasing, ATN calculé pour la paie : la flotte sous contrôle, sans Excel. Démonstrateur VΛIN STUDIO." />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23050505'/%3E%3Ctext x='50' y='68' font-family='Space Grotesk,Arial' font-size='58' font-weight='700' fill='%23D4AF37' text-anchor='middle'%3E%CE%9B%3C/text%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --bg:#050505;--bg-2:#0B0B0B;--bg-3:#0e0e0f;
+  --white:#FFFFFF;--muted:rgba(255,255,255,.60);--muted-2:rgba(255,255,255,.42);
+  --gold:#D4AF37;--gold-2:#F4E7BE;
+  --green:#4ade80;--red:#f87171;--amber:#fbbf24;
+  --glass:rgba(255,255,255,0.05);--border:rgba(255,255,255,0.08);--border-strong:rgba(255,255,255,0.14);
+  --ease:cubic-bezier(.16,1,.3,1);
+  --display:'Space Grotesk','Inter',sans-serif;--body:'Inter',sans-serif;--mono:'JetBrains Mono',monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--white);font-family:var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden;line-height:1.55}
+::selection{background:var(--gold);color:#050505}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1160px;margin:0 auto;padding:0 32px}
+.mono{font-family:var(--mono);letter-spacing:.04em}
+.gold{color:var(--gold)}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);display:inline-flex;align-items:center;gap:12px}
+.eyebrow::before{content:"";width:24px;height:1px;background:var(--gold);opacity:.7}
+.btn{display:inline-flex;align-items:center;gap:11px;font-weight:600;font-size:15px;padding:15px 26px;border-radius:10px;transition:.4s var(--ease);cursor:pointer;border:none;font-family:var(--body)}
+.btn-gold{background:var(--gold);color:#050505}.btn-gold:hover{transform:translateY(-2px);box-shadow:0 16px 50px -14px rgba(212,175,55,.5)}
+.btn-ghost{border:1px solid var(--border-strong);background:var(--glass);color:var(--white)}.btn-ghost:hover{border-color:var(--white)}
+.arrow{transition:.4s var(--ease)}.btn:hover .arrow{transform:translateX(4px)}
+.reveal{opacity:0;transform:translateY(26px);transition:.9s var(--ease)}.reveal.in{opacity:1;transform:none}
+.d1{transition-delay:.07s}.d2{transition-delay:.14s}.d3{transition-delay:.21s}.d4{transition-delay:.28s}
+h1,h2,h3{font-family:var(--display);font-weight:600;letter-spacing:-.02em;line-height:1.04}
+section{position:relative}
+
+/* DEMO BAR */
+.demobar{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(8,8,9,.9);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.demobar .in{max-width:1160px;margin:0 auto;padding:10px 32px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.demobar .l{display:flex;align-items:center;gap:12px;font-size:12.5px;color:var(--muted)}
+.demobar .tag{font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:#050505;background:var(--gold);padding:4px 9px;border-radius:5px;font-weight:600}
+.demobar .l b{color:var(--white);font-weight:600}
+.demobar a{font-size:12.5px;color:var(--gold);display:flex;align-items:center;gap:7px;flex:none}
+@media(max-width:680px){.demobar .l .txt{display:none}.demobar .in{padding:9px 18px}}
+
+/* SITE NAV */
+.snav{position:fixed;top:41px;left:0;right:0;z-index:980;display:flex;align-items:center;justify-content:space-between;padding:18px 40px;transition:.4s var(--ease)}
+.snav.scrolled{background:rgba(5,5,5,.8);backdrop-filter:blur(18px);border-bottom:1px solid var(--border);padding:13px 40px}
+.sbrand{display:flex;align-items:center;gap:11px;font-family:var(--display);font-weight:700;font-size:20px;letter-spacing:.02em}
+.sbrand .mark{width:30px;height:30px;border-radius:8px;background:linear-gradient(135deg,var(--gold),#b8932e);display:flex;align-items:center;justify-content:center;color:#050505}
+.sbrand b{color:var(--gold)}
+.snav-links{display:flex;gap:30px;font-size:13.5px;color:var(--muted)}
+.snav-links a:hover{color:var(--white)}
+.snav .phone{font-family:var(--display);font-weight:600;font-size:15px;display:flex;align-items:center;gap:8px}
+.snav .phone svg{stroke:var(--gold)}
+@media(max-width:820px){.snav-links{display:none}.snav{padding:14px 20px;top:38px}}
+
+/* HERO */
+#hero{min-height:96vh;display:flex;align-items:center;padding-top:130px;overflow:hidden}
+.hero-grid{position:absolute;inset:0;z-index:0;pointer-events:none;background:linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px) 0 0/100% 92px,linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px) 0 0/92px 100%;mask-image:radial-gradient(ellipse 76% 64% at 50% 42%,#000 30%,transparent 80%)}
+.hero-inner{position:relative;z-index:2;max-width:880px}
+.hero-pill{display:inline-flex;align-items:center;gap:9px;border:1px solid var(--border);background:var(--glass);border-radius:100px;padding:7px 15px;font-size:12.5px;color:var(--muted);margin-bottom:28px}
+.hero-pill .d{width:7px;height:7px;border-radius:50%;background:#4ade80;box-shadow:0 0 8px #4ade80}
+#hero h1{font-size:clamp(40px,7vw,92px);line-height:1;letter-spacing:-.035em;font-weight:700}
+#hero h1 .g{color:var(--gold)}
+.hero-sub{max-width:560px;margin-top:26px;font-size:clamp(16px,1.6vw,20px);color:var(--muted);line-height:1.6}
+.hero-actions{display:flex;gap:14px;margin-top:34px;flex-wrap:wrap;align-items:center}
+.hero-feats{display:flex;gap:30px;margin-top:54px;flex-wrap:wrap;border-top:1px solid var(--border);padding-top:28px}
+.hero-feats .hf{display:flex;align-items:center;gap:11px;font-size:14px;color:var(--muted)}
+.hero-feats .hf svg{stroke:var(--gold);flex:none}
+
+/* DASHBOARD */
+.section-pad{padding:130px 0}
+.shead{max-width:680px;margin-bottom:54px}
+.shead.center{margin:0 auto 54px;text-align:center}
+.shead h2{font-size:clamp(30px,4.4vw,52px);line-height:1.06;margin-top:18px}.shead h2 b{color:var(--gold)}
+.shead p{font-size:17px;color:var(--muted);margin-top:18px;line-height:1.6}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:18px}
+@media(max-width:860px){.kpis{grid-template-columns:repeat(2,1fr)}}
+.kpi{border:1px solid var(--border);border-radius:14px;background:var(--bg-2);padding:20px 22px}
+.kpi .v{font-family:var(--display);font-weight:700;font-size:34px;letter-spacing:-.02em}
+.kpi .v small{font-size:15px;font-weight:500;color:var(--muted)}
+.kpi .lab{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-2);margin-top:6px}
+.kpi.ok .v{color:var(--green)}.kpi.warn .v{color:var(--amber)}
+.board{border:1px solid var(--border);border-radius:16px;background:var(--bg-2);overflow:hidden}
+.board .bh{padding:16px 22px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.board .bh .t{font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:var(--muted-2)}
+.board .bh .live{font-family:var(--mono);font-size:10px;color:var(--green);display:flex;align-items:center;gap:7px}
+.vrow{display:grid;grid-template-columns:120px 1.2fr 1.4fr auto;gap:16px;align-items:center;padding:15px 22px;border-bottom:1px solid var(--border);font-size:14px}
+.vrow:last-child{border-bottom:none}
+.vrow .plate{font-family:var(--mono);font-size:12.5px;color:var(--gold-2);border:1px solid var(--border-strong);border-radius:6px;padding:5px 9px;text-align:center;background:#101013}
+.vrow .veh b{display:block;font-weight:600}.vrow .veh span{font-size:12.5px;color:var(--muted-2)}
+.vrow .due{color:var(--muted);font-size:13.5px;display:flex;align-items:center;gap:9px}
+.vrow .due svg{flex:none;stroke:var(--gold)}
+.badge{font-family:var(--mono);font-size:10px;letter-spacing:.06em;border-radius:6px;padding:5px 10px;border:1px solid var(--border-strong);white-space:nowrap}
+.badge.auto{color:var(--green);border-color:rgba(74,222,128,.3);background:rgba(74,222,128,.06)}
+.badge.warn{color:var(--amber);border-color:rgba(251,191,36,.3);background:rgba(251,191,36,.06)}
+.badge.info{color:var(--gold);border-color:rgba(212,175,55,.3);background:rgba(212,175,55,.06)}
+@media(max-width:780px){.vrow{grid-template-columns:1fr auto;row-gap:8px}.vrow .plate{display:none}.vrow .due{grid-column:1/-1}}
+.feed{margin-top:18px;border:1px solid var(--border);border-radius:14px;background:var(--bg-2);padding:8px 22px}
+.feed .fl{display:flex;align-items:center;gap:11px;font-family:var(--mono);font-size:11.5px;color:var(--muted);padding:11px 0;border-bottom:1px solid var(--border)}
+.feed .fl:last-child{border-bottom:none}
+.feed .fl svg{stroke:var(--gold);flex:none}
+.feed .fl .tm{color:var(--muted-2);flex:none;width:46px}
+.feed .fl b{color:rgba(255,255,255,.85);font-weight:500}
+
+/* AUTOMATIONS */
+.serv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+@media(max-width:860px){.serv-grid{grid-template-columns:1fr}}
+.serv{border:1px solid var(--border);border-radius:16px;padding:30px;background:var(--bg-2);transition:.4s var(--ease)}
+.serv:hover{border-color:var(--border-strong);transform:translateY(-3px)}
+.serv .ic{width:46px;height:46px;border-radius:12px;border:1px solid var(--border-strong);background:var(--glass);display:flex;align-items:center;justify-content:center;color:var(--gold);margin-bottom:20px}
+.serv h3{font-size:19px;font-weight:600;margin-bottom:10px}
+.serv p{font-size:14px;color:var(--muted);line-height:1.6}
+.serv .gain{margin-top:16px;font-family:var(--mono);font-size:11px;color:var(--green);display:flex;align-items:center;gap:7px}
+
+/* ATN */
+#atn{background:var(--bg-2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.atn-split{display:grid;grid-template-columns:1.1fr .9fr;gap:50px;align-items:center}
+@media(max-width:900px){.atn-split{grid-template-columns:1fr;gap:40px}}
+.atn-split h2{font-size:clamp(28px,3.6vw,44px);line-height:1.08;margin-top:18px}.atn-split h2 b{color:var(--gold)}
+.atn-split>div>p{font-size:16px;color:var(--muted);line-height:1.7;margin-top:18px}
+.dp-list{margin-top:24px;display:flex;flex-direction:column;gap:13px}
+.dp-list .it{display:flex;align-items:flex-start;gap:11px;font-size:14.5px;color:rgba(255,255,255,.84)}
+.dp-list .it svg{flex:none;margin-top:3px;stroke:var(--gold)}
+.calc{border:1px solid var(--border-strong);border-radius:16px;background:var(--bg-3);overflow:hidden}
+.calc .ch{padding:16px 22px;border-bottom:1px solid var(--border);font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--muted-2)}
+.calc .cb{padding:24px 22px}
+.calc label{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-2);display:block;margin-bottom:9px}
+.seg{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:22px}
+.seg button{font-family:var(--body);font-size:12.5px;font-weight:500;padding:11px 8px;border-radius:9px;border:1px solid var(--border-strong);background:var(--glass);color:var(--muted);cursor:pointer;transition:.3s var(--ease)}
+.seg button.on{background:var(--gold);color:#050505;border-color:var(--gold);font-weight:600}
+.calc input[type=range]{width:100%;accent-color:var(--gold);margin:4px 0 6px}
+.calc .pv{font-family:var(--display);font-weight:600;font-size:22px;margin-bottom:20px}
+.qline{display:flex;justify-content:space-between;padding:11px 0;border-bottom:1px solid var(--border);font-size:14px}
+.qline .lab2{color:var(--muted)}
+.qline.tot{border-bottom:none;border-top:1px solid var(--border-strong);margin-top:6px;padding-top:14px;font-weight:600;font-size:17px}
+.qline .pr{color:var(--gold)}
+.calc .note{font-family:var(--mono);font-size:10px;color:var(--muted-2);margin-top:16px;line-height:1.6}
+
+/* SINISTRE phone */
+.dp-split{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+@media(max-width:900px){.dp-split{grid-template-columns:1fr;gap:40px}}
+.dp-split h2{font-size:clamp(28px,3.6vw,44px);line-height:1.08;margin-top:18px}.dp-split h2 b{color:var(--gold)}
+.dp-split p{font-size:16px;color:var(--muted);line-height:1.7;margin-top:18px}
+.phone-mock{justify-self:center;width:300px;max-width:100%;border:1px solid var(--border-strong);border-radius:30px;background:#0a0a0c;padding:14px;box-shadow:0 50px 100px -40px rgba(0,0,0,.8)}
+.phone-mock .scr{border:1px solid var(--border);border-radius:20px;overflow:hidden;background:var(--bg-3)}
+.pm-top{padding:14px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.pm-top .t{font-family:var(--display);font-weight:600;font-size:14px}.pm-top .t b{color:var(--gold)}
+.pm-top .live{font-family:var(--mono);font-size:9px;color:#4ade80}
+.pm-body{padding:16px}
+.pm-card{border:1px solid var(--border);border-radius:12px;padding:13px;margin-bottom:10px;background:#101013}
+.pm-card .h{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.pm-card .h .n{font-size:13px;font-weight:600}
+.pm-card .h .st{font-family:var(--mono);font-size:9px;color:var(--gold);border:1px solid var(--border);border-radius:5px;padding:3px 7px}
+.pm-card p{font-size:11.5px;color:var(--muted);line-height:1.45}
+.pm-auto{font-family:var(--mono);font-size:10px;color:var(--muted-2);display:flex;align-items:center;gap:8px;padding:9px 0;border-top:1px solid var(--border)}
+.pm-auto svg{stroke:var(--gold);flex:none}
+
+/* ROI band */
+.urg{border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--bg-2)}
+.urg .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;padding:34px 0}
+.urg .l{display:flex;align-items:center;gap:18px}
+.urg .l .ic{width:52px;height:52px;border-radius:14px;background:rgba(212,175,55,.1);display:flex;align-items:center;justify-content:center;color:var(--gold);flex:none}
+.urg .l h3{font-size:22px;font-weight:600}
+.urg .l p{font-size:14px;color:var(--muted);margin-top:4px}
+
+/* CONVERT CTA (VΛIN) */
+#convert{background:#020202;border-top:1px solid var(--border);overflow:hidden;padding:120px 0}
+.cv-shell{border:1px solid var(--border-strong);border-radius:20px;background:linear-gradient(180deg,#0d0d0f,#08080a);padding:60px 44px;text-align:center;position:relative;overflow:hidden}
+.cv-glow{position:absolute;top:-40%;left:50%;transform:translateX(-50%);width:680px;height:680px;border-radius:50%;background:radial-gradient(circle,rgba(212,175,55,.08),transparent 62%);pointer-events:none}
+.cv-shell .in{position:relative;z-index:2}
+.cv-shell .eyebrow{justify-content:center;display:inline-flex;margin-bottom:22px}
+.cv-shell h2{font-size:clamp(28px,4.2vw,50px);line-height:1.05}.cv-shell h2 b{color:var(--gold)}
+.cv-shell p{font-size:17px;color:var(--muted);max-width:560px;margin:18px auto 0;line-height:1.6}
+.cv-shell .acts{margin-top:32px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.cv-shell .meta{margin-top:22px;font-family:var(--mono);font-size:12px;color:var(--muted-2);display:flex;gap:20px;justify-content:center;flex-wrap:wrap}
+.cv-shell .meta .g{color:var(--gold)}
+
+footer{background:#020202;border-top:1px solid var(--border);padding:40px 0;text-align:center}
+footer .f1{font-family:var(--display);font-weight:700;font-size:18px;letter-spacing:.02em;margin-bottom:8px}
+footer .f1 b{color:var(--gold)}
+footer p{font-family:var(--mono);font-size:11px;color:var(--muted-2)}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<!-- DEMO BAR -->
+<div class="demobar">
+  <div class="in">
+    <div class="l"><span class="tag">DÉMO VΛIN</span> <span class="txt">Projection d'un copilote <b>Flotte & Achats</b> propulsé par FleetPilot</span></div>
+    <a href="index.html"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M11 18l-6-6 6-6"/></svg> Retour VΛIN</a>
+  </div>
+</div>
+
+<!-- SITE NAV -->
+<nav class="snav" id="snav">
+  <div class="sbrand"><span class="mark"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 16H9m10 0h3v-3.15a1 1 0 0 0-.84-.99L16 11l-2.7-3.6a1 1 0 0 0-.8-.4H5.24a2 2 0 0 0-1.8 1.1l-.8 1.63A6 6 0 0 0 2 12.42V16h2"/><circle cx="6.5" cy="16.5" r="2.5"/><circle cx="16.5" cy="16.5" r="2.5"/></svg></span>ENER<b>TEC</b></div>
+  <div class="snav-links"><a href="#board">Tableau de bord</a><a href="#autos">Automatisations</a><a href="#atn">Calcul ATN</a><a href="#convert">Contact</a></div>
+  <div class="phone"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg> +352 XX XX XX XX</div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-grid"></div>
+  <div class="wrap hero-inner">
+    <div class="hero-pill reveal in"><span class="d"></span> Services énergétiques & techniques · 47 véhicules suivis</div>
+    <h1 class="reveal in d1">Votre flotte se gère <span class="g">toute seule.</span></h1>
+    <p class="hero-sub reveal in d2">Contrôles techniques planifiés, fins de leasing anticipées, ATN calculé pour la paie, anomalies cartes carburant détectées. Votre équipe garde la négo — le copilote fait le suivi.</p>
+    <div class="hero-actions reveal in d3">
+      <a href="#board" class="btn btn-gold">Voir le tableau de bord <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a href="#atn" class="btn btn-ghost">Calculer un ATN</a>
+    </div>
+    <div class="hero-feats reveal in d4">
+      <div class="hf"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M20 6L9 17l-5-5"/></svg> Zéro contrôle technique dépassé</div>
+      <div class="hf"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M20 6L9 17l-5-5"/></svg> Alerte restitution leasing à J-90</div>
+      <div class="hf"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M20 6L9 17l-5-5"/></svg> ATN prêt pour la paie chaque mois</div>
+    </div>
+  </div>
+</section>
+
+<!-- DASHBOARD -->
+<section id="board" class="section-pad">
+  <div class="wrap">
+    <div class="shead reveal">
+      <span class="eyebrow">TABLEAU DE BORD FLOTTE</span>
+      <h2>Chaque échéance, <b>vue avant qu'elle coûte.</b></h2>
+      <p>Le copilote lit les dates d'immatriculation, les contrats de leasing et les relevés de cartes — puis relance, planifie et alerte tout seul. L'humain ne traite que les exceptions.</p>
+    </div>
+    <div class="kpis reveal d1">
+      <div class="kpi"><div class="v">47</div><div class="lab">Véhicules suivis</div></div>
+      <div class="kpi warn"><div class="v">6</div><div class="lab">Échéances sous 30 j</div></div>
+      <div class="kpi warn"><div class="v">2</div><div class="lab">Anomalies cartes</div></div>
+      <div class="kpi ok"><div class="v">0</div><div class="lab">CT dépassés</div></div>
+    </div>
+    <div class="board reveal d2">
+      <div class="bh"><span class="t">ÉCHÉANCIER · ACTIONS AUTOMATIQUES</span><span class="live">● SYNCHRONISÉ</span></div>
+      <div class="vrow">
+        <span class="plate">LU 4521</span>
+        <div class="veh"><b>Caddy Cargo</b><span>M. Ferreira · Pose & maintenance</span></div>
+        <div class="due"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> Contrôle technique dans 12 jours</div>
+        <span class="badge auto">RELANCE ENVOYÉE</span>
+      </div>
+      <div class="vrow">
+        <span class="plate">LU 8830</span>
+        <div class="veh"><b>Transporter L2</b><span>Mme Klein · Chantiers HVAC</span></div>
+        <div class="due"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 11h18"/></svg> Fin de leasing à J-74</div>
+        <span class="badge warn">RESTITUTION À PRÉPARER</span>
+      </div>
+      <div class="vrow">
+        <span class="plate">LU 2107</span>
+        <div class="veh"><b>ID. Buzz Cargo</b><span>M. Hoffmann · Dépannage</span></div>
+        <div class="due"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M13 2L3 14h7l-1 8 10-12h-7z"/></svg> Carte recharge : 2 charges hors plage habituelle</div>
+        <span class="badge warn">À VÉRIFIER</span>
+      </div>
+      <div class="vrow">
+        <span class="plate">LU 6644</span>
+        <div class="veh"><b>Crafter 35</b><span>M. Da Silva · Gros œuvre technique</span></div>
+        <div class="due"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg> Entretien 60 000 km atteint</div>
+        <span class="badge info">RDV PROPOSÉ · MAR 9H</span>
+      </div>
+    </div>
+    <div class="feed reveal d3">
+      <div class="fl"><span class="tm">07:42</span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg> Relance CT envoyée à <b>M. Ferreira</b> · 2ᵉ rappel programmé J-5 si silence</div>
+      <div class="fl"><span class="tm">07:40</span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 11h18"/></svg> Dossier restitution <b>LU 8830</b> créé · check-list envoyée au conducteur</div>
+      <div class="fl"><span class="tm">07:38</span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M13 2L3 14h7l-1 8 10-12h-7z"/></svg> Anomalie carte <b>LU 2107</b> signalée au fleet manager · relevé joint</div>
+      <div class="fl"><span class="tm">07:35</span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M20 6L9 17l-5-5"/></svg> Export <b>ATN juin</b> généré · 47 lignes transmises à la paie</div>
+    </div>
+  </div>
+</section>
+
+<!-- ROI BAND -->
+<section class="urg">
+  <div class="wrap">
+    <div class="l">
+      <div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+      <div><h3>60 % du poste, c'est du suivi.</h3><p>Relances, échéanciers, exports, rapprochements : le copilote s'en charge. Votre équipe garde la négociation et l'optimisation des coûts.</p></div>
+    </div>
+    <a href="#convert" class="btn btn-gold">Estimer le gain pour ma flotte <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+  </div>
+</section>
+
+<!-- AUTOMATISATIONS -->
+<section id="autos" class="section-pad">
+  <div class="wrap">
+    <div class="shead reveal">
+      <span class="eyebrow">CE QUE LE COPILOTE AUTOMATISE</span>
+      <h2>Six tâches qui ne passent <b>plus par un humain.</b></h2>
+      <p>Chaque brique remplace un tableur, une boîte mail qui déborde ou des relances téléphoniques — sans toucher à ce qui crée de la valeur.</p>
+    </div>
+    <div class="serv-grid">
+      <div class="serv reveal d1"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 11h18"/></svg></div><h3>Échéancier véhicules</h3><p>Contrôles techniques, entretiens, fins de leasing : échéances générées depuis les données du véhicule, relances automatiques aux conducteurs, escalade si silence.</p><div class="gain"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> ZÉRO DATE OUBLIÉE</div></div>
+      <div class="serv reveal d2"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h3"/></svg></div><h3>ATN pour la paie</h3><p>Valeur du véhicule, motorisation, affectation : l'avantage en nature de chaque conducteur est calculé au barème en vigueur et exporté chaque mois.</p><div class="gain"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> EXPORT PAIE EN 1 CLIC</div></div>
+      <div class="serv reveal d3"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></div><h3>Cartes carburant & recharge</h3><p>Les relevés des fournisseurs sont rapprochés automatiquement : plein incohérent, charge hors plage, carte utilisée sur un véhicule immobilisé — tout remonte.</p><div class="gain"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> ANOMALIES DÉTECTÉES SEULES</div></div>
+      <div class="serv reveal d1"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><path d="M12 9v4M12 17h.01"/></svg></div><h3>Sinistres guidés</h3><p>Le conducteur déclare depuis son téléphone : photos, lieu, constat. Le dossier assurance est pré-rempli, les bonnes personnes notifiées, le garage sollicité.</p><div class="gain"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> DOSSIER COMPLET EN 5 MIN</div></div>
+      <div class="serv reveal d2"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M3.27 6.96L12 12.01l8.73-5.05M12 22.08V12"/></svg></div><h3>Achats & rapprochement</h3><p>Demande, commande, bon de livraison, facture : le rapprochement à trois voies détecte les écarts automatiquement. L'acheteur ne traite que les exceptions.</p><div class="gain"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> ÉCARTS SIGNALÉS SEULS</div></div>
+      <div class="serv reveal d3"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div><h3>Assistant car policy</h3><p>« J'ai droit à quel modèle ? », « Qui paie le lavage ? » : un assistant répond aux conducteurs à partir de la car policy, 24/7. Le fleet manager n'est plus un standard.</p><div class="gain"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> 80 % DES QUESTIONS ABSORBÉES</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ATN CALCULATOR -->
+<section id="atn" class="section-pad">
+  <div class="wrap atn-split">
+    <div class="reveal">
+      <span class="eyebrow">AVANTAGE EN NATURE · LUXEMBOURG</span>
+      <h2>L'ATN calculé <b>pendant que vous lisez ceci.</b></h2>
+      <p>Aujourd'hui, quelqu'un calcule l'avantage en nature de chaque conducteur à la main, véhicule par véhicule, à chaque changement d'affectation. Le copilote applique le barème en vigueur et livre le fichier à la paie.</p>
+      <div class="dp-list">
+        <div class="it"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M20 6L9 17l-5-5"/></svg> Barème appliqué selon motorisation et valeur du véhicule</div>
+        <div class="it"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M20 6L9 17l-5-5"/></svg> Recalcul automatique à chaque changement d'affectation</div>
+        <div class="it"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M20 6L9 17l-5-5"/></svg> Export mensuel prêt pour le prestataire de paie</div>
+      </div>
+    </div>
+    <div class="calc reveal d2">
+      <div class="ch">SIMULATEUR ATN · ESSAYEZ</div>
+      <div class="cb">
+        <label>Motorisation</label>
+        <div class="seg" id="segMot">
+          <button data-rate="0.01" data-l="Électrique ≤ 18 kWh">Électrique éco</button>
+          <button data-rate="0.012" data-l="Électrique > 18 kWh">Électrique</button>
+          <button class="on" data-rate="0.02" data-l="Thermique / hybride">Thermique</button>
+        </div>
+        <label>Valeur du véhicule neuf (TTC, options incluses)</label>
+        <div class="pv" id="prixVal">45 000 €</div>
+        <input type="range" id="prix" min="20000" max="90000" step="1000" value="45000" aria-label="Valeur du véhicule" />
+        <div style="margin-top:18px">
+          <div class="qline"><span class="lab2">Barème appliqué</span><span class="pr" id="taux">2,0 % / mois</span></div>
+          <div class="qline"><span class="lab2">ATN mensuel</span><span id="atnMois">900 €</span></div>
+          <div class="qline tot"><span>ATN annuel</span><span class="pr" id="atnAn">10 800 €</span></div>
+        </div>
+        <div class="note">Barème simplifié (immatriculations depuis le 01/01/2025) à des fins de démonstration. Le copilote applique le barème exact et l'historique propre à chaque véhicule.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SINISTRE -->
+<section class="section-pad" style="background:var(--bg-2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+  <div class="wrap dp-split">
+    <div class="reveal">
+      <span class="eyebrow">SINISTRE · CÔTÉ CONDUCTEUR</span>
+      <h2>Un accrochage ne devient plus <b>trois semaines de mails.</b></h2>
+      <p>Le conducteur déclare en 5 minutes depuis le parking. Le copilote monte le dossier, prévient l'assurance et le fleet manager, et sollicite les garages référencés pour un devis.</p>
+      <div class="dp-list">
+        <div class="it"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M20 6L9 17l-5-5"/></svg> Photos, lieu et constat collectés sur place</div>
+        <div class="it"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M20 6L9 17l-5-5"/></svg> Dossier assurance pré-rempli, plus rien à ressaisir</div>
+        <div class="it"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M20 6L9 17l-5-5"/></svg> Devis réparation demandés aux garages référencés</div>
+      </div>
+    </div>
+    <div class="phone-mock reveal d2">
+      <div class="scr">
+        <div class="pm-top"><div class="t">ENER<b>TEC</b> Fleet</div><div class="live">● EN LIGNE</div></div>
+        <div class="pm-body">
+          <div class="pm-card"><div class="h"><span class="n">Déclaration sinistre</span><span class="st">reçue · 16 h 22</span></div><p>« Rétroviseur arraché sur parking client à Esch. Photos jointes, pas de tiers identifié. » — LU 6644 · M. Da Silva</p></div>
+          <div class="pm-auto"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg> Dossier assurance pré-rempli · envoyé 16 h 24</div>
+          <div class="pm-auto"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M13 2L3 14h7l-1 8 10-12h-7z"/></svg> Fleet manager notifié · véhicule reste roulant</div>
+          <div class="pm-auto"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> 2 garages référencés sollicités pour devis</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONVERT (VΛIN) -->
+<section id="convert">
+  <div class="wrap">
+    <div class="cv-shell reveal">
+      <div class="cv-glow"></div>
+      <div class="in">
+        <span class="eyebrow">VOUS GÉREZ UNE FLOTTE OU LES ACHATS ?</span>
+        <h2>Ceci pourrait être <b>votre quotidien.</b></h2>
+        <p>Cette page est un démonstrateur VΛIN. Si votre flotte tourne sur Excel, des mails et des relances téléphoniques, on vous montre exactement quoi automatiser en premier — chiffré sur vos volumes.</p>
+        <div class="acts">
+          <a href="index.html#audit" class="btn btn-gold">Recevoir ma feuille de route <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a href="devispilot.html" class="btn btn-ghost">Voir DevisPilot</a>
+        </div>
+        <div class="meta"><span><span class="g">●</span> Livrée sous 48 h</span><span>Sans engagement</span><span>Chiffrée sur vos volumes</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="f1">V<b>Λ</b>IN STUDIO — Démonstrateur Flotte & Achats</div>
+  <p>ENERTEC est une marque fictive créée à des fins de démonstration. Données et barèmes illustratifs. © 2026 VΛIN STUDIO</p>
+</footer>
+
+<script>
+window.addEventListener('scroll',function(){document.getElementById('snav').classList.toggle('scrolled',window.scrollY>30);});
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12});
+document.querySelectorAll('.reveal:not(.in)').forEach(function(el){io.observe(el);});
+
+/* ATN simulator */
+(function(){
+  var rate=0.02;
+  var prix=document.getElementById('prix');
+  var fmt=function(n){return n.toLocaleString('fr-FR')+' €';};
+  function calc(){
+    var v=parseInt(prix.value,10);
+    document.getElementById('prixVal').textContent=fmt(v);
+    document.getElementById('taux').textContent=(rate*100).toLocaleString('fr-FR',{minimumFractionDigits:1})+' % / mois';
+    var m=Math.round(v*rate);
+    document.getElementById('atnMois').textContent=fmt(m);
+    document.getElementById('atnAn').textContent=fmt(m*12);
+  }
+  document.querySelectorAll('#segMot button').forEach(function(b){
+    b.addEventListener('click',function(){
+      document.querySelectorAll('#segMot button').forEach(function(x){x.classList.remove('on');});
+      b.classList.add('on');rate=parseFloat(b.dataset.rate);calc();
+    });
+  });
+  prix.addEventListener('input',calc);
+  calc();
+})();
+</script>
+</body>
+</html>

@@ -17,35 +17,123 @@ import {
   Snowflake,
   ArrowRight,
   Settings2,
+  Zap,
+  Leaf,
 } from "lucide-react";
 import { simulateRoi } from "@/lib/roi-simulator";
 import { formatEur } from "@/lib/formatters";
+import {
+  PRIX_ENERGIE,
+  SCOP_PAC_AIR_EAU,
+  computeAides,
+  besoinChaleurKwh,
+  dimensionnerPac,
+  PRIX_CHAUFFAGE,
+  RENDEMENT_CHAUFFAGE,
+} from "@/lib/referentiel";
+
+/**
+ * Règle N°3 + N°5 : le client n'entre QUE ce qu'il connaît (chauffage actuel,
+ * logement, facture annuelle). Besoins kWh, budget PAC, forfait Klimabonus et
+ * prix énergie sont DÉDUITS automatiquement du référentiel — rien d'inventé,
+ * mêmes briques de calcul que l'estimateur (/estimation).
+ */
+type Energie = "Gaz" | "Mazout" | "Électrique" | "Bois";
+type LogementChoix = "maison" | "appartement";
+
+/**
+ * Caractéristiques expertes du chauffage actuel (scénario comparatif « je garde
+ * et remplace à l'identique »). Prix/rendements lus du référentiel ; coût de
+ * remplacement et entretien = hypothèses métier visibles et ajustables.
+ */
+const ENERGIES: Record<
+  Energie,
+  { chip: string; label: string; equipLabel: string; equipCost: number; entretien: number; fossile: boolean }
+> = {
+  Gaz: {
+    chip: "Chaudière gaz",
+    label: "gaz",
+    equipLabel: "Chaudière gaz condensation neuve",
+    equipCost: 8000,
+    entretien: 200,
+    fossile: true,
+  },
+  Mazout: {
+    chip: "Chaudière mazout",
+    label: "mazout",
+    equipLabel: "Chaudière mazout neuve",
+    equipCost: 9500,
+    entretien: 250,
+    fossile: true,
+  },
+  "Électrique": {
+    chip: "Électrique",
+    label: "électrique",
+    equipLabel: "Convecteurs électriques neufs",
+    equipCost: 3000,
+    entretien: 0,
+    fossile: false,
+  },
+  Bois: {
+    chip: "Bois / pellets",
+    label: "bois",
+    equipLabel: "Chaudière bois/pellets neuve",
+    equipCost: 15000,
+    entretien: 300,
+    fossile: false,
+  },
+};
 
 export default function RoiPacPage() {
-  const [annualKwh, setAnnualKwh] = useState(18000);
-  const [gasInitial, setGasInitial] = useState(6000);
-  const [pacInitial, setPacInitial] = useState(20000);
-  const [klima, setKlima] = useState(6000);
-  const [showAdvanced, setShowAdvanced] = useState(false);
+  // ── Ce que le client connaît ──
+  const [energie, setEnergie] = useState<Energie>("Gaz");
+  const [logement, setLogement] = useState<LogementChoix>("maison");
+  const [facture, setFacture] = useState(2800);
 
-  const [gasPrice, setGasPrice] = useState(0.11);
-  const [elecPrice, setElecPrice] = useState(0.22);
-  const [scop, setScop] = useState(3.5);
+  // ── Hypothèses avancées (pré-remplies référentiel, modifiables) ──
+  const [showAdvanced, setShowAdvanced] = useState(false);
+  const [gasInitial, setGasInitial] = useState(ENERGIES.Gaz.equipCost);
+  const [elecPrice, setElecPrice] = useState<number>(PRIX_ENERGIE.electricite);
+  const [scop, setScop] = useState<number>(SCOP_PAC_AIR_EAU);
   const [inflation, setInflation] = useState(3);
+
+  function choisirEnergie(e: Energie) {
+    setEnergie(e);
+    setGasInitial(ENERGIES[e].equipCost); // re-cale le comparatif sur la nouvelle énergie
+  }
+
+  // ── Déduit automatiquement (référentiel — mêmes formules que /estimation) ──
+  const conf = ENERGIES[energie];
+  const energiePrice = PRIX_CHAUFFAGE[energie];
+  const rendement = RENDEMENT_CHAUFFAGE[energie];
+  const annualKwh = useMemo(() => Math.round(besoinChaleurKwh(energie, facture)), [energie, facture]);
+  const pac = useMemo(() => dimensionnerPac(annualKwh), [annualKwh]);
+  const klima = useMemo(
+    () =>
+      computeAides({
+        equipement: "pac-air-eau",
+        logement: logement === "maison" ? "unifamilial" : "collectif",
+        remplacementFossile: conf.fossile,
+      }).klimabonus,
+    [logement, conf.fossile],
+  );
+  const labelEnergie = conf.label;
 
   const result = useMemo(
     () =>
       simulateRoi({
         annualKwhNeeds: annualKwh,
         gasInitialCost: gasInitial,
-        pacInitialCost: pacInitial,
+        pacInitialCost: pac.budget,
         klimabonusAid: klima,
-        gasPricePerKwh: gasPrice,
+        gasPricePerKwh: energiePrice,
+        gasEfficiency: rendement,
+        gasAnnualMaintenance: conf.entretien,
         electricityPricePerKwh: elecPrice,
         pacScop: scop,
         energyInflation: inflation / 100,
       }),
-    [annualKwh, gasInitial, pacInitial, klima, gasPrice, elecPrice, scop, inflation],
+    [annualKwh, gasInitial, pac.budget, klima, energiePrice, rendement, conf.entretien, elecPrice, scop, inflation],
   );
 
   const maxCumulative = useMemo(() => {
@@ -65,12 +153,14 @@ export default function RoiPacPage() {
             ← Retour accueil
           </Link>
           <h1 className="mt-4 font-display text-display-md text-ink">
-            ROI sur 20 ans — PAC vs chaudière gaz
+            ROI sur 20 ans — PAC vs votre chauffage actuel
           </h1>
           <p className="mt-2 text-graphite max-w-2xl">
-            Comparez le coût cumulé d&apos;une chaudière gaz condensation et
-            d&apos;une pompe à chaleur air/eau sur 20 ans. Toutes les
-            hypothèses sont visibles et modifiables.
+            Entrez seulement ce que vous connaissez : votre chauffage, votre
+            logement, votre facture. On calcule le reste automatiquement —
+            besoins, budget PAC, aides — avec les mêmes données vérifiées que
+            notre estimateur. Toutes les hypothèses restent visibles et
+            modifiables.
           </p>
         </div>
 
@@ -79,56 +169,98 @@ export default function RoiPacPage() {
           <div className="space-y-4">
             <div className="rounded-2xl border border-ink/10 bg-white shadow-soft p-5">
               <div className="font-mono text-[10px] uppercase tracking-eyebrow text-copper mb-3">
-                Votre projet
+                Votre situation — 3 réponses suffisent
               </div>
 
-              <Field label={`Besoins annuels : ${(annualKwh / 1000).toFixed(0)} MWh`}>
-                <input
-                  type="range"
-                  min="6000"
-                  max="40000"
-                  step="500"
-                  value={annualKwh}
-                  onChange={(e) => setAnnualKwh(Number(e.target.value))}
-                  className="w-full accent-copper"
-                />
+              <Field label="Votre chauffage actuel">
+                <div className="grid grid-cols-2 gap-2">
+                  {(Object.keys(ENERGIES) as Energie[]).map((e) => (
+                    <button
+                      key={e}
+                      onClick={() => choisirEnergie(e)}
+                      className={`rounded-xl border px-3 py-2.5 text-sm font-medium transition ${
+                        energie === e
+                          ? "border-bleu bg-voile text-bleu"
+                          : "border-pierre bg-white text-taupe hover:border-bleu/50"
+                      }`}
+                    >
+                      {ENERGIES[e].chip}
+                    </button>
+                  ))}
+                </div>
               </Field>
 
-              <Field label={`Investissement chaudière gaz : ${formatEur(gasInitial)}`}>
-                <input
-                  type="range"
-                  min="2500"
-                  max="12000"
-                  step="500"
-                  value={gasInitial}
-                  onChange={(e) => setGasInitial(Number(e.target.value))}
-                  className="w-full accent-copper"
-                />
+              <Field label="Votre logement">
+                <div className="grid grid-cols-2 gap-2">
+                  {(
+                    [
+                      { v: "maison", l: "Maison" },
+                      { v: "appartement", l: "Appartement" },
+                    ] as { v: LogementChoix; l: string }[]
+                  ).map((o) => (
+                    <button
+                      key={o.v}
+                      onClick={() => setLogement(o.v)}
+                      className={`rounded-xl border px-3 py-2.5 text-sm font-medium transition ${
+                        logement === o.v
+                          ? "border-bleu bg-voile text-bleu"
+                          : "border-pierre bg-white text-taupe hover:border-bleu/50"
+                      }`}
+                    >
+                      {o.l}
+                    </button>
+                  ))}
+                </div>
               </Field>
 
-              <Field label={`Investissement PAC : ${formatEur(pacInitial)}`}>
+              <Field
+                label={`Votre facture de chauffage : ${formatEur(facture)} /an`}
+              >
                 <input
                   type="range"
-                  min="10000"
-                  max="40000"
-                  step="500"
-                  value={pacInitial}
-                  onChange={(e) => setPacInitial(Number(e.target.value))}
+                  min="800"
+                  max="6000"
+                  step="100"
+                  value={facture}
+                  onChange={(e) => setFacture(Number(e.target.value))}
                   className="w-full accent-copper"
                 />
               </Field>
+            </div>
 
-              <Field label={`Aide Klimabonus : ${formatEur(klima)}`}>
-                <input
-                  type="range"
-                  min="0"
-                  max="15000"
-                  step="500"
-                  value={klima}
-                  onChange={(e) => setKlima(Number(e.target.value))}
-                  className="w-full accent-copper"
-                />
-              </Field>
+            {/* Tout le reste est déduit du référentiel — rien à connaître, rien d'inventé */}
+            <div className="rounded-2xl border border-gain/20 bg-gainBg p-5">
+              <div className="font-mono text-[10px] uppercase tracking-eyebrow text-gain mb-3">
+                Calculé automatiquement pour vous
+              </div>
+              <dl className="space-y-2 text-sm">
+                <div className="flex items-baseline justify-between gap-3">
+                  <dt className="text-taupe">Besoins de chauffage</dt>
+                  <dd className="font-medium text-anthra tabular-nums">
+                    ≈ {(annualKwh / 1000).toFixed(1).replace(".", ",")} MWh/an
+                  </dd>
+                </div>
+                <div className="flex items-baseline justify-between gap-3">
+                  <dt className="text-taupe">PAC recommandée</dt>
+                  <dd className="font-medium text-anthra tabular-nums">≈ {String(pac.puissanceKw).replace(".", ",")} kW</dd>
+                </div>
+                <div className="flex items-baseline justify-between gap-3">
+                  <dt className="text-taupe">Budget installation</dt>
+                  <dd className="font-medium text-anthra tabular-nums">≈ {formatEur(pac.budget)}</dd>
+                </div>
+                <div className="flex items-baseline justify-between gap-3">
+                  <dt className="text-taupe">
+                    Klimabonus 2026 ({logement === "maison" ? "maison" : "appartement"}
+                    {conf.fossile ? " · sortie fossile" : ""})
+                  </dt>
+                  <dd className="font-display text-lg text-gain tabular-nums">+ {formatEur(klima)}</dd>
+                </div>
+              </dl>
+              <p className="mt-3 text-[11px] text-muted">
+                Déduits de votre facture (prix {labelEnergie} {energiePrice.toFixed(2).replace(".", ",")} €/kWh,
+                rendement {Math.round(rendement * 100)} %) · forfait Klimabonus vérifié sur guichet.public.lu —
+                mêmes calculs que notre estimateur.
+              </p>
             </div>
 
             <button
@@ -141,14 +273,14 @@ export default function RoiPacPage() {
 
             {showAdvanced && (
               <div className="rounded-2xl border border-ink/10 bg-white shadow-soft p-5 text-xs">
-                <Field label={`Prix kWh gaz : ${gasPrice.toFixed(2)} €`}>
+                <Field label={`${conf.equipLabel} (comparatif) : ${formatEur(gasInitial)}`}>
                   <input
                     type="range"
-                    min="0.05"
-                    max="0.20"
-                    step="0.01"
-                    value={gasPrice}
-                    onChange={(e) => setGasPrice(Number(e.target.value))}
+                    min="1000"
+                    max="20000"
+                    step="500"
+                    value={gasInitial}
+                    onChange={(e) => setGasInitial(Number(e.target.value))}
                     className="w-full accent-copper"
                   />
                 </Field>
@@ -196,7 +328,7 @@ export default function RoiPacPage() {
                 label="Sur-investissement initial"
                 value={formatEur(result.initial.overInvestment)}
                 hint={`PAC nette : ${formatEur(result.initial.pacNetCost)}`}
-                color={result.initial.overInvestment > 0 ? "#dc5a28" : "#22a06b"}
+                color={result.initial.overInvestment > 0 ? "#C0392B" : "#2E7D5A"}
               />
               <Kpi
                 label="Année de break-even"
@@ -206,7 +338,7 @@ export default function RoiPacPage() {
                     : "Jamais"
                 }
                 hint="Quand la PAC devient cumulativement moins chère"
-                color={result.breakEvenYear !== null ? "#22a06b" : "#8b847a"}
+                color={result.breakEvenYear !== null ? "#2E7D5A" : "#8B847A"}
               />
               <Kpi
                 label="Économies 20 ans"
@@ -214,9 +346,9 @@ export default function RoiPacPage() {
                 hint={
                   result.totalSavings > 0
                     ? "en faveur de la PAC"
-                    : "en faveur du gaz"
+                    : `en faveur du ${labelEnergie}`
                 }
-                color={result.totalSavings > 0 ? "#22a06b" : "#dc5a28"}
+                color={result.totalSavings > 0 ? "#2E7D5A" : "#C0392B"}
               />
             </div>
 
@@ -233,7 +365,7 @@ export default function RoiPacPage() {
                   return (
                     <div
                       key={r.year}
-                      className="flex-1 flex items-end gap-0.5 relative"
+                      className="flex-1 h-full flex items-end gap-0.5 relative"
                       title={`Année ${r.year}: gaz ${formatEur(r.gasCumulative, true)}, PAC ${formatEur(r.pacCumulative, true)}`}
                     >
                       <div
@@ -241,7 +373,7 @@ export default function RoiPacPage() {
                         style={{ height: `${gasHeight}%` }}
                       />
                       <div
-                        className="flex-1 bg-[#22a06b]/60 rounded-t-sm"
+                        className="flex-1 bg-gain/60 rounded-t-sm"
                         style={{ height: `${pacHeight}%` }}
                       />
                       {isBreakEven && (
@@ -258,14 +390,20 @@ export default function RoiPacPage() {
                 <span>Année {result.assumptions.years}</span>
               </div>
               <div className="mt-3 flex items-center gap-4 text-[11px]">
-                <span className="inline-flex items-center gap-1.5">
+                <span className="inline-flex items-center gap-1.5 capitalize">
                   <span className="h-2 w-2 rounded-sm bg-ember/60" />
-                  <Flame className="h-3 w-3 text-ember" />
-                  Gaz
+                  {energie === "Électrique" ? (
+                    <Zap className="h-3 w-3 text-ember" />
+                  ) : energie === "Bois" ? (
+                    <Leaf className="h-3 w-3 text-ember" />
+                  ) : (
+                    <Flame className="h-3 w-3 text-ember" />
+                  )}
+                  {labelEnergie}
                 </span>
                 <span className="inline-flex items-center gap-1.5">
-                  <span className="h-2 w-2 rounded-sm bg-[#22a06b]/60" />
-                  <Snowflake className="h-3 w-3 text-[#22a06b]" />
+                  <span className="h-2 w-2 rounded-sm bg-gain/60" />
+                  <Snowflake className="h-3 w-3 text-gain" />
                   PAC
                 </span>
               </div>
@@ -280,9 +418,9 @@ export default function RoiPacPage() {
                 <thead>
                   <tr className="bg-cream/30 text-left text-graphite text-xs">
                     <th className="px-5 py-2">Année</th>
-                    <th className="px-3 py-2 text-right">Cumul gaz</th>
+                    <th className="px-3 py-2 text-right capitalize">Cumul {labelEnergie}</th>
                     <th className="px-3 py-2 text-right">Cumul PAC</th>
-                    <th className="px-5 py-2 text-right">Δ (PAC − gaz)</th>
+                    <th className="px-5 py-2 text-right">Δ (PAC − {labelEnergie})</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-ink/5">
@@ -301,7 +439,7 @@ export default function RoiPacPage() {
                         <td
                           className="px-5 py-2 text-right font-mono tabular-nums"
                           style={{
-                            color: r.cumulativeDelta < 0 ? "#22a06b" : "#dc5a28",
+                            color: r.cumulativeDelta < 0 ? "#2E7D5A" : "#C0392B",
                           }}
                         >
                           {r.cumulativeDelta > 0 ? "+" : ""}
@@ -317,12 +455,15 @@ export default function RoiPacPage() {
             <div className="rounded-2xl border border-copper/30 bg-copper/5 p-5 text-xs text-graphite">
               <Info className="h-4 w-4 text-copper mb-2" />
               <p>
-                <strong>Hypothèses retenues :</strong> rendement chaudière
-                95%, SCOP PAC {result.assumptions.pacScop}, entretien gaz{" "}
-                {result.assumptions.gasAnnualMaintenance} €/an, entretien PAC{" "}
-                {result.assumptions.pacAnnualMaintenance} €/an, prix actuels
-                Lux, inflation énergie {(result.assumptions.energyInflation * 100).toFixed(1)}%/an.
-                Aucune valeur résiduelle équipement en fin de période.
+                <strong>Hypothèses retenues :</strong> prix {labelEnergie}{" "}
+                {energiePrice.toFixed(2).replace(".", ",")} €/kWh · rendement chaudière{" "}
+                {Math.round(rendement * 100)} % · SCOP PAC {result.assumptions.pacScop} · entretien{" "}
+                {labelEnergie} {result.assumptions.gasAnnualMaintenance} €/an · entretien PAC{" "}
+                {result.assumptions.pacAnnualMaintenance} €/an · inflation énergie{" "}
+                {(result.assumptions.energyInflation * 100).toFixed(1)} %/an. Besoins et budget
+                déduits de votre facture (référentiel commun à l&apos;estimateur). Forfait
+                Klimabonus 2026 vérifié sur guichet.public.lu. Aucune valeur résiduelle
+                équipement en fin de période.
               </p>
             </div>
 
@@ -336,10 +477,10 @@ export default function RoiPacPage() {
                 </p>
               </div>
               <Link
-                href="/devis?from=roi-pac&service=pac"
+                href="/estimation"
                 className="inline-flex items-center gap-2 rounded-full bg-ink text-cream px-4 py-2 text-sm hover:bg-copper transition-colors"
               >
-                Demander un devis
+                Estimer mes économies · 60 s
                 <ArrowRight className="h-3.5 w-3.5" />
               </Link>
             </div>

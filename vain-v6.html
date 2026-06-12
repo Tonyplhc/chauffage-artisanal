@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>DevisPilot — Le centre d'opérations des entreprises techniques</title>
+<meta name="description" content="DevisPilot : une demande entre, un chantier sort. Le système qui qualifie, suit, relance et convertit chaque opportunité commerciale des entreprises techniques — HVAC, chauffage, climatisation, électricité, maintenance industrielle, photovoltaïque." />
+<meta name="theme-color" content="#040405" />
+<link rel="canonical" href="https://vainstudio.lu/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="VΛIN STUDIO" />
+<meta property="og:title" content="DevisPilot — Une demande entre. Un chantier sort." />
+<meta property="og:description" content="Le centre d'opérations commercial des entreprises techniques. Qualification, suivi, relances et devis — pilotés comme un système." />
+<meta property="og:url" content="https://vainstudio.lu/" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23040405'/%3E%3Ctext x='50' y='69' font-family='Space Grotesk,Arial' font-size='60' font-weight='700' fill='%23D4AF37' text-anchor='middle'%3E%CE%9B%3C/text%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+/* ════════════════════════════════════════════════════════════
+   DEVISPILOT — V6 "OPERATIONS CENTER"
+   ────────────────────────────────────────────────────────────
+   DESIGN SYSTEM · tokens
+   Surfaces   : 5 strates de noir (jamais de gris moyen)
+   Encre      : 4 opacités de blanc (hiérarchie, pas de couleurs)
+   Or         : action primaire · état vivant · signature. Rien d'autre.
+   Spacing    : 4 / 8 / 12 / 16 / 24 / 32 / 48 / 72
+   Radius     : 6 / 10 / 14 / 22
+   Élévation  : e1 carte · e2 fenêtre · e3 modale/glow
+   Motion     : 180ms (état) · 320ms (surface) · 700ms (entrée)
+                une animation = une information. sinon : supprimée.
+   ════════════════════════════════════════════════════════════ */
+:root{
+  /* surfaces */
+  --s0:#040405; --s1:#09090b; --s2:#0d0d10; --s3:#111115; --s4:#16161b;
+  /* lignes */
+  --l1:rgba(255,255,255,.055); --l2:rgba(255,255,255,.10); --l3:rgba(255,255,255,.17);
+  /* encre */
+  --ink:#FAFAFB; --ink2:rgba(255,255,255,.62); --ink3:rgba(255,255,255,.40); --ink4:rgba(255,255,255,.24);
+  /* or */
+  --au:#D4AF37; --au2:#EBD9A2; --au-dim:rgba(212,175,55,.14); --au-line:rgba(212,175,55,.35);
+  /* spacing */
+  --sp1:4px; --sp2:8px; --sp3:12px; --sp4:16px; --sp5:24px; --sp6:32px; --sp7:48px; --sp8:72px;
+  /* radius */
+  --r1:6px; --r2:10px; --r3:14px; --r4:22px;
+  /* élévation */
+  --e1:0 1px 0 rgba(255,255,255,.03) inset, 0 8px 24px -16px rgba(0,0,0,.8);
+  --e2:0 1px 0 rgba(255,255,255,.04) inset, 0 32px 64px -36px rgba(0,0,0,.9);
+  --e3:0 0 0 1px var(--au-line), 0 24px 80px -30px rgba(212,175,55,.25);
+  /* motion */
+  --tf:.18s cubic-bezier(.2,.7,.2,1);
+  --tm:.32s cubic-bezier(.2,.7,.2,1);
+  --ts:.7s cubic-bezier(.16,1,.3,1);
+  /* type */
+  --fd:'Space Grotesk','Inter',sans-serif;
+  --fb:'Inter',sans-serif;
+  --fm:'JetBrains Mono',ui-monospace,monospace;
+  --w:1240px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--s0);color:var(--ink);font-family:var(--fb);line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::selection{background:var(--au);color:#0a0a0a}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
+:focus-visible{outline:1px solid var(--au);outline-offset:2px;border-radius:4px}
+.wrap{max-width:var(--w);margin:0 auto;padding:0 28px}
+.fm{font-family:var(--fm);letter-spacing:.02em}
+h1,h2,h3,h4{font-family:var(--fd);font-weight:600;letter-spacing:-.025em;line-height:1.03}
+.kick{font-family:var(--fm);font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--ink3)}
+.kick .au{color:var(--au)}
+.lead{font-size:clamp(15.5px,1.4vw,18.5px);color:var(--ink2);line-height:1.62}
+
+/* boutons — 2 variantes, pas plus */
+.btn{display:inline-flex;align-items:center;gap:10px;font-weight:600;font-size:14.5px;padding:13px 21px;border-radius:var(--r2);transition:transform var(--tf),box-shadow var(--tm),background var(--tf),border-color var(--tf);white-space:nowrap}
+.btn .ar{transition:transform var(--tf)}
+.btn:hover .ar{transform:translateX(3px)}
+.btn-au{background:var(--au);color:#0a0a0a}
+.btn-au:hover{transform:translateY(-1px);box-shadow:0 14px 44px -16px rgba(212,175,55,.55)}
+.btn-ln{border:1px solid var(--l3);background:rgba(255,255,255,.02)}
+.btn-ln:hover{border-color:var(--ink3);background:rgba(255,255,255,.05)}
+.btn-sm{padding:9px 15px;font-size:13px}
+
+/* nav — une marque, trois ancres, UNE conversion */
+nav{position:fixed;inset:0 0 auto 0;z-index:200;transition:background var(--tm),border-color var(--tm)}
+nav .in{max-width:var(--w);margin:0 auto;padding:15px 28px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+nav.sc{background:rgba(4,4,5,.74);backdrop-filter:blur(18px) saturate(1.2);border-bottom:1px solid var(--l1)}
+nav.sc .in{padding:10px 28px}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--fd);font-weight:600;font-size:16.5px}
+.brand .m{width:26px;height:26px;border-radius:7px;background:var(--s3);border:1px solid var(--l2);display:grid;place-items:center;color:var(--au);font-size:15px}
+.brand .p{color:var(--ink2);font-weight:500}
+.brand .sl{color:var(--ink4);font-weight:400}
+.nv{display:flex;gap:28px;font-size:13.5px;color:var(--ink2);font-weight:500}
+.nv a{transition:color var(--tf)}
+.nv a:hover{color:var(--ink)}
+@media(max-width:880px){.nv{display:none}}
+@media(max-width:560px){nav .in{padding:12px 18px}nav.sc .in{padding:9px 18px}.brand .p,.brand .sl{display:none}}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(18px);transition:opacity var(--ts),transform var(--ts)}
+.rv.in{opacity:1;transform:none}
+.rd1{transition-delay:.06s}.rd2{transition-delay:.12s}.rd3{transition-delay:.18s}
+
+/* ════════════════════════════════════════
+   LANGAGE INTERFACE — composants OS
+   ════════════════════════════════════════ */
+.os{border:1px solid var(--l2);border-radius:var(--r3);background:var(--s2);overflow:hidden;box-shadow:var(--e2)}
+.os-bar{display:flex;align-items:center;gap:12px;padding:10px 14px;border-bottom:1px solid var(--l1);background:var(--s1)}
+.os-bar .b{display:flex;align-items:center;gap:8px;font-family:var(--fd);font-weight:600;font-size:13px}
+.os-bar .b .d{width:18px;height:18px;border-radius:5px;background:var(--au);color:#0a0a0a;display:grid;place-items:center;font-size:11px;font-weight:700}
+.os-bar .q{display:flex;align-items:center;gap:8px;border:1px solid var(--l1);border-radius:var(--r1);padding:5px 10px;color:var(--ink4);font-size:12px;background:var(--s0);min-width:170px}
+.os-bar .q .k{margin-left:auto;font-family:var(--fm);font-size:9.5px;border:1px solid var(--l2);border-radius:4px;padding:1px 5px;color:var(--ink3)}
+.os-bar .sp{flex:1}
+.os-bar .clock{font-family:var(--fm);font-size:12px;color:var(--ink2);font-variant-numeric:tabular-nums}
+.os-bar .bell{position:relative;width:28px;height:28px;border-radius:var(--r1);border:1px solid var(--l1);display:grid;place-items:center;color:var(--ink3);transition:border-color var(--tf)}
+.os-bar .bell:hover{border-color:var(--l3)}
+.os-bar .bell .n{position:absolute;top:-5px;right:-5px;min-width:15px;height:15px;border-radius:8px;background:var(--au);color:#0a0a0a;font-family:var(--fm);font-size:9px;font-weight:600;display:grid;place-items:center;padding:0 4px}
+.os-bar .live{display:flex;align-items:center;gap:7px;font-family:var(--fm);font-size:10px;color:var(--au2);border:1px solid var(--au-line);border-radius:20px;padding:4px 10px}
+.os-bar .live .dt{width:6px;height:6px;border-radius:50%;background:var(--au);animation:beat 2.4s infinite}
+@keyframes beat{0%,100%{box-shadow:0 0 0 0 rgba(212,175,55,.5)}55%{box-shadow:0 0 0 5px rgba(212,175,55,0)}}
+.os-bar .av{width:24px;height:24px;border-radius:50%;background:linear-gradient(135deg,#2a2a31,#15151a);border:1px solid var(--l2)}
+@media(max-width:680px){.os-bar .q,.os-bar .clock{display:none}}
+@media(max-width:560px){.os-bar .live{display:none}}
+
+.os-side{border-right:1px solid var(--l1);padding:10px 9px;background:var(--s1)}
+.os-side .g{font-family:var(--fm);font-size:9px;letter-spacing:.16em;color:var(--ink4);padding:11px 9px 6px}
+.os-side a{display:flex;align-items:center;gap:9px;padding:7px 9px;border-radius:var(--r1);font-size:12.5px;color:var(--ink2);transition:background var(--tf),color var(--tf)}
+.os-side a svg{stroke:var(--ink3);flex:none}
+.os-side a:hover{background:rgba(255,255,255,.03)}
+.os-side a.on{background:rgba(255,255,255,.055);color:var(--ink)}
+.os-side a.on svg{stroke:var(--au)}
+.os-side a .c{margin-left:auto;font-family:var(--fm);font-size:10px;color:var(--ink4)}
+.os-main{padding:14px 16px;min-width:0}
+.os-h{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px}
+.os-h .t{font-family:var(--fd);font-weight:600;font-size:14px}
+.os-h .s{font-family:var(--fm);font-size:10px;color:var(--ink4);margin-top:2px}
+.os-h .tag{font-family:var(--fm);font-size:9.5px;color:var(--ink3);border:1px solid var(--l1);border-radius:var(--r1);padding:4px 8px}
+
+/* item demande */
+.rq{border:1px solid var(--l1);border-radius:var(--r2);padding:11px 12px;background:var(--s3);transition:transform var(--tf),border-color var(--tf),box-shadow var(--tm)}
+.rq:hover{transform:translateY(-1px);border-color:var(--l2)}
+.rq.hot{border-color:var(--au-line);box-shadow:0 0 0 1px rgba(212,175,55,.1),0 12px 28px -20px rgba(212,175,55,.3)}
+.rq .t1{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.rq .new{font-family:var(--fm);font-size:8.5px;font-weight:600;color:#0a0a0a;background:var(--au);border-radius:4px;padding:2px 6px}
+.rq .id{font-family:var(--fm);font-size:9.5px;color:var(--ink4)}
+.rq .tm{margin-left:auto;font-family:var(--fm);font-size:9.5px;color:var(--au)}
+.rq .tm.old{color:var(--ink4)}
+.rq .su{font-size:12.5px;font-weight:500;line-height:1.35}
+.rq .ex{font-size:11px;color:var(--ink3);margin-top:4px;line-height:1.4}
+.rq .tg{display:flex;gap:5px;margin-top:8px;flex-wrap:wrap}
+.tagc{font-family:var(--fm);font-size:9px;color:var(--ink2);border:1px solid var(--l2);border-radius:4px;padding:2px 6px}
+.tagc.au{color:var(--au);border-color:var(--au-line)}
+
+/* flux d'activité (log vivant) */
+.feed{display:flex;flex-direction:column;gap:6px;min-height:200px}
+.ev{display:flex;align-items:flex-start;gap:9px;padding:8px 10px;border:1px solid var(--l1);border-radius:var(--r2);background:var(--s3);font-size:11.5px;color:var(--ink2);opacity:0;transform:translateY(-6px);animation:evin .45s cubic-bezier(.2,.7,.2,1) forwards}
+@keyframes evin{to{opacity:1;transform:none}}
+.ev .ic{width:22px;height:22px;border-radius:6px;background:rgba(255,255,255,.04);display:grid;place-items:center;color:var(--ink2);flex:none}
+.ev.au .ic{background:var(--au-dim);color:var(--au)}
+.ev b{color:var(--ink);font-weight:500}
+.ev .w{margin-left:auto;font-family:var(--fm);font-size:9px;color:var(--ink4);flex:none;padding-top:3px}
+/* statusline */
+.statusline{display:flex;align-items:center;gap:14px;border-top:1px solid var(--l1);padding:8px 16px;font-family:var(--fm);font-size:9.5px;color:var(--ink4);background:var(--s1);flex-wrap:wrap}
+.statusline .au{color:var(--au2)}
+.statusline .sep{width:3px;height:3px;border-radius:50%;background:var(--ink4)}
+.statusline .right{margin-left:auto}
+
+/* score ring */
+.ring{width:48px;height:48px;border-radius:50%;flex:none;display:grid;place-items:center;background:conic-gradient(var(--au) calc(var(--p,84)*1%),rgba(255,255,255,.07) 0)}
+.ring i{width:38px;height:38px;border-radius:50%;background:var(--s3);display:grid;place-items:center;font-family:var(--fd);font-weight:600;font-size:12.5px;font-style:normal}
+
+/* rows */
+.lr{display:flex;align-items:center;gap:10px;padding:9px 11px;border:1px solid var(--l1);border-radius:var(--r2);background:var(--s3);font-size:12px;color:var(--ink2)}
+.lr .ic{width:24px;height:24px;border-radius:6px;background:rgba(255,255,255,.04);display:grid;place-items:center;flex:none}
+.lr .ic svg,.ev .ic svg,.os-side svg,.kick svg{stroke:currentColor}
+.lr .ic.au{background:var(--au-dim);color:var(--au)}
+.lr b{color:var(--ink);font-weight:500}
+.lr .w{margin-left:auto;font-family:var(--fm);font-size:9px;color:var(--ink4);flex:none}
+.lr .st{margin-left:auto;font-family:var(--fm);font-size:9px;color:var(--au);border:1px solid var(--au-line);border-radius:4px;padding:2px 6px;flex:none}
+
+/* quote */
+.qt .l{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--l1);font-size:12px}
+.qt .l .k{color:var(--ink3)}
+.qt .l.tot{border-bottom:none;border-top:1px solid var(--l2);margin-top:4px;padding-top:11px;font-weight:600;font-size:14px}
+.qt .au{color:var(--au)}
+
+/* kv fiche */
+.kv{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+.kv .c{border:1px solid var(--l1);border-radius:var(--r1);padding:8px 10px;background:var(--s3)}
+.kv .c .k{font-family:var(--fm);font-size:8.5px;color:var(--ink4);letter-spacing:.08em}
+.kv .c .v{font-size:12px;font-weight:500;margin-top:3px}
+.fhead{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.fhead .ava{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,#2a2a31,#15151a);border:1px solid var(--l2);display:grid;place-items:center;font-family:var(--fd);font-weight:600;font-size:12px;color:var(--ink2)}
+.fhead .nm{font-size:13.5px;font-weight:600}
+.fhead .su{font-family:var(--fm);font-size:10px;color:var(--ink4)}
+
+/* seq */
+.sq{display:flex;gap:6px;margin-top:10px}
+.sq .s{flex:1;text-align:center;font-family:var(--fm);font-size:8.5px;padding:7px 3px;border:1px solid var(--l1);border-radius:var(--r1);color:var(--ink4)}
+.sq .s.done{color:var(--ink2);border-color:var(--l2)}
+.sq .s.now{color:var(--au);border-color:var(--au-line);background:var(--au-dim)}
+
+/* signé */
+.sgn{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:10px;padding:18px;min-height:210px}
+.sgn .seal{width:54px;height:54px;border-radius:50%;border:1px solid var(--au-line);display:grid;place-items:center;color:var(--au);background:radial-gradient(circle,var(--au-dim),transparent 70%)}
+.sgn h4{font-size:17px}
+.sgn p{font-size:12px;color:var(--ink3);max-width:240px}
+.sgn .amt{font-family:var(--fm);font-size:11px;color:var(--au);border:1px solid var(--au-line);border-radius:20px;padding:4px 12px}
+
+/* kanban */
+.kb{display:grid;grid-template-columns:repeat(6,minmax(132px,1fr));gap:9px;overflow-x:auto;padding-bottom:4px;scrollbar-width:thin;scrollbar-color:var(--l2) transparent}
+.kb::-webkit-scrollbar{height:6px}.kb::-webkit-scrollbar-thumb{background:var(--l2);border-radius:6px}
+.kc{background:var(--s1);border:1px solid var(--l1);border-radius:var(--r2);padding:9px}
+.kc .h{display:flex;justify-content:space-between;margin-bottom:8px;font-size:10.5px;color:var(--ink2);font-weight:500}
+.kc .h .n{font-family:var(--fm);font-size:9.5px;color:var(--ink4)}
+.kcd{background:var(--s3);border:1px solid var(--l1);border-radius:var(--r1);padding:8px;margin-bottom:6px;transition:transform var(--tf),border-color var(--tf)}
+.kcd:hover{transform:translateY(-1px);border-color:var(--l2)}
+.kcd:last-child{margin-bottom:0}
+.kcd .nm{font-size:10.5px;font-weight:500}
+.kcd .mt{font-family:var(--fm);font-size:8.5px;color:var(--ink4);margin-top:4px;display:flex;justify-content:space-between}
+.kcd .mt .v{color:var(--au2)}
+.kcd.hot{border-color:var(--au-line)}
+
+/* calendrier */
+.cl{border:1px solid var(--l1);border-radius:var(--r2);overflow:hidden}
+.cl .hh{display:grid;grid-template-columns:repeat(5,1fr);background:var(--s1);border-bottom:1px solid var(--l1)}
+.cl .hh span{padding:8px 0;text-align:center;font-family:var(--fm);font-size:9px;color:var(--ink4)}
+.cl .gr{display:grid;grid-template-columns:repeat(5,1fr);grid-auto-rows:54px}
+.cl .ce{border-right:1px solid var(--l1);border-bottom:1px solid var(--l1);padding:5px}
+.cl .ce .d{font-family:var(--fm);font-size:8.5px;color:var(--ink4)}
+.cl .ev2{margin-top:3px;font-size:8.5px;border-radius:4px;padding:2px 5px;background:rgba(255,255,255,.05);color:var(--ink2);line-height:1.25}
+.cl .ev2.au{background:var(--au-dim);color:var(--au2)}
+
+/* ════════════════════════════════════════
+   HERO — le cockpit plein écran
+   ════════════════════════════════════════ */
+#hero{min-height:100vh;display:flex;flex-direction:column;padding:92px 0 26px;position:relative}
+.bggrid{position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(var(--l1) 1px,transparent 1px) 0 0/100% 72px,
+            linear-gradient(90deg,var(--l1) 1px,transparent 1px) 0 0/72px 100%;
+  -webkit-mask-image:radial-gradient(ellipse 90% 56% at 50% 0%,#000,transparent 75%);
+          mask-image:radial-gradient(ellipse 90% 56% at 50% 0%,#000,transparent 75%);opacity:.55}
+.hero-top{display:flex;align-items:flex-end;justify-content:space-between;gap:28px;margin-bottom:26px;flex-wrap:wrap;position:relative;z-index:2}
+.hero-top h1{font-size:clamp(34px,4.6vw,62px);letter-spacing:-.035em;line-height:1}
+.hero-top h1 .au{color:var(--au)}
+.hero-top .sub{margin-top:14px;max-width:520px;font-size:clamp(14.5px,1.3vw,17px);color:var(--ink2);line-height:1.6}
+.hero-top .cta{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.hero-top .meta{font-family:var(--fm);font-size:10.5px;color:var(--ink4);margin-top:12px;letter-spacing:.04em}
+.cockpit{flex:1;position:relative;z-index:2;display:flex;flex-direction:column;min-height:440px}
+.cockpit .os{flex:1;display:flex;flex-direction:column}
+.cockpit .os-body{display:grid;grid-template-columns:178px 1.05fr .95fr;flex:1;min-height:0}
+.cockpit .col{border-right:1px solid var(--l1);padding:13px 15px;min-width:0;display:flex;flex-direction:column}
+.cockpit .col:last-child{border-right:none}
+@media(max-width:980px){.cockpit .os-body{grid-template-columns:1fr 1fr}.cockpit .os-side{display:none}}
+@media(max-width:680px){.cockpit .os-body{grid-template-columns:1fr}.cockpit .col{border-right:none;border-bottom:1px solid var(--l1)}.cockpit .col:last-child{border-bottom:none}}
+.simu{position:absolute;top:-11px;right:16px;font-family:var(--fm);font-size:9px;letter-spacing:.14em;color:var(--ink3);background:var(--s0);border:1px solid var(--l2);border-radius:20px;padding:3px 10px;z-index:3}
+
+/* ════════════════════════════════════════
+   MANIFESTE
+   ════════════════════════════════════════ */
+.manif{padding:84px 0;border-top:1px solid var(--l1);border-bottom:1px solid var(--l1);background:var(--s1);text-align:center}
+.manif .ln{font-family:var(--fd);font-weight:600;font-size:clamp(26px,4vw,52px);letter-spacing:-.025em}
+.manif .ln .dim{color:var(--ink4)}
+.manif .ln .au{color:var(--au)}
+.manif .sb{margin-top:14px;font-family:var(--fm);font-size:11px;color:var(--ink3);letter-spacing:.12em}
+
+/* ════════════════════════════════════════
+   SCROLLYTELLING — fenêtre épinglée
+   ════════════════════════════════════════ */
+#parcours{padding:120px 0 60px}
+.sc-head{max-width:660px;margin:0 auto 64px;text-align:center}
+.sc-head h2{font-size:clamp(28px,4.2vw,52px);margin-top:16px}
+.sc-head p{margin-top:16px}
+.scrolly{display:grid;grid-template-columns:.8fr 1.2fr;gap:48px;align-items:start}
+.steps{padding:8vh 0 30vh}
+.sstep{min-height:62vh;display:flex;flex-direction:column;justify-content:center;opacity:.28;transition:opacity .4s var(--tf)}
+.sstep.on{opacity:1}
+.sstep .ck{font-family:var(--fm);font-size:clamp(26px,3vw,38px);font-weight:500;color:var(--ink);font-variant-numeric:tabular-nums;display:flex;align-items:center;gap:14px}
+.sstep .ck::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--l3);transition:background var(--tf),box-shadow var(--tm)}
+.sstep.on .ck::before{background:var(--au);box-shadow:0 0 0 5px var(--au-dim)}
+.sstep h3{font-size:clamp(19px,2vw,26px);margin-top:14px;font-weight:600}
+.sstep p{margin-top:10px;font-size:14.5px;color:var(--ink2);line-height:1.6;max-width:340px}
+.frame{position:sticky;top:96px}
+.frame .os{min-height:420px;display:flex;flex-direction:column}
+.panels{position:relative;flex:1}
+.pan{position:absolute;inset:0;padding:14px 16px;opacity:0;transform:translateY(10px) scale(.99);transition:opacity .45s var(--tf),transform .45s var(--tm);pointer-events:none;overflow:auto}
+.pan.on{opacity:1;transform:none;pointer-events:auto}
+@media(max-width:900px){
+  .scrolly{grid-template-columns:1fr;gap:0}
+  .frame{order:-1;top:64px;z-index:50}
+  .frame .os{min-height:340px}
+  .steps{padding:24px 0 10vh}
+  .sstep{min-height:52vh}
+}
+
+/* ════════════════════════════════════════
+   PRODUIT — onglets
+   ════════════════════════════════════════ */
+#produit{padding:120px 0;border-top:1px solid var(--l1);background:var(--s1)}
+.pr-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:30px}
+.pr-head h2{font-size:clamp(28px,4vw,50px);margin-top:16px}
+.pr-head p{max-width:400px}
+.tabs{display:flex;gap:4px;border:1px solid var(--l2);border-radius:30px;padding:4px;background:var(--s0);width:max-content;max-width:100%;overflow-x:auto;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tabs button{font-size:12.5px;font-weight:500;color:var(--ink3);padding:8px 15px;border-radius:24px;transition:background var(--tf),color var(--tf);white-space:nowrap}
+.tabs button:hover{color:var(--ink2)}
+.tabs button.on{background:rgba(255,255,255,.07);color:var(--ink)}
+.tpan{display:none;margin-top:22px}
+.tpan.on{display:block;animation:tfade .4s var(--tf)}
+@keyframes tfade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+/* ════════════════════════════════════════
+   ROI — la fuite vs le système
+   ════════════════════════════════════════ */
+#roi{padding:130px 0;border-top:1px solid var(--l1)}
+.roi-head{max-width:680px;margin:0 auto 44px;text-align:center}
+.roi-head h2{font-size:clamp(28px,4.2vw,52px);margin-top:16px}
+.roi-head p{margin-top:16px}
+.roi-tog{display:flex;justify-content:center;margin-bottom:34px}
+.tog{display:flex;border:1px solid var(--l2);border-radius:30px;padding:4px;background:var(--s1)}
+.tog button{font-size:13.5px;font-weight:600;padding:10px 22px;border-radius:24px;color:var(--ink3);transition:background var(--tm),color var(--tf)}
+.tog button.on{background:var(--au);color:#0a0a0a}
+.tog button:not(.on):hover{color:var(--ink2)}
+.roi-stage{border:1px solid var(--l2);border-radius:var(--r4);background:var(--s1);padding:38px 30px 30px;position:relative;overflow:hidden}
+.roi-track{position:relative;height:190px}
+.roi-line{position:absolute;left:0;right:0;top:74px;height:1px;background:var(--l2)}
+.roi-stages{position:absolute;left:0;right:0;top:96px;display:flex;justify-content:space-between}
+.roi-stages span{font-family:var(--fm);font-size:9.5px;letter-spacing:.1em;color:var(--ink4);position:relative;padding-top:12px}
+.roi-stages span::before{content:"";position:absolute;top:-22px;left:50%;transform:translateX(-50%);width:5px;height:5px;border-radius:50%;background:var(--l3)}
+.roi-stages span:last-child{color:var(--au2)}
+.roi-stages span:last-child::before{background:var(--au)}
+.dot{position:absolute;top:70px;left:-12px;width:9px;height:9px;border-radius:50%;background:var(--ink2)}
+.roi-stage.sans .dot.keep{animation:flow var(--dur,7s) linear infinite}
+/* leak : chaque point tombe du parcours à un stade différent */
+.roi-stage.sans .dot.k1{animation:leak1 var(--dur,7s) linear infinite}.roi-stage.sans .dot.k2{animation:leak2 var(--dur,7s) linear infinite}
+.roi-stage.sans .dot.k3{animation:leak3 var(--dur,7s) linear infinite}.roi-stage.sans .dot.k4{animation:leak4 var(--dur,7s) linear infinite}
+.roi-stage.sans .dot.k5{animation:leak5 var(--dur,7s) linear infinite}
+@keyframes leak1{0%{left:-12px;opacity:0;transform:translateY(0)}4%{opacity:1}20%{left:22%;opacity:1;transform:translateY(0)}30%{left:24%;opacity:0;transform:translateY(46px)}100%{left:24%;opacity:0;transform:translateY(46px)}}
+@keyframes leak2{0%{left:-12px;opacity:0;transform:translateY(0)}4%{opacity:1}36%{left:38%;opacity:1;transform:translateY(0)}46%{left:40%;opacity:0;transform:translateY(46px)}100%{left:40%;opacity:0;transform:translateY(46px)}}
+@keyframes leak3{0%{left:-12px;opacity:0;transform:translateY(0)}4%{opacity:1}50%{left:52%;opacity:1;transform:translateY(0)}60%{left:54%;opacity:0;transform:translateY(46px)}100%{left:54%;opacity:0;transform:translateY(46px)}}
+@keyframes leak4{0%{left:-12px;opacity:0;transform:translateY(0)}4%{opacity:1}64%{left:66%;opacity:1;transform:translateY(0)}74%{left:68%;opacity:0;transform:translateY(46px)}100%{left:68%;opacity:0;transform:translateY(46px)}}
+@keyframes leak5{0%{left:-12px;opacity:0;transform:translateY(0)}4%{opacity:1}78%{left:80%;opacity:1;transform:translateY(0)}88%{left:82%;opacity:0;transform:translateY(46px)}100%{left:82%;opacity:0;transform:translateY(46px)}}
+@keyframes flow{0%{left:-12px;opacity:0}4%{opacity:1}92%{left:calc(100% - 4px);opacity:1;background:var(--au);box-shadow:0 0 10px var(--au-dim)}100%{left:calc(100% - 4px);opacity:0;background:var(--au)}}
+.roi-stage.avec .dot{animation:flow var(--dur,7s) linear infinite;background:var(--ink2)}
+.roi-stage .dot:nth-child(odd){top:66px}
+.roi-verdict{display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap;border-top:1px solid var(--l1);margin-top:26px;padding-top:22px}
+.roi-verdict .v{font-family:var(--fd);font-weight:600;font-size:clamp(17px,2vw,23px)}
+.roi-verdict .v .au{color:var(--au)}
+.roi-verdict .note{font-family:var(--fm);font-size:10px;color:var(--ink4);letter-spacing:.06em}
+.roi-stage.sans .vd-avec{display:none}
+.roi-stage.avec .vd-sans{display:none}
+
+/* ════════════════════════════════════════
+   PREUVES
+   ════════════════════════════════════════ */
+#preuves{padding:120px 0;border-top:1px solid var(--l1);background:var(--s1)}
+.pv{display:grid;grid-template-columns:1fr 1.15fr;gap:56px;align-items:center}
+@media(max-width:900px){.pv{grid-template-columns:1fr;gap:38px}}
+.pv-14{font-family:var(--fd);font-weight:600;font-size:clamp(88px,12vw,160px);line-height:.85;letter-spacing:-.04em;
+  background:linear-gradient(180deg,#fff 16%,rgba(212,175,55,.85) 68%,rgba(212,175,55,.18));
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.pv-14 .u{display:block;font-size:13px;font-family:var(--fm);letter-spacing:.22em;color:var(--au);-webkit-text-fill-color:var(--au);margin-top:13px}
+.pv h2{font-size:clamp(24px,3.2vw,38px);margin-top:14px}
+.pv-row{display:flex;gap:15px;padding:18px 0;border-top:1px solid var(--l1)}
+.pv-row:first-of-type{margin-top:22px}
+.pv-row .ic{flex:none;width:38px;height:38px;border-radius:10px;border:1px solid var(--l2);background:var(--s3);display:grid;place-items:center;color:var(--au)}
+.pv-row h4{font-size:15px;margin-bottom:4px}
+.pv-row p{font-size:13px;color:var(--ink3);line-height:1.55}
+.pv-links{display:flex;gap:10px;margin-top:22px;flex-wrap:wrap}
+.pv-link{display:flex;align-items:center;gap:9px;border:1px solid var(--l2);border-radius:var(--r2);padding:11px 14px;font-size:12.5px;transition:border-color var(--tf),background var(--tf),transform var(--tf);background:var(--s2)}
+.pv-link:hover{border-color:var(--l3);background:var(--s3);transform:translateY(-1px)}
+.pv-link .t{font-family:var(--fm);font-size:9px;color:var(--au)}
+.pv-link .n{font-weight:500}
+.pv-link svg{stroke:var(--ink3)}
+
+/* ════════════════════════════════════════
+   CONVERSION — unique
+   ════════════════════════════════════════ */
+#demo{padding:130px 0}
+.dm{border:1px solid var(--l2);border-radius:var(--r4);background:var(--s2);overflow:hidden;position:relative}
+.dm-glow{position:absolute;top:-55%;right:-12%;width:560px;height:560px;border-radius:50%;background:radial-gradient(circle,var(--au-dim),transparent 60%);pointer-events:none;opacity:.5}
+.dm-grid{display:grid;grid-template-columns:1.1fr .9fr;position:relative;z-index:2}
+@media(max-width:880px){.dm-grid{grid-template-columns:1fr}}
+.dm-l{padding:50px 46px;border-right:1px solid var(--l1)}
+@media(max-width:880px){.dm-l{border-right:none;border-bottom:1px solid var(--l1);padding:38px 26px}}
+.dm-l h2{font-size:clamp(26px,3.4vw,42px);margin-top:16px}
+.dm-l h2 .au{color:var(--au)}
+.dm-l p{margin-top:16px;max-width:420px}
+.dm-l .pts{margin-top:24px;display:flex;flex-direction:column;gap:11px}
+.dm-l .pts .p{display:flex;gap:10px;font-size:13.5px;color:var(--ink2);align-items:flex-start}
+.dm-l .pts .p svg{flex:none;margin-top:3px;stroke:var(--au)}
+.dm-r{padding:46px 40px;display:flex;flex-direction:column}
+@media(max-width:880px){.dm-r{padding:34px 26px}}
+.dm-meta{border:1px solid var(--l1);border-radius:var(--r3);overflow:hidden;margin-bottom:20px}
+.dm-meta .r{display:flex;justify-content:space-between;padding:12px 15px;border-bottom:1px solid var(--l1);font-size:13px}
+.dm-meta .r:last-child{border-bottom:none}
+.dm-meta .r .k{color:var(--ink3)}
+.dm-meta .r .v{font-weight:500;font-family:var(--fm);font-size:12px}
+.dm-meta .r.hl{background:var(--au-dim)}
+.dm-meta .r.hl .v{color:var(--au)}
+.form .f{width:100%;background:var(--s0);border:1px solid var(--l2);border-radius:var(--r2);padding:12px 14px;font-size:13.5px;color:var(--ink);font-family:var(--fb);margin-bottom:8px;outline:none;transition:border-color var(--tf)}
+.form .f::placeholder{color:var(--ink4)}
+.form .f:focus{border-color:var(--au)}
+.form button{width:100%;justify-content:center;margin-top:4px}
+.form .micro{margin-top:10px;text-align:center;font-size:11px;color:var(--ink4)}
+.form .micro b{color:var(--au2);font-weight:500}
+.is-dis{opacity:.4;pointer-events:none}
+.is-ph{cursor:default!important;opacity:.6}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+
+/* footer */
+footer{border-top:1px solid var(--l1);padding:50px 0 32px;background:var(--s0)}
+.ft{display:flex;justify-content:space-between;gap:36px;flex-wrap:wrap}
+.ft .bc{max-width:300px}
+.ft .bc p{font-size:12.5px;color:var(--ink4);line-height:1.6;margin-top:13px}
+.ft-cols{display:flex;gap:52px;flex-wrap:wrap}
+.ft-col h5{font-family:var(--fm);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink4);margin-bottom:14px}
+.ft-col a{display:block;font-size:13px;color:var(--ink2);margin-bottom:10px;transition:color var(--tf)}
+.ft-col a:hover{color:var(--au)}
+.ft-b{margin-top:42px;padding-top:20px;border-top:1px solid var(--l1);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-family:var(--fm);font-size:10.5px;color:var(--ink4)}
+
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:.001s!important;transition-duration:.001s!important}
+  .rv,.sstep{opacity:1;transform:none}
+  .dot{display:none}
+  .ev{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="in">
+    <div class="brand"><span class="m">Λ</span>DevisPilot <span class="sl">/</span> <span class="p">VΛIN</span></div>
+    <div class="nv">
+      <a href="#parcours">Le parcours</a>
+      <a href="#produit">Produit</a>
+      <a href="#roi">Impact</a>
+      <a href="#preuves">Preuves</a>
+    </div>
+    <a href="#demo" class="btn btn-au btn-sm">Demander une démo <svg class="ar" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+  </div>
+</nav>
+
+<!-- ═══════════ HERO · COCKPIT ═══════════ -->
+<section id="hero">
+  <div class="bggrid"></div>
+  <div class="wrap" style="display:flex;flex-direction:column;flex:1;min-height:0">
+    <div class="hero-top">
+      <div>
+        <h1 class="rv in">Une demande entre.<br/><span class="au">Un chantier sort.</span></h1>
+        <p class="sub rv in rd1">DevisPilot est le centre d'opérations commercial des entreprises techniques : chaque demande est captée, qualifiée, suivie, relancée et convertie — par le système, pas par votre mémoire.</p>
+      </div>
+      <div class="rv in rd2">
+        <div class="cta">
+          <a href="#demo" class="btn btn-au">Demander une démo <svg class="ar" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+        <div class="meta">14 ANS D'INDUSTRIE · HVAC · ÉLEC · MAINTENANCE · LUX & GRANDE RÉGION</div>
+      </div>
+    </div>
+
+    <div class="cockpit rv in rd2">
+      <span class="simu">SIMULATION · PARCOURS TYPE</span>
+      <div class="os">
+        <div class="os-bar">
+          <div class="b"><span class="d">Λ</span> DevisPilot</div>
+          <div class="q"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg> Rechercher <span class="k">⌘K</span></div>
+          <div class="sp"></div>
+          <span class="live"><span class="dt"></span>SYSTÈME ACTIF</span>
+          <span class="clock" id="clock">--:--:--</span>
+          <button class="bell" aria-label="Notifications"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9M10.3 21a2 2 0 0 0 3.4 0"/></svg><span class="n" id="bellN">0</span></button>
+          <span class="av"></span>
+        </div>
+        <div class="os-body">
+          <div class="os-side">
+            <div class="g">PILOTAGE</div>
+            <a class="on"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="1.7"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/></svg> Opérations</a>
+            <a><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="1.7"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg> Pipeline <span class="c">24</span></a>
+            <a><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="1.7"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg> Clients <span class="c">58</span></a>
+            <a><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="1.7"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg> Devis <span class="c">12</span></a>
+            <div class="g">AUTOMATISATION</div>
+            <a><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="1.7"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg> Relances <span class="c">3</span></a>
+            <a><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="1.7"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg> Calendrier</a>
+            <a><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="1.7"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg> Primes</a>
+          </div>
+          <div class="col">
+            <div class="os-h"><div><div class="t">Boîte de réception</div><div class="s" id="inboxSub">en attente…</div></div><div class="tag" id="inboxN">2</div></div>
+            <div style="display:flex;flex-direction:column;gap:7px" id="inbox">
+              <div class="rq"><div class="t1"><span class="id">#REQ-4191</span><span class="tm old">07:48</span></div><div class="su">Entretien climatisation — local commercial</div><div class="tg"><span class="tagc">Clim</span><span class="tagc">Contrat</span></div></div>
+              <div class="rq"><div class="t1"><span class="id">#REQ-4190</span><span class="tm old">hier</span></div><div class="su">Tableau électrique — mise aux normes</div><div class="tg"><span class="tagc">Élec</span></div></div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="os-h"><div><div class="t">Activité du système</div><div class="s">ce que DevisPilot fait, en direct</div></div></div>
+            <div class="feed" id="feed"></div>
+          </div>
+        </div>
+        <div class="statusline">
+          <span>RELANCES EN FILE <span class="au">3</span></span><span class="sep"></span>
+          <span>DEVIS OUVERTS <span class="au">2</span></span><span class="sep"></span>
+          <span>VISITES CETTE SEMAINE <span class="au">4</span></span>
+          <span class="right">DEVISPILOT OS · v2.4</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ MANIFESTE ═══════════ -->
+<section class="manif">
+  <div class="wrap">
+    <div class="ln rv">Votre métier, c'est le <span class="dim">terrain.</span><br/>Le commerce, c'est <span class="au">le système.</span></div>
+    <div class="sb rv rd1">AUCUNE DEMANDE OUBLIÉE. AUCUNE RELANCE MANQUÉE. AUCUN DEVIS SANS SUITE.</div>
+  </div>
+</section>
+
+<!-- ═══════════ PARCOURS · SCROLLYTELLING ═══════════ -->
+<section id="parcours">
+  <div class="wrap">
+    <div class="sc-head rv">
+      <span class="kick">LE PARCOURS · <span class="au">UNE MATINÉE TYPE</span></span>
+      <h2>Dix minutes.<br/>Zéro action manuelle.</h2>
+      <p class="lead">La même fenêtre, du premier message au chantier signé. Suivez la demande de M. Weber — le système travaille, vous regardez.</p>
+    </div>
+
+    <div class="scrolly">
+      <div class="steps" id="steps">
+        <div class="sstep" data-p="0"><div class="ck">08:12</div><h3>Une demande arrive.</h3><p>Un propriétaire remplit le formulaire. En 38 secondes, il reçoit un accusé de réception — pendant que vos concurrents laissent sonner.</p></div>
+        <div class="sstep" data-p="1"><div class="ck">08:13</div><h3>Qualification automatique.</h3><p>Besoin, budget, zone, urgence : le système analyse et note. Score 84 — prospect prioritaire, à traiter en premier ce matin.</p></div>
+        <div class="sstep" data-p="2"><div class="ck">08:15</div><h3>Le projet est créé.</h3><p>Fiche client complète, historique, prime éligible détectée. Plus rien ne vit dans votre boîte mail ou sur un post-it.</p></div>
+        <div class="sstep" data-p="3"><div class="ck">08:16</div><h3>Le suivi est programmé.</h3><p>Trois créneaux de visite proposés. Si pas de réponse : relance automatique à J+2, J+5, J+9. Elle s'arrête dès que le client répond.</p></div>
+        <div class="sstep" data-p="4"><div class="ck">08:18</div><h3>Le devis part, prime déduite.</h3><p>Le Klimabonus est calculé et intégré. Le client voit le vrai reste à charge — la décision devient simple.</p></div>
+        <div class="sstep" data-p="5"><div class="ck">08:22</div><h3>Le client signe.</h3><p>Chantier confirmé, projet en planification. Dix minutes après la première demande. C'est ça, un système.</p></div>
+      </div>
+
+      <div class="frame">
+        <div class="os">
+          <div class="os-bar">
+            <div class="b"><span class="d">Λ</span> DevisPilot</div>
+            <div class="sp"></div>
+            <span class="tag fm" id="frameTag" style="font-size:10px;color:var(--ink3);border:1px solid var(--l1);border-radius:6px;padding:4px 9px">Boîte · 08:12</span>
+          </div>
+          <div class="panels">
+            <!-- P0 boîte -->
+            <div class="pan on" data-i="0">
+              <div class="os-h"><div class="t">Nouvelle demande</div><div class="tag">#REQ-4192</div></div>
+              <div class="rq hot"><div class="t1"><span class="new">NOUVEAU</span><span class="id">formulaire site</span><span class="tm">08:12</span></div>
+                <div class="su">Pompe à chaleur air/eau — remplacement chaudière mazout</div>
+                <div class="ex">Maison 140 m² · Esch-sur-Alzette · « le plus tôt possible »</div>
+                <div class="tg"><span class="tagc au">PAC</span><span class="tagc">Résidentiel</span><span class="tagc">Esch</span></div></div>
+              <div class="lr" style="margin-top:8px"><span class="ic au"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg></span> Accusé de réception envoyé à <b>M. Weber</b> <span class="w">+38 s</span></div>
+            </div>
+            <!-- P1 qualification -->
+            <div class="pan" data-i="1">
+              <div class="os-h"><div class="t">Analyse de la demande</div><div class="tag">auto</div></div>
+              <div class="qt">
+                <div class="l"><span class="k">Besoin</span><span>PAC air/eau</span></div>
+                <div class="l"><span class="k">Budget estimé</span><span>15 – 20 k€</span></div>
+                <div class="l"><span class="k">Zone</span><span>Esch · couverte</span></div>
+                <div class="l"><span class="k">Urgence</span><span>Élevée</span></div>
+              </div>
+              <div style="display:flex;align-items:center;gap:12px;margin-top:14px;padding:12px;border:1px solid var(--l2);border-radius:10px;background:var(--s3)">
+                <div class="ring" style="--p:84"><i>84</i></div>
+                <div><b style="font-size:13px">Prospect prioritaire</b><div style="font-size:11.5px;color:var(--ink3)">à traiter en premier ce matin</div></div>
+              </div>
+            </div>
+            <!-- P2 fiche -->
+            <div class="pan" data-i="2">
+              <div class="os-h"><div class="t">Fiche client</div><div class="tag">#CLI-0287</div></div>
+              <div class="fhead"><div class="ava">MW</div><div><div class="nm">M. Weber</div><div class="su">Particulier · Esch-sur-Alzette</div></div></div>
+              <div class="kv">
+                <div class="c"><div class="k">PROJET</div><div class="v">PAC air/eau</div></div>
+                <div class="c"><div class="k">SOURCE</div><div class="v">Site · formulaire</div></div>
+                <div class="c"><div class="k">ÉTAPE</div><div class="v">Qualifié → Visite</div></div>
+                <div class="c"><div class="k">PRIME</div><div class="v" style="color:var(--au)">Klimabonus éligible</div></div>
+              </div>
+              <div class="lr" style="margin-top:8px"><span class="ic"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M4 4h16v16H4z"/><path d="M4 8h16"/></svg></span> Historique complet créé <span class="w">08:15</span></div>
+            </div>
+            <!-- P3 relances -->
+            <div class="pan" data-i="3">
+              <div class="os-h"><div class="t">Séquence de suivi</div><div class="tag">active</div></div>
+              <div style="display:flex;flex-direction:column;gap:7px">
+                <div class="lr"><span class="ic au"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span> Visite — 3 créneaux proposés <span class="st">FAIT</span></div>
+                <div class="lr"><span class="ic"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span> Relance si silence <span class="w">J+2</span></div>
+              </div>
+              <div class="sq">
+                <div class="s done">J+0 · Visite</div><div class="s now">J+2 · R1</div><div class="s">J+5 · R2</div><div class="s">J+9 · Rappel</div>
+              </div>
+              <p style="font-size:11.5px;color:var(--ink3);margin-top:12px">La séquence s'interrompt dès que le client répond.</p>
+            </div>
+            <!-- P4 devis -->
+            <div class="pan" data-i="4">
+              <div class="os-h"><div class="t">Devis #DV-1183</div><div class="tag">prêt</div></div>
+              <div class="qt">
+                <div class="l"><span class="k">PAC air/eau + pose</span><span>18 400 €</span></div>
+                <div class="l"><span class="k">Mise en service</span><span>1 200 €</span></div>
+                <div class="l"><span class="k au">Klimabonus déduit</span><span class="au">− 6 300 €</span></div>
+                <div class="l tot"><span>Reste à charge</span><span>13 300 €</span></div>
+              </div>
+              <div class="lr" style="margin-top:10px"><span class="ic au"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg></span> Envoyé · <b>notifié à l'ouverture</b> <span class="w">08:18</span></div>
+            </div>
+            <!-- P5 signé -->
+            <div class="pan" data-i="5">
+              <div class="sgn">
+                <div class="seal"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg></div>
+                <h4>Chantier confirmé</h4>
+                <p>M. Weber a signé. Le projet passe en planification — dix minutes après sa demande.</p>
+                <div class="amt">#DV-1183 · 13 300 € · signé 08:22</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ PRODUIT ═══════════ -->
+<section id="produit">
+  <div class="wrap">
+    <div class="pr-head">
+      <div class="rv"><span class="kick">LE PRODUIT</span><h2>Un système.<br/>Pas des écrans décoratifs.</h2></div>
+      <p class="lead rv rd1">Chaque vue est reliée aux autres : la demande crée la fiche, la fiche déclenche la relance, la relance aboutit au devis. Explorez.</p>
+    </div>
+    <div class="tabs rv rd1" id="tabs" role="tablist">
+      <button class="on" data-t="t1">Pipeline</button>
+      <button data-t="t2">Automatisations</button>
+      <button data-t="t3">Fiche client</button>
+      <button data-t="t4">Calendrier</button>
+      <button data-t="t5">Journal</button>
+    </div>
+
+    <div class="tpan on" data-p="t1">
+      <div class="os"><div class="os-bar"><div class="b"><span class="d">Λ</span> Pipeline</div><div class="sp"></div><span class="tag fm" style="font-size:10px;color:var(--ink3);border:1px solid var(--l1);border-radius:6px;padding:4px 9px">aperçu produit · illustratif</span></div>
+        <div class="os-main">
+          <div class="kb">
+            <div class="kc"><div class="h">Demande <span class="n">3</span></div><div class="kcd"><div class="nm">PAC · M. Weber</div><div class="mt"><span>Esch</span><span class="v">08:12</span></div></div><div class="kcd"><div class="nm">Clim · local commercial</div><div class="mt"><span>Contrat</span><span class="v">07:48</span></div></div></div>
+            <div class="kc"><div class="h">Qualifié <span class="n">2</span></div><div class="kcd hot"><div class="nm">PAC · M. Weber</div><div class="mt"><span>Score 84</span><span class="v">prioritaire</span></div></div></div>
+            <div class="kc"><div class="h">Visite <span class="n">4</span></div><div class="kcd"><div class="nm">SCI Krier</div><div class="mt"><span>Industrie</span><span class="v">J+2</span></div></div></div>
+            <div class="kc"><div class="h">Devis <span class="n">5</span></div><div class="kcd hot"><div class="nm">Boulangerie Hoffmann</div><div class="mt"><span>+ prime</span><span class="v">ouvert</span></div></div></div>
+            <div class="kc"><div class="h">Relance <span class="n">6</span></div><div class="kcd"><div class="nm">Mme Thill · PV</div><div class="mt"><span>auto J+2</span><span class="v">envoyée</span></div></div></div>
+            <div class="kc"><div class="h">Signé <span class="n">4</span></div><div class="kcd"><div class="nm">Garage Reuter</div><div class="mt"><span>13 300 €</span><span class="v">✓</span></div></div></div>
+          </div>
+        </div></div>
+    </div>
+
+    <div class="tpan" data-p="t2">
+      <div class="os"><div class="os-bar"><div class="b"><span class="d">Λ</span> Automatisations</div><div class="sp"></div><span class="live"><span class="dt"></span>4 RÈGLES ACTIVES</span></div>
+        <div class="os-main"><div style="display:flex;flex-direction:column;gap:8px">
+          <div class="lr"><span class="ic au"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg></span> <b>Accusé de réception</b> — à chaque demande, en moins d'une minute <span class="st">ACTIF</span></div>
+          <div class="lr"><span class="ic au"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></span> <b>Qualification & score</b> — besoin, budget, zone, urgence <span class="st">ACTIF</span></div>
+          <div class="lr"><span class="ic au"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span> <b>Relances J+2 / J+5 / J+9</b> — stoppées dès que le client répond <span class="st">ACTIF</span></div>
+          <div class="lr"><span class="ic au"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span> <b>Calcul des primes</b> — Klimabonus & aides locales, intégrées au devis <span class="st">ACTIF</span></div>
+        </div></div></div>
+    </div>
+
+    <div class="tpan" data-p="t3">
+      <div class="os"><div class="os-bar"><div class="b"><span class="d">Λ</span> Clients</div><div class="sp"></div><span class="tag fm" style="font-size:10px;color:var(--ink3);border:1px solid var(--l1);border-radius:6px;padding:4px 9px">#CLI-0287</span></div>
+        <div class="os-main">
+          <div class="fhead"><div class="ava">MW</div><div><div class="nm">M. Weber</div><div class="su">Particulier · Esch-sur-Alzette · créé 08:15</div></div></div>
+          <div class="kv" style="margin-bottom:10px">
+            <div class="c"><div class="k">PROJET</div><div class="v">PAC air/eau · remplacement</div></div>
+            <div class="c"><div class="k">BUDGET</div><div class="v">15 – 20 k€</div></div>
+            <div class="c"><div class="k">DERNIER CONTACT</div><div class="v">Devis envoyé · 08:18</div></div>
+            <div class="c"><div class="k">PROCHAINE ACTION</div><div class="v" style="color:var(--au)">Relance auto · J+2</div></div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:7px">
+            <div class="lr"><span class="ic"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/></svg></span> Demande reçue <span class="w">08:12</span></div>
+            <div class="lr"><span class="ic"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M9 11l3 3L22 4"/></svg></span> Qualifié — score 84 <span class="w">08:13</span></div>
+            <div class="lr"><span class="ic"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg></span> Devis #DV-1183 envoyé <span class="w">08:18</span></div>
+          </div>
+        </div></div>
+    </div>
+
+    <div class="tpan" data-p="t4">
+      <div class="os"><div class="os-bar"><div class="b"><span class="d">Λ</span> Calendrier</div><div class="sp"></div><span class="tag fm" style="font-size:10px;color:var(--ink3);border:1px solid var(--l1);border-radius:6px;padding:4px 9px">semaine · aperçu</span></div>
+        <div class="os-main">
+          <div class="cl">
+            <div class="hh"><span>LUN</span><span>MAR</span><span>MER</span><span>JEU</span><span>VEN</span></div>
+            <div class="gr">
+              <div class="ce"><div class="d">9</div><div class="ev2 au">09:00 Visite Weber</div></div>
+              <div class="ce"><div class="d">10</div></div>
+              <div class="ce"><div class="d">11</div><div class="ev2">14:00 SCI Krier</div></div>
+              <div class="ce"><div class="d">12</div></div>
+              <div class="ce"><div class="d">13</div><div class="ev2 au">10:30 Pose PAC</div></div>
+              <div class="ce"><div class="d">16</div></div>
+              <div class="ce"><div class="d">17</div><div class="ev2">08:00 Entretien clim</div></div>
+              <div class="ce"><div class="d">18</div><div class="ev2">Relances auto</div></div>
+              <div class="ce"><div class="d">19</div></div>
+              <div class="ce"><div class="d">20</div></div>
+            </div>
+          </div>
+        </div></div>
+    </div>
+
+    <div class="tpan" data-p="t5">
+      <div class="os"><div class="os-bar"><div class="b"><span class="d">Λ</span> Journal</div><div class="sp"></div><span class="tag fm" style="font-size:10px;color:var(--ink3);border:1px solid var(--l1);border-radius:6px;padding:4px 9px">traçabilité complète</span></div>
+        <div class="os-main"><div style="display:flex;flex-direction:column;gap:6px" class="fm">
+          <div class="lr" style="font-size:11px"><span style="color:var(--ink4)">08:12:04</span> REQ-4192 reçue · source formulaire <span class="w">système</span></div>
+          <div class="lr" style="font-size:11px"><span style="color:var(--ink4)">08:12:42</span> accusé envoyé → weber@… <span class="w">auto</span></div>
+          <div class="lr" style="font-size:11px"><span style="color:var(--ink4)">08:13:10</span> score calculé : 84 · prioritaire <span class="w">auto</span></div>
+          <div class="lr" style="font-size:11px"><span style="color:var(--ink4)">08:15:02</span> CLI-0287 créé · prime détectée <span class="w">auto</span></div>
+          <div class="lr" style="font-size:11px"><span style="color:var(--ink4)">08:18:55</span> DV-1183 envoyé · suivi d'ouverture ON <span class="w">auto</span></div>
+          <div class="lr" style="font-size:11px;border-color:var(--au-line)"><span style="color:var(--ink4)">08:22:31</span> <b style="color:var(--au2)">DV-1183 signé · chantier confirmé</b> <span class="w">client</span></div>
+        </div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ ROI ═══════════ -->
+<section id="roi">
+  <div class="wrap">
+    <div class="roi-head rv">
+      <span class="kick">L'IMPACT · <span class="au">LE MÉCANISME</span></span>
+      <h2>Là où vont vos demandes.</h2>
+      <p class="lead">Le problème n'est pas le nombre de demandes. C'est ce qui leur arrive ensuite. Comparez les deux mondes.</p>
+    </div>
+    <div class="roi-tog rv rd1">
+      <div class="tog" role="tablist">
+        <button class="on" data-m="sans">Sans DevisPilot</button>
+        <button data-m="avec">Avec DevisPilot</button>
+      </div>
+    </div>
+    <div class="roi-stage sans rv rd1" id="roiStage">
+      <div class="roi-track">
+        <div class="roi-line"></div>
+        <div class="roi-stages"><span>DEMANDE</span><span>RÉPONSE</span><span>SUIVI</span><span>RELANCE</span><span>DEVIS</span><span>SIGNÉ</span></div>
+        <span class="dot k1" style="animation-delay:0s"></span>
+        <span class="dot k2" style="animation-delay:-1s"></span>
+        <span class="dot k3" style="animation-delay:-2.2s"></span>
+        <span class="dot keep" style="animation-delay:-3.1s"></span>
+        <span class="dot k4" style="animation-delay:-4.3s"></span>
+        <span class="dot k5" style="animation-delay:-5.2s"></span>
+        <span class="dot keep" style="animation-delay:-6.1s"></span>
+      </div>
+      <div class="roi-verdict">
+        <div class="v vd-sans">La plupart des demandes <span style="color:var(--ink3)">disparaissent en route.</span></div>
+        <div class="v vd-avec">Chaque demande <span class="au">va au bout du parcours.</span></div>
+        <div class="note">ILLUSTRATION DU MÉCANISME — PAS UNE STATISTIQUE</div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:34px" class="rv rd2">
+      <a href="#demo" class="btn btn-au">Voir ça sur mon activité <svg class="ar" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ PREUVES ═══════════ -->
+<section id="preuves">
+  <div class="wrap pv">
+    <div class="rv"><div class="pv-14">14<span class="u">ANS D'EXPÉRIENCE INDUSTRIELLE</span></div></div>
+    <div>
+      <span class="kick rv">LA CONFIANCE VIENT DU CONCRET</span>
+      <h2 class="rv rd1">Pas de chiffres inventés.<br/>Du terrain, un produit, des preuves ouvrables.</h2>
+      <div class="pv-row rv rd1"><div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 21h18M5 21V8l7-5 7 5v13"/></svg></div><div><h4>Né dans l'industrie</h4><p>14 ans à l'intérieur des métiers techniques. DevisPilot est conçu par des gens qui connaissent vos marges, vos urgences et vos clients.</p></div></div>
+      <div class="pv-row rv rd2"><div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg></div><div><h4>Un parcours réel, pas un slogan</h4><p>Tout ce que vous avez vu — qualification, relances, devis avec prime — est la logique exacte du système, montrée telle quelle.</p></div></div>
+      <div class="pv-row rv rd2"><div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg></div><div><h4>Des démonstrateurs que vous pouvez ouvrir</h4><p>Le système appliqué à des métiers concrets. Pas des promesses : des pages, maintenant.</p></div></div>
+      <div class="pv-links rv rd3">
+        <a href="https://chauffage-artisanal.vercel.app" target="_blank" rel="noopener" class="pv-link"><div><div class="t">CAS RÉEL</div><div class="n">Chauffage Artisanal</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg></a>
+        <a href="demonstrateur-electricien.html" class="pv-link"><div><div class="t">DÉMO</div><div class="n">Électricien</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a href="demonstrateur-industriel.html" class="pv-link"><div><div class="t">DÉMO</div><div class="n">Maintenance industrielle</div></div><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ CONVERSION UNIQUE ═══════════ -->
+<section id="demo">
+  <div class="wrap">
+    <div class="dm rv">
+      <div class="dm-glow"></div>
+      <div class="dm-grid">
+        <div class="dm-l">
+          <span class="kick">LA SEULE CHOSE À FAIRE</span>
+          <h2>Voyez le système tourner sur <span class="au">votre activité.</span></h2>
+          <p class="lead">15 minutes, en direct. On branche le parcours sur votre métier et on vous montre exactement où partent vos demandes aujourd'hui — et comment le système les retient.</p>
+          <div class="pts">
+            <div class="p"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M20 6L9 17l-5-5"/></svg> Démonstration adaptée à votre métier, pas générique</div>
+            <div class="p"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M20 6L9 17l-5-5"/></svg> Diagnostic de vos fuites de demandes actuelles</div>
+            <div class="p"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M20 6L9 17l-5-5"/></svg> Vous repartez avec une feuille de route — même sans nous</div>
+          </div>
+        </div>
+        <div class="dm-r">
+          <div class="dm-meta">
+            <div class="r"><span class="k">Durée</span><span class="v">15 minutes</span></div>
+            <div class="r"><span class="k">Format</span><span class="v">Démo en direct</span></div>
+            <div class="r"><span class="k">Engagement</span><span class="v">Aucun</span></div>
+            <div class="r hl"><span class="k">Disponibilité</span><span class="v">3 créneaux / semaine</span></div>
+          </div>
+          <form class="form" id="demoForm" action="#" method="POST">
+            <input type="hidden" name="_subject" value="Demande de démo DevisPilot" />
+            <label class="sr" for="fn">Nom & entreprise</label>
+            <input id="fn" class="f" type="text" name="nom" placeholder="Nom & entreprise" required />
+            <label class="sr" for="fe">Email professionnel</label>
+            <input id="fe" class="f" type="email" name="email" placeholder="Email professionnel" required />
+            <label class="sr" for="fmtr">Métier</label>
+            <input id="fmtr" class="f" type="text" name="metier" placeholder="Votre métier (HVAC, élec, industrie…)" />
+            <button class="btn btn-au" id="demoSubmit" type="submit">Demander ma démo <svg class="ar" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+            <div class="micro" id="demoMicro"><b>Sans engagement · 0 spam.</b> Réponse sous 24 h.</div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="ft">
+      <div class="bc">
+        <div class="brand"><span class="m">Λ</span>DevisPilot <span class="sl">/</span> <span class="p">VΛIN</span></div>
+        <p>Le centre d'opérations commercial des entreprises techniques. Luxembourg & Grande Région.</p>
+      </div>
+      <div class="ft-cols">
+        <div class="ft-col"><h5>Produit</h5><a href="#parcours">Le parcours</a><a href="#produit">Le système</a><a href="#roi">L'impact</a></div>
+        <div class="ft-col"><h5>Preuves</h5><a href="https://chauffage-artisanal.vercel.app" target="_blank" rel="noopener">Cas réel</a><a href="demonstrateur-electricien.html">Démo électricien</a><a href="demonstrateur-industriel.html">Démo industrie</a></div>
+        <div class="ft-col"><h5>Contact</h5><a href="#demo">Demander une démo</a><a id="footTel" class="is-ph"><span class="tel-d">+352 XX XX XX XX</span></a><a href="mailto:hello@vainstudio.lu">hello@vainstudio.lu</a></div>
+      </div>
+    </div>
+    <div class="ft-b"><span>© 2026 VΛIN STUDIO — DEVISPILOT</span><span>UNE DEMANDE ENTRE. UN CHANTIER SORT.</span></div>
+  </div>
+</footer>
+
+<script>
+/* ⚙️ CONFIG — vide = canal désactivé proprement (cf. SETUP-MISE-EN-LIGNE.md) */
+var VAIN_CONFIG={formspreeId:"",calendly:"",whatsapp:"",phoneDial:"",phoneDisplay:""};
+(function(){
+  var C=VAIN_CONFIG;
+  var f=document.getElementById('demoForm'),b=document.getElementById('demoSubmit'),m=document.getElementById('demoMicro');
+  if(C.formspreeId){f.action='https://formspree.io/f/'+C.formspreeId;}
+  else{b.classList.add('is-dis');b.setAttribute('aria-disabled','true');f.addEventListener('submit',function(e){e.preventDefault();});
+    m.innerHTML='<b>Démo en cours d’activation.</b> Le formulaire sera opérationnel dès la configuration.';}
+  var t=document.getElementById('footTel'),d=t.querySelector('.tel-d');
+  if(C.phoneDial){t.href='tel:'+C.phoneDial;t.classList.remove('is-ph');if(C.phoneDisplay)d.textContent=C.phoneDisplay;}
+  else{t.removeAttribute('href');}
+})();
+
+/* nav */
+addEventListener('scroll',function(){document.getElementById('nav').classList.toggle('sc',scrollY>30);},{passive:true});
+
+/* reveal */
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.15});
+document.querySelectorAll('.rv:not(.in)').forEach(function(el){io.observe(el);});
+
+/* ── horloge réelle ── */
+(function(){
+  var el=document.getElementById('clock');
+  function tick(){el.textContent=new Date().toLocaleTimeString('fr-FR',{hour12:false});}
+  tick();setInterval(tick,1000);
+})();
+
+/* ── flux d'activité vivant (simulation étiquetée) ── */
+(function(){
+  var feed=document.getElementById('feed'),bell=document.getElementById('bellN'),
+      inbox=document.getElementById('inbox'),inboxN=document.getElementById('inboxN'),inboxSub=document.getElementById('inboxSub');
+  if(!feed)return;
+  var reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var seq=4192,notif=0;
+  var ICONS={
+    in:'<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/></svg>',
+    send:'<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>',
+    ok:'<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 11l3 3L22 4"/></svg>',
+    user:'<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>',
+    cal:'<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>',
+    eur:'<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>',
+    doc:'<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>',
+    sign:'<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>'
+  };
+  var CASES=[
+    {su:'Pompe à chaleur air/eau — remplacement chaudière',short:'PAC air/eau · Esch',tags:['PAC','Résidentiel'],score:84,prime:'Klimabonus'},
+    {su:'Borne de recharge 11 kW — maison individuelle',short:'borne IRVE · Differdange',tags:['IRVE','Élec'],score:77,prime:'Aide bornes'},
+    {su:'Climatisation bureaux — 240 m²',short:'clim tertiaire · Foetz',tags:['Clim','Pro'],score:81,prime:'—'},
+    {su:'Panneaux photovoltaïques — toiture 9 kWc',short:'PV toiture · Dudelange',tags:['PV','Résidentiel'],score:79,prime:'Aide solaire'},
+    {su:'Panne chaudière — plus d\'eau chaude',short:'dépannage · Bettembourg',tags:['Urgence','Chauffage'],score:88,prime:'—'}
+  ];
+  function story(n,c){return [
+    {i:'in',  au:1, t:'Nouvelle demande <b>#REQ-'+n+'</b> — '+c.short, notif:1, inbox:1},
+    {i:'send',au:1, t:'Accusé de réception envoyé en <b>38 s</b>'},
+    {i:'ok',  au:0, t:'Qualification — <b>score '+c.score+'</b> · prioritaire', notif:1},
+    {i:'user',au:0, t:'Fiche client <b>#CLI-'+(n-3905)+'</b> créée'},
+    {i:'cal', au:0, t:'<b>3 créneaux</b> de visite proposés'},
+    {i:'eur', au:1, t:c.prime==='—'?'Intervention <b>planifiée en priorité</b>':'<b>'+c.prime+'</b> calculé — intégré au devis'},
+    {i:'doc', au:0, t:'Devis <b>#DV-'+(n-3009)+'</b> envoyé · suivi d\'ouverture', notif:1},
+    {i:'sign',au:1, t:'<b>Devis signé</b> — chantier confirmé', notif:1}
+  ];}
+  var ci=0,st=story(seq,CASES[0]),k=0;
+  function push(ev){
+    var d=document.createElement('div');
+    d.className='ev'+(ev.au?' au':'');
+    d.innerHTML='<span class="ic">'+ICONS[ev.i]+'</span><span>'+ev.t+'</span><span class="w">à l\'instant</span>';
+    feed.prepend(d);
+    var olds=feed.querySelectorAll('.ev .w');
+    for(var j=1;j<olds.length;j++){olds[j].textContent='il y a '+(j*2)+' s';}
+    while(feed.children.length>5)feed.removeChild(feed.lastChild);
+    if(ev.notif){notif++;bell.textContent=notif>9?'9+':notif;}
+    if(ev.inbox){
+      var c=CASES[ci];
+      var rq=document.createElement('div');rq.className='rq hot';
+      rq.innerHTML='<div class="t1"><span class="new">NOUVEAU</span><span class="id">#REQ-'+seq+'</span><span class="tm">'+new Date().toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'})+'</span></div><div class="su">'+c.su+'</div><div class="tg">'+c.tags.map(function(tg,i3){return '<span class="tagc'+(i3===0?' au':'')+'">'+tg+'</span>';}).join('')+'</div>';
+      inbox.prepend(rq);
+      while(inbox.children.length>3)inbox.removeChild(inbox.lastChild);
+      inboxN.textContent=String(Math.min(9,parseInt(inboxN.textContent||'2',10)+1));
+      inboxSub.textContent='nouvelle demande à l\'instant';
+      inbox.querySelectorAll('.rq').forEach(function(x,i2){
+        if(i2>0){x.classList.remove('hot');var nb=x.querySelector('.new');if(nb)nb.remove();var tmEl=x.querySelector('.tm');if(tmEl)tmEl.classList.add('old');}
+      });
+    }
+    if(ev.i==='sign'){setTimeout(function(){seq++;ci=(ci+1)%CASES.length;st=story(seq,CASES[ci]);k=0;},2400);}
+  }
+  function loop(){
+    if(k<st.length){push(st[k]);k++;}
+    setTimeout(loop, reduced?4000:2300);
+  }
+  setTimeout(loop,700);
+})();
+
+/* ── scrollytelling : fenêtre épinglée ── */
+(function(){
+  var steps=document.querySelectorAll('.sstep'),pans=document.querySelectorAll('.pan'),tag=document.getElementById('frameTag');
+  if(!steps.length)return;
+  var labels=['Boîte · 08:12','Qualification · 08:13','Fiche client · 08:15','Relances · 08:16','Devis · 08:18','Signé · 08:22'];
+  var obs=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(e.isIntersecting){
+        var i=+e.target.getAttribute('data-p');
+        steps.forEach(function(s){s.classList.toggle('on',s===e.target);});
+        pans.forEach(function(p){p.classList.toggle('on',+p.getAttribute('data-i')===i);});
+        if(tag)tag.textContent=labels[i];
+      }
+    });
+  },{rootMargin:'-42% 0px -42% 0px',threshold:0});
+  steps.forEach(function(s){obs.observe(s);});
+})();
+
+/* ── onglets produit ── */
+(function(){
+  var tabs=document.getElementById('tabs');if(!tabs)return;
+  tabs.addEventListener('click',function(e){
+    var b=e.target.closest('button');if(!b)return;
+    tabs.querySelectorAll('button').forEach(function(x){x.classList.toggle('on',x===b);});
+    var t=b.getAttribute('data-t');
+    document.querySelectorAll('.tpan').forEach(function(p){p.classList.toggle('on',p.getAttribute('data-p')===t);});
+  });
+})();
+
+/* ── ROI toggle ── */
+(function(){
+  var tog=document.querySelector('.tog'),stage=document.getElementById('roiStage');if(!tog)return;
+  tog.addEventListener('click',function(e){
+    var b=e.target.closest('button');if(!b)return;
+    tog.querySelectorAll('button').forEach(function(x){x.classList.toggle('on',x===b);});
+    var m=b.getAttribute('data-m');
+    stage.classList.toggle('sans',m==='sans');
+    stage.classList.toggle('avec',m==='avec');
+  });
+})();
+</script>
+</body>
+</html>

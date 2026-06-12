@@ -12,6 +12,7 @@ const HIDDEN_PREFIXES = [
   "/admin",
   "/equipement",
   "/devis/officiel",
+  "/estimation",
 ];
 
 export function PublicShell({ children }: { children: React.ReactNode }) {

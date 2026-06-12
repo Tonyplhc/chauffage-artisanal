@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Démonstrateur VΛIN — Électricien</title>
+<meta name="description" content="Démonstrateur VΛIN STUDIO : à quoi ressemblerait la présence en ligne d'un électricien, propulsée par DevisPilot. Marque fictive à des fins de démonstration." />
+<meta name="robots" content="noindex, follow" />
+<meta name="theme-color" content="#050505" />
+<link rel="canonical" href="https://vainstudio.lu/demonstrateur-electricien.html" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Démonstrateur VΛIN — Électricien" />
+<meta property="og:description" content="À quoi ressemblerait votre présence d'électricien, propulsée par DevisPilot. Démonstrateur VΛIN STUDIO." />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23050505'/%3E%3Ctext x='50' y='68' font-family='Space Grotesk,Arial' font-size='58' font-weight='700' fill='%23D4AF37' text-anchor='middle'%3E%CE%9B%3C/text%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --bg:#050505;--bg-2:#0B0B0B;--bg-3:#0e0e0f;
+  --white:#FFFFFF;--muted:rgba(255,255,255,.60);--muted-2:rgba(255,255,255,.42);
+  --gold:#D4AF37;--gold-2:#F4E7BE;
+  --glass:rgba(255,255,255,0.05);--border:rgba(255,255,255,0.08);--border-strong:rgba(255,255,255,0.14);
+  --ease:cubic-bezier(.16,1,.3,1);
+  --display:'Space Grotesk','Inter',sans-serif;--body:'Inter',sans-serif;--mono:'JetBrains Mono',monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--white);font-family:var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden;line-height:1.55}
+::selection{background:var(--gold);color:#050505}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1160px;margin:0 auto;padding:0 32px}
+.mono{font-family:var(--mono);letter-spacing:.04em}
+.gold{color:var(--gold)}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);display:inline-flex;align-items:center;gap:12px}
+.eyebrow::before{content:"";width:24px;height:1px;background:var(--gold);opacity:.7}
+.btn{display:inline-flex;align-items:center;gap:11px;font-weight:600;font-size:15px;padding:15px 26px;border-radius:10px;transition:.4s var(--ease);cursor:pointer}
+.btn-gold{background:var(--gold);color:#050505}.btn-gold:hover{transform:translateY(-2px);box-shadow:0 16px 50px -14px rgba(212,175,55,.5)}
+.btn-ghost{border:1px solid var(--border-strong);background:var(--glass);color:var(--white)}.btn-ghost:hover{border-color:var(--white)}
+.arrow{transition:.4s var(--ease)}.btn:hover .arrow{transform:translateX(4px)}
+.reveal{opacity:0;transform:translateY(26px);transition:.9s var(--ease)}.reveal.in{opacity:1;transform:none}
+.d1{transition-delay:.07s}.d2{transition-delay:.14s}.d3{transition-delay:.21s}.d4{transition-delay:.28s}
+h1,h2,h3{font-family:var(--display);font-weight:600;letter-spacing:-.02em;line-height:1.04}
+section{position:relative}
+
+/* DEMO BAR */
+.demobar{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(8,8,9,.9);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.demobar .in{max-width:1160px;margin:0 auto;padding:10px 32px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.demobar .l{display:flex;align-items:center;gap:12px;font-size:12.5px;color:var(--muted)}
+.demobar .tag{font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:#050505;background:var(--gold);padding:4px 9px;border-radius:5px;font-weight:600}
+.demobar .l b{color:var(--white);font-weight:600}
+.demobar a{font-size:12.5px;color:var(--gold);display:flex;align-items:center;gap:7px;flex:none}
+@media(max-width:680px){.demobar .l .txt{display:none}.demobar .in{padding:9px 18px}}
+
+/* SITE NAV (métier) */
+.snav{position:fixed;top:41px;left:0;right:0;z-index:980;display:flex;align-items:center;justify-content:space-between;padding:18px 40px;transition:.4s var(--ease)}
+.snav.scrolled{background:rgba(5,5,5,.8);backdrop-filter:blur(18px);border-bottom:1px solid var(--border);padding:13px 40px}
+.sbrand{display:flex;align-items:center;gap:11px;font-family:var(--display);font-weight:700;font-size:20px;letter-spacing:.02em}
+.sbrand .mark{width:30px;height:30px;border-radius:8px;background:linear-gradient(135deg,var(--gold),#b8932e);display:flex;align-items:center;justify-content:center;color:#050505}
+.sbrand b{color:var(--gold)}
+.snav-links{display:flex;gap:30px;font-size:13.5px;color:var(--muted)}
+.snav-links a:hover{color:var(--white)}
+.snav .phone{font-family:var(--display);font-weight:600;font-size:15px;display:flex;align-items:center;gap:8px}
+.snav .phone svg{stroke:var(--gold)}
+@media(max-width:820px){.snav-links{display:none}.snav{padding:14px 20px;top:38px}}
+
+/* HERO */
+#hero{min-height:96vh;display:flex;align-items:center;padding-top:130px;overflow:hidden}
+.hero-grid{position:absolute;inset:0;z-index:0;pointer-events:none;background:linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px) 0 0/100% 92px,linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px) 0 0/92px 100%;mask-image:radial-gradient(ellipse 76% 64% at 50% 42%,#000 30%,transparent 80%)}
+.hero-inner{position:relative;z-index:2;max-width:880px}
+.hero-pill{display:inline-flex;align-items:center;gap:9px;border:1px solid var(--border);background:var(--glass);border-radius:100px;padding:7px 15px;font-size:12.5px;color:var(--muted);margin-bottom:28px}
+.hero-pill .d{width:7px;height:7px;border-radius:50%;background:#4ade80;box-shadow:0 0 8px #4ade80}
+#hero h1{font-size:clamp(40px,7vw,92px);line-height:1;letter-spacing:-.035em;font-weight:700}
+#hero h1 .g{color:var(--gold)}
+.hero-sub{max-width:540px;margin-top:26px;font-size:clamp(16px,1.6vw,20px);color:var(--muted);line-height:1.6}
+.hero-actions{display:flex;gap:14px;margin-top:34px;flex-wrap:wrap;align-items:center}
+.hero-feats{display:flex;gap:30px;margin-top:54px;flex-wrap:wrap;border-top:1px solid var(--border);padding-top:28px}
+.hero-feats .hf{display:flex;align-items:center;gap:11px;font-size:14px;color:var(--muted)}
+.hero-feats .hf svg{stroke:var(--gold);flex:none}
+
+/* SERVICES */
+.section-pad{padding:130px 0}
+.shead{max-width:680px;margin-bottom:54px}
+.shead.center{margin:0 auto 54px;text-align:center}
+.shead h2{font-size:clamp(30px,4.4vw,52px);line-height:1.06;margin-top:18px}.shead h2 b{color:var(--gold)}
+.shead p{font-size:17px;color:var(--muted);margin-top:18px;line-height:1.6}
+.serv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+@media(max-width:860px){.serv-grid{grid-template-columns:1fr}}
+.serv{border:1px solid var(--border);border-radius:16px;padding:30px;background:var(--bg-2);transition:.4s var(--ease)}
+.serv:hover{border-color:var(--border-strong);transform:translateY(-3px)}
+.serv .ic{width:46px;height:46px;border-radius:12px;border:1px solid var(--border-strong);background:var(--glass);display:flex;align-items:center;justify-content:center;color:var(--gold);margin-bottom:20px}
+.serv h3{font-size:19px;font-weight:600;margin-bottom:10px}
+.serv p{font-size:14px;color:var(--muted);line-height:1.6}
+.serv .lnk{margin-top:16px;font-size:13px;color:var(--gold);display:flex;align-items:center;gap:7px}
+
+/* URGENCE band */
+.urg{border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--bg-2)}
+.urg .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;padding:34px 0}
+.urg .l{display:flex;align-items:center;gap:18px}
+.urg .l .ic{width:52px;height:52px;border-radius:14px;background:rgba(212,175,55,.1);display:flex;align-items:center;justify-content:center;color:var(--gold);flex:none}
+.urg .l h3{font-size:22px;font-weight:600}
+.urg .l p{font-size:14px;color:var(--muted);margin-top:4px}
+
+/* DEVISPILOT embed */
+#dp{background:var(--bg-2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.dp-split{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+@media(max-width:900px){.dp-split{grid-template-columns:1fr;gap:40px}}
+.dp-split h2{font-size:clamp(28px,3.6vw,44px);line-height:1.08;margin-top:18px}.dp-split h2 b{color:var(--gold)}
+.dp-split p{font-size:16px;color:var(--muted);line-height:1.7;margin-top:18px}
+.dp-list{margin-top:24px;display:flex;flex-direction:column;gap:13px}
+.dp-list .it{display:flex;align-items:flex-start;gap:11px;font-size:14.5px;color:rgba(255,255,255,.84)}
+.dp-list .it svg{flex:none;margin-top:3px;stroke:var(--gold)}
+.phone-mock{justify-self:center;width:300px;max-width:100%;border:1px solid var(--border-strong);border-radius:30px;background:#0a0a0c;padding:14px;box-shadow:0 50px 100px -40px rgba(0,0,0,.8)}
+.phone-mock .scr{border:1px solid var(--border);border-radius:20px;overflow:hidden;background:var(--bg-3)}
+.pm-top{padding:14px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.pm-top .t{font-family:var(--display);font-weight:600;font-size:14px}.pm-top .t b{color:var(--gold)}
+.pm-top .live{font-family:var(--mono);font-size:9px;color:#4ade80}
+.pm-body{padding:16px}
+.pm-card{border:1px solid var(--border);border-radius:12px;padding:13px;margin-bottom:10px;background:#101013}
+.pm-card .h{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.pm-card .h .n{font-size:13px;font-weight:600}
+.pm-card .h .st{font-family:var(--mono);font-size:9px;color:var(--gold);border:1px solid var(--border);border-radius:5px;padding:3px 7px}
+.pm-card p{font-size:11.5px;color:var(--muted);line-height:1.45}
+.pm-auto{font-family:var(--mono);font-size:10px;color:var(--muted-2);display:flex;align-items:center;gap:8px;padding:9px 0;border-top:1px solid var(--border)}
+.pm-auto svg{stroke:var(--gold);flex:none}
+
+/* PRIMES */
+.primes{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;align-items:center}
+@media(max-width:860px){.primes{grid-template-columns:1fr}}
+.prime-card{border:1px solid var(--border);border-radius:16px;background:var(--bg-2);overflow:hidden}
+.prime-card .ph{padding:18px 22px;border-bottom:1px solid var(--border);font-family:var(--mono);font-size:11px;color:var(--muted-2);letter-spacing:.1em}
+.prime-card .pb{padding:22px}
+.qline{display:flex;justify-content:space-between;padding:11px 0;border-bottom:1px solid var(--border);font-size:14px}
+.qline .lab{color:var(--muted)}
+.qline.tot{border-bottom:none;border-top:1px solid var(--border-strong);margin-top:6px;padding-top:14px;font-weight:600;font-size:16px}
+.qline .pr{color:var(--gold)}
+
+/* CONVERT CTA (VΛIN) */
+#convert{background:#020202;border-top:1px solid var(--border);overflow:hidden;padding:120px 0}
+.cv-shell{border:1px solid var(--border-strong);border-radius:20px;background:linear-gradient(180deg,#0d0d0f,#08080a);padding:60px 44px;text-align:center;position:relative;overflow:hidden}
+.cv-glow{position:absolute;top:-40%;left:50%;transform:translateX(-50%);width:680px;height:680px;border-radius:50%;background:radial-gradient(circle,rgba(212,175,55,.08),transparent 62%);pointer-events:none}
+.cv-shell .in{position:relative;z-index:2}
+.cv-shell .eyebrow{justify-content:center;display:inline-flex;margin-bottom:22px}
+.cv-shell h2{font-size:clamp(28px,4.2vw,50px);line-height:1.05}.cv-shell h2 b{color:var(--gold)}
+.cv-shell p{font-size:17px;color:var(--muted);max-width:540px;margin:18px auto 0;line-height:1.6}
+.cv-shell .acts{margin-top:32px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.cv-shell .meta{margin-top:22px;font-family:var(--mono);font-size:12px;color:var(--muted-2);display:flex;gap:20px;justify-content:center;flex-wrap:wrap}
+.cv-shell .meta .g{color:var(--gold)}
+
+footer{background:#020202;border-top:1px solid var(--border);padding:40px 0;text-align:center}
+footer .f1{font-family:var(--display);font-weight:700;font-size:18px;letter-spacing:.02em;margin-bottom:8px}
+footer .f1 b{color:var(--gold)}
+footer p{font-family:var(--mono);font-size:11px;color:var(--muted-2)}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<!-- DEMO BAR -->
+<div class="demobar">
+  <div class="in">
+    <div class="l"><span class="tag">DÉMO VΛIN</span> <span class="txt">Projection d'une présence <b>Électricien</b> propulsée par DevisPilot</span></div>
+    <a href="index.html"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M11 18l-6-6 6-6"/></svg> Retour VΛIN</a>
+  </div>
+</div>
+
+<!-- SITE NAV -->
+<nav class="snav" id="snav">
+  <div class="sbrand"><span class="mark"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h7l-1 8 10-12h-7z"/></svg></span>VOLT<b>&</b>FILS</div>
+  <div class="snav-links"><a href="#services">Services</a><a href="#dp">Devis express</a><a href="#primes">Aides & primes</a><a href="#convert">Contact</a></div>
+  <div class="phone"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg> +352 XX XX XX XX</div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-grid"></div>
+  <div class="wrap hero-inner">
+    <div class="hero-pill reveal in"><span class="d"></span> Électricien certifié · Luxembourg & Grande Région</div>
+    <h1 class="reveal in d1">Votre électricien, <span class="g">disponible</span> et réactif.</h1>
+    <p class="hero-sub reveal in d2">Dépannage, mise aux normes, tableaux électriques et bornes de recharge. Devis clair en 2 minutes, intervention rapide, primes calculées pour vous.</p>
+    <div class="hero-actions reveal in d3">
+      <a href="#dp" class="btn btn-gold">Obtenir mon devis <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a href="#services" class="btn btn-ghost">Nos services</a>
+    </div>
+    <div class="hero-feats reveal in d4">
+      <div class="hf"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M20 6L9 17l-5-5"/></svg> Intervention sous 24 h</div>
+      <div class="hf"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M20 6L9 17l-5-5"/></svg> Devis gratuit & transparent</div>
+      <div class="hf"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M20 6L9 17l-5-5"/></svg> Garantie décennale</div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="section-pad">
+  <div class="wrap">
+    <div class="shead reveal">
+      <span class="eyebrow">NOS SERVICES</span>
+      <h2>Tout le courant, <b>maîtrisé.</b></h2>
+      <p>Du dépannage d'urgence à la borne de recharge, une équipe certifiée pour chaque besoin électrique — particuliers et professionnels.</p>
+    </div>
+    <div class="serv-grid">
+      <div class="serv reveal d1"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M13 2L3 14h7l-1 8 10-12h-7z"/></svg></div><h3>Dépannage urgent</h3><p>Panne, court-circuit, coupure : intervention rapide, 7j/7, partout sur la Grande Région.</p><div class="lnk">En savoir plus <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div>
+      <div class="serv reveal d2"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h3"/></svg></div><h3>Tableaux & mise aux normes</h3><p>Rénovation de tableau, conformité, sécurité. Votre installation aux dernières normes.</p><div class="lnk">En savoir plus <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div>
+      <div class="serv reveal d3"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M9 6h6M12 18v.01"/></svg></div><h3>Bornes de recharge</h3><p>Installation de bornes IRVE pour véhicules électriques, aides à la clé.</p><div class="lnk">En savoir plus <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div>
+      <div class="serv reveal d1"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg></div><h3>Éclairage & domotique</h3><p>Éclairage LED, pilotage intelligent, économies d'énergie et confort.</p><div class="lnk">En savoir plus <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div>
+      <div class="serv reveal d2"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 21h18M5 21V7l8-4 8 4v14"/></svg></div><h3>Locaux professionnels</h3><p>Bureaux, commerces, ateliers : installations sur mesure et maintenance.</p><div class="lnk">En savoir plus <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div>
+      <div class="serv reveal d3"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><h3>Contrats d'entretien</h3><p>Maintenance préventive et contrôles réguliers pour ne jamais subir de panne.</p><div class="lnk">En savoir plus <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- URGENCE -->
+<section class="urg">
+  <div class="wrap">
+    <div class="l">
+      <div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M13 2L3 14h7l-1 8 10-12h-7z"/></svg></div>
+      <div><h3>Une panne électrique ?</h3><p>Décrivez votre problème : on vous rappelle et on planifie l'intervention.</p></div>
+    </div>
+    <a href="#dp" class="btn btn-gold">Demander une intervention <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+  </div>
+</section>
+
+<!-- DEVISPILOT -->
+<section id="dp" class="section-pad">
+  <div class="wrap dp-split">
+    <div class="reveal">
+      <span class="eyebrow">DEVIS EXPRESS · PROPULSÉ PAR DEVISPILOT</span>
+      <h2>Votre demande ne tombe <b>jamais dans le vide.</b></h2>
+      <p>Vous décrivez votre besoin en 2 minutes. Le système confirme aussitôt la réception, qualifie l'urgence, et un électricien vous rappelle — même si vous écrivez à 22 h.</p>
+      <div class="dp-list">
+        <div class="it"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M20 6L9 17l-5-5"/></svg> Confirmation immédiate de votre demande</div>
+        <div class="it"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M20 6L9 17l-5-5"/></svg> Urgence détectée et priorisée automatiquement</div>
+        <div class="it"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M20 6L9 17l-5-5"/></svg> Rappel et devis sans relancer dix fois</div>
+      </div>
+    </div>
+    <div class="phone-mock reveal d2">
+      <div class="scr">
+        <div class="pm-top"><div class="t">VOLT<b>&</b>FILS</div><div class="live">● EN LIGNE</div></div>
+        <div class="pm-body">
+          <div class="pm-card"><div class="h"><span class="n">Votre demande</span><span class="st">reçue · 22 h 06</span></div><p>« Tableau qui disjoncte sans arrêt depuis ce soir, maison à Differdange. »</p></div>
+          <div class="pm-auto"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg> Accusé envoyé en 41 secondes</div>
+          <div class="pm-auto"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M13 2L3 14h7l-1 8 10-12h-7z"/></svg> Urgence détectée · priorité haute</div>
+          <div class="pm-auto"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> Rappel programmé demain · 8 h 00</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRIMES -->
+<section id="primes" class="section-pad" style="background:var(--bg-2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+  <div class="wrap">
+    <div class="shead center reveal">
+      <span class="eyebrow" style="justify-content:center;display:inline-flex">AIDES & PRIMES</span>
+      <h2>La prime est <b>déjà déduite</b> de votre devis.</h2>
+      <p>Borne de recharge, rénovation électrique : nous calculons les aides du Luxembourg et vous montrons le vrai reste à charge.</p>
+    </div>
+    <div class="primes">
+      <div class="prime-card reveal d1">
+        <div class="ph">DEVIS · BORNE DE RECHARGE 11 KW</div>
+        <div class="pb">
+          <div class="qline"><span class="lab">Borne + installation</span><span>1 690 €</span></div>
+          <div class="qline"><span class="lab">Mise en service & câblage</span><span>420 €</span></div>
+          <div class="qline"><span class="lab pr">Aide bornes déduite</span><span class="pr">− 750 €</span></div>
+          <div class="qline tot"><span>Reste à charge</span><span>1 360 €</span></div>
+        </div>
+      </div>
+      <div class="reveal d2">
+        <div class="dp-list">
+          <div class="it"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M20 6L9 17l-5-5"/></svg> Aides bornes IRVE & rénovation énergétique</div>
+          <div class="it"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M20 6L9 17l-5-5"/></svg> Montants à jour, calculés automatiquement</div>
+          <div class="it"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M20 6L9 17l-5-5"/></svg> Aucune démarche compliquée pour vous</div>
+        </div>
+        <a href="#dp" class="btn btn-gold" style="margin-top:26px">Estimer mon projet <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONVERT (VΛIN) -->
+<section id="convert">
+  <div class="wrap">
+    <div class="cv-shell reveal">
+      <div class="cv-glow"></div>
+      <div class="in">
+        <span class="eyebrow">VOUS ÊTES ÉLECTRICIEN ?</span>
+        <h2>Ceci pourrait être <b>votre entreprise.</b></h2>
+        <p>Cette page est un démonstrateur VΛIN. Imaginez la même présence, avec DevisPilot, à votre nom — captant les demandes que vous perdez aujourd'hui. Recevez votre feuille de route pour y arriver.</p>
+        <div class="acts">
+          <a href="index.html#audit" class="btn btn-gold">Recevoir ma feuille de route <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a href="devispilot.html" class="btn btn-ghost">Voir DevisPilot</a>
+        </div>
+        <div class="meta"><span><span class="g">●</span> Livrée sous 48 h</span><span>Sans engagement</span><span>Spécifique à votre métier</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="f1">V<b>Λ</b>IN STUDIO — Démonstrateur Électricien</div>
+  <p>VOLT & FILS est une marque fictive créée à des fins de démonstration. © 2026 VΛIN STUDIO</p>
+</footer>
+
+<script>
+window.addEventListener('scroll',function(){document.getElementById('snav').classList.toggle('scrolled',window.scrollY>30);});
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12});
+document.querySelectorAll('.reveal:not(.in)').forEach(function(el){io.observe(el);});
+</script>
+</body>
+</html>

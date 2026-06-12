@@ -8,7 +8,9 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/admin", "/api/admin"],
+        // Espaces privés / tokenisés : hors index (admin, portail client,
+        // portail équipement, devis officiels à lien signé)
+        disallow: ["/admin", "/api/", "/espace/", "/equipement/", "/devis/officiel/"],
       },
     ],
     sitemap: `${BASE}/sitemap.xml`,

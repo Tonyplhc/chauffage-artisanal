@@ -42,11 +42,40 @@ const config: Config = {
         anthracite: "#EDE5D3",
         steel: "#DDD3BE",
         bone: "#2A251E",
+
+        // ════════════════════════════════════════════════════════════════
+        // Design System v2 — identité « logo historique » Chauffage Artisanal
+        // Bleu cobalt + rouge brique (du logo réel). Base chaude crème/sable.
+        // Brique = ACCENT · Terracotta = URGENCE. Voir lib/brand.ts.
+        // (copper/ember/charcoal ci-dessus = legacy, retirés après migration.)
+        // ════════════════════════════════════════════════════════════════
+        creme: "#F7F2E9", // fond principal (base dominante)
+        sable: "#EFE7D8", // surfaces / cards
+        pierre: "#E0D5C2", // bordures / séparateurs
+        brun: "#5A4636", // tertiaire chaud
+        anthra: "#2A2724", // texte principal (anthracite)
+        taupe: "#6E675C", // texte secondaire (gris pierre)
+        bleu: "#0B57A0", // PRIMAIRE — structure & confiance
+        navy: "#0A3D6E", // bleu profond — sections fortes / B2B / footer
+        bleuvif: "#2C7BD0", // liens / hover / accent sur navy
+        voile: "#E8F0F8", // fonds bleutés doux
+        brique: "#A2131A", // ACCENT signature (parcimonie)
+        terracotta: "#C24A2C", // URGENCE / dépannage uniquement
+
+        // ── DONNÉES FINANCIÈRES uniquement (simulateur / pré-devis) ──
+        // Vert = gain / bénéfice · Rouge = coût / perte. JAMAIS dans le
+        // design de marque (titres, nav, CTA, sections génériques).
+        gain: "#2E7D5A",
+        gainBg: "#E7F2EC",
+        perte: "#C0392B",
+        perteBg: "#FBEBE8",
       },
       fontFamily: {
         display: ["var(--font-display)", "Georgia", "serif"],
         sans: ["var(--font-sans)", "ui-sans-serif", "system-ui"],
         mono: ["var(--font-mono)", "ui-monospace", "monospace"],
+        // Interface & corps du design system v2 (police historique Montserrat).
+        ui: ["var(--font-ui)", "Montserrat", "ui-sans-serif", "system-ui"],
       },
       letterSpacing: {
         tightest: "-0.04em",

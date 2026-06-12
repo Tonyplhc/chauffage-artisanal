@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Estimateur immersif — Chauffage Artisanal</title>
+<meta name="robots" content="noindex,nofollow" />
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..600&family=Montserrat:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<script>
+  tailwind.config = { theme: { extend: {
+    colors:{ creme:"#FBF8F2", pierre:"#E0D5C2", ink:"#2A2724", anthra:"#2A2724",
+      taupe:"#6E675C", muted:"#9A9184", bleu:"#0A4E8C", navy:"#0A3360",
+      perte:"#C0392B", perteBg:"#FBEBE8", gain:"#2E7D5A", gainBg:"#E7F2EC", gainDeep:"#215C42" },
+    fontFamily:{ display:['Fraunces','serif'], sans:['Montserrat','sans-serif'], mono:['JetBrains Mono','monospace'] },
+    letterSpacing:{ eyebrow:'0.22em', tightest:'-0.04em' },
+  }}};
+</script>
+<style>
+  html,body{height:100%}
+  body{font-family:Montserrat,sans-serif;background:#FBF8F2;color:#2A2724;margin:0}
+  .screen{display:none;animation:fade .5s cubic-bezier(.22,1,.36,1)}
+  .screen.active{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+  @keyframes pop{0%{transform:scale(.96);opacity:0}100%{transform:scale(1);opacity:1}}
+  .pop{animation:pop .6s cubic-bezier(.22,1,.36,1) both}
+  .choice{transition:all .2s}
+  .choice:hover{border-color:#0A4E8C;transform:translateY(-2px)}
+  input[type=range]{-webkit-appearance:none;height:6px;border-radius:999px;background:#E0D5C2;outline:none}
+  input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;height:28px;width:28px;border-radius:999px;background:#0A4E8C;border:4px solid #fff;box-shadow:0 2px 8px rgba(10,51,96,.35);cursor:pointer}
+  .ph{background-size:cover;background-position:center}
+</style>
+</head>
+<body>
+<div class="min-h-screen flex flex-col">
+
+  <!-- Barre de progression -->
+  <div id="progressWrap" class="sticky top-0 z-10 bg-creme/90 backdrop-blur border-b border-pierre" style="display:none">
+    <div class="max-w-3xl mx-auto px-5 h-14 flex items-center gap-4">
+      <div class="flex items-center gap-2 shrink-0">
+        <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none"><path d="M4 11l8-6 8 6v8a1 1 0 0 1-1 1h-4v-5h-6v5H5a1 1 0 0 1-1-1z" fill="#0A4E8C"/><path d="M14 20v-5h2v5z" fill="#A2131A"/></svg>
+        <span class="font-display text-sm tracking-tightest text-anthra hidden sm:block">Chauffage Artisanal</span>
+      </div>
+      <div class="flex-1 h-1.5 rounded-full bg-pierre overflow-hidden">
+        <div id="bar" class="h-full bg-bleu transition-all duration-500" style="width:0%"></div>
+      </div>
+      <button onclick="restart()" class="text-xs text-muted hover:text-anthra shrink-0">Recommencer</button>
+    </div>
+  </div>
+
+  <main class="flex-1">
+
+    <!-- ░ HERO ░ -->
+    <section id="s-hero" class="screen active">
+      <div class="relative overflow-hidden">
+        <div class="ph absolute inset-0" style="background-image:url('https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&w=1600')"></div>
+        <div class="absolute inset-0" style="background:linear-gradient(105deg,#FBF8F2 0%,#FBF8F2 46%,rgba(251,248,242,.7) 60%,rgba(251,248,242,.1) 100%)"></div>
+        <div class="relative max-w-6xl mx-auto px-5 py-16 lg:py-24">
+          <div class="max-w-xl">
+            <div class="font-mono text-[11px] uppercase tracking-eyebrow text-bleu">Estimation gratuite · 60 secondes</div>
+            <h1 class="mt-5 font-display text-[2.6rem] sm:text-6xl leading-[1.02] tracking-tightest text-anthra">
+              Vous chauffez au <span class="text-perte">mazout</span> ?
+              Voyez ce que vous <span class="text-gain">récupérez</span>.
+            </h1>
+            <p class="mt-6 text-lg text-taupe max-w-md">
+              En 60 secondes, découvrez votre économie, vos aides et votre gain sur 10 ans en passant à une pompe à chaleur — sur votre vraie facture.
+            </p>
+            <button onclick="go('s-commune')" class="mt-8 group inline-flex items-center justify-center gap-2 rounded-full bg-bleu text-creme px-8 py-4 text-base font-semibold hover:bg-navy transition shadow-lg shadow-navy/20">
+              Démarrer mon estimation <span class="group-hover:translate-x-1 transition-transform">→</span>
+            </button>
+            <div class="mt-4 flex items-center gap-4 text-xs text-muted">
+              <span>✓ Gratuit</span><span>✓ Sans engagement</span><span>✓ Aides comprises</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ░ ÉTAPE 1 — COMMUNE ░ -->
+    <section id="s-commune" class="screen">
+      <div class="max-w-2xl mx-auto px-5 py-14 lg:py-20">
+        <div class="font-mono text-[10px] uppercase tracking-eyebrow text-taupe">Étape 1 / 3</div>
+        <h2 class="mt-3 font-display text-4xl lg:text-5xl tracking-tightest text-anthra">Où se situe votre logement ?</h2>
+        <p class="mt-3 text-taupe">On vérifie les aides disponibles dans votre commune.</p>
+        <select id="commune" class="mt-8 w-full rounded-2xl border border-pierre bg-white px-5 py-4 text-lg text-anthra focus:border-bleu outline-none">
+          <option value="Luxembourg" selected>Luxembourg-Ville</option>
+          <option>Beaufort</option><option>Bech</option><option>Beckerich</option><option>Berdorf</option>
+          <option>Bertrange</option><option>Bettembourg</option><option>Bettendorf</option><option>Betzdorf</option>
+          <option>Bissen</option><option>Biwer</option><option>Boulaide</option><option>Bourscheid</option>
+          <option>Bous-Waldbredimus</option><option>Clervaux</option><option>Colmar-Berg</option><option>Consdorf</option>
+          <option>Contern</option><option>Dalheim</option><option>Diekirch</option><option>Differdange</option>
+          <option>Dippach</option><option>Dudelange</option><option>Echternach</option><option>Ell</option>
+          <option>Erpeldange-sur-Sûre</option><option>Esch-sur-Alzette</option><option>Esch-sur-Sûre</option><option>Ettelbruck</option>
+          <option>Feulen</option><option>Fischbach</option><option>Flaxweiler</option><option>Frisange</option>
+          <option>Garnich</option><option>Goesdorf</option><option>Grevenmacher</option><option>Grosbous</option>
+          <option>Heffingen</option><option>Helperknapp</option><option>Hesperange</option><option>Junglinster</option>
+          <option>Käerjeng</option><option>Kayl</option><option>Kehlen</option><option>Kiischpelt</option>
+          <option>Koerich</option><option>Kopstal</option><option>Larochette</option><option>Lenningen</option>
+          <option>Leudelange</option><option>Lintgen</option><option>Lorentzweiler</option><option>Mamer</option>
+          <option>Manternach</option><option>Mersch</option><option>Mertert</option><option>Mertzig</option>
+          <option>Mondercange</option><option>Mondorf-les-Bains</option><option>Niederanven</option><option>Nommern</option>
+          <option>Parc Hosingen</option><option>Pétange</option><option>Préizerdaul</option><option>Putscheid</option>
+          <option>Rambrouch</option><option>Reckange-sur-Mess</option><option>Redange-sur-Attert</option><option>Reisdorf</option>
+          <option>Remich</option><option>Roeser</option><option>Rosport-Mompach</option><option>Rumelange</option>
+          <option>Saeul</option><option>Sandweiler</option><option>Sanem</option><option>Schengen</option>
+          <option>Schieren</option><option>Schifflange</option><option>Schuttrange</option><option>Stadtbredimus</option>
+          <option>Steinfort</option><option>Steinsel</option><option>Strassen</option><option>Tandel</option>
+          <option>Troisvierges</option><option>Useldange</option><option>Vallée de l'Ernz</option><option>Vianden</option>
+          <option>Vichten</option><option>Wahl</option><option>Waldbillig</option><option>Walferdange</option>
+          <option>Weiler-la-Tour</option><option>Weiswampach</option><option>Wiltz</option><option>Wincrange</option>
+          <option>Winseler</option><option>Wormeldange</option>
+          <option value="Autre">Autre commune</option>
+        </select>
+        <button onclick="go('s-logement')" class="mt-8 inline-flex items-center gap-2 rounded-full bg-bleu text-creme px-7 py-3.5 text-sm font-semibold hover:bg-navy transition">Continuer →</button>
+      </div>
+    </section>
+
+    <!-- ░ ÉTAPE 2 — LOGEMENT (détermine le forfait Klimabonus) ░ -->
+    <section id="s-logement" class="screen">
+      <div class="max-w-2xl mx-auto px-5 py-14 lg:py-20">
+        <div class="font-mono text-[10px] uppercase tracking-eyebrow text-taupe">Étape 2 / 4</div>
+        <h2 class="mt-3 font-display text-4xl lg:text-5xl tracking-tightest text-anthra">Votre logement, c'est…</h2>
+        <p class="mt-3 text-taupe">Le montant exact des aides Klimabonus en dépend.</p>
+        <div class="mt-8 grid sm:grid-cols-2 gap-3">
+          <button onclick="pickLogement('maison')" class="choice text-left rounded-2xl border border-pierre bg-white p-5 hover:shadow-lg">
+            <div class="font-display text-2xl text-anthra">Maison</div>
+            <div class="text-sm text-taupe mt-1">Logement unifamilial</div>
+          </button>
+          <button onclick="pickLogement('appartement')" class="choice text-left rounded-2xl border border-pierre bg-white p-5 hover:shadow-lg">
+            <div class="font-display text-2xl text-anthra">Appartement</div>
+            <div class="text-sm text-taupe mt-1">Logement collectif</div>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ░ ÉTAPE 3 — CHAUFFAGE ░ -->
+    <section id="s-chauffage" class="screen">
+      <div class="max-w-2xl mx-auto px-5 py-14 lg:py-20">
+        <div class="font-mono text-[10px] uppercase tracking-eyebrow text-taupe">Étape 3 / 4</div>
+        <h2 class="mt-3 font-display text-4xl lg:text-5xl tracking-tightest text-anthra">Comment vous chauffez-vous aujourd'hui ?</h2>
+        <div class="mt-8 grid sm:grid-cols-2 gap-3">
+          <button onclick="pickChauffage('Mazout')" class="choice text-left rounded-2xl border border-pierre bg-white p-5 hover:shadow-lg">
+            <div class="font-display text-2xl text-anthra">Mazout</div>
+            <div class="text-sm text-taupe mt-1">Chaudière fioul</div>
+          </button>
+          <button onclick="pickChauffage('Gaz')" class="choice text-left rounded-2xl border border-pierre bg-white p-5 hover:shadow-lg">
+            <div class="font-display text-2xl text-anthra">Gaz</div>
+            <div class="text-sm text-taupe mt-1">Chaudière gaz naturel</div>
+          </button>
+          <button onclick="pickChauffage('Électrique')" class="choice text-left rounded-2xl border border-pierre bg-white p-5 hover:shadow-lg">
+            <div class="font-display text-2xl text-anthra">Électrique</div>
+            <div class="text-sm text-taupe mt-1">Convecteurs / accumulateurs</div>
+          </button>
+          <button onclick="pickChauffage('Autre')" class="choice text-left rounded-2xl border border-pierre bg-white p-5 hover:shadow-lg">
+            <div class="font-display text-2xl text-anthra">Autre</div>
+            <div class="text-sm text-taupe mt-1">Bois, pompe à chaleur…</div>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ░ ÉTAPE 3 — FACTURE ░ -->
+    <section id="s-facture" class="screen">
+      <div class="max-w-2xl mx-auto px-5 py-14 lg:py-20">
+        <div class="font-mono text-[10px] uppercase tracking-eyebrow text-taupe">Étape 4 / 4</div>
+        <h2 class="mt-3 font-display text-4xl lg:text-5xl tracking-tightest text-anthra">Votre facture de chauffage par an ?</h2>
+        <p class="mt-3 text-taupe">Une estimation suffit — glissez le curseur.</p>
+        <div class="mt-10 text-center">
+          <span class="font-display text-6xl lg:text-7xl tracking-tightest text-perte" id="factureVal">3 200</span>
+          <span class="font-display text-3xl text-perte/70"> €/an</span>
+          <div class="text-xs text-muted mt-1">🔴 ce que vous payez aujourd'hui</div>
+        </div>
+        <input id="facture" type="range" min="800" max="6000" step="100" value="3200" class="mt-8 w-full" oninput="document.getElementById('factureVal').textContent=(+this.value).toLocaleString('fr-FR')">
+        <div class="flex justify-between text-xs text-muted mt-2"><span>800 €</span><span>6 000 €</span></div>
+        <button onclick="analyse()" class="mt-10 w-full inline-flex items-center justify-center gap-2 rounded-full bg-bleu text-creme px-7 py-4 text-base font-semibold hover:bg-navy transition shadow-lg shadow-navy/20">
+          Voir mon potentiel →
+        </button>
+      </div>
+    </section>
+
+    <!-- ░ ANALYSE (suspense) ░ -->
+    <section id="s-loading" class="screen">
+      <div class="max-w-2xl mx-auto px-5 py-28 text-center">
+        <div class="inline-block h-12 w-12 rounded-full border-4 border-pierre border-t-bleu animate-spin"></div>
+        <div class="mt-6 font-display text-2xl text-anthra">Nous analysons votre potentiel…</div>
+        <div class="mt-2 text-sm text-taupe">Consommation · aides Luxembourg · dimensionnement</div>
+      </div>
+    </section>
+
+    <!-- ░ RÉSULTAT ░ -->
+    <section id="s-result" class="screen">
+      <div class="max-w-3xl mx-auto px-5 py-12 lg:py-16">
+        <div class="text-center">
+          <div class="font-mono text-[10px] uppercase tracking-eyebrow text-taupe">Votre projet recommandé</div>
+          <h2 class="mt-2 font-display text-3xl lg:text-4xl tracking-tightest text-anthra">Pompe à chaleur air/eau</h2>
+        </div>
+
+        <!-- HÉROS : gain 10 ans -->
+        <div class="mt-7 pop rounded-[28px] bg-gainBg border border-gain/20 px-8 py-10 text-center">
+          <div class="font-mono text-[11px] uppercase tracking-eyebrow text-gainDeep">Vous gagnez sur 10 ans</div>
+          <div class="mt-2 flex items-start justify-center gap-2">
+            <span class="font-display text-3xl text-gain mt-3">+</span>
+            <span id="gain10" class="font-display text-[5rem] lg:text-[7.5rem] leading-[0.85] tracking-tightest text-gain">0</span>
+            <span class="font-display text-4xl text-gain mt-4">€</span>
+          </div>
+          <div class="mt-2 text-sm text-gainDeep/70">en passant à la pompe à chaleur</div>
+        </div>
+
+        <!-- 3 cartes -->
+        <div class="mt-4 grid grid-cols-3 gap-3">
+          <div class="rounded-2xl bg-white border border-pierre p-4 text-center">
+            <div class="font-mono text-[9px] uppercase tracking-eyebrow text-muted">Économie / an</div>
+            <div id="eco" class="mt-1.5 font-display text-2xl lg:text-3xl text-gain tracking-tight">+0 €</div>
+          </div>
+          <button onclick="openAides()" class="rounded-2xl bg-white border border-pierre p-4 text-center hover:border-gain/40 hover:shadow-lg transition group">
+            <div class="font-mono text-[9px] uppercase tracking-eyebrow text-muted">Aides possibles</div>
+            <div id="aides" class="mt-1.5 font-display text-2xl lg:text-3xl text-gain tracking-tight">+0 €</div>
+            <div class="mt-1 text-[10px] text-gain/80 group-hover:text-gain underline underline-offset-2">voir le détail →</div>
+          </button>
+          <div class="rounded-2xl bg-white border border-pierre p-4 text-center">
+            <div class="font-mono text-[9px] uppercase tracking-eyebrow text-muted">Reste à charge</div>
+            <div id="reste" class="mt-1.5 font-display text-2xl lg:text-3xl text-anthra tracking-tight">0 €</div>
+          </div>
+        </div>
+
+        <!-- contraste : coût actuel (petit, rouge) -->
+        <div class="mt-4 flex items-center justify-center gap-2 text-sm">
+          <span class="inline-block h-2 w-2 rounded-full bg-perte"></span>
+          <span class="text-taupe">Aujourd'hui, <strong id="coutActuel" class="text-perte font-semibold">3 200 €/an</strong> <span id="energiePhrase">de mazout partent en fumée</span>.</span>
+        </div>
+        <div class="mt-1 text-center text-xs text-muted">Retour sur investissement ≈ <span id="roi">—</span> ans · + aides communales possibles à <span id="communeLbl">Luxembourg</span></div>
+
+        <!-- CTA -->
+        <div class="mt-8">
+          <button onclick="goCapture()" class="w-full inline-flex items-center justify-center gap-2 rounded-full bg-bleu text-creme px-7 py-4 text-base font-semibold hover:bg-navy transition shadow-lg shadow-navy/20">
+            Recevoir mon étude gratuite <span>→</span>
+          </button>
+          <div class="mt-3 text-center text-xs text-muted">Réponse sous 24 h · sans engagement</div>
+          <div class="mt-1 text-center text-[11px] text-muted/80">Forfaits Klimabonus 2026 vérifiés sur guichet.public.lu · prix énergie LU · SCOP 3,5. Aide soumise à un système basse température (≤ 35 °C) et à un accord de principe avant devis — montant exact confirmé lors de l'étude.</div>
+        </div>
+        <div class="mt-5 text-center">
+          <button onclick="restart()" class="text-xs text-muted hover:text-anthra underline underline-offset-2">← Recommencer l'estimation</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ░ CAPTURE — prise de rendez-vous (le moment qui crée le projet) ░ -->
+    <section id="s-capture" class="screen">
+      <div class="max-w-xl mx-auto px-5 py-12 lg:py-16">
+        <div class="font-mono text-[10px] uppercase tracking-eyebrow text-bleu">Dernière étape</div>
+        <h2 class="mt-3 font-display text-4xl lg:text-5xl tracking-tightest text-anthra">Recevez votre étude gratuite.</h2>
+        <p class="mt-3 text-taupe">Un technicien valide votre estimation et chiffre votre projet — gratuitement, sans engagement.</p>
+
+        <div class="mt-6 rounded-2xl bg-gainBg border border-gain/20 p-4 flex items-center justify-between gap-3">
+          <div>
+            <div class="font-mono text-[9px] uppercase tracking-eyebrow text-gainDeep">Votre estimation est conservée</div>
+            <div class="mt-0.5 text-sm text-gainDeep">Gain 10 ans <strong id="capGain">+14 400 €</strong> · économie <strong id="capEco">+1 440 €/an</strong></div>
+          </div>
+          <svg viewBox="0 0 24 24" class="h-7 w-7 text-gain shrink-0" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg>
+        </div>
+
+        <div class="mt-6 space-y-3">
+          <input class="w-full rounded-2xl border border-pierre bg-white px-5 py-3.5 text-anthra focus:border-bleu outline-none" placeholder="Prénom et nom" />
+          <div class="grid sm:grid-cols-2 gap-3">
+            <input type="email" class="w-full rounded-2xl border border-pierre bg-white px-5 py-3.5 text-anthra focus:border-bleu outline-none" placeholder="Email" />
+            <input type="tel" class="w-full rounded-2xl border border-pierre bg-white px-5 py-3.5 text-anthra focus:border-bleu outline-none" placeholder="Téléphone" />
+          </div>
+          <select class="w-full rounded-2xl border border-pierre bg-white px-5 py-3.5 text-anthra focus:border-bleu outline-none">
+            <option>Quand vous rappeler ? — Indifférent</option>
+            <option>Plutôt le matin</option>
+            <option>Plutôt l'après-midi</option>
+            <option>En soirée</option>
+          </select>
+          <label class="flex items-start gap-2 text-xs text-taupe"><input type="checkbox" class="mt-0.5"> J'accepte d'être recontacté par Chauffage Artisanal au sujet de mon projet (RGPD).</label>
+        </div>
+
+        <button onclick="goConfirm()" class="mt-6 w-full inline-flex items-center justify-center gap-2 rounded-full bg-bleu text-creme px-7 py-4 text-base font-semibold hover:bg-navy transition shadow-lg shadow-navy/20">
+          Réserver mon étude gratuite <span>→</span>
+        </button>
+        <div class="mt-3 text-center text-xs text-muted">Réponse sous 24 h · sans engagement · vos données restent confidentielles</div>
+        <div class="mt-4 text-center"><button onclick="show('s-result')" class="text-xs text-muted hover:text-anthra underline underline-offset-2">← Revenir à mon estimation</button></div>
+      </div>
+    </section>
+
+    <!-- ░ CONFIRMATION ░ -->
+    <section id="s-confirm" class="screen">
+      <div class="max-w-lg mx-auto px-5 py-20 text-center">
+        <div class="mx-auto h-16 w-16 rounded-full bg-gainBg grid place-items-center">
+          <svg viewBox="0 0 24 24" class="h-8 w-8 text-gain" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg>
+        </div>
+        <h2 class="mt-6 font-display text-4xl lg:text-5xl tracking-tightest text-anthra">C'est noté&nbsp;!</h2>
+        <p class="mt-3 text-taupe">Un technicien Chauffage Artisanal vous rappelle <strong class="text-anthra">sous 24&nbsp;h</strong> avec votre étude personnalisée.</p>
+        <div class="mt-7 inline-block rounded-2xl bg-gainBg border border-gain/20 px-7 py-5">
+          <div class="font-mono text-[10px] uppercase tracking-eyebrow text-gainDeep">Rappel de votre potentiel</div>
+          <div class="mt-1 font-display text-4xl tracking-tightest text-gain" id="confGain">+14 400 €</div>
+          <div class="text-sm text-gainDeep/70">de gain estimé sur 10 ans</div>
+        </div>
+        <div class="mt-8"><button onclick="restart()" class="text-xs text-muted hover:text-anthra underline underline-offset-2">Faire une nouvelle estimation</button></div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<!-- ░ Modal — détail des aides ░ -->
+<div id="aidesModal" class="fixed inset-0 z-50 hidden">
+  <div class="absolute inset-0 bg-navy/40 backdrop-blur-sm" onclick="closeAides()"></div>
+  <div class="absolute inset-x-0 bottom-0 sm:inset-0 sm:m-auto sm:max-w-lg sm:h-fit bg-white rounded-t-[28px] sm:rounded-[28px] border border-pierre shadow-2xl max-h-[88vh] overflow-y-auto">
+    <div class="sticky top-0 bg-white px-6 pt-6 pb-3 border-b border-pierre flex items-start justify-between gap-4">
+      <div>
+        <div class="font-mono text-[10px] uppercase tracking-eyebrow text-gain">Argent à récupérer</div>
+        <h3 class="mt-1 font-display text-2xl tracking-tight text-anthra">Les aides que vous pouvez obtenir</h3>
+      </div>
+      <button onclick="closeAides()" class="h-9 w-9 grid place-items-center rounded-full border border-pierre text-anthra hover:bg-anthra hover:text-white transition shrink-0">✕</button>
+    </div>
+    <div id="aidesList" class="px-6 py-3"></div>
+    <div class="px-6 pb-6">
+      <div class="rounded-2xl bg-gainBg border border-gain/20 p-4 flex items-center justify-between">
+        <span class="text-sm text-gainDeep font-medium">Total aides directes estimé</span>
+        <span id="aidesTotal" class="font-display text-2xl text-gain">—</span>
+      </div>
+      <p class="mt-3 text-[11px] text-muted">Aides directes = Klimabonus + aide communale. Enoprimes, TVA, Klimaprêt et complément social s'ajoutent selon votre profil. Montants confirmés lors de l'étude (accord de principe avant devis). Source : guichet.public.lu.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  const screens = ["s-hero","s-commune","s-logement","s-chauffage","s-facture","s-loading","s-result","s-capture","s-confirm"];
+  const progressIndex = {"s-commune":1,"s-logement":2,"s-chauffage":3,"s-facture":4,"s-loading":4,"s-result":4,"s-capture":4,"s-confirm":4};
+  const state = { commune:"Luxembourg", logement:"maison", chauffage:"Mazout", facture:3200 };
+  let last = null;
+
+  function show(id){ screens.forEach(s=>document.getElementById(s).classList.toggle('active', s===id)); window.scrollTo(0,0);
+    const wrap=document.getElementById('progressWrap'); wrap.style.display = (id==='s-hero')?'none':'block';
+    const p = progressIndex[id]!==undefined ? (progressIndex[id]/4*100) : 0; document.getElementById('bar').style.width = p+'%';
+  }
+  function go(id){ if(id==='s-logement'){ state.commune=document.getElementById('commune').value; } show(id); }
+  function pickLogement(v){ state.logement=v; show('s-chauffage'); }
+  function pickChauffage(v){ state.chauffage=v; show('s-facture'); }
+  function restart(){ show('s-hero'); }
+
+  // ── Détail des aides (panneau au clic sur « Aides possibles ») ──
+  function aideRow(label, valueHtml, note){
+    return `<div class="flex items-start gap-3 py-2.5 border-b border-pierre last:border-0">
+      <span class="mt-1.5 inline-block h-2 w-2 rounded-full bg-gain shrink-0"></span>
+      <div class="flex-1 min-w-0">
+        <div class="flex items-baseline justify-between gap-3">
+          <span class="font-semibold text-anthra">${label}</span>${valueHtml}
+        </div>
+        <div class="text-xs text-taupe mt-0.5">${note}</div>
+      </div>
+    </div>`;
+  }
+  const amt = v => `<span class="font-display text-lg text-gain whitespace-nowrap">+ ${fmt(v)} €</span>`;
+  const tag = t => `<span class="text-[10px] font-mono uppercase tracking-eyebrow text-gain bg-gainBg border border-gain/20 px-2 py-0.5 rounded-full whitespace-nowrap">${t}</span>`;
+
+  function openAides(){
+    if(!last) return;
+    const logLbl = last.logement==='maison' ? 'Maison (unifamilial)' : 'Appartement (collectif)';
+    const remp = last.fossile ? "remplacement d'une énergie fossile" : "sans remplacement d'énergie fossile";
+    const communeLbl = (last.commune==='Autre') ? 'votre commune' : last.commune;
+    const communalVal = last.lux ? amt(last.communalMin)
+      : `<span class="font-display text-lg text-gain whitespace-nowrap">1 000 – 3 000 €</span>`;
+    const communalNote = last.lux
+      ? "Ville de Luxembourg : +50 % du Klimabonus (confirmé)."
+      : "À confirmer selon le règlement de " + communeLbl + ".";
+
+    let html = '';
+    html += aideRow("Klimabonus 2026", amt(last.aides), logLbl + " · " + remp + " · forfait officiel guichet.public.lu");
+    html += aideRow("Aide communale (Klimapakt)", communalVal, communalNote);
+    html += aideRow("Enoprimes (CEE)", tag("cumulable"), "Prime énergie de votre fournisseur (Enovos / Creos / SudEnergie).");
+    html += aideRow("TVA logement 3 %", tag("cumulable"), "Au lieu de 17 %, si le logement a plus de 10 ans.");
+    html += aideRow("Klimaprêt 1,5 %", tag("sur le reste"), "Prêt à taux réduit pour financer le reste à charge.");
+    html += aideRow("Complément social", tag("selon revenus"), "Ménages à revenus modestes : peut doubler le Klimabonus.");
+    document.getElementById('aidesList').innerHTML = html;
+
+    const tMin = last.aides + last.communalMin, tMax = last.aides + last.communalMax;
+    document.getElementById('aidesTotal').textContent =
+      (tMin===tMax) ? ('+ '+fmt(tMin)+' €') : ('+ '+fmt(tMin)+' – '+fmt(tMax)+' €');
+    document.getElementById('aidesModal').classList.remove('hidden');
+  }
+  function closeAides(){ document.getElementById('aidesModal').classList.add('hidden'); }
+
+  function goCapture(){
+    if(last){
+      document.getElementById('capGain').textContent = '+ '+fmt(last.gain10)+' €';
+      document.getElementById('capEco').textContent = '+ '+fmt(last.eco)+' €/an';
+    }
+    show('s-capture');
+  }
+  function goConfirm(){
+    if(last){ document.getElementById('confGain').textContent = '+ '+fmt(last.gain10)+' €'; }
+    show('s-confirm');
+  }
+
+  function fmt(n){ return Math.round(n).toLocaleString('fr-FR'); }
+  function phraseEnergie(c){
+    switch(c){
+      case 'Mazout': return 'de mazout partent en fumée';
+      case 'Gaz': return 'de gaz partent en fumée';
+      case 'Électrique': return "d'électricité s'envolent";
+      default: return 'de chauffage partent en fumée';
+    }
+  }
+  function countUp(el, to){ const dur=1400, t0=performance.now(); const tick=t=>{ const k=Math.min((t-t0)/dur,1); el.textContent=fmt(k*to); if(k<1)requestAnimationFrame(tick); }; requestAnimationFrame(tick); }
+
+  function analyse(){
+    state.facture = +document.getElementById('facture').value;
+    show('s-loading');
+    setTimeout(computeAndReveal, 1300);
+  }
+
+  // ── Constantes RÉELLES (miroir du futur moteur déterministe lib/referentiel) ──
+  const PRIX = { Mazout:0.13, Gaz:0.11, "Électrique":0.22, Autre:0.13 };   // €/kWh TTC, marché LU 2026
+  const RENDEMENT = { Mazout:0.88, Gaz:0.92, "Électrique":1.0, Autre:0.90 }; // rendement installation actuelle
+  const PRIX_ELEC = 0.22, SCOP = 3.5, HEURES = 1800, MARGE = 1.15;          // PAC air/eau LU
+
+  function computeAndReveal(){
+    const c = state.chauffage, facture = state.facture;
+    const fossile = (c==='Mazout'||c==='Gaz');
+    // 1) Besoin de chaleur (kWh utile) déduit de la facture actuelle
+    const besoinKwh = (facture / PRIX[c]) * RENDEMENT[c];
+    // 2) Coût après PAC : électricité consommée = besoin / SCOP
+    const coutApres = (besoinKwh / SCOP) * PRIX_ELEC;
+    const eco = Math.max(0, Math.round(facture - coutApres));
+    // 3) Dimensionnement → budget installation réaliste (€)
+    const puissanceKw = (besoinKwh / HEURES) * MARGE;
+    const budget = Math.round(Math.min(26000, Math.max(13000, 13000 + puissanceKw * 700)));
+    // 4) Aides : forfait Klimabonus 2026 PAC air/eau — VÉRIFIÉ sur guichet.public.lu
+    //    Maison (unifamilial) : 10 000 € avec remplacement fossile, sinon 6 000 €
+    //    Appartement (collectif) : 8 000 € avec remplacement fossile, sinon 3 000 €
+    const FORFAIT = { maison: { f: 10000, s: 6000 }, appartement: { f: 8000, s: 3000 } };
+    const aides = FORFAIT[state.logement][fossile ? "f" : "s"];
+    // Aide communale (Klimapakt) — Ville de Lux : +50 % ; autres : 1 000–3 000 € à confirmer
+    const lux = (state.commune === "Luxembourg");
+    const communalMin = lux ? Math.round(aides * 0.5) : 1000;
+    const communalMax = lux ? Math.round(aides * 0.5) : 3000;
+    last = { aides, logement: state.logement, fossile, commune: state.commune, lux, communalMin, communalMax };
+    const reste = Math.max(0, budget - aides);
+    // 5) Gain 10 ans (conservateur, hors inflation énergie) + ROI
+    const gain10 = Math.round(eco * 10);
+    const roi = eco > 0 ? (reste / eco).toFixed(1).replace('.', ',') : '—';
+    last.gain10 = gain10; last.eco = eco;
+
+    document.getElementById('eco').textContent = '+'+fmt(eco)+' €';
+    document.getElementById('aides').textContent = '+'+fmt(aides)+' €';
+    document.getElementById('reste').textContent = fmt(reste)+' €';
+    document.getElementById('coutActuel').textContent = fmt(state.facture)+' €/an';
+    document.getElementById('energiePhrase').textContent = phraseEnergie(state.chauffage);
+    document.getElementById('communeLbl').textContent = (state.commune==='Autre' ? 'votre commune' : state.commune);
+    document.getElementById('roi').textContent = roi;
+
+    show('s-result');
+    const g=document.getElementById('gain10'); g.textContent='0'; setTimeout(()=>countUp(g, gain10), 250);
+  }
+
+  show('s-hero');
+</script>
+</body>
+</html>

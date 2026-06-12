@@ -10,7 +10,11 @@
  * accessoires) + Klimabonus indicatif.
  *
  * Hypothèses 2026 Luxembourg prudentes, fourchettes larges assumées.
+ *
+ * Règle N°5 : les montants Klimabonus PAC sont lus depuis le moteur d'aides
+ * du référentiel (forfaits 2026 vérifiés) — mêmes chiffres que l'estimateur.
  */
+import { computeAides, type TypeLogement } from "./referentiel/aides";
 
 export type ProjectType =
   | "chaudiere-gaz"
@@ -104,17 +108,38 @@ function surfaceMult(projectType: ProjectType, surfaceM2: number): number {
 }
 
 /**
- * Klimabonus indicatif par type de projet. Plafonds 2026 prudents.
+ * Klimabonus indicatif par type de projet (équipements hors référentiel —
+ * ordres de grandeur locaux). Les PAC passent par klimabonusRange() ci-dessous.
  */
-const KLIMABONUS: Record<ProjectType, { min: number; max: number }> = {
+const KLIMABONUS_LOCAL: Record<ProjectType, { min: number; max: number }> = {
   "chaudiere-gaz": { min: 0, max: 0 }, // gaz fossile = pas d'aide
-  "pac-air-eau": { min: 5000, max: 12000 },
-  "pac-geothermie": { min: 8000, max: 16000 },
+  "pac-air-eau": { min: 0, max: 0 }, // → référentiel (klimabonusRange)
+  "pac-geothermie": { min: 0, max: 0 }, // → référentiel (klimabonusRange)
   "chauffe-eau-thermo": { min: 400, max: 1000 },
   "salle-de-bain": { min: 0, max: 0 }, // pas d'aide directe
   "climatisation-mono": { min: 0, max: 0 },
   "ventilation-double-flux": { min: 1500, max: 3500 },
 };
+
+/**
+ * Fourchette Klimabonus pour un projet/bâtiment. PAC : forfaits 2026 vérifiés
+ * du référentiel — min = sans remplacement fossile, max = avec remplacement.
+ */
+function klimabonusRange(
+  projectType: ProjectType,
+  buildingType: BuildingType,
+): { min: number; max: number } {
+  if (projectType === "pac-air-eau" || projectType === "pac-geothermie") {
+    const logement: TypeLogement =
+      buildingType === "appartement" ? "collectif" : "unifamilial";
+    const equipement =
+      projectType === "pac-air-eau" ? ("pac-air-eau" as const) : ("pac-geothermique" as const);
+    const sans = computeAides({ equipement, logement, remplacementFossile: false }).klimabonus;
+    const rempl = computeAides({ equipement, logement, remplacementFossile: true }).klimabonus;
+    return { min: Math.min(sans, rempl), max: Math.max(sans, rempl) };
+  }
+  return KLIMABONUS_LOCAL[projectType];
+}
 
 /* ──────────────────────── COEUR DE CALCUL ──────────────────────── */
 
@@ -148,7 +173,7 @@ export function estimatePrice(input: EstimateInput): EstimateResult {
     },
   ];
 
-  const klimabonus = KLIMABONUS[projectType];
+  const klimabonus = klimabonusRange(projectType, buildingType);
   // Klimabonus s'applique surtout sur les projets éligibles, et seulement
   // pour les bâtiments résidentiels (maison/appartement).
   const klimaActive =

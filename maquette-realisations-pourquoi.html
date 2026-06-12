@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Proposition v2 — Réalisations & Pourquoi nous (bleu discipliné)</title>
+<meta name="robots" content="noindex,nofollow" />
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..600&family=Montserrat:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<script>
+  tailwind.config = { theme: { extend: {
+    colors: {
+      creme:"#FBF8F2", sable:"#EFE7D8", pierre:"#E0D5C2",
+      ink:"#2A2724", anthra:"#2A2724", taupe:"#6E675C", muted:"#9A9184",
+      bleu:"#0A4E8C", navy:"#0A3360", bleuvif:"#2C7BD0",
+      brique:"#A2131A", terracotta:"#C24A2C", brun:"#5A4636",
+    },
+    fontFamily:{ display:['Fraunces','serif'], sans:['Montserrat','sans-serif'], mono:['JetBrains Mono','monospace'] },
+    letterSpacing:{ eyebrow:'0.22em', tightest:'-0.04em' },
+  }}};
+</script>
+<style>
+  body{font-family:Montserrat,sans-serif;background:#FBF8F2;color:#2A2724}
+  /* photo : couleur réelle, overlay CHAUD (anthracite) — plus de teinte bleue */
+  .ph{background-size:cover;background-position:center;filter:contrast(1.02) saturate(1.02)}
+  .ph-over{background:linear-gradient(to top,rgba(36,33,30,.78),rgba(36,33,30,.12) 58%,transparent)}
+  .tagdemo{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;background:rgba(255,255,255,.85);color:#5A4636;padding:2px 7px;border-radius:999px}
+</style>
+</head>
+<body class="antialiased">
+
+<div class="bg-ink text-creme text-center text-[11px] font-mono uppercase tracking-eyebrow py-2 px-4">
+  v2 — bleu discipliné · ~78% crème · ~12% bleu (CTA + 1 sceau) · ~3% brique · la photo porte la couleur
+</div>
+
+<!-- ════════ RÉALISATIONS ════════ -->
+<section class="bg-creme">
+  <div class="max-w-7xl mx-auto px-5 py-20">
+    <!-- En-tête NEUTRE (haut-gauche = ancre, pas de bleu) -->
+    <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10">
+      <div class="max-w-xl">
+        <div class="font-mono text-[10px] uppercase tracking-eyebrow text-taupe">03 — Réalisations</div>
+        <h2 class="mt-3 font-display text-4xl lg:text-5xl tracking-tightest text-anthra">Nos chantiers, en images.</h2>
+        <p class="mt-4 text-taupe">Villas, immeubles, tertiaire — chaque projet documenté : technologie, commune, et résultats quand ils sont mesurés.</p>
+      </div>
+      <!-- filtre actif = ANTHRACITE (pas bleu) -->
+      <div class="flex flex-wrap gap-2 text-xs">
+        <span class="px-3.5 py-2 rounded-full bg-ink text-creme font-medium">Tout</span>
+        <span class="px-3.5 py-2 rounded-full bg-white border border-pierre text-taupe">Villas</span>
+        <span class="px-3.5 py-2 rounded-full bg-white border border-pierre text-taupe">Immeubles</span>
+        <span class="px-3.5 py-2 rounded-full bg-white border border-pierre text-taupe">Commerce</span>
+        <span class="px-3.5 py-2 rounded-full bg-white border border-pierre text-taupe">Industrie</span>
+      </div>
+    </div>
+
+    <div class="grid lg:grid-cols-12 gap-5">
+      <!-- VEDETTE : la PHOTO porte la couleur ; 1 seul bleu = le CTA -->
+      <article class="lg:col-span-7 group relative rounded-3xl overflow-hidden bg-white border border-pierre shadow-[0_20px_50px_-24px_rgba(36,33,30,.35)]">
+        <div class="relative aspect-[16/10] ph" style="background-image:url('https://picsum.photos/seed/realA9/1200/750')">
+          <div class="absolute inset-0 ph-over"></div>
+          <!-- logo signature (plaque crème) -->
+          <span class="absolute top-4 right-4 bg-creme rounded-lg px-2.5 py-1.5 inline-grid">
+            <img src="https://www.chauffage-artisanal.lu/wp-content/uploads/2013/01/logo-chauffage-artisanal-luxembourg-reflex.png" alt="Chauffage Artisanal" class="h-5 w-auto">
+          </span>
+          <span class="absolute top-4 left-4 tagdemo">démo</span>
+          <!-- méta sur la photo, en blanc (lisible sur overlay chaud) -->
+          <div class="absolute bottom-4 left-4 right-4">
+            <div class="flex flex-wrap gap-2 mb-2">
+              <span class="px-2.5 py-1 rounded-full bg-creme/90 text-anthra text-[11px] font-semibold">Villa · Strassen</span>
+              <span class="px-2.5 py-1 rounded-full bg-creme/90 text-anthra text-[11px] font-semibold">Avant / Après</span>
+            </div>
+            <h3 class="font-display text-3xl text-creme tracking-tight">PAC géothermique + plancher chauffant</h3>
+          </div>
+        </div>
+        <!-- panneau crème : méta neutre + 1 CTA bleu en bas-droite (sortie de l'œil) -->
+        <div class="p-6 flex flex-wrap items-end gap-x-8 gap-y-3">
+          <div><div class="font-mono text-[10px] uppercase tracking-eyebrow text-muted">Budget</div><div class="font-display text-xl text-anthra">18 000 – 22 000 €</div></div>
+          <div><div class="font-mono text-[10px] uppercase tracking-eyebrow text-muted">Économie / an</div><div class="font-display text-xl text-anthra">≈ 1 450 €</div></div>
+          <div><div class="font-mono text-[10px] uppercase tracking-eyebrow text-muted">Aides</div><div class="font-display text-xl text-anthra">jusqu'à 12 000 €</div></div>
+          <a href="#" class="ml-auto inline-flex items-center gap-2 rounded-full bg-bleu text-creme px-5 py-2.5 text-sm font-semibold hover:bg-navy transition">Voir le projet →</a>
+        </div>
+      </article>
+
+      <!-- cartes standard : méta TAUPE, lien ANTHRACITE (bleu au survol seulement) -->
+      <div class="lg:col-span-5 grid sm:grid-cols-2 lg:grid-cols-1 gap-5">
+        <article class="group rounded-3xl overflow-hidden bg-white border border-pierre hover:shadow-xl transition">
+          <div class="relative aspect-[16/10] ph" style="background-image:url('https://picsum.photos/seed/realB9/700/440')"><div class="absolute inset-0 ph-over"></div><span class="absolute top-3 left-3 tagdemo">démo</span>
+            <h3 class="absolute bottom-3 left-4 right-4 font-display text-xl text-creme">Chaufferie collective</h3></div>
+          <div class="p-5">
+            <div class="font-mono text-[10px] uppercase tracking-eyebrow text-taupe">Immeuble · Esch · 18 logements</div>
+            <a href="#" class="mt-3 inline-flex items-center gap-1.5 text-anthra text-sm font-semibold group-hover:text-bleu transition">Voir le projet <span>→</span></a>
+          </div>
+        </article>
+        <article class="group rounded-3xl overflow-hidden bg-white border border-pierre hover:shadow-xl transition">
+          <div class="relative aspect-[16/10] ph" style="background-image:url('https://picsum.photos/seed/realC9/700/440')"><div class="absolute inset-0 ph-over"></div><span class="absolute top-3 left-3 tagdemo">démo</span>
+            <h3 class="absolute bottom-3 left-4 right-4 font-display text-xl text-creme">PAC air/eau + solaire</h3></div>
+          <div class="p-5">
+            <div class="font-mono text-[10px] uppercase tracking-eyebrow text-taupe">Maison · Mersch · économie ≈ 1 100 €/an</div>
+            <a href="#" class="mt-3 inline-flex items-center gap-1.5 text-anthra text-sm font-semibold group-hover:text-bleu transition">Voir le projet <span>→</span></a>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <!-- rangée standard -->
+    <div class="mt-5 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      <article class="group rounded-2xl overflow-hidden bg-white border border-pierre"><div class="relative aspect-[5/4] ph" style="background-image:url('https://picsum.photos/seed/realD9/600/480')"><div class="absolute inset-0 ph-over"></div><h3 class="absolute bottom-3 left-4 font-display text-lg text-creme">Climatisation VRV</h3></div><div class="p-4"><div class="font-mono text-[10px] uppercase tracking-eyebrow text-taupe">Commerce · Lux-Ville</div></div></article>
+      <article class="group rounded-2xl overflow-hidden bg-white border border-pierre"><div class="relative aspect-[5/4] ph" style="background-image:url('https://picsum.photos/seed/realE9/600/480')"><div class="absolute inset-0 ph-over"></div><h3 class="absolute bottom-3 left-4 font-display text-lg text-creme">Plancher chauffant</h3></div><div class="p-4"><div class="font-mono text-[10px] uppercase tracking-eyebrow text-taupe">Villa · Bertrange</div></div></article>
+      <article class="group rounded-2xl overflow-hidden bg-white border border-pierre"><div class="relative aspect-[5/4] ph" style="background-image:url('https://picsum.photos/seed/realF9/600/480')"><div class="absolute inset-0 ph-over"></div><h3 class="absolute bottom-3 left-4 font-display text-lg text-creme">Aérothermes</h3></div><div class="p-4"><div class="font-mono text-[10px] uppercase tracking-eyebrow text-taupe">Atelier · Sanem</div></div></article>
+      <!-- carte "voir tout" = SABLE (la seule surface d'accent matière) -->
+      <a href="#" class="rounded-2xl bg-sable border border-pierre grid place-items-center p-4 hover:bg-ink hover:text-creme transition group">
+        <span class="text-center"><span class="font-display text-xl text-anthra group-hover:text-creme">Toutes nos<br>réalisations</span><br><span class="text-anthra group-hover:text-creme text-sm font-semibold mt-1 inline-block">→</span></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ POURQUOI NOUS ════════ -->
+<section class="bg-white border-t border-pierre">
+  <div class="max-w-7xl mx-auto px-5 py-20">
+    <div class="grid lg:grid-cols-12 gap-12 items-start">
+      <!-- gauche : titre neutre + LE moment bleu (sceau navy + logo) -->
+      <div class="lg:col-span-4">
+        <div class="font-mono text-[10px] uppercase tracking-eyebrow text-taupe">05 — Pourquoi nous</div>
+        <h2 class="mt-3 font-display text-4xl lg:text-5xl tracking-tightest text-anthra">Six raisons de nous confier votre confort.</h2>
+        <p class="mt-5 text-taupe">Une maison technique établie, pas un installateur de passage.</p>
+        <div class="mt-8 rounded-3xl bg-navy text-creme p-6">
+          <span class="bg-creme rounded-lg px-3 py-2 inline-grid mb-4">
+            <img src="https://www.chauffage-artisanal.lu/wp-content/uploads/2013/01/logo-chauffage-artisanal-luxembourg-reflex.png" alt="Chauffage Artisanal" class="h-7 w-auto">
+          </span>
+          <div class="font-display text-2xl">Depuis 1994 au Luxembourg.</div>
+          <div class="mt-1 text-sm text-creme/70">RCS B46877 · Fédération des Artisans · Fédération du Génie Technique</div>
+        </div>
+      </div>
+
+      <!-- droite : 6 piliers — chiffres PIERRE (chaud), ✓ vérifié = BRIQUE (micro-accent) -->
+      <div class="lg:col-span-8 grid sm:grid-cols-2 gap-x-8 gap-y-8">
+        <div class="border-l-2 border-pierre pl-5">
+          <div class="font-display text-5xl text-pierre">01</div>
+          <div class="mt-1 font-display text-xl text-anthra">30 ans de continuité</div>
+          <p class="mt-2 text-sm text-taupe">Même maison, même direction depuis 1994. <span class="text-brique font-semibold">✓ vérifié</span></p>
+        </div>
+        <div class="border-l-2 border-pierre pl-5">
+          <div class="font-display text-5xl text-pierre">02</div>
+          <div class="mt-1 font-display text-xl text-anthra">Partenaires premium agréés</div>
+          <p class="mt-2 text-sm text-taupe">Viessmann, Buderus, De Dietrich. <span class="text-brique font-semibold">✓ vérifié</span></p>
+        </div>
+        <div class="border-l-2 border-pierre pl-5">
+          <div class="font-display text-5xl text-pierre">03</div>
+          <div class="mt-1 font-display text-xl text-anthra">Interlocuteur unique</div>
+          <p class="mt-2 text-sm text-taupe">Un seul contact, de l'étude au SAV.</p>
+        </div>
+        <div class="border-l-2 border-pierre pl-5">
+          <div class="font-display text-5xl text-pierre">04</div>
+          <div class="mt-1 font-display text-xl text-anthra">Klimabonus de A à Z</div>
+          <p class="mt-2 text-sm text-taupe">Volet technique du dossier monté pour vous.</p>
+        </div>
+        <div class="border-l-2 border-pierre pl-5">
+          <div class="font-display text-5xl text-pierre">05</div>
+          <div class="mt-1 font-display text-xl text-anthra">Garantie installation</div>
+          <p class="mt-2 text-sm text-taupe">Engagement sur la durée. <span class="text-brique font-semibold">✓ vérifié</span></p>
+        </div>
+        <div class="border-l-2 border-pierre pl-5">
+          <div class="font-display text-5xl text-pierre">06</div>
+          <div class="mt-1 font-display text-xl text-anthra">Grande Région</div>
+          <p class="mt-2 text-sm text-taupe">Tout le Grand-Duché &amp; frontaliers.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

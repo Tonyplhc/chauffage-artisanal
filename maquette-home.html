@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Maquette — Chauffage Artisanal (premium · bleu + brique + crème)</title>
+<meta name="robots" content="noindex,nofollow" />
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..600&family=Montserrat:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          /* Neutres chauds habitat */
+          cream: "#F7F2E9", linen: "#FCF8F0", sable: "#EFE7D8", pierre: "#E0D5C2",
+          ink: "#2A2724", graphite: "#6E675C", muted: "#9A9184", brun: "#5A4636",
+          /* Bleu Artisanal — signature historique */
+          bleu: "#0B57A0", navy: "#0A3D6E", bleuvif: "#2C7BD0", voile: "#E8F0F8",
+          /* Rouge brique / terracotta — accent du logo */
+          brique: "#A2131A", terracotta: "#C24A2C",
+        },
+        fontFamily: {
+          display: ['Fraunces', 'serif'], sans: ['Montserrat', 'sans-serif'], mono: ['JetBrains Mono', 'monospace'],
+        },
+        letterSpacing: { eyebrow: '0.22em', tightest: '-0.04em' },
+      },
+    },
+  };
+</script>
+<style>
+  html { scroll-behavior: smooth; }
+  body { background: #F7F2E9; color: #2A2724; font-family: Montserrat, sans-serif; }
+  .grain::before {
+    content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .04;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .ph { background-size: cover; background-position: center; filter: grayscale(30%) contrast(1.02) sepia(8%); }
+  .ph-over { background: linear-gradient(160deg, rgba(11,87,160,.20), rgba(10,61,110,.55)); }
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity .8s cubic-bezier(.22,1,.36,1), transform .8s cubic-bezier(.22,1,.36,1); }
+  .reveal.in { opacity: 1; transform: none; }
+  .demo-tag {
+    font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: .12em; text-transform: uppercase;
+    background: rgba(162,19,26,.10); color: #A2131A; border: 1px solid rgba(162,19,26,.30);
+    padding: 2px 7px; border-radius: 999px; display: inline-flex; align-items:center; gap:4px;
+  }
+</style>
+</head>
+<body class="antialiased">
+
+<!-- ░░░ BANDEAU MAQUETTE (hors site réel — n'apparaîtra PAS en production) ░░░ -->
+<div class="bg-navy text-cream text-center text-[11px] font-mono uppercase tracking-eyebrow py-2 px-4">
+  Maquette de validation — base crème, structure <span class="text-bleuvif">bleu</span>, accent <span class="text-terracotta">brique</span> · construite autour du logo réel · badges <span class="text-terracotta">⚠ démo</span> ici uniquement
+</div>
+
+<!-- ░░░ PLANCHE LOGO — spec maquette (contraste + clear-space) ░░░ -->
+<div class="bg-cream border-b border-pierre">
+  <div class="max-w-7xl mx-auto px-5 py-6">
+    <div class="font-mono text-[10px] uppercase tracking-eyebrow text-bleu mb-3">Planche logo — déclinaisons &amp; contrôles (spec)</div>
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-3">
+      <!-- 1. couleur / fond crème -->
+      <div class="rounded-xl border border-pierre overflow-hidden">
+        <div class="grid place-items-center py-7 bg-cream"><img src="https://www.chauffage-artisanal.lu/wp-content/uploads/2013/01/logo-chauffage-artisanal-luxembourg-reflex.png" alt="Logo couleur" class="h-10 w-auto"></div>
+        <div class="px-3 py-2 text-[11px] text-graphite border-t border-pierre">Couleur · fond crème <span class="text-bleu">✓ contraste OK</span></div>
+      </div>
+      <!-- 2. couleur / fond blanc -->
+      <div class="rounded-xl border border-pierre overflow-hidden">
+        <div class="grid place-items-center py-7 bg-white"><img src="https://www.chauffage-artisanal.lu/wp-content/uploads/2013/01/logo-chauffage-artisanal-luxembourg-reflex.png" alt="Logo couleur fond blanc" class="h-10 w-auto"></div>
+        <div class="px-3 py-2 text-[11px] text-graphite border-t border-pierre">Couleur · fond blanc <span class="text-bleu">✓ surface cards</span></div>
+      </div>
+      <!-- 3. blanc inversé / fond bleu profond -->
+      <div class="rounded-xl border border-navy overflow-hidden">
+        <div class="grid place-items-center py-7 bg-navy"><img src="https://www.chauffage-artisanal.lu/wp-content/uploads/2013/01/logo-chauffage-artisanal-luxembourg-reflex.png" alt="Logo monochrome blanc" class="h-10 w-auto" style="filter:brightness(0) invert(1)"></div>
+        <div class="px-3 py-2 text-[11px] text-graphite border-t border-pierre">Monochrome blanc · fond bleu <span class="text-bleu">✓</span></div>
+      </div>
+      <!-- 4. plaque crème / fond bleu profond -->
+      <div class="rounded-xl border border-navy overflow-hidden">
+        <div class="grid place-items-center py-7 bg-navy"><span class="bg-cream rounded-lg px-3 py-2 inline-grid"><img src="https://www.chauffage-artisanal.lu/wp-content/uploads/2013/01/logo-chauffage-artisanal-luxembourg-reflex.png" alt="Logo plaque crème" class="h-9 w-auto"></span></div>
+        <div class="px-3 py-2 text-[11px] text-graphite border-t border-pierre">Plaque crème · couleur préservée</div>
+      </div>
+    </div>
+    <div class="mt-3 flex flex-wrap items-center gap-x-6 gap-y-1 text-[11px] text-muted">
+      <span>Clear-space : marge mini = hauteur de l'icône maison autour du logo</span>
+      <span>·</span><span>Taille mini lisible : 28&nbsp;px de haut (mobile) / 36–40&nbsp;px nav</span>
+      <span>·</span><span>Format natif 162×76 (ratio 2,13:1), PNG transparent</span>
+    </div>
+  </div>
+</div>
+
+<!-- ░░░ NAV ░░░ -->
+<header class="sticky top-0 z-40 bg-cream/85 backdrop-blur-xl border-b border-ink/10">
+  <div class="max-w-7xl mx-auto px-5 flex items-center justify-between h-16">
+    <a href="#" class="flex items-center gap-3 pr-4 lg:border-r lg:border-pierre" aria-label="Chauffage Artisanal — accueil">
+      <img src="https://www.chauffage-artisanal.lu/wp-content/uploads/2013/01/logo-chauffage-artisanal-luxembourg-reflex.png" alt="Chauffage Artisanal" class="h-9 w-auto" />
+      <span class="hidden lg:block font-mono text-[9px] uppercase tracking-eyebrow text-muted leading-tight">Depuis 1994<br>Luxembourg</span>
+    </a>
+    <nav class="hidden lg:flex items-center gap-1 text-sm text-graphite">
+      <a href="#services" class="px-3 py-2 hover:text-bleu transition">Particuliers ▾</a>
+      <a href="#promoteurs" class="px-3 py-2 hover:text-bleu transition">Promoteurs ▾</a>
+      <a href="#economies" class="px-3 py-2 hover:text-bleu transition">Outils ▾</a>
+      <a href="#confiance" class="px-3 py-2 hover:text-bleu transition">Marques</a>
+    </nav>
+    <div class="flex items-center gap-2">
+      <a href="#depannage" class="hidden sm:grid place-items-center h-10 w-10 rounded-full border border-terracotta/40 text-terracotta" aria-label="Dépannage">
+        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      </a>
+      <a href="#devis" class="hidden sm:inline-flex items-center gap-2 rounded-full bg-bleu text-cream px-5 py-2.5 text-sm font-semibold hover:bg-navy transition">
+        Étude gratuite <span class="text-base leading-none">→</span>
+      </a>
+      <button class="lg:hidden h-10 w-10 grid place-items-center rounded-full border border-ink/15" aria-label="Menu">
+        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ░░░ 1 · HERO ░░░ -->
+<section class="relative overflow-hidden bg-cream grain">
+  <div class="max-w-7xl mx-auto px-5 pt-14 lg:pt-20 pb-12">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+      <div class="lg:col-span-7">
+        <div class="flex items-center gap-3 font-mono text-[11px] uppercase tracking-eyebrow text-bleu">
+          <span class="text-muted">EST. 1994</span><span class="h-px w-10 bg-bleu/40"></span><span>Luxembourg &amp; Grande Région</span>
+        </div>
+        <h1 class="mt-6 font-display text-[2.5rem] sm:text-6xl lg:text-[4rem] leading-[1.03] tracking-tightest text-ink max-w-[15ch]">
+          Chauffage, pompes à chaleur et sanitaire au <em class="not-italic text-bleu">Luxembourg</em>, depuis 1994.
+        </h1>
+        <p class="mt-7 text-lg text-graphite max-w-xl">
+          Installation, dépannage et entretien de vos systèmes thermiques.
+          Étude personnalisée, <strong class="text-ink font-semibold">devis sous 24&nbsp;h</strong> et accompagnement Klimabonus de A à Z.
+        </p>
+        <div class="mt-8 flex flex-col sm:flex-row gap-3">
+          <a href="#devis" class="group inline-flex items-center justify-center gap-2 rounded-full bg-bleu text-cream px-7 py-4 text-sm font-semibold hover:bg-navy transition hover:-translate-y-0.5">
+            Étude gratuite sous 24 h <span>→</span>
+          </a>
+          <a href="#depannage" class="inline-flex items-center justify-center gap-2 rounded-full bg-cream border border-terracotta/40 text-terracotta px-7 py-4 text-sm font-semibold hover:bg-terracotta/10 transition">
+            <span class="relative flex h-2 w-2"><span class="absolute h-full w-full animate-ping rounded-full bg-terracotta opacity-75"></span><span class="relative h-2 w-2 rounded-full bg-terracotta"></span></span>
+            ☎ Panne ? Appelez-nous
+          </a>
+        </div>
+        <div class="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-graphite">
+          <span class="inline-flex items-center gap-1.5"><span class="text-bleu">✓</span> Depuis 1994</span>
+          <span class="inline-flex items-center gap-1.5"><span class="text-bleu">✓</span> Société établie au Luxembourg (RCS B46877)</span>
+          <span class="inline-flex items-center gap-1.5"><span class="text-bleu">✓</span> Partenaire Viessmann · Buderus · De Dietrich</span>
+        </div>
+      </div>
+      <div class="lg:col-span-5">
+        <div class="relative aspect-[4/5] rounded-[28px] overflow-hidden shadow-2xl ph" style="background-image:url('https://picsum.photos/seed/heat-hero/900/1100')">
+          <div class="absolute inset-0 ph-over"></div>
+          <span class="absolute top-4 left-4 demo-tag">⚠ démo · photo placeholder</span>
+          <div class="absolute bottom-5 left-5 right-5 bg-cream/95 backdrop-blur rounded-2xl p-4">
+            <div class="flex items-center justify-between gap-3 pb-3 mb-3 border-b border-pierre">
+              <img src="https://www.chauffage-artisanal.lu/wp-content/uploads/2013/01/logo-chauffage-artisanal-luxembourg-reflex.png" alt="Chauffage Artisanal" class="h-7 w-auto" />
+              <span class="font-mono text-[9px] uppercase tracking-eyebrow text-muted">Est. 1994</span>
+            </div>
+            <div class="font-display text-2xl text-ink">Réponse sous 24 h</div>
+            <div class="text-sm text-graphite">Étude personnalisée &amp; chiffrée</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ░░░ 2 · BANDE DE CONFIANCE ░░░ -->
+<section id="confiance" class="border-y border-ink/10 bg-linen">
+  <div class="max-w-7xl mx-auto px-5 py-8">
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-y-4 text-sm">
+      <div class="flex items-center gap-2 text-graphite"><span class="text-bleu">✓</span> Depuis 1994</div>
+      <div class="flex items-center gap-2 text-graphite"><span class="text-bleu">✓</span> Société établie au Luxembourg</div>
+      <div class="flex items-center gap-2 text-graphite"><span class="text-bleu">✓</span> Fédération des Artisans</div>
+      <div class="flex items-center gap-2 text-graphite"><span class="text-bleu">✓</span> Fédération du Génie Technique</div>
+    </div>
+    <div class="mt-6 pt-6 border-t border-pierre flex flex-col sm:flex-row items-center gap-4 justify-between">
+      <span class="font-mono text-[10px] uppercase tracking-eyebrow text-muted">Partenaires agréés <span class="text-brique">· réels</span></span>
+      <div class="flex items-center gap-8 grayscale opacity-70">
+        <span class="font-display text-2xl tracking-tight text-ink">Viessmann</span>
+        <span class="font-display text-2xl tracking-tight text-ink">Buderus</span>
+        <span class="font-display text-2xl tracking-tight text-ink">De Dietrich</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ░░░ 3 · CHIFFRES ░░░ -->
+<section class="bg-navy text-cream relative overflow-hidden">
+  <div class="max-w-7xl mx-auto px-5 py-16 grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+    <div class="reveal">
+      <div class="font-display text-5xl lg:text-6xl text-bleuvif count" data-to="30">0</div>
+      <div class="mt-2 text-sm text-cream/70">ans d'expertise</div>
+      <div class="mt-1 font-mono text-[9px] uppercase tracking-eyebrow text-cream/40">✓ réel</div>
+    </div>
+    <div class="reveal">
+      <div class="font-display text-5xl lg:text-6xl text-bleuvif"><span class="count" data-to="3200">0</span></div>
+      <div class="mt-2 text-sm text-cream/70">installations depuis 1994</div>
+      <div class="mt-1 demo-tag">⚠ démo</div>
+    </div>
+    <div class="reveal">
+      <div class="font-display text-5xl lg:text-6xl text-bleuvif">&lt;24h</div>
+      <div class="mt-2 text-sm text-cream/70">délai de devis</div>
+      <div class="mt-1 font-mono text-[9px] uppercase tracking-eyebrow text-cream/40">✓ réel</div>
+    </div>
+    <div class="reveal">
+      <div class="font-display text-5xl lg:text-6xl text-bleuvif">4,8<span class="text-2xl text-cream/50">/5</span></div>
+      <div class="mt-2 text-sm text-cream/70">satisfaction client</div>
+      <div class="mt-1 demo-tag">⚠ démo</div>
+    </div>
+  </div>
+</section>
+
+<!-- ░░░ 4 · SIMULATEUR ÉCONOMIES (déclencheur de lead) ░░░ -->
+<section id="economies" class="bg-cream">
+  <div class="max-w-7xl mx-auto px-5 py-20 grid lg:grid-cols-2 gap-10 items-center">
+    <div>
+      <div class="font-mono text-[10px] uppercase tracking-eyebrow text-bleu">01 — Simulateur</div>
+      <h2 class="mt-3 font-display text-4xl lg:text-5xl tracking-tightest text-ink">Combien pouvez-vous économiser ?</h2>
+      <p class="mt-5 text-graphite max-w-md">Estimez en 30 secondes vos économies annuelles en passant à une pompe à chaleur, primes déduites. Résultat chiffré, puis étude personnalisée.</p>
+      <a href="#devis" class="mt-7 inline-flex items-center gap-2 rounded-full bg-bleu text-cream px-6 py-3.5 text-sm font-semibold hover:bg-navy transition">Estimer mes économies →</a>
+    </div>
+    <div class="rounded-3xl bg-navy text-cream p-8 lg:p-10">
+      <div class="font-mono text-[10px] uppercase tracking-eyebrow text-bleuvif">Estimation indicative</div>
+      <div class="mt-4 flex items-end gap-3">
+        <span class="font-display text-6xl text-bleuvif count" data-to="1450">0</span><span class="text-2xl text-cream/60 mb-2">€/an</span>
+      </div>
+      <div class="mt-2 text-sm text-cream/60">d'économies estimées vs chaudière fioul <span class="demo-tag ml-1">démo</span></div>
+      <div class="mt-6 pt-6 border-t border-cream/15 space-y-2 text-sm text-cream/70">
+        <div class="flex justify-between"><span>Aide Klimabonus estimée</span><span class="text-cream">jusqu'à 10 000 €</span></div>
+        <div class="flex justify-between"><span>TVA logement</span><span class="text-cream">3 %</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ░░░ 5 · AIDES KLIMABONUS (déclencheur de lead) ░░░ -->
+<section class="bg-sable border-y border-pierre">
+  <div class="max-w-7xl mx-auto px-5 py-20">
+    <div class="max-w-2xl">
+      <div class="font-mono text-[10px] uppercase tracking-eyebrow text-bleu">02 — Aides Luxembourg</div>
+      <h2 class="mt-3 font-display text-4xl lg:text-5xl tracking-tightest text-ink">Jusqu'à 12 000 € d'aides. On s'occupe de tout.</h2>
+      <p class="mt-5 text-graphite">Klimabonus, Enoprimes et TVA à 3 % cumulables. Nous montons l'intégralité du dossier administratif via MyGuichet.</p>
+    </div>
+    <div class="mt-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
+      <div class="p-6 rounded-2xl bg-cream border border-pierre"><div class="font-display text-3xl text-bleu">10 000 €</div><div class="mt-1 text-sm text-graphite">PAC air/eau</div></div>
+      <div class="p-6 rounded-2xl bg-cream border border-pierre"><div class="font-display text-3xl text-bleu">12 000 €</div><div class="mt-1 text-sm text-graphite">Géothermie</div></div>
+      <div class="p-6 rounded-2xl bg-cream border border-pierre"><div class="font-display text-3xl text-bleu">+ Enoprimes</div><div class="mt-1 text-sm text-graphite">Cumulables</div></div>
+      <div class="p-6 rounded-2xl bg-cream border border-pierre"><div class="font-display text-3xl text-bleu">TVA 3 %</div><div class="mt-1 text-sm text-graphite">Logement</div></div>
+    </div>
+    <div class="mt-8 flex flex-wrap items-center gap-3 text-sm text-graphite">
+      <span class="px-3 py-1.5 rounded-full bg-cream border border-pierre">1 · Analyse</span><span class="text-bleu">→</span>
+      <span class="px-3 py-1.5 rounded-full bg-cream border border-pierre">2 · Dossier (MyGuichet)</span><span class="text-bleu">→</span>
+      <span class="px-3 py-1.5 rounded-full bg-cream border border-pierre">3 · Validation</span><span class="text-bleu">→</span>
+      <span class="px-3 py-1.5 rounded-full bg-cream border border-pierre">4 · Installation</span>
+    </div>
+    <a href="#devis" class="mt-8 inline-flex items-center gap-2 rounded-full bg-bleu text-cream px-6 py-3.5 text-sm font-semibold hover:bg-navy transition">Estimer mes aides →</a>
+  </div>
+</section>
+
+<!-- ░░░ 6 · RÉALISATIONS (12 cartes) ░░░ -->
+<section class="bg-cream">
+  <div class="max-w-7xl mx-auto px-5 py-20">
+    <div class="flex items-end justify-between flex-wrap gap-4 mb-8">
+      <div>
+        <div class="font-mono text-[10px] uppercase tracking-eyebrow text-bleu">03 — Réalisations</div>
+        <h2 class="mt-3 font-display text-4xl lg:text-5xl tracking-tightest text-ink">Nos chantiers, en images.</h2>
+      </div>
+      <div class="flex flex-wrap gap-2 text-xs">
+        <span class="px-3 py-1.5 rounded-full bg-bleu text-cream">Tout</span>
+        <span class="px-3 py-1.5 rounded-full border border-ink/15 text-graphite">Villas</span>
+        <span class="px-3 py-1.5 rounded-full border border-ink/15 text-graphite">Immeubles</span>
+        <span class="px-3 py-1.5 rounded-full border border-ink/15 text-graphite">Commerce</span>
+        <span class="px-3 py-1.5 rounded-full border border-ink/15 text-graphite">Industrie</span>
+      </div>
+    </div>
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+      <!-- [DEMO] 12 projets fictifs -->
+      <div class="reveal group relative aspect-[3/4] rounded-2xl overflow-hidden ph" style="background-image:url('https://picsum.photos/seed/proj1/600/800')"><div class="absolute inset-0 ph-over"></div><span class="absolute top-3 left-3 demo-tag">démo</span><div class="absolute bottom-4 left-4 text-cream"><div class="font-display text-lg">Villa · Strassen</div><div class="text-xs text-cream/70">PAC géothermique · 2025</div></div></div>
+      <div class="reveal group relative aspect-[3/4] rounded-2xl overflow-hidden ph" style="background-image:url('https://picsum.photos/seed/proj2/600/800')"><div class="absolute inset-0 ph-over"></div><span class="absolute top-3 left-3 demo-tag">démo</span><div class="absolute bottom-4 left-4 text-cream"><div class="font-display text-lg">Résidence · Esch</div><div class="text-xs text-cream/70">Chaufferie collective · 2024</div></div></div>
+      <div class="reveal group relative aspect-[3/4] rounded-2xl overflow-hidden ph" style="background-image:url('https://picsum.photos/seed/proj3/600/800')"><div class="absolute inset-0 ph-over"></div><span class="absolute top-3 left-3 demo-tag">démo</span><div class="absolute bottom-4 left-4 text-cream"><div class="font-display text-lg">Commerce · Lux-Ville</div><div class="text-xs text-cream/70">Climatisation · 2024</div></div></div>
+      <div class="reveal group relative aspect-[3/4] rounded-2xl overflow-hidden ph" style="background-image:url('https://picsum.photos/seed/proj4/600/800')"><div class="absolute inset-0 ph-over"></div><span class="absolute top-3 left-3 demo-tag">démo</span><div class="absolute bottom-4 left-4 text-cream"><div class="font-display text-lg">Maison · Mersch</div><div class="text-xs text-cream/70">PAC air/eau + solaire · 2025</div></div></div>
+      <div class="reveal group relative aspect-[3/4] rounded-2xl overflow-hidden ph" style="background-image:url('https://picsum.photos/seed/proj5/600/800')"><div class="absolute inset-0 ph-over"></div><span class="absolute top-3 left-3 demo-tag">démo</span><div class="absolute bottom-4 left-4 text-cream"><div class="font-display text-lg">Villa · Bertrange</div><div class="text-xs text-cream/70">Plancher chauffant · 2024</div></div></div>
+      <div class="reveal group relative aspect-[3/4] rounded-2xl overflow-hidden ph" style="background-image:url('https://picsum.photos/seed/proj6/600/800')"><div class="absolute inset-0 ph-over"></div><span class="absolute top-3 left-3 demo-tag">démo</span><div class="absolute bottom-4 left-4 text-cream"><div class="font-display text-lg">Immeuble · Differdange</div><div class="text-xs text-cream/70">Sous-stations · 2023</div></div></div>
+      <div class="reveal group relative aspect-[3/4] rounded-2xl overflow-hidden ph" style="background-image:url('https://picsum.photos/seed/proj7/600/800')"><div class="absolute inset-0 ph-over"></div><span class="absolute top-3 left-3 demo-tag">démo</span><div class="absolute bottom-4 left-4 text-cream"><div class="font-display text-lg">Maison · Dudelange</div><div class="text-xs text-cream/70">Salle de bain complète · 2025</div></div></div>
+      <div class="reveal group relative aspect-[3/4] rounded-2xl overflow-hidden ph" style="background-image:url('https://picsum.photos/seed/proj8/600/800')"><div class="absolute inset-0 ph-over"></div><span class="absolute top-3 left-3 demo-tag">démo</span><div class="absolute bottom-4 left-4 text-cream"><div class="font-display text-lg">Bureau · Contern</div><div class="text-xs text-cream/70">VRV tertiaire · 2024</div></div></div>
+      <div class="reveal group relative aspect-[3/4] rounded-2xl overflow-hidden ph" style="background-image:url('https://picsum.photos/seed/proj9/600/800')"><div class="absolute inset-0 ph-over"></div><span class="absolute top-3 left-3 demo-tag">démo</span><div class="absolute bottom-4 left-4 text-cream"><div class="font-display text-lg">Villa · Ettelbruck</div><div class="text-xs text-cream/70">Solaire thermique · 2023</div></div></div>
+      <div class="reveal group relative aspect-[3/4] rounded-2xl overflow-hidden ph" style="background-image:url('https://picsum.photos/seed/proj10/600/800')"><div class="absolute inset-0 ph-over"></div><span class="absolute top-3 left-3 demo-tag">démo</span><div class="absolute bottom-4 left-4 text-cream"><div class="font-display text-lg">Résidence · Mamer</div><div class="text-xs text-cream/70">PAC collective · 2025</div></div></div>
+      <div class="reveal group relative aspect-[3/4] rounded-2xl overflow-hidden ph" style="background-image:url('https://picsum.photos/seed/proj11/600/800')"><div class="absolute inset-0 ph-over"></div><span class="absolute top-3 left-3 demo-tag">démo</span><div class="absolute bottom-4 left-4 text-cream"><div class="font-display text-lg">Maison · Bettembourg</div><div class="text-xs text-cream/70">Remplacement chaudière · 2024</div></div></div>
+      <div class="reveal group relative aspect-[3/4] rounded-2xl overflow-hidden ph" style="background-image:url('https://picsum.photos/seed/proj12/600/800')"><div class="absolute inset-0 ph-over"></div><span class="absolute top-3 left-3 demo-tag">démo</span><div class="absolute bottom-4 left-4 text-cream"><div class="font-display text-lg">Atelier · Sanem</div><div class="text-xs text-cream/70">Aérothermes industriels · 2023</div></div></div>
+    </div>
+    <div class="mt-8 text-center">
+      <a href="#" class="inline-flex items-center gap-2 text-sm font-mono uppercase tracking-eyebrow text-bleu hover:text-navy transition">Voir toutes nos réalisations →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ░░░ 7 · SERVICES ░░░ -->
+<section id="services" class="bg-linen border-y border-pierre">
+  <div class="max-w-7xl mx-auto px-5 py-20">
+    <div class="font-mono text-[10px] uppercase tracking-eyebrow text-bleu">04 — Métiers</div>
+    <h2 class="mt-3 font-display text-4xl lg:text-5xl tracking-tightest text-ink max-w-2xl">Une maison, sept savoir-faire.</h2>
+    <div class="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <a class="group p-7 rounded-2xl bg-cream border border-pierre hover:border-bleu/40 hover:shadow-lg transition block"><div class="font-display text-2xl text-ink">Chauffage</div><p class="mt-2 text-sm text-graphite">Chaudières condensation, conception &amp; remplacement.</p><span class="mt-4 inline-block text-bleu text-sm font-semibold">En savoir plus →</span></a>
+      <a class="group p-7 rounded-2xl bg-cream border border-pierre hover:border-bleu/40 hover:shadow-lg transition block"><div class="font-display text-2xl text-ink">Pompes à chaleur</div><p class="mt-2 text-sm text-graphite">Air/eau &amp; géothermie, éligibles Klimabonus.</p><span class="mt-4 inline-block text-bleu text-sm font-semibold">En savoir plus →</span></a>
+      <a class="group p-7 rounded-2xl bg-cream border border-pierre hover:border-bleu/40 hover:shadow-lg transition block"><div class="font-display text-2xl text-ink">Climatisation</div><p class="mt-2 text-sm text-graphite">Confort été comme hiver, systèmes réversibles.</p><span class="mt-4 inline-block text-bleu text-sm font-semibold">En savoir plus →</span></a>
+      <a class="group p-7 rounded-2xl bg-cream border border-pierre hover:border-bleu/40 hover:shadow-lg transition block"><div class="font-display text-2xl text-ink">Sanitaire</div><p class="mt-2 text-sm text-graphite">Salles de bain, production d'eau chaude.</p><span class="mt-4 inline-block text-bleu text-sm font-semibold">En savoir plus →</span></a>
+      <a class="group p-7 rounded-2xl bg-cream border border-pierre hover:border-bleu/40 hover:shadow-lg transition block"><div class="font-display text-2xl text-ink">Énergies renouvelables</div><p class="mt-2 text-sm text-graphite">Solaire thermique &amp; photovoltaïque.</p><span class="mt-4 inline-block text-bleu text-sm font-semibold">En savoir plus →</span></a>
+      <a class="group p-7 rounded-2xl bg-cream border border-pierre hover:border-bleu/40 hover:shadow-lg transition block"><div class="font-display text-2xl text-ink">Dépannage &amp; entretien</div><p class="mt-2 text-sm text-graphite">Maintenance, astreinte, contrats annuels.</p><span class="mt-4 inline-block text-bleu text-sm font-semibold">En savoir plus →</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ░░░ 8 · PROCESS — Comment se déroule votre projet ? ░░░ -->
+<section class="bg-cream">
+  <div class="max-w-7xl mx-auto px-5 py-20">
+    <div class="font-mono text-[10px] uppercase tracking-eyebrow text-bleu">05 — Déroulement</div>
+    <h2 class="mt-3 font-display text-4xl lg:text-5xl tracking-tightest text-ink max-w-2xl">Comment se déroule votre projet ?</h2>
+    <p class="mt-4 text-graphite max-w-xl">Un parcours clair, du premier contact à la mise en service — sans mauvaise surprise.</p>
+    <div class="mt-12 grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
+      <div class="reveal relative p-6 rounded-2xl bg-sable border border-pierre"><div class="font-display text-4xl text-bleu/30">01</div><div class="mt-3 font-display text-xl text-ink">Étude</div><p class="mt-2 text-sm text-graphite">Visite technique &amp; analyse de vos besoins.</p></div>
+      <div class="reveal relative p-6 rounded-2xl bg-sable border border-pierre"><div class="font-display text-4xl text-bleu/30">02</div><div class="mt-3 font-display text-xl text-ink">Devis</div><p class="mt-2 text-sm text-graphite">Proposition chiffrée détaillée sous 24 h.</p></div>
+      <div class="reveal relative p-6 rounded-2xl bg-sable border border-pierre"><div class="font-display text-4xl text-bleu/30">03</div><div class="mt-3 font-display text-xl text-ink">Aides</div><p class="mt-2 text-sm text-graphite">Montage du dossier Klimabonus &amp; primes.</p></div>
+      <div class="reveal relative p-6 rounded-2xl bg-sable border border-pierre"><div class="font-display text-4xl text-bleu/30">04</div><div class="mt-3 font-display text-xl text-ink">Installation</div><p class="mt-2 text-sm text-graphite">Pose par nos techniciens, dans les délais.</p></div>
+      <div class="reveal relative p-6 rounded-2xl bg-navy text-cream border border-navy"><div class="font-display text-4xl text-bleuvif/60">05</div><div class="mt-3 font-display text-xl">Mise en service</div><p class="mt-2 text-sm text-cream/70">Réglages, explications &amp; garantie.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ░░░ 9 · POURQUOI NOUS ░░░ -->
+<section class="bg-linen border-y border-pierre">
+  <div class="max-w-7xl mx-auto px-5 py-20">
+    <div class="font-mono text-[10px] uppercase tracking-eyebrow text-bleu">06 — Pourquoi nous</div>
+    <h2 class="mt-3 font-display text-4xl lg:text-5xl tracking-tightest text-ink max-w-2xl">Six raisons de nous confier votre confort.</h2>
+    <div class="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div><div class="font-display text-xl text-ink">30 ans de continuité</div><p class="mt-2 text-sm text-graphite">Même maison, même direction depuis 1994. <span class="text-bleu">✓ réel</span></p></div>
+      <div><div class="font-display text-xl text-ink">Partenaires premium agréés</div><p class="mt-2 text-sm text-graphite">Viessmann, Buderus, De Dietrich. <span class="text-bleu">✓ réel</span></p></div>
+      <div><div class="font-display text-xl text-ink">Interlocuteur unique</div><p class="mt-2 text-sm text-graphite">Un seul contact, de l'étude au SAV.</p></div>
+      <div><div class="font-display text-xl text-ink">Klimabonus de A à Z</div><p class="mt-2 text-sm text-graphite">Dossier d'aides monté pour vous.</p></div>
+      <div><div class="font-display text-xl text-ink">Garantie installation</div><p class="mt-2 text-sm text-graphite">Engagement sur la durée. <span class="text-bleu">✓ réel</span></p></div>
+      <div><div class="font-display text-xl text-ink">Grande Région</div><p class="mt-2 text-sm text-graphite">Tout le Grand-Duché &amp; frontaliers.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ░░░ 10 · ÉQUIPE ░░░ -->
+<section class="bg-cream">
+  <div class="max-w-7xl mx-auto px-5 py-20">
+    <div class="flex items-end justify-between flex-wrap gap-4">
+      <div>
+        <div class="font-mono text-[10px] uppercase tracking-eyebrow text-bleu">07 — L'équipe</div>
+        <h2 class="mt-3 font-display text-4xl lg:text-5xl tracking-tightest text-ink max-w-2xl">Une équipe locale qui accompagne ses clients depuis plus de 30 ans.</h2>
+      </div>
+      <span class="demo-tag">⚠ démo · noms &amp; photos placeholder</span>
+    </div>
+    <div class="mt-10 grid grid-cols-2 lg:grid-cols-6 gap-4">
+      <div class="text-center"><div class="aspect-square rounded-2xl ph mb-3" style="background-image:url('https://picsum.photos/seed/team1/400/400')"></div><div class="font-display text-ink">[Prénom Nom]</div><div class="text-xs text-graphite">Direction technique</div></div>
+      <div class="text-center"><div class="aspect-square rounded-2xl ph mb-3" style="background-image:url('https://picsum.photos/seed/team2/400/400')"></div><div class="font-display text-ink">[Prénom Nom]</div><div class="text-xs text-graphite">Chef de chantier</div></div>
+      <div class="text-center"><div class="aspect-square rounded-2xl ph mb-3" style="background-image:url('https://picsum.photos/seed/team3/400/400')"></div><div class="font-display text-ink">[Prénom Nom]</div><div class="text-xs text-graphite">Frigoriste</div></div>
+      <div class="text-center"><div class="aspect-square rounded-2xl ph mb-3" style="background-image:url('https://picsum.photos/seed/team4/400/400')"></div><div class="font-display text-ink">[Prénom Nom]</div><div class="text-xs text-graphite">Bureau d'études</div></div>
+      <div class="text-center"><div class="aspect-square rounded-2xl ph mb-3" style="background-image:url('https://picsum.photos/seed/team5/400/400')"></div><div class="font-display text-ink">[Prénom Nom]</div><div class="text-xs text-graphite">Technicien SAV</div></div>
+      <div class="text-center"><div class="aspect-square rounded-2xl ph mb-3" style="background-image:url('https://picsum.photos/seed/team6/400/400')"></div><div class="font-display text-ink">[Prénom Nom]</div><div class="text-xs text-graphite">Apprenti</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ░░░ 11 · AVIS ░░░ -->
+<section class="bg-sable border-y border-pierre">
+  <div class="max-w-7xl mx-auto px-5 py-20">
+    <div class="flex items-end justify-between flex-wrap gap-4">
+      <div>
+        <div class="font-mono text-[10px] uppercase tracking-eyebrow text-bleu">08 — Avis clients</div>
+        <h2 class="mt-3 font-display text-4xl lg:text-5xl tracking-tightest text-ink">Ce que disent nos clients.</h2>
+      </div>
+      <span class="demo-tag">⚠ démo · contenu fictif (jamais affiché en prod)</span>
+    </div>
+    <div class="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div class="p-7 rounded-2xl bg-cream border border-pierre"><div class="text-brique tracking-widest">★★★★★</div><p class="mt-3 text-graphite">« Installation impeccable et dossier de primes géré de bout en bout. Équipe ponctuelle et soignée. »</p><div class="mt-4 font-display text-ink">— Sophie, Strassen</div></div>
+      <div class="p-7 rounded-2xl bg-cream border border-pierre"><div class="text-brique tracking-widest">★★★★★</div><p class="mt-3 text-graphite">« Conseil honnête sur le dimensionnement de la pompe à chaleur. Aucune sur-vente. »</p><div class="mt-4 font-display text-ink">— Marc, Esch-sur-Alzette</div></div>
+      <div class="p-7 rounded-2xl bg-cream border border-pierre"><div class="text-brique tracking-widest">★★★★★</div><p class="mt-3 text-graphite">« Dépannage rapide en plein hiver. On sent les 30 ans de métier. »</p><div class="mt-4 font-display text-ink">— Anne, Mersch</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ░░░ 12 · PROMOTEURS (B2B navy) ░░░ -->
+<section id="promoteurs" class="bg-navy text-cream relative overflow-hidden grain">
+  <div class="max-w-7xl mx-auto px-5 py-20">
+    <div class="grid lg:grid-cols-12 gap-10 items-start">
+      <div class="lg:col-span-7">
+        <div class="flex items-center gap-4 mb-6">
+          <span class="bg-cream rounded-lg px-3 py-2 inline-grid"><img src="https://www.chauffage-artisanal.lu/wp-content/uploads/2013/01/logo-chauffage-artisanal-luxembourg-reflex.png" alt="Chauffage Artisanal" class="h-7 w-auto"></span>
+          <span class="h-8 w-px bg-cream/20"></span>
+          <span class="font-mono text-[10px] uppercase tracking-eyebrow text-bleuvif">09 — Promoteurs &amp; bureaux d'études</span>
+        </div>
+        <h2 class="font-display text-4xl lg:text-5xl tracking-tightest border-l-2 border-brique pl-5">Vous êtes promoteur ou bureau d'études ?</h2>
+        <p class="mt-5 text-cream/75 max-w-xl pl-5">Un partenaire technique unique pour vos projets résidentiels et tertiaires : de la conception au SAV, dans les délais et selon vos plans.</p>
+        <div class="mt-8 grid sm:grid-cols-2 gap-4">
+          <div class="p-5 rounded-2xl bg-cream/5 border border-cream/10"><div class="font-display text-lg">Interlocuteur unique</div><p class="mt-1.5 text-sm text-cream/70">Un référent pour tout le projet.</p></div>
+          <div class="p-5 rounded-2xl bg-cream/5 border border-cream/10"><div class="font-display text-lg">Coordination multi-lots</div><p class="mt-1.5 text-sm text-cream/70">Planning aligné sur le gros œuvre.</p></div>
+          <div class="p-5 rounded-2xl bg-cream/5 border border-cream/10"><div class="font-display text-lg">Respect des délais</div><p class="mt-1.5 text-sm text-cream/70">Engagements contractualisés.</p></div>
+          <div class="p-5 rounded-2xl bg-cream/5 border border-cream/10"><div class="font-display text-lg">SAV &amp; garanties</div><p class="mt-1.5 text-sm text-cream/70">Maintenance après livraison.</p></div>
+        </div>
+        <div class="mt-8 pl-5">
+          <a href="#devis" class="inline-flex items-center gap-2 rounded-full bg-cream text-navy px-7 py-4 text-sm font-semibold hover:bg-bleuvif hover:text-cream transition">
+            Découvrir notre accompagnement B2B →
+          </a>
+        </div>
+      </div>
+      <div class="lg:col-span-5">
+        <div class="relative rounded-3xl overflow-hidden ph aspect-[4/5]" style="background-image:url('https://picsum.photos/seed/b2b/800/1000')"><div class="absolute inset-0 ph-over"></div></div>
+        <div class="mt-4 flex flex-wrap gap-2">
+          <span class="px-3 py-1.5 rounded-full bg-cream/10 text-xs">Réf. immeuble · Esch <span class="demo-tag ml-1">démo</span></span>
+          <span class="px-3 py-1.5 rounded-full bg-cream/10 text-xs">Résidence · Lux <span class="demo-tag ml-1">démo</span></span>
+          <span class="px-3 py-1.5 rounded-full bg-cream/10 text-xs">Tertiaire · Contern <span class="demo-tag ml-1">démo</span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ░░░ 13 · ZONES DESSERVIES (SEO local) ░░░ -->
+<section class="bg-cream">
+  <div class="max-w-7xl mx-auto px-5 py-20">
+    <div class="font-mono text-[10px] uppercase tracking-eyebrow text-bleu">10 — Zones desservies</div>
+    <h2 class="mt-3 font-display text-4xl lg:text-5xl tracking-tightest text-ink max-w-2xl">Présents dans tout le Luxembourg &amp; la Grande Région.</h2>
+    <p class="mt-4 text-graphite max-w-xl">Nous intervenons sur l'ensemble du Grand-Duché pour l'installation, le dépannage et l'entretien.</p>
+    <div class="mt-10 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+      <a class="group flex items-center justify-between p-5 rounded-2xl bg-sable border border-pierre hover:border-bleu/40 transition"><span class="font-display text-lg text-ink">Luxembourg-Ville</span><span class="text-bleu opacity-0 group-hover:opacity-100 transition">→</span></a>
+      <a class="group flex items-center justify-between p-5 rounded-2xl bg-sable border border-pierre hover:border-bleu/40 transition"><span class="font-display text-lg text-ink">Esch-sur-Alzette</span><span class="text-bleu opacity-0 group-hover:opacity-100 transition">→</span></a>
+      <a class="group flex items-center justify-between p-5 rounded-2xl bg-sable border border-pierre hover:border-bleu/40 transition"><span class="font-display text-lg text-ink">Mersch</span><span class="text-bleu opacity-0 group-hover:opacity-100 transition">→</span></a>
+      <a class="group flex items-center justify-between p-5 rounded-2xl bg-sable border border-pierre hover:border-bleu/40 transition"><span class="font-display text-lg text-ink">Ettelbruck</span><span class="text-bleu opacity-0 group-hover:opacity-100 transition">→</span></a>
+      <a class="group flex items-center justify-between p-5 rounded-2xl bg-sable border border-pierre hover:border-bleu/40 transition"><span class="font-display text-lg text-ink">Differdange</span><span class="text-bleu opacity-0 group-hover:opacity-100 transition">→</span></a>
+      <a class="group flex items-center justify-between p-5 rounded-2xl bg-sable border border-pierre hover:border-bleu/40 transition"><span class="font-display text-lg text-ink">Dudelange</span><span class="text-bleu opacity-0 group-hover:opacity-100 transition">→</span></a>
+      <a class="group flex items-center justify-between p-5 rounded-2xl bg-sable border border-pierre hover:border-bleu/40 transition"><span class="font-display text-lg text-ink">Grande Région</span><span class="text-bleu opacity-0 group-hover:opacity-100 transition">→</span></a>
+      <a class="group flex items-center justify-between p-5 rounded-2xl bg-bleu text-cream hover:bg-navy transition"><span class="font-display text-lg">Votre commune ?</span><span>→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ░░░ 14 · DÉPANNAGE (terracotta) ░░░ -->
+<section id="depannage" class="bg-terracotta text-cream">
+  <div class="max-w-7xl mx-auto px-5 py-16 text-center">
+    <div class="font-mono text-[11px] uppercase tracking-eyebrow text-cream/80">Urgence</div>
+    <h2 class="mt-3 font-display text-4xl lg:text-5xl tracking-tightest">Panne de chauffage ?</h2>
+    <a href="tel:+35249884100" class="mt-6 inline-block font-display text-5xl lg:text-7xl tracking-tightest hover:scale-105 transition">☎ +352 49 88 41</a>
+    <p class="mt-4 text-cream/85">Intervention rapide — Luxembourg &amp; Grande Région</p>
+  </div>
+</section>
+
+<!-- ░░░ 15 · FORMULAIRE ░░░ -->
+<section id="devis" class="bg-cream">
+  <div class="max-w-3xl mx-auto px-5 py-20">
+    <div class="text-center">
+      <div class="font-mono text-[10px] uppercase tracking-eyebrow text-bleu">11 — Votre projet</div>
+      <h2 class="mt-3 font-display text-4xl lg:text-5xl tracking-tightest text-ink">Recevez votre étude gratuite sous 24 h.</h2>
+      <p class="mt-4 text-graphite">5 étapes · 2 minutes · sans engagement.</p>
+    </div>
+    <div class="mt-10 rounded-3xl bg-linen border border-pierre p-8">
+      <div class="flex items-center gap-2 mb-8">
+        <span class="h-1.5 flex-1 rounded-full bg-bleu"></span><span class="h-1.5 flex-1 rounded-full bg-bleu"></span><span class="h-1.5 flex-1 rounded-full bg-pierre"></span><span class="h-1.5 flex-1 rounded-full bg-pierre"></span><span class="h-1.5 flex-1 rounded-full bg-pierre"></span>
+      </div>
+      <div class="font-mono text-[10px] uppercase tracking-eyebrow text-muted">Étape 2 / 5 — Votre besoin</div>
+      <h3 class="mt-2 font-display text-2xl text-ink">Quel est votre projet ?</h3>
+      <div class="mt-5 grid sm:grid-cols-2 gap-3">
+        <button class="p-4 rounded-xl bg-cream border-2 border-bleu text-left"><div class="font-semibold text-ink">Pompe à chaleur</div><div class="text-xs text-graphite">Installation / remplacement</div></button>
+        <button class="p-4 rounded-xl bg-cream border border-pierre text-left hover:border-bleu/40"><div class="font-semibold text-ink">Chaudière</div><div class="text-xs text-graphite">Condensation</div></button>
+        <button class="p-4 rounded-xl bg-cream border border-pierre text-left hover:border-bleu/40"><div class="font-semibold text-ink">Salle de bain</div><div class="text-xs text-graphite">Sanitaire</div></button>
+        <button class="p-4 rounded-xl bg-cream border border-pierre text-left hover:border-bleu/40"><div class="font-semibold text-ink">Climatisation</div><div class="text-xs text-graphite">Réversible</div></button>
+      </div>
+      <div class="mt-7 flex items-center justify-between">
+        <button class="text-sm text-graphite">← Retour</button>
+        <button class="inline-flex items-center gap-2 rounded-full bg-bleu text-cream px-7 py-3.5 text-sm font-semibold hover:bg-navy transition">Continuer →</button>
+      </div>
+      <div class="mt-6 pt-6 border-t border-pierre flex flex-wrap gap-x-5 gap-y-1.5 text-[11px] text-muted">
+        <span>✓ Réponse sous 24 h ouvrées</span><span>✓ Sans engagement</span><span>✓ Données protégées (RGPD)</span><span>✓ Étude par un technicien</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ░░░ 16 · FOOTER ░░░ -->
+<footer class="bg-navy text-cream">
+  <div class="max-w-7xl mx-auto px-5 py-16 grid lg:grid-cols-12 gap-10">
+    <div class="lg:col-span-5">
+      <img src="https://www.chauffage-artisanal.lu/wp-content/uploads/2013/01/logo-chauffage-artisanal-luxembourg-reflex.png" alt="Chauffage Artisanal" class="h-11 w-auto" style="filter:brightness(0) invert(1)" />
+      <h3 class="mt-6 font-display text-3xl tracking-tightest max-w-sm">Le confort thermique, au Luxembourg, depuis 1994.</h3>
+      <div class="mt-6 flex flex-wrap gap-3">
+        <a href="#devis" class="rounded-full bg-cream text-navy px-5 py-2.5 text-sm font-semibold hover:bg-bleuvif hover:text-cream transition">Étude gratuite →</a>
+        <a href="tel:+35249884100" class="rounded-full border border-terracotta/60 text-cream px-5 py-2.5 text-sm hover:bg-terracotta transition">☎ Dépannage</a>
+      </div>
+      <div class="mt-8 flex flex-wrap gap-x-5 gap-y-2 text-xs text-cream/70">
+        <span>✓ Fédération des Artisans</span><span>✓ Fédération du Génie Technique</span><span>✓ Garantie installation</span>
+      </div>
+    </div>
+    <div class="lg:col-span-2"><div class="font-mono text-[10px] uppercase tracking-eyebrow text-cream/50 mb-4">Métiers</div><ul class="space-y-2 text-sm text-cream/80"><li>Chauffage</li><li>Pompes à chaleur</li><li>Climatisation</li><li>Sanitaire</li><li>Énergies</li></ul></div>
+    <div class="lg:col-span-2"><div class="font-mono text-[10px] uppercase tracking-eyebrow text-cream/50 mb-4">Services</div><ul class="space-y-2 text-sm text-cream/80"><li>Dépannage</li><li>Entretien</li><li>Promoteurs</li><li>Réalisations</li><li>Primes &amp; aides</li></ul></div>
+    <div class="lg:col-span-3"><div class="font-mono text-[10px] uppercase tracking-eyebrow text-cream/50 mb-4">Atelier</div><ul class="space-y-3 text-sm text-cream/80"><li>📍 Peppange, Luxembourg</li><li>☎ +352 49 88 41</li><li>Lun–Ven 8h–12h / 13h–17h</li></ul></div>
+  </div>
+  <div class="border-t border-cream/10">
+    <div class="max-w-7xl mx-auto px-5 py-5 flex flex-col sm:flex-row justify-between gap-3 text-[11px] font-mono uppercase tracking-eyebrow text-cream/50">
+      <span>© 2026 Chauffage Artisanal S.à r.l. · RCS Luxembourg B46877</span>
+      <span class="flex gap-5"><a href="#" class="hover:text-cream">Mentions légales</a><a href="#" class="hover:text-cream">Confidentialité</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+
+  const cio = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (!e.isIntersecting) return;
+      const el = e.target; const to = +el.dataset.to; const dur = 1400; const t0 = performance.now();
+      const tick = (t) => {
+        const p = Math.min((t - t0) / dur, 1);
+        el.textContent = Math.floor(p * to).toLocaleString('fr-FR');
+        if (p < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick); cio.unobserve(el);
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('.count').forEach((el) => cio.observe(el));
+</script>
+</body>
+</html>

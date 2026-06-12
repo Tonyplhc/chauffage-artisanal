@@ -137,7 +137,7 @@ export default function EquipmentLibraryPage() {
                     </p>
                   </div>
                   {e.klimabonusEligible && (
-                    <span className="inline-flex items-center gap-1 text-[10px] font-mono uppercase tracking-eyebrow bg-[#22a06b]/10 text-[#22a06b] border border-[#22a06b]/30 px-2 py-0.5 rounded-full whitespace-nowrap">
+                    <span className="inline-flex items-center gap-1 text-[10px] font-mono uppercase tracking-eyebrow bg-gain/10 text-gain border border-gain/30 px-2 py-0.5 rounded-full whitespace-nowrap">
                       <ShieldCheck className="h-2.5 w-2.5" />
                       Klimabonus
                     </span>

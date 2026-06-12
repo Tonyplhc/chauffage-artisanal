@@ -1,69 +1,87 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
-import { Quote, Info } from "lucide-react";
+import { ShieldCheck, Thermometer, Wallet, ArrowUpRight } from "lucide-react";
 import { Eyebrow, Reveal } from "@/components/ui";
 
-const TESTIMONIALS = [
+/**
+ * Traitement des 3 objections du particulier (Règle N°1 : on vend ARGENT +
+ * SÉCURITÉ ; Règle N°7 : réduction du risque avant l'action). Pas de faux
+ * témoignages — des engagements vérifiables, formulés sur les vraies questions.
+ * Témoignages clients réels à publier ici après accord écrit.
+ */
+
+const OBJECTIONS = [
   {
-    quote:
-      "Le type de retour que nous cherchons à obtenir d'un gestionnaire immobilier : un chantier mené sans interruption pour les locataires, et un dossier transmis proprement.",
-    role: "Profil — Gestionnaire de patrimoine",
-    place: "Cas typique · résidentiel collectif",
+    icon: Wallet,
+    question: "« Vais-je vraiment toucher les aides ? »",
+    reponse:
+      "Oui, si le dossier est fait dans le bon ordre. Nous demandons l'accord de principe AVANT la signature du devis — aucune aide n'est rétroactive. Le dossier est monté à votre nom, et nous ne prenons aucune commission sur vos primes.",
+    engagement: "Accord de principe avant devis · 0 commission sur prime",
   },
   {
-    quote:
-      "Le type d'attente d'un architecte d'intérieur : un devis clair, un bureau d'études qui explique chaque poste, et une équipe technique qui respecte la finition.",
-    role: "Profil — Architecte d'intérieur",
-    place: "Cas typique · rénovation résidentielle",
+    icon: Thermometer,
+    question: "« Une pompe à chaleur suffira-t-elle en plein hiver ? »",
+    reponse:
+      "Une PAC bien dimensionnée, oui. Nous calculons la puissance sur vos besoins réels — pas au forfait — et installons du matériel Viessmann, Buderus ou De Dietrich. Et c'est la même maison qui dépanne depuis 1994.",
+    engagement: "Dimensionnement calculé · partenaires agréés · SAV maison",
   },
   {
-    quote:
-      "Pour un responsable immobilier tertiaire, ce qui compte est la fiabilité dans la durée : un contrat d'entretien tenu, et une astreinte qui répond.",
-    role: "Profil — Direction immobilière tertiaire",
-    place: "Cas typique · bureaux & commerces",
+    icon: ShieldCheck,
+    question: "« Combien ça va vraiment me coûter ? »",
+    reponse:
+      "Vous le voyez avant même de nous parler : budget, aides déduites et reste à charge sont affichés dans l'estimation en ligne. Le chiffrage ferme vient ensuite, après une visite technique gratuite et sans engagement.",
+    engagement: "Chiffres affichés avant tout contact · visite gratuite",
+    cta: { label: "Voir mon chiffre en 60 s", href: "/estimation" },
   },
 ];
 
 export function Testimonials() {
   return (
-    <section className="relative py-14 lg:py-20 bg-linen border-y border-ink/8">
+    <section className="relative py-14 lg:py-20 bg-linen border-y border-ink/8 font-ui">
       <div className="container relative">
-        <div className="max-w-3xl mb-6">
-          <Eyebrow number="07">Profils clients que nous servons</Eyebrow>
+        <div className="max-w-3xl mb-10">
+          <Eyebrow number="07">Avant de vous lancer</Eyebrow>
           <Reveal>
             <h2 className="mt-5 font-display text-display-lg text-balance text-ink">
-              Quelques <em className="not-italic text-copper">attentes typiques</em> de nos interlocuteurs.
+              Les trois questions que <em className="not-italic text-copper">tout le monde</em> se pose.
             </h2>
           </Reveal>
         </div>
 
-        <div className="mb-8 lg:mb-10 inline-flex items-center gap-2 text-xs text-muted font-mono uppercase tracking-eyebrow">
-          <Info className="h-3 w-3 text-copper" />
-          Formulations illustratives · témoignages clients à publier après accord écrit
-        </div>
-
         <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
-          {TESTIMONIALS.map((t, i) => (
-            <motion.figure
-              key={t.role}
+          {OBJECTIONS.map((o, i) => (
+            <motion.article
+              key={o.question}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.7, delay: i * 0.12, ease: [0.22, 1, 0.36, 1] }}
-              className="relative rounded-3xl border border-ink/10 bg-white p-8 lg:p-10 flex flex-col shadow-soft"
+              className="relative rounded-3xl border border-ink/10 bg-white p-8 lg:p-9 flex flex-col shadow-soft"
             >
-              <Quote className="h-6 w-6 text-copper mb-6" />
-              <blockquote className="font-display text-xl lg:text-2xl text-ink leading-snug text-balance flex-1">
-                &ldquo;{t.quote}&rdquo;
-              </blockquote>
-              <figcaption className="mt-8 pt-6 border-t border-ink/10">
-                <div className="font-medium text-ink">{t.role}</div>
-                <div className="mt-1 text-xs text-muted font-mono uppercase tracking-eyebrow">
-                  {t.place}
+              <span className="grid place-items-center h-10 w-10 rounded-full bg-voile mb-6">
+                <o.icon className="h-5 w-5 text-bleu" />
+              </span>
+              <h3 className="font-display text-xl lg:text-2xl text-ink leading-snug text-balance">
+                {o.question}
+              </h3>
+              <p className="mt-4 text-sm text-graphite leading-relaxed flex-1">{o.reponse}</p>
+              <div className="mt-6 pt-5 border-t border-ink/10">
+                <div className="text-[11px] font-mono uppercase tracking-eyebrow text-taupe">
+                  {o.engagement}
                 </div>
-              </figcaption>
-            </motion.figure>
+                {o.cta && (
+                  <Link
+                    href={o.cta.href}
+                    className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-bleu hover:text-navy transition-colors"
+                  >
+                    {o.cta.label}
+                    <ArrowUpRight className="h-4 w-4" />
+                  </Link>
+                )}
+              </div>
+            </motion.article>
           ))}
         </div>
       </div>
