@@ -76,17 +76,17 @@ export function QuoteActions({
 
   if (status === "accepted") {
     return (
-      <div className="my-6 p-6 rounded-2xl border-2 border-[#22a06b]/40 bg-[#22a06b]/8">
+      <div className="my-6 p-6 rounded-2xl border-2 border-[#2E7D5A]/40 bg-[#2E7D5A]/8">
         <div className="flex items-start gap-4">
-          <CheckCircle2 className="h-7 w-7 text-[#22a06b] shrink-0" />
+          <CheckCircle2 className="h-7 w-7 text-[#2E7D5A] shrink-0" />
           <div>
-            <div className="font-mono text-[10px] uppercase tracking-eyebrow text-[#22a06b]">
+            <div className="font-mono text-[10px] uppercase tracking-eyebrow text-[#2E7D5A]">
               Devis accepté
             </div>
-            <h3 className="mt-2 font-display text-2xl text-ink">
+            <h3 className="mt-2 font-display text-2xl text-anthra">
               Merci pour votre confiance.
             </h3>
-            <p className="mt-2 text-sm text-graphite leading-relaxed">
+            <p className="mt-2 text-sm text-taupe leading-relaxed">
               Notre équipe vous contacte sous 24 heures ouvrées pour planifier
               les prochaines étapes (visite de chantier, calendrier, signature
               papier si applicable).
@@ -99,14 +99,14 @@ export function QuoteActions({
 
   if (status === "refused") {
     return (
-      <div className="my-6 p-6 rounded-2xl border border-ink/15 bg-cream">
+      <div className="my-6 p-6 rounded-2xl border border-pierre bg-creme">
         <div className="flex items-start gap-4">
-          <XCircle className="h-6 w-6 text-graphite shrink-0" />
+          <XCircle className="h-6 w-6 text-taupe shrink-0" />
           <div>
-            <div className="font-mono text-[10px] uppercase tracking-eyebrow text-graphite">
+            <div className="font-mono text-[10px] uppercase tracking-eyebrow text-taupe">
               Devis non retenu
             </div>
-            <p className="mt-2 text-sm text-graphite leading-relaxed">
+            <p className="mt-2 text-sm text-taupe leading-relaxed">
               Votre réponse a été enregistrée. Nous restons à votre disposition
               si votre projet évolue.
             </p>
@@ -125,15 +125,15 @@ export function QuoteActions({
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
-            className="p-6 rounded-2xl border border-copper/30 bg-copper/5"
+            className="p-6 rounded-2xl border border-bleu/30 bg-bleu/5"
           >
-            <div className="font-mono text-[10px] uppercase tracking-eyebrow text-copper">
+            <div className="font-mono text-[10px] uppercase tracking-eyebrow text-bleu">
               Votre réponse
             </div>
-            <h3 className="mt-2 font-display text-2xl text-ink">
+            <h3 className="mt-2 font-display text-2xl text-anthra">
               Vous souhaitez donner suite à ce devis&nbsp;?
             </h3>
-            <p className="mt-2 text-sm text-graphite leading-relaxed">
+            <p className="mt-2 text-sm text-taupe leading-relaxed">
               Une réponse en ligne nous permet de réserver votre créneau
               chantier plus rapidement. Vous pouvez aussi nous contacter
               directement.
@@ -141,14 +141,14 @@ export function QuoteActions({
             <div className="mt-5 flex flex-col sm:flex-row gap-3">
               <button
                 onClick={() => setMode("accepting")}
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-ink text-cream px-5 py-3 text-sm font-medium hover:bg-copper transition-colors"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-navy text-creme px-5 py-3 text-sm font-medium hover:bg-bleu transition-colors"
               >
                 <PenLine className="h-4 w-4" />
                 Accepter ce devis
               </button>
               <button
                 onClick={() => setMode("refusing")}
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-white border border-ink/15 px-5 py-3 text-sm text-graphite hover:border-copper/40 hover:text-copper transition-colors"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-white border border-pierre px-5 py-3 text-sm text-taupe hover:border-bleu/40 hover:text-bleu transition-colors"
               >
                 Décliner
               </button>
@@ -162,15 +162,15 @@ export function QuoteActions({
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
-            className="p-6 rounded-2xl border border-[#22a06b]/40 bg-[#22a06b]/5"
+            className="p-6 rounded-2xl border border-[#2E7D5A]/40 bg-[#2E7D5A]/5"
           >
-            <div className="font-mono text-[10px] uppercase tracking-eyebrow text-[#22a06b]">
+            <div className="font-mono text-[10px] uppercase tracking-eyebrow text-[#2E7D5A]">
               Signature électronique
             </div>
-            <h3 className="mt-2 font-display text-2xl text-ink">
+            <h3 className="mt-2 font-display text-2xl text-anthra">
               Accepter le devis
             </h3>
-            <p className="mt-2 text-sm text-graphite">
+            <p className="mt-2 text-sm text-taupe">
               En signant ci-dessous, vous acceptez les lignes du devis et nos
               conditions générales. La signature papier reste possible et peut
               être réalisée avec notre équipe.
@@ -186,15 +186,15 @@ export function QuoteActions({
                   value={signerName}
                   onChange={(e) => setSignerName(e.target.value)}
                   placeholder="Prénom NOM"
-                  className="w-full bg-white border border-ink/12 rounded-xl px-4 py-2.5 text-sm text-ink focus:border-copper focus:outline-none focus:ring-2 focus:ring-copper/20"
+                  className="w-full bg-white border border-pierre rounded-xl px-4 py-2.5 text-sm text-anthra focus:border-bleu focus:outline-none focus:ring-2 focus:ring-bleu/20"
                 />
               </div>
-              <label className="flex items-start gap-3 text-sm text-graphite leading-relaxed cursor-pointer">
+              <label className="flex items-start gap-3 text-sm text-taupe leading-relaxed cursor-pointer">
                 <input
                   type="checkbox"
                   checked={acceptedTerms}
                   onChange={(e) => setAcceptedTerms(e.target.checked)}
-                  className="mt-1 h-4 w-4 accent-copper"
+                  className="mt-1 h-4 w-4 accent-bleu"
                 />
                 <span>
                   J&apos;accepte les termes du devis n° {reference}. Cette
@@ -205,7 +205,7 @@ export function QuoteActions({
             </div>
 
             {error && (
-              <div className="mt-4 p-3 rounded-xl border border-ember/40 bg-white text-sm text-ember flex items-center gap-2">
+              <div className="mt-4 p-3 rounded-xl border border-terracotta/40 bg-white text-sm text-terracotta flex items-center gap-2">
                 <AlertCircle className="h-4 w-4 shrink-0" /> {error}
               </div>
             )}
@@ -214,7 +214,7 @@ export function QuoteActions({
               <button
                 onClick={() => setMode("idle")}
                 disabled={busy}
-                className="text-sm text-graphite hover:text-ink"
+                className="text-sm text-taupe hover:text-anthra"
               >
                 ← Retour
               </button>
@@ -223,8 +223,8 @@ export function QuoteActions({
                 disabled={busy || signerName.trim().length < 2 || !acceptedTerms}
                 className={`inline-flex items-center gap-2 rounded-full px-5 py-3 text-sm font-medium transition-all ${
                   signerName.trim().length >= 2 && acceptedTerms && !busy
-                    ? "bg-[#22a06b] text-white hover:bg-[#1d8b5e]"
-                    : "bg-ink/15 text-ink/40 cursor-not-allowed"
+                    ? "bg-[#2E7D5A] text-white hover:bg-[#1d8b5e]"
+                    : "bg-sable/60 text-anthra/40 cursor-not-allowed"
                 }`}
               >
                 {busy ? <Loader2 className="h-4 w-4 animate-spin" /> : <CheckCircle2 className="h-4 w-4" />}
@@ -240,15 +240,15 @@ export function QuoteActions({
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
-            className="p-6 rounded-2xl border border-ink/15 bg-cream"
+            className="p-6 rounded-2xl border border-pierre bg-creme"
           >
-            <div className="font-mono text-[10px] uppercase tracking-eyebrow text-graphite">
+            <div className="font-mono text-[10px] uppercase tracking-eyebrow text-taupe">
               Décliner le devis
             </div>
-            <h3 className="mt-2 font-display text-2xl text-ink">
+            <h3 className="mt-2 font-display text-2xl text-anthra">
               Pourquoi décliner&nbsp;?
             </h3>
-            <p className="mt-2 text-sm text-graphite">
+            <p className="mt-2 text-sm text-taupe">
               Quelques mots aident notre bureau d&apos;études à mieux ajuster
               les futurs devis. Champ facultatif.
             </p>
@@ -259,12 +259,12 @@ export function QuoteActions({
                 value={refusalReason}
                 onChange={(e) => setRefusalReason(e.target.value)}
                 placeholder="Budget, délai, autre prestataire choisi…"
-                className="w-full bg-white border border-ink/12 rounded-xl px-4 py-2.5 text-sm text-ink focus:border-copper focus:outline-none focus:ring-2 focus:ring-copper/20 resize-none"
+                className="w-full bg-white border border-pierre rounded-xl px-4 py-2.5 text-sm text-anthra focus:border-bleu focus:outline-none focus:ring-2 focus:ring-bleu/20 resize-none"
               />
             </div>
 
             {error && (
-              <div className="mt-4 p-3 rounded-xl border border-ember/40 bg-white text-sm text-ember">
+              <div className="mt-4 p-3 rounded-xl border border-terracotta/40 bg-white text-sm text-terracotta">
                 {error}
               </div>
             )}
@@ -273,14 +273,14 @@ export function QuoteActions({
               <button
                 onClick={() => setMode("idle")}
                 disabled={busy}
-                className="text-sm text-graphite hover:text-ink"
+                className="text-sm text-taupe hover:text-anthra"
               >
                 ← Retour
               </button>
               <button
                 onClick={() => submit("refused")}
                 disabled={busy}
-                className="inline-flex items-center gap-2 rounded-full bg-ink text-cream px-5 py-3 text-sm font-medium hover:bg-copper transition-colors"
+                className="inline-flex items-center gap-2 rounded-full bg-navy text-creme px-5 py-3 text-sm font-medium hover:bg-bleu transition-colors"
               >
                 {busy ? <Loader2 className="h-4 w-4 animate-spin" /> : <XCircle className="h-4 w-4" />}
                 Envoyer ma réponse

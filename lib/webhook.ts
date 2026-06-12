@@ -161,7 +161,7 @@ async function sendDiscord(lead: LeadRecord): Promise<{ ok: boolean; error?: str
   const score = lead.score;
   const emoji = levelEmoji(level);
   const levelLabel = level ? LEVEL_LABELS[level] : "Nouveau";
-  const colorHex = level ? LEVEL_COLORS[level] : "#b86a36";
+  const colorHex = level ? LEVEL_COLORS[level] : "#0B57A0";
   const colorInt = parseInt(colorHex.replace("#", ""), 16);
   const adminUrl = publicAdminUrl(lead.reference);
 

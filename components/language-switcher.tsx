@@ -20,8 +20,8 @@ export function LanguageSwitcher({
         onClick={() => setOpen((v) => !v)}
         className={
           variant === "minimal"
-            ? "inline-flex items-center gap-1.5 text-xs text-graphite hover:text-ink transition-colors"
-            : "inline-flex items-center gap-1.5 rounded-full border border-ink/12 bg-white px-3 py-1.5 text-xs text-graphite hover:border-copper/40 transition-colors"
+            ? "inline-flex items-center gap-1.5 text-xs text-taupe hover:text-anthra transition-colors"
+            : "inline-flex items-center gap-1.5 rounded-full border border-pierre bg-white px-3 py-1.5 text-xs text-taupe hover:border-bleu/40 transition-colors"
         }
         aria-label="Switch language"
         aria-expanded={open}
@@ -47,7 +47,7 @@ export function LanguageSwitcher({
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -4 }}
               transition={{ duration: 0.15 }}
-              className="absolute right-0 mt-2 w-44 rounded-2xl bg-white border border-ink/10 shadow-lift py-1 z-50"
+              className="absolute right-0 mt-2 w-44 rounded-2xl bg-white border border-pierre shadow-lift py-1 z-50"
             >
               {LOCALES.map((l) => (
                 <button
@@ -56,11 +56,11 @@ export function LanguageSwitcher({
                     setLocale(l);
                     setOpen(false);
                   }}
-                  className="w-full text-left px-4 py-2 text-sm flex items-center gap-3 hover:bg-cream transition-colors"
+                  className="w-full text-left px-4 py-2 text-sm flex items-center gap-3 hover:bg-creme transition-colors"
                 >
                   <span className="text-base leading-none">{LOCALE_FLAGS[l]}</span>
-                  <span className="flex-1 text-ink">{LOCALE_LABELS[l]}</span>
-                  {locale === l && <Check className="h-3.5 w-3.5 text-copper" />}
+                  <span className="flex-1 text-anthra">{LOCALE_LABELS[l]}</span>
+                  {locale === l && <Check className="h-3.5 w-3.5 text-bleu" />}
                 </button>
               ))}
             </motion.div>

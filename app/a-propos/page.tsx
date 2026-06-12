@@ -44,13 +44,13 @@ export default function AProposPage() {
         eyebrow="À propos"
         title={
           <>
-            Une maison technique <em className="not-italic text-copper">à taille humaine</em>, à
+            Une maison technique <em className="not-italic text-bleu">à taille humaine</em>, à
             l'ambition très claire.
           </>
         }
         intro={
           <>
-            Fondée en <strong className="text-copper font-semibold">1994</strong>, Chauffage Artisanal s&apos;est construite autour d&apos;un métier — le chauffage — et d&apos;une discipline : faire bien, faire durer.
+            Fondée en <strong className="text-bleu font-semibold">1994</strong>, Chauffage Artisanal s&apos;est construite autour d&apos;un métier — le chauffage — et d&apos;une discipline : faire bien, faire durer.
           </>
         }
         aside={
@@ -68,14 +68,14 @@ export default function AProposPage() {
       />
 
       {/* Photo d'équipe */}
-      <section className="relative bg-cream">
+      <section className="relative bg-creme">
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.9 }}
-            className="relative aspect-[21/9] rounded-3xl overflow-hidden bg-stone shadow-card"
+            className="relative aspect-[21/9] rounded-3xl overflow-hidden bg-pierre shadow-card"
           >
             <Image
               src="https://images.pexels.com/photos/8961069/pexels-photo-8961069.jpeg?auto=compress&w=2400"
@@ -85,15 +85,15 @@ export default function AProposPage() {
               sizes="100vw"
               className="object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-charcoal/60 via-charcoal/10 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-navy/60 via-navy/10 to-transparent" />
             <div className="absolute bottom-8 left-8 right-8 flex items-end justify-between">
               <div>
-                <div className="font-mono text-[10px] uppercase tracking-eyebrow text-cream/95 bg-charcoal/40 backdrop-blur-md px-3 py-1.5 rounded-full inline-flex">
+                <div className="font-mono text-[10px] uppercase tracking-eyebrow text-creme/95 bg-navy/40 backdrop-blur-md px-3 py-1.5 rounded-full inline-flex">
                   Notre équipe
                 </div>
-                <div className="font-display text-5xl text-cream mt-3">Une maison technique</div>
+                <div className="font-display text-5xl text-creme mt-3">Une maison technique</div>
               </div>
-              <div className="font-mono text-xs text-cream/80 hidden md:block">
+              <div className="font-mono text-xs text-creme/80 hidden md:block">
                 Foetz · Luxembourg
               </div>
             </div>
@@ -102,14 +102,14 @@ export default function AProposPage() {
       </section>
 
       {/* VALEURS */}
-      <section className="py-14 lg:py-20 bg-cream">
+      <section className="py-14 lg:py-20 bg-creme">
         <div className="container">
           <div className="grid lg:grid-cols-12 gap-12">
             <div className="lg:col-span-5">
               <Eyebrow number="01">Nos engagements</Eyebrow>
               <Reveal>
                 <SectionTitle className="mt-4">
-                  Quatre principes qui n&apos;ont pas bougé <em className="not-italic text-copper">depuis 1994</em>.
+                  Quatre principes qui n&apos;ont pas bougé <em className="not-italic text-bleu">depuis 1994</em>.
                 </SectionTitle>
               </Reveal>
             </div>
@@ -121,13 +121,13 @@ export default function AProposPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-50px" }}
                   transition={{ duration: 0.6, delay: i * 0.08 }}
-                  className="p-6 lg:p-8 rounded-2xl border border-ink/10 bg-white hover:border-copper/40 hover:shadow-lift transition-all"
+                  className="p-6 lg:p-8 rounded-2xl border border-pierre bg-white hover:border-bleu/40 hover:shadow-lift transition-all"
                 >
-                  <div className="font-mono text-[10px] uppercase tracking-eyebrow text-copper">
+                  <div className="font-mono text-[10px] uppercase tracking-eyebrow text-bleu">
                     0{i + 1}
                   </div>
-                  <h3 className="mt-3 font-display text-2xl text-ink tracking-tight">{v.title}</h3>
-                  <p className="mt-3 text-graphite leading-relaxed">{v.body}</p>
+                  <h3 className="mt-3 font-display text-2xl text-anthra tracking-tight">{v.title}</h3>
+                  <p className="mt-3 text-taupe leading-relaxed">{v.body}</p>
                 </motion.div>
               ))}
             </div>
@@ -138,7 +138,7 @@ export default function AProposPage() {
       <Timeline />
 
       {/* ÉQUIPE DIRECTION */}
-      <section className="py-14 lg:py-20 bg-linen border-y border-ink/8">
+      <section className="py-14 lg:py-20 bg-creme border-y border-pierre">
         <div className="container">
           <div className="max-w-3xl mb-10">
             <Eyebrow number="03">Direction</Eyebrow>
@@ -156,7 +156,7 @@ export default function AProposPage() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: i * 0.08 }}
               >
-                <div className="relative aspect-[4/5] rounded-2xl overflow-hidden bg-stone shadow-soft">
+                <div className="relative aspect-[4/5] rounded-2xl overflow-hidden bg-pierre shadow-soft">
                   <Image
                     src={m.img}
                     alt={m.name}
@@ -166,7 +166,7 @@ export default function AProposPage() {
                   />
                 </div>
                 <div className="mt-4">
-                  <div className="font-display text-xl text-ink">{m.name}</div>
+                  <div className="font-display text-xl text-anthra">{m.name}</div>
                   <div className="text-sm text-muted mt-0.5">{m.role}</div>
                 </div>
               </motion.div>
@@ -178,16 +178,16 @@ export default function AProposPage() {
       <Partners />
 
       {/* Rappel recrutement */}
-      <section className="py-12 lg:py-14 bg-cream">
+      <section className="py-12 lg:py-14 bg-creme">
         <div className="container">
           <div className="grid lg:grid-cols-12 gap-10 items-center">
             <div className="lg:col-span-7">
               <Eyebrow number="04">Rejoindre l'équipe</Eyebrow>
-              <h2 className="mt-4 font-display text-display-md text-balance text-ink">
+              <h2 className="mt-4 font-display text-display-md text-balance text-anthra">
                 Une maison technique{" "}
-                <em className="not-italic text-copper">grandit avec ses gens</em>.
+                <em className="not-italic text-bleu">grandit avec ses gens</em>.
               </h2>
-              <p className="mt-5 text-graphite text-lg max-w-2xl">
+              <p className="mt-5 text-taupe text-lg max-w-2xl">
                 Si la méthode et les valeurs que vous venez de lire correspondent à ce que vous
                 cherchez en tant que professionnel, nous serons ravis de vous rencontrer. Postes
                 ouverts en permanence pour les techniciens chauffagistes, frigoristes, plombiers,
@@ -197,7 +197,7 @@ export default function AProposPage() {
             <div className="lg:col-span-5 flex lg:justify-end">
               <Link
                 href="/recrutement"
-                className="group inline-flex items-center justify-center gap-2 rounded-full bg-ink text-cream px-7 py-4 text-sm font-medium hover:bg-copper transition-all hover:-translate-y-0.5"
+                className="group inline-flex items-center justify-center gap-2 rounded-full bg-navy text-creme px-7 py-4 text-sm font-medium hover:bg-bleu transition-all hover:-translate-y-0.5"
               >
                 Découvrir les postes
                 <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />

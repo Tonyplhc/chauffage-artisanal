@@ -29,9 +29,9 @@ type SurveyState = {
 };
 
 function scoreColor(score: number): string {
-  if (score <= 6) return "#dc5a28"; // ember
-  if (score <= 8) return "#b86a36"; // copper
-  return "#22a06b"; // green
+  if (score <= 6) return "#C0392B"; // ember
+  if (score <= 8) return "#0B57A0"; // bleu
+  return "#2E7D5A"; // green
 }
 
 function scoreLabel(score: number): string {
@@ -97,13 +97,13 @@ export default function FeedbackPage() {
 
   if (error) {
     return (
-      <div className="min-h-screen bg-cream grid place-items-center px-4">
+      <div className="min-h-screen bg-creme grid place-items-center px-4">
         <div className="max-w-md text-center">
-          <AlertTriangle className="h-12 w-12 mx-auto text-ember mb-3" />
-          <h1 className="font-display text-2xl text-ink mb-2">
+          <AlertTriangle className="h-12 w-12 mx-auto text-terracotta mb-3" />
+          <h1 className="font-display text-2xl text-anthra mb-2">
             Lien indisponible
           </h1>
-          <p className="text-graphite">{error}</p>
+          <p className="text-taupe">{error}</p>
         </div>
       </div>
     );
@@ -111,15 +111,15 @@ export default function FeedbackPage() {
 
   if (!state) {
     return (
-      <div className="min-h-screen bg-cream grid place-items-center">
-        <Loader2 className="h-6 w-6 animate-spin text-copper" />
+      <div className="min-h-screen bg-creme grid place-items-center">
+        <Loader2 className="h-6 w-6 animate-spin text-bleu" />
       </div>
     );
   }
 
   if (done) {
     return (
-      <div className="min-h-screen bg-cream grid place-items-center px-4 py-12">
+      <div className="min-h-screen bg-creme grid place-items-center px-4 py-12">
         <div className="max-w-lg w-full text-center">
           <div
             className="h-16 w-16 mx-auto rounded-full grid place-items-center mb-4"
@@ -134,12 +134,12 @@ export default function FeedbackPage() {
               <CheckCircle2 className="h-8 w-8" />
             )}
           </div>
-          <h1 className="font-display text-3xl text-ink mb-2">Merci !</h1>
-          <p className="text-graphite max-w-md mx-auto">
+          <h1 className="font-display text-3xl text-anthra mb-2">Merci !</h1>
+          <p className="text-taupe max-w-md mx-auto">
             Votre retour nous aide à progresser.
           </p>
           {score !== null && (
-            <div className="mt-6 p-5 rounded-2xl bg-white border border-ink/10 inline-flex items-center gap-3">
+            <div className="mt-6 p-5 rounded-2xl bg-white border border-pierre inline-flex items-center gap-3">
               <span
                 className="h-12 w-12 rounded-full grid place-items-center font-display text-xl tabular-nums"
                 style={{
@@ -153,14 +153,14 @@ export default function FeedbackPage() {
                 <div className="text-xs font-mono uppercase tracking-eyebrow text-muted">
                   Votre score
                 </div>
-                <div className="text-sm text-ink font-medium">
+                <div className="text-sm text-anthra font-medium">
                   {scoreLabel(score)}
                 </div>
               </div>
             </div>
           )}
           {comment && (
-            <div className="mt-4 p-4 rounded-xl bg-white border border-ink/10 text-left text-sm text-graphite italic max-w-md mx-auto">
+            <div className="mt-4 p-4 rounded-xl bg-white border border-pierre text-left text-sm text-taupe italic max-w-md mx-auto">
               « {comment} »
             </div>
           )}
@@ -170,17 +170,17 @@ export default function FeedbackPage() {
   }
 
   return (
-    <div className="min-h-screen bg-cream py-12 lg:py-20 px-4">
+    <div className="min-h-screen bg-creme py-12 lg:py-20 px-4">
       <div className="container max-w-2xl">
-        <div className="rounded-3xl border border-ink/10 bg-white shadow-soft p-8 lg:p-12">
-          <div className="font-mono text-[10px] uppercase tracking-eyebrow text-copper mb-4">
+        <div className="rounded-3xl border border-pierre bg-white shadow-soft p-8 lg:p-12">
+          <div className="font-mono text-[10px] uppercase tracking-eyebrow text-bleu mb-4">
             Votre avis nous intéresse
           </div>
-          <h1 className="font-display text-2xl lg:text-3xl text-ink mb-3">
+          <h1 className="font-display text-2xl lg:text-3xl text-anthra mb-3">
             {state.recipientName}, sur une échelle de 0 à 10, à quel point
             recommanderiez-vous nos services ?
           </h1>
-          <p className="text-graphite mb-8">
+          <p className="text-taupe mb-8">
             0 = Pas du tout · 10 = Absolument.
           </p>
 
@@ -228,13 +228,13 @@ export default function FeedbackPage() {
             value={comment}
             onChange={(e) => setComment(e.target.value)}
             placeholder="Ce qui vous a plu, ce qui pourrait être amélioré…"
-            className="w-full bg-cream border border-ink/12 rounded-xl px-4 py-3 text-sm focus:border-copper focus:outline-none resize-none mb-6"
+            className="w-full bg-creme border border-pierre rounded-xl px-4 py-3 text-sm focus:border-bleu focus:outline-none resize-none mb-6"
           />
 
           <button
             onClick={submit}
             disabled={score === null || submitting}
-            className="w-full inline-flex items-center justify-center gap-2 rounded-full bg-ink text-cream px-5 py-3 text-base font-medium hover:bg-copper disabled:opacity-40 transition-colors"
+            className="w-full inline-flex items-center justify-center gap-2 rounded-full bg-navy text-creme px-5 py-3 text-base font-medium hover:bg-bleu disabled:opacity-40 transition-colors"
           >
             {submitting ? (
               <Loader2 className="h-4 w-4 animate-spin" />

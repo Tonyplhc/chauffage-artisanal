@@ -22,12 +22,12 @@ export default function EnRPage() {
       eyebrow="Énergies renouvelables"
       title={
         <>
-          Une transition énergétique <em className="not-italic text-copper">à votre rythme</em>, sur dossier.
+          Une transition énergétique <em className="not-italic text-bleu">à votre rythme</em>, sur dossier.
         </>
       }
       intro={
         <>
-          Solaire thermique, photovoltaïque couplé pompe à chaleur, stockage batterie. <strong className="text-copper font-semibold">Audit du bâtiment</strong> et trajectoire d&apos;investissement par étapes.
+          Solaire thermique, photovoltaïque couplé pompe à chaleur, stockage batterie. <strong className="text-bleu font-semibold">Audit du bâtiment</strong> et trajectoire d&apos;investissement par étapes.
         </>
       }
       heroImg="https://images.pexels.com/photos/433308/pexels-photo-433308.jpeg?auto=compress&w=2400"

@@ -291,7 +291,7 @@ export function sentimentEmoji(label: SentimentLabel): string {
 
 export function sentimentColor(label: SentimentLabel): string {
   if (label === "positive") return "#22a06b";
-  if (label === "negative") return "#dc5a28";
+  if (label === "negative") return "#C24A2C";
   return "#8b847a";
 }
 

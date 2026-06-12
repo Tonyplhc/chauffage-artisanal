@@ -52,10 +52,10 @@ export default function PaiementDemoPage() {
 
   if (error) {
     return (
-      <div className="min-h-screen bg-cream grid place-items-center px-4">
+      <div className="min-h-screen bg-creme grid place-items-center px-4">
         <div className="max-w-md text-center">
-          <AlertTriangle className="h-12 w-12 mx-auto text-ember mb-3" />
-          <p className="text-graphite">{error}</p>
+          <AlertTriangle className="h-12 w-12 mx-auto text-terracotta mb-3" />
+          <p className="text-taupe">{error}</p>
         </div>
       </div>
     );
@@ -63,8 +63,8 @@ export default function PaiementDemoPage() {
 
   if (!payment) {
     return (
-      <div className="min-h-screen bg-cream grid place-items-center">
-        <Loader2 className="h-6 w-6 animate-spin text-copper" />
+      <div className="min-h-screen bg-creme grid place-items-center">
+        <Loader2 className="h-6 w-6 animate-spin text-bleu" />
       </div>
     );
   }
@@ -72,12 +72,12 @@ export default function PaiementDemoPage() {
   const paid = payment.status === "completed";
 
   return (
-    <div className="min-h-screen bg-cream py-12 lg:py-20 px-4">
+    <div className="min-h-screen bg-creme py-12 lg:py-20 px-4">
       <div className="container max-w-xl">
-        <div className="rounded-3xl border border-ink/10 bg-white shadow-soft overflow-hidden">
+        <div className="rounded-3xl border border-pierre bg-white shadow-soft overflow-hidden">
           {/* Header */}
-          <div className="bg-ink text-cream px-6 py-5">
-            <div className="font-mono text-[10px] uppercase tracking-eyebrow text-copper mb-1">
+          <div className="bg-navy text-creme px-6 py-5">
+            <div className="font-mono text-[10px] uppercase tracking-eyebrow text-bleu mb-1">
               Démonstration — mode interne
             </div>
             <div className="font-display text-2xl">Paiement d&apos;acompte</div>
@@ -90,11 +90,11 @@ export default function PaiementDemoPage() {
           <div className="p-6 lg:p-8">
             {paid ? (
               <div className="text-center py-8">
-                <CheckCircle2 className="h-14 w-14 mx-auto text-[#22a06b] mb-3" />
-                <h1 className="font-display text-2xl text-ink mb-1">
+                <CheckCircle2 className="h-14 w-14 mx-auto text-[#2E7D5A] mb-3" />
+                <h1 className="font-display text-2xl text-anthra mb-1">
                   Paiement confirmé
                 </h1>
-                <p className="text-graphite text-sm">
+                <p className="text-taupe text-sm">
                   Merci, votre acompte de{" "}
                   <strong>{formatEur(payment.amountCents)}</strong> a été
                   enregistré.
@@ -102,25 +102,25 @@ export default function PaiementDemoPage() {
               </div>
             ) : (
               <>
-                <div className="rounded-2xl bg-cream border border-ink/8 p-5 mb-6">
+                <div className="rounded-2xl bg-creme border border-pierre p-5 mb-6">
                   <div className="font-mono text-[10px] uppercase tracking-eyebrow text-muted mb-2">
                     Détail
                   </div>
-                  <div className="text-sm text-ink leading-relaxed">
+                  <div className="text-sm text-anthra leading-relaxed">
                     {payment.description}
                   </div>
-                  <div className="mt-4 pt-4 border-t border-ink/8 flex items-center justify-between">
+                  <div className="mt-4 pt-4 border-t border-pierre flex items-center justify-between">
                     <span className="text-sm text-muted">Montant à régler</span>
-                    <span className="font-display text-3xl text-ink tabular-nums">
+                    <span className="font-display text-3xl text-anthra tabular-nums">
                       {formatEur(payment.amountCents)}
                     </span>
                   </div>
                 </div>
 
-                <div className="rounded-xl bg-copper/8 border border-copper/30 p-4 mb-6">
+                <div className="rounded-xl bg-bleu/8 border border-bleu/30 p-4 mb-6">
                   <div className="flex items-start gap-2">
-                    <AlertTriangle className="h-4 w-4 text-copper shrink-0 mt-0.5" />
-                    <div className="text-xs text-ink">
+                    <AlertTriangle className="h-4 w-4 text-bleu shrink-0 mt-0.5" />
+                    <div className="text-xs text-anthra">
                       <strong>Mode démonstration :</strong> aucun débit réel ne
                       sera effectué. En production, cette page est remplacée
                       par <code className="bg-white px-1 rounded">Stripe Checkout</code>{" "}
@@ -132,7 +132,7 @@ export default function PaiementDemoPage() {
 
                 <button
                   disabled
-                  className="w-full inline-flex items-center justify-center gap-2 rounded-full bg-ink text-cream px-5 py-3 text-base font-medium opacity-60 cursor-not-allowed"
+                  className="w-full inline-flex items-center justify-center gap-2 rounded-full bg-navy text-creme px-5 py-3 text-base font-medium opacity-60 cursor-not-allowed"
                 >
                   <CreditCard className="h-4 w-4" />
                   Payer maintenant (désactivé en démo)

@@ -118,37 +118,37 @@ export default async function EspaceClientPage({
   const projectProgress = project ? computeProgress(project) : null;
 
   return (
-    <main className="min-h-screen bg-cream py-10 lg:py-16">
+    <main className="min-h-screen bg-creme py-10 lg:py-16">
       <div className="container max-w-4xl">
         {/* Header */}
         <div className="mb-8">
-          <div className="font-mono text-[10px] uppercase tracking-eyebrow text-copper">
+          <div className="font-mono text-[10px] uppercase tracking-eyebrow text-bleu">
             Espace client · suivi de dossier
           </div>
-          <h1 className="mt-3 font-display text-display-md text-ink tracking-tight">
+          <h1 className="mt-3 font-display text-display-md text-anthra tracking-tight">
             Bonjour {firstName}, voici{" "}
-            <em className="not-italic text-copper">où en est votre dossier</em>.
+            <em className="not-italic text-bleu">où en est votre dossier</em>.
           </h1>
-          <div className="mt-4 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-ink/12">
-            <FileText className="h-4 w-4 text-copper" />
-            <span className="font-mono text-sm text-ink">{lead.reference}</span>
+          <div className="mt-4 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-pierre">
+            <FileText className="h-4 w-4 text-bleu" />
+            <span className="font-mono text-sm text-anthra">{lead.reference}</span>
             <span className="text-muted">·</span>
-            <span className="text-sm text-graphite">{services}</span>
+            <span className="text-sm text-taupe">{services}</span>
           </div>
         </div>
 
         {/* Timeline statut */}
-        <div className="rounded-3xl border border-ink/10 bg-white shadow-soft p-6 lg:p-10 mb-6">
-          <div className="font-mono text-[10px] uppercase tracking-eyebrow text-copper mb-6">
+        <div className="rounded-3xl border border-pierre bg-white shadow-soft p-6 lg:p-10 mb-6">
+          <div className="font-mono text-[10px] uppercase tracking-eyebrow text-bleu mb-6">
             État d&apos;avancement
           </div>
 
           {isLost ? (
-            <div className="p-5 rounded-2xl border border-ink/15 bg-cream">
+            <div className="p-5 rounded-2xl border border-pierre bg-creme">
               <div className="font-mono text-[10px] uppercase tracking-eyebrow text-muted">
                 Dossier clos
               </div>
-              <p className="mt-2 text-ink">
+              <p className="mt-2 text-anthra">
                 Votre dossier est actuellement clos. Si vous souhaitez le rouvrir, contactez-nous.
               </p>
             </div>
@@ -162,16 +162,16 @@ export default async function EspaceClientPage({
                     <div className="flex flex-col items-center pt-0.5">
                       {reached ? (
                         <CheckCircle2
-                          className={`h-6 w-6 ${isCurrent ? "text-copper" : "text-[#22a06b]"}`}
-                          fill={isCurrent ? "rgba(184,106,54,0.15)" : "rgba(34,160,107,0.15)"}
+                          className={`h-6 w-6 ${isCurrent ? "text-bleu" : "text-[#2E7D5A]"}`}
+                          fill={isCurrent ? "rgba(11,87,160,0.15)" : "rgba(34,160,107,0.15)"}
                         />
                       ) : (
-                        <Circle className="h-6 w-6 text-ink/20" />
+                        <Circle className="h-6 w-6 text-anthra/20" />
                       )}
                       {i < TIMELINE.length - 1 && (
                         <div
                           className={`mt-1 h-12 w-0.5 ${
-                            i < currentIdx ? "bg-[#22a06b]" : "bg-ink/10"
+                            i < currentIdx ? "bg-[#2E7D5A]" : "bg-sable/60"
                           }`}
                         />
                       )}
@@ -180,22 +180,22 @@ export default async function EspaceClientPage({
                       <div
                         className={`font-display text-lg ${
                           isCurrent
-                            ? "text-copper"
+                            ? "text-bleu"
                             : reached
-                            ? "text-ink"
+                            ? "text-anthra"
                             : "text-muted"
                         }`}
                       >
                         {step.label}
                         {isCurrent && (
-                          <span className="ml-2 font-mono text-[10px] uppercase tracking-eyebrow text-copper bg-copper/10 border border-copper/40 px-2 py-0.5 rounded-full">
+                          <span className="ml-2 font-mono text-[10px] uppercase tracking-eyebrow text-bleu bg-bleu/10 border border-bleu/40 px-2 py-0.5 rounded-full">
                             En cours
                           </span>
                         )}
                       </div>
                       <p
                         className={`mt-1 text-sm ${
-                          reached ? "text-graphite" : "text-muted"
+                          reached ? "text-taupe" : "text-muted"
                         }`}
                       >
                         {step.description}
@@ -210,32 +210,32 @@ export default async function EspaceClientPage({
 
         {/* Suivi de chantier (uniquement si converti et projet initié) */}
         {project && projectProgress && (
-          <div className="rounded-3xl border border-ink/10 bg-white shadow-soft p-6 lg:p-10 mb-6">
-            <div className="font-mono text-[10px] uppercase tracking-eyebrow text-copper mb-2">
+          <div className="rounded-3xl border border-pierre bg-white shadow-soft p-6 lg:p-10 mb-6">
+            <div className="font-mono text-[10px] uppercase tracking-eyebrow text-bleu mb-2">
               Suivi de votre chantier
             </div>
             <div className="flex items-baseline gap-3 mb-3">
-              <span className="font-display text-3xl text-ink tabular-nums">
+              <span className="font-display text-3xl text-anthra tabular-nums">
                 {projectProgress.doneCount}/{projectProgress.totalCount}
               </span>
-              <span className="text-graphite text-sm">étapes accomplies</span>
+              <span className="text-taupe text-sm">étapes accomplies</span>
             </div>
-            <div className="h-2 bg-cream rounded-full overflow-hidden mb-6">
+            <div className="h-2 bg-creme rounded-full overflow-hidden mb-6">
               <div
-                className="h-full bg-[#22a06b] rounded-full transition-all"
+                className="h-full bg-[#2E7D5A] rounded-full transition-all"
                 style={{ width: `${projectProgress.ratio * 100}%` }}
               />
             </div>
             {projectProgress.currentStep && (
-              <div className="mb-5 p-4 rounded-2xl bg-copper/5 border border-copper/30">
-                <div className="font-mono text-[10px] uppercase tracking-eyebrow text-copper mb-1">
+              <div className="mb-5 p-4 rounded-2xl bg-bleu/5 border border-bleu/30">
+                <div className="font-mono text-[10px] uppercase tracking-eyebrow text-bleu mb-1">
                   En cours
                 </div>
-                <div className="font-display text-lg text-ink">
+                <div className="font-display text-lg text-anthra">
                   {projectProgress.currentStep.title}
                 </div>
                 {projectProgress.currentStep.description && (
-                  <p className="mt-1 text-sm text-graphite">
+                  <p className="mt-1 text-sm text-taupe">
                     {projectProgress.currentStep.description}
                   </p>
                 )}
@@ -249,21 +249,21 @@ export default async function EspaceClientPage({
                   <li key={m.id} className="flex items-start gap-3">
                     <div className="pt-0.5">
                       {done ? (
-                        <CheckCircle2 className="h-5 w-5 text-[#22a06b]" />
+                        <CheckCircle2 className="h-5 w-5 text-[#2E7D5A]" />
                       ) : inProgress ? (
-                        <CheckCircle2 className="h-5 w-5 text-copper" />
+                        <CheckCircle2 className="h-5 w-5 text-bleu" />
                       ) : (
-                        <Circle className="h-5 w-5 text-ink/20" />
+                        <Circle className="h-5 w-5 text-anthra/20" />
                       )}
                     </div>
                     <div className="flex-1">
                       <div
                         className={`text-sm font-medium ${
                           done
-                            ? "text-graphite"
+                            ? "text-taupe"
                             : inProgress
-                            ? "text-copper"
-                            : "text-ink"
+                            ? "text-bleu"
+                            : "text-anthra"
                         }`}
                       >
                         {m.title}
@@ -294,18 +294,18 @@ export default async function EspaceClientPage({
               })}
             </ol>
             {project.notesPublic && (
-              <div className="mt-5 p-4 rounded-2xl bg-cream border border-ink/8">
+              <div className="mt-5 p-4 rounded-2xl bg-creme border border-pierre">
                 <div className="font-mono text-[10px] uppercase tracking-eyebrow text-muted mb-1">
                   Note de notre équipe
                 </div>
-                <p className="text-sm text-ink whitespace-pre-wrap leading-relaxed">
+                <p className="text-sm text-anthra whitespace-pre-wrap leading-relaxed">
                   {project.notesPublic}
                 </p>
               </div>
             )}
             {(project.contactName || project.contactPhone) && (
-              <div className="mt-5 p-4 rounded-2xl bg-ink text-cream flex items-center gap-3">
-                <div className="font-mono text-[10px] uppercase tracking-eyebrow text-copper">
+              <div className="mt-5 p-4 rounded-2xl bg-navy text-creme flex items-center gap-3">
+                <div className="font-mono text-[10px] uppercase tracking-eyebrow text-bleu">
                   Votre contact dédié
                 </div>
                 <div className="ml-auto text-right">
@@ -317,7 +317,7 @@ export default async function EspaceClientPage({
                   {project.contactPhone && (
                     <a
                       href={`tel:${project.contactPhone.replace(/\s/g, "")}`}
-                      className="text-xs text-copper hover:underline"
+                      className="text-xs text-bleu hover:underline"
                     >
                       {project.contactPhone}
                     </a>
@@ -329,14 +329,14 @@ export default async function EspaceClientPage({
         )}
 
         {/* Récap projet */}
-        <div className="rounded-3xl border border-ink/10 bg-white shadow-soft p-6 lg:p-10 mb-6">
+        <div className="rounded-3xl border border-pierre bg-white shadow-soft p-6 lg:p-10 mb-6">
           <div className="flex items-center justify-between gap-4 mb-5">
-            <div className="font-mono text-[10px] uppercase tracking-eyebrow text-copper">
+            <div className="font-mono text-[10px] uppercase tracking-eyebrow text-bleu">
               Votre demande
             </div>
             <Link
               href={`/devis/recap/${lead.reference}?t=${searchParams.t}`}
-              className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-eyebrow text-graphite hover:text-copper transition-colors"
+              className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-eyebrow text-taupe hover:text-bleu transition-colors"
             >
               <Printer className="h-3.5 w-3.5" />
               Imprimer / PDF
@@ -361,35 +361,35 @@ export default async function EspaceClientPage({
         </div>
 
         {/* Contact direct */}
-        <div className="rounded-3xl border border-copper/30 bg-copper/5 p-6 lg:p-8">
-          <div className="font-mono text-[10px] uppercase tracking-eyebrow text-copper mb-3">
+        <div className="rounded-3xl border border-bleu/30 bg-bleu/5 p-6 lg:p-8">
+          <div className="font-mono text-[10px] uppercase tracking-eyebrow text-bleu mb-3">
             Une question, une précision à apporter ?
           </div>
-          <h2 className="font-display text-2xl text-ink tracking-tight">
+          <h2 className="font-display text-2xl text-anthra tracking-tight">
             Joignez-nous directement.
           </h2>
-          <p className="mt-2 text-sm text-graphite">
+          <p className="mt-2 text-sm text-taupe">
             Le moyen le plus rapide reste l&apos;appel — mentionnez votre référence{" "}
-            <strong className="text-ink">{lead.reference}</strong>.
+            <strong className="text-anthra">{lead.reference}</strong>.
           </p>
           <div className="mt-5 grid sm:grid-cols-3 gap-2.5">
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-ink text-cream px-5 py-3 text-sm font-medium hover:bg-copper transition-colors"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-navy text-creme px-5 py-3 text-sm font-medium hover:bg-bleu transition-colors"
             >
               <Phone className="h-4 w-4" />
               Appeler
             </Link>
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-white border border-ink/15 text-ink px-5 py-3 text-sm font-medium hover:border-copper hover:text-copper transition-colors"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-white border border-pierre text-anthra px-5 py-3 text-sm font-medium hover:border-bleu hover:text-bleu transition-colors"
             >
               <Mail className="h-4 w-4" />
               Email
             </Link>
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-white border border-ink/15 text-ink px-5 py-3 text-sm font-medium hover:border-copper hover:text-copper transition-colors"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-white border border-pierre text-anthra px-5 py-3 text-sm font-medium hover:border-bleu hover:text-bleu transition-colors"
             >
               <MessageCircle className="h-4 w-4" />
               WhatsApp
@@ -400,7 +400,7 @@ export default async function EspaceClientPage({
         <div className="mt-8 text-center">
           <Link
             href="/"
-            className="inline-flex items-center gap-2 text-sm font-mono uppercase tracking-eyebrow text-graphite hover:text-copper transition-colors"
+            className="inline-flex items-center gap-2 text-sm font-mono uppercase tracking-eyebrow text-taupe hover:text-bleu transition-colors"
           >
             Retour au site
             <ArrowUpRight className="h-3.5 w-3.5" />
@@ -440,7 +440,7 @@ function Field({ k, v }: { k: string; v: string }) {
       <dt className="font-mono text-[10px] uppercase tracking-eyebrow text-muted mb-1">
         {k}
       </dt>
-      <dd className="text-ink">{v}</dd>
+      <dd className="text-anthra">{v}</dd>
     </div>
   );
 }

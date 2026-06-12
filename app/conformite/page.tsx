@@ -23,52 +23,52 @@ export default function ConformitePage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative pt-12 lg:pt-16 pb-10 lg:pb-12 bg-cream border-b border-ink/8 overflow-hidden">
+      <section className="relative pt-12 lg:pt-16 pb-10 lg:pb-12 bg-creme border-b border-pierre overflow-hidden">
         <div
           className="absolute inset-0 opacity-[0.04]"
           style={{
             backgroundImage:
-              "radial-gradient(circle at 20% 30%, rgba(184,106,54,0.35), transparent 55%), radial-gradient(circle at 80% 70%, rgba(184,106,54,0.18), transparent 55%)",
+              "radial-gradient(circle at 20% 30%, rgba(11,87,160,0.35), transparent 55%), radial-gradient(circle at 80% 70%, rgba(11,87,160,0.18), transparent 55%)",
           }}
         />
         <div className="container relative">
           <div className="max-w-3xl">
             <Eyebrow number="🇱🇺">Réglementation HVAC</Eyebrow>
-            <h1 className="mt-4 font-display text-display-xl tracking-tightest text-balance text-ink">
+            <h1 className="mt-4 font-display text-display-xl tracking-tightest text-balance text-anthra">
               Conformité HVAC Luxembourg —{" "}
-              <em className="not-italic text-copper">textes officiels cités</em>.
+              <em className="not-italic text-bleu">textes officiels cités</em>.
             </h1>
-            <p className="mt-5 text-lg lg:text-xl text-graphite leading-relaxed text-balance">
+            <p className="mt-5 text-lg lg:text-xl text-taupe leading-relaxed text-balance">
               Le secteur du chauffage et de la climatisation est encadré au Luxembourg par
               plusieurs RGD et règlements UE. Voici les obligations qui s&apos;appliquent
               vraiment, leurs textes de référence, et ce qu&apos;elles signifient pour vous.
             </p>
             <div className="mt-7 grid sm:grid-cols-3 gap-3">
-              <div className="flex items-center gap-2 p-3 rounded-2xl border border-copper/30 bg-white">
-                <ShieldCheck className="h-4 w-4 text-copper shrink-0" />
+              <div className="flex items-center gap-2 p-3 rounded-2xl border border-bleu/30 bg-white">
+                <ShieldCheck className="h-4 w-4 text-bleu shrink-0" />
                 <div className="text-xs">
-                  <div className="font-mono uppercase tracking-eyebrow text-copper">
+                  <div className="font-mono uppercase tracking-eyebrow text-bleu">
                     7 obligations
                   </div>
-                  <div className="text-ink">Documentées et sourcées</div>
+                  <div className="text-anthra">Documentées et sourcées</div>
                 </div>
               </div>
-              <div className="flex items-center gap-2 p-3 rounded-2xl border border-ink/10 bg-white">
-                <Award className="h-4 w-4 text-copper shrink-0" />
+              <div className="flex items-center gap-2 p-3 rounded-2xl border border-pierre bg-white">
+                <Award className="h-4 w-4 text-bleu shrink-0" />
                 <div className="text-xs">
-                  <div className="font-mono uppercase tracking-eyebrow text-copper">
+                  <div className="font-mono uppercase tracking-eyebrow text-bleu">
                     Sources légales
                   </div>
-                  <div className="text-ink">Legilux + Eur-Lex</div>
+                  <div className="text-anthra">Legilux + Eur-Lex</div>
                 </div>
               </div>
-              <div className="flex items-center gap-2 p-3 rounded-2xl border border-ink/10 bg-white">
-                <CheckCircle2 className="h-4 w-4 text-copper shrink-0" />
+              <div className="flex items-center gap-2 p-3 rounded-2xl border border-pierre bg-white">
+                <CheckCircle2 className="h-4 w-4 text-bleu shrink-0" />
                 <div className="text-xs">
-                  <div className="font-mono uppercase tracking-eyebrow text-copper">
+                  <div className="font-mono uppercase tracking-eyebrow text-bleu">
                     Mise à jour
                   </div>
-                  <div className="text-ink">2026</div>
+                  <div className="text-anthra">2026</div>
                 </div>
               </div>
             </div>
@@ -77,14 +77,14 @@ export default function ConformitePage() {
       </section>
 
       {/* Rules détaillées */}
-      <section className="py-14 lg:py-20 bg-cream">
+      <section className="py-14 lg:py-20 bg-creme">
         <div className="container">
           <div className="max-w-3xl mb-10">
             <Eyebrow number="01">Obligations détaillées</Eyebrow>
             <SectionTitle className="mt-4">
-              Ce que la loi <em className="not-italic text-copper">impose</em> réellement.
+              Ce que la loi <em className="not-italic text-bleu">impose</em> réellement.
             </SectionTitle>
-            <p className="mt-5 text-graphite leading-relaxed">
+            <p className="mt-5 text-taupe leading-relaxed">
               On entend souvent « l&apos;entretien chaudière est annuel obligatoire au LU ».
               C&apos;est inexact — la loi impose une INSPECTION périodique (2 ans fioul/bois, 4
               ans gaz). L&apos;entretien annuel est une bonne pratique imposée par les
@@ -97,20 +97,20 @@ export default function ConformitePage() {
               <article
                 key={rule.id}
                 id={rule.id}
-                className="rounded-3xl border border-ink/10 bg-white p-6 lg:p-8"
+                className="rounded-3xl border border-pierre bg-white p-6 lg:p-8"
               >
                 <div className="flex items-start justify-between gap-4 flex-wrap mb-4">
                   <div className="min-w-0 flex-1">
-                    <div className="font-mono text-[10px] uppercase tracking-eyebrow text-copper mb-1">
+                    <div className="font-mono text-[10px] uppercase tracking-eyebrow text-bleu mb-1">
                       {CATEGORY_LABELS[rule.category]}
                     </div>
-                    <h3 className="font-display text-2xl text-ink tracking-tight">
+                    <h3 className="font-display text-2xl text-anthra tracking-tight">
                       {rule.title}
                     </h3>
                   </div>
                 </div>
 
-                <p className="text-sm text-graphite leading-relaxed">{rule.obligation}</p>
+                <p className="text-sm text-taupe leading-relaxed">{rule.obligation}</p>
 
                 {/* Détails */}
                 <div className="mt-5">
@@ -119,8 +119,8 @@ export default function ConformitePage() {
                   </div>
                   <ul className="space-y-1.5">
                     {rule.details.map((d, i) => (
-                      <li key={i} className="text-sm text-graphite flex items-start gap-2">
-                        <span className="text-copper mt-0.5">•</span>
+                      <li key={i} className="text-sm text-taupe flex items-start gap-2">
+                        <span className="text-bleu mt-0.5">•</span>
                         <span>{d}</span>
                       </li>
                     ))}
@@ -139,9 +139,9 @@ export default function ConformitePage() {
                           href={s.url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-sm text-ink hover:text-copper transition-colors inline-flex items-center gap-1.5 group"
+                          className="text-sm text-anthra hover:text-bleu transition-colors inline-flex items-center gap-1.5 group"
                         >
-                          <span className="underline decoration-graphite/30 group-hover:decoration-copper">
+                          <span className="underline decoration-taupe/30 group-hover:decoration-bleu">
                             {s.label}
                           </span>
                           <ExternalLink className="h-3 w-3 opacity-60" />
@@ -153,14 +153,14 @@ export default function ConformitePage() {
 
                 {/* Certifications */}
                 {rule.certifyingBodies && rule.certifyingBodies.length > 0 && (
-                  <div className="mt-5 p-4 rounded-2xl bg-copper/5 border border-copper/30">
-                    <div className="font-mono text-[10px] uppercase tracking-eyebrow text-copper mb-2">
+                  <div className="mt-5 p-4 rounded-2xl bg-bleu/5 border border-bleu/30">
+                    <div className="font-mono text-[10px] uppercase tracking-eyebrow text-bleu mb-2">
                       Organismes certificateurs au Luxembourg
                     </div>
                     <ul className="space-y-1.5">
                       {rule.certifyingBodies.map((c, i) => (
-                        <li key={i} className="text-sm text-ink flex items-start gap-2">
-                          <Award className="h-3.5 w-3.5 text-copper mt-0.5 shrink-0" />
+                        <li key={i} className="text-sm text-anthra flex items-start gap-2">
+                          <Award className="h-3.5 w-3.5 text-bleu mt-0.5 shrink-0" />
                           <span>{c}</span>
                         </li>
                       ))}
@@ -170,11 +170,11 @@ export default function ConformitePage() {
 
                 {/* Sanctions */}
                 {rule.sanctions && (
-                  <div className="mt-5 p-4 rounded-2xl bg-ember/5 border border-ember/30">
-                    <div className="font-mono text-[10px] uppercase tracking-eyebrow text-ember mb-2">
+                  <div className="mt-5 p-4 rounded-2xl bg-terracotta/5 border border-terracotta/30">
+                    <div className="font-mono text-[10px] uppercase tracking-eyebrow text-terracotta mb-2">
                       Sanctions / conséquences
                     </div>
-                    <p className="text-sm text-ink leading-relaxed">{rule.sanctions}</p>
+                    <p className="text-sm text-anthra leading-relaxed">{rule.sanctions}</p>
                   </div>
                 )}
               </article>
@@ -184,29 +184,29 @@ export default function ConformitePage() {
       </section>
 
       {/* Note transparence */}
-      <section className="py-12 bg-linen border-y border-ink/8">
+      <section className="py-12 bg-creme border-y border-pierre">
         <div className="container max-w-3xl">
-          <div className="p-6 rounded-2xl border border-ink/10 bg-white">
+          <div className="p-6 rounded-2xl border border-pierre bg-white">
             <div className="flex items-start gap-3">
-              <Info className="h-5 w-5 text-copper mt-0.5 shrink-0" />
+              <Info className="h-5 w-5 text-bleu mt-0.5 shrink-0" />
               <div>
-                <div className="font-mono text-[10px] uppercase tracking-eyebrow text-copper mb-2">
+                <div className="font-mono text-[10px] uppercase tracking-eyebrow text-bleu mb-2">
                   Limites de cette synthèse
                 </div>
-                <p className="text-sm text-graphite leading-relaxed">
+                <p className="text-sm text-taupe leading-relaxed">
                   Cette page synthétise les textes officiels les plus pertinents pour le secteur
                   HVAC luxembourgeois. Elle ne se substitue pas à un conseil juridique
                   personnalisé. Pour les cas complexes (tertiaire, copropriété, situations
                   mixtes), nous orientons vers le Guichet Unique des aides au logement —{" "}
                   <a
                     href="tel:+35280021010"
-                    className="text-copper hover:underline"
+                    className="text-bleu hover:underline"
                   >
                     (+352) 80021010
                   </a>{" "}
                   — ou la Chambre des Métiers SCRB pour les installations gaz.
                 </p>
-                <p className="mt-3 text-sm text-graphite leading-relaxed">
+                <p className="mt-3 text-sm text-taupe leading-relaxed">
                   Certains points (seuil ancienneté TVA 3 % rénovation, RGD performance
                   énergétique des bâtiments 2026) sont à vérifier ponctuellement sur la fiche
                   officielle correspondante — les sources publiées convergent mais peuvent
@@ -219,16 +219,16 @@ export default function ConformitePage() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 lg:py-20 bg-charcoal text-cream">
+      <section className="py-16 lg:py-20 bg-navy text-creme">
         <div className="container text-center max-w-3xl mx-auto">
-          <div className="font-mono text-[11px] uppercase tracking-eyebrow text-copper-200">
+          <div className="font-mono text-[11px] uppercase tracking-eyebrow text-sable">
             Conformité opérationnelle
           </div>
           <h2 className="mt-4 font-display text-display-lg tracking-tightest text-balance">
             On gère le volet{" "}
-            <em className="not-italic text-copper-200">réglementaire</em> avec votre projet.
+            <em className="not-italic text-sable">réglementaire</em> avec votre projet.
           </h2>
-          <p className="mt-5 text-cream/75 text-lg leading-relaxed">
+          <p className="mt-5 text-creme/75 text-lg leading-relaxed">
             Inscription au SCRB, attestation fluides cat I, dossier Klimabonus, déclaration
             étanchéité annuelle — les pas administratifs sont notre métier autant que les pas
             techniques.
@@ -236,14 +236,14 @@ export default function ConformitePage() {
           <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
             <Link
               href="/devis"
-              className="inline-flex items-center gap-2 rounded-full bg-cream text-charcoal px-7 py-4 text-sm font-medium hover:bg-copper hover:text-cream transition-colors group"
+              className="inline-flex items-center gap-2 rounded-full bg-creme text-navy px-7 py-4 text-sm font-medium hover:bg-bleu hover:text-creme transition-colors group"
             >
               Demander un devis
               <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </Link>
             <Link
               href="/klimabonus-2026"
-              className="inline-flex items-center gap-2 rounded-full bg-ember/15 border border-ember/40 text-cream px-7 py-4 text-sm font-medium hover:bg-ember/25 transition-colors"
+              className="inline-flex items-center gap-2 rounded-full bg-terracotta/15 border border-terracotta/40 text-creme px-7 py-4 text-sm font-medium hover:bg-terracotta/25 transition-colors"
             >
               Klimabonus 2026
             </Link>

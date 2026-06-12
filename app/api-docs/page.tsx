@@ -94,17 +94,17 @@ const ERROR_CODES = [
 
 export default function ApiDocsPage() {
   return (
-    <main className="min-h-screen bg-cream py-12 lg:py-16">
+    <main className="min-h-screen bg-creme py-12 lg:py-16">
       <div className="container max-w-4xl">
         {/* Header */}
         <div className="mb-10">
-          <div className="font-mono text-[10px] uppercase tracking-eyebrow text-copper">
+          <div className="font-mono text-[10px] uppercase tracking-eyebrow text-bleu">
             Documentation · v1
           </div>
-          <h1 className="mt-3 font-display text-display-md text-ink">
-            API publique <em className="not-italic text-copper">REST</em>
+          <h1 className="mt-3 font-display text-display-md text-anthra">
+            API publique <em className="not-italic text-bleu">REST</em>
           </h1>
-          <p className="mt-4 text-graphite leading-relaxed max-w-2xl">
+          <p className="mt-4 text-taupe leading-relaxed max-w-2xl">
             Accès programmatique à vos données pour intégrer Chauffage Artisanal
             à votre stack (CRM, ERP, BI, automation). JSON only, HTTPS only,
             auth par API key.
@@ -113,21 +113,21 @@ export default function ApiDocsPage() {
 
         {/* Quick start */}
         <Card icon={Zap} title="Quick start">
-          <ol className="space-y-3 text-sm text-graphite">
+          <ol className="space-y-3 text-sm text-taupe">
             <li>
-              <strong className="text-ink">1.</strong> Générez une API key
+              <strong className="text-anthra">1.</strong> Générez une API key
               depuis{" "}
-              <Link href="/admin/api-keys" className="text-copper underline">
+              <Link href="/admin/api-keys" className="text-bleu underline">
                 /admin/api-keys
               </Link>{" "}
               avec les scopes nécessaires.
             </li>
             <li>
-              <strong className="text-ink">2.</strong> Stockez la clé hors
+              <strong className="text-anthra">2.</strong> Stockez la clé hors
               ligne (elle n&apos;est affichée qu&apos;une fois).
             </li>
             <li>
-              <strong className="text-ink">3.</strong> Passez-la dans le header{" "}
+              <strong className="text-anthra">3.</strong> Passez-la dans le header{" "}
               <code className="font-mono bg-white px-1.5 py-0.5 rounded">
                 Authorization: Bearer YOUR_KEY
               </code>{" "}
@@ -142,7 +142,7 @@ export default function ApiDocsPage() {
 
         {/* Curl example */}
         <Card icon={Code2} title="Exemple curl">
-          <pre className="text-xs bg-charcoal text-cream p-4 rounded-lg overflow-x-auto">
+          <pre className="text-xs bg-navy text-creme p-4 rounded-lg overflow-x-auto">
             {`curl https://www.chauffage-artisanal.lu/api/v1/leads \\
   -H "Authorization: Bearer ca_pk_xxxxxxxxxxxxxx" \\
   -H "Accept: application/json"`}
@@ -151,7 +151,7 @@ export default function ApiDocsPage() {
 
         {/* Auth */}
         <Card icon={Key} title="Authentification">
-          <div className="text-sm text-graphite space-y-2">
+          <div className="text-sm text-taupe space-y-2">
             <p>
               Chaque requête doit inclure une clé API valide. La clé est vérifiée
               par hash SHA-256 côté serveur — la clé en clair n&apos;est jamais
@@ -167,7 +167,7 @@ export default function ApiDocsPage() {
                     key={s}
                     className="text-xs"
                   >
-                    <code className="font-mono bg-white px-2 py-1 rounded border border-ink/10">
+                    <code className="font-mono bg-white px-2 py-1 rounded border border-pierre">
                       {s}
                     </code>
                   </li>
@@ -179,32 +179,32 @@ export default function ApiDocsPage() {
 
         {/* Endpoints */}
         <div className="mt-10 mb-5">
-          <h2 className="font-display text-2xl text-ink">Endpoints</h2>
+          <h2 className="font-display text-2xl text-anthra">Endpoints</h2>
         </div>
 
         <div className="grid gap-5">
           {ENDPOINTS.map((e) => (
             <div
               key={e.path}
-              className="rounded-2xl border border-ink/10 bg-white shadow-soft overflow-hidden"
+              className="rounded-2xl border border-pierre bg-white shadow-soft overflow-hidden"
             >
-              <div className="px-5 py-4 border-b border-ink/8 flex items-center gap-3 flex-wrap">
-                <span className="font-mono text-xs uppercase tracking-eyebrow text-[#22a06b] bg-[#22a06b]/10 border border-[#22a06b]/30 px-2.5 py-1 rounded-full">
+              <div className="px-5 py-4 border-b border-pierre flex items-center gap-3 flex-wrap">
+                <span className="font-mono text-xs uppercase tracking-eyebrow text-[#2E7D5A] bg-[#2E7D5A]/10 border border-[#2E7D5A]/30 px-2.5 py-1 rounded-full">
                   {e.method}
                 </span>
-                <code className="font-mono text-sm text-ink font-medium">
+                <code className="font-mono text-sm text-anthra font-medium">
                   {e.path}
                 </code>
-                <span className="font-mono text-[10px] uppercase tracking-eyebrow text-copper bg-copper/10 border border-copper/30 px-2 py-0.5 rounded-full ml-auto">
+                <span className="font-mono text-[10px] uppercase tracking-eyebrow text-bleu bg-bleu/10 border border-bleu/30 px-2 py-0.5 rounded-full ml-auto">
                   {e.scope}
                 </span>
               </div>
               <div className="px-5 py-4">
-                <p className="text-sm text-graphite mb-3">{e.desc}</p>
+                <p className="text-sm text-taupe mb-3">{e.desc}</p>
 
                 {e.params && (
                   <>
-                    <div className="font-mono text-[10px] uppercase tracking-eyebrow text-copper mb-2">
+                    <div className="font-mono text-[10px] uppercase tracking-eyebrow text-bleu mb-2">
                       Paramètres
                     </div>
                     <table className="w-full text-xs mb-4">
@@ -217,14 +217,14 @@ export default function ApiDocsPage() {
                       </thead>
                       <tbody>
                         {e.params.map((p) => (
-                          <tr key={p.name} className="border-t border-ink/8">
-                            <td className="py-1.5 pr-3 font-mono text-ink">
+                          <tr key={p.name} className="border-t border-pierre">
+                            <td className="py-1.5 pr-3 font-mono text-anthra">
                               {p.name}
                             </td>
-                            <td className="py-1.5 pr-3 font-mono text-graphite">
+                            <td className="py-1.5 pr-3 font-mono text-taupe">
                               {p.type}
                             </td>
-                            <td className="py-1.5 text-graphite">{p.desc}</td>
+                            <td className="py-1.5 text-taupe">{p.desc}</td>
                           </tr>
                         ))}
                       </tbody>
@@ -232,10 +232,10 @@ export default function ApiDocsPage() {
                   </>
                 )}
 
-                <div className="font-mono text-[10px] uppercase tracking-eyebrow text-copper mb-2">
+                <div className="font-mono text-[10px] uppercase tracking-eyebrow text-bleu mb-2">
                   Exemple de réponse
                 </div>
-                <pre className="text-xs bg-charcoal text-cream p-4 rounded-lg overflow-x-auto">
+                <pre className="text-xs bg-navy text-creme p-4 rounded-lg overflow-x-auto">
                   {JSON.stringify(e.example, null, 2)}
                 </pre>
               </div>
@@ -255,10 +255,10 @@ export default function ApiDocsPage() {
             </thead>
             <tbody>
               {ERROR_CODES.map((e) => (
-                <tr key={e.name} className="border-t border-ink/8">
-                  <td className="py-2 pr-3 font-mono text-ink">{e.code}</td>
-                  <td className="py-2 pr-3 font-mono text-copper">{e.name}</td>
-                  <td className="py-2 text-graphite">{e.desc}</td>
+                <tr key={e.name} className="border-t border-pierre">
+                  <td className="py-2 pr-3 font-mono text-anthra">{e.code}</td>
+                  <td className="py-2 pr-3 font-mono text-bleu">{e.name}</td>
+                  <td className="py-2 text-taupe">{e.desc}</td>
                 </tr>
               ))}
             </tbody>
@@ -268,7 +268,7 @@ export default function ApiDocsPage() {
         <div className="mt-10 text-center">
           <Link
             href="/admin/api-keys"
-            className="inline-flex items-center gap-2 rounded-full bg-ink text-cream px-5 py-3 text-sm font-medium hover:bg-copper transition-colors"
+            className="inline-flex items-center gap-2 rounded-full bg-navy text-creme px-5 py-3 text-sm font-medium hover:bg-bleu transition-colors"
           >
             Gérer mes clés
             <ArrowUpRight className="h-4 w-4" />
@@ -289,10 +289,10 @@ function Card({
   children: React.ReactNode;
 }) {
   return (
-    <div className="mb-5 rounded-2xl border border-ink/10 bg-white shadow-soft p-6">
+    <div className="mb-5 rounded-2xl border border-pierre bg-white shadow-soft p-6">
       <div className="flex items-center gap-2 mb-4">
-        <Icon className="h-5 w-5 text-copper" />
-        <h3 className="font-display text-xl text-ink">{title}</h3>
+        <Icon className="h-5 w-5 text-bleu" />
+        <h3 className="font-display text-xl text-anthra">{title}</h3>
       </div>
       {children}
     </div>

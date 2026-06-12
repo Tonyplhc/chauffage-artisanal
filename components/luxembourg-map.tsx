@@ -53,7 +53,7 @@ export function LuxembourgMap({ communes }: { communes: Commune[] }) {
   const activeMarkers = MARKERS.filter((m) => activeMarkerSet.has(m.slug));
 
   return (
-    <div className="relative rounded-3xl border border-ink/10 bg-gradient-to-br from-cream to-linen overflow-hidden">
+    <div className="relative rounded-3xl border border-pierre bg-gradient-to-br from-creme to-creme overflow-hidden">
       <svg
         viewBox="0 0 400 500"
         className="block w-full h-auto"
@@ -61,8 +61,8 @@ export function LuxembourgMap({ communes }: { communes: Commune[] }) {
       >
         <defs>
           <linearGradient id="lux-grad" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor="rgba(184,106,54,0.06)" />
-            <stop offset="100%" stopColor="rgba(184,106,54,0.14)" />
+            <stop offset="0%" stopColor="rgba(11,87,160,0.06)" />
+            <stop offset="100%" stopColor="rgba(11,87,160,0.14)" />
           </linearGradient>
           <pattern id="lux-grid" width="48" height="48" patternUnits="userSpaceOnUse">
             <path
@@ -73,8 +73,8 @@ export function LuxembourgMap({ communes }: { communes: Commune[] }) {
             />
           </pattern>
           <radialGradient id="ping" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stopColor="rgba(184,106,54,0.6)" />
-            <stop offset="100%" stopColor="rgba(184,106,54,0)" />
+            <stop offset="0%" stopColor="rgba(11,87,160,0.6)" />
+            <stop offset="100%" stopColor="rgba(11,87,160,0)" />
           </radialGradient>
         </defs>
 
@@ -115,7 +115,7 @@ export function LuxembourgMap({ communes }: { communes: Commune[] }) {
              L 170 65
              L 185 45 Z"
           fill="url(#lux-grad)"
-          stroke="rgba(184,106,54,0.5)"
+          stroke="rgba(11,87,160,0.5)"
           strokeWidth="1.5"
           strokeDasharray="4 3"
         />
@@ -172,7 +172,7 @@ export function LuxembourgMap({ communes }: { communes: Commune[] }) {
                 cx={m.x * 400}
                 cy={m.y * 500}
                 r={r}
-                fill="#b86a36"
+                fill="#0B57A0"
                 stroke="#f6f0e4"
                 strokeWidth={isHovered ? 3 : 2}
               />
@@ -201,12 +201,12 @@ export function LuxembourgMap({ communes }: { communes: Commune[] }) {
             fontSize="9"
             fontFamily="JetBrains Mono, monospace"
             textAnchor="middle"
-            fill="#b86a36"
+            fill="#0B57A0"
             fontWeight="600"
           >
             N
           </text>
-          <path d="M 0 -10 L -3 -6 L 0 -8 L 3 -6 Z" fill="#b86a36" />
+          <path d="M 0 -10 L -3 -6 L 0 -8 L 3 -6 Z" fill="#0B57A0" />
         </g>
 
         {/* Légende coin bas */}
@@ -227,7 +227,7 @@ export function LuxembourgMap({ communes }: { communes: Commune[] }) {
         <motion.div
           initial={{ opacity: 0, y: 6 }}
           animate={{ opacity: 1, y: 0 }}
-          className="absolute bottom-4 left-4 right-4 sm:right-auto sm:max-w-xs bg-white border border-ink/10 rounded-2xl shadow-lift p-4"
+          className="absolute bottom-4 left-4 right-4 sm:right-auto sm:max-w-xs bg-white border border-pierre rounded-2xl shadow-lift p-4"
         >
           {(() => {
             const m = activeMarkers.find((x) => x.slug === hovered)!;
@@ -235,19 +235,19 @@ export function LuxembourgMap({ communes }: { communes: Commune[] }) {
             if (!c) return null;
             return (
               <div>
-                <div className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-eyebrow text-copper">
+                <div className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-eyebrow text-bleu">
                   <MapPin className="h-3 w-3" />
                   Zone desservie
                 </div>
-                <div className="mt-2 font-display text-xl text-ink tracking-tight">
+                <div className="mt-2 font-display text-xl text-anthra tracking-tight">
                   {c.name}
                 </div>
-                <p className="mt-2 text-xs text-graphite leading-relaxed line-clamp-3">
+                <p className="mt-2 text-xs text-taupe leading-relaxed line-clamp-3">
                   {c.context}
                 </p>
                 <Link
                   href={`/zones/${c.slug}`}
-                  className="mt-3 inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-eyebrow text-ink hover:text-copper transition-colors"
+                  className="mt-3 inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-eyebrow text-anthra hover:text-bleu transition-colors"
                 >
                   Voir la page commune
                   <ArrowUpRight className="h-3 w-3" />

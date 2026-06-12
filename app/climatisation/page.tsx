@@ -22,12 +22,12 @@ export default function ClimatisationPage() {
       title={
         <>
           Du confort résidentiel à la salle technique :{" "}
-          <em className="not-italic text-copper">le froid juste</em>.
+          <em className="not-italic text-bleu">le froid juste</em>.
         </>
       }
       intro={
         <>
-          Mono-split, multi-split, systèmes tertiaires. Pour les bureaux, commerces, salles techniques et <strong className="text-copper font-semibold">logements modernes mal protégés de l&apos;été</strong>.
+          Mono-split, multi-split, systèmes tertiaires. Pour les bureaux, commerces, salles techniques et <strong className="text-bleu font-semibold">logements modernes mal protégés de l&apos;été</strong>.
         </>
       }
       heroImg="/reparation-climatisation-2.jpeg"

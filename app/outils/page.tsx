@@ -74,35 +74,35 @@ export default function OutilsHub() {
   return (
     <>
       {/* Hero */}
-      <section className="relative pt-12 lg:pt-16 pb-10 lg:pb-12 bg-cream border-b border-ink/8 overflow-hidden">
+      <section className="relative pt-12 lg:pt-16 pb-10 lg:pb-12 bg-creme border-b border-pierre overflow-hidden">
         <div
           className="absolute inset-0 opacity-[0.04]"
           style={{
             backgroundImage:
-              "radial-gradient(circle at 20% 30%, rgba(184,106,54,0.35), transparent 55%), radial-gradient(circle at 80% 70%, rgba(184,106,54,0.18), transparent 55%)",
+              "radial-gradient(circle at 20% 30%, rgba(11,87,160,0.35), transparent 55%), radial-gradient(circle at 80% 70%, rgba(11,87,160,0.18), transparent 55%)",
           }}
         />
         <div className="container relative">
           <div className="max-w-3xl">
             <Eyebrow number="00">Outils gratuits</Eyebrow>
-            <h1 className="mt-4 font-display text-display-xl tracking-tightest text-balance text-ink">
+            <h1 className="mt-4 font-display text-display-xl tracking-tightest text-balance text-anthra">
               6 outils pour{" "}
-              <em className="not-italic text-copper">orienter votre projet</em> avant le devis.
+              <em className="not-italic text-bleu">orienter votre projet</em> avant le devis.
             </h1>
-            <p className="mt-5 text-lg lg:text-xl text-graphite leading-relaxed text-balance">
+            <p className="mt-5 text-lg lg:text-xl text-taupe leading-relaxed text-balance">
               Calculateurs, simulateurs, vérificateurs Klimabonus, auto-diagnostic. Toutes les
               hypothèses sont transparentes. Aucune saisie d&apos;email requise — c&apos;est
               fait pour orienter, pas pour collecter.
             </p>
             <div className="mt-7 flex flex-wrap items-center gap-2">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-copper/10 border border-copper/30 text-[10px] font-mono uppercase tracking-eyebrow text-copper">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-bleu/10 border border-bleu/30 text-[10px] font-mono uppercase tracking-eyebrow text-bleu">
                 <Leaf className="h-3 w-3" />
                 100 % gratuit
               </span>
-              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white border border-ink/15 text-[10px] font-mono uppercase tracking-eyebrow text-graphite">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white border border-pierre text-[10px] font-mono uppercase tracking-eyebrow text-taupe">
                 Sans inscription
               </span>
-              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white border border-ink/15 text-[10px] font-mono uppercase tracking-eyebrow text-graphite">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white border border-pierre text-[10px] font-mono uppercase tracking-eyebrow text-taupe">
                 Hypothèses transparentes
               </span>
             </div>
@@ -111,12 +111,12 @@ export default function OutilsHub() {
       </section>
 
       {/* Grille des outils */}
-      <section className="py-14 lg:py-20 bg-linen border-b border-ink/8">
+      <section className="py-14 lg:py-20 bg-creme border-b border-pierre">
         <div className="container">
           <div className="max-w-3xl mb-10">
             <Eyebrow number="01">Catalogue</Eyebrow>
             <SectionTitle className="mt-4">
-              Le bon outil <em className="not-italic text-copper">au bon moment</em>.
+              Le bon outil <em className="not-italic text-bleu">au bon moment</em>.
             </SectionTitle>
           </div>
 
@@ -129,37 +129,37 @@ export default function OutilsHub() {
                   href={t.href}
                   className={`group p-6 lg:p-7 rounded-2xl border bg-white hover:shadow-lift transition-all flex flex-col ${
                     t.primary
-                      ? "border-copper/40 shadow-soft"
-                      : "border-ink/10 hover:border-copper/40"
+                      ? "border-bleu/40 shadow-soft"
+                      : "border-pierre hover:border-bleu/40"
                   }`}
                 >
                   <div className="flex items-start justify-between gap-3">
                     <span
                       className={`grid place-items-center h-12 w-12 rounded-full border shrink-0 ${
                         t.primary
-                          ? "bg-copper/15 border-copper/40"
-                          : "bg-copper/10 border-copper/25"
+                          ? "bg-bleu/15 border-bleu/40"
+                          : "bg-bleu/10 border-bleu/25"
                       }`}
                     >
-                      <Icon className="h-5 w-5 text-copper" />
+                      <Icon className="h-5 w-5 text-bleu" />
                     </span>
                     <span
                       className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[9px] font-mono uppercase tracking-eyebrow ${
                         t.primary
-                          ? "bg-copper text-cream"
-                          : "bg-cream text-graphite border border-ink/10"
+                          ? "bg-bleu text-creme"
+                          : "bg-creme text-taupe border border-pierre"
                       }`}
                     >
                       {t.badge}
                     </span>
                   </div>
-                  <h2 className="mt-5 font-display text-xl text-ink tracking-tight">
+                  <h2 className="mt-5 font-display text-xl text-anthra tracking-tight">
                     {t.title}
                   </h2>
-                  <p className="mt-2 text-sm text-graphite leading-relaxed flex-1">
+                  <p className="mt-2 text-sm text-taupe leading-relaxed flex-1">
                     {t.description}
                   </p>
-                  <div className="mt-5 pt-5 border-t border-ink/8 inline-flex items-center justify-between text-xs font-mono uppercase tracking-eyebrow text-graphite group-hover:text-copper transition-colors">
+                  <div className="mt-5 pt-5 border-t border-pierre inline-flex items-center justify-between text-xs font-mono uppercase tracking-eyebrow text-taupe group-hover:text-bleu transition-colors">
                     Ouvrir
                     <ArrowUpRight className="h-3 w-3 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                   </div>
@@ -171,15 +171,15 @@ export default function OutilsHub() {
       </section>
 
       {/* Suite : pour quand on veut un vrai devis */}
-      <section className="py-14 lg:py-20 bg-cream">
+      <section className="py-14 lg:py-20 bg-creme">
         <div className="container grid lg:grid-cols-12 gap-10 items-start">
           <div className="lg:col-span-7">
             <Eyebrow number="02">Au-delà des outils</Eyebrow>
             <SectionTitle className="mt-4">
               Un outil oriente —{" "}
-              <em className="not-italic text-copper">un devis tranche</em>.
+              <em className="not-italic text-bleu">un devis tranche</em>.
             </SectionTitle>
-            <p className="mt-5 text-graphite leading-relaxed">
+            <p className="mt-5 text-taupe leading-relaxed">
               Nos calculateurs donnent des ordres de grandeur honnêtes. Pour passer du chiffre
               au projet réel, il faut une visite technique : isolation réelle, contraintes du
               bâtiment, exposition, consommation historique. C&apos;est ce qu&apos;on fait
@@ -187,20 +187,20 @@ export default function OutilsHub() {
             </p>
           </div>
           <aside className="lg:col-span-5 lg:sticky lg:top-28">
-            <div className="rounded-2xl border border-copper/30 bg-gradient-to-br from-cream to-white p-7 shadow-soft">
-              <div className="font-mono text-[10px] uppercase tracking-eyebrow text-copper">
+            <div className="rounded-2xl border border-bleu/30 bg-gradient-to-br from-creme to-white p-7 shadow-soft">
+              <div className="font-mono text-[10px] uppercase tracking-eyebrow text-bleu">
                 Étude personnalisée
               </div>
-              <h3 className="mt-3 font-display text-2xl text-ink tracking-tight">
+              <h3 className="mt-3 font-display text-2xl text-anthra tracking-tight">
                 Devis détaillé sous 24h
               </h3>
-              <p className="mt-4 text-sm text-graphite leading-relaxed">
+              <p className="mt-4 text-sm text-taupe leading-relaxed">
                 Visite gratuite, étude bureau d&apos;études, accompagnement Klimabonus. Pas de
                 pression commerciale.
               </p>
               <Link
                 href="/devis"
-                className="mt-6 inline-flex items-center justify-between gap-2 rounded-full bg-ink text-cream px-5 py-3.5 text-sm font-medium hover:bg-copper transition-colors w-full group"
+                className="mt-6 inline-flex items-center justify-between gap-2 rounded-full bg-navy text-creme px-5 py-3.5 text-sm font-medium hover:bg-bleu transition-colors w-full group"
               >
                 Demander un devis
                 <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />

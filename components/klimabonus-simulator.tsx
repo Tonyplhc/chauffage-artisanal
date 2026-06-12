@@ -83,31 +83,31 @@ export function KlimabonusSimulator() {
     (step === 3 && a.hasPro);
 
   return (
-    <section className="py-14 lg:py-20 bg-cream border-y border-ink/8">
+    <section className="py-14 lg:py-20 bg-creme border-y border-pierre">
       <div className="container max-w-4xl">
         <div className="text-center mb-10 lg:mb-14">
           <Eyebrow number="05">Simulateur d&apos;éligibilité</Eyebrow>
           <Reveal>
             <SectionTitle className="mt-4">
               Vérifiez en 2 minutes si votre projet peut être{" "}
-              <em className="not-italic text-copper">aidé par l&apos;État</em>.
+              <em className="not-italic text-bleu">aidé par l&apos;État</em>.
             </SectionTitle>
           </Reveal>
           <Reveal delay={1}>
-            <p className="mt-5 text-graphite text-lg max-w-2xl mx-auto">
+            <p className="mt-5 text-taupe text-lg max-w-2xl mx-auto">
               Outil d&apos;orientation indicative. Ne remplace pas la vérification
               auprès de MyEnergy et de votre commune.
             </p>
           </Reveal>
         </div>
 
-        <div className="rounded-3xl border border-ink/10 bg-white shadow-soft overflow-hidden">
+        <div className="rounded-3xl border border-pierre bg-white shadow-soft overflow-hidden">
           {/* Progress bar */}
-          <div className="h-1.5 bg-ink/5 relative">
+          <div className="h-1.5 bg-sable/60 relative">
             <motion.div
               animate={{ width: `${(step / 4) * 100}%` }}
               transition={{ duration: 0.4 }}
-              className="absolute inset-y-0 left-0 bg-gradient-to-r from-copper to-ember"
+              className="absolute inset-y-0 left-0 bg-gradient-to-r from-bleu to-bleuvif"
             />
           </div>
 
@@ -188,14 +188,14 @@ export function KlimabonusSimulator() {
           </div>
 
           {/* Navigation */}
-          <div className="px-6 lg:px-10 py-5 border-t border-ink/8 bg-linen/40 flex items-center justify-between">
+          <div className="px-6 lg:px-10 py-5 border-t border-pierre bg-creme/40 flex items-center justify-between">
             <button
               onClick={step === 4 ? reset : back}
               disabled={step === 0}
               className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium transition-colors ${
                 step === 0
                   ? "text-muted cursor-not-allowed"
-                  : "text-graphite hover:text-ink"
+                  : "text-taupe hover:text-anthra"
               }`}
             >
               {step === 4 ? (
@@ -219,8 +219,8 @@ export function KlimabonusSimulator() {
                 disabled={!canNext}
                 className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium transition-all ${
                   canNext
-                    ? "bg-ink text-cream hover:bg-copper"
-                    : "bg-ink/15 text-ink/40 cursor-not-allowed"
+                    ? "bg-navy text-creme hover:bg-bleu"
+                    : "bg-sable/60 text-anthra/40 cursor-not-allowed"
                 }`}
               >
                 {step === 3 ? "Voir le résultat" : "Suivant"}
@@ -260,13 +260,13 @@ function Question({
       exit={{ opacity: 0, x: -24 }}
       transition={{ duration: 0.3 }}
     >
-      <div className="font-mono text-[10px] uppercase tracking-eyebrow text-copper">
+      <div className="font-mono text-[10px] uppercase tracking-eyebrow text-bleu">
         Étape {index} / {total}
       </div>
-      <h3 className="mt-3 font-display text-2xl lg:text-3xl text-ink tracking-tight">
+      <h3 className="mt-3 font-display text-2xl lg:text-3xl text-anthra tracking-tight">
         {title}
       </h3>
-      <p className="mt-3 text-sm text-graphite">{hint}</p>
+      <p className="mt-3 text-sm text-taupe">{hint}</p>
 
       <div className="mt-7 grid sm:grid-cols-2 gap-3">
         {options.map((opt) => (
@@ -275,14 +275,14 @@ function Question({
             onClick={() => onSelect(opt.id)}
             className={`text-left px-5 py-4 rounded-2xl border transition-all ${
               selected === opt.id
-                ? "border-copper bg-copper/8 ring-2 ring-copper/20"
-                : "border-ink/12 bg-white hover:border-copper/40 hover:shadow-soft"
+                ? "border-bleu bg-bleu/8 ring-2 ring-bleu/20"
+                : "border-pierre bg-white hover:border-bleu/40 hover:shadow-soft"
             }`}
           >
             <div className="flex items-center justify-between gap-3">
-              <span className="text-ink font-medium text-base">{opt.label}</span>
+              <span className="text-anthra font-medium text-base">{opt.label}</span>
               {selected === opt.id && (
-                <CheckCircle2 className="h-5 w-5 text-copper shrink-0" />
+                <CheckCircle2 className="h-5 w-5 text-bleu shrink-0" />
               )}
             </div>
           </button>
@@ -409,10 +409,10 @@ function Result({ a }: { a: Answer }) {
   const v = buildVerdict(a);
   const accent =
     v.level === "likely"
-      ? { color: "#22a06b", bg: "rgba(34,160,107,0.08)", border: "rgba(34,160,107,0.4)" }
+      ? { color: "#2E7D5A", bg: "rgba(34,160,107,0.08)", border: "rgba(34,160,107,0.4)" }
       : v.level === "partial"
-      ? { color: "#b86a36", bg: "rgba(184,106,54,0.08)", border: "rgba(184,106,54,0.4)" }
-      : { color: "#dc5a28", bg: "rgba(220,90,40,0.08)", border: "rgba(220,90,40,0.4)" };
+      ? { color: "#0B57A0", bg: "rgba(11,87,160,0.08)", border: "rgba(11,87,160,0.4)" }
+      : { color: "#C0392B", bg: "rgba(220,90,40,0.08)", border: "rgba(220,90,40,0.4)" };
 
   const projectLabel = a.projectType ? PROJECT_LABELS[a.projectType] : "Projet";
 
@@ -447,7 +447,7 @@ function Result({ a }: { a: Answer }) {
             >
               Résultat indicatif · {projectLabel}
             </div>
-            <p className="mt-2 text-base lg:text-lg text-ink leading-snug">
+            <p className="mt-2 text-base lg:text-lg text-anthra leading-snug">
               {v.headline}
             </p>
           </div>
@@ -457,7 +457,7 @@ function Result({ a }: { a: Answer }) {
       {/* Dispositifs probables */}
       {v.schemes.length > 0 && (
         <div className="mt-6">
-          <div className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-eyebrow text-copper mb-3">
+          <div className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-eyebrow text-bleu mb-3">
             <Sparkles className="h-3.5 w-3.5" />
             Dispositifs à explorer
           </div>
@@ -465,10 +465,10 @@ function Result({ a }: { a: Answer }) {
             {v.schemes.map((s) => (
               <li
                 key={s.label}
-                className="px-4 py-3 rounded-xl bg-cream border border-ink/8"
+                className="px-4 py-3 rounded-xl bg-creme border border-pierre"
               >
-                <div className="text-sm font-medium text-ink">{s.label}</div>
-                <div className="mt-1 text-xs text-graphite leading-relaxed">{s.body}</div>
+                <div className="text-sm font-medium text-anthra">{s.label}</div>
+                <div className="mt-1 text-xs text-taupe leading-relaxed">{s.body}</div>
               </li>
             ))}
           </ul>
@@ -485,7 +485,7 @@ function Result({ a }: { a: Answer }) {
             {v.warnings.map((w) => (
               <li
                 key={w}
-                className="px-4 py-2.5 rounded-xl bg-ember/5 border border-ember/30 text-xs text-graphite"
+                className="px-4 py-2.5 rounded-xl bg-terracotta/5 border border-terracotta/30 text-xs text-taupe"
               >
                 {w}
               </li>
@@ -495,7 +495,7 @@ function Result({ a }: { a: Answer }) {
       )}
 
       {/* Sources officielles + CTAs */}
-      <div className="mt-7 pt-6 border-t border-ink/8">
+      <div className="mt-7 pt-6 border-t border-pierre">
         <p className="text-xs text-muted mb-4">
           Outil d&apos;orientation uniquement. Les conditions exactes, plafonds et
           cumuls dépendent du dispositif en vigueur au moment du dépôt — vérifiez
@@ -504,7 +504,7 @@ function Result({ a }: { a: Answer }) {
             href="https://www.myenergy.lu"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-copper underline"
+            className="text-bleu underline"
           >
             MyEnergy
           </a>
@@ -513,7 +513,7 @@ function Result({ a }: { a: Answer }) {
             href="https://klimabonus.lu"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-copper underline"
+            className="text-bleu underline"
           >
             Klimabonus.lu
           </a>
@@ -522,7 +522,7 @@ function Result({ a }: { a: Answer }) {
             href="https://guichet.public.lu"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-copper underline"
+            className="text-bleu underline"
           >
             guichet.lu
           </a>
@@ -531,14 +531,14 @@ function Result({ a }: { a: Answer }) {
         <div className="flex flex-col sm:flex-row gap-3">
           <Link
             href={`/devis?from=klimabonus-simulator&service=${KLIMA_SERVICE_MAP[a.projectType ?? "autre"] ?? "autre"}`}
-            className="group inline-flex items-center justify-center gap-2 rounded-full bg-ink text-cream px-6 py-3.5 text-sm font-medium hover:bg-copper transition-colors"
+            className="group inline-flex items-center justify-center gap-2 rounded-full bg-navy text-creme px-6 py-3.5 text-sm font-medium hover:bg-bleu transition-colors"
           >
             Demander un devis personnalisé
             <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </Link>
           <Link
             href="/contact"
-            className="inline-flex items-center justify-center gap-2 rounded-full border border-ink/15 px-6 py-3.5 text-sm font-medium text-ink hover:border-copper hover:text-copper transition-colors"
+            className="inline-flex items-center justify-center gap-2 rounded-full border border-pierre px-6 py-3.5 text-sm font-medium text-anthra hover:border-bleu hover:text-bleu transition-colors"
           >
             Parler à un conseiller
           </Link>

@@ -10,38 +10,39 @@ const config: Config = {
     },
     extend: {
       colors: {
-        // Light architectural palette (primary)
-        cream: "#F6F0E4",
-        linen: "#EDE5D3",
-        stone: "#DDD3BE",
-        sand: "#E8DFC9",
-        ink: "#2A251E",
-        graphite: "#4A4338",
+        // ── Tokens legacy REPOINTÉS vers la charte (noms conservés pour ne
+        //    rien casser ; les valeurs sont désormais celles du logo
+        //    historique). Tout `bg-cream`/`text-copper` résiduel (admin…)
+        //    rend automatiquement les bons tons. ──
+        cream: "#F7F2E9", // = creme
+        linen: "#F7F2E9", // = creme
+        stone: "#E0D5C2", // = pierre
+        sand: "#EFE7D8", // = sable
+        ink: "#2A2724", // = anthra
+        graphite: "#6E675C", // = taupe
         muted: "#8B847A",
 
-        // Premium dark (used sparingly — hero, CTA, footer accents)
-        charcoal: "#1E1A15",
-        coal: "#28231D",
+        charcoal: "#0A3D6E", // = navy
+        coal: "#0A3D6E",
 
-        // Accents
         copper: {
-          DEFAULT: "#B86A36",
-          50: "#FAF1E5",
-          100: "#F1DCBE",
-          200: "#E1B780",
-          300: "#CF8F4F",
-          400: "#B86A36",
-          500: "#94532A",
-          600: "#723F1F",
+          DEFAULT: "#0B57A0", // = bleu
+          50: "#E8F0F8", // = voile
+          100: "#D4E3F2",
+          200: "#EFE7D8", // accent clair sur fonds sombres = sable
+          300: "#2C7BD0", // = bleuvif
+          400: "#0B57A0",
+          500: "#0A3D6E", // = navy
+          600: "#0A3D6E",
         },
-        ember: "#DC5A28",
-        ice: "#6BA3C5",
+        ember: "#C24A2C", // = terracotta
+        ice: "#2C7BD0", // = bleuvif
 
         // Aliases kept for transition
-        noir: "#1E1A15",
+        noir: "#0A3D6E",
         anthracite: "#EDE5D3",
-        steel: "#DDD3BE",
-        bone: "#2A251E",
+        steel: "#E0D5C2",
+        bone: "#2A2724",
 
         // ════════════════════════════════════════════════════════════════
         // Design System v2 — identité « logo historique » Chauffage Artisanal
@@ -89,12 +90,14 @@ const config: Config = {
         "display-md": ["clamp(1.75rem, 3vw, 2.75rem)", { lineHeight: "1.1", letterSpacing: "-0.02em" }],
       },
       backgroundImage: {
+        // Halos repeints aux couleurs charte (bleu) — noms conservés pour
+        // ne pas toucher les ~30 usages.
         "copper-glow":
-          "radial-gradient(ellipse 80% 50% at 50% 0%, rgba(184,106,54,0.10), transparent 70%)",
+          "radial-gradient(ellipse 80% 50% at 50% 0%, rgba(11,87,160,0.08), transparent 70%)",
         "copper-glow-dark":
-          "radial-gradient(ellipse 80% 50% at 50% 0%, rgba(184,106,54,0.22), transparent 70%)",
+          "radial-gradient(ellipse 80% 50% at 50% 0%, rgba(44,123,208,0.22), transparent 70%)",
         "ember-glow":
-          "radial-gradient(ellipse 60% 50% at 50% 50%, rgba(220,90,40,0.18), transparent 70%)",
+          "radial-gradient(ellipse 60% 50% at 50% 50%, rgba(194,74,44,0.16), transparent 70%)",
         "grid":
           "linear-gradient(to right, rgba(42,37,30,0.04) 1px, transparent 1px), linear-gradient(to bottom, rgba(42,37,30,0.04) 1px, transparent 1px)",
         "grid-dark":

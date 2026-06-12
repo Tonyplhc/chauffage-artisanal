@@ -22,33 +22,33 @@ export default function GlobalError({
   }, [error]);
 
   return (
-    <main className="min-h-screen bg-cream flex items-center py-16 lg:py-24">
+    <main className="min-h-screen bg-creme flex items-center py-16 lg:py-24">
       <div className="container max-w-3xl">
-        <div className="rounded-3xl border border-ember/30 bg-white shadow-soft overflow-hidden">
-          <header className="bg-charcoal text-cream px-8 py-10 lg:px-12 lg:py-14">
-            <div className="flex items-center gap-3 font-mono text-[10px] uppercase tracking-eyebrow text-ember">
+        <div className="rounded-3xl border border-terracotta/30 bg-white shadow-soft overflow-hidden">
+          <header className="bg-navy text-creme px-8 py-10 lg:px-12 lg:py-14">
+            <div className="flex items-center gap-3 font-mono text-[10px] uppercase tracking-eyebrow text-terracotta">
               <AlertTriangle className="h-4 w-4" />
               Erreur inattendue
             </div>
             <h1 className="mt-4 font-display text-4xl lg:text-5xl tracking-tight text-balance">
               Quelque chose s&apos;est{" "}
-              <em className="not-italic text-ember">cassé de notre côté</em>.
+              <em className="not-italic text-terracotta">cassé de notre côté</em>.
             </h1>
-            <p className="mt-5 text-cream/75 text-lg max-w-xl leading-relaxed">
+            <p className="mt-5 text-creme/75 text-lg max-w-xl leading-relaxed">
               Le site a rencontré une erreur en chargeant cette page. L&apos;équipe
               technique en a été notifiée. Vous pouvez réessayer, ou revenir à l&apos;accueil.
             </p>
             {error.digest && (
-              <div className="mt-5 font-mono text-[10px] uppercase tracking-eyebrow text-cream/40">
+              <div className="mt-5 font-mono text-[10px] uppercase tracking-eyebrow text-creme/40">
                 Code · {error.digest}
               </div>
             )}
           </header>
 
-          <div className="px-8 lg:px-12 py-6 flex flex-col sm:flex-row gap-3 justify-between bg-linen/40">
+          <div className="px-8 lg:px-12 py-6 flex flex-col sm:flex-row gap-3 justify-between bg-creme/40">
             <button
               onClick={reset}
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-ink text-cream px-5 py-3 text-sm font-medium hover:bg-copper transition-colors"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-navy text-creme px-5 py-3 text-sm font-medium hover:bg-bleu transition-colors"
             >
               <RotateCcw className="h-4 w-4" />
               Réessayer
@@ -56,14 +56,14 @@ export default function GlobalError({
             <div className="flex flex-wrap gap-3 justify-center">
               <Link
                 href="/"
-                className="inline-flex items-center gap-2 rounded-full border border-ink/15 bg-white px-5 py-3 text-sm font-medium text-ink hover:border-copper hover:text-copper transition-colors"
+                className="inline-flex items-center gap-2 rounded-full border border-pierre bg-white px-5 py-3 text-sm font-medium text-anthra hover:border-bleu hover:text-bleu transition-colors"
               >
                 <Home className="h-4 w-4" />
                 Accueil
               </Link>
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-2 rounded-full border border-ink/15 bg-white px-5 py-3 text-sm font-medium text-ink hover:border-copper hover:text-copper transition-colors"
+                className="inline-flex items-center gap-2 rounded-full border border-pierre bg-white px-5 py-3 text-sm font-medium text-anthra hover:border-bleu hover:text-bleu transition-colors"
               >
                 <Phone className="h-4 w-4" />
                 Contact

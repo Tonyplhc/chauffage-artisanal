@@ -12,7 +12,7 @@ export default function MentionsLegalesPage() {
     <LegalPage
       number="L1"
       eyebrow="Mentions légales"
-      title={<>Informations <em className="not-italic text-copper">légales</em></>}
+      title={<>Informations <em className="not-italic text-bleu">légales</em></>}
       intro="Informations relatives à l'éditeur du site et à son hébergement, conformément à la législation luxembourgeoise."
     >
       <h2>Éditeur du site</h2>
@@ -30,7 +30,7 @@ export default function MentionsLegalesPage() {
         </li>
         <li>
           Téléphone :{" "}
-          <a href="tel:+35249884100" className="hover:text-copper transition-colors">
+          <a href="tel:+35249884100" className="hover:text-bleu transition-colors">
             <strong>+352 49 88 41</strong>
           </a>
         </li>
@@ -38,7 +38,7 @@ export default function MentionsLegalesPage() {
           Email :{" "}
           <a
             href="mailto:info@chauffage-artisanal.lu"
-            className="hover:text-copper transition-colors"
+            className="hover:text-bleu transition-colors"
           >
             <strong>info@chauffage-artisanal.lu</strong>
           </a>

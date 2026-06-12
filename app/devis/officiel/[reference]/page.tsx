@@ -42,30 +42,30 @@ export default async function QuotePublicPage({
     : new Date(quote.updatedAt ?? Date.now());
 
   return (
-    <main className="min-h-screen bg-cream py-12 lg:py-16 print:bg-white print:py-0">
+    <main className="min-h-screen bg-creme py-12 lg:py-16 print:bg-white print:py-0">
       <div className="container max-w-3xl">
         <div className="flex items-center justify-between gap-4 mb-8 print:hidden">
           <Link
             href="/"
-            className="inline-flex items-center gap-2 text-sm font-mono uppercase tracking-eyebrow text-graphite hover:text-copper transition-colors"
+            className="inline-flex items-center gap-2 text-sm font-mono uppercase tracking-eyebrow text-taupe hover:text-bleu transition-colors"
           >
             ← Retour au site
           </Link>
           <RecapPrint />
         </div>
 
-        <article className="bg-white rounded-3xl border border-ink/10 shadow-soft overflow-hidden print:border-0 print:shadow-none print:rounded-none">
+        <article className="bg-white rounded-3xl border border-pierre shadow-soft overflow-hidden print:border-0 print:shadow-none print:rounded-none">
           {/* Header */}
-          <header className="bg-charcoal text-cream px-8 py-10 print:bg-white print:text-ink">
+          <header className="bg-navy text-creme px-8 py-10 print:bg-white print:text-anthra">
             <div className="flex items-start justify-between gap-6 flex-wrap">
               <div>
-                <div className="font-mono text-[10px] uppercase tracking-eyebrow text-copper">
+                <div className="font-mono text-[10px] uppercase tracking-eyebrow text-bleu">
                   Chauffage Artisanal · Luxembourg
                 </div>
                 <h1 className="mt-3 font-display text-3xl lg:text-4xl tracking-tight">
                   Devis n° {quote.number}
                 </h1>
-                <p className="mt-3 text-sm text-cream/70 print:text-muted">
+                <p className="mt-3 text-sm text-creme/70 print:text-muted">
                   Émis le {issuedAt.toLocaleDateString("fr-FR", { dateStyle: "long" })}
                   {quote.validUntil
                     ? ` · valable jusqu'au ${new Date(quote.validUntil).toLocaleDateString("fr-FR", { dateStyle: "long" })}`
@@ -73,30 +73,30 @@ export default async function QuotePublicPage({
                 </p>
               </div>
               <div className="text-right">
-                <div className="font-mono text-[10px] uppercase tracking-eyebrow text-cream/60 print:text-muted">
+                <div className="font-mono text-[10px] uppercase tracking-eyebrow text-creme/60 print:text-muted">
                   Dossier
                 </div>
-                <div className="mt-1 font-mono text-base text-copper">{lead.reference}</div>
+                <div className="mt-1 font-mono text-base text-bleu">{lead.reference}</div>
               </div>
             </div>
           </header>
 
           {/* Client */}
-          <div className="px-8 py-6 border-b border-ink/8 grid sm:grid-cols-2 gap-6">
+          <div className="px-8 py-6 border-b border-pierre grid sm:grid-cols-2 gap-6">
             <div>
               <div className="font-mono text-[10px] uppercase tracking-eyebrow text-muted">
                 Émetteur
               </div>
-              <div className="mt-2 text-sm text-ink font-medium">Chauffage Artisanal</div>
-              <div className="text-xs text-graphite">Luxembourg</div>
+              <div className="mt-2 text-sm text-anthra font-medium">Chauffage Artisanal</div>
+              <div className="text-xs text-taupe">Luxembourg</div>
             </div>
             <div>
               <div className="font-mono text-[10px] uppercase tracking-eyebrow text-muted">
                 Client
               </div>
-              <div className="mt-2 text-sm text-ink font-medium">{lead.fullName}</div>
-              <div className="text-xs text-graphite">{lead.commune}</div>
-              <div className="text-xs text-graphite">{lead.email}</div>
+              <div className="mt-2 text-sm text-anthra font-medium">{lead.fullName}</div>
+              <div className="text-xs text-taupe">{lead.commune}</div>
+              <div className="text-xs text-taupe">{lead.email}</div>
             </div>
           </div>
 
@@ -104,7 +104,7 @@ export default async function QuotePublicPage({
           <div className="px-8 py-8">
             <table className="w-full border-collapse">
               <thead>
-                <tr className="text-left border-b border-ink/15 font-mono text-[10px] uppercase tracking-eyebrow text-muted">
+                <tr className="text-left border-b border-pierre font-mono text-[10px] uppercase tracking-eyebrow text-muted">
                   <th className="pb-3 pr-4">Description</th>
                   <th className="pb-3 px-2 text-right w-20">Qté</th>
                   <th className="pb-3 px-2 text-right w-20">Unité</th>
@@ -114,18 +114,18 @@ export default async function QuotePublicPage({
               </thead>
               <tbody>
                 {quote.lines.map((l) => (
-                  <tr key={l.id} className="border-b border-ink/8">
-                    <td className="py-3 pr-4 text-sm text-ink whitespace-pre-wrap">
+                  <tr key={l.id} className="border-b border-pierre">
+                    <td className="py-3 pr-4 text-sm text-anthra whitespace-pre-wrap">
                       {l.description}
                     </td>
-                    <td className="py-3 px-2 text-right text-sm text-ink tabular-nums">
+                    <td className="py-3 px-2 text-right text-sm text-anthra tabular-nums">
                       {l.quantity}
                     </td>
                     <td className="py-3 px-2 text-right text-sm text-muted">{l.unit}</td>
-                    <td className="py-3 px-2 text-right text-sm text-ink tabular-nums">
+                    <td className="py-3 px-2 text-right text-sm text-anthra tabular-nums">
                       {formatEur(l.unitPrice)}
                     </td>
-                    <td className="py-3 pl-2 text-right text-sm text-ink font-medium tabular-nums">
+                    <td className="py-3 pl-2 text-right text-sm text-anthra font-medium tabular-nums">
                       {formatEur(l.quantity * l.unitPrice)}
                     </td>
                   </tr>
@@ -138,19 +138,19 @@ export default async function QuotePublicPage({
               <div className="grid gap-2 text-sm">
                 <div className="flex items-baseline justify-between">
                   <span className="text-muted">Total HT</span>
-                  <span className="text-ink tabular-nums">
+                  <span className="text-anthra tabular-nums">
                     {formatEur(totals.htAmount)}
                   </span>
                 </div>
                 <div className="flex items-baseline justify-between">
                   <span className="text-muted">TVA ({quote.tvaRate}%)</span>
-                  <span className="text-ink tabular-nums">
+                  <span className="text-anthra tabular-nums">
                     {formatEur(totals.tvaAmount)}
                   </span>
                 </div>
-                <div className="pt-3 border-t border-ink/15 flex items-baseline justify-between">
-                  <span className="text-ink font-medium">Total TTC</span>
-                  <span className="font-display text-2xl text-copper tabular-nums">
+                <div className="pt-3 border-t border-pierre flex items-baseline justify-between">
+                  <span className="text-anthra font-medium">Total TTC</span>
+                  <span className="font-display text-2xl text-bleu tabular-nums">
                     {formatEur(totals.ttcAmount)}
                   </span>
                 </div>
@@ -170,19 +170,19 @@ export default async function QuotePublicPage({
 
           {/* Notes */}
           {quote.notes && (
-            <div className="px-8 py-6 border-t border-ink/8 bg-cream/40 print:bg-white">
-              <div className="font-mono text-[10px] uppercase tracking-eyebrow text-copper mb-2">
+            <div className="px-8 py-6 border-t border-pierre bg-creme/40 print:bg-white">
+              <div className="font-mono text-[10px] uppercase tracking-eyebrow text-bleu mb-2">
                 Notes complémentaires
               </div>
-              <p className="text-sm text-graphite leading-relaxed whitespace-pre-wrap">
+              <p className="text-sm text-taupe leading-relaxed whitespace-pre-wrap">
                 {quote.notes}
               </p>
             </div>
           )}
 
           {/* Footer */}
-          <footer className="bg-linen border-t border-ink/8 px-8 py-6 print:bg-white">
-            <p className="text-xs text-graphite leading-relaxed">
+          <footer className="bg-creme border-t border-pierre px-8 py-6 print:bg-white">
+            <p className="text-xs text-taupe leading-relaxed">
               Devis sans engagement de votre part. Pour acceptation, retournez ce
               document signé ou contactez directement notre bureau d&apos;études.
             </p>

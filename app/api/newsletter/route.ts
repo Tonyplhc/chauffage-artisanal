@@ -50,7 +50,7 @@ Si vous n'êtes pas à l'origine de cette demande, ignorez simplement cet email.
 — Chauffage Artisanal`,
       html: `<!doctype html><html><body style="background:#f6f0e4;font-family:system-ui;color:#2a251e;padding:32px;">
 <div style="max-width:560px;margin:0 auto;background:#fff;padding:32px;border-radius:24px;border:1px solid rgba(42,37,30,0.08);">
-  <div style="font-family:monospace;font-size:10px;letter-spacing:0.28em;text-transform:uppercase;color:#b86a36;">Chauffage Artisanal</div>
+  <div style="font-family:monospace;font-size:10px;letter-spacing:0.28em;text-transform:uppercase;color:#0B57A0;">Chauffage Artisanal</div>
   <h1 style="font-family:Georgia,serif;font-size:24px;margin:12px 0 16px;">Confirmez votre inscription</h1>
   <p style="font-size:15px;line-height:1.6;color:#4a4338;">Merci de votre intérêt pour notre newsletter. Confirmez votre inscription en un clic :</p>
   <div style="text-align:center;margin:24px 0;">

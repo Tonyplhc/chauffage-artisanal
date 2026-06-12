@@ -3,7 +3,7 @@
  * Next.js produit /icon (32x32) qui sert de favicon par défaut.
  *
  * Design : flamme cuivre stylisée sur fond crème, cohérent avec
- * l'identité de l'atelier (cuivre #b86a36, crème #f6f0e4).
+ * l'identité de l'atelier (cuivre #0B57A0, crème #f6f0e4).
  */
 
 import { ImageResponse } from "next/og";
@@ -36,7 +36,7 @@ export default function Icon() {
         >
           <path
             d="M12 2c1.5 3 4 4.5 4 8a4 4 0 11-8 0c0-1.5.5-2.5 1.5-3.5C10.5 5 11 3.5 12 2z"
-            fill="#b86a36"
+            fill="#0B57A0"
           />
         </svg>
       </div>

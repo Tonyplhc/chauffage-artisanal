@@ -117,7 +117,7 @@ export async function appendHtmlSignature(
   if (!sig.html.trim()) return html;
   const marker = `data-signature-of="${userEmail.toLowerCase()}"`;
   if (html.includes(marker)) return html;
-  const block = `<div ${marker} style="margin-top:28px;padding-top:16px;border-top:1px solid rgba(42,37,30,0.1);font-size:13px;color:#4a4338;font-family:inherit;">${sig.html}</div>`;
+  const block = `<div ${marker} style="margin-top:28px;padding-top:16px;border-top:1px solid rgba(42,37,30,0.1);font-size:13px;color:#6E675C;font-family:inherit;">${sig.html}</div>`;
   if (html.includes("</body>")) {
     return html.replace("</body>", `${block}</body>`);
   }

@@ -13,7 +13,7 @@ export default function ConfidentialitePage() {
     <LegalPage
       number="L2"
       eyebrow="Politique de confidentialité"
-      title={<>Vos données, <em className="not-italic text-copper">notre engagement</em></>}
+      title={<>Vos données, <em className="not-italic text-bleu">notre engagement</em></>}
       intro="Cette politique décrit comment Chauffage Artisanal collecte, utilise, conserve et protège vos données personnelles, conformément au Règlement Général sur la Protection des Données (RGPD)."
     >
       <h2>1. Responsable du traitement</h2>

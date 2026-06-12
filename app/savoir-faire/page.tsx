@@ -31,12 +31,12 @@ export default function SavoirFairePage() {
         title={
           <>
             La technique sérieuse,{" "}
-            <em className="not-italic text-copper">méthodiquement appliquée</em>.
+            <em className="not-italic text-bleu">méthodiquement appliquée</em>.
           </>
         }
         intro={
           <>
-            <strong className="text-copper font-semibold">Trois décennies</strong> de chantiers nous ont appris une chose : ce qui distingue une bonne installation d&apos;une mauvaise, ce n&apos;est pas le matériel — c&apos;est la méthode.
+            <strong className="text-bleu font-semibold">Trois décennies</strong> de chantiers nous ont appris une chose : ce qui distingue une bonne installation d&apos;une mauvaise, ce n&apos;est pas le matériel — c&apos;est la méthode.
           </>
         }
         aside={
@@ -54,7 +54,7 @@ export default function SavoirFairePage() {
       />
 
       {/* MÉTHODE — 5 ÉTAPES */}
-      <section className="py-14 lg:py-20 bg-cream">
+      <section className="py-14 lg:py-20 bg-creme">
         <div className="container">
           <div className="max-w-3xl mb-10">
             <Eyebrow number="01">Méthode d'intervention</Eyebrow>
@@ -64,7 +64,7 @@ export default function SavoirFairePage() {
               </SectionTitle>
             </Reveal>
             <Reveal delay={1}>
-              <p className="mt-6 text-graphite text-lg">
+              <p className="mt-6 text-taupe text-lg">
                 La même séquence, qu'il s'agisse d'une chaudière domestique à 4 000 € ou d'une
                 chaufferie tertiaire à 400 000 €.
               </p>
@@ -80,7 +80,7 @@ export default function SavoirFairePage() {
       </section>
 
       {/* MARQUES & TECHNOLOGIES */}
-      <section className="py-14 lg:py-20 bg-linen border-y border-ink/8">
+      <section className="py-14 lg:py-20 bg-creme border-y border-pierre">
         <div className="container">
           <div className="grid lg:grid-cols-12 gap-12 mb-10">
             <div className="lg:col-span-7">
@@ -91,7 +91,7 @@ export default function SavoirFairePage() {
                 </SectionTitle>
               </Reveal>
               <Reveal delay={1}>
-                <p className="mt-6 text-graphite text-lg">
+                <p className="mt-6 text-taupe text-lg">
                   Nous intervenons sur les principales marques européennes de chauffage, de
                   climatisation et de pompes à chaleur. Le choix se fait toujours en fonction du
                   projet : performance attendue, contraintes techniques, budget, et disponibilité
@@ -100,12 +100,12 @@ export default function SavoirFairePage() {
               </Reveal>
             </div>
             <div className="lg:col-span-5">
-              <div className="p-6 rounded-2xl border border-ink/10 bg-white shadow-soft">
-                <div className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-eyebrow text-copper">
+              <div className="p-6 rounded-2xl border border-pierre bg-white shadow-soft">
+                <div className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-eyebrow text-bleu">
                   <Sparkles className="h-3.5 w-3.5" />
                   Notre approche
                 </div>
-                <p className="mt-3 text-sm text-graphite leading-relaxed">
+                <p className="mt-3 text-sm text-taupe leading-relaxed">
                   Nous ne fonctionnons pas en exclusivité de marque. Nous recommandons la solution
                   la mieux adaptée à votre projet, parmi un panel de fabricants éprouvés. Le
                   critère n°1 : pouvoir dépanner et fournir des pièces pendant <strong>15 ans
@@ -130,7 +130,7 @@ export default function SavoirFairePage() {
       </section>
 
       {/* RÉALISATIONS / INSTALLATIONS MAÎTRISÉES */}
-      <section className="py-14 lg:py-20 bg-cream">
+      <section className="py-14 lg:py-20 bg-creme">
         <div className="container">
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-12 lg:mb-10">
             <div>
@@ -144,7 +144,7 @@ export default function SavoirFairePage() {
             <Reveal delay={1}>
               <Link
                 href="/realisations"
-                className="group inline-flex items-center gap-2 text-sm font-mono uppercase tracking-eyebrow text-ink hover:text-copper transition-colors self-start lg:self-end"
+                className="group inline-flex items-center gap-2 text-sm font-mono uppercase tracking-eyebrow text-anthra hover:text-bleu transition-colors self-start lg:self-end"
               >
                 Voir le portfolio complet
                 <ArrowUpRight className="h-4 w-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
@@ -160,30 +160,30 @@ export default function SavoirFairePage() {
           </div>
 
           {/* Before / after */}
-          <div className="grid lg:grid-cols-12 gap-10 items-center mt-12 pt-10 border-t border-ink/8">
+          <div className="grid lg:grid-cols-12 gap-10 items-center mt-12 pt-10 border-t border-pierre">
             <div className="lg:col-span-5">
-              <div className="font-mono text-[10px] uppercase tracking-eyebrow text-copper">
+              <div className="font-mono text-[10px] uppercase tracking-eyebrow text-bleu">
                 Avant / après · cas type
               </div>
-              <h3 className="mt-4 font-display text-display-md text-balance text-ink">
+              <h3 className="mt-4 font-display text-display-md text-balance text-anthra">
                 Remplacement d&apos;une installation vieillissante par{" "}
-                <em className="not-italic text-copper">une solution moderne</em>
+                <em className="not-italic text-bleu">une solution moderne</em>
               </h3>
-              <p className="mt-5 text-graphite">
+              <p className="mt-5 text-taupe">
                 Situation type de rénovation : remplacement d&apos;une installation extérieure ancienne par
                 une pompe à chaleur récente. Dépose propre, support neuf, lit de galets,
                 isolation des liaisons.
               </p>
-              <ul className="mt-6 space-y-2.5 text-sm text-graphite">
-                <li className="flex gap-3"><span className="text-copper">→</span> Dépose et évacuation de l&apos;ancien équipement</li>
-                <li className="flex gap-3"><span className="text-copper">→</span> Préparation du support et lit de galets</li>
-                <li className="flex gap-3"><span className="text-copper">→</span> Mise en service et suivi technique</li>
+              <ul className="mt-6 space-y-2.5 text-sm text-taupe">
+                <li className="flex gap-3"><span className="text-bleu">→</span> Dépose et évacuation de l&apos;ancien équipement</li>
+                <li className="flex gap-3"><span className="text-bleu">→</span> Préparation du support et lit de galets</li>
+                <li className="flex gap-3"><span className="text-bleu">→</span> Mise en service et suivi technique</li>
               </ul>
               <div className="mt-8 flex flex-wrap gap-2">
                 {["Luxembourg", "PAC", "Rénovation", "Cas type"].map((t) => (
                   <span
                     key={t}
-                    className="px-3 py-1.5 rounded-full text-xs font-mono uppercase tracking-eyebrow bg-white border border-ink/10 text-graphite"
+                    className="px-3 py-1.5 rounded-full text-xs font-mono uppercase tracking-eyebrow bg-white border border-pierre text-taupe"
                   >
                     {t}
                   </span>
@@ -207,7 +207,7 @@ export default function SavoirFairePage() {
       </section>
 
       {/* POURQUOI NOUS CHOISIR */}
-      <section className="py-14 lg:py-20 bg-linen border-y border-ink/8">
+      <section className="py-14 lg:py-20 bg-creme border-y border-pierre">
         <div className="container">
           <div className="max-w-3xl mb-10">
             <Eyebrow number="04">Pourquoi nous choisir</Eyebrow>
@@ -217,14 +217,14 @@ export default function SavoirFairePage() {
               </SectionTitle>
             </Reveal>
             <Reveal delay={1}>
-              <p className="mt-6 text-graphite text-lg">
+              <p className="mt-6 text-taupe text-lg">
                 Pas de superlatifs, pas de slogans. Voici ce que nos clients peuvent constater
                 avant, pendant, et après le chantier.
               </p>
             </Reveal>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-ink/8 border border-ink/8 rounded-2xl overflow-hidden">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-sable/60 border border-pierre rounded-2xl overflow-hidden">
             {REASONS.map((r, i) => (
               <Reason key={r.title} reason={r} index={i} />
             ))}
@@ -233,16 +233,16 @@ export default function SavoirFairePage() {
       </section>
 
       {/* MID-CTA */}
-      <section className="py-12 lg:py-14 bg-cream">
+      <section className="py-12 lg:py-14 bg-creme">
         <div className="container">
           <div className="grid lg:grid-cols-12 gap-10 items-center">
             <div className="lg:col-span-8">
               <Eyebrow number="05">Passons à l'action</Eyebrow>
-              <h2 className="mt-4 font-display text-display-md text-balance text-ink">
+              <h2 className="mt-4 font-display text-display-md text-balance text-anthra">
                 Décrivez-nous votre projet —{" "}
-                <em className="not-italic text-copper">nous appliquons la méthode</em>.
+                <em className="not-italic text-bleu">nous appliquons la méthode</em>.
               </h2>
-              <p className="mt-4 text-graphite text-lg max-w-2xl">
+              <p className="mt-4 text-taupe text-lg max-w-2xl">
                 Cinq questions, deux minutes. Vous recevez un retour personnalisé sous 4h ouvrées.
               </p>
             </div>
@@ -307,30 +307,30 @@ function MethodStep({ step, index }: { step: (typeof METHOD)[number]; index: num
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.6, delay: index * 0.07, ease: [0.22, 1, 0.36, 1] }}
-      className="group grid lg:grid-cols-12 gap-6 lg:gap-10 items-start p-6 lg:p-8 rounded-3xl border border-ink/10 bg-white hover:border-copper/40 hover:shadow-lift transition-all"
+      className="group grid lg:grid-cols-12 gap-6 lg:gap-10 items-start p-6 lg:p-8 rounded-3xl border border-pierre bg-white hover:border-bleu/40 hover:shadow-lift transition-all"
     >
       <div className="lg:col-span-1">
-        <div className="h-12 w-12 rounded-full bg-copper/10 border border-copper/30 grid place-items-center">
-          <step.icon className="h-5 w-5 text-copper" />
+        <div className="h-12 w-12 rounded-full bg-bleu/10 border border-bleu/30 grid place-items-center">
+          <step.icon className="h-5 w-5 text-bleu" />
         </div>
       </div>
       <div className="lg:col-span-4">
-        <div className="font-mono text-[10px] uppercase tracking-eyebrow text-copper">
+        <div className="font-mono text-[10px] uppercase tracking-eyebrow text-bleu">
           Étape 0{index + 1}
         </div>
-        <h3 className="mt-2 font-display text-2xl text-ink tracking-tight">{step.title}</h3>
-        <div className="mt-3 inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-eyebrow text-graphite">
+        <h3 className="mt-2 font-display text-2xl text-anthra tracking-tight">{step.title}</h3>
+        <div className="mt-3 inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-eyebrow text-taupe">
           <Clock className="h-3 w-3" />
           {step.duration}
         </div>
       </div>
       <div className="lg:col-span-4">
-        <p className="text-graphite leading-relaxed">{step.body}</p>
+        <p className="text-taupe leading-relaxed">{step.body}</p>
       </div>
       <div className="lg:col-span-3 grid gap-1.5">
         {step.details.map((d) => (
-          <div key={d} className="flex gap-2 items-start text-xs text-graphite">
-            <span className="mt-1 h-1 w-1 rounded-full bg-copper shrink-0" />
+          <div key={d} className="flex gap-2 items-start text-xs text-taupe">
+            <span className="mt-1 h-1 w-1 rounded-full bg-bleu shrink-0" />
             {d}
           </div>
         ))}
@@ -363,15 +363,15 @@ function Brand({ brand, index }: { brand: (typeof BRANDS)[number]; index: number
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.5, delay: (index % 4) * 0.06 }}
-      className="group p-5 rounded-2xl border border-ink/10 bg-white hover:border-copper/40 hover:shadow-lift transition-all"
+      className="group p-5 rounded-2xl border border-pierre bg-white hover:border-bleu/40 hover:shadow-lift transition-all"
     >
-      <div className="font-display text-2xl tracking-tight text-ink leading-tight">
+      <div className="font-display text-2xl tracking-tight text-anthra leading-tight">
         {brand.name}
       </div>
-      <div className="mt-2 font-mono text-[10px] uppercase tracking-eyebrow text-copper">
+      <div className="mt-2 font-mono text-[10px] uppercase tracking-eyebrow text-bleu">
         {brand.scope}
       </div>
-      <p className="mt-3 text-xs text-graphite leading-relaxed">{brand.note}</p>
+      <p className="mt-3 text-xs text-taupe leading-relaxed">{brand.note}</p>
     </motion.div>
   );
 }
@@ -436,9 +436,9 @@ function Installation({ item, index }: { item: (typeof SHOWCASE)[number]; index:
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.6, delay: (index % 3) * 0.08, ease: [0.22, 1, 0.36, 1] }}
-      className="group rounded-2xl border border-ink/10 bg-white overflow-hidden hover:border-copper/40 hover:shadow-lift transition-all"
+      className="group rounded-2xl border border-pierre bg-white overflow-hidden hover:border-bleu/40 hover:shadow-lift transition-all"
     >
-      <div className="relative aspect-[4/3] bg-stone overflow-hidden">
+      <div className="relative aspect-[4/3] bg-pierre overflow-hidden">
         <Image
           src={item.img}
           alt=""
@@ -446,21 +446,21 @@ function Installation({ item, index }: { item: (typeof SHOWCASE)[number]; index:
           sizes="(max-width: 1024px) 100vw, 33vw"
           className="object-cover group-hover:scale-105 transition-transform duration-700"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-charcoal/40 to-transparent" />
-        <span className="absolute top-3 left-3 font-mono text-[10px] uppercase tracking-eyebrow text-ink bg-cream/90 backdrop-blur-md border border-ink/10 px-3 py-1 rounded-full">
+        <div className="absolute inset-0 bg-gradient-to-t from-navy/40 to-transparent" />
+        <span className="absolute top-3 left-3 font-mono text-[10px] uppercase tracking-eyebrow text-anthra bg-creme/90 backdrop-blur-md border border-pierre px-3 py-1 rounded-full">
           {item.type}
         </span>
-        <span className="absolute top-3 right-3 font-mono text-[10px] uppercase tracking-eyebrow text-copper bg-cream/90 backdrop-blur-md border border-copper/30 px-2.5 py-1 rounded-full">
+        <span className="absolute top-3 right-3 font-mono text-[10px] uppercase tracking-eyebrow text-bleu bg-creme/90 backdrop-blur-md border border-bleu/30 px-2.5 py-1 rounded-full">
           {item.year}
         </span>
       </div>
       <div className="p-5">
-        <div className="font-display text-xl text-ink tracking-tight">{item.title}</div>
+        <div className="font-display text-xl text-anthra tracking-tight">{item.title}</div>
         <div className="mt-2 flex items-center gap-2 text-xs text-muted">
-          <MapPin className="h-3 w-3 text-copper" />
+          <MapPin className="h-3 w-3 text-bleu" />
           <span>{item.place}</span>
-          <span className="text-ink/20">·</span>
-          <span className="font-mono uppercase tracking-eyebrow text-[10px] text-graphite truncate">
+          <span className="text-anthra/20">·</span>
+          <span className="font-mono uppercase tracking-eyebrow text-[10px] text-taupe truncate">
             {item.techno}
           </span>
         </div>
@@ -519,15 +519,15 @@ function Reason({ reason, index }: { reason: (typeof REASONS)[number]; index: nu
       transition={{ duration: 0.6, delay: (index % 3) * 0.08 }}
       className="bg-white p-7 lg:p-8 flex flex-col"
     >
-      <div className="h-11 w-11 rounded-full bg-copper/10 border border-copper/30 grid place-items-center">
-        <reason.icon className="h-5 w-5 text-copper" />
+      <div className="h-11 w-11 rounded-full bg-bleu/10 border border-bleu/30 grid place-items-center">
+        <reason.icon className="h-5 w-5 text-bleu" />
       </div>
-      <div className="mt-5 font-mono text-[10px] uppercase tracking-eyebrow text-copper">
+      <div className="mt-5 font-mono text-[10px] uppercase tracking-eyebrow text-bleu">
         0{index + 1}
       </div>
-      <h3 className="mt-2 font-display text-2xl text-ink tracking-tight">{reason.title}</h3>
-      <p className="mt-3 text-sm text-graphite leading-relaxed flex-1">{reason.body}</p>
-      <div className="mt-5 pt-5 border-t border-ink/8 font-mono text-[10px] uppercase tracking-eyebrow text-copper">
+      <h3 className="mt-2 font-display text-2xl text-anthra tracking-tight">{reason.title}</h3>
+      <p className="mt-3 text-sm text-taupe leading-relaxed flex-1">{reason.body}</p>
+      <div className="mt-5 pt-5 border-t border-pierre font-mono text-[10px] uppercase tracking-eyebrow text-bleu">
         ↳ {reason.proof}
       </div>
     </motion.div>

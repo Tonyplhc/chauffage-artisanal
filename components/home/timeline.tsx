@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { Eyebrow, Reveal } from "@/components/ui";
 
 const H = ({ children }: { children: React.ReactNode }) => (
-  <strong className="text-copper font-semibold">{children}</strong>
+  <strong className="text-bleu font-semibold">{children}</strong>
 );
 
 type Milestone = { year: string; title: string; body: React.ReactNode };
@@ -76,20 +76,20 @@ const MILESTONES: Milestone[] = [
 
 export function Timeline() {
   return (
-    <section className="relative py-14 lg:py-20 bg-cream">
+    <section className="relative py-14 lg:py-20 bg-creme">
       <div className="container">
         <div className="max-w-3xl">
           <Eyebrow number="03">Trois décennies</Eyebrow>
           <Reveal>
-            <h2 className="mt-5 font-display text-display-lg text-balance text-ink">
-              De l&apos;atelier de <em className="not-italic text-copper">1994</em> à la maison technique d&apos;aujourd&apos;hui.
+            <h2 className="mt-5 font-display text-display-lg text-balance text-anthra">
+              De l&apos;atelier de <em className="not-italic text-bleu">1994</em> à la maison technique d&apos;aujourd&apos;hui.
             </h2>
           </Reveal>
           <Reveal delay={1}>
-            <p className="mt-6 text-graphite">
+            <p className="mt-6 text-taupe">
               Une{" "}
-              <strong className="text-copper font-semibold">histoire continue</strong>,{" "}
-              <strong className="text-copper font-semibold">sans discontinuité de direction</strong>. Quelques étapes qui ont
+              <strong className="text-bleu font-semibold">histoire continue</strong>,{" "}
+              <strong className="text-bleu font-semibold">sans discontinuité de direction</strong>. Quelques étapes qui ont
               façonné notre savoir-faire.
             </p>
           </Reveal>
@@ -112,16 +112,16 @@ export function Timeline() {
               >
                 <div className={`relative md:px-12 ${i % 2 === 0 ? "md:text-right" : ""}`}>
                   <div
-                    className="absolute left-[-29px] md:left-auto md:right-[-7px] md:top-3 top-2 h-3.5 w-3.5 rounded-full bg-copper ring-4 ring-cream z-10"
+                    className="absolute left-[-29px] md:left-auto md:right-[-7px] md:top-3 top-2 h-3.5 w-3.5 rounded-full bg-bleu ring-4 ring-creme z-10"
                     style={i % 2 === 0 ? {} : { right: "auto", left: "-7px" }}
                   />
-                  <div className="font-mono text-xs uppercase tracking-eyebrow text-copper">
+                  <div className="font-mono text-xs uppercase tracking-eyebrow text-bleu">
                     {m.year}
                   </div>
-                  <h3 className="mt-2 font-display text-3xl lg:text-4xl tracking-tight text-ink">
+                  <h3 className="mt-2 font-display text-3xl lg:text-4xl tracking-tight text-anthra">
                     {m.title}
                   </h3>
-                  <p className="mt-3 text-graphite leading-relaxed max-w-md md:ml-auto">{m.body}</p>
+                  <p className="mt-3 text-taupe leading-relaxed max-w-md md:ml-auto">{m.body}</p>
                 </div>
                 <div className="hidden md:block" />
               </motion.div>

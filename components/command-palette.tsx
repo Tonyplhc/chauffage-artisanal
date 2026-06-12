@@ -288,7 +288,7 @@ export function CommandPalette() {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.15 }}
-          className="fixed inset-0 z-[90] bg-charcoal/40 backdrop-blur-sm grid place-items-start pt-[10vh] px-4"
+          className="fixed inset-0 z-[90] bg-navy/40 backdrop-blur-sm grid place-items-start pt-[10vh] px-4"
           onClick={(e) => {
             if (e.target === e.currentTarget) setOpen(false);
           }}
@@ -298,13 +298,13 @@ export function CommandPalette() {
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: -8, opacity: 0 }}
             transition={{ duration: 0.18 }}
-            className="w-full max-w-2xl bg-white rounded-2xl border border-ink/10 shadow-lift overflow-hidden"
+            className="w-full max-w-2xl bg-white rounded-2xl border border-pierre shadow-lift overflow-hidden"
             role="dialog"
             aria-modal="true"
           >
             {/* Search input */}
-            <div className="flex items-center gap-3 px-4 py-3 border-b border-ink/8">
-              <Search className="h-5 w-5 text-graphite shrink-0" />
+            <div className="flex items-center gap-3 px-4 py-3 border-b border-pierre">
+              <Search className="h-5 w-5 text-taupe shrink-0" />
               <input
                 ref={inputRef}
                 type="text"
@@ -318,11 +318,11 @@ export function CommandPalette() {
                     ? "Rechercher pages, leads, communes…"
                     : "Rechercher pages, services, articles…"
                 }
-                className="flex-1 bg-transparent text-ink placeholder:text-muted focus:outline-none"
+                className="flex-1 bg-transparent text-anthra placeholder:text-muted focus:outline-none"
               />
               <button
                 onClick={() => setOpen(false)}
-                className="h-7 w-7 grid place-items-center rounded-full bg-cream border border-ink/10 text-graphite hover:bg-ink hover:text-cream transition-colors"
+                className="h-7 w-7 grid place-items-center rounded-full bg-creme border border-pierre text-taupe hover:bg-navy hover:text-creme transition-colors"
                 aria-label="Fermer"
               >
                 <XIcon className="h-3.5 w-3.5" />
@@ -348,7 +348,7 @@ export function CommandPalette() {
                             active={active === flatIdx}
                             onMouseEnter={() => setActive(flatIdx)}
                             onClick={() => goTo({ kind: "page", entry: r.entry })}
-                            icon={<Icon className="h-4 w-4 text-copper" />}
+                            icon={<Icon className="h-4 w-4 text-bleu" />}
                             title={r.entry.title}
                             subtitle={r.entry.description}
                             badge={r.entry.badge}
@@ -367,7 +367,7 @@ export function CommandPalette() {
                             active={active === flatIdx}
                             onMouseEnter={() => setActive(flatIdx)}
                             onClick={() => goTo({ kind: "lead", lead: l })}
-                            icon={<Mail className="h-4 w-4 text-copper" />}
+                            icon={<Mail className="h-4 w-4 text-bleu" />}
                             title={l.fullName}
                             subtitle={`${l.reference} · ${l.commune} · ${l.services.join(" · ")}`}
                             badge="Lead"
@@ -390,7 +390,7 @@ export function CommandPalette() {
                             active={active === flatIdx}
                             onMouseEnter={() => setActive(flatIdx)}
                             onClick={() => goTo({ kind: "deep", hit: h })}
-                            icon={<Icon className="h-4 w-4 text-copper" />}
+                            icon={<Icon className="h-4 w-4 text-bleu" />}
                             title={h.title}
                             subtitle={h.subtitle}
                             badge={DEEP_LABELS[h.type]}
@@ -404,7 +404,7 @@ export function CommandPalette() {
             </div>
 
             {/* Footer hints */}
-            <div className="px-4 py-2.5 border-t border-ink/8 bg-cream/40 flex items-center justify-between text-[10px] font-mono uppercase tracking-eyebrow text-muted">
+            <div className="px-4 py-2.5 border-t border-pierre bg-creme/40 flex items-center justify-between text-[10px] font-mono uppercase tracking-eyebrow text-muted">
               <span className="inline-flex items-center gap-3">
                 <span className="inline-flex items-center gap-1">
                   <Kbd>↑</Kbd>
@@ -468,23 +468,23 @@ function Item({
       onMouseEnter={onMouseEnter}
       onClick={onClick}
       className={`w-full text-left px-3 py-2.5 rounded-xl flex items-center gap-3 transition-colors ${
-        active ? "bg-cream" : "hover:bg-cream/60"
+        active ? "bg-creme" : "hover:bg-creme/60"
       }`}
     >
-      <span className="h-9 w-9 rounded-lg bg-white border border-ink/10 grid place-items-center shrink-0">
+      <span className="h-9 w-9 rounded-lg bg-white border border-pierre grid place-items-center shrink-0">
         {icon}
       </span>
       <div className="min-w-0 flex-1">
-        <div className="text-sm font-medium text-ink truncate">{title}</div>
+        <div className="text-sm font-medium text-anthra truncate">{title}</div>
         <div className="text-xs text-muted truncate">{subtitle}</div>
       </div>
       {badge && (
-        <span className="font-mono text-[10px] uppercase tracking-eyebrow text-graphite bg-white border border-ink/10 px-2 py-0.5 rounded-full">
+        <span className="font-mono text-[10px] uppercase tracking-eyebrow text-taupe bg-white border border-pierre px-2 py-0.5 rounded-full">
           {badge}
         </span>
       )}
       <ArrowRight
-        className={`h-3.5 w-3.5 transition-opacity ${active ? "text-copper opacity-100" : "opacity-0"}`}
+        className={`h-3.5 w-3.5 transition-opacity ${active ? "text-bleu opacity-100" : "opacity-0"}`}
       />
     </button>
   );
@@ -492,7 +492,7 @@ function Item({
 
 function Kbd({ children }: { children: React.ReactNode }) {
   return (
-    <kbd className="inline-flex items-center justify-center min-w-[20px] h-5 px-1.5 rounded bg-white border border-ink/15 text-ink font-mono text-[10px]">
+    <kbd className="inline-flex items-center justify-center min-w-[20px] h-5 px-1.5 rounded bg-white border border-pierre text-anthra font-mono text-[10px]">
       {children}
     </kbd>
   );

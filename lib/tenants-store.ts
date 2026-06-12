@@ -83,8 +83,8 @@ function slugify(s: string): string {
 }
 
 const DEFAULT_BRANDING: Tenant["branding"] = {
-  primaryColor: "#1e1a15",
-  secondaryColor: "#b86a36",
+  primaryColor: "#0A3D6E",
+  secondaryColor: "#0B57A0",
   accentColor: "#22a06b",
 };
 

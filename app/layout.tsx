@@ -109,7 +109,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           dangerouslySetInnerHTML={{ __html: JSON.stringify(ORGANIZATION_LD) }}
         />
       </head>
-      <body className="grain font-sans antialiased bg-cream text-ink overflow-x-hidden">
+      <body className="grain font-sans antialiased bg-creme text-anthra overflow-x-hidden">
         {/*
           Skip link a11y — visible uniquement au focus clavier, permet aux
           utilisateurs lecteur d'écran de sauter directement au contenu
@@ -117,7 +117,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         */}
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-ink focus:text-cream focus:px-4 focus:py-2 focus:rounded-full focus:font-medium focus:outline-none focus:ring-2 focus:ring-copper"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-navy focus:text-creme focus:px-4 focus:py-2 focus:rounded-full focus:font-medium focus:outline-none focus:ring-2 focus:ring-bleu"
         >
           Aller au contenu principal
         </a>

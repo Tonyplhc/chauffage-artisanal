@@ -173,8 +173,11 @@ export const QUESTIONS: Record<string, Question> = {
   },
 };
 
+// Échelle de sévérité aux couleurs charte : bleu (rien d'alarmant) →
+// terracotta (à surveiller) → brique (urgent). Vert/rouge restent réservés
+// aux données financières (Règle N°6).
 export const SEVERITY_LABEL: Record<Severity, { label: string; color: string }> = {
-  ok: { label: "OK", color: "#22a06b" },
-  moderate: { label: "Modéré", color: "#b86a36" },
-  urgent: { label: "Urgent", color: "#dc5a28" },
+  ok: { label: "OK", color: "#0B57A0" },
+  moderate: { label: "Modéré", color: "#C24A2C" },
+  urgent: { label: "Urgent", color: "#A2131A" },
 };

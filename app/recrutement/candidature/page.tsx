@@ -109,17 +109,17 @@ function CandidatureForm() {
 
   if (success) {
     return (
-      <main className="min-h-screen bg-cream py-16 lg:py-24 grid place-items-center px-5">
+      <main className="min-h-screen bg-creme py-16 lg:py-24 grid place-items-center px-5">
         <div className="max-w-xl w-full text-center">
-          <div className="inline-grid place-items-center h-20 w-20 rounded-full bg-copper/10 border-2 border-copper/30 mb-6">
-            <CheckCircle2 className="h-10 w-10 text-copper" />
+          <div className="inline-grid place-items-center h-20 w-20 rounded-full bg-bleu/10 border-2 border-bleu/30 mb-6">
+            <CheckCircle2 className="h-10 w-10 text-bleu" />
           </div>
-          <h1 className="font-display text-4xl text-ink mb-4">
+          <h1 className="font-display text-4xl text-anthra mb-4">
             Candidature reçue.
           </h1>
-          <p className="text-lg text-graphite mb-2">
+          <p className="text-lg text-taupe mb-2">
             Merci{" "}
-            <strong className="text-copper">
+            <strong className="text-bleu">
               {form.firstName} {form.lastName}
             </strong>{" "}
             — nous avons bien reçu votre dossier.
@@ -132,14 +132,14 @@ function CandidatureForm() {
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-3">
             <Link
               href="/recrutement"
-              className="inline-flex items-center gap-2 rounded-full bg-ink text-cream px-6 py-3 text-sm font-medium hover:bg-copper transition-colors"
+              className="inline-flex items-center gap-2 rounded-full bg-navy text-creme px-6 py-3 text-sm font-medium hover:bg-bleu transition-colors"
             >
               <ArrowLeft className="h-4 w-4" />
               Voir d&apos;autres postes
             </Link>
             <Link
               href="/"
-              className="inline-flex items-center gap-2 text-sm font-mono uppercase tracking-eyebrow text-graphite hover:text-copper transition-colors"
+              className="inline-flex items-center gap-2 text-sm font-mono uppercase tracking-eyebrow text-taupe hover:text-bleu transition-colors"
             >
               Retour à l&apos;accueil
             </Link>
@@ -157,19 +157,19 @@ function CandidatureForm() {
         title={
           job ? (
             <>
-              Postuler pour <em className="not-italic text-copper">{job.title}</em>
+              Postuler pour <em className="not-italic text-bleu">{job.title}</em>
             </>
           ) : (
             <>
               Candidature{" "}
-              <em className="not-italic text-copper">spontanée</em>
+              <em className="not-italic text-bleu">spontanée</em>
             </>
           )
         }
         intro={
           <>
             Vous remplissez ce formulaire, vous joignez votre CV au format PDF, on
-            étudie votre dossier <strong className="text-copper font-semibold">sous 5 jours ouvrés</strong>.
+            étudie votre dossier <strong className="text-bleu font-semibold">sous 5 jours ouvrés</strong>.
           </>
         }
         aside={
@@ -186,21 +186,21 @@ function CandidatureForm() {
         }
       />
 
-      <section className="py-12 lg:py-16 bg-cream">
+      <section className="py-12 lg:py-16 bg-creme">
         <div className="container max-w-3xl">
           {job && (
-            <div className="mb-8 p-4 rounded-2xl border border-copper/30 bg-copper/5 flex items-center gap-3">
-              <Briefcase className="h-5 w-5 text-copper shrink-0" />
+            <div className="mb-8 p-4 rounded-2xl border border-bleu/30 bg-bleu/5 flex items-center gap-3">
+              <Briefcase className="h-5 w-5 text-bleu shrink-0" />
               <div className="flex-1">
-                <div className="text-xs font-mono uppercase tracking-eyebrow text-copper">
+                <div className="text-xs font-mono uppercase tracking-eyebrow text-bleu">
                   Vous postulez pour
                 </div>
-                <div className="font-medium text-ink">{job.title}</div>
+                <div className="font-medium text-anthra">{job.title}</div>
               </div>
               <button
                 type="button"
                 onClick={() => router.push("/recrutement/candidature")}
-                className="text-xs text-graphite hover:text-ink underline"
+                className="text-xs text-taupe hover:text-anthra underline"
               >
                 Changer
               </button>
@@ -209,7 +209,7 @@ function CandidatureForm() {
 
           <form
             onSubmit={submit}
-            className="p-7 lg:p-10 rounded-3xl border border-ink/10 bg-white shadow-card"
+            className="p-7 lg:p-10 rounded-3xl border border-pierre bg-white shadow-card"
           >
             <div className="grid sm:grid-cols-2 gap-5">
               <div>
@@ -228,7 +228,7 @@ function CandidatureForm() {
                     setForm({ ...form, firstName: e.target.value })
                   }
                   disabled={sending}
-                  className="w-full bg-cream border border-ink/12 rounded-xl px-4 py-3 text-ink focus:border-copper focus:outline-none focus:ring-2 focus:ring-copper/20 transition-all"
+                  className="w-full bg-creme border border-pierre rounded-xl px-4 py-3 text-anthra focus:border-bleu focus:outline-none focus:ring-2 focus:ring-bleu/20 transition-all"
                 />
               </div>
               <div>
@@ -247,7 +247,7 @@ function CandidatureForm() {
                     setForm({ ...form, lastName: e.target.value })
                   }
                   disabled={sending}
-                  className="w-full bg-cream border border-ink/12 rounded-xl px-4 py-3 text-ink focus:border-copper focus:outline-none focus:ring-2 focus:ring-copper/20 transition-all"
+                  className="w-full bg-creme border border-pierre rounded-xl px-4 py-3 text-anthra focus:border-bleu focus:outline-none focus:ring-2 focus:ring-bleu/20 transition-all"
                 />
               </div>
               <div>
@@ -264,7 +264,7 @@ function CandidatureForm() {
                   value={form.email}
                   onChange={(e) => setForm({ ...form, email: e.target.value })}
                   disabled={sending}
-                  className="w-full bg-cream border border-ink/12 rounded-xl px-4 py-3 text-ink focus:border-copper focus:outline-none focus:ring-2 focus:ring-copper/20 transition-all"
+                  className="w-full bg-creme border border-pierre rounded-xl px-4 py-3 text-anthra focus:border-bleu focus:outline-none focus:ring-2 focus:ring-bleu/20 transition-all"
                 />
               </div>
               <div>
@@ -282,7 +282,7 @@ function CandidatureForm() {
                   value={form.phone}
                   onChange={(e) => setForm({ ...form, phone: e.target.value })}
                   disabled={sending}
-                  className="w-full bg-cream border border-ink/12 rounded-xl px-4 py-3 text-ink focus:border-copper focus:outline-none focus:ring-2 focus:ring-copper/20 transition-all"
+                  className="w-full bg-creme border border-pierre rounded-xl px-4 py-3 text-anthra focus:border-bleu focus:outline-none focus:ring-2 focus:ring-bleu/20 transition-all"
                 />
               </div>
             </div>
@@ -301,7 +301,7 @@ function CandidatureForm() {
                 value={form.message}
                 onChange={(e) => setForm({ ...form, message: e.target.value })}
                 disabled={sending}
-                className="w-full bg-cream border border-ink/12 rounded-xl px-4 py-3 text-ink focus:border-copper focus:outline-none focus:ring-2 focus:ring-copper/20 transition-all resize-none"
+                className="w-full bg-creme border border-pierre rounded-xl px-4 py-3 text-anthra focus:border-bleu focus:outline-none focus:ring-2 focus:ring-bleu/20 transition-all resize-none"
               />
             </div>
 
@@ -325,16 +325,16 @@ function CandidatureForm() {
                   w-full p-5 rounded-xl border-2 border-dashed transition-all
                   ${
                     cv
-                      ? "border-copper/50 bg-copper/5"
-                      : "border-ink/15 bg-cream/50 hover:border-copper/30"
+                      ? "border-bleu/50 bg-bleu/5"
+                      : "border-pierre bg-creme/50 hover:border-bleu/30"
                   }
                 `}
               >
                 <div className="flex items-center justify-center gap-3">
                   {cv ? (
                     <>
-                      <FileText className="h-5 w-5 text-copper" />
-                      <span className="text-sm text-ink font-medium">
+                      <FileText className="h-5 w-5 text-bleu" />
+                      <span className="text-sm text-anthra font-medium">
                         {cv.name}
                       </span>
                       <span className="text-xs text-muted">
@@ -343,8 +343,8 @@ function CandidatureForm() {
                     </>
                   ) : (
                     <>
-                      <Upload className="h-5 w-5 text-graphite" />
-                      <span className="text-sm text-graphite">
+                      <Upload className="h-5 w-5 text-taupe" />
+                      <span className="text-sm text-taupe">
                         Cliquer pour téléverser votre CV PDF
                       </span>
                     </>
@@ -354,8 +354,8 @@ function CandidatureForm() {
             </div>
 
             {error && (
-              <div className="mt-5 p-3.5 rounded-xl bg-ember/8 border border-ember/30 flex gap-3 items-start text-sm text-ink">
-                <AlertCircle className="h-4 w-4 text-ember shrink-0 mt-0.5" />
+              <div className="mt-5 p-3.5 rounded-xl bg-terracotta/8 border border-terracotta/30 flex gap-3 items-start text-sm text-anthra">
+                <AlertCircle className="h-4 w-4 text-terracotta shrink-0 mt-0.5" />
                 {error}
               </div>
             )}
@@ -364,7 +364,7 @@ function CandidatureForm() {
               <button
                 type="submit"
                 disabled={sending || !cv}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full bg-ink text-cream px-8 py-4 text-sm font-medium hover:bg-copper transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full bg-navy text-creme px-8 py-4 text-sm font-medium hover:bg-bleu transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
               >
                 {sending ? (
                   <>

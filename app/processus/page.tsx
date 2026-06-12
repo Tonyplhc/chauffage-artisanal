@@ -143,22 +143,22 @@ export default function ProcessusPage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative pt-12 lg:pt-16 pb-10 lg:pb-12 bg-cream border-b border-ink/8 overflow-hidden">
+      <section className="relative pt-12 lg:pt-16 pb-10 lg:pb-12 bg-creme border-b border-pierre overflow-hidden">
         <div
           className="absolute inset-0 opacity-[0.04]"
           style={{
             backgroundImage:
-              "radial-gradient(circle at 20% 30%, rgba(184,106,54,0.35), transparent 55%), radial-gradient(circle at 80% 70%, rgba(184,106,54,0.18), transparent 55%)",
+              "radial-gradient(circle at 20% 30%, rgba(11,87,160,0.35), transparent 55%), radial-gradient(circle at 80% 70%, rgba(11,87,160,0.18), transparent 55%)",
           }}
         />
         <div className="container relative">
           <div className="max-w-3xl">
             <Eyebrow number="00">Notre méthode</Eyebrow>
-            <h1 className="mt-4 font-display text-display-xl tracking-tightest text-balance text-ink">
+            <h1 className="mt-4 font-display text-display-xl tracking-tightest text-balance text-anthra">
               De votre appel à votre confort —{" "}
-              <em className="not-italic text-copper">8 étapes</em>, zéro improvisation.
+              <em className="not-italic text-bleu">8 étapes</em>, zéro improvisation.
             </h1>
-            <p className="mt-5 text-lg lg:text-xl text-graphite leading-relaxed text-balance">
+            <p className="mt-5 text-lg lg:text-xl text-taupe leading-relaxed text-balance">
               {COMPANY.shortName} travaille depuis {new Date().getFullYear() - COMPANY.foundedYear} ans
               au Luxembourg. Cette méthode est ce qui sépare un chantier réussi d&apos;un
               chantier qui dépasse les délais ou les budgets. Aucune étape n&apos;est sautée.
@@ -168,22 +168,22 @@ export default function ProcessusPage() {
       </section>
 
       {/* Principles transverses */}
-      <section className="py-12 bg-linen border-b border-ink/8">
+      <section className="py-12 bg-creme border-b border-pierre">
         <div className="container">
           <div className="grid md:grid-cols-3 gap-5">
             {KEY_PRINCIPLES.map((p) => (
               <div
                 key={p.title}
-                className="flex items-start gap-3 p-5 rounded-2xl border border-copper/30 bg-white"
+                className="flex items-start gap-3 p-5 rounded-2xl border border-bleu/30 bg-white"
               >
-                <span className="grid place-items-center h-10 w-10 rounded-full bg-copper/12 border border-copper/30 shrink-0">
-                  <p.icon className="h-5 w-5 text-copper" />
+                <span className="grid place-items-center h-10 w-10 rounded-full bg-bleu/12 border border-bleu/30 shrink-0">
+                  <p.icon className="h-5 w-5 text-bleu" />
                 </span>
                 <div className="min-w-0">
-                  <div className="font-display text-base text-ink tracking-tight">
+                  <div className="font-display text-base text-anthra tracking-tight">
                     {p.title}
                   </div>
-                  <div className="mt-1 text-sm text-graphite leading-relaxed">
+                  <div className="mt-1 text-sm text-taupe leading-relaxed">
                     {p.body}
                   </div>
                 </div>
@@ -194,12 +194,12 @@ export default function ProcessusPage() {
       </section>
 
       {/* Timeline 8 étapes */}
-      <section className="py-14 lg:py-20 bg-cream">
+      <section className="py-14 lg:py-20 bg-creme">
         <div className="container">
           <div className="max-w-3xl mb-10">
             <Eyebrow number="01">Les 8 étapes</Eyebrow>
             <SectionTitle className="mt-4">
-              Chronologie <em className="not-italic text-copper">détaillée</em>.
+              Chronologie <em className="not-italic text-bleu">détaillée</em>.
             </SectionTitle>
           </div>
 
@@ -207,34 +207,34 @@ export default function ProcessusPage() {
             {STEPS.map((s) => (
               <article
                 key={s.n}
-                className="grid lg:grid-cols-12 gap-6 p-6 lg:p-8 rounded-3xl border border-ink/10 bg-white hover:border-copper/30 transition-colors"
+                className="grid lg:grid-cols-12 gap-6 p-6 lg:p-8 rounded-3xl border border-pierre bg-white hover:border-bleu/30 transition-colors"
               >
                 <div className="lg:col-span-4 flex items-start gap-4">
-                  <span className="grid place-items-center h-12 w-12 rounded-2xl bg-copper/12 border border-copper/30 shrink-0">
-                    <s.icon className="h-5 w-5 text-copper" />
+                  <span className="grid place-items-center h-12 w-12 rounded-2xl bg-bleu/12 border border-bleu/30 shrink-0">
+                    <s.icon className="h-5 w-5 text-bleu" />
                   </span>
                   <div className="min-w-0">
-                    <div className="font-mono text-[10px] uppercase tracking-eyebrow text-copper">
+                    <div className="font-mono text-[10px] uppercase tracking-eyebrow text-bleu">
                       Étape {s.n}
                     </div>
-                    <h2 className="mt-1 font-display text-2xl text-ink tracking-tight">
+                    <h2 className="mt-1 font-display text-2xl text-anthra tracking-tight">
                       {s.title}
                     </h2>
                   </div>
                 </div>
                 <div className="lg:col-span-8">
-                  <p className="text-graphite leading-relaxed">{s.body}</p>
+                  <p className="text-taupe leading-relaxed">{s.body}</p>
                   <div className="mt-5">
-                    <div className="font-mono text-[10px] uppercase tracking-eyebrow text-copper mb-2">
+                    <div className="font-mono text-[10px] uppercase tracking-eyebrow text-bleu mb-2">
                       Livrables
                     </div>
                     <ul className="grid sm:grid-cols-2 gap-x-4 gap-y-1.5">
                       {s.deliverables.map((d, i) => (
                         <li
                           key={i}
-                          className="text-sm text-graphite flex items-start gap-2"
+                          className="text-sm text-taupe flex items-start gap-2"
                         >
-                          <span className="text-copper mt-0.5">•</span>
+                          <span className="text-bleu mt-0.5">•</span>
                           <span>{d}</span>
                         </li>
                       ))}
@@ -248,30 +248,30 @@ export default function ProcessusPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 lg:py-20 bg-charcoal text-cream">
+      <section className="py-16 lg:py-20 bg-navy text-creme">
         <div className="container text-center max-w-3xl mx-auto">
-          <div className="font-mono text-[11px] uppercase tracking-eyebrow text-copper-200">
+          <div className="font-mono text-[11px] uppercase tracking-eyebrow text-sable">
             Lancer l&apos;étape 1
           </div>
           <h2 className="mt-4 font-display text-display-lg tracking-tightest text-balance">
             On commence par votre{" "}
-            <em className="not-italic text-copper-200">premier contact</em>.
+            <em className="not-italic text-sable">premier contact</em>.
           </h2>
-          <p className="mt-5 text-cream/75 text-lg leading-relaxed">
+          <p className="mt-5 text-creme/75 text-lg leading-relaxed">
             Le formulaire en ligne ou un appel direct — vous nous décrivez votre projet, on
             cadre l&apos;étape suivante.
           </p>
           <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
             <Link
               href="/devis"
-              className="inline-flex items-center gap-2 rounded-full bg-cream text-charcoal px-7 py-4 text-sm font-medium hover:bg-copper hover:text-cream transition-colors group"
+              className="inline-flex items-center gap-2 rounded-full bg-creme text-navy px-7 py-4 text-sm font-medium hover:bg-bleu hover:text-creme transition-colors group"
             >
               Demander un devis
               <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </Link>
             <a
               href={`tel:${COMPANY.phone.tel}`}
-              className="inline-flex items-center gap-2 rounded-full bg-ember/15 border border-ember/40 text-cream px-7 py-4 text-sm font-medium hover:bg-ember/25 transition-colors"
+              className="inline-flex items-center gap-2 rounded-full bg-terracotta/15 border border-terracotta/40 text-creme px-7 py-4 text-sm font-medium hover:bg-terracotta/25 transition-colors"
             >
               <Phone className="h-4 w-4" />
               {COMPANY.phone.display}

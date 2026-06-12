@@ -34,7 +34,7 @@ export function OsmMap({
 }) {
   return (
     <div
-      className={`relative ${height} rounded-3xl overflow-hidden border border-ink/10 bg-linen ${className}`}
+      className={`relative ${height} rounded-3xl overflow-hidden border border-pierre bg-creme ${className}`}
     >
       <iframe
         src={EMBED_URL}
@@ -48,7 +48,7 @@ export function OsmMap({
         href={LINK_URL}
         target="_blank"
         rel="noopener noreferrer"
-        className="absolute bottom-3 right-3 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-cream/95 backdrop-blur border border-ink/15 text-[10px] font-mono uppercase tracking-eyebrow text-ink hover:bg-cream transition-colors shadow-soft"
+        className="absolute bottom-3 right-3 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-creme/95 backdrop-blur border border-pierre text-[10px] font-mono uppercase tracking-eyebrow text-anthra hover:bg-creme transition-colors shadow-soft"
       >
         Voir sur OSM
         <svg

@@ -21,7 +21,7 @@ const SIGNALS = [
 
 export function TrustBand() {
   return (
-    <section className="border-y border-pierre bg-linen font-ui">
+    <section className="border-y border-pierre bg-creme font-ui">
       <div className="container py-8">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-4 gap-x-6 text-sm">
           {SIGNALS.map((s) => (

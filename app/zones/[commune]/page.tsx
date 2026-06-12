@@ -102,7 +102,7 @@ export default function CommunePage({ params }: { params: { commune: string } })
         title={
           <>
             Chauffage, PAC & climatisation{" "}
-            <em className="not-italic text-copper">à {c.name}</em>.
+            <em className="not-italic text-bleu">à {c.name}</em>.
           </>
         }
         intro={
@@ -124,7 +124,7 @@ export default function CommunePage({ params }: { params: { commune: string } })
       />
 
       {/* Profil bâti */}
-      <section className="py-10 lg:py-14 bg-cream">
+      <section className="py-10 lg:py-14 bg-creme">
         <div className="container">
           <div className="grid lg:grid-cols-12 gap-10 items-start">
             <div className="lg:col-span-5 lg:sticky lg:top-28">
@@ -134,31 +134,31 @@ export default function CommunePage({ params }: { params: { commune: string } })
                   Comprendre {c.name} avant de chiffrer.
                 </SectionTitle>
               </Reveal>
-              <p className="mt-5 text-graphite leading-relaxed">
+              <p className="mt-5 text-taupe leading-relaxed">
                 Une commune n&apos;est jamais homogène — chaque rue raconte une époque. Notre première étape sur tout projet est une lecture du bâti spécifique à votre adresse, avant tout chiffrage.
               </p>
               <Link
                 href="/devis"
-                className="mt-6 inline-flex items-center gap-2 rounded-full bg-ink text-cream px-5 py-3 text-sm font-medium hover:bg-copper transition-colors"
+                className="mt-6 inline-flex items-center gap-2 rounded-full bg-navy text-creme px-5 py-3 text-sm font-medium hover:bg-bleu transition-colors"
               >
                 Demander une étude
                 <ArrowUpRight className="h-4 w-4" />
               </Link>
             </div>
-            <div className="lg:col-span-7 p-6 lg:p-8 rounded-3xl border border-ink/10 bg-white">
-              <p className="text-graphite leading-relaxed">{c.buildingProfile}</p>
+            <div className="lg:col-span-7 p-6 lg:p-8 rounded-3xl border border-pierre bg-white">
+              <p className="text-taupe leading-relaxed">{c.buildingProfile}</p>
 
-              <div className="mt-6 pt-5 border-t border-ink/8">
-                <div className="font-mono text-[10px] uppercase tracking-eyebrow text-copper mb-4">
+              <div className="mt-6 pt-5 border-t border-pierre">
+                <div className="font-mono text-[10px] uppercase tracking-eyebrow text-bleu mb-4">
                   Spécificités à anticiper
                 </div>
                 <ul className="grid gap-2.5">
                   {c.considerations.map((it) => (
                     <li
                       key={it}
-                      className="flex items-start gap-3 text-sm text-graphite"
+                      className="flex items-start gap-3 text-sm text-taupe"
                     >
-                      <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-copper shrink-0" />
+                      <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-bleu shrink-0" />
                       <span>{it}</span>
                     </li>
                   ))}
@@ -170,7 +170,7 @@ export default function CommunePage({ params }: { params: { commune: string } })
       </section>
 
       {/* Projets typiques */}
-      <section className="py-10 lg:py-14 bg-linen border-y border-ink/8">
+      <section className="py-10 lg:py-14 bg-creme border-y border-pierre">
         <div className="container">
           <div className="max-w-3xl mb-10">
             <Eyebrow number="02">Projets typiques</Eyebrow>
@@ -184,12 +184,12 @@ export default function CommunePage({ params }: { params: { commune: string } })
             {c.typicalProjects.map((p, i) => (
               <div
                 key={p}
-                className="p-5 lg:p-6 rounded-2xl bg-white border border-ink/10 hover:border-copper/40 transition-colors"
+                className="p-5 lg:p-6 rounded-2xl bg-white border border-pierre hover:border-bleu/40 transition-colors"
               >
-                <div className="font-mono text-[10px] uppercase tracking-eyebrow text-copper">
+                <div className="font-mono text-[10px] uppercase tracking-eyebrow text-bleu">
                   Cas type 0{i + 1}
                 </div>
-                <div className="mt-3 text-base text-ink font-medium">{p}</div>
+                <div className="mt-3 text-base text-anthra font-medium">{p}</div>
               </div>
             ))}
           </div>
@@ -197,13 +197,13 @@ export default function CommunePage({ params }: { params: { commune: string } })
       </section>
 
       {/* Services accessibles */}
-      <section className="py-10 lg:py-14 bg-cream">
+      <section className="py-10 lg:py-14 bg-creme">
         <div className="container">
           <div className="max-w-3xl mb-10">
             <Eyebrow number="03">Nos métiers à {c.name}</Eyebrow>
             <Reveal>
               <SectionTitle className="mt-4">
-                Six savoir-faires, <em className="not-italic text-copper">une seule équipe</em>.
+                Six savoir-faires, <em className="not-italic text-bleu">une seule équipe</em>.
               </SectionTitle>
             </Reveal>
           </div>
@@ -212,16 +212,16 @@ export default function CommunePage({ params }: { params: { commune: string } })
               <Link
                 key={s.href}
                 href={s.href}
-                className="group p-5 lg:p-6 rounded-2xl border border-ink/10 bg-white hover:border-copper/40 hover:shadow-lift transition-all"
+                className="group p-5 lg:p-6 rounded-2xl border border-pierre bg-white hover:border-bleu/40 hover:shadow-lift transition-all"
               >
-                <div className="h-10 w-10 rounded-full bg-copper/10 border border-copper/30 grid place-items-center">
-                  <s.icon className="h-4 w-4 text-copper" />
+                <div className="h-10 w-10 rounded-full bg-bleu/10 border border-bleu/30 grid place-items-center">
+                  <s.icon className="h-4 w-4 text-bleu" />
                 </div>
-                <div className="mt-4 font-display text-xl text-ink tracking-tight">
+                <div className="mt-4 font-display text-xl text-anthra tracking-tight">
                   {s.title}
                 </div>
-                <p className="mt-1.5 text-sm text-graphite">{s.desc}</p>
-                <div className="mt-4 inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-eyebrow text-ink group-hover:text-copper transition-colors">
+                <p className="mt-1.5 text-sm text-taupe">{s.desc}</p>
+                <div className="mt-4 inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-eyebrow text-anthra group-hover:text-bleu transition-colors">
                   Voir
                   <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-0.5" />
                 </div>
@@ -232,9 +232,9 @@ export default function CommunePage({ params }: { params: { commune: string } })
       </section>
 
       {/* Autres communes */}
-      <section className="py-10 bg-linen border-t border-ink/8">
+      <section className="py-10 bg-creme border-t border-pierre">
         <div className="container">
-          <div className="font-mono text-[10px] uppercase tracking-eyebrow text-copper mb-4">
+          <div className="font-mono text-[10px] uppercase tracking-eyebrow text-bleu mb-4">
             Autres zones
           </div>
           <div className="flex flex-wrap gap-2">
@@ -242,7 +242,7 @@ export default function CommunePage({ params }: { params: { commune: string } })
               <Link
                 key={x.slug}
                 href={`/zones/${x.slug}`}
-                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-white border border-ink/12 text-sm text-graphite hover:border-copper/40 hover:text-copper transition-colors"
+                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-white border border-pierre text-sm text-taupe hover:border-bleu/40 hover:text-bleu transition-colors"
               >
                 <MapPin className="h-3 w-3" />
                 {x.name}

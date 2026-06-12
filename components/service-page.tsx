@@ -47,10 +47,10 @@ function TrustStrip() {
     "Affilié Fédération du Génie Technique",
   ];
   return (
-    <ul className="flex flex-wrap gap-x-4 gap-y-2 text-xs text-graphite">
+    <ul className="flex flex-wrap gap-x-4 gap-y-2 text-xs text-taupe">
       {items.map((t) => (
         <li key={t} className="inline-flex items-center gap-1.5">
-          <Check className="h-3 w-3 text-copper" />
+          <Check className="h-3 w-3 text-bleu" />
           {t}
         </li>
       ))}
@@ -83,7 +83,7 @@ export function ServicePage(props: ServiceBlock) {
       {/* Hero image */}
       <section className="relative -mt-8">
         <div className="container">
-          <div className="relative aspect-[21/9] rounded-3xl overflow-hidden border border-ink/8 bg-stone shadow-card">
+          <div className="relative aspect-[21/9] rounded-3xl overflow-hidden border border-pierre bg-pierre shadow-card">
             <Image
               src={props.heroImg}
               alt=""
@@ -94,7 +94,7 @@ export function ServicePage(props: ServiceBlock) {
               quality={82}
               className="object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-charcoal/30 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-navy/30 to-transparent" />
           </div>
         </div>
       </section>
@@ -108,8 +108,8 @@ export function ServicePage(props: ServiceBlock) {
 
       {/* Metrics strip */}
       {props.metrics && (
-        <section className="py-10 lg:py-12 bg-cream">
-          <div className="container grid grid-cols-2 md:grid-cols-4 gap-px bg-ink/8 border border-ink/8 rounded-2xl overflow-hidden">
+        <section className="py-10 lg:py-12 bg-creme">
+          <div className="container grid grid-cols-2 md:grid-cols-4 gap-px bg-sable/60 border border-pierre rounded-2xl overflow-hidden">
             {props.metrics.map((m, i) => (
               <motion.div
                 key={m.label}
@@ -119,7 +119,7 @@ export function ServicePage(props: ServiceBlock) {
                 transition={{ duration: 0.6, delay: i * 0.08 }}
                 className="bg-white p-6 lg:p-7"
               >
-                <div className="font-display text-4xl text-copper">{m.value}</div>
+                <div className="font-display text-4xl text-bleu">{m.value}</div>
                 <div className="mt-2 text-sm text-muted">{m.label}</div>
               </motion.div>
             ))}
@@ -128,7 +128,7 @@ export function ServicePage(props: ServiceBlock) {
       )}
 
       {/* Features */}
-      <section className="py-16 lg:py-20 bg-linen border-y border-ink/8">
+      <section className="py-16 lg:py-20 bg-creme border-y border-pierre">
         <div className="container">
           <div className="max-w-3xl mb-10">
             <Eyebrow number="01">Notre approche</Eyebrow>
@@ -137,7 +137,7 @@ export function ServicePage(props: ServiceBlock) {
             </Reveal>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-ink/8 border border-ink/8 rounded-2xl overflow-hidden">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-sable/60 border border-pierre rounded-2xl overflow-hidden">
             {props.features.map((f, i) => (
               <motion.div
                 key={f.title}
@@ -147,11 +147,11 @@ export function ServicePage(props: ServiceBlock) {
                 transition={{ duration: 0.6, delay: (i % 3) * 0.1 }}
                 className="bg-white p-6 lg:p-7"
               >
-                <div className="font-mono text-[10px] uppercase tracking-eyebrow text-copper">
+                <div className="font-mono text-[10px] uppercase tracking-eyebrow text-bleu">
                   0{i + 1}
                 </div>
-                <h3 className="mt-3 font-display text-2xl text-ink tracking-tight">{f.title}</h3>
-                <p className="mt-2 text-graphite leading-relaxed text-sm">{f.body}</p>
+                <h3 className="mt-3 font-display text-2xl text-anthra tracking-tight">{f.title}</h3>
+                <p className="mt-2 text-taupe leading-relaxed text-sm">{f.body}</p>
               </motion.div>
             ))}
           </div>
@@ -159,21 +159,21 @@ export function ServicePage(props: ServiceBlock) {
       </section>
 
       {/* Benefits */}
-      <section className="py-14 lg:py-20 bg-cream">
+      <section className="py-14 lg:py-20 bg-creme">
         <div className="container grid lg:grid-cols-12 gap-10 items-start">
           <div className="lg:col-span-5 lg:sticky lg:top-28">
             <Eyebrow number="02">Bénéfices</Eyebrow>
             <Reveal>
               <SectionTitle className="mt-4">Ce que vous obtenez, mesurable.</SectionTitle>
             </Reveal>
-            <p className="mt-5 text-graphite leading-relaxed">
+            <p className="mt-5 text-taupe leading-relaxed">
               Pas d&apos;effet d&apos;annonce — uniquement ce que l&apos;installation vous
               apporte concrètement, dans la durée. Chaque point est repris dans le devis
               et tracé jusqu&apos;à la mise en service.
             </p>
             <a
               href="/devis"
-              className="mt-7 inline-flex items-center gap-2 rounded-full bg-ink text-cream px-5 py-3 text-sm font-medium hover:bg-copper transition-colors"
+              className="mt-7 inline-flex items-center gap-2 rounded-full bg-navy text-creme px-5 py-3 text-sm font-medium hover:bg-bleu transition-colors"
             >
               Demander un devis
               <ArrowUpRight className="h-4 w-4" />
@@ -188,12 +188,12 @@ export function ServicePage(props: ServiceBlock) {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: i * 0.05 }}
-                  className="flex items-start gap-4 p-5 rounded-2xl border border-ink/8 bg-white hover:border-copper/40 transition-colors shadow-soft"
+                  className="flex items-start gap-4 p-5 rounded-2xl border border-pierre bg-white hover:border-bleu/40 transition-colors shadow-soft"
                 >
-                  <span className="mt-0.5 grid place-items-center h-7 w-7 rounded-full bg-copper/15 border border-copper/40 shrink-0">
-                    <Check className="h-3.5 w-3.5 text-copper" />
+                  <span className="mt-0.5 grid place-items-center h-7 w-7 rounded-full bg-bleu/15 border border-bleu/40 shrink-0">
+                    <Check className="h-3.5 w-3.5 text-bleu" />
                   </span>
-                  <span className="text-graphite">{b}</span>
+                  <span className="text-taupe">{b}</span>
                 </motion.li>
               ))}
             </ul>
@@ -203,7 +203,7 @@ export function ServicePage(props: ServiceBlock) {
 
       {/* Catalogue */}
       {props.catalog && (
-        <section className="py-16 lg:py-20 bg-linen border-y border-ink/8">
+        <section className="py-16 lg:py-20 bg-creme border-y border-pierre">
           <div className="container">
             <div className="max-w-3xl mb-10">
               <Eyebrow number="03">Catalogue</Eyebrow>
@@ -220,16 +220,16 @@ export function ServicePage(props: ServiceBlock) {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-50px" }}
                   transition={{ duration: 0.6, delay: (i % 3) * 0.08 }}
-                  className="group p-6 rounded-2xl border border-ink/10 bg-white hover:border-copper/40 hover:shadow-lift transition-all"
+                  className="group p-6 rounded-2xl border border-pierre bg-white hover:border-bleu/40 hover:shadow-lift transition-all"
                 >
                   <div className="flex items-start justify-between gap-3">
-                    <h4 className="font-display text-xl text-ink">{c.name}</h4>
-                    <span className="font-mono text-[10px] uppercase tracking-eyebrow text-copper bg-copper/10 border border-copper/30 px-2 py-1 rounded-full">
+                    <h4 className="font-display text-xl text-anthra">{c.name}</h4>
+                    <span className="font-mono text-[10px] uppercase tracking-eyebrow text-bleu bg-bleu/10 border border-bleu/30 px-2 py-1 rounded-full">
                       {c.tag}
                     </span>
                   </div>
-                  <p className="mt-3 text-sm text-graphite leading-relaxed">{c.body}</p>
-                  <div className="mt-5 inline-flex items-center gap-2 text-xs font-mono uppercase tracking-eyebrow text-graphite group-hover:text-copper transition-colors">
+                  <p className="mt-3 text-sm text-taupe leading-relaxed">{c.body}</p>
+                  <div className="mt-5 inline-flex items-center gap-2 text-xs font-mono uppercase tracking-eyebrow text-taupe group-hover:text-bleu transition-colors">
                     Fiche technique
                     <ArrowUpRight className="h-3 w-3" />
                   </div>

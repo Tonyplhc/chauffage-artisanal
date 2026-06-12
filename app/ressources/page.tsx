@@ -149,19 +149,19 @@ export default function RessourcesPage() {
   }, {});
 
   return (
-    <div className="min-h-screen bg-cream py-12 lg:py-16">
+    <div className="min-h-screen bg-creme py-12 lg:py-16">
       <div className="container max-w-6xl">
         <div className="mb-10">
           <Link
             href="/"
-            className="text-xs font-mono uppercase tracking-eyebrow text-graphite hover:text-copper"
+            className="text-xs font-mono uppercase tracking-eyebrow text-taupe hover:text-bleu"
           >
             ← Retour accueil
           </Link>
-          <h1 className="mt-4 font-display text-display-md text-ink">
+          <h1 className="mt-4 font-display text-display-md text-anthra">
             Centre de ressources
           </h1>
-          <p className="mt-2 text-graphite max-w-2xl">
+          <p className="mt-2 text-taupe max-w-2xl">
             Tout ce qu&apos;il faut pour décider sereinement : calculateurs,
             guides aides, auto-diagnostic, références techniques. Aucune
             inscription requise.
@@ -170,7 +170,7 @@ export default function RessourcesPage() {
 
         {(["outils", "guides", "metier"] as const).map((group) => (
           <section key={group} className="mb-12">
-            <div className="font-mono text-[10px] uppercase tracking-eyebrow text-copper mb-4">
+            <div className="font-mono text-[10px] uppercase tracking-eyebrow text-bleu mb-4">
               {GROUP_LABELS[group]}
             </div>
             <div className="grid lg:grid-cols-3 gap-4">
@@ -178,25 +178,25 @@ export default function RessourcesPage() {
                 <Link
                   key={r.href}
                   href={r.href}
-                  className="group rounded-2xl border border-ink/10 bg-white shadow-soft p-5 hover:border-copper/40 transition-colors block"
+                  className="group rounded-2xl border border-pierre bg-white shadow-soft p-5 hover:border-bleu/40 transition-colors block"
                 >
                   <div className="flex items-start gap-3 mb-3">
-                    <span className="h-9 w-9 rounded-full grid place-items-center bg-copper/10 border border-copper/30 text-copper shrink-0">
+                    <span className="h-9 w-9 rounded-full grid place-items-center bg-bleu/10 border border-bleu/30 text-bleu shrink-0">
                       <r.icon className="h-4 w-4" />
                     </span>
                     {r.badge && (
-                      <span className="text-[10px] font-mono uppercase tracking-eyebrow bg-cream text-graphite px-2 py-0.5 rounded-full">
+                      <span className="text-[10px] font-mono uppercase tracking-eyebrow bg-creme text-taupe px-2 py-0.5 rounded-full">
                         {r.badge}
                       </span>
                     )}
                   </div>
-                  <h3 className="font-display text-base text-ink group-hover:text-copper transition-colors">
+                  <h3 className="font-display text-base text-anthra group-hover:text-bleu transition-colors">
                     {r.title}
                   </h3>
-                  <p className="mt-1.5 text-sm text-graphite leading-relaxed">
+                  <p className="mt-1.5 text-sm text-taupe leading-relaxed">
                     {r.description}
                   </p>
-                  <div className="mt-3 inline-flex items-center gap-1 text-xs text-copper font-mono uppercase tracking-eyebrow">
+                  <div className="mt-3 inline-flex items-center gap-1 text-xs text-bleu font-mono uppercase tracking-eyebrow">
                     Ouvrir
                     <ArrowRight className="h-3 w-3 group-hover:translate-x-0.5 transition-transform" />
                   </div>
@@ -206,19 +206,19 @@ export default function RessourcesPage() {
           </section>
         ))}
 
-        <div className="rounded-2xl border border-ink/10 bg-ink/5 p-6 flex items-center justify-between gap-3 flex-wrap">
+        <div className="rounded-2xl border border-pierre bg-sable/60 p-6 flex items-center justify-between gap-3 flex-wrap">
           <div>
-            <div className="font-display text-base text-ink">
+            <div className="font-display text-base text-anthra">
               Un cas particulier ?
             </div>
-            <p className="text-sm text-graphite mt-1">
+            <p className="text-sm text-taupe mt-1">
               Si aucune ressource ne couvre votre situation, contactez-nous —
               on prend le temps de comprendre.
             </p>
           </div>
           <Link
             href="/devis"
-            className="inline-flex items-center gap-2 rounded-full bg-ink text-cream px-4 py-2 text-sm hover:bg-copper transition-colors"
+            className="inline-flex items-center gap-2 rounded-full bg-navy text-creme px-4 py-2 text-sm hover:bg-bleu transition-colors"
           >
             Nous contacter
             <ArrowRight className="h-3.5 w-3.5" />

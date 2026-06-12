@@ -18,8 +18,8 @@ export const BrandSettingsSchema = z.object({
   cityLabel: z.string().max(120),
   emergencyAvailability: z.string().max(120),
   logoUrl: z.string().max(2000).optional(),
-  colorAccent: z.string().regex(/^#[0-9a-fA-F]{6}$/).default("#b86a36"),
-  colorAccentSecondary: z.string().regex(/^#[0-9a-fA-F]{6}$/).default("#dc5a28"),
+  colorAccent: z.string().regex(/^#[0-9a-fA-F]{6}$/).default("#0B57A0"),
+  colorAccentSecondary: z.string().regex(/^#[0-9a-fA-F]{6}$/).default("#C24A2C"),
   socials: z
     .object({
       linkedin: z.string().url().max(280).optional(),
@@ -43,7 +43,7 @@ export const DEFAULT_BRAND: BrandSettings = {
   contactAddress: "Adresse à confirmer · Luxembourg",
   cityLabel: "Luxembourg",
   emergencyAvailability: "Astreinte selon politique en vigueur",
-  colorAccent: "#b86a36",
-  colorAccentSecondary: "#dc5a28",
+  colorAccent: "#0B57A0",
+  colorAccentSecondary: "#C24A2C",
   socials: {},
 };

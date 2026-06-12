@@ -15,18 +15,18 @@ export function HeroAside({
   eyebrow,
   items,
   footnote,
-  tone = "copper",
+  tone = "bleu",
 }: {
   icon: LucideIcon;
   eyebrow: string;
   items: HeroAsideItem[];
   footnote?: string;
-  tone?: "copper" | "ember";
+  tone?: "bleu" | "ember";
 }) {
-  const accent = tone === "ember" ? "text-ember" : "text-copper";
-  const dot = tone === "ember" ? "bg-ember" : "bg-copper";
+  const accent = tone === "ember" ? "text-terracotta" : "text-bleu";
+  const dot = tone === "ember" ? "bg-terracotta" : "bg-bleu";
   return (
-    <div className="rounded-2xl border border-ink/10 bg-white/80 backdrop-blur-sm p-5 lg:p-6 shadow-soft">
+    <div className="rounded-2xl border border-pierre bg-white/80 backdrop-blur-sm p-5 lg:p-6 shadow-soft">
       <div
         className={`flex items-center gap-2 font-mono text-[10px] uppercase tracking-eyebrow ${accent}`}
       >
@@ -40,14 +40,14 @@ export function HeroAside({
               className={`mt-1.5 h-1.5 w-1.5 rounded-full ${dot} shrink-0`}
             />
             <div>
-              <div className="text-ink font-medium">{it.label}</div>
+              <div className="text-anthra font-medium">{it.label}</div>
               <div className="text-xs text-muted">{it.body}</div>
             </div>
           </li>
         ))}
       </ul>
       {footnote && (
-        <div className="mt-5 pt-5 border-t border-ink/8 font-mono text-[10px] uppercase tracking-eyebrow text-muted">
+        <div className="mt-5 pt-5 border-t border-pierre font-mono text-[10px] uppercase tracking-eyebrow text-muted">
           {footnote}
         </div>
       )}

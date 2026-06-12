@@ -121,18 +121,18 @@ export async function computeWeeklyStats(): Promise<DigestStats> {
 
 function renderDigestHtml(brand: { name: string }, stats: DigestStats): string {
   const trendArrow = (n: number) => (n > 0 ? "↗" : n < 0 ? "↘" : "→");
-  const trendColor = (n: number) => (n > 0 ? "#22a06b" : n < 0 ? "#dc5a28" : "#8b847a");
+  const trendColor = (n: number) => (n > 0 ? "#22a06b" : n < 0 ? "#C24A2C" : "#8b847a");
 
   const hotLeadsRows = stats.topHotLeads
     .map(
       (l) => `
     <tr>
       <td style="padding:10px;border-bottom:1px solid rgba(42,37,30,0.08);">
-        <strong style="color:#2a251e;">${escapeHtml(l.name)}</strong><br>
+        <strong style="color:#2A2724;">${escapeHtml(l.name)}</strong><br>
         <span style="font-family:monospace;font-size:11px;color:#8b847a;">${l.reference} · ${l.commune}</span>
       </td>
       <td style="padding:10px;border-bottom:1px solid rgba(42,37,30,0.08);text-align:right;">
-        <strong style="color:#b86a36;font-family:monospace;">${l.score ?? "—"}</strong>
+        <strong style="color:#0B57A0;font-family:monospace;">${l.score ?? "—"}</strong>
         <div style="font-size:11px;color:#8b847a;">${l.services.join(" · ")}</div>
       </td>
     </tr>
@@ -141,12 +141,12 @@ function renderDigestHtml(brand: { name: string }, stats: DigestStats): string {
     .join("");
 
   return `<!doctype html>
-<html><body style="margin:0;padding:32px 16px;background:#f6f0e4;font-family:'Inter Tight',Inter,system-ui,sans-serif;color:#2a251e;">
-<table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="background:#f6f0e4;">
+<html><body style="margin:0;padding:32px 16px;background:#F7F2E9;font-family:'Inter Tight',Inter,system-ui,sans-serif;color:#2A2724;">
+<table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="background:#F7F2E9;">
   <tr><td align="center">
     <table role="presentation" cellpadding="0" cellspacing="0" width="640" style="max-width:640px;background:#ffffff;border:1px solid rgba(42,37,30,0.08);border-radius:24px;overflow:hidden;">
-      <tr><td style="background:#1e1a15;color:#f6f0e4;padding:32px;">
-        <div style="font-family:monospace;font-size:10px;letter-spacing:0.28em;text-transform:uppercase;color:#b86a36;">
+      <tr><td style="background:#0A3D6E;color:#F7F2E9;padding:32px;">
+        <div style="font-family:monospace;font-size:10px;letter-spacing:0.28em;text-transform:uppercase;color:#0B57A0;">
           ${escapeHtml(brand.name)} · Digest hebdo
         </div>
         <div style="font-family:Georgia,serif;font-size:28px;letter-spacing:-0.02em;margin-top:8px;">
@@ -159,19 +159,19 @@ function renderDigestHtml(brand: { name: string }, stats: DigestStats): string {
           <tr>
             <td width="33%" style="padding:16px;background:rgba(184,106,54,0.08);border-radius:16px;text-align:center;">
               <div style="font-family:monospace;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:#8b847a;">Leads reçus</div>
-              <div style="font-family:Georgia,serif;font-size:36px;color:#2a251e;margin-top:8px;">${stats.leadsReceived}</div>
+              <div style="font-family:Georgia,serif;font-size:36px;color:#2A2724;margin-top:8px;">${stats.leadsReceived}</div>
               <div style="font-size:12px;color:${trendColor(stats.vsLastWeek.leadsReceived)};margin-top:4px;">${trendArrow(stats.vsLastWeek.leadsReceived)} ${stats.vsLastWeek.leadsReceived >= 0 ? "+" : ""}${stats.vsLastWeek.leadsReceived} vs S-1</div>
             </td>
             <td width="4">&nbsp;</td>
             <td width="33%" style="padding:16px;background:rgba(34,160,107,0.08);border-radius:16px;text-align:center;">
               <div style="font-family:monospace;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:#8b847a;">Convertis</div>
-              <div style="font-family:Georgia,serif;font-size:36px;color:#2a251e;margin-top:8px;">${stats.leadsConverted}</div>
+              <div style="font-family:Georgia,serif;font-size:36px;color:#2A2724;margin-top:8px;">${stats.leadsConverted}</div>
               <div style="font-size:12px;color:${trendColor(stats.vsLastWeek.leadsConverted)};margin-top:4px;">${trendArrow(stats.vsLastWeek.leadsConverted)} ${stats.vsLastWeek.leadsConverted >= 0 ? "+" : ""}${stats.vsLastWeek.leadsConverted} vs S-1</div>
             </td>
             <td width="4">&nbsp;</td>
             <td width="33%" style="padding:16px;background:rgba(220,90,40,0.08);border-radius:16px;text-align:center;">
               <div style="font-family:monospace;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:#8b847a;">Hot leads</div>
-              <div style="font-family:Georgia,serif;font-size:36px;color:#2a251e;margin-top:8px;">${stats.hotLeads}</div>
+              <div style="font-family:Georgia,serif;font-size:36px;color:#2A2724;margin-top:8px;">${stats.hotLeads}</div>
               <div style="font-size:12px;color:#8b847a;margin-top:4px;">cette semaine</div>
             </td>
           </tr>
@@ -181,8 +181,8 @@ function renderDigestHtml(brand: { name: string }, stats: DigestStats): string {
           stats.dormantCount > 0
             ? `
         <div style="padding:16px;background:rgba(220,90,40,0.08);border:1px solid rgba(220,90,40,0.3);border-radius:16px;margin-bottom:24px;">
-          <strong style="color:#dc5a28;">⚠ ${stats.dormantCount} dossier${stats.dormantCount > 1 ? "s" : ""} à relancer</strong>
-          <div style="font-size:13px;color:#4a4338;margin-top:4px;">
+          <strong style="color:#C24A2C;">⚠ ${stats.dormantCount} dossier${stats.dormantCount > 1 ? "s" : ""} à relancer</strong>
+          <div style="font-size:13px;color:#6E675C;margin-top:4px;">
             Sans contact depuis +3 jours ou devis envoyé sans réponse depuis +14 jours.
           </div>
         </div>`
@@ -192,7 +192,7 @@ function renderDigestHtml(brand: { name: string }, stats: DigestStats): string {
         ${
           stats.topHotLeads.length > 0
             ? `
-        <h3 style="font-family:Georgia,serif;font-size:18px;color:#2a251e;margin:0 0 12px;">Top hot leads à traiter</h3>
+        <h3 style="font-family:Georgia,serif;font-size:18px;color:#2A2724;margin:0 0 12px;">Top hot leads à traiter</h3>
         <table cellpadding="0" cellspacing="0" width="100%" style="border:1px solid rgba(42,37,30,0.08);border-radius:12px;overflow:hidden;">
           ${hotLeadsRows}
         </table>`
@@ -200,10 +200,10 @@ function renderDigestHtml(brand: { name: string }, stats: DigestStats): string {
         }
 
         <div style="text-align:center;margin-top:32px;">
-          <a href="${process.env.PUBLIC_URL ?? "http://localhost:3020"}/admin/leads" style="display:inline-block;padding:12px 28px;border-radius:9999px;background:#1e1a15;color:#f6f0e4;font-weight:500;text-decoration:none;font-size:14px;">Ouvrir le pipeline →</a>
+          <a href="${process.env.PUBLIC_URL ?? "http://localhost:3020"}/admin/leads" style="display:inline-block;padding:12px 28px;border-radius:9999px;background:#0A3D6E;color:#F7F2E9;font-weight:500;text-decoration:none;font-size:14px;">Ouvrir le pipeline →</a>
         </div>
       </td></tr>
-      <tr><td style="background:#ede5d3;padding:18px 32px;font-size:11px;color:#8b847a;text-align:center;">
+      <tr><td style="background:#F7F2E9;padding:18px 32px;font-size:11px;color:#8b847a;text-align:center;">
         Digest hebdomadaire automatique · ${escapeHtml(brand.name)}
       </td></tr>
     </table>

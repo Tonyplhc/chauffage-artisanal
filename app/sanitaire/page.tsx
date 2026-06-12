@@ -21,13 +21,13 @@ export default function SanitairePage() {
       eyebrow="Sanitaire"
       title={
         <>
-          La salle de bain comme <em className="not-italic text-copper">une pièce architecturée</em>
+          La salle de bain comme <em className="not-italic text-bleu">une pièce architecturée</em>
           , pas comme un poste technique.
         </>
       }
       intro={
         <>
-          Salles de bain haut de gamme, plomberie complète, traitement de l&apos;eau. Rénovations clé en main, <strong className="text-copper font-semibold">en lien avec les architectes</strong> lorsque le projet le demande.
+          Salles de bain haut de gamme, plomberie complète, traitement de l&apos;eau. Rénovations clé en main, <strong className="text-bleu font-semibold">en lien avec les architectes</strong> lorsque le projet le demande.
         </>
       }
       heroImg="/sanitaire.jpg"

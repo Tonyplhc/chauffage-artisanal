@@ -66,26 +66,26 @@ export default function ParrainagePage() {
 
   if (status === "loading") {
     return (
-      <div className="min-h-screen bg-cream grid place-items-center">
-        <Loader2 className="h-6 w-6 animate-spin text-copper" />
+      <div className="min-h-screen bg-creme grid place-items-center">
+        <Loader2 className="h-6 w-6 animate-spin text-bleu" />
       </div>
     );
   }
 
   if (status === "invalid") {
     return (
-      <div className="min-h-screen bg-cream grid place-items-center px-4">
+      <div className="min-h-screen bg-creme grid place-items-center px-4">
         <div className="max-w-md text-center">
-          <AlertTriangle className="h-12 w-12 mx-auto text-ember mb-3" />
-          <h1 className="font-display text-2xl text-ink mb-2">
+          <AlertTriangle className="h-12 w-12 mx-auto text-terracotta mb-3" />
+          <h1 className="font-display text-2xl text-anthra mb-2">
             Lien invalide
           </h1>
-          <p className="text-graphite mb-4">
+          <p className="text-taupe mb-4">
             Le lien de parrainage est incorrect ou a expiré.
           </p>
           <Link
             href="/devis"
-            className="inline-flex items-center gap-2 rounded-full bg-ink text-cream px-5 py-2.5 text-sm hover:bg-copper transition-colors"
+            className="inline-flex items-center gap-2 rounded-full bg-navy text-creme px-5 py-2.5 text-sm hover:bg-bleu transition-colors"
           >
             Demander un devis sans parrainage
             <ArrowRight className="h-3.5 w-3.5" />
@@ -96,30 +96,30 @@ export default function ParrainagePage() {
   }
 
   return (
-    <div className="min-h-screen bg-cream py-12 lg:py-20 px-4">
+    <div className="min-h-screen bg-creme py-12 lg:py-20 px-4">
       <div className="container max-w-2xl">
-        <div className="rounded-3xl border border-ink/10 bg-white shadow-soft p-8 lg:p-12 text-center">
-          <div className="inline-flex items-center justify-center h-16 w-16 rounded-full bg-copper/10 mb-4">
-            <Heart className="h-7 w-7 text-copper" />
+        <div className="rounded-3xl border border-pierre bg-white shadow-soft p-8 lg:p-12 text-center">
+          <div className="inline-flex items-center justify-center h-16 w-16 rounded-full bg-bleu/10 mb-4">
+            <Heart className="h-7 w-7 text-bleu" />
           </div>
-          <div className="font-mono text-[10px] uppercase tracking-eyebrow text-copper mb-2">
+          <div className="font-mono text-[10px] uppercase tracking-eyebrow text-bleu mb-2">
             Vous êtes recommandé
           </div>
-          <h1 className="font-display text-3xl lg:text-4xl text-ink mb-3">
+          <h1 className="font-display text-3xl lg:text-4xl text-anthra mb-3">
             {referrerName ? (
               <>
                 {referrerName} vous a recommandé
                 <br />
-                <span className="text-copper">Chauffage Artisanal</span>
+                <span className="text-bleu">Chauffage Artisanal</span>
               </>
             ) : (
               <>
                 Bienvenue chez{" "}
-                <span className="text-copper">Chauffage Artisanal</span>
+                <span className="text-bleu">Chauffage Artisanal</span>
               </>
             )}
           </h1>
-          <p className="text-graphite mb-8 max-w-lg mx-auto">
+          <p className="text-taupe mb-8 max-w-lg mx-auto">
             Profitez d&apos;un devis personnalisé pour votre projet de
             chauffage, climatisation, pompe à chaleur ou énergies renouvelables.
             Réponse sous 24 h ouvrées.
@@ -127,7 +127,7 @@ export default function ParrainagePage() {
 
           <Link
             href="/devis"
-            className="inline-flex items-center gap-2 rounded-full bg-ink text-cream px-6 py-3 text-base font-medium hover:bg-copper transition-colors"
+            className="inline-flex items-center gap-2 rounded-full bg-navy text-creme px-6 py-3 text-base font-medium hover:bg-bleu transition-colors"
           >
             <Sparkles className="h-4 w-4" />
             Demander mon devis

@@ -33,12 +33,12 @@ export function Eyebrow({
   return (
     <div
       className={cn(
-        "inline-flex items-center gap-3 font-mono text-[11px] uppercase tracking-eyebrow text-copper",
+        "inline-flex items-center gap-3 font-mono text-[11px] uppercase tracking-eyebrow text-bleu",
         className,
       )}
     >
       {number && <span className="text-muted">{number}</span>}
-      {number && <span className="block h-px w-8 bg-copper/50" />}
+      {number && <span className="block h-px w-8 bg-bleu/50" />}
       <span>{children}</span>
     </div>
   );
@@ -54,7 +54,7 @@ export function SectionTitle({
   return (
     <h2
       className={cn(
-        "font-display text-display-lg text-balance text-ink",
+        "font-display text-display-lg text-balance text-anthra",
         className,
       )}
     >
@@ -77,10 +77,10 @@ export function Button({
   const base =
     "inline-flex items-center gap-2 rounded-full px-6 py-3.5 text-sm font-medium transition-all duration-300 group";
   const styles = {
-    primary: "bg-ink text-cream hover:bg-copper hover:-translate-y-0.5",
+    primary: "bg-navy text-creme hover:bg-bleu hover:-translate-y-0.5",
     secondary:
-      "bg-cream text-ink border border-ink/10 hover:border-copper/40 hover:bg-white",
-    ghost: "text-ink border border-ink/15 hover:border-ink/40 hover:bg-ink/5",
+      "bg-creme text-anthra border border-pierre hover:border-bleu/40 hover:bg-white",
+    ghost: "text-anthra border border-pierre hover:border-pierre hover:bg-sable/60",
   } as const;
   return (
     <Link href={href} className={cn(base, styles[variant], className)}>
@@ -133,13 +133,13 @@ export function PageHeader({
       <div className="container relative">
         <Eyebrow number={number}>{eyebrow}</Eyebrow>
         <Reveal>
-          <h1 className="mt-4 font-display text-display-xl text-balance max-w-5xl text-ink">
+          <h1 className="mt-4 font-display text-display-xl text-balance max-w-5xl text-anthra">
             {title}
           </h1>
         </Reveal>
         <div className="mt-6 grid lg:grid-cols-12 gap-8 lg:gap-12 items-end">
           <Reveal delay={1} className="lg:col-span-7">
-            <p className="max-w-2xl text-lg text-graphite text-balance">{intro}</p>
+            <p className="max-w-2xl text-lg text-taupe text-balance">{intro}</p>
           </Reveal>
           {aside && (
             <Reveal delay={2} className="lg:col-span-5">

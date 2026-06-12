@@ -16,7 +16,7 @@ export default function CgvPage() {
       eyebrow="Conditions générales de vente"
       title={
         <>
-          Conditions générales <em className="not-italic text-copper">de vente</em>
+          Conditions générales <em className="not-italic text-bleu">de vente</em>
         </>
       }
       intro="Conditions applicables à toute prestation effectuée par Chauffage Artisanal S.à r.l. au Luxembourg. Conformes au Code de commerce luxembourgeois et à la loi sur la protection des consommateurs."

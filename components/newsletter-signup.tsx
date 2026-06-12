@@ -48,14 +48,14 @@ export function NewsletterSignup({
 
   if (state === "success") {
     return (
-      <div className="rounded-2xl border border-[#22a06b]/30 bg-[#22a06b]/5 p-5">
+      <div className="rounded-2xl border border-[#2E7D5A]/30 bg-[#2E7D5A]/5 p-5">
         <div className="flex items-start gap-3">
-          <CheckCircle2 className="h-5 w-5 text-[#22a06b] shrink-0 mt-0.5" />
+          <CheckCircle2 className="h-5 w-5 text-[#2E7D5A] shrink-0 mt-0.5" />
           <div>
-            <div className="font-mono text-[10px] uppercase tracking-eyebrow text-[#22a06b]">
+            <div className="font-mono text-[10px] uppercase tracking-eyebrow text-[#2E7D5A]">
               Inscription en attente
             </div>
-            <p className="mt-2 text-sm text-graphite leading-relaxed">{message}</p>
+            <p className="mt-2 text-sm text-taupe leading-relaxed">{message}</p>
           </div>
         </div>
       </div>
@@ -65,11 +65,11 @@ export function NewsletterSignup({
   return (
     <form onSubmit={submit} className="space-y-3">
       <div>
-        <div className="font-mono text-[10px] uppercase tracking-eyebrow text-copper mb-2">
+        <div className="font-mono text-[10px] uppercase tracking-eyebrow text-bleu mb-2">
           {variant === "compact" ? "Newsletter" : "Newsletter technique"}
         </div>
-        <div className="flex items-center gap-0 rounded-full border border-ink/12 bg-white overflow-hidden focus-within:border-copper transition-colors">
-          <span className="pl-4 pr-2 text-graphite">
+        <div className="flex items-center gap-0 rounded-full border border-pierre bg-white overflow-hidden focus-within:border-bleu transition-colors">
+          <span className="pl-4 pr-2 text-taupe">
             <Mail className="h-4 w-4" />
           </span>
           <input
@@ -79,12 +79,12 @@ export function NewsletterSignup({
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             disabled={state === "loading"}
-            className="flex-1 py-3 pr-2 text-sm bg-transparent focus:outline-none text-ink placeholder:text-muted"
+            className="flex-1 py-3 pr-2 text-sm bg-transparent focus:outline-none text-anthra placeholder:text-muted"
           />
           <button
             type="submit"
             disabled={state === "loading" || !email.includes("@")}
-            className="m-1 inline-flex items-center gap-1.5 rounded-full bg-ink text-cream px-4 py-2 text-sm font-medium hover:bg-copper transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+            className="m-1 inline-flex items-center gap-1.5 rounded-full bg-navy text-creme px-4 py-2 text-sm font-medium hover:bg-bleu transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
           >
             {state === "loading" ? (
               <Loader2 className="h-4 w-4 animate-spin" />
@@ -102,7 +102,7 @@ export function NewsletterSignup({
         )}
       </div>
       {state === "error" && (
-        <p className="text-xs text-ember">{message}</p>
+        <p className="text-xs text-terracotta">{message}</p>
       )}
     </form>
   );

@@ -1,6 +1,36 @@
 [
   {
     "type": "pageview",
+    "path": "/",
+    "refererHost": "localhost",
+    "browser": "Chrome",
+    "device": "desktop",
+    "sessionHash": "e6176eb2490b",
+    "id": "mqb25bni-u7jkzx",
+    "at": "2026-06-12T15:04:46.398Z"
+  },
+  {
+    "type": "pageview",
+    "path": "/",
+    "refererHost": "localhost",
+    "browser": "Chrome",
+    "device": "desktop",
+    "sessionHash": "e6176eb2490b",
+    "id": "mqb24xfi-e60erj",
+    "at": "2026-06-12T15:04:27.966Z"
+  },
+  {
+    "type": "pageview",
+    "path": "/estimation",
+    "refererHost": "localhost",
+    "browser": "Chrome",
+    "device": "desktop",
+    "sessionHash": "e6176eb2490b",
+    "id": "mqb1u17i-40l5qa",
+    "at": "2026-06-12T14:55:59.646Z"
+  },
+  {
+    "type": "pageview",
     "path": "/estimation",
     "refererHost": "localhost",
     "browser": "Chrome",
