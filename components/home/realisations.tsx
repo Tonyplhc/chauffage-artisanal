@@ -32,13 +32,13 @@ const eur = (n: number) => Math.round(n).toLocaleString("fr-FR");
 
 export function Realisations() {
   return (
-    <section className="relative py-14 lg:py-20 bg-creme font-ui">
+    <section className="relative py-14 lg:py-20 bg-cream font-ui">
       <div className="container">
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-6">
           <div>
             <Eyebrow number="04">Cas concrets chiffrés</Eyebrow>
             <Reveal>
-              <h2 className="mt-5 font-display text-display-lg max-w-3xl text-balance text-anthra">
+              <h2 className="mt-5 font-display text-display-lg max-w-3xl text-balance text-ink">
                 Ce que ça change, chiffres à l&apos;appui.
               </h2>
             </Reveal>
@@ -46,7 +46,7 @@ export function Realisations() {
           <Reveal delay={1}>
             <Link
               href="/realisations"
-              className="group inline-flex items-center gap-2 text-sm font-mono uppercase tracking-eyebrow text-anthra hover:text-bleu transition-colors self-start lg:self-end"
+              className="group inline-flex items-center gap-2 text-sm font-mono uppercase tracking-eyebrow text-ink hover:text-copper transition-colors self-start lg:self-end"
             >
               Voir nos réalisations
               <ArrowUpRight className="h-4 w-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
@@ -55,7 +55,7 @@ export function Realisations() {
         </div>
 
         <div className="mb-8 lg:mb-10 inline-flex items-center gap-2 text-xs text-muted font-mono uppercase tracking-eyebrow">
-          <Info className="h-3 w-3 text-bleu" />
+          <Info className="h-3 w-3 text-copper" />
           Cas types calculés par notre moteur d&apos;estimation · forfaits Klimabonus 2026 vérifiés
         </div>
 

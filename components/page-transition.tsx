@@ -1,7 +1,7 @@
 "use client";
 
 /**
- * Transition de page sobre — fade-in du contenu + barre bleu en haut
+ * Transition de page sobre — fade-in du contenu + barre copper en haut
  * pendant ~400ms à chaque changement de route.
  *
  * Pas de full-screen curtain (trop tape-à-l'œil) — juste un signal de chargement
@@ -37,16 +37,16 @@ export function PageTransition({ children }: { children: React.ReactNode }) {
 
   return (
     <>
-      {/* Barre bleu en haut pendant la transition */}
+      {/* Barre copper en haut pendant la transition */}
       <div
         aria-hidden
         className={`fixed top-0 left-0 right-0 z-[70] pointer-events-none transition-opacity duration-200 ${
           pulse ? "opacity-100" : "opacity-0"
         }`}
       >
-        <div className="h-0.5 w-full bg-sable/60 overflow-hidden">
+        <div className="h-0.5 w-full bg-ink/5 overflow-hidden">
           <div
-            className="h-full bg-gradient-to-r from-bleu via-bleuvif to-bleu"
+            className="h-full bg-gradient-to-r from-copper via-ember to-copper"
             style={{
               width: "40%",
               animation: "page-transition-slide 0.6s ease-out forwards",

@@ -8,7 +8,7 @@ export default function CookiesPage() {
     <LegalPage
       number="L3"
       eyebrow="Politique cookies"
-      title={<>Cookies & <em className="not-italic text-bleu">traceurs</em></>}
+      title={<>Cookies & <em className="not-italic text-copper">traceurs</em></>}
       intro="Cette page détaille l'usage des cookies et traceurs sur notre site, conformément à la réglementation européenne (ePrivacy + RGPD)."
     >
       <h2>1. Qu&apos;est-ce qu&apos;un cookie ?</h2>
@@ -20,7 +20,7 @@ export default function CookiesPage() {
 
       <h2>2. Cookies que nous utilisons</h2>
 
-      <h3>Cookies strictement nécessaires <em className="not-italic text-bleu">(toujours actifs)</em></h3>
+      <h3>Cookies strictement nécessaires <em className="not-italic text-copper">(toujours actifs)</em></h3>
       <p>
         Ces cookies sont indispensables au fonctionnement du site. Ils ne nécessitent pas votre
         consentement.
@@ -30,7 +30,7 @@ export default function CookiesPage() {
         <li><strong>ca-consent-v1</strong> — mémorise votre choix de consentement cookies (acceptation, refus, préférences). Durée : 13 mois maximum.</li>
       </ul>
 
-      <h3>Cookies de mesure d&apos;audience (analytics) <em className="not-italic text-bleu">(sur consentement)</em></h3>
+      <h3>Cookies de mesure d&apos;audience (analytics) <em className="not-italic text-copper">(sur consentement)</em></h3>
       <p>
         Activés uniquement après votre accord explicite via le bandeau cookies. Permettent
         d&apos;analyser de manière anonymisée la fréquentation du site pour améliorer
@@ -42,7 +42,7 @@ export default function CookiesPage() {
         <li><strong>Durée</strong> : 13 mois maximum.</li>
       </ul>
 
-      <h3>Cookies marketing <em className="not-italic text-bleu">(sur consentement)</em></h3>
+      <h3>Cookies marketing <em className="not-italic text-copper">(sur consentement)</em></h3>
       <p>
         Activés uniquement si vous l&apos;acceptez. Utilisés le cas échéant pour mesurer
         l&apos;efficacité de campagnes publicitaires. Aucune revente ni partage avec des tiers

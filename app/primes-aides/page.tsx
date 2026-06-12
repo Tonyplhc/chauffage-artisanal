@@ -29,13 +29,13 @@ export default function PrimesAidesPage() {
         eyebrow="Primes & aides énergie"
         title={
           <>
-            Les aides <em className="not-italic text-bleu">au Luxembourg</em>, expliquées
+            Les aides <em className="not-italic text-copper">au Luxembourg</em>, expliquées
             simplement.
           </>
         }
         intro={
           <>
-            Plusieurs dispositifs publics peuvent soutenir vos projets de chauffage, de pompe à chaleur, de solaire et de rénovation énergétique. Les conditions, montants et délais évoluent — <strong className="text-bleu font-semibold">nous vérifions systématiquement</strong> avant chaque devis.
+            Plusieurs dispositifs publics peuvent soutenir vos projets de chauffage, de pompe à chaleur, de solaire et de rénovation énergétique. Les conditions, montants et délais évoluent — <strong className="text-copper font-semibold">nous vérifions systématiquement</strong> avant chaque devis.
           </>
         }
         aside={
@@ -53,39 +53,39 @@ export default function PrimesAidesPage() {
       />
 
       {/* INTRO — orientation honnête */}
-      <section className="py-8 lg:py-10 bg-creme">
+      <section className="py-8 lg:py-10 bg-cream">
         <div className="container">
           <div className="grid lg:grid-cols-12 gap-10 items-start">
             <div className="lg:col-span-7">
-              <p className="text-lg text-taupe leading-relaxed">
+              <p className="text-lg text-graphite leading-relaxed">
                 Au Luxembourg, le soutien financier à la transition énergétique passe principalement
-                par le programme national <strong className="text-bleu">Klimabonus</strong>, géré par
+                par le programme national <strong className="text-copper">Klimabonus</strong>, géré par
                 l&apos;administration de l&apos;environnement et orienté par l&apos;agence{" "}
-                <strong className="text-bleu">MyEnergy</strong>. Selon votre commune, des{" "}
-                <strong className="text-bleu">aides communales</strong> peuvent également
-                s&apos;ajouter (Klimapakt). Une <strong className="text-bleu">TVA réduite</strong>{" "}
+                <strong className="text-copper">MyEnergy</strong>. Selon votre commune, des{" "}
+                <strong className="text-copper">aides communales</strong> peuvent également
+                s&apos;ajouter (Klimapakt). Une <strong className="text-copper">TVA réduite</strong>{" "}
                 s&apos;applique aussi à de nombreux travaux dans le logement.
               </p>
-              <p className="mt-5 text-lg text-taupe leading-relaxed">
+              <p className="mt-5 text-lg text-graphite leading-relaxed">
                 Chaque projet est différent : type de logement, état initial, technologie installée,
-                année de construction. <strong className="text-bleu">Nous ne promettons jamais un
+                année de construction. <strong className="text-copper">Nous ne promettons jamais un
                 montant fixe</strong> — nous vérifions l&apos;éligibilité réelle de votre dossier en
                 amont du chantier.
               </p>
             </div>
             <div className="lg:col-span-5">
-              <div className="p-6 rounded-2xl border border-bleu/30 bg-bleu/5">
-                <div className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-eyebrow text-bleu">
+              <div className="p-6 rounded-2xl border border-copper/30 bg-copper/5">
+                <div className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-eyebrow text-copper">
                   <ShieldCheck className="h-3.5 w-3.5" />
                   Notre engagement
                 </div>
-                <p className="mt-4 text-sm text-taupe leading-relaxed">
+                <p className="mt-4 text-sm text-graphite leading-relaxed">
                   Notre devis intègre les informations techniques nécessaires aux dossiers
                   d&apos;aides. Nous orientons vers les organismes officiels{" "}
-                  <strong className="text-anthra">(MyEnergy, guichet.lu, votre commune)</strong> et
+                  <strong className="text-ink">(MyEnergy, guichet.lu, votre commune)</strong> et
                   préparons les documents qui dépendent de l&apos;installation.
                 </p>
-                <p className="mt-3 text-sm text-taupe leading-relaxed">
+                <p className="mt-3 text-sm text-graphite leading-relaxed">
                   La demande administrative reste à votre nom — nous ne facturons jamais de
                   &laquo;&nbsp;commission sur prime&nbsp;&raquo;.
                 </p>
@@ -96,7 +96,7 @@ export default function PrimesAidesPage() {
       </section>
 
       {/* CATÉGORIES — 5 cards */}
-      <section className="py-14 lg:py-20 bg-creme border-y border-pierre">
+      <section className="py-14 lg:py-20 bg-linen border-y border-ink/8">
         <div className="container">
           <div className="max-w-3xl mb-10">
             <Eyebrow number="01">Par typologie de projet</Eyebrow>
@@ -106,7 +106,7 @@ export default function PrimesAidesPage() {
               </SectionTitle>
             </Reveal>
             <Reveal delay={1}>
-              <p className="mt-6 text-taupe text-lg">
+              <p className="mt-6 text-graphite text-lg">
                 Liste indicative non exhaustive. Les conditions exactes, les plafonds et les
                 cumuls possibles dépendent du dispositif en vigueur au moment du dépôt.
               </p>
@@ -122,7 +122,7 @@ export default function PrimesAidesPage() {
       </section>
 
       {/* ACCOMPAGNEMENT — comment on aide */}
-      <section className="py-14 lg:py-20 bg-creme">
+      <section className="py-14 lg:py-20 bg-cream">
         <div className="container">
           <div className="grid lg:grid-cols-12 gap-10 items-start">
             <div className="lg:col-span-5 lg:sticky lg:top-28">
@@ -133,7 +133,7 @@ export default function PrimesAidesPage() {
                 </SectionTitle>
               </Reveal>
               <Reveal delay={1}>
-                <p className="mt-5 text-taupe text-lg">
+                <p className="mt-5 text-graphite text-lg">
                   Le dossier administratif reste à votre nom — c&apos;est la règle. Mais tout ce qui
                   relève de l&apos;installation et de la conformité technique est de notre côté, et
                   nous le préparons pour vous.
@@ -141,7 +141,7 @@ export default function PrimesAidesPage() {
               </Reveal>
               <a
                 href="#simulateur"
-                className="mt-6 inline-flex items-center gap-2 rounded-full bg-navy text-creme px-5 py-3 text-sm font-medium hover:bg-bleu transition-colors"
+                className="mt-6 inline-flex items-center gap-2 rounded-full bg-ink text-cream px-5 py-3 text-sm font-medium hover:bg-copper transition-colors"
               >
                 Vérifier mon projet
                 <ArrowUpRight className="h-4 w-4" />
@@ -156,16 +156,16 @@ export default function PrimesAidesPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-50px" }}
                   transition={{ duration: 0.6, delay: i * 0.08 }}
-                  className="p-6 rounded-2xl border border-pierre bg-white hover:border-bleu/40 hover:shadow-lift transition-all"
+                  className="p-6 rounded-2xl border border-ink/10 bg-white hover:border-copper/40 hover:shadow-lift transition-all"
                 >
-                  <div className="h-10 w-10 rounded-full bg-bleu/10 border border-bleu/30 grid place-items-center">
-                    <a.icon className="h-4 w-4 text-bleu" />
+                  <div className="h-10 w-10 rounded-full bg-copper/10 border border-copper/30 grid place-items-center">
+                    <a.icon className="h-4 w-4 text-copper" />
                   </div>
-                  <div className="mt-4 font-mono text-[10px] uppercase tracking-eyebrow text-bleu">
+                  <div className="mt-4 font-mono text-[10px] uppercase tracking-eyebrow text-copper">
                     0{i + 1}
                   </div>
-                  <h3 className="mt-2 font-display text-xl text-anthra tracking-tight">{a.title}</h3>
-                  <p className="mt-2 text-sm text-taupe leading-relaxed">{a.body}</p>
+                  <h3 className="mt-2 font-display text-xl text-ink tracking-tight">{a.title}</h3>
+                  <p className="mt-2 text-sm text-graphite leading-relaxed">{a.body}</p>
                 </motion.div>
               ))}
             </div>
@@ -179,29 +179,29 @@ export default function PrimesAidesPage() {
       </div>
 
       {/* WARNING — disclaimer obligatoire */}
-      <section className="py-16 bg-creme border-y border-pierre">
+      <section className="py-16 bg-linen border-y border-ink/8">
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="p-6 lg:p-8 rounded-2xl border border-terracotta/40 bg-terracotta/8 flex flex-col md:flex-row gap-6 items-start"
+            className="p-6 lg:p-8 rounded-2xl border border-ember/40 bg-ember/8 flex flex-col md:flex-row gap-6 items-start"
           >
-            <div className="h-10 w-10 rounded-full bg-terracotta/15 border border-terracotta/40 grid place-items-center shrink-0">
-              <Info className="h-4 w-4 text-terracotta" />
+            <div className="h-10 w-10 rounded-full bg-ember/15 border border-ember/40 grid place-items-center shrink-0">
+              <Info className="h-4 w-4 text-ember" />
             </div>
             <div>
-              <div className="font-mono text-[10px] uppercase tracking-eyebrow text-terracotta">
+              <div className="font-mono text-[10px] uppercase tracking-eyebrow text-ember">
                 Information importante
               </div>
-              <p className="mt-3 text-base text-anthra leading-relaxed">
+              <p className="mt-3 text-base text-ink leading-relaxed">
                 Les montants, plafonds et conditions d&apos;éligibilité des aides énergétiques
                 luxembourgeoises <strong>peuvent évoluer</strong>. L&apos;éligibilité dépend du
                 projet, du logement, du dispositif en vigueur et des règles édictées par les
                 administrations compétentes.
               </p>
-              <p className="mt-3 text-sm text-taupe leading-relaxed">
+              <p className="mt-3 text-sm text-graphite leading-relaxed">
                 Cette page est une vue d&apos;ensemble informative. Pour les conditions exactes,
                 référez-vous à <strong>MyEnergy</strong>, au site officiel{" "}
                 <strong>guichet.lu</strong>, ou à votre <strong>administration communale</strong>.
@@ -214,7 +214,7 @@ export default function PrimesAidesPage() {
       </section>
 
       {/* RESSOURCES OFFICIELLES */}
-      <section className="py-12 lg:py-14 bg-creme">
+      <section className="py-12 lg:py-14 bg-cream">
         <div className="container">
           <div className="max-w-3xl mb-10">
             <Eyebrow number="03">Sources officielles</Eyebrow>
@@ -231,16 +231,16 @@ export default function PrimesAidesPage() {
                 href={l.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group p-5 rounded-2xl border border-pierre bg-white hover:border-bleu/40 hover:shadow-lift transition-all"
+                className="group p-5 rounded-2xl border border-ink/10 bg-white hover:border-copper/40 hover:shadow-lift transition-all"
               >
                 <div className="font-mono text-[10px] uppercase tracking-eyebrow text-muted">
                   Source officielle
                 </div>
                 <div className="mt-2 flex items-center justify-between gap-3">
-                  <div className="font-display text-lg text-anthra">{l.label}</div>
-                  <ArrowUpRight className="h-4 w-4 text-taupe group-hover:text-bleu group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all" />
+                  <div className="font-display text-lg text-ink">{l.label}</div>
+                  <ArrowUpRight className="h-4 w-4 text-graphite group-hover:text-copper group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all" />
                 </div>
-                <p className="mt-2 text-sm text-taupe leading-relaxed">{l.body}</p>
+                <p className="mt-2 text-sm text-graphite leading-relaxed">{l.body}</p>
               </a>
             ))}
           </div>
@@ -248,16 +248,16 @@ export default function PrimesAidesPage() {
       </section>
 
       {/* MID-CTA */}
-      <section className="py-12 lg:py-14 bg-creme border-t border-pierre">
+      <section className="py-12 lg:py-14 bg-linen border-t border-ink/8">
         <div className="container">
           <div className="grid lg:grid-cols-12 gap-10 items-center">
             <div className="lg:col-span-8">
               <Eyebrow number="04">Étape suivante</Eyebrow>
-              <h2 className="mt-4 font-display text-display-md text-balance text-anthra">
+              <h2 className="mt-4 font-display text-display-md text-balance text-ink">
                 Vérifions ensemble ce à quoi{" "}
-                <em className="not-italic text-bleu">votre projet est éligible</em>.
+                <em className="not-italic text-copper">votre projet est éligible</em>.
               </h2>
-              <p className="mt-4 text-taupe text-lg max-w-2xl">
+              <p className="mt-4 text-graphite text-lg max-w-2xl">
                 Décrivez-nous votre logement en cinq étapes. Nous revenons vers vous avec une
                 évaluation gratuite, claire, et compatible avec les démarches d&apos;aides.
               </p>
@@ -366,22 +366,22 @@ function Category({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.6, delay: (index % 3) * 0.08, ease: [0.22, 1, 0.36, 1] }}
-      className="group p-7 lg:p-8 rounded-2xl border border-pierre bg-white hover:border-bleu/40 hover:shadow-lift transition-all flex flex-col"
+      className="group p-7 lg:p-8 rounded-2xl border border-ink/10 bg-white hover:border-copper/40 hover:shadow-lift transition-all flex flex-col"
     >
       <div className="flex items-start justify-between gap-3">
-        <div className="h-11 w-11 rounded-full bg-bleu/10 border border-bleu/30 grid place-items-center">
-          <Icon className="h-5 w-5 text-bleu" />
+        <div className="h-11 w-11 rounded-full bg-copper/10 border border-copper/30 grid place-items-center">
+          <Icon className="h-5 w-5 text-copper" />
         </div>
         <span className="font-mono text-[9px] uppercase tracking-eyebrow text-muted">
           Aide possible
         </span>
       </div>
-      <h3 className="mt-5 font-display text-2xl text-anthra tracking-tight">{title}</h3>
-      <p className="mt-3 text-sm text-taupe leading-relaxed flex-1">{intro}</p>
-      <ul className="mt-5 space-y-2 pt-5 border-t border-pierre">
+      <h3 className="mt-5 font-display text-2xl text-ink tracking-tight">{title}</h3>
+      <p className="mt-3 text-sm text-graphite leading-relaxed flex-1">{intro}</p>
+      <ul className="mt-5 space-y-2 pt-5 border-t border-ink/8">
         {points.map((p) => (
-          <li key={p} className="flex gap-2 items-start text-xs text-taupe">
-            <span className="mt-1.5 h-1 w-1 rounded-full bg-bleu shrink-0" />
+          <li key={p} className="flex gap-2 items-start text-xs text-graphite">
+            <span className="mt-1.5 h-1 w-1 rounded-full bg-copper shrink-0" />
             {p}
           </li>
         ))}

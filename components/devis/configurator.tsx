@@ -638,8 +638,8 @@ export function Configurator() {
         </div>
 
         {draftRestored && !sent && (
-          <div className="mb-6 flex items-center justify-between gap-4 rounded-2xl border border-bleu/30 bg-bleu/5 px-4 py-3 text-sm">
-            <span className="text-taupe">
+          <div className="mb-6 flex items-center justify-between gap-4 rounded-2xl border border-copper/30 bg-copper/5 px-4 py-3 text-sm">
+            <span className="text-graphite">
               Brouillon restauré — vos réponses ont été pré-remplies.
               {restoredPhotoCount > 0 &&
                 ` (${restoredPhotoCount} photo${restoredPhotoCount > 1 ? "s" : ""} à réajouter.)`}
@@ -647,7 +647,7 @@ export function Configurator() {
             <button
               type="button"
               onClick={resetDraft}
-              className="shrink-0 font-medium text-bleu underline underline-offset-2 transition-colors hover:text-terracotta"
+              className="shrink-0 font-medium text-copper underline underline-offset-2 transition-colors hover:text-ember"
             >
               Recommencer à zéro
             </button>
@@ -676,8 +676,8 @@ export function Configurator() {
         </div>
 
         {submitError && (
-          <div className="mt-6 p-4 rounded-xl border border-terracotta/40 bg-terracotta/8 text-sm text-anthra">
-            <strong className="text-terracotta">Envoi impossible.</strong> {submitError}
+          <div className="mt-6 p-4 rounded-xl border border-ember/40 bg-ember/8 text-sm text-ink">
+            <strong className="text-ember">Envoi impossible.</strong> {submitError}
           </div>
         )}
 
@@ -709,9 +709,9 @@ function Progress({ current }: { current: number }) {
               <div
                 className={cn(
                   "h-7 w-7 rounded-full grid place-items-center border transition-all shrink-0",
-                  done && "bg-bleu border-bleu text-creme",
-                  active && "bg-navy border-anthra text-creme",
-                  !done && !active && "border-pierre text-muted bg-white",
+                  done && "bg-copper border-copper text-cream",
+                  active && "bg-ink border-ink text-cream",
+                  !done && !active && "border-ink/20 text-muted bg-white",
                 )}
               >
                 {done ? <Check className="h-3.5 w-3.5" /> : <span className="font-mono text-xs">{i + 1}</span>}
@@ -719,15 +719,15 @@ function Progress({ current }: { current: number }) {
               <div
                 className={cn(
                   "hidden md:block font-mono text-[10px] uppercase tracking-eyebrow truncate",
-                  active ? "text-anthra" : done ? "text-bleu" : "text-muted",
+                  active ? "text-ink" : done ? "text-copper" : "text-muted",
                 )}
               >
                 {label}
               </div>
               {i < STEPS.length - 1 && (
-                <div className="flex-1 h-px bg-sable/60 mx-0.5 lg:mx-2 relative min-w-[12px]">
+                <div className="flex-1 h-px bg-ink/12 mx-0.5 lg:mx-2 relative min-w-[12px]">
                   <motion.div
-                    className="absolute inset-y-0 left-0 bg-bleu"
+                    className="absolute inset-y-0 left-0 bg-copper"
                     initial={false}
                     animate={{ width: done ? "100%" : "0%" }}
                     transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
@@ -767,13 +767,13 @@ function Nav({
 }) {
   const isLastStep = step === STEPS.length - 1;
   return (
-    <div className="mt-10 lg:mt-14 flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-between gap-3 sm:gap-4 border-t border-pierre pt-8">
+    <div className="mt-10 lg:mt-14 flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-between gap-3 sm:gap-4 border-t border-ink/10 pt-8">
       <button
         onClick={onBack}
         disabled={step === 0}
         className={cn(
-          "inline-flex items-center justify-center gap-2 rounded-full border border-pierre px-5 py-3 text-sm font-medium transition-all",
-          step === 0 ? "opacity-30 cursor-not-allowed" : "hover:border-pierre hover:bg-white",
+          "inline-flex items-center justify-center gap-2 rounded-full border border-ink/15 px-5 py-3 text-sm font-medium transition-all",
+          step === 0 ? "opacity-30 cursor-not-allowed" : "hover:border-ink/40 hover:bg-white",
         )}
       >
         <ArrowLeft className="h-4 w-4" />
@@ -790,8 +790,8 @@ function Nav({
         className={cn(
           "group inline-flex items-center justify-center gap-2 rounded-full px-7 py-4 text-sm font-medium transition-all duration-300",
           canNext
-            ? "bg-navy text-creme hover:bg-bleu hover:-translate-y-0.5 shadow-card"
-            : "bg-sable/60 text-anthra/40 cursor-not-allowed",
+            ? "bg-ink text-cream hover:bg-copper hover:-translate-y-0.5 shadow-card"
+            : "bg-ink/15 text-ink/40 cursor-not-allowed",
         )}
       >
         {submitting ? "Envoi en cours…" : isLastStep ? "Envoyer ma demande" : "Continuer"}
@@ -805,19 +805,19 @@ function Reassurance() {
   return (
     <div className="mt-10 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs text-muted">
       <span className="inline-flex items-center gap-1.5">
-        <Lock className="h-3 w-3 text-bleu" />
+        <Lock className="h-3 w-3 text-copper" />
         Données confidentielles · aucun spam
       </span>
       <span className="inline-flex items-center gap-1.5">
-        <Info className="h-3 w-3 text-bleu" />
+        <Info className="h-3 w-3 text-copper" />
         Aucun engagement
       </span>
       <span className="inline-flex items-center gap-1.5">
-        <Clock className="h-3 w-3 text-bleu" />
+        <Clock className="h-3 w-3 text-copper" />
         Réponse sous 24h ouvrées
       </span>
       <span className="inline-flex items-center gap-1.5">
-        <Sparkles className="h-3 w-3 text-bleu" />
+        <Sparkles className="h-3 w-3 text-copper" />
         Étude personnalisée par notre bureau
       </span>
     </div>
@@ -840,22 +840,22 @@ function StepProject({
         number="01"
         title={
           <>
-            Quels sont vos <em className="not-italic text-bleu">besoins</em> ?
+            Quels sont vos <em className="not-italic text-copper">besoins</em> ?
           </>
         }
         intro="Vous pouvez sélectionner plusieurs services — utile pour les projets multi-lots (rénovation chauffage + sanitaire, transition énergétique PAC + solaire, etc.)."
       />
 
       <div className="mt-6 flex items-center justify-between flex-wrap gap-3">
-        <div className="font-mono text-[10px] uppercase tracking-eyebrow text-bleu">
+        <div className="font-mono text-[10px] uppercase tracking-eyebrow text-copper">
           Sélection multiple possible
         </div>
         <div
           className={cn(
             "px-3 py-1.5 rounded-full text-xs font-mono uppercase tracking-eyebrow border transition-colors",
             count > 0
-              ? "bg-bleu/10 border-bleu/40 text-bleu"
-              : "border-pierre text-muted",
+              ? "bg-copper/10 border-copper/40 text-copper"
+              : "border-ink/15 text-muted",
           )}
         >
           {count === 0
@@ -895,7 +895,7 @@ function StepBuilding({
         number="02"
         title={
           <>
-            Le <em className="not-italic text-bleu">bâtiment</em>, et son contexte ?
+            Le <em className="not-italic text-copper">bâtiment</em>, et son contexte ?
           </>
         }
         intro="Deux questions essentielles pour notre bureau d'études."
@@ -952,7 +952,7 @@ function StepContext({
         number="03"
         title={
           <>
-            Caractéristiques <em className="not-italic text-bleu">techniques</em>
+            Caractéristiques <em className="not-italic text-copper">techniques</em>
           </>
         }
         intro="Trois informations qui changent tout : surface, énergie actuelle, commune."
@@ -960,11 +960,11 @@ function StepContext({
 
       <div className="mt-10 space-y-8">
         {/* Surface */}
-        <div className="p-6 lg:p-8 rounded-2xl border border-pierre bg-white shadow-soft">
+        <div className="p-6 lg:p-8 rounded-2xl border border-ink/10 bg-white shadow-soft">
           <div className="flex items-center justify-between mb-6 flex-wrap gap-3">
             <div>
               <Label className="!mb-0">Surface chauffée approximative</Label>
-              <div className="mt-2 font-display text-3xl text-anthra tabular-nums">
+              <div className="mt-2 font-display text-3xl text-ink tabular-nums">
                 {lead.surface} <span className="text-muted text-2xl">m²</span>
               </div>
             </div>
@@ -972,7 +972,7 @@ function StepContext({
               <div className="font-mono text-[10px] uppercase tracking-eyebrow text-muted">
                 Catégorie
               </div>
-              <div className="mt-1 text-sm text-taupe">
+              <div className="mt-1 text-sm text-graphite">
                 {lead.surface < 100
                   ? "Petite surface"
                   : lead.surface < 200
@@ -990,7 +990,7 @@ function StepContext({
             step={10}
             value={lead.surface}
             onChange={(e) => update("surface", Number(e.target.value))}
-            className="w-full accent-bleu"
+            className="w-full accent-copper"
           />
           <div className="mt-2 flex justify-between font-mono text-[10px] uppercase tracking-eyebrow text-muted">
             <span>30 m²</span>
@@ -1017,7 +1017,7 @@ function StepContext({
               onBlur={() =>
                 update("surface", Math.min(1000, Math.max(30, Math.round(lead.surface || 150))))
               }
-              className="w-24 rounded-lg border border-pierre bg-white px-3 py-2 text-sm text-anthra focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bleu/40"
+              className="w-24 rounded-lg border border-ink/15 bg-white px-3 py-2 text-sm text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-copper/40"
             />
             <span className="text-sm text-muted">m²</span>
           </div>
@@ -1047,7 +1047,7 @@ function StepContext({
             value={lead.commune}
             placeholder="Saisissez votre commune"
             onChange={(e) => update("commune", e.target.value)}
-            className="mt-4 w-full bg-white border border-pierre rounded-xl px-4 py-3.5 text-anthra focus:border-bleu focus:outline-none focus:ring-2 focus:ring-bleu/20 transition-all"
+            className="mt-4 w-full bg-white border border-ink/12 rounded-xl px-4 py-3.5 text-ink focus:border-copper focus:outline-none focus:ring-2 focus:ring-copper/20 transition-all"
           />
           <div className="mt-3 flex flex-wrap gap-2">
             <span className="text-xs text-muted font-mono uppercase tracking-eyebrow">
@@ -1060,8 +1060,8 @@ function StepContext({
                 className={cn(
                   "px-2.5 py-1 rounded-full text-xs border transition-colors",
                   lead.commune === c
-                    ? "bg-bleu text-creme border-bleu"
-                    : "bg-white border-pierre text-taupe hover:border-bleu/40",
+                    ? "bg-copper text-cream border-copper"
+                    : "bg-white border-ink/12 text-graphite hover:border-copper/40",
                 )}
               >
                 {c}
@@ -1089,7 +1089,7 @@ function StepTimingBudget({
         number="04"
         title={
           <>
-            <em className="not-italic text-bleu">Délai</em> et budget indicatif
+            <em className="not-italic text-copper">Délai</em> et budget indicatif
           </>
         }
         intro="Aucun engagement — c'est pour prioriser votre dossier et pré-orienter la proposition."
@@ -1114,7 +1114,7 @@ function StepTimingBudget({
 
         <div>
           <Label>Budget indicatif</Label>
-          <p className="mt-2 text-sm text-taupe">
+          <p className="mt-2 text-sm text-graphite">
             Un ordre de grandeur — pas un engagement. Aide notre bureau d&apos;études à proposer
             la solution la plus pertinente. Vous hésitez ? Choisissez « Je ne sais pas encore ».
           </p>
@@ -1166,7 +1166,7 @@ function StepBrand({
         number="05"
         title={
           <>
-            Une <em className="not-italic text-bleu">marque</em> souhaitée ?
+            Une <em className="not-italic text-copper">marque</em> souhaitée ?
           </>
         }
         intro="Optionnel. Si vous avez déjà une marque en tête, indiquez-la. Sinon, nous comparons les options pertinentes pour votre projet."
@@ -1174,34 +1174,34 @@ function StepBrand({
 
       {/* Récap si pré-sélection depuis fiche marque */}
       {selectedBrand && (
-        <div className="mt-6 p-4 lg:p-5 rounded-2xl border border-bleu/30 bg-bleu/5 flex items-center gap-4">
-          <span className="grid place-items-center h-10 w-10 rounded-full bg-bleu/15 border border-bleu/40 shrink-0">
-            <Award className="h-5 w-5 text-bleu" />
+        <div className="mt-6 p-4 lg:p-5 rounded-2xl border border-copper/30 bg-copper/5 flex items-center gap-4">
+          <span className="grid place-items-center h-10 w-10 rounded-full bg-copper/15 border border-copper/40 shrink-0">
+            <Award className="h-5 w-5 text-copper" />
           </span>
           <div className="min-w-0">
-            <div className="font-mono text-[10px] uppercase tracking-eyebrow text-bleu">
+            <div className="font-mono text-[10px] uppercase tracking-eyebrow text-copper">
               Pré-sélectionné · {selectedBrand.origin}
             </div>
-            <div className="mt-1 font-display text-lg text-anthra tracking-tight">
+            <div className="mt-1 font-display text-lg text-ink tracking-tight">
               {selectedBrand.name}
             </div>
-            <div className="text-sm text-taupe truncate">{selectedBrand.shortPitch}</div>
+            <div className="text-sm text-graphite truncate">{selectedBrand.shortPitch}</div>
           </div>
         </div>
       )}
 
       {/* Smart matching — suggestion alternative si budget/marque non aligné */}
       {fitMessage && alternatives.length > 0 && (
-        <div className="mt-4 p-5 rounded-2xl border border-terracotta/30 bg-terracotta/5">
+        <div className="mt-4 p-5 rounded-2xl border border-ember/30 bg-ember/5">
           <div className="flex items-start gap-3 mb-4">
-            <span className="grid place-items-center h-9 w-9 rounded-full bg-terracotta/15 border border-terracotta/40 shrink-0">
-              <Info className="h-4 w-4 text-terracotta" />
+            <span className="grid place-items-center h-9 w-9 rounded-full bg-ember/15 border border-ember/40 shrink-0">
+              <Info className="h-4 w-4 text-ember" />
             </span>
             <div className="min-w-0 flex-1">
-              <div className="font-mono text-[10px] uppercase tracking-eyebrow text-terracotta">
+              <div className="font-mono text-[10px] uppercase tracking-eyebrow text-ember">
                 Suggestion budget/marque
               </div>
-              <p className="mt-1 text-sm text-anthra leading-relaxed">{fitMessage}</p>
+              <p className="mt-1 text-sm text-ink leading-relaxed">{fitMessage}</p>
             </div>
           </div>
           <div className="grid sm:grid-cols-2 gap-2 ml-12">
@@ -1209,17 +1209,17 @@ function StepBrand({
               <button
                 key={alt.slug}
                 onClick={() => update("preferredBrand", alt.slug as typeof lead.preferredBrand)}
-                className="text-left p-3 rounded-xl border border-pierre bg-white hover:border-bleu/40 transition-colors"
+                className="text-left p-3 rounded-xl border border-ink/10 bg-white hover:border-copper/40 transition-colors"
               >
                 <div className="flex items-center justify-between gap-2">
-                  <span className="font-display text-base text-anthra tracking-tight">
+                  <span className="font-display text-base text-ink tracking-tight">
                     {alt.name}
                   </span>
-                  <span className="text-[9px] font-mono uppercase tracking-eyebrow text-bleu bg-bleu/10 border border-bleu/30 px-1.5 py-0.5 rounded-full whitespace-nowrap">
+                  <span className="text-[9px] font-mono uppercase tracking-eyebrow text-copper bg-copper/10 border border-copper/30 px-1.5 py-0.5 rounded-full whitespace-nowrap">
                     {alt.priceTier === "accessible" ? "Accessible" : "Standard"}
                   </span>
                 </div>
-                <p className="mt-1 text-xs text-taupe leading-snug line-clamp-2">
+                <p className="mt-1 text-xs text-graphite leading-snug line-clamp-2">
                   {alt.shortPitch}
                 </p>
               </button>
@@ -1233,7 +1233,7 @@ function StepBrand({
 
       <div className="mt-8">
         <Label>Marque préférée</Label>
-        <p className="mt-2 text-sm text-taupe">
+        <p className="mt-2 text-sm text-graphite">
           « Pas de préférence » est une réponse parfaitement valable — c&apos;est même la plus
           fréquente.
         </p>
@@ -1330,15 +1330,15 @@ function PhotoUploader({
         className={cn(
           "relative cursor-pointer p-6 rounded-2xl border-2 border-dashed text-center transition-all",
           isDragging
-            ? "border-bleu bg-bleu/8"
-            : "border-pierre bg-white hover:border-bleu/50 hover:bg-creme",
+            ? "border-copper bg-copper/8"
+            : "border-ink/15 bg-white hover:border-copper/50 hover:bg-cream",
         )}
       >
-        <div className="mx-auto h-10 w-10 rounded-full bg-bleu/10 border border-bleu/30 grid place-items-center mb-2">
-          <Upload className="h-5 w-5 text-bleu" />
+        <div className="mx-auto h-10 w-10 rounded-full bg-copper/10 border border-copper/30 grid place-items-center mb-2">
+          <Upload className="h-5 w-5 text-copper" />
         </div>
-        <div className="text-sm font-medium text-anthra">Glissez vos photos ici</div>
-        <div className="mt-1 text-xs text-taupe">
+        <div className="text-sm font-medium text-ink">Glissez vos photos ici</div>
+        <div className="mt-1 text-xs text-graphite">
           ou cliquez · jusqu&apos;à {MAX_PHOTOS} photos · 8 Mo max
         </div>
         <input
@@ -1352,7 +1352,7 @@ function PhotoUploader({
       </div>
 
       {error && (
-        <div className="mt-3 text-xs text-terracotta bg-terracotta/8 border border-terracotta/30 px-3 py-2 rounded-lg">
+        <div className="mt-3 text-xs text-ember bg-ember/8 border border-ember/30 px-3 py-2 rounded-lg">
           {error}
         </div>
       )}
@@ -1362,7 +1362,7 @@ function PhotoUploader({
           {lead.photos.map((p, i) => (
             <div
               key={i}
-              className="group relative aspect-square rounded-xl overflow-hidden border border-pierre bg-pierre"
+              className="group relative aspect-square rounded-xl overflow-hidden border border-ink/10 bg-stone"
             >
               <img src={p.dataUrl} alt={p.name} className="w-full h-full object-cover" />
               <button
@@ -1370,12 +1370,12 @@ function PhotoUploader({
                   e.stopPropagation();
                   removePhoto(i);
                 }}
-                className="absolute top-1.5 right-1.5 h-7 w-7 rounded-full bg-navy/80 backdrop-blur-md text-creme grid place-items-center hover:bg-terracotta transition-colors"
+                className="absolute top-1.5 right-1.5 h-7 w-7 rounded-full bg-charcoal/80 backdrop-blur-md text-cream grid place-items-center hover:bg-ember transition-colors"
                 aria-label="Supprimer"
               >
                 <X className="h-3.5 w-3.5" />
               </button>
-              <div className="absolute bottom-0 left-0 right-0 px-2 py-1 bg-navy/70 text-creme text-[10px] truncate">
+              <div className="absolute bottom-0 left-0 right-0 px-2 py-1 bg-charcoal/70 text-cream text-[10px] truncate">
                 {(p.size / 1024).toFixed(0)} Ko
               </div>
             </div>
@@ -1402,7 +1402,7 @@ function StepContact({
         title={
           <>
             Et enfin —{" "}
-            <em className="not-italic text-bleu">comment vous joindre</em>
+            <em className="not-italic text-copper">comment vous joindre</em>
           </>
         }
         intro="Vos coordonnées restent strictement confidentielles."
@@ -1441,8 +1441,8 @@ function StepContact({
                   className={cn(
                     "p-3 rounded-xl border text-sm transition-all inline-flex items-center gap-2 justify-center",
                     lead.preferredChannel === c.id
-                      ? "bg-navy text-creme border-anthra"
-                      : "bg-white border-pierre text-taupe hover:border-bleu/40",
+                      ? "bg-ink text-cream border-ink"
+                      : "bg-white border-ink/12 text-graphite hover:border-copper/40",
                   )}
                 >
                   <c.icon className="h-4 w-4" />
@@ -1459,7 +1459,7 @@ function StepContact({
               value={lead.message}
               placeholder="Contraintes, attentes, questions, préférences de marque, créneaux préférés…"
               onChange={(e) => update("message", e.target.value)}
-              className="mt-3 w-full bg-white border border-pierre rounded-xl px-4 py-3.5 text-anthra focus:border-bleu focus:outline-none focus:ring-2 focus:ring-bleu/20 transition-all resize-none"
+              className="mt-3 w-full bg-white border border-ink/12 rounded-xl px-4 py-3.5 text-ink focus:border-copper focus:outline-none focus:ring-2 focus:ring-copper/20 transition-all resize-none"
             />
           </div>
 
@@ -1471,12 +1471,12 @@ function StepContact({
             <PhotoUploader lead={lead} update={update} />
           </div>
 
-          <label className="flex items-start gap-3 text-xs text-taupe">
+          <label className="flex items-start gap-3 text-xs text-graphite">
             <input
               type="checkbox"
               checked={lead.rgpdConsent}
               onChange={(e) => update("rgpdConsent", e.target.checked)}
-              className="mt-0.5 accent-bleu"
+              className="mt-0.5 accent-copper"
             />
             <span>
               J&apos;accepte que mes données soient utilisées pour traiter ma demande de devis,
@@ -1485,10 +1485,10 @@ function StepContact({
             </span>
           </label>
 
-          <div className="flex flex-wrap gap-x-4 gap-y-1.5 pt-1 text-xs text-taupe">
+          <div className="flex flex-wrap gap-x-4 gap-y-1.5 pt-1 text-xs text-graphite">
             {["Devis gratuit", "Réponse sous 24h ouvrées", "Données confidentielles", "Sans engagement"].map((t) => (
               <span key={t} className="inline-flex items-center gap-1.5">
-                <Check className="h-3 w-3 text-bleu" />
+                <Check className="h-3 w-3 text-copper" />
                 {t}
               </span>
             ))}
@@ -1544,22 +1544,22 @@ function Success({ lead }: { lead: LeadDevis }) {
       >
         {/* En-tête merci */}
         <div className="text-center">
-          <div className="inline-grid place-items-center h-20 w-20 rounded-full bg-bleu/15 border border-bleu/40 mb-8">
-            <CheckCircle2 className="h-9 w-9 text-bleu" />
+          <div className="inline-grid place-items-center h-20 w-20 rounded-full bg-copper/15 border border-copper/40 mb-8">
+            <CheckCircle2 className="h-9 w-9 text-copper" />
           </div>
 
-          <div className="font-mono text-[10px] uppercase tracking-eyebrow text-bleu">
+          <div className="font-mono text-[10px] uppercase tracking-eyebrow text-copper">
             Dossier · {lead.reference}
           </div>
 
-          <h1 className="mt-5 font-display text-display-lg text-anthra text-balance">
+          <h1 className="mt-5 font-display text-display-lg text-ink text-balance">
             Merci {firstName}.{" "}
-            <em className="not-italic text-bleu">
+            <em className="not-italic text-copper">
               Nous analysons votre projet avant de vous recontacter.
             </em>
           </h1>
 
-          <p className="mt-6 text-lg text-taupe max-w-xl mx-auto text-balance">
+          <p className="mt-6 text-lg text-graphite max-w-xl mx-auto text-balance">
             Votre demande a été reçue et transmise à notre bureau d&apos;études. Un membre de
             l&apos;équipe revient vers vous via votre canal préféré pour échanger sur le projet
             et, si pertinent, fixer une visite technique.
@@ -1576,7 +1576,7 @@ function Success({ lead }: { lead: LeadDevis }) {
           </div>
 
           <div className="mt-10 inline-flex items-center gap-2 text-xs text-muted font-mono uppercase tracking-eyebrow">
-            <Lock className="h-3 w-3 text-bleu" />
+            <Lock className="h-3 w-3 text-copper" />
             Vos données sont stockées de manière confidentielle · RGPD Luxembourg
           </div>
         </div>
@@ -1584,7 +1584,7 @@ function Success({ lead }: { lead: LeadDevis }) {
         {/* Récap lisible — fiche projet */}
         <div className="mt-14 text-left">
           <div className="flex items-center justify-between mb-5 flex-wrap gap-3">
-            <div className="font-mono text-[10px] uppercase tracking-eyebrow text-bleu">
+            <div className="font-mono text-[10px] uppercase tracking-eyebrow text-copper">
               Récapitulatif de votre demande
             </div>
             {submittedDate && (
@@ -1594,10 +1594,10 @@ function Success({ lead }: { lead: LeadDevis }) {
             )}
           </div>
 
-          <div className="rounded-3xl border border-pierre bg-white shadow-soft overflow-hidden">
+          <div className="rounded-3xl border border-ink/10 bg-white shadow-soft overflow-hidden">
             {/* Bloc projet */}
             <div className="p-6 lg:p-8">
-              <div className="font-display text-xl text-anthra mb-5">Votre projet</div>
+              <div className="font-display text-xl text-ink mb-5">Votre projet</div>
               <dl className="grid sm:grid-cols-2 gap-x-8 gap-y-5">
                 <RecapRow
                   k={lead.services.length > 1 ? "Services demandés" : "Service demandé"}
@@ -1628,11 +1628,11 @@ function Success({ lead }: { lead: LeadDevis }) {
               </dl>
 
               {lead.message && (
-                <div className="mt-7 pt-6 border-t border-pierre">
+                <div className="mt-7 pt-6 border-t border-ink/8">
                   <div className="font-mono text-[10px] uppercase tracking-eyebrow text-muted mb-3">
                     Précisions transmises
                   </div>
-                  <p className="text-sm text-taupe leading-relaxed whitespace-pre-wrap italic">
+                  <p className="text-sm text-graphite leading-relaxed whitespace-pre-wrap italic">
                     « {lead.message} »
                   </p>
                 </div>
@@ -1641,8 +1641,8 @@ function Success({ lead }: { lead: LeadDevis }) {
 
             {/* Photos jointes */}
             {lead.photos.length > 0 && (
-              <div className="border-t border-pierre bg-creme/40 p-6 lg:p-8">
-                <div className="font-mono text-[10px] uppercase tracking-eyebrow text-bleu mb-4">
+              <div className="border-t border-ink/8 bg-cream/40 p-6 lg:p-8">
+                <div className="font-mono text-[10px] uppercase tracking-eyebrow text-copper mb-4">
                   {lead.photos.length} photo{lead.photos.length > 1 ? "s" : ""} jointe
                   {lead.photos.length > 1 ? "s" : ""}
                 </div>
@@ -1650,7 +1650,7 @@ function Success({ lead }: { lead: LeadDevis }) {
                   {lead.photos.map((p, i) => (
                     <div
                       key={i}
-                      className="aspect-square rounded-xl overflow-hidden border border-pierre bg-pierre"
+                      className="aspect-square rounded-xl overflow-hidden border border-ink/10 bg-stone"
                     >
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img
@@ -1665,8 +1665,8 @@ function Success({ lead }: { lead: LeadDevis }) {
             )}
 
             {/* Bloc contact */}
-            <div className="border-t border-pierre p-6 lg:p-8 bg-creme/50">
-              <div className="font-display text-xl text-anthra mb-5">Vos coordonnées</div>
+            <div className="border-t border-ink/8 p-6 lg:p-8 bg-linen/50">
+              <div className="font-display text-xl text-ink mb-5">Vos coordonnées</div>
               <dl className="grid sm:grid-cols-2 gap-x-8 gap-y-5">
                 <RecapRow k="Nom complet" v={lead.fullName} />
                 <RecapRow k="Email" v={lead.email} />
@@ -1695,16 +1695,16 @@ function RecapRow({
   k: string;
   v: string;
   accent?: boolean;
-  accentColor?: "bleu" | "ember";
+  accentColor?: "copper" | "ember";
 }) {
-  const color = accentColor === "ember" ? "text-terracotta" : "text-bleu";
+  const color = accentColor === "ember" ? "text-ember" : "text-copper";
   return (
     <div>
       <dt className="font-mono text-[10px] uppercase tracking-eyebrow text-muted mb-1.5">{k}</dt>
       <dd
         className={cn(
           "font-medium leading-snug",
-          accent ? color : "text-anthra",
+          accent ? color : "text-ink",
         )}
       >
         {v}
@@ -1715,10 +1715,10 @@ function RecapRow({
 
 function StepNext({ n, t, b }: { n: string; t: string; b: string }) {
   return (
-    <div className="p-5 rounded-2xl border border-pierre bg-white text-left">
-      <div className="font-mono text-[10px] uppercase tracking-eyebrow text-bleu">{n}</div>
-      <div className="mt-2 font-display text-xl text-anthra">{t}</div>
-      <div className="text-sm text-taupe mt-1">{b}</div>
+    <div className="p-5 rounded-2xl border border-ink/10 bg-white text-left">
+      <div className="font-mono text-[10px] uppercase tracking-eyebrow text-copper">{n}</div>
+      <div className="mt-2 font-display text-xl text-ink">{t}</div>
+      <div className="text-sm text-graphite mt-1">{b}</div>
     </div>
   );
 }
@@ -1741,11 +1741,11 @@ function Header({
 }) {
   return (
     <div>
-      <div className="font-mono text-[11px] uppercase tracking-eyebrow text-bleu">
+      <div className="font-mono text-[11px] uppercase tracking-eyebrow text-copper">
         {number} — Configurateur
       </div>
-      <h1 className="mt-4 font-display text-display-lg text-anthra text-balance">{title}</h1>
-      <p className="mt-4 text-lg text-taupe max-w-2xl text-balance">{intro}</p>
+      <h1 className="mt-4 font-display text-display-lg text-ink text-balance">{title}</h1>
+      <p className="mt-4 text-lg text-graphite max-w-2xl text-balance">{intro}</p>
     </div>
   );
 }
@@ -1760,7 +1760,7 @@ function Label({
   return (
     <div
       className={cn(
-        "font-mono text-[10px] uppercase tracking-eyebrow text-bleu mb-3",
+        "font-mono text-[10px] uppercase tracking-eyebrow text-copper mb-3",
         className,
       )}
     >
@@ -1791,10 +1791,10 @@ function BigCard({
         "group relative text-left p-5 lg:p-6 rounded-2xl border bg-white transition-all duration-300",
         "hover:-translate-y-0.5 hover:shadow-lift",
         selected
-          ? "border-bleu bg-bleu/5 shadow-card ring-2 ring-bleu/20"
+          ? "border-copper bg-copper/5 shadow-card ring-2 ring-copper/20"
           : urgent
-          ? "border-terracotta/30 hover:border-terracotta/60"
-          : "border-pierre hover:border-bleu/40",
+          ? "border-ember/30 hover:border-ember/60"
+          : "border-ink/10 hover:border-copper/40",
       )}
     >
       <div className="flex items-start gap-4">
@@ -1803,26 +1803,26 @@ function BigCard({
             className={cn(
               "grid place-items-center h-10 w-10 rounded-full border shrink-0 transition-colors",
               selected
-                ? "bg-bleu text-creme border-bleu"
+                ? "bg-copper text-cream border-copper"
                 : urgent
-                ? "bg-terracotta/10 text-terracotta border-terracotta/40"
-                : "bg-creme text-bleu border-bleu/30",
+                ? "bg-ember/10 text-ember border-ember/40"
+                : "bg-cream text-copper border-copper/30",
             )}
           >
             {icon}
           </span>
         )}
         <div className="min-w-0 flex-1">
-          <div className="font-display text-lg text-anthra leading-tight">{title}</div>
+          <div className="font-display text-lg text-ink leading-tight">{title}</div>
           {hint && <div className="mt-1 text-sm text-muted">{hint}</div>}
         </div>
         <span
           className={cn(
             "h-5 w-5 rounded-full border shrink-0 transition-all grid place-items-center",
-            selected ? "bg-bleu border-bleu" : "border-pierre",
+            selected ? "bg-copper border-copper" : "border-ink/20",
           )}
         >
-          {selected && <Check className="h-3 w-3 text-creme" />}
+          {selected && <Check className="h-3 w-3 text-cream" />}
         </span>
       </div>
     </button>
@@ -1844,8 +1844,8 @@ function Pill({
       className={cn(
         "px-4 py-3 rounded-xl text-sm transition-all text-left border",
         selected
-          ? "bg-navy text-creme border-anthra"
-          : "bg-white border-pierre text-anthra hover:border-bleu/40 hover:bg-creme",
+          ? "bg-ink text-cream border-ink"
+          : "bg-white border-ink/10 text-ink hover:border-copper/40 hover:bg-cream",
       )}
     >
       {children}
@@ -1882,7 +1882,7 @@ function Field({
     <div>
       <Label>
         {label}
-        {required && <span className="text-bleu ml-1">*</span>}
+        {required && <span className="text-copper ml-1">*</span>}
       </Label>
       <input
         type={type}
@@ -1891,7 +1891,7 @@ function Field({
         value={value}
         placeholder={placeholder}
         onChange={(e) => onChange(e.target.value)}
-        className="mt-1 w-full bg-white border border-pierre rounded-xl px-4 py-3.5 text-anthra focus:border-bleu focus:outline-none focus:ring-2 focus:ring-bleu/20 transition-all"
+        className="mt-1 w-full bg-white border border-ink/12 rounded-xl px-4 py-3.5 text-ink focus:border-copper focus:outline-none focus:ring-2 focus:ring-copper/20 transition-all"
       />
     </div>
   );
@@ -1920,8 +1920,8 @@ function Summary({ lead }: { lead: LeadDevis }) {
     { k: "Photos", v: `${lead.photos.length} jointe${lead.photos.length > 1 ? "s" : ""}` },
   ];
   return (
-    <div className="p-6 rounded-2xl bg-creme border border-pierre sticky top-32">
-      <div className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-eyebrow text-bleu">
+    <div className="p-6 rounded-2xl bg-cream border border-ink/10 sticky top-32">
+      <div className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-eyebrow text-copper">
         <Sparkles className="h-3 w-3" />
         Récap de votre projet
       </div>
@@ -1929,15 +1929,15 @@ function Summary({ lead }: { lead: LeadDevis }) {
         {rows.map((r) => (
           <div
             key={r.k}
-            className="flex items-start justify-between gap-4 py-2 border-b border-pierre last:border-0"
+            className="flex items-start justify-between gap-4 py-2 border-b border-ink/8 last:border-0"
           >
             <span className="text-xs text-muted font-mono uppercase tracking-eyebrow">{r.k}</span>
-            <span className="text-sm font-medium text-anthra text-right">{r.v ?? "—"}</span>
+            <span className="text-sm font-medium text-ink text-right">{r.v ?? "—"}</span>
           </div>
         ))}
       </div>
       <p className="mt-5 text-xs text-muted leading-relaxed">
-        Référence dossier <strong className="text-anthra">{lead.reference}</strong> · attribuée à
+        Référence dossier <strong className="text-ink">{lead.reference}</strong> · attribuée à
         votre demande pour suivi interne.
       </p>
     </div>

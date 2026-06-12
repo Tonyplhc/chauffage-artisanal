@@ -160,12 +160,12 @@ export default function RealisationsPage() {
         title={
           <>
             Cas d&apos;usage typiques —{" "}
-            <em className="not-italic text-bleu">votre projet ressemble à un de ceux-là</em>.
+            <em className="not-italic text-copper">votre projet ressemble à un de ceux-là</em>.
           </>
         }
         intro={
           <>
-            Une sélection de situations types que nous adressons régulièrement. Chaque dossier suit <strong className="text-bleu font-semibold">la même méthode</strong> : étude, dimensionnement, pose propre, mise en service.
+            Une sélection de situations types que nous adressons régulièrement. Chaque dossier suit <strong className="text-copper font-semibold">la même méthode</strong> : étude, dimensionnement, pose propre, mise en service.
           </>
         }
         aside={
@@ -183,10 +183,10 @@ export default function RealisationsPage() {
       />
 
       {/* DISCLAIMER global */}
-      <section className="bg-creme">
+      <section className="bg-cream">
         <div className="container">
-          <div className="p-4 lg:p-5 rounded-2xl border border-terracotta/30 bg-terracotta/8 flex items-start gap-3 text-sm text-anthra">
-            <Info className="h-5 w-5 text-terracotta shrink-0 mt-0.5" />
+          <div className="p-4 lg:p-5 rounded-2xl border border-ember/30 bg-ember/8 flex items-start gap-3 text-sm text-ink">
+            <Info className="h-5 w-5 text-ember shrink-0 mt-0.5" />
             <p className="leading-relaxed">
               <strong>Photos d&apos;illustration.</strong> Les cas présentés ci-dessous décrivent
               des situations <strong>typiques</strong> que nous adressons. La galerie de projets
@@ -198,29 +198,29 @@ export default function RealisationsPage() {
       </section>
 
       {/* AVANT/APRÈS phare */}
-      <section className="py-12 lg:py-20 bg-creme">
+      <section className="py-12 lg:py-20 bg-cream">
         <div className="container">
           <div className="grid lg:grid-cols-12 gap-10 items-center">
             <div className="lg:col-span-5">
               <Eyebrow number="00">Cas type en vedette</Eyebrow>
-              <h2 className="mt-4 font-display text-display-md text-balance text-anthra">
+              <h2 className="mt-4 font-display text-display-md text-balance text-ink">
                 Avant / après —{" "}
-                <em className="not-italic text-bleu">remplacement de chauffage</em>
+                <em className="not-italic text-copper">remplacement de chauffage</em>
               </h2>
-              <p className="mt-5 text-taupe leading-relaxed">
+              <p className="mt-5 text-graphite leading-relaxed">
                 Situation typique de rénovation : remplacement d&apos;une installation vieillissante
                 par une solution moderne, avec dépose propre, local technique nettoyé, et
                 régulation connectée.
               </p>
-              <ul className="mt-6 space-y-2.5 text-sm text-taupe">
+              <ul className="mt-6 space-y-2.5 text-sm text-graphite">
                 <li className="flex gap-3">
-                  <span className="text-bleu">→</span> Dépose et évacuation de l&apos;existant
+                  <span className="text-copper">→</span> Dépose et évacuation de l&apos;existant
                 </li>
                 <li className="flex gap-3">
-                  <span className="text-bleu">→</span> Local technique remis en état
+                  <span className="text-copper">→</span> Local technique remis en état
                 </li>
                 <li className="flex gap-3">
-                  <span className="text-bleu">→</span> Mise en service et suivi technique
+                  <span className="text-copper">→</span> Mise en service et suivi technique
                 </li>
               </ul>
               <div className="mt-8 flex flex-wrap gap-2">
@@ -228,7 +228,7 @@ export default function RealisationsPage() {
                   (t) => (
                     <span
                       key={t}
-                      className="px-3 py-1.5 rounded-full text-xs font-mono uppercase tracking-eyebrow bg-white border border-pierre text-taupe"
+                      className="px-3 py-1.5 rounded-full text-xs font-mono uppercase tracking-eyebrow bg-white border border-ink/10 text-graphite"
                     >
                       {t}
                     </span>
@@ -253,13 +253,13 @@ export default function RealisationsPage() {
       </section>
 
       {/* FILTERS */}
-      <section className="pt-12 lg:pt-16 bg-creme">
+      <section className="pt-12 lg:pt-16 bg-cream">
         <div className="container">
-          <div className="border-t border-pierre pt-12 lg:pt-16">
+          <div className="border-t border-ink/8 pt-12 lg:pt-16">
             <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10">
               <div>
                 <Eyebrow number="01">Galerie</Eyebrow>
-                <h2 className="mt-4 font-display text-display-md text-balance text-anthra">
+                <h2 className="mt-4 font-display text-display-md text-balance text-ink">
                   Filtrez par métier.
                 </h2>
               </div>
@@ -276,8 +276,8 @@ export default function RealisationsPage() {
                   className={cn(
                     "px-4 py-2 rounded-full text-sm border transition-all",
                     filter === c.id
-                      ? "bg-navy text-creme border-anthra"
-                      : "bg-white border-pierre text-taupe hover:border-bleu/40 hover:text-bleu",
+                      ? "bg-ink text-cream border-ink"
+                      : "bg-white border-ink/12 text-graphite hover:border-copper/40 hover:text-copper",
                   )}
                 >
                   {c.label}
@@ -289,7 +289,7 @@ export default function RealisationsPage() {
       </section>
 
       {/* PROJECTS GRID */}
-      <section className="pb-20 bg-creme">
+      <section className="pb-20 bg-cream">
         <div className="container">
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
             {filtered.map((p, i) => (
@@ -302,7 +302,7 @@ export default function RealisationsPage() {
                 transition={{ duration: 0.7, delay: (i % 2) * 0.1, ease: [0.22, 1, 0.36, 1] }}
                 className={`group ${i % 2 === 1 ? "lg:mt-20" : ""}`}
               >
-                <div className="relative aspect-[4/3] rounded-3xl overflow-hidden bg-pierre mb-6 shadow-card">
+                <div className="relative aspect-[4/3] rounded-3xl overflow-hidden bg-stone mb-6 shadow-card">
                   <Image
                     src={p.img}
                     alt=""
@@ -310,12 +310,12 @@ export default function RealisationsPage() {
                     sizes="(max-width: 1024px) 100vw, 50vw"
                     className="object-cover group-hover:scale-105 transition-transform duration-1000"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-navy/40 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-charcoal/40 to-transparent" />
                   <div className="absolute top-5 left-5 flex items-center gap-2 flex-wrap">
-                    <span className="font-mono text-[10px] uppercase tracking-eyebrow text-anthra bg-creme/90 backdrop-blur-md border border-pierre px-3 py-1.5 rounded-full">
+                    <span className="font-mono text-[10px] uppercase tracking-eyebrow text-ink bg-cream/90 backdrop-blur-md border border-ink/10 px-3 py-1.5 rounded-full">
                       {p.type}
                     </span>
-                    <span className="font-mono text-[10px] uppercase tracking-eyebrow text-bleu bg-creme/90 backdrop-blur-md border border-bleu/30 px-3 py-1.5 rounded-full">
+                    <span className="font-mono text-[10px] uppercase tracking-eyebrow text-copper bg-cream/90 backdrop-blur-md border border-copper/30 px-3 py-1.5 rounded-full">
                       Cas type
                     </span>
                   </div>
@@ -323,26 +323,26 @@ export default function RealisationsPage() {
 
                 <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5 text-xs">
                   <span className="font-mono uppercase tracking-eyebrow text-muted inline-flex items-center gap-1">
-                    <MapPin className="h-3 w-3 text-bleu" />
+                    <MapPin className="h-3 w-3 text-copper" />
                     {p.place}
                   </span>
-                  <span className="h-px w-6 bg-sable/60" />
-                  <span className="font-mono uppercase tracking-eyebrow text-taupe inline-flex items-center gap-1">
-                    <Cpu className="h-3 w-3 text-bleu" />
+                  <span className="h-px w-6 bg-ink/15" />
+                  <span className="font-mono uppercase tracking-eyebrow text-graphite inline-flex items-center gap-1">
+                    <Cpu className="h-3 w-3 text-copper" />
                     {p.techno}
                   </span>
                 </div>
 
-                <h2 className="mt-3 font-display text-3xl lg:text-4xl tracking-tight text-anthra text-balance">
+                <h2 className="mt-3 font-display text-3xl lg:text-4xl tracking-tight text-ink text-balance">
                   {p.title}
                 </h2>
-                <p className="mt-4 text-taupe leading-relaxed">{p.body}</p>
+                <p className="mt-4 text-graphite leading-relaxed">{p.body}</p>
 
                 <div className="mt-6 flex flex-wrap gap-2">
                   {p.tags.map((m) => (
                     <span
                       key={m}
-                      className="px-3 py-1.5 rounded-full text-xs font-mono uppercase tracking-eyebrow bg-white border border-pierre text-taupe"
+                      className="px-3 py-1.5 rounded-full text-xs font-mono uppercase tracking-eyebrow bg-white border border-ink/10 text-graphite"
                     >
                       {m}
                     </span>
@@ -361,7 +361,7 @@ export default function RealisationsPage() {
           <div className="mt-20 flex justify-center">
             <Link
               href="/devis"
-              className="group inline-flex items-center gap-2 rounded-full bg-navy text-creme px-7 py-4 text-sm font-medium hover:bg-bleu transition-all hover:-translate-y-0.5"
+              className="group inline-flex items-center gap-2 rounded-full bg-ink text-cream px-7 py-4 text-sm font-medium hover:bg-copper transition-all hover:-translate-y-0.5"
             >
               Discuter de votre projet
               <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />

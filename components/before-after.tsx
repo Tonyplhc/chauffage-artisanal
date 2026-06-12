@@ -30,7 +30,7 @@ export function BeforeAfter({
   return (
     <div
       ref={wrap}
-      className="relative w-full overflow-hidden rounded-2xl border border-pierre bg-pierre select-none touch-none"
+      className="relative w-full overflow-hidden rounded-2xl border border-ink/10 bg-stone select-none touch-none"
       style={{ aspectRatio: ratio.replace("/", " / ") }}
       onPointerDown={(e) => {
         dragging.current = true;
@@ -54,20 +54,20 @@ export function BeforeAfter({
       </div>
 
       {/* Labels */}
-      <span className="absolute top-4 left-4 px-3 py-1.5 rounded-full bg-navy/70 backdrop-blur-md text-creme text-[10px] font-mono uppercase tracking-eyebrow">
+      <span className="absolute top-4 left-4 px-3 py-1.5 rounded-full bg-charcoal/70 backdrop-blur-md text-cream text-[10px] font-mono uppercase tracking-eyebrow">
         Avant
       </span>
-      <span className="absolute top-4 right-4 px-3 py-1.5 rounded-full bg-bleu text-creme text-[10px] font-mono uppercase tracking-eyebrow">
+      <span className="absolute top-4 right-4 px-3 py-1.5 rounded-full bg-copper text-cream text-[10px] font-mono uppercase tracking-eyebrow">
         Après
       </span>
 
       {/* Handle */}
       <div
-        className="absolute top-0 bottom-0 w-px bg-bleu pointer-events-none"
+        className="absolute top-0 bottom-0 w-px bg-copper pointer-events-none"
         style={{ left: `${pos}%` }}
       >
-        <div className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 h-12 w-12 rounded-full bg-creme border-2 border-bleu shadow-card grid place-items-center">
-          <span className="font-mono text-bleu text-xs">‹ ›</span>
+        <div className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 h-12 w-12 rounded-full bg-cream border-2 border-copper shadow-card grid place-items-center">
+          <span className="font-mono text-copper text-xs">‹ ›</span>
         </div>
       </div>
     </div>

@@ -56,17 +56,17 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
       />
 
       {/* Header */}
-      <section className="relative pt-12 lg:pt-16 pb-8 bg-creme">
+      <section className="relative pt-12 lg:pt-16 pb-8 bg-cream">
         <div className="container max-w-4xl">
           <Link
             href="/actualites"
-            className="inline-flex items-center gap-2 text-sm font-mono uppercase tracking-eyebrow text-taupe hover:text-bleu transition-colors"
+            className="inline-flex items-center gap-2 text-sm font-mono uppercase tracking-eyebrow text-graphite hover:text-copper transition-colors"
           >
             <ArrowLeft className="h-3.5 w-3.5" />
             Toutes les actualités
           </Link>
           <div className="mt-6 flex items-center gap-3 flex-wrap text-xs">
-            <span className="font-mono uppercase tracking-eyebrow text-bleu">
+            <span className="font-mono uppercase tracking-eyebrow text-copper">
               {CATEGORY_LABELS[a.category]}
             </span>
             <span className="text-muted">·</span>
@@ -76,21 +76,21 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
             <span className="text-muted">·</span>
             <span className="text-muted">{formattedDate}</span>
           </div>
-          <h1 className="mt-5 font-display text-4xl lg:text-5xl tracking-tight text-anthra text-balance leading-tight">
+          <h1 className="mt-5 font-display text-4xl lg:text-5xl tracking-tight text-ink text-balance leading-tight">
             {a.title}
           </h1>
-          <p className="mt-5 text-lg text-taupe max-w-2xl leading-relaxed">{a.excerpt}</p>
+          <p className="mt-5 text-lg text-graphite max-w-2xl leading-relaxed">{a.excerpt}</p>
           <div className="mt-6 inline-flex items-center gap-2 text-xs text-muted font-mono uppercase tracking-eyebrow">
-            <User className="h-3 w-3 text-bleu" />
+            <User className="h-3 w-3 text-copper" />
             {a.author}
           </div>
         </div>
       </section>
 
       {/* Cover */}
-      <section className="bg-creme">
+      <section className="bg-cream">
         <div className="container max-w-5xl">
-          <div className="relative aspect-[21/9] rounded-3xl overflow-hidden bg-pierre shadow-soft">
+          <div className="relative aspect-[21/9] rounded-3xl overflow-hidden bg-stone shadow-soft">
             <Image
               src={a.cover}
               alt=""
@@ -104,7 +104,7 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
       </section>
 
       {/* Body */}
-      <section className="py-10 lg:py-14 bg-creme">
+      <section className="py-10 lg:py-14 bg-cream">
         <div className="container max-w-3xl">
           <article className="space-y-5">
             {a.body.map((b, i) => (
@@ -116,9 +116,9 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
 
       {/* Related */}
       {related.length > 0 && (
-        <section className="py-10 lg:py-14 bg-creme border-y border-pierre">
+        <section className="py-10 lg:py-14 bg-linen border-y border-ink/8">
           <div className="container">
-            <div className="font-mono text-[10px] uppercase tracking-eyebrow text-bleu mb-5">
+            <div className="font-mono text-[10px] uppercase tracking-eyebrow text-copper mb-5">
               À lire aussi
             </div>
             <div className="grid md:grid-cols-2 gap-6">
@@ -126,9 +126,9 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
                 <Link
                   key={r.slug}
                   href={`/actualites/${r.slug}`}
-                  className="group flex items-center gap-5 p-5 rounded-2xl border border-pierre bg-white hover:border-bleu/40 hover:shadow-lift transition-all"
+                  className="group flex items-center gap-5 p-5 rounded-2xl border border-ink/10 bg-white hover:border-copper/40 hover:shadow-lift transition-all"
                 >
-                  <div className="relative h-20 w-20 rounded-xl overflow-hidden bg-pierre shrink-0">
+                  <div className="relative h-20 w-20 rounded-xl overflow-hidden bg-stone shrink-0">
                     <Image
                       src={r.cover}
                       alt=""
@@ -138,14 +138,14 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
                     />
                   </div>
                   <div className="min-w-0 flex-1">
-                    <div className="font-mono text-[10px] uppercase tracking-eyebrow text-bleu">
+                    <div className="font-mono text-[10px] uppercase tracking-eyebrow text-copper">
                       {CATEGORY_LABELS[r.category]}
                     </div>
-                    <div className="mt-1 font-display text-base text-anthra leading-tight line-clamp-2">
+                    <div className="mt-1 font-display text-base text-ink leading-tight line-clamp-2">
                       {r.title}
                     </div>
                   </div>
-                  <ArrowUpRight className="h-4 w-4 text-taupe group-hover:text-bleu shrink-0" />
+                  <ArrowUpRight className="h-4 w-4 text-graphite group-hover:text-copper shrink-0" />
                 </Link>
               ))}
             </div>
@@ -162,23 +162,23 @@ function Block({ block }: { block: import("@/lib/articles").ArticleBlock }) {
   switch (block.type) {
     case "p":
       return (
-        <p className="text-lg text-taupe leading-relaxed">{block.text}</p>
+        <p className="text-lg text-graphite leading-relaxed">{block.text}</p>
       );
     case "h2":
       return (
-        <h2 className="mt-10 mb-3 font-display text-2xl lg:text-3xl text-anthra tracking-tight">
+        <h2 className="mt-10 mb-3 font-display text-2xl lg:text-3xl text-ink tracking-tight">
           {block.text}
         </h2>
       );
     case "h3":
       return (
-        <h3 className="mt-6 mb-2 font-display text-xl text-anthra tracking-tight">
+        <h3 className="mt-6 mb-2 font-display text-xl text-ink tracking-tight">
           {block.text}
         </h3>
       );
     case "quote":
       return (
-        <blockquote className="border-l-2 border-bleu pl-5 my-4 italic text-taupe">
+        <blockquote className="border-l-2 border-copper pl-5 my-4 italic text-graphite">
           {block.text}
           {block.cite && (
             <cite className="block mt-2 not-italic text-sm font-mono uppercase tracking-eyebrow text-muted">
@@ -191,8 +191,8 @@ function Block({ block }: { block: import("@/lib/articles").ArticleBlock }) {
       return (
         <ul className="space-y-2.5 my-3">
           {block.items.map((it, i) => (
-            <li key={i} className="flex gap-3 text-base text-taupe leading-relaxed">
-              <span className="mt-2 h-1.5 w-1.5 rounded-full bg-bleu shrink-0" />
+            <li key={i} className="flex gap-3 text-base text-graphite leading-relaxed">
+              <span className="mt-2 h-1.5 w-1.5 rounded-full bg-copper shrink-0" />
               <span>{it}</span>
             </li>
           ))}
@@ -202,7 +202,7 @@ function Block({ block }: { block: import("@/lib/articles").ArticleBlock }) {
       const tone = block.tone;
       const Icon = tone === "warning" ? AlertCircle : tone === "highlight" ? Sparkles : Info;
       const color =
-        tone === "warning" ? "#C0392B" : tone === "highlight" ? "#0B57A0" : "#6ba3c5";
+        tone === "warning" ? "#dc5a28" : tone === "highlight" ? "#b86a36" : "#6ba3c5";
       return (
         <div
           className="my-6 p-5 lg:p-6 rounded-2xl border"
@@ -222,7 +222,7 @@ function Block({ block }: { block: import("@/lib/articles").ArticleBlock }) {
               >
                 {block.title}
               </div>
-              <p className="mt-2 text-base text-anthra leading-relaxed">{block.body}</p>
+              <p className="mt-2 text-base text-ink leading-relaxed">{block.body}</p>
             </div>
           </div>
         </div>

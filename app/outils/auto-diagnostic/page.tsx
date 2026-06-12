@@ -60,19 +60,19 @@ export default function TroubleshootPage() {
   };
 
   return (
-    <div className="min-h-screen bg-creme py-12 lg:py-16">
+    <div className="min-h-screen bg-cream py-12 lg:py-16">
       <div className="container max-w-3xl">
         <div className="mb-8">
           <Link
             href="/"
-            className="text-xs font-mono uppercase tracking-eyebrow text-taupe hover:text-bleu"
+            className="text-xs font-mono uppercase tracking-eyebrow text-graphite hover:text-copper"
           >
             ← Retour accueil
           </Link>
-          <h1 className="mt-4 font-display text-display-md text-anthra">
+          <h1 className="mt-4 font-display text-display-md text-ink">
             Auto-diagnostic dépannage
           </h1>
-          <p className="mt-2 text-taupe max-w-2xl">
+          <p className="mt-2 text-graphite max-w-2xl">
             Quelques questions pour comprendre la situation, identifier ce que
             vous pouvez tenter vous-même, et savoir quand nous appeler.
           </p>
@@ -91,11 +91,11 @@ export default function TroubleshootPage() {
             onBack={history.length > 0 ? back : undefined}
           />
         ) : (
-          <div className="rounded-2xl border border-pierre bg-white shadow-soft p-8 text-center">
-            <p className="text-taupe">Question introuvable.</p>
+          <div className="rounded-2xl border border-ink/10 bg-white shadow-soft p-8 text-center">
+            <p className="text-graphite">Question introuvable.</p>
             <button
               onClick={restart}
-              className="mt-4 inline-flex items-center gap-2 rounded-full bg-navy text-creme px-4 py-2 text-sm"
+              className="mt-4 inline-flex items-center gap-2 rounded-full bg-ink text-cream px-4 py-2 text-sm"
             >
               <RefreshCw className="h-3.5 w-3.5" />
               Recommencer
@@ -123,16 +123,16 @@ function QuestionCard({
   onBack?: () => void;
 }) {
   return (
-    <div className="rounded-2xl border border-pierre bg-white shadow-soft p-6 lg:p-8">
+    <div className="rounded-2xl border border-ink/10 bg-white shadow-soft p-6 lg:p-8">
       <div className="flex items-start gap-3 mb-5">
-        <span className="h-10 w-10 rounded-full grid place-items-center bg-bleu/10 border border-bleu/30 text-bleu shrink-0">
+        <span className="h-10 w-10 rounded-full grid place-items-center bg-copper/10 border border-copper/30 text-copper shrink-0">
           <Wrench className="h-4 w-4" />
         </span>
         <div>
-          <div className="font-mono text-[10px] uppercase tracking-eyebrow text-bleu">
+          <div className="font-mono text-[10px] uppercase tracking-eyebrow text-copper">
             Question
           </div>
-          <h2 className="font-display text-xl text-anthra mt-0.5">
+          <h2 className="font-display text-xl text-ink mt-0.5">
             {question.prompt}
           </h2>
         </div>
@@ -142,7 +142,7 @@ function QuestionCard({
           <li key={i}>
             <button
               onClick={() => onChoose(o)}
-              className="w-full text-left rounded-xl border border-pierre bg-creme/40 hover:bg-creme hover:border-bleu/40 px-4 py-3 text-sm text-anthra transition-colors"
+              className="w-full text-left rounded-xl border border-ink/10 bg-cream/40 hover:bg-cream hover:border-copper/40 px-4 py-3 text-sm text-ink transition-colors"
             >
               {o.label}
             </button>
@@ -152,7 +152,7 @@ function QuestionCard({
       {onBack && (
         <button
           onClick={onBack}
-          className="mt-4 inline-flex items-center gap-1 text-xs text-taupe hover:text-bleu"
+          className="mt-4 inline-flex items-center gap-1 text-xs text-graphite hover:text-copper"
         >
           <ArrowLeft className="h-3 w-3" />
           Question précédente
@@ -200,17 +200,17 @@ function FinalCard({
           >
             Diagnostic · {severity.label}
           </div>
-          <h2 className="font-display text-xl text-anthra mt-0.5">{r.title}</h2>
+          <h2 className="font-display text-xl text-ink mt-0.5">{r.title}</h2>
         </div>
       </div>
 
-      <p className="text-sm text-taupe leading-relaxed mb-5">{r.body}</p>
+      <p className="text-sm text-graphite leading-relaxed mb-5">{r.body}</p>
 
       <div className="flex items-center gap-2 flex-wrap">
         {r.action === "emergency" ? (
           <a
             href="tel:112"
-            className="inline-flex items-center gap-2 rounded-full bg-terracotta text-creme px-5 py-2.5 text-sm hover:opacity-90 transition-opacity"
+            className="inline-flex items-center gap-2 rounded-full bg-ember text-cream px-5 py-2.5 text-sm hover:opacity-90 transition-opacity"
           >
             <Phone className="h-4 w-4" />
             {r.cta}
@@ -218,26 +218,26 @@ function FinalCard({
         ) : r.action === "call-urgent" || r.action === "call-soon" ? (
           <Link
             href="/devis?from=auto-diagnostic&service=depannage"
-            className="inline-flex items-center gap-2 rounded-full bg-navy text-creme px-5 py-2.5 text-sm hover:bg-bleu transition-colors"
+            className="inline-flex items-center gap-2 rounded-full bg-ink text-cream px-5 py-2.5 text-sm hover:bg-copper transition-colors"
             style={isUrgent ? { background: severity.color } : undefined}
           >
             <Phone className="h-4 w-4" />
             {r.cta}
           </Link>
         ) : (
-          <span className="text-sm text-taupe italic">{r.cta}</span>
+          <span className="text-sm text-graphite italic">{r.cta}</span>
         )}
 
         <button
           onClick={onBack}
-          className="inline-flex items-center gap-1 text-xs text-taupe hover:text-bleu px-3 py-1.5"
+          className="inline-flex items-center gap-1 text-xs text-graphite hover:text-copper px-3 py-1.5"
         >
           <ArrowLeft className="h-3 w-3" />
           Question précédente
         </button>
         <button
           onClick={onRestart}
-          className="inline-flex items-center gap-1 text-xs text-taupe hover:text-bleu px-3 py-1.5"
+          className="inline-flex items-center gap-1 text-xs text-graphite hover:text-copper px-3 py-1.5"
         >
           <RefreshCw className="h-3 w-3" />
           Recommencer

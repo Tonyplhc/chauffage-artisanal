@@ -59,10 +59,10 @@ export function MobileStickyCta() {
       }`}
     >
       <div className="container pb-3 pointer-events-auto">
-        <div className="rounded-2xl bg-creme/95 backdrop-blur-md border border-pierre shadow-[0_-8px_24px_-12px_rgba(42,37,30,0.25)] p-2 flex gap-2">
+        <div className="rounded-2xl bg-cream/95 backdrop-blur-md border border-ink/10 shadow-[0_-8px_24px_-12px_rgba(42,37,30,0.25)] p-2 flex gap-2">
           <Link
             href="/devis"
-            className="flex-1 inline-flex items-center justify-center gap-2 rounded-xl bg-navy text-creme px-4 py-3.5 text-sm font-medium hover:bg-bleu transition-colors group"
+            className="flex-1 inline-flex items-center justify-center gap-2 rounded-xl bg-ink text-cream px-4 py-3.5 text-sm font-medium hover:bg-copper transition-colors group"
           >
             Devis
             <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -70,7 +70,7 @@ export function MobileStickyCta() {
           <a
             href={`tel:${COMPANY.phone.tel}`}
             onClick={() => trackEvent("phone_click", { ctaSurface: "mobile-sticky" })}
-            className="flex-1 inline-flex items-center justify-center gap-2 rounded-xl bg-terracotta/15 border border-terracotta/50 text-terracotta px-4 py-3.5 text-sm font-medium hover:bg-terracotta/25 transition-colors"
+            className="flex-1 inline-flex items-center justify-center gap-2 rounded-xl bg-ember/15 border border-ember/50 text-ember px-4 py-3.5 text-sm font-medium hover:bg-ember/25 transition-colors"
           >
             <Phone className="h-4 w-4" />
             Appel

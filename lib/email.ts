@@ -120,16 +120,16 @@ function pretty(category: keyof typeof LABELS, key: string): string {
 function htmlShell(title: string, body: string) {
   return `<!doctype html>
 <html lang="fr"><head><meta charset="utf-8"><title>${title}</title></head>
-<body style="margin:0;padding:0;background:#F7F2E9;font-family:'Inter Tight',Inter,Helvetica,Arial,sans-serif;color:#2A2724;">
-<table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="background:#F7F2E9;padding:32px 16px;">
+<body style="margin:0;padding:0;background:#f6f0e4;font-family:'Inter Tight',Inter,Helvetica,Arial,sans-serif;color:#2a251e;">
+<table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="background:#f6f0e4;padding:32px 16px;">
   <tr><td align="center">
     <table role="presentation" cellpadding="0" cellspacing="0" width="600" style="max-width:600px;background:#ffffff;border:1px solid rgba(42,37,30,0.08);border-radius:24px;overflow:hidden;">
-      <tr><td style="background:#0A3D6E;color:#F7F2E9;padding:28px 32px;">
-        <div style="font-family:'JetBrains Mono',Menlo,Consolas,monospace;font-size:10px;letter-spacing:0.28em;text-transform:uppercase;color:#0B57A0;">Chauffage Artisanal · Luxembourg</div>
+      <tr><td style="background:#1e1a15;color:#f6f0e4;padding:28px 32px;">
+        <div style="font-family:'JetBrains Mono',Menlo,Consolas,monospace;font-size:10px;letter-spacing:0.28em;text-transform:uppercase;color:#b86a36;">Chauffage Artisanal · Luxembourg</div>
         <div style="font-family:Georgia,serif;font-size:28px;letter-spacing:-0.02em;margin-top:8px;">${title}</div>
       </td></tr>
       <tr><td style="padding:32px;">${body}</td></tr>
-      <tr><td style="background:#F7F2E9;padding:24px 32px;font-size:11px;color:#8b847a;text-align:center;">
+      <tr><td style="background:#ede5d3;padding:24px 32px;font-size:11px;color:#8b847a;text-align:center;">
         Message automatique · Chauffage Artisanal · Luxembourg
       </td></tr>
     </table>
@@ -141,11 +141,11 @@ function htmlShell(title: string, body: string) {
 function row(label: string, value: string) {
   return `<tr>
     <td style="padding:10px 0;border-bottom:1px solid rgba(42,37,30,0.08);font-size:11px;color:#8b847a;font-family:'JetBrains Mono',Menlo,Consolas,monospace;text-transform:uppercase;letter-spacing:0.18em;width:160px;vertical-align:top;">${label}</td>
-    <td style="padding:10px 0;border-bottom:1px solid rgba(42,37,30,0.08);font-size:14px;color:#2A2724;font-weight:500;vertical-align:top;">${value}</td>
+    <td style="padding:10px 0;border-bottom:1px solid rgba(42,37,30,0.08);font-size:14px;color:#2a251e;font-weight:500;vertical-align:top;">${value}</td>
   </tr>`;
 }
 
-function badge(text: string, color = "#0B57A0") {
+function badge(text: string, color = "#b86a36") {
   return `<span style="display:inline-block;padding:4px 10px;border-radius:9999px;background:${color}1A;border:1px solid ${color}55;color:${color};font-family:'JetBrains Mono',Menlo,Consolas,monospace;font-size:10px;text-transform:uppercase;letter-spacing:0.2em;">${text}</span>`;
 }
 
@@ -181,8 +181,8 @@ function leadRows(lead: LeadRecord) {
 function contactRows(lead: LeadRecord) {
   return [
     row("Nom", escapeHtml(lead.fullName)),
-    row("Email", `<a href="mailto:${lead.email}" style="color:#0B57A0;">${escapeHtml(lead.email)}</a>`),
-    row("Téléphone", `<a href="tel:${lead.phone.replace(/\s/g, "")}" style="color:#0B57A0;">${escapeHtml(lead.phone)}</a>`),
+    row("Email", `<a href="mailto:${lead.email}" style="color:#b86a36;">${escapeHtml(lead.email)}</a>`),
+    row("Téléphone", `<a href="tel:${lead.phone.replace(/\s/g, "")}" style="color:#b86a36;">${escapeHtml(lead.phone)}</a>`),
     row("Canal préféré", pretty("channel", lead.preferredChannel)),
   ].join("");
 }
@@ -198,19 +198,19 @@ export async function sendAdminNotification(lead: LeadRecord) {
     <div style="margin-bottom:20px;">
       ${lead.services.map((s) => badge(pretty("service", s))).join(" ")}
       ${badge(pretty("budget", lead.budget))}
-      ${badge(pretty("timeline", lead.timeline), lead.timeline === "urgent" ? "#C24A2C" : "#0B57A0")}
+      ${badge(pretty("timeline", lead.timeline), lead.timeline === "urgent" ? "#dc5a28" : "#b86a36")}
     </div>
-    <div style="font-size:14px;color:#6E675C;margin-bottom:24px;">
+    <div style="font-size:14px;color:#4a4338;margin-bottom:24px;">
       Reçu le ${new Date(lead.submittedAt).toLocaleString("fr-FR")} via <code>/devis</code>.
     </div>
-    <h3 style="font-family:Georgia,serif;font-size:18px;margin:0 0 12px;color:#2A2724;">Projet</h3>
+    <h3 style="font-family:Georgia,serif;font-size:18px;margin:0 0 12px;color:#2a251e;">Projet</h3>
     <table cellpadding="0" cellspacing="0" width="100%">${leadRows(lead)}</table>
-    <h3 style="font-family:Georgia,serif;font-size:18px;margin:32px 0 12px;color:#2A2724;">Contact</h3>
+    <h3 style="font-family:Georgia,serif;font-size:18px;margin:32px 0 12px;color:#2a251e;">Contact</h3>
     <table cellpadding="0" cellspacing="0" width="100%">${contactRows(lead)}</table>
-    ${lead.message ? `<h3 style="font-family:Georgia,serif;font-size:18px;margin:32px 0 12px;color:#2A2724;">Message</h3>
-    <div style="background:#F7F2E9;padding:16px 18px;border-radius:12px;border:1px solid rgba(42,37,30,0.08);font-size:14px;color:#2A2724;white-space:pre-wrap;">${escapeHtml(lead.message)}</div>` : ""}
+    ${lead.message ? `<h3 style="font-family:Georgia,serif;font-size:18px;margin:32px 0 12px;color:#2a251e;">Message</h3>
+    <div style="background:#f6f0e4;padding:16px 18px;border-radius:12px;border:1px solid rgba(42,37,30,0.08);font-size:14px;color:#2a251e;white-space:pre-wrap;">${escapeHtml(lead.message)}</div>` : ""}
     <div style="margin-top:32px;text-align:center;">
-      <a href="${process.env.PUBLIC_URL ?? "http://localhost:3008"}/admin/leads/${lead.reference}" style="display:inline-block;padding:12px 24px;border-radius:9999px;background:#0A3D6E;color:#F7F2E9;font-size:13px;font-weight:500;text-decoration:none;">Ouvrir le dossier</a>
+      <a href="${process.env.PUBLIC_URL ?? "http://localhost:3008"}/admin/leads/${lead.reference}" style="display:inline-block;padding:12px 24px;border-radius:9999px;background:#1e1a15;color:#f6f0e4;font-size:13px;font-weight:500;text-decoration:none;">Ouvrir le dossier</a>
     </div>`,
   );
   const text = `Nouveau lead ${lead.reference}
@@ -249,21 +249,21 @@ export async function sendClientConfirmation(lead: LeadRecord) {
   const html = htmlShell(
     "Votre demande est entre nos mains",
     `
-    <p style="font-size:16px;line-height:1.6;color:#2A2724;margin-top:0;">
+    <p style="font-size:16px;line-height:1.6;color:#2a251e;margin-top:0;">
       Bonjour ${escapeHtml(lead.fullName.split(" ")[0] || "")},
     </p>
-    <p style="font-size:15px;line-height:1.7;color:#6E675C;">
+    <p style="font-size:15px;line-height:1.7;color:#4a4338;">
       Nous avons bien reçu votre demande de devis et l&apos;avons enregistrée sous la référence
       <strong>${lead.reference}</strong>. Un membre de notre bureau d&apos;études va analyser
       votre projet, puis vous recontactera via <strong>${pretty("channel", lead.preferredChannel).toLowerCase()}</strong>.
     </p>
-    <h3 style="font-family:Georgia,serif;font-size:18px;margin:28px 0 12px;color:#2A2724;">Récap de votre projet</h3>
+    <h3 style="font-family:Georgia,serif;font-size:18px;margin:28px 0 12px;color:#2a251e;">Récap de votre projet</h3>
     <table cellpadding="0" cellspacing="0" width="100%">${leadRows(lead)}</table>
     <div style="margin-top:32px;text-align:center;">
-      <a href="${baseUrl}/espace/${encodeURIComponent(lead.reference)}?t=${makeRecapToken(lead.reference)}" style="display:inline-block;padding:12px 24px;border-radius:9999px;background:#0A3D6E;color:#F7F2E9;font-size:13px;font-weight:500;text-decoration:none;">🔭 Suivre l&apos;avancement de mon dossier</a>
+      <a href="${baseUrl}/espace/${encodeURIComponent(lead.reference)}?t=${makeRecapToken(lead.reference)}" style="display:inline-block;padding:12px 24px;border-radius:9999px;background:#1e1a15;color:#f6f0e4;font-size:13px;font-weight:500;text-decoration:none;">🔭 Suivre l&apos;avancement de mon dossier</a>
     </div>
     <div style="margin-top:10px;text-align:center;">
-      <a href="${recapUrl}" style="display:inline-block;padding:10px 20px;border-radius:9999px;background:transparent;border:1px solid rgba(42,37,30,0.2);color:#2A2724;font-size:12px;text-decoration:none;">📄 Imprimer / PDF</a>
+      <a href="${recapUrl}" style="display:inline-block;padding:10px 20px;border-radius:9999px;background:transparent;border:1px solid rgba(42,37,30,0.2);color:#2a251e;font-size:12px;text-decoration:none;">📄 Imprimer / PDF</a>
     </div>
     <p style="font-size:12px;line-height:1.6;color:#8b847a;margin-top:16px;text-align:center;">
       Ces liens privés vous permettent de consulter votre dossier à tout moment, et de conserver une copie de votre demande.

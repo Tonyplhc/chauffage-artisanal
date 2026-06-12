@@ -195,23 +195,23 @@ export async function maybeSendNpsSurveys(
 
 function renderNpsEmail(brand: string, name: string, link: string): string {
   return `<!doctype html>
-<html><body style="margin:0;padding:32px 16px;background:#F7F2E9;font-family:'Inter Tight',Inter,system-ui,sans-serif;color:#2A2724;">
+<html><body style="margin:0;padding:32px 16px;background:#f6f0e4;font-family:'Inter Tight',Inter,system-ui,sans-serif;color:#2a251e;">
 <table role="presentation" cellpadding="0" cellspacing="0" width="100%">
   <tr><td align="center">
     <table role="presentation" cellpadding="0" cellspacing="0" width="560" style="max-width:560px;background:#ffffff;border:1px solid rgba(42,37,30,0.08);border-radius:24px;overflow:hidden;">
-      <tr><td style="background:#0A3D6E;color:#F7F2E9;padding:28px;">
-        <div style="font-family:monospace;font-size:10px;letter-spacing:0.28em;text-transform:uppercase;color:#0B57A0;">${escapeHtml(brand)} · Votre retour</div>
+      <tr><td style="background:#1e1a15;color:#f6f0e4;padding:28px;">
+        <div style="font-family:monospace;font-size:10px;letter-spacing:0.28em;text-transform:uppercase;color:#b86a36;">${escapeHtml(brand)} · Votre retour</div>
         <div style="font-family:Georgia,serif;font-size:24px;margin-top:6px;">Une minute pour nous dire ce que vous en avez pensé</div>
       </td></tr>
       <tr><td style="padding:28px;font-size:15px;line-height:1.6;">
         <p>Bonjour <strong>${escapeHtml(name)}</strong>,</p>
         <p>Merci de votre confiance. Pour continuer à faire mieux, nous aimerions connaître votre avis sur votre récente collaboration avec ${escapeHtml(brand)}.</p>
         <p style="text-align:center;margin:24px 0;">
-          <a href="${link}" style="display:inline-block;padding:14px 32px;background:#0B57A0;color:#fff;text-decoration:none;border-radius:9999px;font-weight:500;">Donner mon avis</a>
+          <a href="${link}" style="display:inline-block;padding:14px 32px;background:#b86a36;color:#fff;text-decoration:none;border-radius:9999px;font-weight:500;">Donner mon avis</a>
         </p>
         <p style="font-size:13px;color:#8b847a;">Cela ne prendra qu'une minute. Aucune obligation, juste un score sur 10 et un commentaire libre si vous le souhaitez.</p>
       </td></tr>
-      <tr><td style="background:#F7F2E9;padding:16px 28px;font-size:11px;color:#8b847a;text-align:center;">
+      <tr><td style="background:#ede5d3;padding:16px 28px;font-size:11px;color:#8b847a;text-align:center;">
         ${escapeHtml(brand)} — Lien unique sécurisé.
       </td></tr>
     </table>

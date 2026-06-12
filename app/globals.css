@@ -3,17 +3,15 @@
 @tailwind utilities;
 
 :root {
-  /* Variables legacy REPOINTÉES vers la charte (noms conservés, valeurs
-     migrées) — tout usage résiduel hérite automatiquement du bon ton. */
-  --cream: #f7f2e9;   /* = creme */
-  --linen: #f7f2e9;   /* = creme */
-  --stone: #e0d5c2;   /* = pierre */
-  --ink: #2a2724;     /* = anthra */
-  --graphite: #6e675c; /* = taupe */
+  --cream: #f6f0e4;
+  --linen: #ede5d3;
+  --stone: #ddd3be;
+  --ink: #2a251e;
+  --graphite: #4a4338;
   --muted: #8b847a;
-  --charcoal: #0a3d6e; /* = navy */
-  --copper: #0b57a0;  /* = bleu */
-  --ember: #c24a2c;   /* = terracotta */
+  --charcoal: #1e1a15;
+  --copper: #b86a36;
+  --ember: #dc5a28;
 
   /* ── Design System v2 — identité « logo historique » (cf. lib/brand.ts) ──
      Additif : ne remplace AUCUNE variable legacy ci-dessus (zéro régression).

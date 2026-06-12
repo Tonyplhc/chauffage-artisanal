@@ -39,13 +39,13 @@ const OBJECTIONS = [
 
 export function Testimonials() {
   return (
-    <section className="relative py-14 lg:py-20 bg-creme border-y border-pierre font-ui">
+    <section className="relative py-14 lg:py-20 bg-linen border-y border-ink/8 font-ui">
       <div className="container relative">
         <div className="max-w-3xl mb-10">
           <Eyebrow number="07">Avant de vous lancer</Eyebrow>
           <Reveal>
-            <h2 className="mt-5 font-display text-display-lg text-balance text-anthra">
-              Les trois questions que <em className="not-italic text-bleu">tout le monde</em> se pose.
+            <h2 className="mt-5 font-display text-display-lg text-balance text-ink">
+              Les trois questions que <em className="not-italic text-copper">tout le monde</em> se pose.
             </h2>
           </Reveal>
         </div>
@@ -58,16 +58,16 @@ export function Testimonials() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.7, delay: i * 0.12, ease: [0.22, 1, 0.36, 1] }}
-              className="relative rounded-3xl border border-pierre bg-white p-8 lg:p-9 flex flex-col shadow-soft"
+              className="relative rounded-3xl border border-ink/10 bg-white p-8 lg:p-9 flex flex-col shadow-soft"
             >
               <span className="grid place-items-center h-10 w-10 rounded-full bg-voile mb-6">
                 <o.icon className="h-5 w-5 text-bleu" />
               </span>
-              <h3 className="font-display text-xl lg:text-2xl text-anthra leading-snug text-balance">
+              <h3 className="font-display text-xl lg:text-2xl text-ink leading-snug text-balance">
                 {o.question}
               </h3>
-              <p className="mt-4 text-sm text-taupe leading-relaxed flex-1">{o.reponse}</p>
-              <div className="mt-6 pt-5 border-t border-pierre">
+              <p className="mt-4 text-sm text-graphite leading-relaxed flex-1">{o.reponse}</p>
+              <div className="mt-6 pt-5 border-t border-ink/10">
                 <div className="text-[11px] font-mono uppercase tracking-eyebrow text-taupe">
                   {o.engagement}
                 </div>

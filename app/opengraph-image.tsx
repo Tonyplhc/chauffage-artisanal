@@ -32,7 +32,7 @@ export default async function Image() {
         {/* Eyebrow */}
         <div
           style={{
-            color: "#0B57A0",
+            color: "#b86a36",
             fontSize: 22,
             textTransform: "uppercase",
             letterSpacing: 8,
@@ -46,7 +46,7 @@ export default async function Image() {
             style={{
               width: 60,
               height: 1,
-              backgroundColor: "rgba(11,87,160,0.5)",
+              backgroundColor: "rgba(184,106,54,0.5)",
               display: "flex",
             }}
           />
@@ -67,7 +67,7 @@ export default async function Image() {
           }}
         >
           <span>Le confort thermique</span>
-          <span style={{ color: "#0B57A0" }}>nouvelle génération</span>
+          <span style={{ color: "#b86a36" }}>nouvelle génération</span>
           <span>au Luxembourg.</span>
         </div>
 
@@ -92,7 +92,7 @@ export default async function Image() {
               display: "flex",
               padding: "14px 28px",
               borderRadius: 9999,
-              backgroundColor: "#2A2724",
+              backgroundColor: "#1e1a15",
               color: "#f6f0e4",
               fontSize: 22,
             }}

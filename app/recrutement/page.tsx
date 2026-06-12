@@ -109,12 +109,12 @@ export default function RecrutementPage() {
         title={
           <>
             Rejoindre une maison qui forme,{" "}
-            <em className="not-italic text-bleu">qui équipe, qui paie correctement</em>.
+            <em className="not-italic text-copper">qui équipe, qui paie correctement</em>.
           </>
         }
         intro={
           <>
-            <strong className="text-bleu font-semibold">Six postes ouverts en permanence</strong>. Chez nous, vous arrivez le matin avec une caisse à outils neuve, un camion qui démarre, et un planning qui tient.
+            <strong className="text-copper font-semibold">Six postes ouverts en permanence</strong>. Chez nous, vous arrivez le matin avec une caisse à outils neuve, un camion qui démarre, et un planning qui tient.
           </>
         }
         aside={
@@ -131,7 +131,7 @@ export default function RecrutementPage() {
         }
       />
 
-      <section className="relative bg-creme">
+      <section className="relative bg-cream">
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -147,13 +147,13 @@ export default function RecrutementPage() {
               sizes="100vw"
               className="object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-navy/40 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-charcoal/40 to-transparent" />
           </motion.div>
         </div>
       </section>
 
       {/* PERKS */}
-      <section className="py-14 lg:py-20 bg-creme">
+      <section className="py-14 lg:py-20 bg-cream">
         <div className="container">
           <div className="max-w-3xl mb-10">
             <Eyebrow number="01">Ce que nous offrons</Eyebrow>
@@ -164,7 +164,7 @@ export default function RecrutementPage() {
             </Reveal>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-sable/60 border border-pierre rounded-2xl overflow-hidden">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-ink/8 border border-ink/8 rounded-2xl overflow-hidden">
             {PERKS.map((p, i) => (
               <motion.div
                 key={p.t}
@@ -174,11 +174,11 @@ export default function RecrutementPage() {
                 transition={{ duration: 0.6, delay: (i % 3) * 0.08 }}
                 className="bg-white p-8"
               >
-                <div className="font-mono text-[10px] uppercase tracking-eyebrow text-bleu">
+                <div className="font-mono text-[10px] uppercase tracking-eyebrow text-copper">
                   0{i + 1}
                 </div>
-                <h3 className="mt-3 font-display text-xl text-anthra">{p.t}</h3>
-                <p className="mt-2 text-sm text-taupe leading-relaxed">{p.b}</p>
+                <h3 className="mt-3 font-display text-xl text-ink">{p.t}</h3>
+                <p className="mt-2 text-sm text-graphite leading-relaxed">{p.b}</p>
               </motion.div>
             ))}
           </div>
@@ -186,7 +186,7 @@ export default function RecrutementPage() {
       </section>
 
       {/* JOBS — chargés depuis l'API en live */}
-      <section className="py-14 lg:py-20 bg-creme border-y border-pierre">
+      <section className="py-14 lg:py-20 bg-linen border-y border-ink/8">
         <div className="container">
           <div className="max-w-3xl mb-10">
             <Eyebrow number="02">Postes ouverts</Eyebrow>
@@ -207,16 +207,16 @@ export default function RecrutementPage() {
               Array.from({ length: 3 }).map((_, i) => (
                 <div
                   key={i}
-                  className="h-40 rounded-2xl border border-pierre bg-white animate-pulse"
+                  className="h-40 rounded-2xl border border-ink/8 bg-white animate-pulse"
                 />
               ))
             ) : liveJobs.length === 0 ? (
-              <div className="p-10 rounded-2xl border border-pierre bg-white text-center">
-                <p className="text-taupe">
+              <div className="p-10 rounded-2xl border border-ink/10 bg-white text-center">
+                <p className="text-graphite">
                   Pas d&apos;offre active pour le moment. Vous pouvez toujours envoyer une{" "}
                   <Link
                     href="/recrutement/candidature"
-                    className="text-bleu font-medium hover:underline"
+                    className="text-copper font-medium hover:underline"
                   >
                     candidature spontanée
                   </Link>{" "}
@@ -233,31 +233,31 @@ export default function RecrutementPage() {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true, margin: "-50px" }}
                     transition={{ duration: 0.6, delay: i * 0.05 }}
-                    className="group p-6 lg:p-8 rounded-2xl border border-pierre bg-white hover:border-bleu/40 hover:shadow-lift transition-all"
+                    className="group p-6 lg:p-8 rounded-2xl border border-ink/10 bg-white hover:border-copper/40 hover:shadow-lift transition-all"
                   >
                     <div className="grid lg:grid-cols-12 gap-6 items-start">
                       <div className="lg:col-span-5">
                         <div className="flex flex-wrap gap-2">
-                          <span className="font-mono text-[10px] uppercase tracking-eyebrow text-bleu bg-bleu/10 border border-bleu/30 px-2 py-1 rounded-full">
+                          <span className="font-mono text-[10px] uppercase tracking-eyebrow text-copper bg-copper/10 border border-copper/30 px-2 py-1 rounded-full">
                             {CONTRACT_LABELS[j.contractType] ?? j.contractType}
                           </span>
-                          <span className="font-mono text-[10px] uppercase tracking-eyebrow text-taupe bg-creme border border-pierre px-2 py-1 rounded-full">
+                          <span className="font-mono text-[10px] uppercase tracking-eyebrow text-graphite bg-cream border border-ink/15 px-2 py-1 rounded-full">
                             {WORK_TIME_LABELS[j.workTime] ?? j.workTime}
                           </span>
                         </div>
-                        <h3 className="mt-3 font-display text-2xl text-anthra tracking-tight">
+                        <h3 className="mt-3 font-display text-2xl text-ink tracking-tight">
                           {j.title}
                         </h3>
                         {salaryStr && (
-                          <div className="mt-2 font-mono text-xs text-bleu">
+                          <div className="mt-2 font-mono text-xs text-copper">
                             💰 {salaryStr}
                           </div>
                         )}
                       </div>
-                      <div className="lg:col-span-5 text-sm text-taupe leading-relaxed line-clamp-4 whitespace-pre-line">
+                      <div className="lg:col-span-5 text-sm text-graphite leading-relaxed line-clamp-4 whitespace-pre-line">
                         {j.description}
                       </div>
-                      <div className="lg:col-span-2 flex flex-col gap-2 text-xs text-taupe font-mono uppercase tracking-eyebrow">
+                      <div className="lg:col-span-2 flex flex-col gap-2 text-xs text-graphite font-mono uppercase tracking-eyebrow">
                         <span className="flex items-center gap-1.5">
                           <Briefcase className="h-3 w-3" /> {CONTRACT_LABELS[j.contractType] ?? j.contractType}
                         </span>
@@ -278,20 +278,20 @@ export default function RecrutementPage() {
                         {j.benefits.slice(0, 4).map((b) => (
                           <span
                             key={b}
-                            className="text-xs text-taupe bg-creme/60 border border-pierre px-2.5 py-1 rounded-full"
+                            className="text-xs text-graphite bg-cream/60 border border-ink/8 px-2.5 py-1 rounded-full"
                           >
                             ✓ {b}
                           </span>
                         ))}
                       </div>
                     )}
-                    <div className="mt-6 pt-6 border-t border-pierre flex items-center justify-between">
+                    <div className="mt-6 pt-6 border-t border-ink/10 flex items-center justify-between">
                       <span className="text-xs text-muted">
                         CV PDF + 30 secondes pour postuler
                       </span>
                       <Link
                         href={`/recrutement/candidature?jobId=${j.id}`}
-                        className="inline-flex items-center gap-2 rounded-full bg-navy text-creme px-4 py-2 text-sm font-medium hover:bg-bleu transition-colors"
+                        className="inline-flex items-center gap-2 rounded-full bg-ink text-cream px-4 py-2 text-sm font-medium hover:bg-copper transition-colors"
                       >
                         <Send className="h-3.5 w-3.5" />
                         Postuler
@@ -304,7 +304,7 @@ export default function RecrutementPage() {
           </div>
 
           <div className="mt-10 text-center">
-            <p className="text-taupe">
+            <p className="text-graphite">
               Vous ne voyez pas votre poste ? Envoyez-nous une candidature spontanée — nous lisons
               tout.
             </p>

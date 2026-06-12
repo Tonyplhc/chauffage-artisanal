@@ -104,17 +104,17 @@ export function InlineBooking() {
   const [open, setOpen] = useState(false);
 
   return (
-    <section id="booking" className="py-14 lg:py-20 bg-creme border-y border-pierre">
+    <section id="booking" className="py-14 lg:py-20 bg-linen border-y border-ink/8">
       <div className="container">
         <div className="max-w-3xl mb-10">
           <Eyebrow number="06">Visite technique</Eyebrow>
           <Reveal>
             <SectionTitle className="mt-4">
-              Choisissez un créneau, <em className="not-italic text-bleu">on s&apos;adapte</em>.
+              Choisissez un créneau, <em className="not-italic text-copper">on s&apos;adapte</em>.
             </SectionTitle>
           </Reveal>
           <Reveal delay={1}>
-            <p className="mt-5 text-taupe leading-relaxed">
+            <p className="mt-5 text-graphite leading-relaxed">
               Visite technique gratuite et sans engagement. Nous confirmons par email sous
               quelques heures ouvrées. Si aucun créneau ne vous convient, écrivez-nous —
               on trouve toujours.
@@ -122,23 +122,23 @@ export function InlineBooking() {
           </Reveal>
         </div>
 
-        <div className="rounded-3xl border border-pierre bg-white shadow-soft overflow-hidden">
+        <div className="rounded-3xl border border-ink/10 bg-white shadow-soft overflow-hidden">
           {/* Pagination */}
-          <div className="flex items-center justify-between px-5 py-4 border-b border-pierre bg-creme/50">
+          <div className="flex items-center justify-between px-5 py-4 border-b border-ink/8 bg-cream/50">
             <button
               onClick={() => setPageStart((v) => Math.max(0, v - PAGE_SIZE))}
               disabled={!canPrev}
               className={`h-9 w-9 grid place-items-center rounded-full transition-colors ${
                 canPrev
-                  ? "bg-white border border-pierre text-anthra hover:border-bleu/40"
+                  ? "bg-white border border-ink/12 text-ink hover:border-copper/40"
                   : "text-muted/40 cursor-not-allowed"
               }`}
               aria-label="Semaine précédente"
             >
               <ChevronLeft className="h-4 w-4" />
             </button>
-            <div className="font-mono text-[10px] uppercase tracking-eyebrow text-taupe">
-              <Calendar className="inline-block h-3.5 w-3.5 mr-1.5 text-bleu" />
+            <div className="font-mono text-[10px] uppercase tracking-eyebrow text-graphite">
+              <Calendar className="inline-block h-3.5 w-3.5 mr-1.5 text-copper" />
               {visibleDays[0]?.date.toLocaleDateString("fr-FR", { day: "numeric", month: "long" })} —{" "}
               {visibleDays[visibleDays.length - 1]?.date.toLocaleDateString("fr-FR", { day: "numeric", month: "long" })}
             </div>
@@ -147,7 +147,7 @@ export function InlineBooking() {
               disabled={!canNext}
               className={`h-9 w-9 grid place-items-center rounded-full transition-colors ${
                 canNext
-                  ? "bg-white border border-pierre text-anthra hover:border-bleu/40"
+                  ? "bg-white border border-ink/12 text-ink hover:border-copper/40"
                   : "text-muted/40 cursor-not-allowed"
               }`}
               aria-label="Semaine suivante"
@@ -170,7 +170,7 @@ export function InlineBooking() {
                       <div className="font-mono text-[10px] uppercase tracking-eyebrow text-muted">
                         {h.day}
                       </div>
-                      <div className="mt-0.5 font-display text-xl text-anthra tabular-nums">
+                      <div className="mt-0.5 font-display text-xl text-ink tabular-nums">
                         {h.num}
                       </div>
                       <div className="font-mono text-[10px] uppercase tracking-eyebrow text-muted">
@@ -185,7 +185,7 @@ export function InlineBooking() {
                             setSelected(s);
                             setOpen(true);
                           }}
-                          className="w-full px-3 py-2 rounded-lg text-sm font-mono text-anthra bg-creme hover:bg-bleu hover:text-creme border border-pierre hover:border-bleu transition-colors"
+                          className="w-full px-3 py-2 rounded-lg text-sm font-mono text-ink bg-cream hover:bg-copper hover:text-cream border border-ink/10 hover:border-copper transition-colors"
                         >
                           {s.label}
                         </button>
@@ -198,8 +198,8 @@ export function InlineBooking() {
           </div>
 
           {/* Footer info */}
-          <div className="px-5 py-3 border-t border-pierre bg-creme/40 text-xs text-muted text-center">
-            <Clock className="inline-block h-3 w-3 mr-1.5 text-bleu" />
+          <div className="px-5 py-3 border-t border-ink/8 bg-cream/40 text-xs text-muted text-center">
+            <Clock className="inline-block h-3 w-3 mr-1.5 text-copper" />
             Créneaux indicatifs · confirmation par email après réception
           </div>
         </div>
@@ -271,7 +271,7 @@ function BookingModal({ slot, onClose }: { slot: Slot; onClose: () => void }) {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.2 }}
-      className="fixed inset-0 z-[80] bg-navy/50 backdrop-blur-sm grid place-items-center p-4 lg:p-6"
+      className="fixed inset-0 z-[80] bg-charcoal/50 backdrop-blur-sm grid place-items-center p-4 lg:p-6"
       onClick={(e) => {
         if (e.target === e.currentTarget) onClose();
       }}
@@ -281,23 +281,23 @@ function BookingModal({ slot, onClose }: { slot: Slot; onClose: () => void }) {
         animate={{ y: 0, opacity: 1 }}
         exit={{ y: 16, opacity: 0 }}
         transition={{ type: "spring", stiffness: 320, damping: 32 }}
-        className="w-full max-w-lg bg-white rounded-3xl border border-pierre shadow-lift overflow-hidden"
+        className="w-full max-w-lg bg-white rounded-3xl border border-ink/10 shadow-lift overflow-hidden"
         role="dialog"
         aria-modal="true"
       >
         {/* Header */}
-        <div className="px-6 py-5 border-b border-pierre flex items-start justify-between gap-4">
+        <div className="px-6 py-5 border-b border-ink/8 flex items-start justify-between gap-4">
           <div>
-            <div className="font-mono text-[10px] uppercase tracking-eyebrow text-bleu">
+            <div className="font-mono text-[10px] uppercase tracking-eyebrow text-copper">
               Réserver un créneau
             </div>
-            <div className="mt-1.5 font-display text-xl text-anthra tracking-tight">
+            <div className="mt-1.5 font-display text-xl text-ink tracking-tight">
               {dateLabel} · {slot.label}
             </div>
           </div>
           <button
             onClick={onClose}
-            className="h-9 w-9 grid place-items-center rounded-full bg-creme border border-pierre text-taupe hover:bg-navy hover:text-creme transition-colors shrink-0"
+            className="h-9 w-9 grid place-items-center rounded-full bg-cream border border-ink/10 text-graphite hover:bg-ink hover:text-cream transition-colors shrink-0"
             aria-label="Fermer"
           >
             <XIcon className="h-4 w-4" />
@@ -308,19 +308,19 @@ function BookingModal({ slot, onClose }: { slot: Slot; onClose: () => void }) {
         <div className="px-6 py-6">
           {step === "success" ? (
             <div className="text-center py-4">
-              <div className="h-14 w-14 mx-auto rounded-full bg-[#2E7D5A]/10 border border-[#2E7D5A]/40 grid place-items-center">
-                <CheckCircle2 className="h-6 w-6 text-[#2E7D5A]" />
+              <div className="h-14 w-14 mx-auto rounded-full bg-[#22a06b]/10 border border-[#22a06b]/40 grid place-items-center">
+                <CheckCircle2 className="h-6 w-6 text-[#22a06b]" />
               </div>
-              <h3 className="mt-5 font-display text-2xl text-anthra tracking-tight">
+              <h3 className="mt-5 font-display text-2xl text-ink tracking-tight">
                 Créneau enregistré
               </h3>
-              <p className="mt-3 text-taupe text-sm leading-relaxed max-w-sm mx-auto">
+              <p className="mt-3 text-graphite text-sm leading-relaxed max-w-sm mx-auto">
                 Nous vous confirmons par email sous quelques heures ouvrées. Si urgence,
                 appelez-nous directement.
               </p>
               <button
                 onClick={onClose}
-                className="mt-6 inline-flex items-center gap-2 rounded-full bg-navy text-creme px-5 py-3 text-sm font-medium hover:bg-bleu transition-colors"
+                className="mt-6 inline-flex items-center gap-2 rounded-full bg-ink text-cream px-5 py-3 text-sm font-medium hover:bg-copper transition-colors"
               >
                 Fermer
               </button>
@@ -365,7 +365,7 @@ function BookingModal({ slot, onClose }: { slot: Slot; onClose: () => void }) {
                     value={form.note}
                     onChange={(e) => setForm({ ...form, note: e.target.value })}
                     placeholder="Type de bâtiment, services envisagés, contraintes…"
-                    className="w-full bg-creme border border-pierre rounded-xl px-4 py-2.5 text-sm text-anthra focus:border-bleu focus:outline-none focus:ring-2 focus:ring-bleu/20 transition-all resize-none"
+                    className="w-full bg-cream border border-ink/12 rounded-xl px-4 py-2.5 text-sm text-ink focus:border-copper focus:outline-none focus:ring-2 focus:ring-copper/20 transition-all resize-none"
                   />
                 </div>
               </div>
@@ -373,7 +373,7 @@ function BookingModal({ slot, onClose }: { slot: Slot; onClose: () => void }) {
               <div className="mt-6 flex items-center justify-between gap-3">
                 <button
                   onClick={onClose}
-                  className="inline-flex items-center gap-2 text-sm text-taupe hover:text-anthra transition-colors"
+                  className="inline-flex items-center gap-2 text-sm text-graphite hover:text-ink transition-colors"
                 >
                   <ArrowLeft className="h-4 w-4" />
                   Annuler
@@ -383,8 +383,8 @@ function BookingModal({ slot, onClose }: { slot: Slot; onClose: () => void }) {
                   disabled={!canSubmit || step === "submitting"}
                   className={`inline-flex items-center gap-2 rounded-full px-5 py-3 text-sm font-medium transition-all ${
                     canSubmit && step !== "submitting"
-                      ? "bg-navy text-creme hover:bg-bleu"
-                      : "bg-sable/60 text-anthra/40 cursor-not-allowed"
+                      ? "bg-ink text-cream hover:bg-copper"
+                      : "bg-ink/15 text-ink/40 cursor-not-allowed"
                   }`}
                 >
                   {step === "submitting" ? (
@@ -431,7 +431,7 @@ function Input({
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
-        className="w-full bg-creme border border-pierre rounded-xl px-4 py-2.5 text-sm text-anthra focus:border-bleu focus:outline-none focus:ring-2 focus:ring-bleu/20 transition-all"
+        className="w-full bg-cream border border-ink/12 rounded-xl px-4 py-2.5 text-sm text-ink focus:border-copper focus:outline-none focus:ring-2 focus:ring-copper/20 transition-all"
       />
     </div>
   );

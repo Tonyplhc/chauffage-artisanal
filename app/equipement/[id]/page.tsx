@@ -63,10 +63,10 @@ export default function PublicEquipmentPage() {
 
   if (error) {
     return (
-      <div className="min-h-screen bg-creme grid place-items-center px-4">
+      <div className="min-h-screen bg-cream grid place-items-center px-4">
         <div className="max-w-md text-center">
-          <AlertTriangle className="h-12 w-12 mx-auto text-terracotta mb-3" />
-          <p className="text-taupe">{error}</p>
+          <AlertTriangle className="h-12 w-12 mx-auto text-ember mb-3" />
+          <p className="text-graphite">{error}</p>
         </div>
       </div>
     );
@@ -74,8 +74,8 @@ export default function PublicEquipmentPage() {
 
   if (!equipment) {
     return (
-      <div className="min-h-screen bg-creme grid place-items-center">
-        <Loader2 className="h-6 w-6 animate-spin text-bleu" />
+      <div className="min-h-screen bg-cream grid place-items-center">
+        <Loader2 className="h-6 w-6 animate-spin text-copper" />
       </div>
     );
   }
@@ -85,19 +85,19 @@ export default function PublicEquipmentPage() {
     new Date(equipment.warrantyExpiresAt).getTime() > Date.now();
 
   return (
-    <div className="min-h-screen bg-creme py-10 lg:py-16 px-4">
+    <div className="min-h-screen bg-cream py-10 lg:py-16 px-4">
       <div className="container max-w-2xl">
-        <div className="bg-white rounded-3xl border border-pierre shadow-soft p-6 lg:p-10">
+        <div className="bg-white rounded-3xl border border-ink/10 shadow-soft p-6 lg:p-10">
           {/* Header */}
-          <div className="text-center mb-6 pb-6 border-b border-pierre">
-            <div className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-eyebrow text-bleu bg-bleu/10 border border-bleu/20 px-3 py-1 rounded-full">
+          <div className="text-center mb-6 pb-6 border-b border-ink/8">
+            <div className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-eyebrow text-copper bg-copper/10 border border-copper/20 px-3 py-1 rounded-full">
               <Cpu className="h-3 w-3" />
               Fiche équipement
             </div>
-            <h1 className="mt-4 font-display text-3xl text-anthra">
+            <h1 className="mt-4 font-display text-3xl text-ink">
               {equipment.brand}
             </h1>
-            <p className="mt-1 text-lg text-taupe">{equipment.model}</p>
+            <p className="mt-1 text-lg text-graphite">{equipment.model}</p>
             <p className="mt-2 text-xs font-mono text-muted">
               {TYPE_LABELS[equipment.type] ?? equipment.type}
               {equipment.power && ` · ${equipment.power}`}
@@ -111,7 +111,7 @@ export default function PublicEquipmentPage() {
                 <dt className="font-mono text-[10px] uppercase tracking-eyebrow text-muted">
                   Numéro de série
                 </dt>
-                <dd className="mt-0.5 font-mono text-anthra">
+                <dd className="mt-0.5 font-mono text-ink">
                   {equipment.serialNumber}
                 </dd>
               </div>
@@ -121,7 +121,7 @@ export default function PublicEquipmentPage() {
                 <dt className="font-mono text-[10px] uppercase tracking-eyebrow text-muted">
                   Emplacement
                 </dt>
-                <dd className="mt-0.5 text-anthra">{equipment.location}</dd>
+                <dd className="mt-0.5 text-ink">{equipment.location}</dd>
               </div>
             )}
             {equipment.installedAt && (
@@ -129,8 +129,8 @@ export default function PublicEquipmentPage() {
                 <dt className="font-mono text-[10px] uppercase tracking-eyebrow text-muted">
                   Date de pose
                 </dt>
-                <dd className="mt-0.5 text-anthra inline-flex items-center gap-1">
-                  <Calendar className="h-3 w-3 text-bleu" />
+                <dd className="mt-0.5 text-ink inline-flex items-center gap-1">
+                  <Calendar className="h-3 w-3 text-copper" />
                   {new Date(equipment.installedAt).toLocaleDateString("fr-FR", {
                     dateStyle: "medium",
                   })}
@@ -144,7 +144,7 @@ export default function PublicEquipmentPage() {
                 </dt>
                 <dd
                   className={`mt-0.5 inline-flex items-center gap-1 ${
-                    warrantyOk ? "text-[#2E7D5A]" : "text-terracotta"
+                    warrantyOk ? "text-[#22a06b]" : "text-ember"
                   }`}
                 >
                   <ShieldCheck className="h-3 w-3" />
@@ -159,39 +159,39 @@ export default function PublicEquipmentPage() {
           </dl>
 
           {equipment.notes && (
-            <div className="mb-6 p-4 rounded-2xl bg-creme border border-pierre">
+            <div className="mb-6 p-4 rounded-2xl bg-cream border border-ink/8">
               <div className="font-mono text-[10px] uppercase tracking-eyebrow text-muted mb-1">
                 Notes
               </div>
-              <p className="text-sm text-taupe whitespace-pre-wrap">
+              <p className="text-sm text-graphite whitespace-pre-wrap">
                 {equipment.notes}
               </p>
             </div>
           )}
 
           {/* SAV CTAs */}
-          <div className="pt-6 border-t border-pierre">
-            <div className="font-mono text-[10px] uppercase tracking-eyebrow text-bleu mb-3 text-center">
+          <div className="pt-6 border-t border-ink/8">
+            <div className="font-mono text-[10px] uppercase tracking-eyebrow text-copper mb-3 text-center">
               Demander une intervention SAV
             </div>
             <div className="grid sm:grid-cols-3 gap-2">
               <a
                 href="tel:+352000000000"
-                className="inline-flex items-center justify-center gap-1.5 rounded-full bg-navy text-creme py-3 text-sm font-medium hover:bg-bleu transition-colors"
+                className="inline-flex items-center justify-center gap-1.5 rounded-full bg-ink text-cream py-3 text-sm font-medium hover:bg-copper transition-colors"
               >
                 <Phone className="h-3.5 w-3.5" />
                 Appeler
               </a>
               <a
                 href={`mailto:contact@chauffage-artisanal.lu?subject=SAV%20${encodeURIComponent(equipment.brand + " " + equipment.model)}`}
-                className="inline-flex items-center justify-center gap-1.5 rounded-full bg-white border border-pierre py-3 text-sm font-medium hover:border-bleu/40 transition-colors"
+                className="inline-flex items-center justify-center gap-1.5 rounded-full bg-white border border-ink/15 py-3 text-sm font-medium hover:border-copper/40 transition-colors"
               >
                 <Mail className="h-3.5 w-3.5" />
                 Email
               </a>
               <Link
                 href={`/contact?ref=equip:${equipment.id}`}
-                className="inline-flex items-center justify-center gap-1.5 rounded-full bg-bleu/10 border border-bleu/30 text-bleu py-3 text-sm font-medium hover:bg-bleu hover:text-creme transition-colors"
+                className="inline-flex items-center justify-center gap-1.5 rounded-full bg-copper/10 border border-copper/30 text-copper py-3 text-sm font-medium hover:bg-copper hover:text-cream transition-colors"
               >
                 Formulaire
               </Link>

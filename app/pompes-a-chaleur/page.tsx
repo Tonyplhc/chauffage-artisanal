@@ -21,12 +21,12 @@ export default function PacPage() {
       eyebrow="Pompes à chaleur"
       title={
         <>
-          La pompe à chaleur <em className="not-italic text-bleu">dimensionnée pour votre projet</em>, pas pour un catalogue.
+          La pompe à chaleur <em className="not-italic text-copper">dimensionnée pour votre projet</em>, pas pour un catalogue.
         </>
       }
       intro={
         <>
-          Air/eau, sol/eau géothermique, hybride. Études personnalisées, <strong className="text-bleu font-semibold">accompagnement Klimabonus</strong>, technologies adaptées à votre bâtiment et à votre usage.
+          Air/eau, sol/eau géothermique, hybride. Études personnalisées, <strong className="text-copper font-semibold">accompagnement Klimabonus</strong>, technologies adaptées à votre bâtiment et à votre usage.
         </>
       }
       heroImg="/PAC-air-air1.jpg"

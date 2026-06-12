@@ -83,19 +83,19 @@ export default function BookingPage() {
   }, {});
 
   return (
-    <div className="min-h-screen bg-creme py-12 lg:py-16">
+    <div className="min-h-screen bg-cream py-12 lg:py-16">
       <div className="container max-w-3xl">
         <div className="mb-8">
           <Link
             href="/"
-            className="text-xs font-mono uppercase tracking-eyebrow text-taupe hover:text-bleu"
+            className="text-xs font-mono uppercase tracking-eyebrow text-graphite hover:text-copper"
           >
             ← Retour accueil
           </Link>
-          <h1 className="mt-4 font-display text-display-md text-anthra">
+          <h1 className="mt-4 font-display text-display-md text-ink">
             Prendre rendez-vous
           </h1>
-          <p className="mt-2 text-taupe max-w-2xl">
+          <p className="mt-2 text-graphite max-w-2xl">
             Choisissez un créneau qui vous arrange. Nous confirmons par email
             sous 24 h ouvrées — il peut arriver qu&apos;on vous propose un autre
             créneau si une urgence se présente.
@@ -177,10 +177,10 @@ function StepBadge({
     <span
       className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full ${
         active
-          ? "bg-navy text-creme"
+          ? "bg-ink text-cream"
           : done
-            ? "bg-[#2E7D5A]/10 text-[#2E7D5A]"
-            : "bg-creme border border-pierre text-taupe"
+            ? "bg-[#22a06b]/10 text-[#22a06b]"
+            : "bg-cream border border-ink/10 text-graphite"
       }`}
     >
       {done ? <CheckCircle2 className="h-3 w-3" /> : <span>{n}</span>}
@@ -207,9 +207,9 @@ function SlotPicker({
   }
   if (slots.length === 0) {
     return (
-      <div className="rounded-2xl border border-pierre bg-white shadow-soft py-12 text-center">
-        <CalendarCheck className="h-10 w-10 text-bleu opacity-30 mx-auto mb-3" />
-        <p className="text-taupe">
+      <div className="rounded-2xl border border-ink/10 bg-white shadow-soft py-12 text-center">
+        <CalendarCheck className="h-10 w-10 text-copper opacity-30 mx-auto mb-3" />
+        <p className="text-graphite">
           Aucun créneau libre dans les 14 prochains jours. Contactez-nous
           directement.
         </p>
@@ -221,9 +221,9 @@ function SlotPicker({
       {Object.entries(grouped).map(([date, daySlots]) => (
         <div
           key={date}
-          className="rounded-2xl border border-pierre bg-white shadow-soft overflow-hidden"
+          className="rounded-2xl border border-ink/10 bg-white shadow-soft overflow-hidden"
         >
-          <div className="px-5 py-3 border-b border-pierre bg-creme/40 font-mono text-[10px] uppercase tracking-eyebrow text-bleu">
+          <div className="px-5 py-3 border-b border-ink/8 bg-cream/40 font-mono text-[10px] uppercase tracking-eyebrow text-copper">
             {date}
           </div>
           <div className="p-4 grid grid-cols-3 lg:grid-cols-7 gap-2">
@@ -231,7 +231,7 @@ function SlotPicker({
               <button
                 key={s.iso}
                 onClick={() => onChoose(s)}
-                className="rounded-lg border border-pierre bg-creme hover:bg-navy hover:text-creme hover:border-anthra px-3 py-2 text-sm transition-colors inline-flex items-center justify-center gap-1"
+                className="rounded-lg border border-ink/12 bg-cream hover:bg-ink hover:text-cream hover:border-ink px-3 py-2 text-sm transition-colors inline-flex items-center justify-center gap-1"
               >
                 <Clock className="h-3 w-3" />
                 {s.time}
@@ -269,15 +269,15 @@ function FormStep(props: {
     props.phone.trim().length >= 6;
 
   return (
-    <div className="rounded-2xl border border-pierre bg-white shadow-soft p-6 lg:p-8">
-      <div className="rounded-xl bg-bleu/5 border border-bleu/20 px-4 py-3 mb-5 inline-flex items-center gap-2 w-full">
-        <CalendarCheck className="h-4 w-4 text-bleu" />
-        <span className="text-sm text-anthra">
+    <div className="rounded-2xl border border-ink/10 bg-white shadow-soft p-6 lg:p-8">
+      <div className="rounded-xl bg-copper/5 border border-copper/20 px-4 py-3 mb-5 inline-flex items-center gap-2 w-full">
+        <CalendarCheck className="h-4 w-4 text-copper" />
+        <span className="text-sm text-ink">
           {props.slot.date} à <strong>{props.slot.time}</strong>
         </span>
         <button
           onClick={props.onBack}
-          className="ml-auto text-xs text-bleu hover:underline"
+          className="ml-auto text-xs text-copper hover:underline"
         >
           Changer
         </button>
@@ -288,7 +288,7 @@ function FormStep(props: {
           <select
             value={props.purpose}
             onChange={(e) => props.setPurpose(e.target.value as BookingPurpose)}
-            className="w-full bg-creme border border-pierre rounded-lg px-3 py-2 text-sm focus:border-bleu focus:outline-none"
+            className="w-full bg-cream border border-ink/12 rounded-lg px-3 py-2 text-sm focus:border-copper focus:outline-none"
           >
             {Object.entries(PURPOSE_LABELS).map(([k, v]) => (
               <option key={k} value={k}>
@@ -304,7 +304,7 @@ function FormStep(props: {
               value={props.fullName}
               onChange={(e) => props.setFullName(e.target.value)}
               placeholder="Prénom Nom"
-              className="w-full bg-creme border border-pierre rounded-lg px-3 py-2 text-sm focus:border-bleu focus:outline-none"
+              className="w-full bg-cream border border-ink/12 rounded-lg px-3 py-2 text-sm focus:border-copper focus:outline-none"
             />
           </Field>
           <Field label="Commune">
@@ -312,7 +312,7 @@ function FormStep(props: {
               value={props.commune}
               onChange={(e) => props.setCommune(e.target.value)}
               placeholder="Strassen"
-              className="w-full bg-creme border border-pierre rounded-lg px-3 py-2 text-sm focus:border-bleu focus:outline-none"
+              className="w-full bg-cream border border-ink/12 rounded-lg px-3 py-2 text-sm focus:border-copper focus:outline-none"
             />
           </Field>
           <Field label="Email *">
@@ -321,7 +321,7 @@ function FormStep(props: {
               value={props.email}
               onChange={(e) => props.setEmail(e.target.value)}
               placeholder="vous@exemple.lu"
-              className="w-full bg-creme border border-pierre rounded-lg px-3 py-2 text-sm focus:border-bleu focus:outline-none"
+              className="w-full bg-cream border border-ink/12 rounded-lg px-3 py-2 text-sm focus:border-copper focus:outline-none"
             />
           </Field>
           <Field label="Téléphone *">
@@ -330,7 +330,7 @@ function FormStep(props: {
               value={props.phone}
               onChange={(e) => props.setPhone(e.target.value)}
               placeholder="+352 …"
-              className="w-full bg-creme border border-pierre rounded-lg px-3 py-2 text-sm focus:border-bleu focus:outline-none"
+              className="w-full bg-cream border border-ink/12 rounded-lg px-3 py-2 text-sm focus:border-copper focus:outline-none"
             />
           </Field>
         </div>
@@ -341,12 +341,12 @@ function FormStep(props: {
             value={props.notes}
             onChange={(e) => props.setNotes(e.target.value)}
             placeholder="Type d'équipement, contexte, contrainte d'accès…"
-            className="w-full bg-creme border border-pierre rounded-lg px-3 py-2 text-sm focus:border-bleu focus:outline-none"
+            className="w-full bg-cream border border-ink/12 rounded-lg px-3 py-2 text-sm focus:border-copper focus:outline-none"
           />
         </Field>
 
         {props.error && (
-          <div className="text-sm text-terracotta bg-terracotta/5 border border-terracotta/20 rounded-lg px-3 py-2">
+          <div className="text-sm text-ember bg-ember/5 border border-ember/20 rounded-lg px-3 py-2">
             {props.error}
           </div>
         )}
@@ -354,14 +354,14 @@ function FormStep(props: {
         <div className="flex items-center justify-between gap-3 flex-wrap pt-2">
           <button
             onClick={props.onBack}
-            className="text-sm text-taupe hover:text-bleu"
+            className="text-sm text-graphite hover:text-copper"
           >
             ← Changer de créneau
           </button>
           <button
             onClick={props.onSubmit}
             disabled={!valid || props.busy}
-            className="inline-flex items-center gap-2 rounded-full bg-navy text-creme px-5 py-2.5 text-sm hover:bg-bleu transition-colors disabled:opacity-50"
+            className="inline-flex items-center gap-2 rounded-full bg-ink text-cream px-5 py-2.5 text-sm hover:bg-copper transition-colors disabled:opacity-50"
           >
             {props.busy ? (
               <Loader2 className="h-3.5 w-3.5 animate-spin" />
@@ -389,12 +389,12 @@ function DoneStep({
   bookingId: string | null;
 }) {
   return (
-    <div className="rounded-2xl border border-[#2E7D5A]/30 bg-white shadow-soft p-8 text-center">
-      <CheckCircle2 className="h-12 w-12 text-[#2E7D5A] mx-auto mb-4" />
-      <h2 className="font-display text-2xl text-anthra">
+    <div className="rounded-2xl border border-[#22a06b]/30 bg-white shadow-soft p-8 text-center">
+      <CheckCircle2 className="h-12 w-12 text-[#22a06b] mx-auto mb-4" />
+      <h2 className="font-display text-2xl text-ink">
         Rendez-vous enregistré
       </h2>
-      <p className="mt-2 text-taupe">
+      <p className="mt-2 text-graphite">
         Pour le <strong>{slot.date}</strong> à <strong>{slot.time}</strong>.
       </p>
       {bookingId && (
@@ -402,8 +402,8 @@ function DoneStep({
           Référence : {bookingId}
         </p>
       )}
-      <div className="mt-6 rounded-xl bg-creme/50 border border-pierre px-4 py-3 text-sm text-taupe text-left max-w-md mx-auto inline-flex items-start gap-2">
-        <Info className="h-4 w-4 text-bleu mt-0.5 shrink-0" />
+      <div className="mt-6 rounded-xl bg-cream/50 border border-ink/10 px-4 py-3 text-sm text-graphite text-left max-w-md mx-auto inline-flex items-start gap-2">
+        <Info className="h-4 w-4 text-copper mt-0.5 shrink-0" />
         <span>
           Vous recevrez un email de confirmation. Si nous devons modifier le
           créneau, nous vous proposerons des alternatives.
@@ -412,7 +412,7 @@ function DoneStep({
       <div className="mt-6">
         <Link
           href="/"
-          className="inline-flex items-center gap-2 text-sm text-bleu hover:underline"
+          className="inline-flex items-center gap-2 text-sm text-copper hover:underline"
         >
           Retour à l&apos;accueil
         </Link>
@@ -430,7 +430,7 @@ function Field({
 }) {
   return (
     <div>
-      <div className="font-mono text-[10px] uppercase tracking-eyebrow text-taupe mb-1">
+      <div className="font-mono text-[10px] uppercase tracking-eyebrow text-graphite mb-1">
         {label}
       </div>
       {children}

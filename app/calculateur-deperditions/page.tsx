@@ -70,17 +70,17 @@ export default function CalculateurPage() {
   );
 
   return (
-    <div className="bg-creme min-h-screen">
+    <div className="bg-cream min-h-screen">
       <section className="pt-16 lg:pt-24 pb-12">
         <div className="container max-w-4xl">
-          <div className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-eyebrow text-bleu bg-bleu/10 border border-bleu/20 px-3 py-1 rounded-full mb-4">
+          <div className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-eyebrow text-copper bg-copper/10 border border-copper/20 px-3 py-1 rounded-full mb-4">
             <Calculator className="h-3 w-3" />
             Outil de pré-dimensionnement
           </div>
-          <h1 className="font-display text-display-md lg:text-display-lg text-anthra">
+          <h1 className="font-display text-display-md lg:text-display-lg text-ink">
             Quelle puissance de chauffage pour votre maison ?
           </h1>
-          <p className="mt-4 text-taupe max-w-2xl">
+          <p className="mt-4 text-graphite max-w-2xl">
             Estimez vos déperditions thermiques et la puissance de chaudière ou
             de pompe à chaleur recommandée. Outil indicatif — un bilan
             thermique complet reste nécessaire pour un devis précis.
@@ -92,7 +92,7 @@ export default function CalculateurPage() {
         <div className="container max-w-5xl">
           <div className="grid lg:grid-cols-12 gap-6">
             {/* Form */}
-            <div className="lg:col-span-7 rounded-3xl border border-pierre bg-white shadow-soft p-6 lg:p-8">
+            <div className="lg:col-span-7 rounded-3xl border border-ink/10 bg-white shadow-soft p-6 lg:p-8">
               <div className="grid gap-5">
                 <Field
                   label="Surface habitable"
@@ -109,7 +109,7 @@ export default function CalculateurPage() {
                       onChange={(e) => setSurface(Number(e.target.value))}
                       className="flex-1"
                     />
-                    <span className="font-display text-2xl tabular-nums text-anthra min-w-[80px] text-right">
+                    <span className="font-display text-2xl tabular-nums text-ink min-w-[80px] text-right">
                       {surface} m²
                     </span>
                   </div>
@@ -130,7 +130,7 @@ export default function CalculateurPage() {
                       onChange={(e) => setHeight(Number(e.target.value))}
                       className="flex-1"
                     />
-                    <span className="font-mono text-lg text-anthra min-w-[80px] text-right">
+                    <span className="font-mono text-lg text-ink min-w-[80px] text-right">
                       {height.toFixed(1)} m
                     </span>
                   </div>
@@ -151,11 +151,11 @@ export default function CalculateurPage() {
                           onClick={() => setIsolation(k)}
                           className={`text-left px-3 py-2 rounded-xl border transition-colors ${
                             isolation === k
-                              ? "border-bleu bg-bleu/8"
-                              : "border-pierre bg-creme hover:border-bleu/40"
+                              ? "border-copper bg-copper/8"
+                              : "border-ink/10 bg-cream hover:border-copper/40"
                           }`}
                         >
-                          <div className="text-sm font-medium text-anthra">
+                          <div className="text-sm font-medium text-ink">
                             {cfg.label}
                           </div>
                           <div className="text-[11px] text-muted">
@@ -177,7 +177,7 @@ export default function CalculateurPage() {
                     onChange={(e) =>
                       setCurrentEnergy(e.target.value as EnergySource)
                     }
-                    className="w-full bg-creme border border-pierre rounded-xl px-3 py-2.5 text-sm focus:border-bleu focus:outline-none"
+                    className="w-full bg-cream border border-ink/12 rounded-xl px-3 py-2.5 text-sm focus:border-copper focus:outline-none"
                   >
                     {Object.entries(ENERGY_LABELS).map(([k, label]) => (
                       <option key={k} value={k}>
@@ -196,7 +196,7 @@ export default function CalculateurPage() {
                     onChange={(e) =>
                       setTargetEnergy(e.target.value as EnergySource)
                     }
-                    className="w-full bg-creme border border-pierre rounded-xl px-3 py-2.5 text-sm focus:border-bleu focus:outline-none"
+                    className="w-full bg-cream border border-ink/12 rounded-xl px-3 py-2.5 text-sm focus:border-copper focus:outline-none"
                   >
                     <option value="pac">Pompe à chaleur</option>
                     <option value="gaz">Gaz à condensation</option>
@@ -216,12 +216,12 @@ export default function CalculateurPage() {
                         checked={withDhw}
                         onChange={(e) => setWithDhw(e.target.checked)}
                       />
-                      <span className="text-sm text-anthra">
+                      <span className="text-sm text-ink">
                         Inclure la production ECS
                       </span>
                     </label>
                     {withDhw && (
-                      <div className="ml-auto flex items-center gap-2 text-sm text-taupe">
+                      <div className="ml-auto flex items-center gap-2 text-sm text-graphite">
                         <span className="font-mono">{occupants}</span>
                         <span>personnes</span>
                         <input
@@ -243,20 +243,20 @@ export default function CalculateurPage() {
 
             {/* Result */}
             <div className="lg:col-span-5 grid gap-4">
-              <div className="rounded-3xl bg-navy text-creme p-6 shadow-lift">
-                <div className="font-mono text-[10px] uppercase tracking-eyebrow text-bleu">
+              <div className="rounded-3xl bg-ink text-cream p-6 shadow-lift">
+                <div className="font-mono text-[10px] uppercase tracking-eyebrow text-copper">
                   Puissance recommandée
                 </div>
                 <div className="mt-2 font-display text-5xl tabular-nums">
                   {result.totalKW} kW
                 </div>
-                <div className="text-xs text-creme/70 mt-2">
+                <div className="text-xs text-cream/70 mt-2">
                   Dont {result.recommendedKW} kW chauffage
                   {result.dhwKW > 0 && (
                     <> · {result.dhwKW} kW ECS</>
                   )}
                 </div>
-                <div className="mt-4 pt-4 border-t border-creme/15 text-xs text-creme/80 grid gap-1">
+                <div className="mt-4 pt-4 border-t border-cream/15 text-xs text-cream/80 grid gap-1">
                   <div className="flex justify-between">
                     <span>Volume chauffé</span>
                     <span className="font-mono">{result.volumeM3} m³</span>
@@ -278,22 +278,22 @@ export default function CalculateurPage() {
                 <div
                   className={`rounded-3xl border p-6 shadow-soft ${
                     result.savingsEur > 0
-                      ? "bg-[#2E7D5A]/8 border-[#2E7D5A]/30"
-                      : "bg-creme border-pierre"
+                      ? "bg-[#22a06b]/8 border-[#22a06b]/30"
+                      : "bg-cream border-ink/10"
                   }`}
                 >
-                  <div className="font-mono text-[10px] uppercase tracking-eyebrow text-bleu mb-1">
+                  <div className="font-mono text-[10px] uppercase tracking-eyebrow text-copper mb-1">
                     Économies projetées / an
                   </div>
                   <div
                     className={`font-display text-3xl tabular-nums ${
-                      result.savingsEur > 0 ? "text-[#2E7D5A]" : "text-anthra"
+                      result.savingsEur > 0 ? "text-[#22a06b]" : "text-ink"
                     }`}
                   >
                     {result.savingsEur > 0 ? "+" : ""}
                     {formatEur(result.savingsEur)}
                   </div>
-                  <div className="text-xs text-taupe mt-2 grid gap-1">
+                  <div className="text-xs text-graphite mt-2 grid gap-1">
                     <div className="flex justify-between">
                       <span>Coût actuel ({ENERGY_LABELS[currentEnergy]})</span>
                       <span className="font-mono">
@@ -308,8 +308,8 @@ export default function CalculateurPage() {
                     </div>
                   </div>
                   {result.co2SavedKgPerYear && result.co2SavedKgPerYear > 0 && (
-                    <div className="mt-3 pt-3 border-t border-pierre text-[11px] text-taupe inline-flex items-center gap-1">
-                      <Leaf className="h-3 w-3 text-[#2E7D5A]" />
+                    <div className="mt-3 pt-3 border-t border-ink/10 text-[11px] text-graphite inline-flex items-center gap-1">
+                      <Leaf className="h-3 w-3 text-[#22a06b]" />
                       ~{Math.round(result.co2SavedKgPerYear).toLocaleString("fr-FR")}{" "}
                       kg CO₂ évités / an
                     </div>
@@ -317,12 +317,12 @@ export default function CalculateurPage() {
                 </div>
               )}
 
-              <div className="rounded-3xl border border-bleu/30 bg-bleu/5 p-5">
-                <div className="font-mono text-[10px] uppercase tracking-eyebrow text-bleu mb-2 inline-flex items-center gap-1">
+              <div className="rounded-3xl border border-copper/30 bg-copper/5 p-5">
+                <div className="font-mono text-[10px] uppercase tracking-eyebrow text-copper mb-2 inline-flex items-center gap-1">
                   <Info className="h-3 w-3" />
                   Méthode
                 </div>
-                <p className="text-xs text-taupe leading-relaxed">
+                <p className="text-xs text-graphite leading-relaxed">
                   Calcul simplifié : Volume × G × ΔT. Le coefficient G dépend
                   de l&apos;isolation (voir norme). Pour un dimensionnement
                   réel, on procède à une étude par paroi avec valeurs U et
@@ -333,13 +333,13 @@ export default function CalculateurPage() {
 
               <Link
                 href={`/devis?from=deperditions&service=${targetEnergy === "pac" ? "pac" : "chauffage"}&surface=${surface}&energie=${currentEnergy}`}
-                className="rounded-3xl bg-bleu text-creme p-6 shadow-soft text-center hover:bg-terracotta transition-colors group"
+                className="rounded-3xl bg-copper text-cream p-6 shadow-soft text-center hover:bg-ember transition-colors group"
               >
                 <Thermometer className="h-7 w-7 mx-auto mb-2" />
                 <div className="font-display text-xl">
                   Demander un devis détaillé
                 </div>
-                <p className="text-xs text-creme/80 mt-1">
+                <p className="text-xs text-cream/80 mt-1">
                   Bilan thermique précis sous 24 h
                 </p>
                 <span className="mt-3 inline-flex items-center gap-1 text-xs font-mono">

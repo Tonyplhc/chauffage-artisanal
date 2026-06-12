@@ -56,21 +56,21 @@ const LINES = [
 
 export function PublicTransport() {
   return (
-    <section className="py-14 bg-creme border-y border-pierre">
+    <section className="py-14 bg-linen border-y border-ink/8">
       <div className="container max-w-4xl">
         <div className="mb-8">
           <Eyebrow number="🚌">Accès en transport public</Eyebrow>
-          <h2 className="mt-3 font-display text-2xl lg:text-3xl text-anthra tracking-tight">
-            Peppange est <em className="not-italic text-bleu">gratuitement</em> accessible
+          <h2 className="mt-3 font-display text-2xl lg:text-3xl text-ink tracking-tight">
+            Peppange est <em className="not-italic text-copper">gratuitement</em> accessible
             depuis Luxembourg-Ville.
           </h2>
-          <p className="mt-3 text-sm text-taupe leading-relaxed">
+          <p className="mt-3 text-sm text-graphite leading-relaxed">
             Le transport public est gratuit au Luxembourg depuis le{" "}
             <a
               href="https://gouvernement.lu/fr/actualites/toutes_actualites/communiques/2025/02-fevrier/28-bilan-transport-gratuit.html"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-bleu hover:underline"
+              className="text-copper hover:underline"
             >
               29 février 2020
             </a>{" "}
@@ -81,10 +81,10 @@ export function PublicTransport() {
 
         <div className="grid md:grid-cols-2 gap-6">
           {/* Arrêts de bus */}
-          <div className="rounded-2xl border border-pierre bg-white p-6">
+          <div className="rounded-2xl border border-ink/10 bg-white p-6">
             <div className="flex items-center gap-2 mb-4">
-              <Bus className="h-5 w-5 text-bleu" />
-              <h3 className="font-display text-lg text-anthra tracking-tight">
+              <Bus className="h-5 w-5 text-copper" />
+              <h3 className="font-display text-lg text-ink tracking-tight">
                 Arrêts à Peppange
               </h3>
             </div>
@@ -92,18 +92,18 @@ export function PublicTransport() {
               {STOPS.map((s) => (
                 <li
                   key={s.name}
-                  className="pb-3 border-b border-pierre last:border-0 last:pb-0"
+                  className="pb-3 border-b border-ink/8 last:border-0 last:pb-0"
                 >
                   <div className="flex items-start gap-2">
-                    <MapPin className="h-3.5 w-3.5 text-bleu mt-1 shrink-0" />
+                    <MapPin className="h-3.5 w-3.5 text-copper mt-1 shrink-0" />
                     <div className="min-w-0">
-                      <div className="text-sm font-medium text-anthra">{s.name}</div>
-                      <div className="text-xs text-taupe">{s.detail}</div>
+                      <div className="text-sm font-medium text-ink">{s.name}</div>
+                      <div className="text-xs text-graphite">{s.detail}</div>
                       <div className="mt-1.5 flex gap-1 flex-wrap">
                         {s.lines.map((l) => (
                           <span
                             key={l}
-                            className="text-[10px] font-mono uppercase tracking-eyebrow bg-bleu/10 border border-bleu/30 text-bleu px-1.5 py-0.5 rounded-full"
+                            className="text-[10px] font-mono uppercase tracking-eyebrow bg-copper/10 border border-copper/30 text-copper px-1.5 py-0.5 rounded-full"
                           >
                             {l}
                           </span>
@@ -117,10 +117,10 @@ export function PublicTransport() {
           </div>
 
           {/* Lignes */}
-          <div className="rounded-2xl border border-pierre bg-white p-6">
+          <div className="rounded-2xl border border-ink/10 bg-white p-6">
             <div className="flex items-center gap-2 mb-4">
-              <Bus className="h-5 w-5 text-bleu" />
-              <h3 className="font-display text-lg text-anthra tracking-tight">
+              <Bus className="h-5 w-5 text-copper" />
+              <h3 className="font-display text-lg text-ink tracking-tight">
                 Lignes desservant
               </h3>
             </div>
@@ -128,15 +128,15 @@ export function PublicTransport() {
               {LINES.map((l) => (
                 <li
                   key={l.code}
-                  className="pb-3 border-b border-pierre last:border-0 last:pb-0"
+                  className="pb-3 border-b border-ink/8 last:border-0 last:pb-0"
                 >
                   <div className="flex items-start gap-3">
-                    <span className="font-mono text-xs font-bold bg-navy text-creme px-2 py-1 rounded shrink-0 min-w-[40px] text-center">
+                    <span className="font-mono text-xs font-bold bg-ink text-cream px-2 py-1 rounded shrink-0 min-w-[40px] text-center">
                       {l.code}
                     </span>
                     <div className="min-w-0">
-                      <div className="text-sm font-medium text-anthra">{l.label}</div>
-                      <div className="text-xs text-taupe">{l.type}</div>
+                      <div className="text-sm font-medium text-ink">{l.label}</div>
+                      <div className="text-xs text-graphite">{l.type}</div>
                     </div>
                   </div>
                 </li>
@@ -146,14 +146,14 @@ export function PublicTransport() {
         </div>
 
         {/* Train CFL */}
-        <div className="mt-6 p-5 rounded-2xl border border-bleu/30 bg-white">
+        <div className="mt-6 p-5 rounded-2xl border border-copper/30 bg-white">
           <div className="flex items-start gap-3">
-            <Train className="h-5 w-5 text-bleu mt-0.5 shrink-0" />
+            <Train className="h-5 w-5 text-copper mt-0.5 shrink-0" />
             <div>
-              <div className="font-display text-base text-anthra">
+              <div className="font-display text-base text-ink">
                 Gare CFL la plus proche : Berchem
               </div>
-              <p className="mt-1 text-sm text-taupe">
+              <p className="mt-1 text-sm text-graphite">
                 ~1 km de l&apos;atelier (14 min à pied). Liaison directe vers
                 Luxembourg-Gare centrale en ~10-13 min, fréquence soutenue.
               </p>
@@ -161,7 +161,7 @@ export function PublicTransport() {
                 href="https://www.cfl.lu/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-2 inline-flex items-center gap-1.5 text-xs text-bleu hover:underline"
+                className="mt-2 inline-flex items-center gap-1.5 text-xs text-copper hover:underline"
               >
                 Horaires CFL <ExternalLink className="h-3 w-3" />
               </a>
@@ -175,7 +175,7 @@ export function PublicTransport() {
             href="https://www.mobiliteit.lu/"
             target="_blank"
             rel="noopener noreferrer"
-            className="underline hover:text-bleu"
+            className="underline hover:text-copper"
           >
             mobiliteit.lu
           </a>{" "}
@@ -184,7 +184,7 @@ export function PublicTransport() {
             href="https://www.roeser.lu/p/208/2"
             target="_blank"
             rel="noopener noreferrer"
-            className="underline hover:text-bleu"
+            className="underline hover:text-copper"
           >
             commune de Roeser
           </a>

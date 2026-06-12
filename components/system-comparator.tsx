@@ -38,17 +38,17 @@ export type Scenario = {
 };
 
 const DIM_LEVELS = [
-  { from: 0, to: 1, label: "Faible", color: "#C0392B" },
-  { from: 1, to: 2, label: "Moyen-faible", color: "#C0392B" },
-  { from: 2, to: 3, label: "Moyen", color: "#0B57A0" },
-  { from: 3, to: 4, label: "Bon", color: "#2E7D5A" },
-  { from: 4, to: 5, label: "Excellent", color: "#2E7D5A" },
+  { from: 0, to: 1, label: "Faible", color: "#dc5a28" },
+  { from: 1, to: 2, label: "Moyen-faible", color: "#dc5a28" },
+  { from: 2, to: 3, label: "Moyen", color: "#b86a36" },
+  { from: 3, to: 4, label: "Bon", color: "#22a06b" },
+  { from: 4, to: 5, label: "Excellent", color: "#22a06b" },
 ];
 
 function dimColor(v: number): string {
-  if (v <= 1.5) return "#C0392B";
-  if (v <= 3) return "#0B57A0";
-  return "#2E7D5A";
+  if (v <= 1.5) return "#dc5a28";
+  if (v <= 3) return "#b86a36";
+  return "#22a06b";
 }
 
 export function SystemComparator({
@@ -70,7 +70,7 @@ export function SystemComparator({
   const active = scenarios.find((s) => s.id === activeId) ?? scenarios[0];
 
   return (
-    <section className="py-14 lg:py-20 bg-creme border-y border-pierre">
+    <section className="py-14 lg:py-20 bg-linen border-y border-ink/8">
       <div className="container">
         <div className="max-w-3xl mb-10">
           <Eyebrow number={number}>{eyebrow}</Eyebrow>
@@ -78,13 +78,13 @@ export function SystemComparator({
             <SectionTitle className="mt-4">
               {title ?? (
                 <>
-                  Ce qui change <em className="not-italic text-bleu">concrètement</em>.
+                  Ce qui change <em className="not-italic text-copper">concrètement</em>.
                 </>
               )}
             </SectionTitle>
           </Reveal>
           <Reveal delay={1}>
-            <p className="mt-5 text-taupe leading-relaxed">
+            <p className="mt-5 text-graphite leading-relaxed">
               {intro ??
                 "Lecture qualitative — pas de chiffres marketing. Les performances réelles dépendent du dimensionnement et de la pose."}
             </p>
@@ -100,8 +100,8 @@ export function SystemComparator({
                 onClick={() => setActiveId(s.id)}
                 className={`px-4 py-2 rounded-full text-sm font-mono uppercase tracking-eyebrow border transition-all ${
                   activeId === s.id
-                    ? "bg-navy text-creme border-anthra"
-                    : "bg-white text-taupe border-pierre hover:border-bleu/40 hover:text-anthra"
+                    ? "bg-ink text-cream border-ink"
+                    : "bg-white text-graphite border-ink/15 hover:border-copper/40 hover:text-ink"
                 }`}
               >
                 {s.label}
@@ -121,18 +121,18 @@ export function SystemComparator({
             className="grid md:grid-cols-2 gap-4 lg:gap-6"
           >
             {/* Avant */}
-            <div className="p-6 lg:p-8 rounded-3xl border border-pierre bg-white relative">
+            <div className="p-6 lg:p-8 rounded-3xl border border-ink/15 bg-white relative">
               <div className="font-mono text-[10px] uppercase tracking-eyebrow text-muted mb-3">
                 Ancien système
               </div>
               <div className="flex items-start gap-3 mb-6">
-                <CircleAlert className="h-5 w-5 text-taupe mt-1 shrink-0" />
+                <CircleAlert className="h-5 w-5 text-graphite mt-1 shrink-0" />
                 <div>
-                  <h3 className="font-display text-2xl text-anthra tracking-tight">
+                  <h3 className="font-display text-2xl text-ink tracking-tight">
                     {active.before.title}
                   </h3>
                   {active.before.subtitle && (
-                    <p className="mt-1 text-sm text-taupe">{active.before.subtitle}</p>
+                    <p className="mt-1 text-sm text-graphite">{active.before.subtitle}</p>
                   )}
                 </div>
               </div>
@@ -153,18 +153,18 @@ export function SystemComparator({
             <div className="hidden md:flex absolute -mt-3" />
 
             {/* Après */}
-            <div className="p-6 lg:p-8 rounded-3xl border-2 border-bleu/40 bg-white relative">
-              <div className="font-mono text-[10px] uppercase tracking-eyebrow text-bleu mb-3">
+            <div className="p-6 lg:p-8 rounded-3xl border-2 border-copper/40 bg-white relative">
+              <div className="font-mono text-[10px] uppercase tracking-eyebrow text-copper mb-3">
                 Nouveau système
               </div>
               <div className="flex items-start gap-3 mb-6">
-                <CheckCircle2 className="h-5 w-5 text-bleu mt-1 shrink-0" />
+                <CheckCircle2 className="h-5 w-5 text-copper mt-1 shrink-0" />
                 <div>
-                  <h3 className="font-display text-2xl text-anthra tracking-tight">
+                  <h3 className="font-display text-2xl text-ink tracking-tight">
                     {active.after.title}
                   </h3>
                   {active.after.subtitle && (
-                    <p className="mt-1 text-sm text-taupe">{active.after.subtitle}</p>
+                    <p className="mt-1 text-sm text-graphite">{active.after.subtitle}</p>
                   )}
                 </div>
               </div>
@@ -190,15 +190,15 @@ export function SystemComparator({
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="mt-6 p-5 lg:p-6 rounded-2xl bg-white border border-pierre"
+            className="mt-6 p-5 lg:p-6 rounded-2xl bg-white border border-ink/10"
           >
-            <div className="font-mono text-[10px] uppercase tracking-eyebrow text-bleu mb-3">
+            <div className="font-mono text-[10px] uppercase tracking-eyebrow text-copper mb-3">
               Ce que vous gagnez concrètement
             </div>
             <ul className="grid sm:grid-cols-2 gap-2.5">
               {active.takeaways.map((t) => (
-                <li key={t} className="flex items-start gap-2.5 text-sm text-taupe">
-                  <CheckCircle2 className="h-4 w-4 text-bleu mt-0.5 shrink-0" />
+                <li key={t} className="flex items-start gap-2.5 text-sm text-graphite">
+                  <CheckCircle2 className="h-4 w-4 text-copper mt-0.5 shrink-0" />
                   <span>{t}</span>
                 </li>
               ))}
@@ -226,7 +226,7 @@ function DimRow({
   return (
     <div>
       <div className="flex items-center justify-between mb-1.5">
-        <span className="text-xs text-taupe">{label}</span>
+        <span className="text-xs text-graphite">{label}</span>
         <span
           className="text-xs font-mono uppercase tracking-eyebrow"
           style={{ color }}
@@ -234,7 +234,7 @@ function DimRow({
           {tier}
         </span>
       </div>
-      <div className="h-1.5 rounded-full bg-sable/60 overflow-hidden">
+      <div className="h-1.5 rounded-full bg-ink/5 overflow-hidden">
         <motion.div
           initial={{ width: 0 }}
           animate={{ width: `${pct}%` }}

@@ -56,24 +56,24 @@ export default function EconomiesEnergiePage() {
     setInput((s) => ({ ...s, [k]: v }));
 
   return (
-    <div className="min-h-screen bg-creme">
+    <div className="min-h-screen bg-cream">
       {/* Hero */}
-      <section className="relative pt-12 lg:pt-16 pb-10 lg:pb-12 bg-creme border-b border-pierre overflow-hidden">
+      <section className="relative pt-12 lg:pt-16 pb-10 lg:pb-12 bg-cream border-b border-ink/8 overflow-hidden">
         <div
           className="absolute inset-0 opacity-[0.04]"
           style={{
             backgroundImage:
-              "radial-gradient(circle at 20% 30%, rgba(11,87,160,0.35), transparent 55%), radial-gradient(circle at 80% 70%, rgba(11,87,160,0.18), transparent 55%)",
+              "radial-gradient(circle at 20% 30%, rgba(184,106,54,0.35), transparent 55%), radial-gradient(circle at 80% 70%, rgba(184,106,54,0.18), transparent 55%)",
           }}
         />
         <div className="container relative">
           <div className="max-w-3xl">
             <Eyebrow number="OUTIL">Économies d&apos;énergie</Eyebrow>
-            <h1 className="mt-4 font-display text-display-xl tracking-tightest text-balance text-anthra">
+            <h1 className="mt-4 font-display text-display-xl tracking-tightest text-balance text-ink">
               Combien vous pouvez{" "}
-              <em className="not-italic text-bleu">économiser par an</em> ?
+              <em className="not-italic text-copper">économiser par an</em> ?
             </h1>
-            <p className="mt-5 text-lg lg:text-xl text-taupe leading-relaxed text-balance">
+            <p className="mt-5 text-lg lg:text-xl text-graphite leading-relaxed text-balance">
               4 questions, 3 scénarios calculés en temps réel : pompe à chaleur, chauffe-eau
               thermodynamique, panneaux photovoltaïques. Ordres de grandeur transparents — pas
               de promesse, juste de la pédagogie.
@@ -87,11 +87,11 @@ export default function EconomiesEnergiePage() {
         <div className="container grid lg:grid-cols-12 gap-8 items-start">
           {/* Inputs sticky */}
           <aside className="lg:col-span-4 lg:sticky lg:top-28">
-            <div className="rounded-3xl border border-pierre bg-white shadow-soft p-6 lg:p-7">
-              <div className="font-mono text-[10px] uppercase tracking-eyebrow text-bleu">
+            <div className="rounded-3xl border border-ink/10 bg-white shadow-soft p-6 lg:p-7">
+              <div className="font-mono text-[10px] uppercase tracking-eyebrow text-copper">
                 Votre situation
               </div>
-              <h2 className="mt-2 font-display text-2xl text-anthra tracking-tight">
+              <h2 className="mt-2 font-display text-2xl text-ink tracking-tight">
                 4 questions rapides
               </h2>
 
@@ -136,7 +136,7 @@ export default function EconomiesEnergiePage() {
                 <div>
                   <FieldLabel>
                     Surface chauffée
-                    <span className="font-display text-2xl text-bleu ml-2">
+                    <span className="font-display text-2xl text-copper ml-2">
                       {input.surfaceM2} m²
                     </span>
                   </FieldLabel>
@@ -147,7 +147,7 @@ export default function EconomiesEnergiePage() {
                     step={10}
                     value={input.surfaceM2}
                     onChange={(e) => update("surfaceM2", Number(e.target.value))}
-                    className="mt-3 w-full accent-bleu"
+                    className="mt-3 w-full accent-copper"
                     aria-label="Surface chauffée en mètres carrés"
                     aria-valuemin={40}
                     aria-valuemax={400}
@@ -164,7 +164,7 @@ export default function EconomiesEnergiePage() {
                 <div>
                   <FieldLabel>
                     Nombre d&apos;occupants
-                    <span className="font-display text-2xl text-bleu ml-2">
+                    <span className="font-display text-2xl text-copper ml-2">
                       {input.occupants}
                     </span>
                   </FieldLabel>
@@ -175,7 +175,7 @@ export default function EconomiesEnergiePage() {
                     step={1}
                     value={input.occupants}
                     onChange={(e) => update("occupants", Number(e.target.value))}
-                    className="mt-3 w-full accent-bleu"
+                    className="mt-3 w-full accent-copper"
                     aria-label="Nombre d'occupants du foyer"
                     aria-valuemin={1}
                     aria-valuemax={8}
@@ -189,8 +189,8 @@ export default function EconomiesEnergiePage() {
                 </div>
               </div>
 
-              <p className="mt-6 pt-6 border-t border-pierre text-[11px] text-muted leading-relaxed">
-                <Info className="inline h-3 w-3 text-bleu mr-1" />
+              <p className="mt-6 pt-6 border-t border-ink/8 text-[11px] text-muted leading-relaxed">
+                <Info className="inline h-3 w-3 text-copper mr-1" />
                 Hypothèses 2026 Luxembourg, prudentes. Ordres de grandeur pour orienter — pas
                 un engagement.
               </p>
@@ -205,12 +205,12 @@ export default function EconomiesEnergiePage() {
             aria-label="Résultats du calculateur"
           >
             {/* Total combiné */}
-            <div className="rounded-3xl border border-bleu/30 bg-gradient-to-br from-creme to-white p-7 lg:p-8 shadow-soft">
+            <div className="rounded-3xl border border-copper/30 bg-gradient-to-br from-cream to-white p-7 lg:p-8 shadow-soft">
               <div className="flex items-start justify-between flex-wrap gap-3 mb-1">
-                <div className="font-mono text-[10px] uppercase tracking-eyebrow text-bleu">
+                <div className="font-mono text-[10px] uppercase tracking-eyebrow text-copper">
                   Potentiel total — scénarios cumulés
                 </div>
-                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-bleu/10 border border-bleu/30 text-[10px] font-mono uppercase tracking-eyebrow text-bleu">
+                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-copper/10 border border-copper/30 text-[10px] font-mono uppercase tracking-eyebrow text-copper">
                   <Sparkles className="h-3 w-3" />
                   Hypothèses prudentes
                 </span>
@@ -221,7 +221,7 @@ export default function EconomiesEnergiePage() {
                   label="Économies / an"
                   value={`${result.combinedAnnualSavings.toLocaleString("fr-LU")} €`}
                   icon={<TrendingDown className="h-4 w-4" />}
-                  bleu
+                  copper
                 />
                 <Metric
                   label="CO₂ évité / an"
@@ -235,7 +235,7 @@ export default function EconomiesEnergiePage() {
                 />
               </div>
 
-              <p className="mt-5 text-sm text-taupe leading-relaxed">
+              <p className="mt-5 text-sm text-graphite leading-relaxed">
                 Cumul des scénarios applicables à votre profil. Chaque scénario peut être
                 déployé indépendamment — on commence souvent par celui dont le ROI est le plus
                 court.
@@ -250,17 +250,17 @@ export default function EconomiesEnergiePage() {
             </div>
 
             {/* CTA final */}
-            <div className="rounded-3xl bg-navy text-creme p-8 lg:p-10">
+            <div className="rounded-3xl bg-charcoal text-cream p-8 lg:p-10">
               <div className="grid lg:grid-cols-12 gap-6 items-center">
                 <div className="lg:col-span-8">
-                  <div className="font-mono text-[10px] uppercase tracking-eyebrow text-sable">
+                  <div className="font-mono text-[10px] uppercase tracking-eyebrow text-copper-200">
                     Passer du chiffre au projet
                   </div>
                   <h3 className="mt-3 font-display text-2xl lg:text-3xl tracking-tight">
                     Étude personnalisée{" "}
-                    <em className="not-italic text-sable">gratuite</em> sous 24h.
+                    <em className="not-italic text-copper-200">gratuite</em> sous 24h.
                   </h3>
-                  <p className="mt-3 text-creme/75 leading-relaxed">
+                  <p className="mt-3 text-cream/75 leading-relaxed">
                     Notre bureau d&apos;études affine les chiffres avec votre dossier réel
                     (isolation, exposition, conso historique) et prépare le volet technique
                     Klimabonus.
@@ -269,14 +269,14 @@ export default function EconomiesEnergiePage() {
                 <div className="lg:col-span-4 flex flex-col gap-2">
                   <Link
                     href={`/devis?from=economies-energie&surface=${input.surfaceM2}&energie=${input.currentEnergy}&batiment=${input.buildingType}`}
-                    className="inline-flex items-center justify-between gap-2 rounded-full bg-creme text-navy px-6 py-3.5 text-sm font-medium hover:bg-bleu hover:text-creme transition-colors group"
+                    className="inline-flex items-center justify-between gap-2 rounded-full bg-cream text-charcoal px-6 py-3.5 text-sm font-medium hover:bg-copper hover:text-cream transition-colors group"
                   >
                     Demander un devis
                     <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                   </Link>
                   <Link
                     href="/primes-aides#simulateur"
-                    className="inline-flex items-center justify-between gap-2 rounded-full bg-terracotta/15 border border-terracotta/40 text-creme px-6 py-3.5 text-sm font-medium hover:bg-terracotta/25 transition-colors"
+                    className="inline-flex items-center justify-between gap-2 rounded-full bg-ember/15 border border-ember/40 text-cream px-6 py-3.5 text-sm font-medium hover:bg-ember/25 transition-colors"
                   >
                     Vérifier mon Klimabonus
                     <ArrowUpRight className="h-4 w-4" />
@@ -286,11 +286,11 @@ export default function EconomiesEnergiePage() {
             </div>
 
             {/* Disclaimer transparence */}
-            <div className="rounded-2xl border border-pierre bg-white p-6">
-              <div className="font-mono text-[10px] uppercase tracking-eyebrow text-bleu mb-2">
+            <div className="rounded-2xl border border-ink/10 bg-white p-6">
+              <div className="font-mono text-[10px] uppercase tracking-eyebrow text-copper mb-2">
                 Transparence des hypothèses
               </div>
-              <p className="text-sm text-taupe leading-relaxed">
+              <p className="text-sm text-graphite leading-relaxed">
                 Les chiffres ci-dessus s&apos;appuient sur des hypothèses prudentes 2026 :
                 prix kWh gaz 0,11 €, fioul 0,13 €, électricité 0,22 €, bois 0,06 € · SCOP PAC 3,5 · COP
                 chauffe-eau thermo 3,0 · production PV 950 kWh/kWc/an · autoconsommation 40 %
@@ -310,7 +310,7 @@ export default function EconomiesEnergiePage() {
 
 function FieldLabel({ children }: { children: React.ReactNode }) {
   return (
-    <label className="block font-mono text-[10px] uppercase tracking-eyebrow text-taupe">
+    <label className="block font-mono text-[10px] uppercase tracking-eyebrow text-graphite">
       {children}
     </label>
   );
@@ -332,8 +332,8 @@ function Toggle({
       onClick={onClick}
       className={`px-3 py-3 rounded-xl border text-sm font-medium transition-all inline-flex items-center justify-center gap-2 ${
         active
-          ? "bg-navy text-creme border-anthra shadow-soft"
-          : "bg-creme text-taupe border-pierre hover:border-bleu/40"
+          ? "bg-ink text-cream border-ink shadow-soft"
+          : "bg-cream text-graphite border-ink/10 hover:border-copper/40"
       }`}
     >
       {icon}
@@ -347,13 +347,13 @@ function Metric({
   value,
   icon,
   hint,
-  bleu,
+  copper,
 }: {
   label: string;
   value: string;
   icon?: React.ReactNode;
   hint?: string;
-  bleu?: boolean;
+  copper?: boolean;
 }) {
   return (
     <div>
@@ -363,7 +363,7 @@ function Metric({
       </div>
       <div
         className={`mt-2 font-display text-3xl lg:text-4xl tracking-tight ${
-          bleu ? "text-bleu" : "text-anthra"
+          copper ? "text-copper" : "text-ink"
         }`}
       >
         {value}
@@ -379,22 +379,22 @@ function ScenarioCard({ scenario }: { scenario: ScenarioResult }) {
 
   if (!scenario.applicable) {
     return (
-      <div className="rounded-3xl border border-pierre bg-white p-6 lg:p-7 opacity-90">
+      <div className="rounded-3xl border border-ink/10 bg-white p-6 lg:p-7 opacity-90">
         <div className="flex items-start gap-4">
-          <span className="grid place-items-center h-12 w-12 rounded-full bg-sable/60 border border-pierre shrink-0">
-            <Icon className="h-5 w-5 text-taupe" />
+          <span className="grid place-items-center h-12 w-12 rounded-full bg-ink/5 border border-ink/10 shrink-0">
+            <Icon className="h-5 w-5 text-graphite" />
           </span>
           <div className="min-w-0 flex-1">
             <div className="flex items-center gap-2">
-              <h3 className="font-display text-xl text-anthra tracking-tight">
+              <h3 className="font-display text-xl text-ink tracking-tight">
                 {scenario.label}
               </h3>
-              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-sable/60 border border-pierre text-[10px] font-mono uppercase tracking-eyebrow text-muted">
+              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-ink/5 border border-ink/15 text-[10px] font-mono uppercase tracking-eyebrow text-muted">
                 <AlertCircle className="h-3 w-3" />
                 Non applicable
               </span>
             </div>
-            <p className="mt-1.5 text-sm text-taupe leading-relaxed">
+            <p className="mt-1.5 text-sm text-graphite leading-relaxed">
               {scenario.notes[0]}
             </p>
           </div>
@@ -404,18 +404,18 @@ function ScenarioCard({ scenario }: { scenario: ScenarioResult }) {
   }
 
   return (
-    <div className="rounded-3xl border border-pierre bg-white p-6 lg:p-8 hover:border-bleu/40 hover:shadow-lift transition-all">
+    <div className="rounded-3xl border border-ink/10 bg-white p-6 lg:p-8 hover:border-copper/40 hover:shadow-lift transition-all">
       <div className="flex items-start gap-4 mb-5">
-        <span className="grid place-items-center h-12 w-12 rounded-full bg-bleu/12 border border-bleu/30 shrink-0">
-          <Icon className="h-5 w-5 text-bleu" />
+        <span className="grid place-items-center h-12 w-12 rounded-full bg-copper/12 border border-copper/30 shrink-0">
+          <Icon className="h-5 w-5 text-copper" />
         </span>
         <div className="min-w-0 flex-1">
-          <h3 className="font-display text-2xl text-anthra tracking-tight">{scenario.label}</h3>
-          <p className="mt-1 text-sm text-taupe leading-relaxed">{scenario.description}</p>
+          <h3 className="font-display text-2xl text-ink tracking-tight">{scenario.label}</h3>
+          <p className="mt-1 text-sm text-graphite leading-relaxed">{scenario.description}</p>
         </div>
       </div>
 
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-5 gap-y-4 pt-5 border-t border-pierre">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-5 gap-y-4 pt-5 border-t border-ink/8">
         <div>
           <div className="text-[10px] font-mono uppercase tracking-eyebrow text-muted">
             Économie / an
@@ -428,7 +428,7 @@ function ScenarioCard({ scenario }: { scenario: ScenarioResult }) {
           <div className="text-[10px] font-mono uppercase tracking-eyebrow text-muted">
             CO₂ évité
           </div>
-          <div className="mt-1.5 font-display text-2xl text-anthra">
+          <div className="mt-1.5 font-display text-2xl text-ink">
             {scenario.co2Saved.toLocaleString("fr-LU")} kg
           </div>
         </div>
@@ -436,7 +436,7 @@ function ScenarioCard({ scenario }: { scenario: ScenarioResult }) {
           <div className="text-[10px] font-mono uppercase tracking-eyebrow text-muted">
             Investissement net
           </div>
-          <div className="mt-1.5 font-display text-2xl text-anthra">
+          <div className="mt-1.5 font-display text-2xl text-ink">
             {scenario.netInvestment.toLocaleString("fr-LU")} €
           </div>
           <div className="text-[11px] text-muted">
@@ -457,21 +457,21 @@ function ScenarioCard({ scenario }: { scenario: ScenarioResult }) {
       </div>
 
       <details className="mt-5 group">
-        <summary className="cursor-pointer text-[11px] font-mono uppercase tracking-eyebrow text-taupe hover:text-bleu transition-colors inline-flex items-center gap-1.5">
+        <summary className="cursor-pointer text-[11px] font-mono uppercase tracking-eyebrow text-graphite hover:text-copper transition-colors inline-flex items-center gap-1.5">
           <Info className="h-3 w-3" />
           Hypothèses du calcul
         </summary>
-        <ul className="mt-3 space-y-1.5 pl-4 text-xs text-taupe">
+        <ul className="mt-3 space-y-1.5 pl-4 text-xs text-graphite">
           {scenario.notes.map((n, i) => (
             <li key={i} className="flex items-start gap-2">
-              <Check className="h-3 w-3 text-bleu mt-0.5 shrink-0" />
+              <Check className="h-3 w-3 text-copper mt-0.5 shrink-0" />
               <span>{n}</span>
             </li>
           ))}
         </ul>
       </details>
 
-      <div className="mt-5 pt-5 border-t border-pierre flex flex-wrap items-center justify-between gap-3">
+      <div className="mt-5 pt-5 border-t border-ink/8 flex flex-wrap items-center justify-between gap-3">
         <div className="text-xs text-muted">
           Investissement brut :{" "}
           <span className="text-perte font-semibold">
@@ -480,7 +480,7 @@ function ScenarioCard({ scenario }: { scenario: ScenarioResult }) {
         </div>
         <Link
           href={ctaHref}
-          className="inline-flex items-center gap-2 rounded-full bg-navy text-creme px-4 py-2.5 text-xs font-mono uppercase tracking-eyebrow hover:bg-bleu transition-colors group"
+          className="inline-flex items-center gap-2 rounded-full bg-ink text-cream px-4 py-2.5 text-xs font-mono uppercase tracking-eyebrow hover:bg-copper transition-colors group"
         >
           Étudier ce scénario
           <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-0.5" />

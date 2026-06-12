@@ -90,13 +90,13 @@ export default async function RecapPage({
   });
 
   return (
-    <main className="min-h-screen bg-creme py-12 lg:py-16 print:bg-white print:py-0">
+    <main className="min-h-screen bg-cream py-12 lg:py-16 print:bg-white print:py-0">
       <div className="container max-w-3xl">
         {/* Toolbar — masquée à l'impression */}
         <div className="flex items-center justify-between gap-4 mb-8 print:hidden">
           <Link
             href="/"
-            className="inline-flex items-center gap-2 text-sm font-mono uppercase tracking-eyebrow text-taupe hover:text-bleu transition-colors"
+            className="inline-flex items-center gap-2 text-sm font-mono uppercase tracking-eyebrow text-graphite hover:text-copper transition-colors"
           >
             ← Retour au site
           </Link>
@@ -104,10 +104,10 @@ export default async function RecapPage({
         </div>
 
         {/* Carte récap */}
-        <article className="bg-white rounded-3xl border border-pierre shadow-soft overflow-hidden print:border-0 print:shadow-none print:rounded-none">
+        <article className="bg-white rounded-3xl border border-ink/10 shadow-soft overflow-hidden print:border-0 print:shadow-none print:rounded-none">
           {/* Header sombre */}
-          <header className="bg-navy text-creme px-8 py-10 print:bg-white print:text-anthra">
-            <div className="font-mono text-[10px] uppercase tracking-eyebrow text-bleu">
+          <header className="bg-charcoal text-cream px-8 py-10 print:bg-white print:text-ink">
+            <div className="font-mono text-[10px] uppercase tracking-eyebrow text-copper">
               Chauffage Artisanal · Luxembourg
             </div>
             <h1 className="mt-3 font-display text-3xl lg:text-4xl tracking-tight">
@@ -115,16 +115,16 @@ export default async function RecapPage({
             </h1>
             <div className="mt-5 flex items-baseline gap-6 flex-wrap">
               <div>
-                <div className="font-mono text-[10px] uppercase tracking-eyebrow text-creme/60 print:text-muted">
+                <div className="font-mono text-[10px] uppercase tracking-eyebrow text-cream/60 print:text-muted">
                   Référence
                 </div>
-                <div className="mt-1 font-mono text-lg text-bleu">{lead.reference}</div>
+                <div className="mt-1 font-mono text-lg text-copper">{lead.reference}</div>
               </div>
               <div>
-                <div className="font-mono text-[10px] uppercase tracking-eyebrow text-creme/60 print:text-muted">
+                <div className="font-mono text-[10px] uppercase tracking-eyebrow text-cream/60 print:text-muted">
                   Soumis le
                 </div>
-                <div className="mt-1 text-base text-creme print:text-anthra">{submitted}</div>
+                <div className="mt-1 text-base text-cream print:text-ink">{submitted}</div>
               </div>
             </div>
           </header>
@@ -157,22 +157,22 @@ export default async function RecapPage({
 
             {lead.message && (
               <Section title="Votre message">
-                <div className="p-5 rounded-2xl bg-creme border border-pierre text-sm text-anthra leading-relaxed whitespace-pre-wrap">
+                <div className="p-5 rounded-2xl bg-cream border border-ink/8 text-sm text-ink leading-relaxed whitespace-pre-wrap">
                   {lead.message}
                 </div>
               </Section>
             )}
 
             <Section title="Suite donnée">
-              <p className="text-sm text-taupe leading-relaxed">
+              <p className="text-sm text-graphite leading-relaxed">
                 Notre bureau d&apos;études analyse votre dossier. Nous vous
                 recontacterons via{" "}
-                <strong className="text-anthra">
+                <strong className="text-ink">
                   {CHANNEL_LABELS[lead.preferredChannel].toLowerCase()}
                 </strong>{" "}
                 sous 4 heures ouvrées avec une première réponse.
               </p>
-              <p className="mt-3 text-sm text-taupe leading-relaxed">
+              <p className="mt-3 text-sm text-graphite leading-relaxed">
                 Pour ajouter une information ou modifier votre demande, vous
                 pouvez répondre directement à l&apos;email de confirmation ou
                 nous contacter via la page contact du site.
@@ -181,7 +181,7 @@ export default async function RecapPage({
           </div>
 
           {/* Footer */}
-          <footer className="bg-creme border-t border-pierre px-8 py-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 print:bg-white">
+          <footer className="bg-linen border-t border-ink/8 px-8 py-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 print:bg-white">
             <div className="font-mono text-[10px] uppercase tracking-eyebrow text-muted">
               Document généré automatiquement · à conserver
             </div>
@@ -203,7 +203,7 @@ export default async function RecapPage({
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <section>
-      <h2 className="font-display text-xl text-anthra mb-4 pb-2 border-b border-pierre">
+      <h2 className="font-display text-xl text-ink mb-4 pb-2 border-b border-ink/8">
         {title}
       </h2>
       <dl className="grid sm:grid-cols-2 gap-x-8 gap-y-3 text-sm">{children}</dl>
@@ -217,7 +217,7 @@ function Field({ k, v }: { k: string; v: string }) {
       <dt className="font-mono text-[10px] uppercase tracking-eyebrow text-muted">
         {k}
       </dt>
-      <dd className="mt-1 text-anthra">{v}</dd>
+      <dd className="mt-1 text-ink">{v}</dd>
     </div>
   );
 }

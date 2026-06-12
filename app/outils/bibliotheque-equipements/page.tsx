@@ -44,19 +44,19 @@ export default function EquipmentLibraryPage() {
   }, [search, category, brand]);
 
   return (
-    <div className="min-h-screen bg-creme py-12 lg:py-16">
+    <div className="min-h-screen bg-cream py-12 lg:py-16">
       <div className="container max-w-6xl">
         <div className="mb-8">
           <Link
             href="/"
-            className="text-xs font-mono uppercase tracking-eyebrow text-taupe hover:text-bleu"
+            className="text-xs font-mono uppercase tracking-eyebrow text-graphite hover:text-copper"
           >
             ← Retour accueil
           </Link>
-          <h1 className="mt-4 font-display text-display-md text-anthra">
+          <h1 className="mt-4 font-display text-display-md text-ink">
             Bibliothèque d&apos;équipements
           </h1>
-          <p className="mt-2 text-taupe max-w-2xl">
+          <p className="mt-2 text-graphite max-w-2xl">
             Référentiel consultable des marques et modèles que nous installons
             au Luxembourg. Spécifications, gammes de prix indicatives, garanties.
             Toutes les fourchettes sont indicatives — un chiffrage précis se
@@ -65,9 +65,9 @@ export default function EquipmentLibraryPage() {
         </div>
 
         {/* Filters */}
-        <div className="rounded-2xl border border-pierre bg-white shadow-soft p-4 mb-6 flex items-center gap-2 flex-wrap">
+        <div className="rounded-2xl border border-ink/10 bg-white shadow-soft p-4 mb-6 flex items-center gap-2 flex-wrap">
           <div className="inline-flex items-center gap-2 flex-1 min-w-[200px]">
-            <Search className="h-4 w-4 text-taupe" />
+            <Search className="h-4 w-4 text-graphite" />
             <input
               value={search}
               onChange={(e) => setSearch(e.target.value)}
@@ -80,7 +80,7 @@ export default function EquipmentLibraryPage() {
             onChange={(e) =>
               setCategory(e.target.value as EquipmentCategory | "all")
             }
-            className="bg-creme border border-pierre rounded-full px-3 py-1.5 text-sm focus:border-bleu focus:outline-none"
+            className="bg-cream border border-ink/12 rounded-full px-3 py-1.5 text-sm focus:border-copper focus:outline-none"
           >
             <option value="all">Toutes catégories</option>
             {Object.entries(CATEGORY_LABELS).map(([k, v]) => (
@@ -92,7 +92,7 @@ export default function EquipmentLibraryPage() {
           <select
             value={brand}
             onChange={(e) => setBrand(e.target.value)}
-            className="bg-creme border border-pierre rounded-full px-3 py-1.5 text-sm focus:border-bleu focus:outline-none"
+            className="bg-cream border border-ink/12 rounded-full px-3 py-1.5 text-sm focus:border-copper focus:outline-none"
           >
             <option value="all">Toutes marques</option>
             {brands.map((b) => (
@@ -108,9 +108,9 @@ export default function EquipmentLibraryPage() {
 
         {/* Cards */}
         {filtered.length === 0 ? (
-          <div className="rounded-2xl border border-dashed border-pierre bg-white py-16 text-center">
-            <Package className="h-10 w-10 text-bleu opacity-30 mx-auto mb-3" />
-            <p className="text-taupe">
+          <div className="rounded-2xl border border-dashed border-ink/15 bg-white py-16 text-center">
+            <Package className="h-10 w-10 text-copper opacity-30 mx-auto mb-3" />
+            <p className="text-graphite">
               Aucun équipement pour ces filtres. Ajustez votre recherche.
             </p>
           </div>
@@ -119,16 +119,16 @@ export default function EquipmentLibraryPage() {
             {filtered.map((e) => (
               <li
                 key={e.id}
-                className="rounded-2xl border border-pierre bg-white shadow-soft p-5"
+                className="rounded-2xl border border-ink/10 bg-white shadow-soft p-5"
               >
                 <div className="flex items-start justify-between gap-3 mb-3">
                   <div>
-                    <div className="font-mono text-[10px] uppercase tracking-eyebrow text-bleu">
+                    <div className="font-mono text-[10px] uppercase tracking-eyebrow text-copper">
                       {CATEGORY_LABELS[e.category]}
                     </div>
-                    <h2 className="font-display text-lg text-anthra mt-0.5">
+                    <h2 className="font-display text-lg text-ink mt-0.5">
                       {e.brand}{" "}
-                      <span className="text-taupe font-normal">
+                      <span className="text-graphite font-normal">
                         {e.series}
                       </span>
                     </h2>
@@ -145,8 +145,8 @@ export default function EquipmentLibraryPage() {
                 </div>
 
                 {e.highlight && (
-                  <p className="text-sm text-taupe mb-3 inline-flex items-start gap-1.5">
-                    <Sparkles className="h-3 w-3 text-bleu mt-1 shrink-0" />
+                  <p className="text-sm text-graphite mb-3 inline-flex items-start gap-1.5">
+                    <Sparkles className="h-3 w-3 text-copper mt-1 shrink-0" />
                     {e.highlight}
                   </p>
                 )}
@@ -186,8 +186,8 @@ export default function EquipmentLibraryPage() {
                 </div>
 
                 {e.notes && (
-                  <div className="mt-3 rounded-lg bg-creme/40 px-3 py-2 text-[11px] text-taupe inline-flex items-start gap-1.5">
-                    <Info className="h-3 w-3 text-bleu mt-0.5 shrink-0" />
+                  <div className="mt-3 rounded-lg bg-cream/40 px-3 py-2 text-[11px] text-graphite inline-flex items-start gap-1.5">
+                    <Info className="h-3 w-3 text-copper mt-0.5 shrink-0" />
                     {e.notes}
                   </div>
                 )}
@@ -196,18 +196,18 @@ export default function EquipmentLibraryPage() {
           </ul>
         )}
 
-        <div className="mt-8 rounded-2xl border border-pierre bg-sable/60 p-5 flex items-center justify-between gap-3 flex-wrap">
+        <div className="mt-8 rounded-2xl border border-ink/10 bg-ink/5 p-5 flex items-center justify-between gap-3 flex-wrap">
           <div>
-            <div className="font-display text-base text-anthra">
+            <div className="font-display text-base text-ink">
               Un équipement précis vous intéresse ?
             </div>
-            <p className="text-sm text-taupe mt-1">
+            <p className="text-sm text-graphite mt-1">
               Nous chiffrons pose comprise selon votre contexte.
             </p>
           </div>
           <Link
             href="/devis"
-            className="inline-flex items-center gap-2 rounded-full bg-navy text-creme px-4 py-2 text-sm hover:bg-bleu transition-colors"
+            className="inline-flex items-center gap-2 rounded-full bg-ink text-cream px-4 py-2 text-sm hover:bg-copper transition-colors"
           >
             Demander un devis
             <ArrowRight className="h-3.5 w-3.5" />
@@ -227,11 +227,11 @@ export default function EquipmentLibraryPage() {
 
 function Spec({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-lg bg-creme/40 px-3 py-2">
+    <div className="rounded-lg bg-cream/40 px-3 py-2">
       <div className="font-mono text-[9px] uppercase tracking-eyebrow text-muted">
         {label}
       </div>
-      <div className="text-anthra tabular-nums mt-0.5">{value}</div>
+      <div className="text-ink tabular-nums mt-0.5">{value}</div>
     </div>
   );
 }

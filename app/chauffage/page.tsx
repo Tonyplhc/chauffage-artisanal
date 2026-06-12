@@ -21,13 +21,13 @@ export default function ChauffagePage() {
       eyebrow="Chauffage"
       title={
         <>
-          Le chauffage <em className="not-italic text-bleu">pensé pour durer</em>, pas juste pour
+          Le chauffage <em className="not-italic text-copper">pensé pour durer</em>, pas juste pour
           passer l&apos;hiver.
         </>
       }
       intro={
         <>
-          Chaudières gaz à condensation, systèmes hybrides, biomasse, mise aux normes. De la maison individuelle au tertiaire, <strong className="text-bleu font-semibold">étude personnalisée</strong> à chaque projet.
+          Chaudières gaz à condensation, systèmes hybrides, biomasse, mise aux normes. De la maison individuelle au tertiaire, <strong className="text-copper font-semibold">étude personnalisée</strong> à chaque projet.
         </>
       }
       heroImg="/chauffage.jpg"

@@ -67,24 +67,24 @@ export function CookieConsent() {
           role="dialog"
           aria-label="Préférences cookies"
         >
-          <div className="max-w-3xl mx-auto bg-white rounded-2xl border border-pierre shadow-lift overflow-hidden">
+          <div className="max-w-3xl mx-auto bg-white rounded-2xl border border-ink/12 shadow-lift overflow-hidden">
             <div className="p-5 lg:p-6">
               <div className="flex items-start gap-4">
-                <div className="h-10 w-10 rounded-full bg-bleu/10 border border-bleu/30 grid place-items-center shrink-0">
-                  <Cookie className="h-4 w-4 text-bleu" />
+                <div className="h-10 w-10 rounded-full bg-copper/10 border border-copper/30 grid place-items-center shrink-0">
+                  <Cookie className="h-4 w-4 text-copper" />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <div className="font-display text-lg text-anthra leading-tight">
+                  <div className="font-display text-lg text-ink leading-tight">
                     Cookies & confidentialité
                   </div>
-                  <p className="mt-2 text-sm text-taupe leading-relaxed">
+                  <p className="mt-2 text-sm text-graphite leading-relaxed">
                     Nous utilisons uniquement les cookies <strong>strictement nécessaires</strong>{" "}
                     au fonctionnement du site. Les cookies de mesure d&apos;audience et marketing
                     ne sont activés qu&apos;après votre accord (RGPD · Luxembourg).
                   </p>
 
                   {details && (
-                    <div className="mt-5 space-y-3 border-t border-pierre pt-5">
+                    <div className="mt-5 space-y-3 border-t border-ink/8 pt-5">
                       <Pref
                         label="Strictement nécessaires"
                         body="Sécurité, navigation, soumission de formulaires. Toujours actifs."
@@ -109,27 +109,27 @@ export function CookieConsent() {
                   <div className="mt-5 flex flex-wrap gap-2">
                     <button
                       onClick={acceptAll}
-                      className="inline-flex items-center gap-2 rounded-full bg-navy text-creme px-5 py-2.5 text-sm font-medium hover:bg-bleu transition-colors"
+                      className="inline-flex items-center gap-2 rounded-full bg-ink text-cream px-5 py-2.5 text-sm font-medium hover:bg-copper transition-colors"
                     >
                       Tout accepter
                     </button>
                     <button
                       onClick={rejectAll}
-                      className="inline-flex items-center gap-2 rounded-full bg-white border border-pierre text-anthra px-5 py-2.5 text-sm font-medium hover:border-pierre transition-colors"
+                      className="inline-flex items-center gap-2 rounded-full bg-white border border-ink/15 text-ink px-5 py-2.5 text-sm font-medium hover:border-ink/40 transition-colors"
                     >
                       Refuser non essentiels
                     </button>
                     {!details ? (
                       <button
                         onClick={() => setDetails(true)}
-                        className="inline-flex items-center gap-2 text-sm text-taupe hover:text-bleu underline underline-offset-2 transition-colors px-3"
+                        className="inline-flex items-center gap-2 text-sm text-graphite hover:text-copper underline underline-offset-2 transition-colors px-3"
                       >
                         Personnaliser
                       </button>
                     ) : (
                       <button
                         onClick={saveCustom}
-                        className="inline-flex items-center gap-2 rounded-full bg-bleu text-creme px-5 py-2.5 text-sm font-medium hover:bg-bleu-500 transition-colors"
+                        className="inline-flex items-center gap-2 rounded-full bg-copper text-cream px-5 py-2.5 text-sm font-medium hover:bg-copper-500 transition-colors"
                       >
                         Enregistrer mes choix
                       </button>
@@ -137,7 +137,7 @@ export function CookieConsent() {
                   </div>
 
                   <div className="mt-4 flex items-center gap-1.5 text-[10px] font-mono uppercase tracking-eyebrow text-muted">
-                    <Shield className="h-3 w-3 text-bleu" />
+                    <Shield className="h-3 w-3 text-copper" />
                     Conforme RGPD · Données stockées localement
                   </div>
                 </div>
@@ -145,7 +145,7 @@ export function CookieConsent() {
                 <button
                   onClick={rejectAll}
                   aria-label="Fermer"
-                  className="shrink-0 text-muted hover:text-anthra transition-colors"
+                  className="shrink-0 text-muted hover:text-ink transition-colors"
                 >
                   <X className="h-4 w-4" />
                 </button>
@@ -174,19 +174,19 @@ function Pref({
   return (
     <label
       className={`flex items-start gap-4 p-3 rounded-xl border ${
-        locked ? "border-pierre bg-creme" : "border-pierre bg-white hover:border-bleu/30"
+        locked ? "border-ink/10 bg-cream" : "border-ink/10 bg-white hover:border-copper/30"
       } cursor-${locked ? "default" : "pointer"} transition-colors`}
     >
       <div className="flex-1">
-        <div className="font-medium text-anthra text-sm">{label}</div>
-        <div className="mt-1 text-xs text-taupe leading-relaxed">{body}</div>
+        <div className="font-medium text-ink text-sm">{label}</div>
+        <div className="mt-1 text-xs text-graphite leading-relaxed">{body}</div>
       </div>
       <input
         type="checkbox"
         checked={checked}
         disabled={locked}
         onChange={(e) => onChange?.(e.target.checked)}
-        className="mt-1 accent-bleu shrink-0"
+        className="mt-1 accent-copper shrink-0"
       />
     </label>
   );

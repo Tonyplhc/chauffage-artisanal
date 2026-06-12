@@ -21,12 +21,12 @@ export default function EntretienPage() {
       eyebrow="Entretien"
       title={
         <>
-          L&apos;entretien <em className="not-italic text-bleu">qui empêche la panne</em>, pas celui qui la facture.
+          L&apos;entretien <em className="not-italic text-copper">qui empêche la panne</em>, pas celui qui la facture.
         </>
       }
       intro={
         <>
-          Contrats d&apos;entretien chaudières, pompes à chaleur et climatisation. <strong className="text-bleu font-semibold">Maintenance préventive</strong>, priorité dépannage, conformité réglementaire.
+          Contrats d&apos;entretien chaudières, pompes à chaleur et climatisation. <strong className="text-copper font-semibold">Maintenance préventive</strong>, priorité dépannage, conformité réglementaire.
         </>
       }
       heroImg="/chauffage.jpg"

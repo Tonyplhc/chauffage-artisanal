@@ -55,7 +55,7 @@ export default async function TemoignagesPage() {
       : null;
 
   return (
-    <div className="bg-creme">
+    <div className="bg-cream">
       {/* JSON-LD pour rich results Google (étoiles dans la SERP) */}
       {reviewsLd && (
         <script
@@ -66,28 +66,28 @@ export default async function TemoignagesPage() {
       {/* Hero */}
       <section className="relative pt-16 lg:pt-24 pb-12 lg:pb-16">
         <div className="container max-w-5xl text-center">
-          <div className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-eyebrow text-bleu bg-bleu/10 border border-bleu/20 px-3 py-1 rounded-full">
+          <div className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-eyebrow text-copper bg-copper/10 border border-copper/20 px-3 py-1 rounded-full">
             <Star className="h-3 w-3" />
             Paroles de clients
           </div>
-          <h1 className="mt-4 font-display text-display-md lg:text-display-lg text-anthra">
+          <h1 className="mt-4 font-display text-display-md lg:text-display-lg text-ink">
             Ce qu&apos;ils en disent
           </h1>
-          <p className="mt-4 text-taupe max-w-2xl mx-auto">
+          <p className="mt-4 text-graphite max-w-2xl mx-auto">
             Témoignages partagés après leur projet — pompe à chaleur,
             climatisation, chaudière, sanitaire ou énergies renouvelables.
             Recueillis et publiés avec leur accord.
           </p>
           {averageScore !== null && testimonials.length >= 3 && (
-            <div className="mt-8 inline-flex items-center gap-3 p-5 rounded-2xl bg-white border border-pierre shadow-soft">
-              <span className="font-display text-3xl tabular-nums text-bleu">
+            <div className="mt-8 inline-flex items-center gap-3 p-5 rounded-2xl bg-white border border-ink/10 shadow-soft">
+              <span className="font-display text-3xl tabular-nums text-copper">
                 {averageScore.toFixed(1)}
               </span>
               <div className="text-left">
                 <div className="text-xs font-mono uppercase tracking-eyebrow text-muted">
                   Score moyen
                 </div>
-                <div className="text-sm text-anthra">
+                <div className="text-sm text-ink">
                   Sur {testimonials.length} témoignages publiés
                 </div>
               </div>
@@ -100,13 +100,13 @@ export default async function TemoignagesPage() {
       <section className="pb-20 lg:pb-32">
         <div className="container max-w-6xl">
           {/* Bandeau social proof externe — page Facebook officielle existante */}
-          <div className="mb-10 p-5 lg:p-6 rounded-2xl bg-creme border border-pierre flex flex-col sm:flex-row items-center sm:items-start gap-4">
-            <Facebook className="h-8 w-8 text-bleu shrink-0" />
+          <div className="mb-10 p-5 lg:p-6 rounded-2xl bg-cream border border-ink/10 flex flex-col sm:flex-row items-center sm:items-start gap-4">
+            <Facebook className="h-8 w-8 text-copper shrink-0" />
             <div className="flex-1 min-w-0 text-center sm:text-left">
-              <div className="font-mono text-[10px] uppercase tracking-eyebrow text-bleu">
+              <div className="font-mono text-[10px] uppercase tracking-eyebrow text-copper">
                 Suivez-nous sur Facebook
               </div>
-              <div className="mt-1 text-sm text-taupe leading-relaxed">
+              <div className="mt-1 text-sm text-graphite leading-relaxed">
                 Actualités de l&apos;atelier, retours clients, nouveaux chantiers — page officielle
                 @ChauffageArtisanal&nbsp;Sàrl
               </div>
@@ -115,7 +115,7 @@ export default async function TemoignagesPage() {
               href="https://www.facebook.com/RJNALMEIDA/"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full bg-navy text-creme px-5 py-2.5 text-sm font-medium hover:bg-bleu transition-colors shrink-0"
+              className="inline-flex items-center gap-2 rounded-full bg-ink text-cream px-5 py-2.5 text-sm font-medium hover:bg-copper transition-colors shrink-0"
             >
               Voir la page
               <ExternalLink className="h-4 w-4" />
@@ -124,8 +124,8 @@ export default async function TemoignagesPage() {
 
           {testimonials.length === 0 ? (
             <div className="text-center py-16">
-              <QuoteIcon className="h-12 w-12 mx-auto opacity-20 text-bleu mb-2" />
-              <p className="text-taupe">
+              <QuoteIcon className="h-12 w-12 mx-auto opacity-20 text-copper mb-2" />
+              <p className="text-graphite">
                 Pas encore de témoignage public à afficher.
               </p>
               <p className="text-xs text-muted mt-1">
@@ -137,18 +137,18 @@ export default async function TemoignagesPage() {
               {testimonials.map((t, i) => (
                 <article
                   key={t.id}
-                  className="p-6 lg:p-8 rounded-3xl bg-white border border-pierre shadow-soft hover:shadow-lift transition-shadow flex flex-col"
+                  className="p-6 lg:p-8 rounded-3xl bg-white border border-ink/10 shadow-soft hover:shadow-lift transition-shadow flex flex-col"
                   style={{
                     transform: `translateY(${(i % 3) * 4}px)`,
                   }}
                 >
-                  <QuoteIcon className="h-8 w-8 text-bleu opacity-30 mb-3" />
-                  <blockquote className="flex-1 text-base text-anthra leading-relaxed">
+                  <QuoteIcon className="h-8 w-8 text-copper opacity-30 mb-3" />
+                  <blockquote className="flex-1 text-base text-ink leading-relaxed">
                     « {t.comment} »
                   </blockquote>
-                  <div className="mt-5 pt-5 border-t border-pierre flex items-center justify-between">
+                  <div className="mt-5 pt-5 border-t border-ink/8 flex items-center justify-between">
                     <div>
-                      <div className="text-sm font-medium text-anthra">
+                      <div className="text-sm font-medium text-ink">
                         {t.displayName}
                       </div>
                       {t.commune && (
@@ -160,7 +160,7 @@ export default async function TemoignagesPage() {
                         <span
                           key={idx}
                           className={`h-1.5 w-1.5 rounded-full ${
-                            idx < t.score ? "bg-bleu" : "bg-creme"
+                            idx < t.score ? "bg-copper" : "bg-cream"
                           }`}
                         />
                       ))}
@@ -172,8 +172,8 @@ export default async function TemoignagesPage() {
           )}
 
           {testimonials.length > 0 && (
-            <div className="mt-10 p-5 rounded-2xl border border-pierre bg-white text-xs text-taupe leading-relaxed flex items-start gap-3">
-              <Info className="h-4 w-4 text-bleu mt-0.5 shrink-0" />
+            <div className="mt-10 p-5 rounded-2xl border border-ink/10 bg-white text-xs text-graphite leading-relaxed flex items-start gap-3">
+              <Info className="h-4 w-4 text-copper mt-0.5 shrink-0" />
               <p>
                 Page en cours d&apos;alimentation. Les premiers témoignages affichés sont des
                 exemples représentatifs de retours clients en attendant le déploiement du système

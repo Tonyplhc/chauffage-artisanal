@@ -64,19 +64,19 @@ export default function KlimabonusCheckerPage() {
   );
 
   return (
-    <div className="min-h-screen bg-creme py-12 lg:py-16">
+    <div className="min-h-screen bg-cream py-12 lg:py-16">
       <div className="container max-w-5xl">
         <div className="mb-8">
           <Link
             href="/"
-            className="text-xs font-mono uppercase tracking-eyebrow text-taupe hover:text-bleu"
+            className="text-xs font-mono uppercase tracking-eyebrow text-graphite hover:text-copper"
           >
             ← Retour accueil
           </Link>
-          <h1 className="mt-4 font-display text-display-md text-anthra">
+          <h1 className="mt-4 font-display text-display-md text-ink">
             Éligibilité Klimabonus
           </h1>
-          <p className="mt-2 text-taupe max-w-2xl">
+          <p className="mt-2 text-graphite max-w-2xl">
             Estimation rapide de votre éligibilité à l&apos;aide Klimabonus
             Luxembourg et du montant approximatif. Pour confirmation et dépôt
             officiel, consultez{" "}
@@ -84,7 +84,7 @@ export default function KlimabonusCheckerPage() {
               href="https://klimabonus.lu"
               target="_blank"
               rel="noreferrer"
-              className="text-bleu underline"
+              className="text-copper underline"
             >
               klimabonus.lu
             </a>
@@ -95,8 +95,8 @@ export default function KlimabonusCheckerPage() {
         <div className="grid lg:grid-cols-2 gap-6">
           {/* Inputs */}
           <div className="space-y-4">
-            <div className="rounded-2xl border border-pierre bg-white shadow-soft p-5">
-              <div className="font-mono text-[10px] uppercase tracking-eyebrow text-bleu mb-3">
+            <div className="rounded-2xl border border-ink/10 bg-white shadow-soft p-5">
+              <div className="font-mono text-[10px] uppercase tracking-eyebrow text-copper mb-3">
                 Votre projet
               </div>
 
@@ -106,7 +106,7 @@ export default function KlimabonusCheckerPage() {
                   onChange={(e) =>
                     setProjectType(e.target.value as ProjectType)
                   }
-                  className="w-full bg-creme border border-pierre rounded-lg px-3 py-2 text-sm focus:border-bleu focus:outline-none"
+                  className="w-full bg-cream border border-ink/12 rounded-lg px-3 py-2 text-sm focus:border-copper focus:outline-none"
                 >
                   {Object.entries(PROJECT_LABELS).map(([k, v]) => (
                     <option key={k} value={k}>
@@ -124,13 +124,13 @@ export default function KlimabonusCheckerPage() {
                   step="500"
                   value={totalCost}
                   onChange={(e) => setTotalCost(Number(e.target.value))}
-                  className="w-full accent-bleu"
+                  className="w-full accent-copper"
                 />
               </Field>
             </div>
 
-            <div className="rounded-2xl border border-pierre bg-white shadow-soft p-5">
-              <div className="font-mono text-[10px] uppercase tracking-eyebrow text-bleu mb-3">
+            <div className="rounded-2xl border border-ink/10 bg-white shadow-soft p-5">
+              <div className="font-mono text-[10px] uppercase tracking-eyebrow text-copper mb-3">
                 Votre logement
               </div>
 
@@ -187,18 +187,18 @@ export default function KlimabonusCheckerPage() {
 
           {/* Result */}
           <div className="space-y-4">
-            <div className="rounded-2xl border border-pierre bg-white shadow-soft p-5">
-              <div className="font-mono text-[10px] uppercase tracking-eyebrow text-bleu mb-3">
+            <div className="rounded-2xl border border-ink/10 bg-white shadow-soft p-5">
+              <div className="font-mono text-[10px] uppercase tracking-eyebrow text-copper mb-3">
                 Estimation
               </div>
 
               {result.eligibility === "non-eligible" ? (
                 <div className="text-center py-6">
-                  <AlertTriangle className="h-10 w-10 text-terracotta mx-auto mb-3" />
-                  <div className="font-display text-lg text-anthra">
+                  <AlertTriangle className="h-10 w-10 text-ember mx-auto mb-3" />
+                  <div className="font-display text-lg text-ink">
                     Non éligible
                   </div>
-                  <p className="text-sm text-taupe mt-2">
+                  <p className="text-sm text-graphite mt-2">
                     Le projet, dans cette configuration, ne semble pas
                     correspondre aux critères Klimabonus. Voir détails ci-dessous.
                   </p>
@@ -210,7 +210,7 @@ export default function KlimabonusCheckerPage() {
                       className={`inline-flex h-12 w-12 items-center justify-center rounded-full mb-3 ${
                         result.eligibility === "eligible"
                           ? "bg-gain/10 text-gain"
-                          : "bg-bleu/10 text-bleu"
+                          : "bg-copper/10 text-copper"
                       }`}
                     >
                       {result.eligibility === "eligible" ? (
@@ -228,7 +228,7 @@ export default function KlimabonusCheckerPage() {
                       )}
                     </div>
                     {result.percentRange && (
-                      <div className="text-sm text-taupe mt-1">
+                      <div className="text-sm text-graphite mt-1">
                         soit ~{result.percentRange[0]} – {result.percentRange[1]} % du coût
                       </div>
                     )}
@@ -236,7 +236,7 @@ export default function KlimabonusCheckerPage() {
                       className={`mt-3 inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-eyebrow px-3 py-1 rounded-full ${
                         result.eligibility === "eligible"
                           ? "bg-gain/10 text-gain"
-                          : "bg-bleu/10 text-bleu"
+                          : "bg-copper/10 text-copper"
                       }`}
                     >
                       {result.eligibility === "eligible"
@@ -248,8 +248,8 @@ export default function KlimabonusCheckerPage() {
               )}
             </div>
 
-            <div className="rounded-2xl border border-pierre bg-white shadow-soft p-5">
-              <div className="font-mono text-[10px] uppercase tracking-eyebrow text-bleu mb-3">
+            <div className="rounded-2xl border border-ink/10 bg-white shadow-soft p-5">
+              <div className="font-mono text-[10px] uppercase tracking-eyebrow text-copper mb-3">
                 Critères évalués
               </div>
               <ul className="space-y-1.5 text-sm">
@@ -260,13 +260,13 @@ export default function KlimabonusCheckerPage() {
                         r.type === "positive"
                           ? "bg-gain"
                           : r.type === "warning"
-                            ? "bg-bleu"
-                            : "bg-terracotta"
+                            ? "bg-copper"
+                            : "bg-ember"
                       }`}
                     />
                     <span
                       className={
-                        r.type === "negative" ? "text-terracotta" : "text-taupe"
+                        r.type === "negative" ? "text-ember" : "text-graphite"
                       }
                     >
                       {r.text}
@@ -277,15 +277,15 @@ export default function KlimabonusCheckerPage() {
             </div>
 
             {result.tips.length > 0 && (
-              <div className="rounded-2xl border border-bleu/30 bg-bleu/5 p-5">
-                <div className="font-mono text-[10px] uppercase tracking-eyebrow text-bleu mb-2 inline-flex items-center gap-1">
+              <div className="rounded-2xl border border-copper/30 bg-copper/5 p-5">
+                <div className="font-mono text-[10px] uppercase tracking-eyebrow text-copper mb-2 inline-flex items-center gap-1">
                   <Sparkles className="h-3 w-3" />
                   Conseils
                 </div>
-                <ul className="space-y-1.5 text-sm text-taupe">
+                <ul className="space-y-1.5 text-sm text-graphite">
                   {result.tips.map((t, i) => (
                     <li key={i} className="flex items-start gap-2">
-                      <span className="text-bleu mt-1.5 inline-block h-1 w-1 rounded-full bg-bleu shrink-0" />
+                      <span className="text-copper mt-1.5 inline-block h-1 w-1 rounded-full bg-copper shrink-0" />
                       <span>{t}</span>
                     </li>
                   ))}
@@ -293,18 +293,18 @@ export default function KlimabonusCheckerPage() {
               </div>
             )}
 
-            <div className="rounded-2xl border border-pierre bg-sable/60 p-5 flex items-center justify-between gap-3 flex-wrap">
+            <div className="rounded-2xl border border-ink/10 bg-ink/5 p-5 flex items-center justify-between gap-3 flex-wrap">
               <div>
-                <div className="font-display text-base text-anthra">
+                <div className="font-display text-base text-ink">
                   Prêt à concrétiser ?
                 </div>
-                <p className="text-sm text-taupe mt-1">
+                <p className="text-sm text-graphite mt-1">
                   Nous montons votre dossier Klimabonus avec vous.
                 </p>
               </div>
               <Link
                 href={`/devis?from=eligibilite&service=${ELIG_SERVICE_MAP[projectType] ?? "autre"}`}
-                className="inline-flex items-center gap-2 rounded-full bg-navy text-creme px-4 py-2 text-sm hover:bg-bleu transition-colors"
+                className="inline-flex items-center gap-2 rounded-full bg-ink text-cream px-4 py-2 text-sm hover:bg-copper transition-colors"
               >
                 Demander un devis
                 <ArrowRight className="h-3.5 w-3.5" />
@@ -313,8 +313,8 @@ export default function KlimabonusCheckerPage() {
           </div>
         </div>
 
-        <div className="mt-10 rounded-xl border border-bleu/30 bg-bleu/5 p-5 text-xs text-taupe">
-          <Info className="h-4 w-4 text-bleu mb-2" />
+        <div className="mt-10 rounded-xl border border-copper/30 bg-copper/5 p-5 text-xs text-graphite">
+          <Info className="h-4 w-4 text-copper mb-2" />
           <p>
             <strong>Avertissement</strong> — Les montants et taux d&apos;aide
             sont revus par règlement grand-ducal. Cette estimation utilise des
@@ -325,7 +325,7 @@ export default function KlimabonusCheckerPage() {
               href="https://klimabonus.lu"
               target="_blank"
               rel="noreferrer"
-              className="text-bleu underline"
+              className="text-copper underline"
             >
               klimabonus.lu
             </a>{" "}
@@ -346,7 +346,7 @@ function Field({
 }) {
   return (
     <div className="mb-3">
-      <div className="text-xs text-taupe mb-1.5">{label}</div>
+      <div className="text-xs text-graphite mb-1.5">{label}</div>
       {children}
     </div>
   );
@@ -369,8 +369,8 @@ function ChipGroup<T extends string>({
           onClick={() => onChange(o.value)}
           className={`text-xs px-2.5 py-1 rounded-full border transition-colors ${
             value === o.value
-              ? "bg-navy text-creme border-anthra"
-              : "bg-creme border-pierre text-taupe hover:border-bleu/40"
+              ? "bg-ink text-cream border-ink"
+              : "bg-cream border-ink/12 text-graphite hover:border-copper/40"
           }`}
         >
           {o.label}

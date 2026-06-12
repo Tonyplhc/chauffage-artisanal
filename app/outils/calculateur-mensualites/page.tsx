@@ -31,24 +31,24 @@ export default function CalculateurMensualitesPage() {
   const result = useMemo(() => calculateLoan(amount, years, rate), [amount, years, rate]);
 
   return (
-    <div className="min-h-screen bg-creme">
+    <div className="min-h-screen bg-cream">
       {/* Hero */}
-      <section className="relative pt-12 lg:pt-16 pb-10 lg:pb-12 bg-creme border-b border-pierre overflow-hidden">
+      <section className="relative pt-12 lg:pt-16 pb-10 lg:pb-12 bg-cream border-b border-ink/8 overflow-hidden">
         <div
           className="absolute inset-0 opacity-[0.04]"
           style={{
             backgroundImage:
-              "radial-gradient(circle at 20% 30%, rgba(11,87,160,0.35), transparent 55%), radial-gradient(circle at 80% 70%, rgba(11,87,160,0.18), transparent 55%)",
+              "radial-gradient(circle at 20% 30%, rgba(184,106,54,0.35), transparent 55%), radial-gradient(circle at 80% 70%, rgba(184,106,54,0.18), transparent 55%)",
           }}
         />
         <div className="container relative">
           <div className="max-w-3xl">
             <Eyebrow number="OUTIL">Mensualités</Eyebrow>
-            <h1 className="mt-4 font-display text-display-xl tracking-tightest text-balance text-anthra">
+            <h1 className="mt-4 font-display text-display-xl tracking-tightest text-balance text-ink">
               30 000 €,{" "}
-              <em className="not-italic text-bleu">c&apos;est combien par mois</em> ?
+              <em className="not-italic text-copper">c&apos;est combien par mois</em> ?
             </h1>
-            <p className="mt-5 text-lg lg:text-xl text-taupe leading-relaxed text-balance">
+            <p className="mt-5 text-lg lg:text-xl text-graphite leading-relaxed text-balance">
               Calculateur de mensualité d&apos;emprunt pour votre projet thermique.
               Hypothèses indicatives LU 2026 — pour orienter, pas pour décider à votre place.
             </p>
@@ -61,20 +61,20 @@ export default function CalculateurMensualitesPage() {
         <div className="container grid lg:grid-cols-12 gap-8 items-start">
           {/* Inputs */}
           <aside className="lg:col-span-5 lg:sticky lg:top-28">
-            <div className="rounded-3xl border border-pierre bg-white shadow-soft p-6 lg:p-7">
-              <div className="font-mono text-[10px] uppercase tracking-eyebrow text-bleu">
+            <div className="rounded-3xl border border-ink/10 bg-white shadow-soft p-6 lg:p-7">
+              <div className="font-mono text-[10px] uppercase tracking-eyebrow text-copper">
                 Paramètres
               </div>
-              <h2 className="mt-2 font-display text-2xl text-anthra tracking-tight">
+              <h2 className="mt-2 font-display text-2xl text-ink tracking-tight">
                 Votre emprunt
               </h2>
 
               <div className="mt-7 space-y-7">
                 {/* Montant */}
                 <div>
-                  <label className="block font-mono text-[10px] uppercase tracking-eyebrow text-taupe">
+                  <label className="block font-mono text-[10px] uppercase tracking-eyebrow text-graphite">
                     Montant à emprunter
-                    <span className="font-display text-2xl text-anthra ml-2">
+                    <span className="font-display text-2xl text-copper ml-2">
                       {amount.toLocaleString("fr-LU")} €
                     </span>
                   </label>
@@ -85,7 +85,7 @@ export default function CalculateurMensualitesPage() {
                     step={1000}
                     value={amount}
                     onChange={(e) => setAmount(Number(e.target.value))}
-                    className="mt-3 w-full accent-bleu"
+                    className="mt-3 w-full accent-copper"
                     aria-label="Montant à emprunter"
                   />
                   <div className="mt-1 flex justify-between text-[10px] font-mono uppercase tracking-eyebrow text-muted">
@@ -96,9 +96,9 @@ export default function CalculateurMensualitesPage() {
 
                 {/* Durée */}
                 <div>
-                  <label className="block font-mono text-[10px] uppercase tracking-eyebrow text-taupe">
+                  <label className="block font-mono text-[10px] uppercase tracking-eyebrow text-graphite">
                     Durée d&apos;emprunt
-                    <span className="font-display text-2xl text-bleu ml-2">
+                    <span className="font-display text-2xl text-copper ml-2">
                       {years} ans
                     </span>
                   </label>
@@ -109,7 +109,7 @@ export default function CalculateurMensualitesPage() {
                     step={1}
                     value={years}
                     onChange={(e) => setYears(Number(e.target.value))}
-                    className="mt-3 w-full accent-bleu"
+                    className="mt-3 w-full accent-copper"
                     aria-label="Durée en années"
                   />
                   <div className="mt-1 flex justify-between text-[10px] font-mono uppercase tracking-eyebrow text-muted">
@@ -120,9 +120,9 @@ export default function CalculateurMensualitesPage() {
 
                 {/* Taux */}
                 <div>
-                  <label className="block font-mono text-[10px] uppercase tracking-eyebrow text-taupe">
+                  <label className="block font-mono text-[10px] uppercase tracking-eyebrow text-graphite">
                     Taux annuel
-                    <span className="font-display text-2xl text-bleu ml-2">
+                    <span className="font-display text-2xl text-copper ml-2">
                       {rate.toFixed(1)} %
                     </span>
                   </label>
@@ -133,7 +133,7 @@ export default function CalculateurMensualitesPage() {
                     step={0.1}
                     value={rate}
                     onChange={(e) => setRate(Number(e.target.value))}
-                    className="mt-3 w-full accent-bleu"
+                    className="mt-3 w-full accent-copper"
                     aria-label="Taux d'intérêt annuel"
                   />
                   <div className="mt-1 flex justify-between text-[10px] font-mono uppercase tracking-eyebrow text-muted">
@@ -143,8 +143,8 @@ export default function CalculateurMensualitesPage() {
                 </div>
               </div>
 
-              <p className="mt-6 pt-6 border-t border-pierre text-[11px] text-muted leading-relaxed">
-                <Info className="inline h-3 w-3 text-bleu mr-1" />
+              <p className="mt-6 pt-6 border-t border-ink/8 text-[11px] text-muted leading-relaxed">
+                <Info className="inline h-3 w-3 text-copper mr-1" />
                 Calcul indicatif (mensualité constante). Le taux réel dépend de votre
                 établissement bancaire, durée, garanties, profil emprunteur.
               </p>
@@ -159,16 +159,15 @@ export default function CalculateurMensualitesPage() {
             aria-label="Résultats du calcul de mensualités"
           >
             {/* Card principale mensualité */}
-            <div className="rounded-3xl border border-bleu/30 bg-gradient-to-br from-creme to-white p-7 lg:p-9 shadow-soft">
-              <div className="font-mono text-[10px] uppercase tracking-eyebrow text-bleu">
+            <div className="rounded-3xl border border-copper/30 bg-gradient-to-br from-cream to-white p-7 lg:p-9 shadow-soft">
+              <div className="font-mono text-[10px] uppercase tracking-eyebrow text-copper">
                 Mensualité — {years} ans à {rate.toFixed(1)} %
               </div>
-              {/* Montant = donnée financière neutre (coût) → anthra, pas bleu (Règle 6) */}
-              <div className="mt-3 font-display text-display-lg tracking-tightest text-anthra">
+              <div className="mt-3 font-display text-display-lg tracking-tightest text-copper">
                 {result.monthly.toLocaleString("fr-LU")} €
-                <span className="text-taupe text-2xl ml-2">/ mois</span>
+                <span className="text-graphite text-2xl ml-2">/ mois</span>
               </div>
-              <div className="mt-2 text-sm text-taupe">
+              <div className="mt-2 text-sm text-graphite">
                 Pendant {years * 12} mensualités
               </div>
             </div>
@@ -194,12 +193,12 @@ export default function CalculateurMensualitesPage() {
             </div>
 
             {/* Tableau comparatif durées */}
-            <div className="rounded-3xl border border-pierre bg-white p-7 lg:p-8">
+            <div className="rounded-3xl border border-ink/10 bg-white p-7 lg:p-8">
               <Eyebrow number="01">Comparaison durées</Eyebrow>
-              <h3 className="mt-3 font-display text-xl text-anthra tracking-tight">
+              <h3 className="mt-3 font-display text-xl text-ink tracking-tight">
                 Mensualité selon la durée d&apos;emprunt
               </h3>
-              <p className="mt-2 text-sm text-taupe">
+              <p className="mt-2 text-sm text-graphite">
                 Pour {amount.toLocaleString("fr-LU")} € à {rate.toFixed(1)} % annuel
               </p>
               <div className="mt-5 grid grid-cols-2 sm:grid-cols-4 gap-3">
@@ -212,13 +211,13 @@ export default function CalculateurMensualitesPage() {
                       onClick={() => setYears(y)}
                       className={`p-4 rounded-xl border text-left transition-all ${
                         isCurrent
-                          ? "bg-navy text-creme border-anthra shadow-soft"
-                          : "bg-creme border-pierre hover:border-bleu/40"
+                          ? "bg-ink text-cream border-ink shadow-soft"
+                          : "bg-cream border-ink/10 hover:border-copper/40"
                       }`}
                     >
                       <div
                         className={`text-[10px] font-mono uppercase tracking-eyebrow ${
-                          isCurrent ? "text-creme/70" : "text-muted"
+                          isCurrent ? "text-cream/70" : "text-muted"
                         }`}
                       >
                         {y} ans
@@ -228,7 +227,7 @@ export default function CalculateurMensualitesPage() {
                       </div>
                       <div
                         className={`text-[11px] mt-0.5 ${
-                          isCurrent ? "text-creme/60" : "text-muted"
+                          isCurrent ? "text-cream/60" : "text-muted"
                         }`}
                       >
                         +{sim.totalInterest.toLocaleString("fr-LU")} € intérêts
@@ -237,7 +236,7 @@ export default function CalculateurMensualitesPage() {
                   );
                 })}
               </div>
-              <p className="mt-5 text-xs text-taupe leading-relaxed">
+              <p className="mt-5 text-xs text-graphite leading-relaxed">
                 Plus la durée est longue, plus la mensualité est faible — mais plus le coût
                 total des intérêts augmente. L&apos;équilibre dépend de votre capacité
                 d&apos;épargne mensuelle.
@@ -245,17 +244,17 @@ export default function CalculateurMensualitesPage() {
             </div>
 
             {/* CTA */}
-            <div className="rounded-3xl bg-navy text-creme p-7 lg:p-9">
+            <div className="rounded-3xl bg-charcoal text-cream p-7 lg:p-9">
               <div className="grid lg:grid-cols-12 gap-6 items-center">
                 <div className="lg:col-span-8">
-                  <div className="font-mono text-[10px] uppercase tracking-eyebrow text-sable">
+                  <div className="font-mono text-[10px] uppercase tracking-eyebrow text-copper-200">
                     Aller plus loin
                   </div>
                   <h3 className="mt-3 font-display text-2xl lg:text-3xl tracking-tight">
                     Combien coûte{" "}
-                    <em className="not-italic text-sable">votre projet</em> précisément ?
+                    <em className="not-italic text-copper-200">votre projet</em> précisément ?
                   </h3>
-                  <p className="mt-3 text-creme/75 leading-relaxed">
+                  <p className="mt-3 text-cream/75 leading-relaxed">
                     Utilisez d&apos;abord l&apos;estimateur de prix pour avoir une
                     fourchette, puis demandez un devis détaillé pour préciser la mensualité
                     exacte.
@@ -264,7 +263,7 @@ export default function CalculateurMensualitesPage() {
                 <div className="lg:col-span-4 flex flex-col gap-2">
                   <Link
                     href="/outils/estimateur-prix"
-                    className="inline-flex items-center justify-between gap-2 rounded-full bg-creme text-navy px-6 py-3.5 text-sm font-medium hover:bg-bleu hover:text-creme transition-colors group"
+                    className="inline-flex items-center justify-between gap-2 rounded-full bg-cream text-charcoal px-6 py-3.5 text-sm font-medium hover:bg-copper hover:text-cream transition-colors group"
                   >
                     <span className="inline-flex items-center gap-2">
                       <Calculator className="h-4 w-4" />
@@ -274,7 +273,7 @@ export default function CalculateurMensualitesPage() {
                   </Link>
                   <Link
                     href="/devis"
-                    className="inline-flex items-center justify-between gap-2 rounded-full bg-terracotta/15 border border-terracotta/40 text-creme px-6 py-3.5 text-sm font-medium hover:bg-terracotta/25 transition-colors"
+                    className="inline-flex items-center justify-between gap-2 rounded-full bg-ember/15 border border-ember/40 text-cream px-6 py-3.5 text-sm font-medium hover:bg-ember/25 transition-colors"
                   >
                     Demander un devis
                     <ArrowUpRight className="h-4 w-4" />
@@ -325,17 +324,16 @@ function Metric({
   return (
     <div
       className={`rounded-2xl border p-5 ${
-        accent ? "border-perte/20 bg-perteBg" : "border-pierre bg-white"
+        accent ? "border-copper/30 bg-copper/5" : "border-ink/10 bg-white"
       }`}
     >
       <div className="flex items-center gap-1.5 text-[10px] font-mono uppercase tracking-eyebrow text-muted">
         {icon}
         {label}
       </div>
-      {/* accent = intérêts (argent perdu) → sémaphore rouge (Règle 6) */}
       <div
         className={`mt-2 font-display text-2xl tracking-tight ${
-          accent ? "text-perte" : "text-anthra"
+          accent ? "text-copper" : "text-ink"
         }`}
       >
         {value}

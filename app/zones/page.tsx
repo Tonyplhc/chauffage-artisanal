@@ -21,7 +21,7 @@ export default function ZonesPage() {
         eyebrow="Zones d'intervention"
         title={
           <>
-            Nos zones d&apos;intervention <em className="not-italic text-bleu">au Luxembourg</em>.
+            Nos zones d&apos;intervention <em className="not-italic text-copper">au Luxembourg</em>.
           </>
         }
         intro="Tout le Grand-Duché et la Grande Région sur projet. Pages dédiées aux principales communes — choisissez la vôtre pour une lecture adaptée à votre tissu bâti."
@@ -40,17 +40,17 @@ export default function ZonesPage() {
       />
 
       {/* Carte interactive */}
-      <section className="py-10 lg:py-14 bg-creme">
+      <section className="py-10 lg:py-14 bg-cream">
         <div className="container">
           <div className="grid lg:grid-cols-12 gap-10 items-start">
             <div className="lg:col-span-5 lg:sticky lg:top-28">
-              <div className="font-mono text-[10px] uppercase tracking-eyebrow text-bleu">
+              <div className="font-mono text-[10px] uppercase tracking-eyebrow text-copper">
                 Visualisation
               </div>
-              <h2 className="mt-3 font-display text-display-md text-anthra tracking-tight">
-                Nos zones <em className="not-italic text-bleu">en un coup d&apos;œil</em>.
+              <h2 className="mt-3 font-display text-display-md text-ink tracking-tight">
+                Nos zones <em className="not-italic text-copper">en un coup d&apos;œil</em>.
               </h2>
-              <p className="mt-5 text-taupe leading-relaxed">
+              <p className="mt-5 text-graphite leading-relaxed">
                 Survolez un marqueur pour voir le détail de la commune. Pages dédiées
                 accessibles d&apos;un clic.
               </p>
@@ -65,9 +65,9 @@ export default function ZonesPage() {
         </div>
       </section>
 
-      <section className="py-10 lg:py-14 bg-creme">
+      <section className="py-10 lg:py-14 bg-cream">
         <div className="container">
-          <div className="font-mono text-[10px] uppercase tracking-eyebrow text-bleu mb-5">
+          <div className="font-mono text-[10px] uppercase tracking-eyebrow text-copper mb-5">
             Toutes les communes documentées
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -75,23 +75,23 @@ export default function ZonesPage() {
               <Link
                 key={c.slug}
                 href={`/zones/${c.slug}`}
-                className="group p-6 lg:p-7 rounded-2xl border border-pierre bg-white hover:border-bleu/40 hover:shadow-lift transition-all flex flex-col"
+                className="group p-6 lg:p-7 rounded-2xl border border-ink/10 bg-white hover:border-copper/40 hover:shadow-lift transition-all flex flex-col"
               >
                 <div className="flex items-center gap-3">
-                  <span className="h-10 w-10 rounded-full bg-bleu/10 border border-bleu/30 grid place-items-center">
-                    <MapPin className="h-4 w-4 text-bleu" />
+                  <span className="h-10 w-10 rounded-full bg-copper/10 border border-copper/30 grid place-items-center">
+                    <MapPin className="h-4 w-4 text-copper" />
                   </span>
                   <span className="font-mono text-[10px] uppercase tracking-eyebrow text-muted">
                     Commune
                   </span>
                 </div>
-                <h2 className="mt-5 font-display text-2xl text-anthra tracking-tight">
+                <h2 className="mt-5 font-display text-2xl text-ink tracking-tight">
                   {c.name}
                 </h2>
-                <p className="mt-3 text-sm text-taupe leading-relaxed flex-1">
+                <p className="mt-3 text-sm text-graphite leading-relaxed flex-1">
                   {c.context}
                 </p>
-                <div className="mt-5 pt-5 border-t border-pierre inline-flex items-center gap-2 text-xs font-mono uppercase tracking-eyebrow text-anthra group-hover:text-bleu transition-colors">
+                <div className="mt-5 pt-5 border-t border-ink/8 inline-flex items-center gap-2 text-xs font-mono uppercase tracking-eyebrow text-ink group-hover:text-copper transition-colors">
                   Voir la page commune
                   <ArrowUpRight className="h-3 w-3 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </div>
@@ -101,7 +101,7 @@ export default function ZonesPage() {
 
           <p className="mt-10 text-center text-sm text-muted">
             D&apos;autres communes ?{" "}
-            <Link href="/contact" className="text-bleu underline">
+            <Link href="/contact" className="text-copper underline">
               Nous écrire
             </Link>{" "}
             — nous intervenons sur tout le Grand-Duché.

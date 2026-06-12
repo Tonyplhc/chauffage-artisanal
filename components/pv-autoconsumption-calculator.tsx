@@ -78,17 +78,17 @@ export function PVAutoconsumptionCalculator() {
   const verdict = getVerdict(results.consumptionCoveredRate, results.realAutoconsoRate);
 
   return (
-    <section className="py-14 lg:py-20 bg-creme border-y border-pierre">
+    <section className="py-14 lg:py-20 bg-cream border-y border-ink/8">
       <div className="container">
         <div className="max-w-3xl mb-10">
           <Eyebrow number="05">Simulateur autoconsommation</Eyebrow>
           <Reveal>
             <SectionTitle className="mt-4">
-              Que peut produire <em className="not-italic text-bleu">votre toiture</em> ?
+              Que peut produire <em className="not-italic text-copper">votre toiture</em> ?
             </SectionTitle>
           </Reveal>
           <Reveal delay={1}>
-            <p className="mt-5 text-taupe leading-relaxed">
+            <p className="mt-5 text-graphite leading-relaxed">
               Estimation d&apos;ordre de grandeur — un audit énergétique reste
               indispensable pour chiffrer précisément votre projet.
             </p>
@@ -97,8 +97,8 @@ export function PVAutoconsumptionCalculator() {
 
         <div className="grid lg:grid-cols-12 gap-6">
           {/* Sliders */}
-          <div className="lg:col-span-5 p-6 lg:p-8 rounded-3xl border border-pierre bg-white shadow-soft">
-            <div className="font-mono text-[10px] uppercase tracking-eyebrow text-bleu mb-5">
+          <div className="lg:col-span-5 p-6 lg:p-8 rounded-3xl border border-ink/10 bg-white shadow-soft">
+            <div className="font-mono text-[10px] uppercase tracking-eyebrow text-copper mb-5">
               Vos paramètres
             </div>
 
@@ -139,19 +139,19 @@ export function PVAutoconsumptionCalculator() {
                     onClick={() => setScenario(k)}
                     className={`text-left px-4 py-3 rounded-xl border transition-all flex items-center justify-between gap-3 ${
                       scenario === k
-                        ? "border-bleu bg-bleu/8"
-                        : "border-pierre bg-creme hover:border-bleu/40"
+                        ? "border-copper bg-copper/8"
+                        : "border-ink/10 bg-cream hover:border-copper/40"
                     }`}
                   >
                     <span className="flex items-center gap-3">
                       {k === "pv_only" ? (
-                        <Sun className="h-4 w-4 text-bleu" />
+                        <Sun className="h-4 w-4 text-copper" />
                       ) : k === "pv_pac" ? (
-                        <Leaf className="h-4 w-4 text-bleu" />
+                        <Leaf className="h-4 w-4 text-copper" />
                       ) : (
-                        <Battery className="h-4 w-4 text-bleu" />
+                        <Battery className="h-4 w-4 text-copper" />
                       )}
-                      <span className="text-sm text-anthra font-medium">
+                      <span className="text-sm text-ink font-medium">
                         {BASELINES[k].label}
                       </span>
                     </span>
@@ -193,7 +193,7 @@ export function PVAutoconsumptionCalculator() {
                   >
                     Verdict d&apos;orientation
                   </div>
-                  <p className="mt-2 text-base lg:text-lg text-anthra leading-snug">
+                  <p className="mt-2 text-base lg:text-lg text-ink leading-snug">
                     {verdict.headline}
                   </p>
                 </div>
@@ -206,7 +206,7 @@ export function PVAutoconsumptionCalculator() {
                 label="Production estimée"
                 value={`${results.annualProduction.toLocaleString("fr-FR")} kWh`}
                 sub="par an, ordre de grandeur"
-                accent="bleu"
+                accent="copper"
               />
               <KpiTile
                 label="Autoconsommée"
@@ -218,7 +218,7 @@ export function PVAutoconsumptionCalculator() {
                 label="Couverture conso"
                 value={`${Math.round(results.consumptionCoveredRate * 100)}%`}
                 sub={`sur ${annualConsumption.toLocaleString("fr-FR")} kWh annuels`}
-                accent="bleu"
+                accent="copper"
               />
               <KpiTile
                 label="Surplus injecté"
@@ -229,22 +229,22 @@ export function PVAutoconsumptionCalculator() {
             </div>
 
             {/* CTA */}
-            <div className="p-5 lg:p-6 rounded-2xl border border-pierre bg-navy text-creme">
+            <div className="p-5 lg:p-6 rounded-2xl border border-ink/10 bg-charcoal text-cream">
               <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
                 <div>
-                  <div className="font-mono text-[10px] uppercase tracking-eyebrow text-bleu">
+                  <div className="font-mono text-[10px] uppercase tracking-eyebrow text-copper">
                     Étape suivante
                   </div>
-                  <div className="mt-1.5 font-display text-lg text-creme">
+                  <div className="mt-1.5 font-display text-lg text-cream">
                     Vérifions ces chiffres sur votre toiture.
                   </div>
-                  <p className="mt-1 text-sm text-creme/70 max-w-xl">
+                  <p className="mt-1 text-sm text-cream/70 max-w-xl">
                     Audit énergétique, étude d&apos;ombrage, dimensionnement précis.
                   </p>
                 </div>
                 <Link
                   href="/devis?from=pv-autoconso&service=enr"
-                  className="inline-flex items-center gap-2 rounded-full bg-creme text-navy px-5 py-3 text-sm font-medium hover:bg-bleu hover:text-creme transition-colors shrink-0"
+                  className="inline-flex items-center gap-2 rounded-full bg-cream text-charcoal px-5 py-3 text-sm font-medium hover:bg-copper hover:text-cream transition-colors shrink-0"
                 >
                   Demander une étude
                   <ArrowUpRight className="h-4 w-4" />
@@ -253,8 +253,8 @@ export function PVAutoconsumptionCalculator() {
             </div>
 
             {/* Disclaimer */}
-            <div className="p-4 rounded-xl bg-terracotta/5 border border-terracotta/30 flex items-start gap-3 text-xs text-taupe">
-              <Info className="h-4 w-4 text-terracotta shrink-0 mt-0.5" />
+            <div className="p-4 rounded-xl bg-ember/5 border border-ember/30 flex items-start gap-3 text-xs text-graphite">
+              <Info className="h-4 w-4 text-ember shrink-0 mt-0.5" />
               <span>
                 Estimations d&apos;ordre de grandeur basées sur des moyennes du secteur
                 (≈ 950 kWh/an par kWc au Luxembourg). Les performances réelles dépendent
@@ -294,10 +294,10 @@ function SliderInput({
     <div>
       <div className="flex items-center justify-between mb-2">
         <span className="font-mono text-[10px] uppercase tracking-eyebrow text-muted inline-flex items-center gap-2">
-          <Icon className="h-3.5 w-3.5 text-bleu" />
+          <Icon className="h-3.5 w-3.5 text-copper" />
           {label}
         </span>
-        <span className="font-display text-xl text-bleu tabular-nums">
+        <span className="font-display text-xl text-copper tabular-nums">
           {value.toLocaleString("fr-FR")} {unit}
         </span>
       </div>
@@ -308,7 +308,7 @@ function SliderInput({
         step={step}
         value={value}
         onChange={(e) => setValue(Number(e.target.value))}
-        className="w-full accent-bleu cursor-pointer"
+        className="w-full accent-copper cursor-pointer"
       />
       {hint && <div className="mt-1.5 text-xs text-muted">{hint}</div>}
     </div>
@@ -324,16 +324,16 @@ function KpiTile({
   label: string;
   value: string;
   sub: string;
-  accent: "bleu" | "green" | "muted";
+  accent: "copper" | "green" | "muted";
 }) {
   const accentClass =
     accent === "green"
-      ? "text-[#2E7D5A]"
+      ? "text-[#22a06b]"
       : accent === "muted"
-      ? "text-taupe"
-      : "text-bleu";
+      ? "text-graphite"
+      : "text-copper";
   return (
-    <div className="p-5 rounded-2xl border border-pierre bg-white">
+    <div className="p-5 rounded-2xl border border-ink/10 bg-white">
       <div className="font-mono text-[10px] uppercase tracking-eyebrow text-muted">
         {label}
       </div>
@@ -353,7 +353,7 @@ function getVerdict(
     return {
       headline:
         "Votre installation pourrait couvrir une part majeure de vos besoins — architecture très pertinente.",
-      color: "#2E7D5A",
+      color: "#22a06b",
       bgColor: "rgba(34,160,107,0.12)",
       borderColor: "rgba(34,160,107,0.4)",
     };
@@ -362,15 +362,15 @@ function getVerdict(
     return {
       headline:
         "Architecture cohérente — couverture significative, surplus injecté à valoriser.",
-      color: "#0B57A0",
-      bgColor: "rgba(11,87,160,0.12)",
-      borderColor: "rgba(11,87,160,0.4)",
+      color: "#b86a36",
+      bgColor: "rgba(184,106,54,0.12)",
+      borderColor: "rgba(184,106,54,0.4)",
     };
   }
   return {
     headline:
       "Production probablement insuffisante pour ce profil de consommation — revoir la puissance installée ou ajouter du stockage.",
-    color: "#C0392B",
+    color: "#dc5a28",
     bgColor: "rgba(220,90,40,0.12)",
     borderColor: "rgba(220,90,40,0.4)",
   };

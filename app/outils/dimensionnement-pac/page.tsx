@@ -44,23 +44,23 @@ export default function PacSizingPage() {
   );
 
   return (
-    <div className="min-h-screen bg-creme py-12 lg:py-16">
+    <div className="min-h-screen bg-cream py-12 lg:py-16">
       <div className="container max-w-5xl">
         <div className="mb-8">
           <Link
             href="/"
-            className="text-xs font-mono uppercase tracking-eyebrow text-taupe hover:text-bleu"
+            className="text-xs font-mono uppercase tracking-eyebrow text-graphite hover:text-copper"
           >
             ← Retour accueil
           </Link>
-          <h1 className="mt-4 font-display text-display-md text-anthra">
+          <h1 className="mt-4 font-display text-display-md text-ink">
             Dimensionnement pompe à chaleur
           </h1>
-          <p className="mt-2 text-taupe max-w-2xl">
+          <p className="mt-2 text-graphite max-w-2xl">
             Estimez la puissance PAC adaptée à votre bâtiment. Méthode
             simplifiée mais transparente, calibrée pour le climat luxembourgeois.
             Pour un dimensionnement officiel, demandez un{" "}
-            <Link href="/devis" className="text-bleu underline">
+            <Link href="/devis" className="text-copper underline">
               audit technique
             </Link>
             .
@@ -70,8 +70,8 @@ export default function PacSizingPage() {
         <div className="grid lg:grid-cols-5 gap-6">
           {/* Inputs */}
           <div className="lg:col-span-2 space-y-4">
-            <div className="rounded-2xl border border-pierre bg-white shadow-soft p-5">
-              <div className="font-mono text-[10px] uppercase tracking-eyebrow text-bleu mb-3">
+            <div className="rounded-2xl border border-ink/10 bg-white shadow-soft p-5">
+              <div className="font-mono text-[10px] uppercase tracking-eyebrow text-copper mb-3">
                 Votre bâtiment
               </div>
 
@@ -83,7 +83,7 @@ export default function PacSizingPage() {
                   step="5"
                   value={surface}
                   onChange={(e) => setSurface(Number(e.target.value))}
-                  className="w-full accent-bleu"
+                  className="w-full accent-copper"
                 />
               </Field>
 
@@ -95,7 +95,7 @@ export default function PacSizingPage() {
                   step="0.1"
                   value={ceiling}
                   onChange={(e) => setCeiling(Number(e.target.value))}
-                  className="w-full accent-bleu"
+                  className="w-full accent-copper"
                 />
               </Field>
 
@@ -108,7 +108,7 @@ export default function PacSizingPage() {
                   onChange={(e) =>
                     setIsolation(e.target.value as IsolationLevel)
                   }
-                  className="w-full bg-creme border border-pierre rounded-lg px-3 py-2 text-sm focus:border-bleu focus:outline-none"
+                  className="w-full bg-cream border border-ink/12 rounded-lg px-3 py-2 text-sm focus:border-copper focus:outline-none"
                 >
                   <option value="neuf-passif">Neuf très performant (passif / classe AAA)</option>
                   <option value="neuf-standard">Construit après ~2010</option>
@@ -126,8 +126,8 @@ export default function PacSizingPage() {
                       onClick={() => setPacType(t)}
                       className={`rounded-lg border px-2 py-2 text-xs transition-colors ${
                         pacType === t
-                          ? "bg-navy text-creme border-anthra"
-                          : "bg-creme border-pierre text-taupe hover:border-bleu/40"
+                          ? "bg-ink text-cream border-ink"
+                          : "bg-cream border-ink/12 text-graphite hover:border-copper/40"
                       }`}
                     >
                       {PAC_SCOP[t].label}
@@ -137,8 +137,8 @@ export default function PacSizingPage() {
               </Field>
             </div>
 
-            <div className="rounded-2xl border border-bleu/30 bg-bleu/5 p-5 text-xs text-taupe">
-              <Info className="h-4 w-4 text-bleu mb-2" />
+            <div className="rounded-2xl border border-copper/30 bg-copper/5 p-5 text-xs text-graphite">
+              <Info className="h-4 w-4 text-copper mb-2" />
               <p>
                 Méthode : <span className="font-mono">P = V × G × ΔT</span>{" "}
                 avec V = surface × hauteur, G coefficient de déperdition
@@ -150,8 +150,8 @@ export default function PacSizingPage() {
 
           {/* Results */}
           <div className="lg:col-span-3 space-y-4">
-            <div className="rounded-2xl border border-pierre bg-white shadow-soft p-5">
-              <div className="font-mono text-[10px] uppercase tracking-eyebrow text-bleu mb-4">
+            <div className="rounded-2xl border border-ink/10 bg-white shadow-soft p-5">
+              <div className="font-mono text-[10px] uppercase tracking-eyebrow text-copper mb-4">
                 Estimation
               </div>
               <div className="grid grid-cols-2 gap-4">
@@ -182,12 +182,12 @@ export default function PacSizingPage() {
               </div>
             </div>
 
-            <div className="rounded-2xl border border-pierre bg-white shadow-soft p-5">
-              <div className="font-mono text-[10px] uppercase tracking-eyebrow text-bleu mb-3">
+            <div className="rounded-2xl border border-ink/10 bg-white shadow-soft p-5">
+              <div className="font-mono text-[10px] uppercase tracking-eyebrow text-copper mb-3">
                 Détail du calcul
               </div>
               <table className="w-full text-sm">
-                <tbody className="divide-y divide-pierre">
+                <tbody className="divide-y divide-ink/5">
                   <Row label="Volume chauffé" value={`${result.volume} m³`} />
                   <Row
                     label="Coefficient G (déperdition)"
@@ -207,14 +207,14 @@ export default function PacSizingPage() {
             </div>
 
             {result.notes.length > 0 && (
-              <div className="rounded-2xl border border-terracotta/20 bg-terracotta/5 p-5">
-                <div className="font-mono text-[10px] uppercase tracking-eyebrow text-terracotta mb-2">
+              <div className="rounded-2xl border border-ember/20 bg-ember/5 p-5">
+                <div className="font-mono text-[10px] uppercase tracking-eyebrow text-ember mb-2">
                   Conseils
                 </div>
-                <ul className="space-y-1.5 text-sm text-taupe">
+                <ul className="space-y-1.5 text-sm text-graphite">
                   {result.notes.map((n, i) => (
                     <li key={i} className="flex items-start gap-2">
-                      <span className="text-terracotta mt-1.5 inline-block h-1 w-1 rounded-full bg-terracotta shrink-0" />
+                      <span className="text-ember mt-1.5 inline-block h-1 w-1 rounded-full bg-ember shrink-0" />
                       <span>{n}</span>
                     </li>
                   ))}
@@ -222,19 +222,19 @@ export default function PacSizingPage() {
               </div>
             )}
 
-            <div className="rounded-2xl border border-pierre bg-sable/60 p-5 flex items-center justify-between gap-3 flex-wrap">
+            <div className="rounded-2xl border border-ink/10 bg-ink/5 p-5 flex items-center justify-between gap-3 flex-wrap">
               <div>
-                <div className="font-display text-base text-anthra">
+                <div className="font-display text-base text-ink">
                   Besoin d&apos;un dimensionnement précis ?
                 </div>
-                <p className="text-sm text-taupe mt-1">
+                <p className="text-sm text-graphite mt-1">
                   Notre équipe se déplace pour un audit complet et un devis
                   chiffré.
                 </p>
               </div>
               <Link
                 href="/estimation"
-                className="inline-flex items-center gap-2 rounded-full bg-navy text-creme px-4 py-2 text-sm hover:bg-bleu transition-colors"
+                className="inline-flex items-center gap-2 rounded-full bg-ink text-cream px-4 py-2 text-sm hover:bg-copper transition-colors"
               >
                 Estimer mes économies · 60 s
                 <ArrowRight className="h-3.5 w-3.5" />
@@ -267,7 +267,7 @@ function Field({
 }) {
   return (
     <div className="mb-3">
-      <div className="text-xs text-taupe mb-1">{label}</div>
+      <div className="text-xs text-graphite mb-1">{label}</div>
       {children}
     </div>
   );
@@ -287,7 +287,7 @@ function Kpi({
   icon?: typeof Flame;
 }) {
   return (
-    <div className="rounded-xl bg-creme/40 p-3">
+    <div className="rounded-xl bg-cream/40 p-3">
       <div
         className="font-mono text-[10px] uppercase tracking-eyebrow inline-flex items-center gap-1.5"
         style={{ color: color ?? "#8b847a" }}
@@ -297,7 +297,7 @@ function Kpi({
       </div>
       <div
         className="mt-1 font-display text-xl tabular-nums"
-        style={{ color: color ?? "#2A2724" }}
+        style={{ color: color ?? "#1e1a15" }}
       >
         {value}
       </div>
@@ -309,8 +309,8 @@ function Kpi({
 function Row({ label, value }: { label: string; value: string }) {
   return (
     <tr>
-      <td className="py-2 text-taupe">{label}</td>
-      <td className="py-2 text-right font-mono text-anthra tabular-nums">
+      <td className="py-2 text-graphite">{label}</td>
+      <td className="py-2 text-right font-mono text-ink tabular-nums">
         {value}
       </td>
     </tr>

@@ -173,7 +173,7 @@ export function OpeningStatusBadge({
     return (
       <span
         className={cn(
-          "inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono uppercase tracking-eyebrow border bg-[#2E7D5A]/10 border-[#2E7D5A]/40 text-[#2E7D5A]",
+          "inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono uppercase tracking-eyebrow border bg-[#22a06b]/10 border-[#22a06b]/40 text-[#22a06b]",
           className,
         )}
         aria-label={`Ouvert maintenant, jusqu'à ${status.until}`}
@@ -188,7 +188,7 @@ export function OpeningStatusBadge({
     return (
       <span
         className={cn(
-          "inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono uppercase tracking-eyebrow border bg-bleu/10 border-bleu/40 text-bleu",
+          "inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono uppercase tracking-eyebrow border bg-copper/10 border-copper/40 text-copper",
           className,
         )}
         aria-label={`Fermé, ouvre à ${status.opensAt}`}
@@ -203,7 +203,7 @@ export function OpeningStatusBadge({
     return (
       <span
         className={cn(
-          "inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono uppercase tracking-eyebrow border bg-sable/60 border-pierre text-taupe",
+          "inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono uppercase tracking-eyebrow border bg-ink/5 border-ink/15 text-graphite",
           className,
         )}
         aria-label={`Fermé, ouvre ${status.nextDayLabel} à ${status.opensNextDayAt}`}
@@ -264,10 +264,10 @@ export function OpeningHoursTable({
   return (
     <div className={cn("space-y-3", className)}>
       <div className="flex items-center justify-between gap-3 flex-wrap">
-        <h3 className="font-display text-lg text-anthra">Horaires d&apos;ouverture</h3>
+        <h3 className="font-display text-lg text-ink">Horaires d&apos;ouverture</h3>
         {showStatus && <OpeningStatusBadge />}
       </div>
-      <ul className="grid gap-px bg-sable/60 rounded-2xl overflow-hidden border border-pierre">
+      <ul className="grid gap-px bg-ink/10 rounded-2xl overflow-hidden border border-ink/10">
         {days.map((d) => {
           const slots = SCHEDULE[d];
           const isToday = highlightToday && todayIso === d;
@@ -278,21 +278,21 @@ export function OpeningHoursTable({
               className={cn(
                 "flex items-baseline justify-between gap-3 px-4 py-2.5 text-sm",
                 isToday
-                  ? "bg-bleu/8"
+                  ? "bg-copper/8"
                   : closed
-                    ? "bg-creme/40"
+                    ? "bg-cream/40"
                     : "bg-white",
               )}
             >
               <span
                 className={cn(
                   "font-medium",
-                  isToday ? "text-bleu" : closed ? "text-muted" : "text-anthra",
+                  isToday ? "text-copper" : closed ? "text-muted" : "text-ink",
                 )}
               >
                 {DAY_LABELS[d]}
                 {isToday && (
-                  <span className="ml-2 font-mono text-[10px] uppercase tracking-eyebrow text-bleu">
+                  <span className="ml-2 font-mono text-[10px] uppercase tracking-eyebrow text-copper">
                     Aujourd&apos;hui
                   </span>
                 )}
@@ -303,8 +303,8 @@ export function OpeningHoursTable({
                   closed
                     ? "text-muted italic"
                     : isToday
-                      ? "text-bleu"
-                      : "text-taupe",
+                      ? "text-copper"
+                      : "text-graphite",
                 )}
               >
                 {closed
@@ -322,7 +322,7 @@ export function OpeningHoursTable({
       </ul>
       {emergencyLine && (
         <p className="text-xs text-muted leading-relaxed">
-          <span className="inline-block w-2 h-2 rounded-full bg-terracotta mr-2 align-middle" />
+          <span className="inline-block w-2 h-2 rounded-full bg-ember mr-2 align-middle" />
           Astreinte dépannage hors horaires (chauffage en panne, fuite) — appel
           direct.
         </p>

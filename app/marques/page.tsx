@@ -25,22 +25,22 @@ export default function MarquesHub() {
   return (
     <>
       {/* Hero */}
-      <section className="relative pt-12 lg:pt-16 pb-12 lg:pb-16 bg-creme border-b border-pierre overflow-hidden">
+      <section className="relative pt-12 lg:pt-16 pb-12 lg:pb-16 bg-cream border-b border-ink/8 overflow-hidden">
         <div
           className="absolute inset-0 opacity-[0.04]"
           style={{
             backgroundImage:
-              "radial-gradient(circle at 20% 30%, rgba(11,87,160,0.35), transparent 55%), radial-gradient(circle at 80% 70%, rgba(11,87,160,0.18), transparent 55%)",
+              "radial-gradient(circle at 20% 30%, rgba(184,106,54,0.35), transparent 55%), radial-gradient(circle at 80% 70%, rgba(184,106,54,0.18), transparent 55%)",
           }}
         />
         <div className="container relative">
           <div className="max-w-3xl">
             <Eyebrow number="00">Encyclopédie des marques</Eyebrow>
-            <h1 className="mt-4 font-display text-display-xl tracking-tightest text-balance text-anthra">
+            <h1 className="mt-4 font-display text-display-xl tracking-tightest text-balance text-ink">
               Les marques que nous{" "}
-              <em className="not-italic text-bleu">installons et maîtrisons</em>.
+              <em className="not-italic text-copper">installons et maîtrisons</em>.
             </h1>
-            <p className="mt-5 text-lg lg:text-xl text-taupe leading-relaxed text-balance">
+            <p className="mt-5 text-lg lg:text-xl text-graphite leading-relaxed text-balance">
               Vaillant, Viessmann, Daikin, Mitsubishi, Buderus, Atlantic, Bosch, De Dietrich,
               Hoval — sélection orientée disponibilité pièces, robustesse long terme et
               cohérence avec les contraintes luxembourgeoises.
@@ -48,13 +48,13 @@ export default function MarquesHub() {
             <div className="mt-7 flex flex-wrap items-center gap-3">
               <Link
                 href="/devis"
-                className="inline-flex items-center gap-2 rounded-full bg-navy text-creme px-6 py-3.5 text-sm font-medium hover:bg-bleu transition-colors group"
+                className="inline-flex items-center gap-2 rounded-full bg-ink text-cream px-6 py-3.5 text-sm font-medium hover:bg-copper transition-colors group"
               >
                 Demander un devis
                 <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </Link>
-              <span className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-eyebrow text-taupe">
-                <MapPin className="h-3 w-3 text-bleu" />9 partenaires constructeur · Luxembourg
+              <span className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-eyebrow text-graphite">
+                <MapPin className="h-3 w-3 text-copper" />9 partenaires constructeur · Luxembourg
               </span>
             </div>
           </div>
@@ -62,15 +62,15 @@ export default function MarquesHub() {
       </section>
 
       {/* Grille des marques */}
-      <section className="py-16 lg:py-20 bg-creme border-b border-pierre">
+      <section className="py-16 lg:py-20 bg-linen border-b border-ink/8">
         <div className="container">
           <div className="max-w-3xl mb-10">
             <Eyebrow number="01">Catalogue</Eyebrow>
             <SectionTitle className="mt-4">
               9 marques sélectionnées,{" "}
-              <em className="not-italic text-bleu">aucune au hasard</em>.
+              <em className="not-italic text-copper">aucune au hasard</em>.
             </SectionTitle>
-            <p className="mt-5 text-taupe leading-relaxed">
+            <p className="mt-5 text-graphite leading-relaxed">
               Cliquez sur une marque pour découvrir notre positionnement, les gammes phares que
               nous installons et les conditions de garantie.
             </p>
@@ -83,42 +83,42 @@ export default function MarquesHub() {
                 href={`/marques/${b.slug}`}
                 className={`group p-6 lg:p-7 rounded-2xl border bg-white hover:shadow-lift transition-all flex flex-col ${
                   b.verifiedPartner
-                    ? "border-bleu/40 shadow-soft"
-                    : "border-pierre hover:border-bleu/40"
+                    ? "border-copper/40 shadow-soft"
+                    : "border-ink/10 hover:border-copper/40"
                 }`}
               >
                 <div className="flex items-start justify-between gap-3">
                   <div className="min-w-0">
-                    <div className="font-mono text-[10px] uppercase tracking-eyebrow text-bleu">
+                    <div className="font-mono text-[10px] uppercase tracking-eyebrow text-copper">
                       {b.origin} · {b.since}
                     </div>
-                    <h2 className="mt-2 font-display text-2xl text-anthra tracking-tight">
+                    <h2 className="mt-2 font-display text-2xl text-ink tracking-tight">
                       {b.name}
                     </h2>
                     {b.verifiedPartner && (
-                      <span className="mt-2 inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-bleu text-creme text-[9px] font-mono uppercase tracking-eyebrow">
+                      <span className="mt-2 inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-copper text-cream text-[9px] font-mono uppercase tracking-eyebrow">
                         Partenaire vérifié
                       </span>
                     )}
                   </div>
-                  <span className="grid place-items-center h-9 w-9 rounded-full bg-bleu/12 border border-bleu/30 shrink-0">
-                    <Award className="h-4 w-4 text-bleu" />
+                  <span className="grid place-items-center h-9 w-9 rounded-full bg-copper/12 border border-copper/30 shrink-0">
+                    <Award className="h-4 w-4 text-copper" />
                   </span>
                 </div>
-                <p className="mt-4 text-sm text-taupe leading-relaxed flex-1">
+                <p className="mt-4 text-sm text-graphite leading-relaxed flex-1">
                   {b.shortPitch}
                 </p>
                 <div className="mt-5 flex flex-wrap gap-1.5">
                   {b.categories.map((c) => (
                     <span
                       key={c}
-                      className="text-[10px] font-mono uppercase tracking-eyebrow text-taupe bg-creme border border-pierre px-2 py-0.5 rounded-full"
+                      className="text-[10px] font-mono uppercase tracking-eyebrow text-graphite bg-cream border border-ink/10 px-2 py-0.5 rounded-full"
                     >
                       {CATEGORY_LABELS[c] ?? c}
                     </span>
                   ))}
                 </div>
-                <div className="mt-5 pt-5 border-t border-pierre inline-flex items-center justify-between text-xs font-mono uppercase tracking-eyebrow text-taupe group-hover:text-bleu transition-colors">
+                <div className="mt-5 pt-5 border-t border-ink/8 inline-flex items-center justify-between text-xs font-mono uppercase tracking-eyebrow text-graphite group-hover:text-copper transition-colors">
                   Voir la fiche
                   <ArrowUpRight className="h-3 w-3 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </div>
@@ -129,46 +129,46 @@ export default function MarquesHub() {
       </section>
 
       {/* Bandeau pédagogique */}
-      <section className="py-14 lg:py-20 bg-creme">
+      <section className="py-14 lg:py-20 bg-cream">
         <div className="container grid lg:grid-cols-12 gap-10 items-start">
           <div className="lg:col-span-7">
             <Eyebrow number="02">Notre méthode</Eyebrow>
             <SectionTitle className="mt-4">
               Comment on choisit{" "}
-              <em className="not-italic text-bleu">la bonne marque</em> pour votre projet.
+              <em className="not-italic text-copper">la bonne marque</em> pour votre projet.
             </SectionTitle>
-            <p className="mt-5 text-taupe leading-relaxed">
+            <p className="mt-5 text-graphite leading-relaxed">
               Le choix de la marque n&apos;est jamais cosmétique — il dépend de la puissance
               cible, du carburant, de la disponibilité pièces sur 15-20 ans, de la complexité du
               SAV et du budget. Nous proposons toujours au moins deux marques sur les devis
               significatifs.
             </p>
-            <ul className="mt-6 space-y-3 text-sm text-taupe">
-              <li className="flex items-start gap-3 p-4 rounded-2xl border border-pierre bg-white">
-                <span className="font-mono text-[10px] uppercase tracking-eyebrow text-bleu shrink-0 mt-0.5">
+            <ul className="mt-6 space-y-3 text-sm text-graphite">
+              <li className="flex items-start gap-3 p-4 rounded-2xl border border-ink/10 bg-white">
+                <span className="font-mono text-[10px] uppercase tracking-eyebrow text-copper shrink-0 mt-0.5">
                   01
                 </span>
                 <span>
-                  <strong className="text-anthra">Disponibilité pièces sur 15-20 ans</strong> —
+                  <strong className="text-ink">Disponibilité pièces sur 15-20 ans</strong> —
                   une chaudière dure le temps de ses pièces détachées. On évite les marques
                   exotiques.
                 </span>
               </li>
-              <li className="flex items-start gap-3 p-4 rounded-2xl border border-pierre bg-white">
-                <span className="font-mono text-[10px] uppercase tracking-eyebrow text-bleu shrink-0 mt-0.5">
+              <li className="flex items-start gap-3 p-4 rounded-2xl border border-ink/10 bg-white">
+                <span className="font-mono text-[10px] uppercase tracking-eyebrow text-copper shrink-0 mt-0.5">
                   02
                 </span>
                 <span>
-                  <strong className="text-anthra">Support technique constructeur</strong> — accès
+                  <strong className="text-ink">Support technique constructeur</strong> — accès
                   au support en cas de panne complexe, pas un appel SAV anonyme.
                 </span>
               </li>
-              <li className="flex items-start gap-3 p-4 rounded-2xl border border-pierre bg-white">
-                <span className="font-mono text-[10px] uppercase tracking-eyebrow text-bleu shrink-0 mt-0.5">
+              <li className="flex items-start gap-3 p-4 rounded-2xl border border-ink/10 bg-white">
+                <span className="font-mono text-[10px] uppercase tracking-eyebrow text-copper shrink-0 mt-0.5">
                   03
                 </span>
                 <span>
-                  <strong className="text-anthra">Cohérence budget / durée de vie</strong> —
+                  <strong className="text-ink">Cohérence budget / durée de vie</strong> —
                   premium quand justifié, accessible quand pertinent. Pas de surfacturation par
                   prestige de marque.
                 </span>
@@ -176,21 +176,21 @@ export default function MarquesHub() {
             </ul>
           </div>
           <aside className="lg:col-span-5 lg:sticky lg:top-28">
-            <div className="rounded-2xl border border-bleu/30 bg-gradient-to-br from-creme to-white p-7 shadow-soft">
-              <div className="font-mono text-[10px] uppercase tracking-eyebrow text-bleu">
+            <div className="rounded-2xl border border-copper/30 bg-gradient-to-br from-cream to-white p-7 shadow-soft">
+              <div className="font-mono text-[10px] uppercase tracking-eyebrow text-copper">
                 Devis multi-marques
               </div>
-              <h3 className="mt-3 font-display text-2xl text-anthra tracking-tight">
+              <h3 className="mt-3 font-display text-2xl text-ink tracking-tight">
                 Indiquez une préférence ou laissez-nous comparer
               </h3>
-              <p className="mt-4 text-sm text-taupe leading-relaxed">
+              <p className="mt-4 text-sm text-graphite leading-relaxed">
                 Sur le configurateur, vous pouvez préciser une marque souhaitée. Si vous
                 préférez qu&apos;on compare, nous proposerons 2 marques pertinentes pour votre
                 projet, avec écart de prix justifié.
               </p>
               <Link
                 href="/devis"
-                className="mt-6 inline-flex items-center justify-between gap-2 rounded-full bg-navy text-creme px-5 py-3.5 text-sm font-medium hover:bg-bleu transition-colors w-full group"
+                className="mt-6 inline-flex items-center justify-between gap-2 rounded-full bg-ink text-cream px-5 py-3.5 text-sm font-medium hover:bg-copper transition-colors w-full group"
               >
                 Lancer mon devis
                 <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
