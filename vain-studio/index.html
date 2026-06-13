@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>VΛIN STUDIO — Nous refermons l'écart entre votre entreprise et ses concurrents</title>
+<meta name="description" content="VΛIN Studio — studio de transformation opérationnelle pour PME techniques luxembourgeoises. Visibilité, automatisation, aides publiques, croissance : le système qui empêche votre entreprise de prendre du retard, en silence." />
+<meta name="theme-color" content="#0A0A0C" />
+<link rel="canonical" href="https://vainstudio.lu/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="VΛIN STUDIO" />
+<meta property="og:title" content="VΛIN STUDIO — Nous refermons l'écart entre votre entreprise et ses concurrents" />
+<meta property="og:description" content="Le retard ne fait pas de bruit. Visibilité · Automatisation · Aides publiques · Croissance. Pour les PME techniques luxembourgeoises." />
+<meta property="og:url" content="https://vainstudio.lu/" />
+<meta property="og:image" content="https://vainstudio.lu/og-cover.jpg" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230A0A0C'/%3E%3Cpath d='M28 70 L50 30 L72 70' fill='none' stroke='%23C8A86B' stroke-width='7' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+/* ════════════════════════════════════════════════════════════
+   VΛIN STUDIO — « L'ÉCART »
+   Obsession : le retard silencieux. Symbole : Λ (l'angle de l'écart).
+   Fondations gardées : noir profond · ivoire · or champagne · serif.
+   Interdits respectés : aucun dashboard, aucune grille de cartes,
+   aucun visuel générique (bâtiment/voiture).
+   ════════════════════════════════════════════════════════════ */
+:root{
+  --noir:#0A0A0C; --noir2:#070709; --charbon:#141417;
+  --ivoire:#F4F1EA; --ink:#F4F1EA; --ink2:rgba(244,241,234,.60); --ink3:rgba(244,241,234,.40); --ink4:rgba(244,241,234,.24);
+  --or:#C8A86B; --or2:#E4D2A6; --orL:rgba(200,168,107,.34);
+  --bronze:#5A5046; --bronze2:rgba(200,168,107,.5);
+  --line:rgba(244,241,234,.10); --line2:rgba(244,241,234,.16);
+  --noir-on:#15140F; --noir-on2:rgba(21,20,15,.62); --noir-on3:rgba(21,20,15,.40);
+  --orDark:#9C7E3C; --lineDark:rgba(21,20,15,.12); --rouge:#8E463D;
+  --ease:cubic-bezier(.2,.7,.2,1); --ease2:cubic-bezier(.16,1,.3,1);
+  --fd:'Fraunces',Georgia,serif; --fb:'Inter',system-ui,sans-serif; --fm:'JetBrains Mono',monospace;
+  --w:1180px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--noir);color:var(--ink);font-family:var(--fb);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::selection{background:var(--or);color:#0a0a0a}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
+:focus-visible{outline:1.5px solid var(--or);outline-offset:3px;border-radius:4px}
+.wrap{max-width:var(--w);margin:0 auto;padding:0 32px}
+.fm{font-family:var(--fm);letter-spacing:.04em}
+h1,h2,h3{font-family:var(--fd);font-weight:500;letter-spacing:-.025em;line-height:1.02}
+.kick{font-family:var(--fm);font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--or);display:inline-flex;align-items:center;gap:11px}
+.kick::before{content:"";width:20px;height:1px;background:var(--or);opacity:.7}
+.lead{font-size:clamp(15px,1.5vw,18px);color:var(--ink2);line-height:1.7}
+
+.grain{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.025;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+/* fil rouge : l'écart qui se referme au scroll */
+.thread{position:fixed;top:0;left:max(14px,calc((100vw - var(--w))/2 - 8px));width:2px;height:100vh;z-index:40;pointer-events:none;transition:opacity .45s var(--ease)}
+.thread.hide{opacity:0}
+.thread .track{position:absolute;inset:0;background:var(--line)}
+.thread .fill{position:absolute;top:0;left:0;width:100%;height:0;background:linear-gradient(180deg,var(--or),var(--or2));box-shadow:0 0 10px rgba(200,168,107,.4)}
+@media(max-width:1240px){.thread{left:14px}}
+@media(max-width:680px){.thread{display:none}}
+
+.btn{display:inline-flex;align-items:center;gap:11px;font-weight:600;font-size:14px;padding:15px 26px;border-radius:10px;transition:transform .4s var(--ease),box-shadow .5s var(--ease),background .3s,border-color .3s;white-space:nowrap}
+.btn .ar{transition:transform .4s var(--ease)}
+.btn:hover .ar{transform:translateX(4px)}
+.btn-or{background:var(--or);color:#100c04}
+.btn-or:hover{transform:translateY(-1px);box-shadow:0 18px 50px -18px rgba(200,168,107,.5)}
+.lnk{font-size:13.5px;color:var(--ink3);display:inline-flex;align-items:center;gap:9px;transition:color .3s}
+.lnk:hover{color:var(--or2)}
+
+.rv{opacity:0;transform:translateY(26px);filter:blur(5px);transition:opacity 1s var(--ease2),transform 1s var(--ease2),filter 1s var(--ease2)}
+.rv.in{opacity:1;transform:none;filter:none}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
+
+/* séparateur Λ (le symbole récurrent) */
+.lam{display:flex;justify-content:center;padding:0}
+.lam svg{width:30px;height:22px}
+.lam path{stroke:var(--or);stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round;opacity:.55}
+
+/* NAV */
+nav{position:fixed;inset:0 0 auto 0;z-index:50;transition:background .5s var(--ease),border-color .5s,padding .4s}
+nav .in{max-width:var(--w);margin:0 auto;padding:22px 32px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+nav.sc{background:rgba(8,8,10,.74);backdrop-filter:blur(20px) saturate(1.2);border-bottom:1px solid var(--line)}
+nav.sc .in{padding:14px 32px}
+.brand{font-family:var(--fd);font-weight:500;font-size:21px;letter-spacing:.16em;display:flex;align-items:baseline;gap:9px}
+.brand small{font-family:var(--fm);font-size:9px;letter-spacing:.4em;color:var(--ink3);font-weight:400}
+.nav-mid{display:flex;gap:32px;font-size:13.5px;color:var(--ink2)}
+.nav-mid a{transition:color .3s}.nav-mid a:hover{color:var(--ink)}
+.nav-cta{font-size:12px;letter-spacing:.03em;font-weight:600;padding:11px 18px;border-radius:8px;border:1px solid var(--orL);color:var(--or2);transition:.3s}
+.nav-cta:hover{background:var(--or);color:#100c04;border-color:var(--or)}
+@media(max-width:900px){.nav-mid{display:none}}
+@media(max-width:560px){.brand small{display:none}nav .in{padding:16px 20px}nav.sc .in{padding:12px 20px}.nav-cta{font-size:11px;padding:9px 13px}}
+
+/* ════ HERO — TOUR DE CONTRÔLE ════ */
+#hero{position:relative;min-height:100svh;display:flex;align-items:center;padding:124px 0 70px;overflow:hidden;isolation:isolate}
+@supports not (min-height:100svh){#hero{min-height:100vh}}
+#hero::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(120% 90% at 76% 36%,transparent 48%,rgba(0,0,0,.44))}
+.hero-glow{position:absolute;top:4%;right:-6%;width:min(680px,84vw);height:640px;border-radius:50%;background:radial-gradient(closest-side,rgba(200,168,107,.13),transparent 70%);pointer-events:none;z-index:-2}
+.hero-grid{display:grid;grid-template-columns:.86fr 1.14fr;gap:50px;align-items:center;width:100%}
+@media(max-width:980px){.hero-grid{grid-template-columns:1fr;gap:38px}}
+.hero-kick{margin-bottom:22px}
+.hero-title{font-family:var(--fd);font-weight:500;font-size:clamp(31px,4.7vw,56px);line-height:1.05;letter-spacing:-.028em;text-wrap:balance}
+.hero-title .or{color:var(--or);font-style:italic;font-weight:400}
+.hero-sub{margin-top:20px;max-width:460px;font-size:clamp(15px,1.4vw,17px);color:var(--ink2);line-height:1.6;text-wrap:pretty}
+.hero-cta{display:flex;align-items:center;gap:18px;margin-top:30px;flex-wrap:wrap}
+.hero-cta .btn-or{padding:16px 26px}
+.hero-cta .lnk{font-size:14px}
+.hero-micro{margin-top:18px;font-family:var(--fm);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3)}
+
+/* mini case study Chauffage Artisanal */
+.cstudy{display:block;max-width:480px;margin-top:24px;padding:16px;border:1px solid var(--line2);border-radius:18px;background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,.004));transition:border-color .3s,background .3s}
+.cstudy:hover{border-color:var(--orL);background:rgba(200,168,107,.04)}
+.cs-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.cs-k{font-family:var(--fm);font-size:9.5px;letter-spacing:.16em;color:var(--or)}
+.cs-link{font-family:var(--fm);font-size:10.5px;color:var(--or2);white-space:nowrap}
+.proof-shots{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+.shot{position:relative;border-radius:10px;overflow:hidden;border:1px solid var(--line2);aspect-ratio:16/10;background:#0e0d0b}
+.shot img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block}
+.shot.before img{filter:grayscale(.5) brightness(.78) contrast(.95)}
+.shot.after{border-color:var(--orL)}
+.shot figcaption{position:absolute;top:8px;left:8px;font-family:var(--fm);font-size:8.5px;letter-spacing:.1em;padding:3px 7px;border-radius:5px;background:rgba(8,8,10,.74);color:var(--ink2);backdrop-filter:blur(4px)}
+.shot.after figcaption{color:#0f0c04;background:var(--or)}
+.cs-t{display:block;margin-top:13px;font-size:14px;font-weight:600;color:var(--ink)}
+.cs-tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:10px}
+.cs-tags span{font-family:var(--fm);font-size:10px;letter-spacing:.03em;color:var(--ink2);padding:5px 10px;border:1px solid var(--line);border-radius:999px}
+
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.28}}
+@keyframes draw{to{stroke-dashoffset:0}}
+
+/* tour de contrôle — aperçu opérationnel */
+.tower{border:1px solid var(--line2);border-radius:24px;background:linear-gradient(180deg,rgba(255,255,255,.028),rgba(255,255,255,.004));padding:26px;box-shadow:0 70px 150px -70px rgba(0,0,0,.95)}
+.tw-h{display:flex;align-items:center;justify-content:space-between;padding:2px 4px 18px;border-bottom:1px solid var(--line)}
+.tw-t{font-family:var(--fm);font-size:11px;letter-spacing:.18em;color:var(--ink3)}
+.tw-ex{display:inline-flex;align-items:center;gap:7px;font-family:var(--fm);font-size:10px;letter-spacing:.12em;color:var(--ink3)}
+.tw-ex i{width:6px;height:6px;border-radius:50%;background:var(--or);box-shadow:0 0 8px var(--or);animation:pulse 2.4s var(--ease) infinite}
+.tw-master{display:flex;align-items:center;gap:22px;padding:26px 4px 22px}
+.tw-num{font-family:var(--fd);font-weight:500;font-size:clamp(64px,8vw,104px);line-height:.84;letter-spacing:-.035em;color:var(--ink)}
+.tw-ml{display:flex;flex-direction:column}
+.tw-mlt{font-size:19px;font-weight:600;color:var(--ink);letter-spacing:-.01em}
+.tw-mls{margin-top:5px;font-size:13.5px;color:var(--ink3)}
+.tw-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding-top:20px;border-top:1px solid var(--line)}
+.tile{padding:18px 15px;border:1px solid var(--line);border-radius:15px;background:rgba(255,255,255,.012)}
+.tile-n{font-family:var(--fd);font-weight:500;font-size:clamp(30px,3.6vw,40px);line-height:1;letter-spacing:-.02em;color:var(--ink)}
+.tile-l{margin-top:9px;font-size:12.5px;color:var(--ink3);line-height:1.3}
+.tile-due .tile-n{color:var(--or)}
+.tile-win{border-color:var(--orL);background:linear-gradient(180deg,rgba(200,168,107,.1),rgba(200,168,107,.015))}
+.tile-win .tile-n{color:var(--or2)}
+.tw-feed{margin-top:18px;display:flex;flex-direction:column;gap:9px}
+.fd{display:flex;align-items:center;gap:12px;padding:14px 16px;border:1px solid var(--line);border-radius:13px;background:rgba(255,255,255,.012);font-size:14px}
+.fd-d{flex:0 0 auto;width:7px;height:7px;border-radius:50%;background:var(--ink4)}
+.fd-d.on{background:var(--or);box-shadow:0 0 8px var(--or);animation:pulse 2.4s var(--ease) infinite}
+.fd-t{flex:1;color:var(--ink2);min-width:0}
+.fd-t b{color:var(--ink);font-weight:600}
+.fd-st{color:var(--or2)}
+.fd-m{font-family:var(--fm);font-size:10.5px;color:var(--ink4);white-space:nowrap}
+@media(max-width:520px){
+  #hero{padding:108px 0 56px}
+  .tower{border-radius:18px;padding:18px}
+  .tw-master{gap:14px;padding:18px 2px 16px}
+  .tw-num{font-size:clamp(54px,16vw,64px)}
+  .tw-mlt{font-size:16px}
+  .tile{padding:13px 11px}
+  .fd{font-size:12.5px;padding:12px 13px;gap:10px}
+  .hero-cta{gap:12px}
+  .hero-cta .btn-or,.hero-cta .lnk{width:100%;justify-content:center}
+}
+
+/* ════ ACTE — LE RETARD SILENCIEUX ════ */
+.sec{padding:130px 0}
+@media(max-width:680px){.sec{padding:80px 0}}
+.leak h2{font-size:clamp(29px,4.4vw,54px);max-width:900px}
+.leak h2 .or{color:var(--or);font-style:italic;font-weight:400}
+.leak-grid{margin-top:58px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+@media(max-width:880px){.leak-grid{grid-template-columns:minmax(0,1fr);gap:16px}}
+.leak-card{display:flex;flex-direction:column;min-width:0;border:1px solid var(--line);border-radius:20px;padding:32px 30px;background:linear-gradient(180deg,rgba(255,255,255,.022),rgba(255,255,255,.004));transition:border-color .4s,transform .4s var(--ease),box-shadow .5s var(--ease)}
+.leak-card:hover{border-color:var(--line2);transform:translateY(-4px);box-shadow:0 50px 110px -56px rgba(0,0,0,.9)}
+.lc-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:22px}
+.lc-stat{display:inline-flex;align-items:center;gap:8px;font-family:var(--fm);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink3)}
+.lc-stat::before{content:"";width:6px;height:6px;border-radius:50%;background:#CF8A7E;box-shadow:0 0 8px rgba(207,138,126,.7)}
+.lc-n{font-family:var(--fd);font-weight:500;font-size:34px;line-height:1;letter-spacing:-.02em;color:var(--ink4)}
+.lc-ic{width:48px;height:48px;border-radius:13px;border:1px solid var(--line2);background:var(--charbon);display:grid;place-items:center;margin-bottom:18px}
+.lc-ic svg{width:23px;height:23px;fill:none;stroke:var(--or);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.leak-card h3{font-family:var(--fd);font-weight:500;font-size:clamp(24px,2.8vw,30px);letter-spacing:-.02em;line-height:1.08}
+.lc-p{margin-top:12px;color:var(--ink2);font-size:14.5px;line-height:1.55;overflow-wrap:break-word}
+.lc-diag{margin-top:auto;padding-top:24px;display:flex;flex-direction:column;gap:11px}
+.lc-band{padding:15px 16px;border-radius:13px;border:1px solid var(--line)}
+.lc-bl{display:flex;align-items:center;gap:8px;font-family:var(--fm);font-size:9px;letter-spacing:.16em;text-transform:uppercase;margin-bottom:8px}
+.lc-bl svg{width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:0 0 auto}
+.lc-bv{font-size:15px;font-weight:500;line-height:1.35;overflow-wrap:break-word}
+.lc-loss{border-color:rgba(207,138,126,.3);background:rgba(207,138,126,.07)}
+.lc-loss .lc-bl{color:#CF8A7E}
+.lc-loss .lc-bv{color:#E6B0A4}
+.lc-fix{border-color:var(--orL);background:rgba(200,168,107,.06)}
+.lc-fix .lc-bl{color:var(--or2)}
+.lc-fix .lc-bv{color:var(--ink);font-weight:400;font-size:14px}
+.lc-fix .lc-bv b{color:var(--or2);font-weight:600}
+@media(max-width:880px){.leak-card{padding:28px 24px}}
+
+/* ════ LA BASCULE (interstitiel) ════ */
+.bascule{padding:120px 0;text-align:center;position:relative}
+.bascule .line{font-family:var(--fd);font-weight:500;font-size:clamp(26px,4vw,50px);letter-spacing:-.02em;line-height:1.15}
+.bascule .line .or{color:var(--or);font-style:italic;font-weight:400}
+.bascule .sub{margin-top:18px;font-family:var(--fm);font-size:11px;letter-spacing:.14em;color:var(--ink3)}
+.bascule .reverse{width:min(620px,86vw);height:80px;margin:34px auto 0}
+.bascule .reverse svg{width:100%;height:100%;overflow:visible}
+.bascule .reverse .r{stroke:var(--bronze);stroke-width:2;fill:none;stroke-linecap:round}
+.bascule .reverse .u{stroke:var(--or);stroke-width:2.4;fill:none;stroke-linecap:round;stroke-dasharray:700;stroke-dashoffset:700}
+.bascule.in .reverse .u{animation:draw 1.6s var(--ease2) .2s forwards}
+
+/* ════ MÉTHODE V·Λ·I·N (séquence typo, PAS des cartes) ════ */
+.methode .row{display:grid;grid-template-columns:130px 1fr auto;gap:30px;align-items:center;padding:30px 0;border-top:1px solid var(--line);transition:padding .3s}
+.methode .row:last-child{border-bottom:1px solid var(--line)}
+.methode .L{font-family:var(--fd);font-weight:500;font-size:clamp(56px,8vw,96px);line-height:.8;color:var(--ink3);transition:color .5s var(--ease)}
+.methode .row:hover .L{color:var(--or)}
+.methode .tx .nm{font-family:var(--fm);font-size:11px;letter-spacing:.18em;color:var(--or2);margin-bottom:8px}
+.methode .tx p{font-size:15px;color:var(--ink2);max-width:540px}
+.methode .row .x{font-family:var(--fm);font-size:10px;color:var(--ink4);letter-spacing:.1em;text-align:right;white-space:nowrap}
+@media(max-width:760px){.methode .row{grid-template-columns:80px 1fr;gap:18px}.methode .row .x{display:none}}
+
+/* ════ PREUVE (ivoire) ════ */
+.invert{background:var(--ivoire);color:var(--noir-on)}
+.invert .kick{color:var(--orDark)}.invert .kick::before{background:var(--orDark)}
+.invert h2{color:var(--noir-on)}.invert h2 .or{color:var(--orDark)}
+.invert .lead{color:var(--noir-on2)}
+.invert .lam path{stroke:var(--orDark)}
+.sh{max-width:660px;margin-bottom:50px}
+.sh h2{font-size:clamp(28px,4.4vw,52px);margin-top:18px}.sh h2 .or{font-style:italic;font-weight:400}
+.sh p{margin-top:18px}
+.ba{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+@media(max-width:820px){.ba{grid-template-columns:1fr}}
+.frame{border:1px solid var(--lineDark);border-radius:14px;background:#fff;overflow:hidden}
+.frame .fh{display:flex;align-items:center;justify-content:space-between;padding:13px 16px;border-bottom:1px solid var(--lineDark)}
+.frame .fh .t{font-family:var(--fm);font-size:10px;letter-spacing:.16em}
+.frame.before .fh .t{color:var(--rouge)}.frame.after .fh .t{color:var(--orDark)}
+.frame .fh .u{font-family:var(--fm);font-size:10px;color:var(--noir-on3)}
+.frame .fb{padding:18px 16px}
+.frame.before{filter:saturate(.5)}
+.tags{display:flex;gap:7px;flex-wrap:wrap;margin-top:4px}
+.tags span{font-family:var(--fm);font-size:9px;border:1px solid var(--lineDark);border-radius:5px;padding:3px 8px;color:var(--noir-on2)}
+.frame.after .tags span{color:var(--orDark);border-color:rgba(156,126,60,.3)}
+.mock{height:124px;border-radius:8px;margin-bottom:12px;overflow:hidden}
+.mock.old{background:#e7e3d8;padding:14px}
+.mock.old .h{height:12px;width:66%;background:#cfc8b8;border-radius:3px;margin-bottom:8px}
+.mock.old .l{height:6px;background:#d8d2c4;border-radius:3px;margin-bottom:6px}.mock.old .l.s{width:54%}
+.mock.new{background:linear-gradient(135deg,#101012,#1a1712);padding:14px;display:flex;flex-direction:column;justify-content:space-between}
+.mock.new .b{font-family:var(--fd);color:var(--ivoire);font-size:17px;font-weight:500}
+.mock.new .b em{color:var(--or);font-style:normal}
+.mock.new .c{align-self:flex-start;background:var(--or);color:#100c04;font-size:9px;font-weight:600;padding:5px 10px;border-radius:6px}
+.frame .open{display:flex;align-items:center;justify-content:center;gap:8px;font-family:var(--fm);font-size:11px;font-weight:500;border:1px solid var(--lineDark);border-radius:8px;padding:10px;margin-top:12px;transition:.3s}
+.frame.before .open{color:var(--noir-on2)}.frame.after .open{border-color:rgba(156,126,60,.4);color:var(--orDark)}
+.frame .open:hover{transform:translateY(-1px)}
+.proof-note{margin-top:22px;font-size:14px;color:var(--noir-on2)}
+.proof-note b{color:var(--noir-on)}
+
+/* ════ FINANCEMENT ════ */
+.fin{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}
+@media(max-width:880px){.fin{grid-template-columns:1fr;gap:32px}}
+.fin h2{font-size:clamp(28px,4vw,48px)}.fin h2 .or{color:var(--or);font-style:italic;font-weight:400}
+.fin .mention{font-family:var(--fm);font-size:10px;color:var(--ink4);margin:16px 0 20px;line-height:1.7}
+.plaques{display:flex;flex-direction:column}
+.plaque{padding:18px 0;border-top:1px solid var(--line)}
+.plaque:last-child{border-bottom:1px solid var(--line)}
+.plaque .nm{font-family:var(--fm);font-size:11px;letter-spacing:.12em;color:var(--or2);margin-bottom:6px}
+.plaque p{font-size:13.5px;color:var(--ink2)}
+
+/* ════ FORMULAIRE ════ */
+#contact{display:grid;grid-template-columns:1fr 1fr}
+@media(max-width:880px){#contact{grid-template-columns:1fr}}
+.form-l{background:var(--noir);padding:96px 56px 96px max(56px,calc((100vw - var(--w))/2 + 32px));display:flex;flex-direction:column;justify-content:center}
+@media(max-width:880px){.form-l{padding:64px 28px}}
+.form-l h2{font-size:clamp(28px,3.6vw,46px)}.form-l h2 .or{color:var(--or);font-style:italic;font-weight:400}
+.form-l p{margin-top:18px;color:var(--ink2);max-width:380px}
+.form-r{background:var(--ivoire);color:var(--noir-on);padding:96px max(56px,calc((100vw - var(--w))/2 + 32px)) 96px 56px;display:flex;flex-direction:column;justify-content:center}
+@media(max-width:880px){.form-r{padding:56px 28px}}
+.form label{display:block;font-family:var(--fm);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--noir-on3);margin:0 0 6px 2px}
+.form .f{width:100%;background:#fff;border:1px solid var(--lineDark);border-radius:9px;padding:13px 14px;font-size:14px;color:var(--noir-on);font-family:var(--fb);margin-bottom:14px;outline:none;transition:border-color .3s}
+.form .f::placeholder{color:var(--noir-on3)}
+.form .f:focus{border-color:var(--orDark)}
+.form button{width:100%;justify-content:center;background:var(--noir-on);color:var(--ivoire);font-weight:600;font-size:14.5px;padding:15px;border-radius:9px;display:flex;align-items:center;gap:9px;transition:transform .3s,box-shadow .4s}
+.form button:hover{transform:translateY(-1px);box-shadow:0 16px 40px -16px rgba(21,20,15,.5)}
+.form .micro{margin-top:13px;font-size:11.5px;color:var(--noir-on3);text-align:center}
+.form .micro b{color:var(--orDark)}
+.is-dis{opacity:.45;pointer-events:none}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+
+footer{background:var(--noir2);border-top:1px solid var(--line);padding:70px 0 40px}
+.ft{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;align-items:flex-start}
+.ft .bz{font-family:var(--fd);font-size:30px;letter-spacing:.14em;color:var(--or)}
+.ft .bz+p{font-family:var(--fd);font-size:15px;color:var(--ink2);margin-top:14px;max-width:320px;line-height:1.5}
+.ft-cols{display:flex;gap:54px;flex-wrap:wrap}
+.ft h5{font-family:var(--fm);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink4);margin-bottom:15px}
+.ft a{display:block;font-size:13.5px;color:var(--ink2);margin-bottom:11px;transition:color .3s}
+.ft a:hover{color:var(--or)}
+.ft .is-ph{color:var(--ink3);cursor:default}
+.ft-b{margin-top:52px;padding-top:24px;border-top:1px solid var(--line);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-family:var(--fm);font-size:10.5px;color:var(--ink4)}
+
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:.001s!important;transition-duration:.001s!important}
+  .rv{opacity:1;transform:none;filter:none}
+  .bascule .reverse .u{stroke-dashoffset:0}
+}
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<div class="thread" aria-hidden="true"><div class="track"></div><div class="fill" id="thread"></div></div>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="in">
+    <a class="brand" href="#hero">V<span style="color:var(--or)">Λ</span>IN <small>STUDIO</small></a>
+    <div class="nav-mid">
+      <a href="#retard">Le retard</a>
+      <a href="#methode">Méthode</a>
+      <a href="#preuve">La preuve</a>
+      <a href="#financement">Financement</a>
+    </div>
+    <a href="#contact" class="nav-cta">MESURER MON ÉCART</a>
+  </div>
+</nav>
+
+<!-- ════ HERO — TOUR DE CONTRÔLE ════ -->
+<header id="hero">
+  <div class="hero-glow" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="hero-copy rv">
+        <p class="kick hero-kick">POUR LES PME TECHNIQUES — CHAUFFAGE · ÉLEC · INDUSTRIE · LUXEMBOURG</p>
+        <h1 class="hero-title">Le devis que vous oubliez,<br/>votre concurrent <span class="or">le signe.</span></h1>
+        <p class="hero-sub">VΛIN transforme les demandes entrantes en devis suivis, relancés et signés.</p>
+        <div class="hero-cta">
+          <a href="#contact" class="btn btn-or">Mesurer mon écart <svg class="ar" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a href="#preuve" class="lnk">Voir le cas Chauffage Artisanal</a>
+        </div>
+        <p class="hero-micro">Diagnostic gratuit · réponse sous 48 h · potentiellement cofinancé</p>
+
+        <a class="cstudy" href="#preuve">
+          <div class="cs-head"><span class="cs-k">CAS CLIENT · LUXEMBOURG</span><span class="cs-link">avant / après →</span></div>
+          <div class="proof-shots">
+            <figure class="shot before"><img src="assets/chauffage-before.png" alt="Ancien site de Chauffage Artisanal" loading="lazy" width="1280" height="820"/><figcaption>AVANT</figcaption></figure>
+            <figure class="shot after"><img src="assets/chauffage-after.png" alt="Nouveau site de Chauffage Artisanal réalisé par VΛIN" loading="lazy" width="1280" height="820"/><figcaption>APRÈS · VΛIN</figcaption></figure>
+          </div>
+          <span class="cs-t">Chauffage Artisanal — installateur depuis 1994</span>
+          <div class="cs-tags"><span>Site refait</span><span>Devis en ligne 24/7</span><span>Klimabonus intégré</span></div>
+        </a>
+      </div>
+
+      <!-- tour de contrôle : aperçu opérationnel (exemple) -->
+      <div class="tower rv d1" role="img" aria-label="Exemple de tableau de bord : 17 devis ouverts, suivis et relancés en continu ; 3 à relancer, 2 aides disponibles, 1 signé aujourd'hui ; Mme Weber a ouvert votre devis il y a 4 minutes ; devis 2041 pour une chaudière, envoyé, relance prévue à J+2.">
+        <div class="tw-h">
+          <span class="tw-t">APERÇU — VOTRE TABLEAU DE BORD</span>
+          <span class="tw-ex"><i aria-hidden="true"></i>exemple</span>
+        </div>
+        <div class="tw-master">
+          <div class="tw-num">17</div>
+          <div class="tw-ml">
+            <span class="tw-mlt">devis ouverts</span>
+            <span class="tw-mls">suivis et relancés en continu</span>
+          </div>
+        </div>
+        <div class="tw-grid" aria-hidden="true">
+          <div class="tile tile-due"><div class="tile-n">3</div><div class="tile-l">à relancer</div></div>
+          <div class="tile"><div class="tile-n">2</div><div class="tile-l">aides disponibles</div></div>
+          <div class="tile tile-win"><div class="tile-n">1</div><div class="tile-l">signé aujourd'hui</div></div>
+        </div>
+        <div class="tw-feed" aria-hidden="true">
+          <div class="fd">
+            <span class="fd-d on"></span>
+            <span class="fd-t"><b>Mme Weber</b> a ouvert votre devis</span>
+            <span class="fd-m">il y a 4 min</span>
+          </div>
+          <div class="fd">
+            <span class="fd-d"></span>
+            <span class="fd-t">Devis #2041 · chaudière — <span class="fd-st">envoyé</span></span>
+            <span class="fd-m">relance J+2</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ════ ACTE II — LA FUITE ════ -->
+<section id="retard" class="sec leak">
+  <div class="wrap">
+    <div class="sh rv">
+      <span class="kick">OÙ PART L'ARGENT</span>
+      <h2 style="margin-top:18px">La fuite n'est pas dans vos chantiers.<br/>Elle est <span class="or">entre l'appel et le devis.</span></h2>
+    </div>
+    <div class="leak-grid">
+      <article class="leak-card rv">
+        <div class="lc-head"><span class="lc-stat">Problème détecté</span><span class="lc-n">01</span></div>
+        <div class="lc-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 2"/></svg></div>
+        <h3>Devis trop lents</h3>
+        <p class="lc-p">La demande attend trois jours. Le client, lui, n'attend pas.</p>
+        <div class="lc-diag">
+          <div class="lc-band lc-loss"><span class="lc-bl"><svg viewBox="0 0 24 24"><path d="M12 9v4M12 17h.01M10.3 4.3 2.6 18a2 2 0 0 0 1.7 3h15.4a2 2 0 0 0 1.7-3L13.7 4.3a2 2 0 0 0-3.4 0Z"/></svg>Perte</span><span class="lc-bv">Le concurrent rappelle avant vous.</span></div>
+          <div class="lc-band lc-fix"><span class="lc-bl"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 6"/></svg>Correction VΛIN</span><span class="lc-bv">Demande accusée en moins d'une minute, devis prêt à envoyer.</span></div>
+        </div>
+      </article>
+      <article class="leak-card rv d1">
+        <div class="lc-head"><span class="lc-stat">Problème détecté</span><span class="lc-n">02</span></div>
+        <div class="lc-ic"><svg viewBox="0 0 24 24"><path d="M6 9a6 6 0 0 1 12 0c0 5 2 6 2 8H4c0-2 2-3 2-8"/><path d="M10 21a2 2 0 0 0 4 0"/></svg></div>
+        <h3>Relances inexistantes</h3>
+        <p class="lc-p">Le devis part, puis tombe dans l'oubli. Personne n'a le temps de rappeler.</p>
+        <div class="lc-diag">
+          <div class="lc-band lc-loss"><span class="lc-bl"><svg viewBox="0 0 24 24"><path d="M12 9v4M12 17h.01M10.3 4.3 2.6 18a2 2 0 0 0 1.7 3h15.4a2 2 0 0 0 1.7-3L13.7 4.3a2 2 0 0 0-3.4 0Z"/></svg>Perte</span><span class="lc-bv">L'affaire meurt en silence.</span></div>
+          <div class="lc-band lc-fix"><span class="lc-bl"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 6"/></svg>Correction VΛIN</span><span class="lc-bv">Relances automatiques J+2, J+5, J+9, stoppées dès qu'il répond.</span></div>
+        </div>
+      </article>
+      <article class="leak-card rv d2">
+        <div class="lc-head"><span class="lc-stat">Problème détecté</span><span class="lc-n">03</span></div>
+        <div class="lc-ic"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V10M19 21V10M3 10l9-6 9 6M9 21v-6h6v6"/></svg></div>
+        <h3>Aides laissées sur la table</h3>
+        <p class="lc-p">Fit 4 Digital, SME Packages : les dispositifs existent, le dossier n'est jamais monté.</p>
+        <div class="lc-diag">
+          <div class="lc-band lc-loss"><span class="lc-bl"><svg viewBox="0 0 24 24"><path d="M12 9v4M12 17h.01M10.3 4.3 2.6 18a2 2 0 0 0 1.7 3h15.4a2 2 0 0 0 1.7-3L13.7 4.3a2 2 0 0 0-3.4 0Z"/></svg>Perte</span><span class="lc-bv">Vous payez plein tarif.</span></div>
+          <div class="lc-band lc-fix"><span class="lc-bl"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 6"/></svg>Correction VΛIN</span><span class="lc-bv">Éligibilité vérifiée, dossier monté (décision aux organismes).</span></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ════ LA BASCULE ════ -->
+<section class="bascule rv">
+  <div class="wrap">
+    <div class="line">Puis quelqu'un <span class="or">referme l'écart.</span></div>
+    <div class="sub">C'EST LA SEULE CHOSE QUE NOUS FAISONS. NOUS LA FAISONS BIEN.</div>
+    <div class="reverse">
+      <svg viewBox="0 0 620 80" preserveAspectRatio="none">
+        <path class="r" d="M10,40 C200,52 360,64 480,52"/>
+        <path class="u" d="M10,40 C200,30 380,16 610,8"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<div class="lam" style="padding:0 0 40px"><svg viewBox="0 0 30 22"><path d="M3 19 L15 4 L27 19"/></svg></div>
+
+<!-- ════ MÉTHODE V·Λ·I·N ════ -->
+<section id="methode" class="sec">
+  <div class="wrap">
+    <div class="sh rv">
+      <span class="kick">LA MÉTHODE VΛIN</span>
+      <h2>Quatre mouvements<br/>pour refermer <span class="or">l'écart.</span></h2>
+    </div>
+    <div class="methode">
+      <div class="row rv"><div class="L">V</div><div class="tx"><div class="nm">VISIBILITY</div><p>On vous rend trouvable et désirable. Là où vos clients cherchent, c'est vous qu'ils trouvent.</p></div><div class="x">L'ÉCART DE PRÉSENCE</div></div>
+      <div class="row rv d1"><div class="L" style="font-style:normal">Λ</div><div class="tx"><div class="nm">AUTOMATION</div><p>On supprime les oublis. Devis, suivi, relances : le système s'en souvient à votre place.</p></div><div class="x">L'ÉCART DE SUIVI</div></div>
+      <div class="row rv d2"><div class="L">I</div><div class="tx"><div class="nm">INVESTMENT</div><p>On active les aides publiques auxquelles vous avez droit — Fit 4 Digital, SME Packages.</p></div><div class="x">L'ÉCART DE MOYENS</div></div>
+      <div class="row rv d3"><div class="L">N</div><div class="tx"><div class="nm">NEW GROWTH</div><p>On installe le pilotage : optimisation et acquisition continue. L'avantage devient durable.</p></div><div class="x">L'ÉCART DE CROISSANCE</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ PREUVE (ivoire) ════ -->
+<section id="preuve" class="sec invert">
+  <div class="wrap">
+    <div class="sh rv">
+      <span class="kick">LA PREUVE, PAS LA PROMESSE</span>
+      <h2>La première fois où nous<br/>avons <span class="or">refermé l'écart.</span></h2>
+      <p class="lead">Chauffage Artisanal — installateur luxembourgeois en activité depuis 1994. Son site historique et sa transformation sont consultables maintenant. Ouvrez les deux. Jugez vous-même.</p>
+    </div>
+    <div class="ba">
+      <div class="frame before rv d1">
+        <div class="fh"><span class="t">● AVANT</span><span class="u">chauffage-artisanal.lu</span></div>
+        <div class="fb">
+          <div class="mock old"><div class="h"></div><div class="l"></div><div class="l"></div><div class="l s"></div></div>
+          <div class="tags"><span>Devis par téléphone</span><span>Invisible sur Google</span><span>Aucune relance</span></div>
+          <a class="open" href="https://www.chauffage-artisanal.lu/" target="_blank" rel="noopener">Ouvrir l'ancien site <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg></a>
+        </div>
+      </div>
+      <div class="frame after rv d2">
+        <div class="fh"><span class="t">● APRÈS · VΛIN</span><span class="u">chauffage-artisanal.vercel.app</span></div>
+        <div class="fb">
+          <div class="mock new"><div class="b">Votre chauffage,<br/><em>installé &amp; financé.</em></div><div class="c">DEVIS EN 2 MIN</div></div>
+          <div class="tags"><span>Devis en ligne 24/7</span><span>Klimabonus intégré</span><span>Mobile d'abord</span></div>
+          <a class="open" href="https://chauffage-artisanal.vercel.app" target="_blank" rel="noopener">Ouvrir la transformation <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg></a>
+        </div>
+      </div>
+    </div>
+    <div class="proof-note rv d2">Même entreprise. Même marché. La seule différence : <b>l'écart, refermé.</b></div>
+  </div>
+</section>
+
+<div class="lam" style="padding:54px 0"><svg viewBox="0 0 30 22"><path d="M3 19 L15 4 L27 19"/></svg></div>
+
+<!-- ════ FINANCEMENT ════ -->
+<section id="financement" class="sec" style="padding-top:0">
+  <div class="wrap fin">
+    <div class="rv">
+      <span class="kick">L'ÉCART DE MOYENS</span>
+      <h2 style="margin-top:16px">Combler l'écart peut<br/>coûter <span class="or">moins que vous croyez.</span></h2>
+      <p class="lead" style="margin-top:18px">Le Luxembourg soutient la digitalisation des PME. Nous identifions les dispositifs auxquels vous êtes éligible et nous montons les dossiers.</p>
+      <p class="mention">Selon votre situation, votre projet peut être éligible. Nous montons le dossier ; la décision appartient aux organismes compétents (Luxinnovation, House of Entrepreneurship). Conditions à vérifier au cas par cas.</p>
+      <a href="#contact" class="btn btn-or">Vérifier mon éligibilité <svg class="ar" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+    <div class="plaques rv d1">
+      <div class="plaque"><div class="nm">FIT 4 DIGITAL</div><p>Diagnostic de maturité numérique, accompagné et co-financé. Piloté par Luxinnovation.</p></div>
+      <div class="plaque"><div class="nm">SME PACKAGES — DIGITAL</div><p>Co-financement d'un projet de digitalisation. Préanalyse via House of Entrepreneurship / Chambre des Métiers.</p></div>
+      <div class="plaque"><div class="nm">SME PACKAGES — AI</div><p>Co-financement des projets d'automatisation et d'intelligence artificielle.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ FORMULAIRE ════ -->
+<section id="contact">
+  <div class="form-l rv">
+    <span class="kick">L'INVITATION</span>
+    <h2 style="margin-top:16px">Mesurons votre <span class="or">écart.</span></h2>
+    <p>Un diagnostic gratuit. On chiffre où vous perdez du terrain, ce que l'État peut financer, et on vous remet le plan sous 48 h. Vous le gardez — que l'on travaille ensemble ou non.</p>
+  </div>
+  <div class="form-r rv d1">
+    <form class="form" id="dForm" action="#" method="POST">
+      <input type="hidden" name="_subject" value="Demande de diagnostic — VΛIN STUDIO" />
+      <label for="f-n">Nom &amp; entreprise</label>
+      <input id="f-n" class="f" type="text" name="nom" placeholder="Jean Müller · Chauffage Müller Sàrl" required />
+      <label for="f-e">Email professionnel</label>
+      <input id="f-e" class="f" type="email" name="email" placeholder="jean@chauffagemuller.lu" required />
+      <label for="f-m">Métier</label>
+      <input id="f-m" class="f" type="text" name="metier" placeholder="Chauffage, électricité, industrie…" />
+      <label for="f-s">Votre site</label>
+      <input id="f-s" class="f" type="text" name="site" placeholder="votresite.lu (ou « aucun »)" />
+      <button id="dSubmit" type="submit">Mesurer mon écart <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      <div class="micro" id="dMicro"><b>Sans engagement · 0 spam.</b> Réponse sous 24 h · hello@vainstudio.lu</div>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="ft">
+      <div>
+        <div class="bz">VΛIN</div>
+        <p>Nous refermons l'écart entre votre entreprise et ses concurrents.</p>
+      </div>
+      <div class="ft-cols">
+        <div><h5>Le studio</h5><a href="#retard">Le retard</a><a href="#methode">Méthode VΛIN</a><a href="#financement">Financement</a></div>
+        <div><h5>La preuve</h5><a href="https://www.chauffage-artisanal.lu/" target="_blank" rel="noopener">Avant</a><a href="https://chauffage-artisanal.vercel.app" target="_blank" rel="noopener">Après</a></div>
+        <div><h5>Contact</h5><a href="#contact">Mesurer mon écart</a><a class="is-ph" id="footTel"><span class="tel-d">+352 XX XX XX XX</span></a><a href="mailto:hello@vainstudio.lu">hello@vainstudio.lu</a></div>
+      </div>
+    </div>
+    <div class="ft-b"><span>© 2026 VΛIN STUDIO — LUXEMBOURG &amp; GRANDE RÉGION</span><span>FR · DE · EN · LU</span></div>
+  </div>
+</footer>
+
+<script>
+/* ⚙️ CONFIG — vide = canal désactivé proprement (cf. SETUP-MISE-EN-LIGNE.md) */
+var VAIN_CONFIG={formspreeId:"",phoneDial:"",phoneDisplay:""};
+(function(){var C=VAIN_CONFIG,f=document.getElementById('dForm'),b=document.getElementById('dSubmit'),m=document.getElementById('dMicro');
+if(C.formspreeId){f.action='https://formspree.io/f/'+C.formspreeId;}
+else{b.classList.add('is-dis');b.setAttribute('aria-disabled','true');f.addEventListener('submit',function(e){e.preventDefault();});
+m.innerHTML='<b>Formulaire en cours d’activation.</b> Contact : hello@vainstudio.lu';}
+var t=document.getElementById('footTel'),d=t.querySelector('.tel-d');
+if(C.phoneDial){t.href='tel:'+C.phoneDial;t.classList.remove('is-ph');if(C.phoneDisplay)d.textContent=C.phoneDisplay;}})();
+
+/* nav */
+addEventListener('scroll',function(){document.getElementById('nav').classList.toggle('sc',scrollY>30);},{passive:true});
+
+/* fil rouge : l'écart se referme au scroll, puis disparaît à la zone de conversion */
+var thread=document.getElementById('thread');
+var threadBar=document.querySelector('.thread');
+var contactEl=document.getElementById('contact');
+function onScroll(){
+  var h=document.documentElement;var p=h.scrollTop/(h.scrollHeight-h.clientHeight||1);thread.style.height=(p*100)+'vh';
+  if(contactEl&&threadBar){threadBar.classList.toggle('hide',contactEl.getBoundingClientRect().top < innerHeight*0.6);}
+}
+addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+/* reveal */
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.16});
+document.querySelectorAll('.rv:not(.in)').forEach(function(el){io.observe(el);});
+
+/* la bascule : déclenche le tracé quand visible */
+var bsc=document.querySelector('.bascule');
+var io2=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io2.unobserve(e.target);}});},{threshold:.35});
+if(bsc)io2.observe(bsc);
+</script>
+</body>
+</html>
