@@ -17,7 +17,8 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230A0A0C'/%3E%3Cpath d='M28 70 L50 30 L72 70' fill='none' stroke='%23C8A86B' stroke-width='7' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" /></noscript>
 <style>
 /* ════════════════════════════════════════════════════════════
    VΛIN STUDIO — « L'ÉCART »
@@ -291,11 +292,11 @@ footer{background:var(--noir2);border-top:1px solid var(--line);padding:70px 0 4
 .ft .bz{font-family:var(--fd);font-size:30px;letter-spacing:.14em;color:var(--or)}
 .ft .bz+p{font-family:var(--fd);font-size:15px;color:var(--ink2);margin-top:14px;max-width:320px;line-height:1.5}
 .ft-cols{display:flex;gap:54px;flex-wrap:wrap}
-.ft h5{font-family:var(--fm);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink4);margin-bottom:15px}
+.ft-h5{font-family:var(--fm);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:rgba(244,241,234,.72);margin:0 0 15px}
 .ft a{display:block;font-size:13.5px;color:var(--ink2);margin-bottom:11px;transition:color .3s}
 .ft a:hover{color:var(--or)}
-.ft .is-ph{color:var(--ink3);cursor:default}
-.ft-b{margin-top:52px;padding-top:24px;border-top:1px solid var(--line);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-family:var(--fm);font-size:10.5px;color:var(--ink4)}
+.ft .is-ph{color:rgba(244,241,234,.58);cursor:default}
+.ft-b{margin-top:52px;padding-top:24px;border-top:1px solid var(--line);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-family:var(--fm);font-size:10.5px;color:rgba(244,241,234,.6)}
 
 @media(prefers-reduced-motion:reduce){
   *{animation-duration:.001s!important;transition-duration:.001s!important}
@@ -322,6 +323,7 @@ footer{background:var(--noir2);border-top:1px solid var(--line);padding:70px 0 4
   </div>
 </nav>
 
+<main>
 <!-- ════ HERO — TOUR DE CONTRÔLE ════ -->
 <header id="hero">
   <div class="hero-glow" aria-hidden="true"></div>
@@ -340,8 +342,8 @@ footer{background:var(--noir2);border-top:1px solid var(--line);padding:70px 0 4
         <a class="cstudy" href="#preuve">
           <div class="cs-head"><span class="cs-k">CAS CLIENT · LUXEMBOURG</span><span class="cs-link">avant / après →</span></div>
           <div class="proof-shots">
-            <figure class="shot before"><img src="assets/chauffage-before.png" alt="Ancien site de Chauffage Artisanal" loading="lazy" width="1280" height="820"/><figcaption>AVANT</figcaption></figure>
-            <figure class="shot after"><img src="assets/chauffage-after.png" alt="Nouveau site de Chauffage Artisanal réalisé par VΛIN" loading="lazy" width="1280" height="820"/><figcaption>APRÈS · VΛIN</figcaption></figure>
+            <figure class="shot before"><img src="assets/chauffage-before.webp" alt="Ancien site de Chauffage Artisanal" loading="lazy" width="560" height="359"/><figcaption>AVANT</figcaption></figure>
+            <figure class="shot after"><img src="assets/chauffage-after.webp" alt="Nouveau site de Chauffage Artisanal réalisé par VΛIN" loading="lazy" width="560" height="359"/><figcaption>APRÈS · VΛIN</figcaption></figure>
           </div>
           <span class="cs-t">Chauffage Artisanal — installateur depuis 1994</span>
           <div class="cs-tags"><span>Site refait</span><span>Devis en ligne 24/7</span><span>Klimabonus intégré</span></div>
@@ -531,6 +533,8 @@ footer{background:var(--noir2);border-top:1px solid var(--line);padding:70px 0 4
   </div>
 </section>
 
+</main>
+
 <!-- FOOTER -->
 <footer>
   <div class="wrap">
@@ -540,9 +544,9 @@ footer{background:var(--noir2);border-top:1px solid var(--line);padding:70px 0 4
         <p>Nous refermons l'écart entre votre entreprise et ses concurrents.</p>
       </div>
       <div class="ft-cols">
-        <div><h5>Le studio</h5><a href="#retard">Le retard</a><a href="#methode">Méthode VΛIN</a><a href="#financement">Financement</a></div>
-        <div><h5>La preuve</h5><a href="https://www.chauffage-artisanal.lu/" target="_blank" rel="noopener">Avant</a><a href="https://chauffage-artisanal.vercel.app" target="_blank" rel="noopener">Après</a></div>
-        <div><h5>Contact</h5><a href="#contact">Mesurer mon écart</a><a class="is-ph" id="footTel"><span class="tel-d">+352 XX XX XX XX</span></a><a href="mailto:hello@vainstudio.lu">hello@vainstudio.lu</a></div>
+        <div><p class="ft-h5">Le studio</p><a href="#retard">Le retard</a><a href="#methode">Méthode VΛIN</a><a href="#financement">Financement</a></div>
+        <div><p class="ft-h5">La preuve</p><a href="https://www.chauffage-artisanal.lu/" target="_blank" rel="noopener">Avant</a><a href="https://chauffage-artisanal.vercel.app" target="_blank" rel="noopener">Après</a></div>
+        <div><p class="ft-h5">Contact</p><a href="#contact">Mesurer mon écart</a><a class="is-ph" id="footTel"><span class="tel-d">+352 XX XX XX XX</span></a><a href="mailto:hello@vainstudio.lu">hello@vainstudio.lu</a></div>
       </div>
     </div>
     <div class="ft-b"><span>© 2026 VΛIN STUDIO — LUXEMBOURG &amp; GRANDE RÉGION</span><span>FR · DE · EN · LU</span></div>
